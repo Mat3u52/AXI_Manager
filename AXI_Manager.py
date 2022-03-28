@@ -9,27 +9,35 @@ def getSelectedRow(event):
     objDB = DBConnect()
     E1.delete(0, END)
     E2.delete(0, END)
+    E3.delete(0, END)
     print(tree.selection())  # this will print the names of the selected rows
     for nm in tree.selection():
         content = tree.item(nm, 'values')
     print(content[0])
     E1.insert(0, f"{content[0]}")
-    #E1.insert(0, textvariable = f"{content[0]}")
 
     for row in objDB.selectSearchID(content[0]):
         print(f"{row[1]}")
+        print(f"{row[3]}")
         tab.append(row[0])
         tab.append(row[1])
+        tab.append(row[3])
         E2.insert(0, f"{row[1]}")
+        E3.insert(0, f"{row[3]}")
     objDB.closeDB()
 
-def update():
+def updateDisplay():
     objDB = DBConnect()
-    objDB.update(tab[0],E2.get())
+    objDB.update(tab[0], E2.get(), E3.get())
     objDB.closeDB()
     #tree.delete(1)
     selected_item = tree.selection()[0]
-    tree.item(selected_item, text=E2.get(), values=("foo", "bar"))
+    tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
+
+def insertData():
+    objDB = DBConnect()
+    objDB.insert(E3)
+    objDB.closeDB()
 
 #def delete():
    # Get selected item to Delete
@@ -39,23 +47,48 @@ def update():
 
 root = tk.Tk()
 root.title('AXI - Manager')
-root.geometry('800x600')
+root.resizable(0,0)
 
-L1 = Label(root, text="ID:")
-L2 = Label(root, text="Item:")
-L1.grid(row=0, column=0, sticky=W, pady=2)
-L2.grid(row=1, column=0, sticky=W, pady=2)
+L1 = Label(root, text="ID:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
+L1.config(font=("Arial", 10))
+L2 = Label(root, text="Item:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
+L2.config(font=("Arial", 10))
+L3 = Label(root, text="Qty:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
+L3.config(font=("Arial", 10))
+L4 = Label(root, text="V810 EX III:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
+L4.config(font=("Arial", 10))
+
+L1.grid(row=0, column=0, sticky=W)
+L2.grid(row=1, column=0, sticky=W)
+L3.grid(row=2, column=0, sticky=W)
+L4.grid(row=3, column=0, sticky=W)
 
 E1 = Entry(root, bd=0)
-#E1.pack(padx=0, pady=(5, 0))
-E2 = Entry(root, bd=0)
-#E2.pack(padx=0, pady=(10, 0))
 E1.grid(row=0, column=1, pady=2)
+E2 = Entry(root, bd=0)
 E2.grid(row=1, column=1, pady=2)
+E3 = Entry(root, bd=0)
+E3.grid(row=2, column=1, pady=2)
+E4 = Entry(root, bd=0)
+E4.grid(row=3, column=1, pady=2)
 
-#ttk.Button(root, text="Update", command=update).pack(pady=20)
-B1 = ttk.Button(root, text="Update", command=update)
-B1.grid(row=2, column=1, pady=2)
+B1 = ttk.Button(root, text="Update", command=updateDisplay)
+B1.grid(row=4, column=1, pady=2)
+
+'''
+L3 = Label(root, text="Item:")
+L4 = Label(root, text="Program name:")
+L3.grid(row=4, column=0, sticky=W, pady=2)
+L4.grid(row=5, column=0, sticky=W, pady=2)
+
+E4 = Entry(root, bd=0)
+E4 = Entry(root, bd=0)
+E4.grid(row=4, column=1, pady=2)
+E4.grid(row=5, column=1, pady=2)
+
+B1 = ttk.Button(root, text="Insert", command=insertData)
+B1.grid(row=6, column=1, pady=2)
+'''
 
 tree = ttk.Treeview(root)
 tree["columns"] = ("one", "two", "three")
@@ -108,7 +141,7 @@ for row in objDB.selectAll():
     tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
     #tree.pack(side=tk.BOTTOM, fill=tk.X)
-    tree.grid(row=3, column=0, columnspan = 2, rowspan = 2, pady=2)
+    tree.grid(row=5, column=0, columnspan = 2, rowspan = 2, pady=2)
 
     count += 1
     count1 += 1

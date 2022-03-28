@@ -19,13 +19,17 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
-    def update(self, ID, item):
+    def update(self, ID, item, itemAmount):
         self.ID = int(ID)
         self.item = str(item)
-        sql = "UPDATE mk_diary SET ITEM = %s WHERE ITEM_ID = %s"
-        val = (self.item, self.ID)
+        self.itemAmount = int(itemAmount)
+        sql = "UPDATE mk_diary SET ITEM = %s, ITEM_AMOUNT = %s WHERE ITEM_ID = %s"
+        val = (self.item, self.itemAmount, self.ID)
         self.dbCursor.execute(sql, val)
-        #self.dbCursor.commit() # ???????
+        self.db.commit()
+
+    def insert(self, newItem):
+        self.newItem = str(newItem)
 
     def closeDB(self):
         self.dbCursor.close()
