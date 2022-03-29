@@ -10,6 +10,7 @@ def getSelectedRow(event):
     E1.delete(0, END)
     E2.delete(0, END)
     E3.delete(0, END)
+    E4.delete(0, END)
     print(tree.selection())  # this will print the names of the selected rows
     for nm in tree.selection():
         content = tree.item(nm, 'values')
@@ -18,7 +19,7 @@ def getSelectedRow(event):
 
     for row in objDB.selectSearchID(content[0]):
         print(f"{row[1]}")
-        print(f"{row[3]}")
+        print(f"{row[54]}")
         tab.append(row[0])
         tab.append(row[1])
         tab.append(row[3])
@@ -28,7 +29,7 @@ def getSelectedRow(event):
 
 def updateDisplay():
     objDB = DBConnect()
-    objDB.update(tab[0], E2.get(), E3.get())
+    objDB.update(tab[0], E2.get(), E3.get(), E4.get())
     objDB.closeDB()
     #tree.delete(1)
     selected_item = tree.selection()[0]
