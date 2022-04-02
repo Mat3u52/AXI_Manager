@@ -6,30 +6,52 @@ from tkinter import *
 tab = []
 def getSelectedRow(event):
     tab.clear()
+    E1.config(state="normal")
     objDB = DBConnect()
     E1.delete(0, END)
     E2.delete(0, END)
     E3.delete(0, END)
     E4.delete(0, END)
+    E5.delete(0, END)
     print(tree.selection())  # this will print the names of the selected rows
     for nm in tree.selection():
         content = tree.item(nm, 'values')
     print(content[0])
-    E1.insert(0, f"{content[0]}")
+    #E1.insert(0, f"{content[0]}")
 
     for row in objDB.selectSearchID(content[0]):
-        print(f"{row[1]}")
-        print(f"{row[54]}")
+        def swich(x):
+            match x:
+                case "NONE":
+                    return 0
+                case "YES":
+                    return 1
+                case "NO":
+                    return 2
+                case "LACK":
+                    return 3
+                case _:
+                    return 0
         tab.append(row[0])
         tab.append(row[1])
         tab.append(row[3])
+        tab.append(row[54])
+        tab.append(row[52])
+        #tab.append(row[53])
+        E1.insert(0, f"{row[0]}")
+        E1.config(state="disabled")
         E2.insert(0, f"{row[1]}")
         E3.insert(0, f"{row[3]}")
+        E4.insert(0, f"{row[54]}")
+        E5.insert(0, f"{row[52]}")
+        LCViTroxIV.current(swich(row[55]))
+
+
     objDB.closeDB()
 
 def updateDisplay():
     objDB = DBConnect()
-    objDB.update(tab[0], E2.get(), E3.get(), E4.get())
+    objDB.update(tab[0], E2.get(), E3.get(), E4.get(), E5.get(), LCViTroxIV.get())
     objDB.closeDB()
     #tree.delete(1)
     selected_item = tree.selection()[0]
@@ -56,25 +78,40 @@ L2 = Label(root, text="Item:", borderwidth=1, relief="solid", bg="#302928", fg="
 L2.config(font=("Arial", 10))
 L3 = Label(root, text="Qty:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
 L3.config(font=("Arial", 10))
-L4 = Label(root, text="V810 EX III:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
+L4 = Label(root, text="V810 Ex III:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
 L4.config(font=("Arial", 10))
+L5 = Label(root, text="Scanning Time:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
+L5.config(font=("Arial", 10))
+L6 = Label(root, text="LC:", borderwidth=1, relief="solid", bg="#302928", fg="#FFFFFF", pady="0")
+L6.config(font=("Arial", 10))
 
 L1.grid(row=0, column=0, sticky=W)
-L2.grid(row=1, column=0, sticky=W)
-L3.grid(row=2, column=0, sticky=W)
-L4.grid(row=3, column=0, sticky=W)
+L2.grid(row=0, column=2, sticky=W)
+L3.grid(row=0, column=4, sticky=W)
+L4.grid(row=1, column=0, sticky=W)
+L5.grid(row=1, column=2, sticky=W)
+L6.grid(row=1, column=4, sticky=W)
 
 E1 = Entry(root, bd=0)
 E1.grid(row=0, column=1, pady=2)
 E2 = Entry(root, bd=0)
-E2.grid(row=1, column=1, pady=2)
+E2.grid(row=0, column=3, pady=2)
 E3 = Entry(root, bd=0)
-E3.grid(row=2, column=1, pady=2)
+E3.grid(row=0, column=5, pady=2)
 E4 = Entry(root, bd=0)
-E4.grid(row=3, column=1, pady=2)
+E4.grid(row=1, column=1, pady=2)
+E5 = Entry(root, bd=0)
+E5.grid(row=1, column=3, pady=2)
+#E6 = Entry(root, bd=0)
+#E6.grid(row=1, column=5, pady=2)
+LC = tk.StringVar
+LCViTroxIV = ttk.Combobox(root, width=12, textvariable=LC, state='readonly')
+LCViTroxIV['values'] = ("NONE","YES","NO","LACK")
+LCViTroxIV.grid(row=1, column=5, pady=2)
+LCViTroxIV.current(0)
 
 B1 = ttk.Button(root, text="Update", command=updateDisplay)
-B1.grid(row=4, column=1, pady=2)
+B1.grid(row=4, column=0, pady=2)
 
 '''
 L3 = Label(root, text="Item:")
@@ -133,7 +170,7 @@ for row in objDB.selectAll():
     count1 += 4
     if row[54] != None and int(row[50] != 0):
         tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
-                    values=(f"ViTroxEx III", f"Scanning Time: {int(row[50]) + handling}", ""))
+                    values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
     count1 += 5
     if row[31] != None and int(row[37] != 0):
         tree.insert(folder1, index='end', iid=count1, text=f'{row[31]}',
@@ -142,7 +179,7 @@ for row in objDB.selectAll():
     tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
     #tree.pack(side=tk.BOTTOM, fill=tk.X)
-    tree.grid(row=5, column=0, columnspan = 2, rowspan = 2, pady=2)
+    tree.grid(row=5, column=0, columnspan = 6, rowspan = 2, pady=2)
 
     count += 1
     count1 += 1
