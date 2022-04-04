@@ -19,13 +19,27 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
-    def update(self, ID, item, itemAmount, vitroxIVProg):
+    def update(self, ID, item, itemAmount, vitroxIVProg, vitroxIVTest, vitroxIVLinecapa, vitroxIVEPI, vitroxIVBAAN1, vitroxIVComments):
         self.ID = int(ID)
         self.item = str(item)
         self.itemAmount = int(itemAmount)
+
         self.vitroxIVProg = str(vitroxIVProg)
-        sql = "UPDATE mk_diary SET ITEM = %s, ITEM_AMOUNT = %s, VITROXIV_PROG = %s WHERE ITEM_ID = %s"
-        val = (self.item, self.itemAmount, self.vitroxIVProg, self.ID)
+        self.vitroxIVTest = str(vitroxIVTest)
+        self.vitroxIVLinecapa = str(vitroxIVLinecapa)
+        self.vitroxIVEPI = str(vitroxIVEPI)
+        self.vitroxIVBAAN1 = str(vitroxIVBAAN1)
+        self.vitroxIVComments = str(vitroxIVComments)
+        if vitroxIVTest > 0:
+            self.vitroxIVUPH85 = (3600/(self.vitroxIVTest+15)*0.85)
+            self.vitroxIVUPH95 = (3600/(self.vitroxIVTest+15)*0.95)
+            self.vitroxIVUPH95Time = (3600/self.vitroxIVUPH95)
+
+        sql = "UPDATE mk_diary SET ITEM = %s, ITEM_AMOUNT = %s, VITROXIV_PROG = %s, VITROXIV_TEST = %s, VITROXIV_LINECAPA = %s," \
+              " VITROXIV_EPI = %s, VITROXIV_BAAN1 = %s, VITROXIV_COMMENTS = %s, VITROXIV_BAAN = %s," \
+              " VITROXIV_DSVR = %s, VITROXIV_TIME = %s WHERE ITEM_ID = %s"
+        val = (self.item, self.itemAmount, self.vitroxIVProg, self.vitroxIVTest, self.vitroxIVLinecapa, self.vitroxIVEPI,
+               self.vitroxIVBAAN1, self.vitroxIVComments, self.vitroxIVUPH85, self.vitroxIVUPH95, self.vitroxIVUPH95Time, self.ID)
         self.dbCursor.execute(sql, val)
         self.db.commit()
 
