@@ -34,7 +34,7 @@ def getSelectedRow(event):
                 case _:
                     return 0
         tab.append(row[0])
-
+        #tab.append(row[49])
         E1.insert(0, f"{row[0]}")
         E1.config(state="disabled")
         E2.insert(0, f"{row[1]}")
