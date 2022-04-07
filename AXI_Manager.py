@@ -51,7 +51,8 @@ def getSelectedRow(event):
 
 def updateDisplay():
     objDB = DBConnect()
-    objDB.update(tab[0], E2.get(), E3.get(), E4.get(), E5.get(), LCViTroxIV.get(), EPIViTroxIV.get(), BAANViTroxIV.get(), E6.get())
+    objDB.update(tab[0], E2.get(), E3.get(), E4.get(), E5.get(), LCViTroxIV.get(), EPIViTroxIV.get(),
+                 BAANViTroxIV.get(), E6.get())
     objDB.closeDB()
     #tree.delete(1)
     selected_item = tree.selection()[0]
@@ -59,7 +60,8 @@ def updateDisplay():
 
 def insertData():
     objDB = DBConnect()
-    objDB.insert(E3)
+    objDB.insert(EI2.get(), EI3.get(), EI4.get(), EI5.get(), LCViTroxIVInsert.get(), EPIViTroxIVInsert.get(),
+                 BAANViTroxIVInsert.get(), EI6.get())
     objDB.closeDB()
 
 #def delete():
@@ -102,7 +104,7 @@ style.theme_create('style_class',
                            'configure':{
                                 'background': '#302928',
                                 'foreground': '#FFFFFF',
-                                'anchor': 'center'
+                                'anchor': N
                            }
                        }
                    }
@@ -184,20 +186,81 @@ BAANViTroxIV.current(0)
 B1 = ttk.Button(updateFrameVIV, text="Update", width=100, command=updateDisplay)
 B1.grid(row=3, column=0, columnspan = 10, pady=2)
 
-'''
-L3 = Label(root, text="Item:")
-L4 = Label(root, text="Program name:")
-L3.grid(row=4, column=0, sticky=W, pady=2)
-L4.grid(row=5, column=0, sticky=W, pady=2)
+#-----------------INSERT-------------------
+mainFrameInsert = ttk.LabelFrame(root, text="Update Frame:")
+mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
+insertFrameVIV = ttk.LabelFrame(root, text="Update ViTrox V810 Ex III ( V810-3553S2EX ):")
+insertFrameVIV.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 
-E4 = Entry(root, bd=0)
-E4 = Entry(root, bd=0)
-E4.grid(row=4, column=1, pady=2)
-E4.grid(row=5, column=1, pady=2)
+#LI1 = Label(mainFrameInsert, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#LI1.config(font=("Arial", 10))
+LI2 = Label(mainFrameInsert, text="Item:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI2.config(font=("Arial", 10))
+LI3 = Label(mainFrameInsert, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI3.config(font=("Arial", 10))
+LI4 = Label(insertFrameVIV, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI4.config(font=("Arial", 10))
+LI5 = Label(insertFrameVIV, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI5.config(font=("Arial", 10))
+LI6 = Label(insertFrameVIV, text="LC:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI6.config(font=("Arial", 10))
+LI7 = Label(insertFrameVIV, text="EPI:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI7.config(font=("Arial", 10))
+LI8 = Label(insertFrameVIV, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI8.config(font=("Arial", 10))
+LI9 = Label(insertFrameVIV, text="V810 Ex III Comments", width=29, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI9.config(font=("Arial", 10))
 
-B1 = ttk.Button(root, text="Insert", command=insertData)
-B1.grid(row=6, column=1, pady=2)
-'''
+#LI1.grid(row=0, column=0, sticky=W)
+LI2.grid(row=0, column=2, sticky=W)
+LI3.grid(row=0, column=4, sticky=W)
+LI4.grid(row=1, column=0, sticky=W)
+LI5.grid(row=1, column=2, sticky=W)
+LI6.grid(row=1, column=4, sticky=W)
+LI7.grid(row=1, column=6, sticky=W)
+LI8.grid(row=1, column=8, sticky=W)
+LI9.grid(row=2, column=0, columnspan = 2, sticky=W)
+
+#EI1 = Entry(mainFrameInsert, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+#EI1.config(font=("Arial", 10))
+#EI1.grid(row=0, column=1, pady=0)
+EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI2.config(font=("Arial", 10))
+EI2.grid(row=0, column=3, pady=0)
+EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI3.config(font=("Arial", 10))
+EI3.grid(row=0, column=5, pady=0)
+EI4 = Entry(insertFrameVIV, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI4.config(font=("Arial", 10))
+EI4.grid(row=1, column=1, pady=0)
+EI5 = Entry(insertFrameVIV, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI5.config(font=("Arial", 10))
+EI5.grid(row=1, column=3, pady=0)
+EI6 = Entry(insertFrameVIV, relief="solid", width=137, borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI6.config(font=("Arial", 10))
+EI6.grid(row=2, column=2, columnspan = 8, pady=0)
+#E6 = Entry(root, bd=0)
+#E6.grid(row=1, column=5, pady=2)
+
+LCInsert = tk.StringVar
+LCViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=20, textvariable=LCInsert, state='readonly')
+LCViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
+LCViTroxIVInsert.grid(row=1, column=5, pady=0)
+LCViTroxIVInsert.current(0)
+EPIInsert = tk.StringVar
+EPIViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=20, textvariable=EPIInsert, state='readonly')
+EPIViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
+EPIViTroxIVInsert.grid(row=1, column=7, pady=0)
+EPIViTroxIVInsert.current(0)
+BAANInsert = tk.StringVar
+BAANViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=20, textvariable=BAANInsert, state='readonly')
+BAANViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
+BAANViTroxIVInsert.grid(row=1, column=9, pady=0)
+BAANViTroxIVInsert.current(0)
+
+BI1 = ttk.Button(insertFrameVIV, text="Insert", width=100, command=insertData)
+BI1.grid(row=3, column=0, columnspan = 10, pady=2)
+#-----------------The End INSERT-----------
 
 tree = ttk.Treeview(root)
 tree["columns"] = ("one", "two", "three")
@@ -250,7 +313,7 @@ for row in objDB.selectAll():
     tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
     #tree.pack(side=tk.BOTTOM, fill=tk.X)
-    tree.grid(row=2, column=0, columnspan = 10, pady=2)
+    tree.grid(row=4, column=0, columnspan = 10, pady=2)
 
     count += 1
     count1 += 1
