@@ -1,4 +1,5 @@
 import pymysql
+import math
 class DBConnect:
     def __init__(self):
         self.db = pymysql.connect(host='localhost',
@@ -30,10 +31,15 @@ class DBConnect:
         self.vitroxIVEPI = str(vitroxIVEPI)
         self.vitroxIVBAAN1 = str(vitroxIVBAAN1)
         self.vitroxIVComments = str(vitroxIVComments)
-        if vitroxIVTest > 0:
-            self.vitroxIVUPH85 = (3600/(self.vitroxIVTest+15)*0.85)
-            self.vitroxIVUPH95 = (3600/(self.vitroxIVTest+15)*0.95)
-            self.vitroxIVUPH95Time = (3600/self.vitroxIVUPH95)
+        if float(vitroxIVTest) > 0:
+            self.vitroxIVUPH85 = math.ceil((3600/(float(self.vitroxIVTest)+15)*0.85))
+            self.vitroxIVUPH95 = math.ceil((3600/(float(self.vitroxIVTest)+15)*0.95))
+            self.vitroxIVUPH95Time = (3600/float(self.vitroxIVUPH95))
+        else:
+            self.vitroxIVUPH85 = 0
+            self.vitroxIVUPH95 = 0
+            self.vitroxIVUPH95Time = 0
+
 
         sql = "UPDATE mk_diary SET ITEM = %s, ITEM_AMOUNT = %s, VITROXIV_PROG = %s, VITROXIV_TEST = %s, VITROXIV_LINECAPA = %s," \
               " VITROXIV_EPI = %s, VITROXIV_BAAN1 = %s, VITROXIV_COMMENTS = %s, VITROXIV_BAAN = %s," \
