@@ -4,6 +4,20 @@ from tkinter import ttk
 import math
 from tkinter import *
 tab = []
+
+def swich(x):
+    match x:
+        case "NONE":
+            return 0
+        case "YES":
+            return 1
+        case "NO":
+            return 2
+        case "LACK":
+            return 3
+        case _:
+            return 0
+
 def getSelectedRow(event):
     tab.clear()
     E1.config(state="normal")
@@ -14,49 +28,42 @@ def getSelectedRow(event):
     E4.delete(0, END)
     E5.delete(0, END)
     E6.delete(0, END)
-    print(tree.selection())  # this will print the names of the selected rows
+    #print(tree.selection())  # this will print the names of the selected rows
     for nm in tree.selection():
+        #content.clear()
         content = tree.item(nm, 'values')
     print(content[0])
-    #E1.insert(0, f"{content[0]}")
+    print(type(int(content[0])))
+    if int(content[0]) >= 0:
+        for row in objDB.selectSearchID(content[0]):
+            # E1.insert(0, f"{content[0]}")
+            tab.append(row[0])
+            # tab.append(row[49])
+            E1.insert(0, f"{row[0]}")
+            print(row[1])
+            E1.config(state="disabled")
+            E2.insert(0, f"{row[1]}")
+            E3.insert(0, f"{row[3]}")
+            E4.insert(0, f"{row[54]}")
+            E5.insert(0, f"{row[52]}")
+            E6.insert(0, f"{row[57]}")
 
-    for row in objDB.selectSearchID(content[0]):
-        def swich(x):
-            match x:
-                case "NONE":
-                    return 0
-                case "YES":
-                    return 1
-                case "NO":
-                    return 2
-                case "LACK":
-                    return 3
-                case _:
-                    return 0
-        tab.append(row[0])
-        #tab.append(row[49])
-        E1.insert(0, f"{row[0]}")
-        E1.config(state="disabled")
-        E2.insert(0, f"{row[1]}")
-        E3.insert(0, f"{row[3]}")
-        E4.insert(0, f"{row[54]}")
-        E5.insert(0, f"{row[52]}")
-        E6.insert(0, f"{row[57]}")
-        LCViTroxIV.current(swich(row[55]))
-        EPIViTroxIV.current(swich(row[56]))
-        BAANViTroxIV.current(swich(row[53]))
+            LCViTroxIV.current(swich(row[55]))
+            EPIViTroxIV.current(swich(row[56]))
+            BAANViTroxIV.current(swich(row[53]))
 
 
-    objDB.closeDB()
+        objDB.closeDB()
 
 def updateDisplay():
-    objDB = DBConnect()
-    objDB.update(tab[0], E2.get(), E3.get(), E4.get(), E5.get(), LCViTroxIV.get(), EPIViTroxIV.get(),
-                 BAANViTroxIV.get(), E6.get())
-    objDB.closeDB()
-    #tree.delete(1)
-    selected_item = tree.selection()[0]
-    tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
+    if int(tab[0]) >= 0:
+        objDB = DBConnect()
+        objDB.update(tab[0], E2.get(), E3.get(), E4.get(), E5.get(), LCViTroxIV.get(), EPIViTroxIV.get(),
+                    BAANViTroxIV.get(), E6.get())
+        objDB.closeDB()
+        #tree.delete(1)
+        selected_item = tree.selection()[0]
+        tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
 
 def insertData():
     objDB = DBConnect()
@@ -287,8 +294,9 @@ for row in objDB.selectAll():
                           values=(f'{row[0]}', f'{row[2]}', f'{row[3]}'))
     count1 += 1
     if len(row[17]) > 4:
-        tree.insert(folder1, index='end', iid=count1, text=f'{row[17]}',
-                    values=(f"5DX I", f"Scanning Time: {scanningTime5DX}", ""))
+        #tree.insert(folder1, index='end', iid=count1, text=f'{row[17]}',
+        #            values=(f"5DX I", f"Scanning Time: {scanningTime5DX}", ""))
+        tree.insert(folder1, index='end', iid=count1, text=f'5DX I', values =(f'{row[0]}', f"Scanning Time: {scanningTime5DX}", ""))
     count1 += 2
     if len(row[22]) > 4:
         tree.insert(folder1, index='end', iid=count1, text=f'{row[22]}',
