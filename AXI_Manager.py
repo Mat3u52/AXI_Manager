@@ -94,7 +94,8 @@ style.theme_create('style_class',
 
                            # configure the changes
                            'configure': {
-                               'background': '#000000'
+                               'background': '#333333',
+                               'borderwidth': '10'
                            }
                        },
 
@@ -118,6 +119,7 @@ style.theme_create('style_class',
                    )
 style.theme_use('style_class')
 #style.theme_use('clam')
+#style.theme_use('Arc')
 
 mainFrame = ttk.LabelFrame(root, text="Update Frame:")
 mainFrame.grid(column=0, row=0, columnspan=10, sticky='W', padx=10, pady=10)
@@ -194,9 +196,10 @@ B1 = ttk.Button(updateFrameVIV, text="Update", width=100, command=updateDisplay)
 B1.grid(row=3, column=0, columnspan = 10, pady=2)
 
 #-----------------INSERT-------------------
-mainFrameInsert = ttk.LabelFrame(root, text="Update Frame:")
+mainFrameInsert = ttk.LabelFrame(root, text="Insert Frame:")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
-insertFrameVIV = ttk.LabelFrame(root, text="Update ViTrox V810 Ex III ( V810-3553S2EX ):")
+
+insertFrameVIV = ttk.LabelFrame(root, text="Insert ViTrox V810 Ex III ( V810-3553S2EX ):")
 insertFrameVIV.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 
 #LI1 = Label(mainFrameInsert, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
@@ -270,16 +273,18 @@ BI1.grid(row=3, column=0, columnspan = 10, pady=2)
 #-----------------The End INSERT-----------
 
 tree = ttk.Treeview(root)
-tree["columns"] = ("one", "two", "three")
-tree.column("#0", width=200, minwidth=200, stretch=tk.NO)
-tree.column("one", width=80, minwidth=80, stretch=tk.NO)
-tree.column("two", width=120, minwidth=120, stretch=tk.NO)
-tree.column("three", width=30, minwidth=30, stretch=tk.NO)
+tree["columns"] = ("one", "two", "three", "Four")
+tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
+tree.column("one", width=35, minwidth=35, stretch=tk.NO)
+tree.column("two", width=190, minwidth=190, stretch=tk.NO)
+tree.column("three", width=130, minwidth=130, stretch=tk.NO)
+tree.column("Four", width=30, minwidth=30, stretch=tk.NO)
 
-tree.heading("#0", text="Item", anchor=tk.W)
+tree.heading("#0", text="Box", anchor=tk.W)
 tree.heading("one", text="ID", anchor=tk.W)
-tree.heading("two", text="Date / Time", anchor=tk.W)
-tree.heading("three", text="Qty", anchor=tk.W)
+tree.heading("two", text="Item", anchor=tk.W)
+tree.heading("three", text="Date / Time", anchor=tk.W)
+tree.heading("Four", text="Qty", anchor=tk.W)
 
 objDB = DBConnect()
 
@@ -289,34 +294,51 @@ count2 = 0
 handling = 15
 
 for row in objDB.selectAll():
-    scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + handling
-    folder1 = tree.insert(parent='', index=count, iid=count1, text=f'{row[1]}',
-                          values=(f'{row[0]}', f'{row[2]}', f'{row[3]}'))
+    #if row[7] is not float:
+    #    scanningTime5DX = 0
+    #else:
+    scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
+
+    folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                          values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
     count1 += 1
-    if len(row[17]) > 4:
+    if int(len(str(row[17]))) > 4:
         #tree.insert(folder1, index='end', iid=count1, text=f'{row[17]}',
         #            values=(f"5DX I", f"Scanning Time: {scanningTime5DX}", ""))
-        tree.insert(folder1, index='end', iid=count1, text=f'5DX I', values =(f'{row[0]}', f"Scanning Time: {scanningTime5DX}", ""))
+        tree.insert(folder1, index='end', iid=count1, text=f'',
+                    values =(f'{row[0]}', f'5DX I', f"Scanning Time: {scanningTime5DX}", ""))
     count1 += 2
-    if len(row[22]) > 4:
-        tree.insert(folder1, index='end', iid=count1, text=f'{row[22]}',
-                    values=(f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
+    if int(len(str(row[22]))) > 4:
+        #tree.insert(folder1, index='end', iid=count1, text=f'{row[22]}',
+        #            values=(f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
+        tree.insert(folder1, index='end', iid=count1, text=f'',
+                    values=(f'{row[0]}', f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
     count1 += 3
-    if len(row[27]) > 4:
-        tree.insert(folder1, index='end', iid=count1, text=f'{row[27]}',
-                    values=(f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
+    #if row[27] != None:
+    if len(str(row[27])) > 4:
+        #tree.insert(folder1, index='end', iid=count1, text=f'{row[27]}',
+        #            values=(f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
+        tree.insert(folder1, index='end', iid=count1, text=f'',
+                    values=(f'{row[0]}', f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
     count1 += 4
     if row[45] != None and int(row[41]) != 0:
-        tree.insert(folder1, index='end', iid=count1, text=f'{row[45]}',
-                    values=(f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
+        #tree.insert(folder1, index='end', iid=count1, text=f'{row[45]}',
+        #            values=(f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
+        tree.insert(folder1, index='end', iid=count1, text=f'',
+                    values=(f'{row[0]}', f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
     count1 += 4
     if row[54] != None and int(row[50] != 0):
-        tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
-                    values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
+        #tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
+        #            values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
+        tree.insert(folder1, index='end', iid=count1, text=f'',
+                    values=(f'{row[0]}', f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
     count1 += 5
+
     if row[31] != None and int(row[37] != 0):
-        tree.insert(folder1, index='end', iid=count1, text=f'{row[31]}',
-                    values=(f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
+        #tree.insert(folder1, index='end', iid=count1, text=f'{row[31]}',
+        #            values=(f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
+        tree.insert(folder1, index='end', iid=count1, text=f'',
+                    values=(f'{row[0]}', f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
 
     tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
