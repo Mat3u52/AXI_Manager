@@ -1,10 +1,9 @@
 from DBConnect import DBConnect
 import tkinter as tk
 from tkinter import ttk
-import math
 from tkinter import *
-tab = []
 
+tab = []
 def swich(x):
     match x:
         case "NONE":
@@ -71,6 +70,10 @@ def insertData():
                  BAANViTroxIVInsert.get(), EI6.get())
     objDB.closeDB()
 
+def search():
+    return 0
+
+
 #def delete():
    # Get selected item to Delete
 #   selected_item = tree.selection()[0]
@@ -81,6 +84,17 @@ root = tk.Tk()
 root.title('AXI - Manager')
 root.resizable(0,0)
 root.configure(background='#000000')
+
+tabControl = ttk.Notebook(root)
+tab1 = ttk.Frame(tabControl)
+tabControl.add(tab1, text=" Main ")
+tabControl.pack(expand=1, fill="both")
+tab2 = ttk.Frame(tabControl)
+tabControl.add(tab2, text=" New ")
+tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+tab3 = ttk.Frame(tabControl)
+tabControl.add(tab3, text=" Update ")
+tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
 style= ttk.Style()
 style.theme_create('style_class',
@@ -118,12 +132,17 @@ style.theme_create('style_class',
                    }
                    )
 style.theme_use('style_class')
-#style.theme_use('clam')
-#style.theme_use('Arc')
 
-mainFrame = ttk.LabelFrame(root, text="Update Frame:")
+#Notebook Style
+noteStyler = ttk.Style()
+noteStyler.configure("TNotebook", background='#000000', borderwidth=0)
+noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
+noteStyler.configure("TFrame", background='#555555', foreground='#FFFFFF', borderwidth=1)
+
+
+mainFrame = ttk.LabelFrame(tab3, text=" Update Main ")
 mainFrame.grid(column=0, row=0, columnspan=10, sticky='W', padx=10, pady=10)
-updateFrameVIV = ttk.LabelFrame(root, text="Update ViTrox V810 Ex III ( V810-3553S2EX ):")
+updateFrameVIV = ttk.LabelFrame(tab3, text=" Update ViTrox V810 Ex III ( V810-3553S2EX ) ")
 updateFrameVIV.grid(column=0, row=1, columnspan=10, sticky='W', padx=10, pady=10)
 
 L1 = Label(mainFrame, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
@@ -142,64 +161,63 @@ L7 = Label(updateFrameVIV, text="EPI:", width=12, borderwidth=1, relief="solid",
 L7.config(font=("Arial", 10))
 L8 = Label(updateFrameVIV, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 L8.config(font=("Arial", 10))
-L9 = Label(updateFrameVIV, text="V810 Ex III Comments", width=29, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+L9 = Label(updateFrameVIV, text="Comments", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 L9.config(font=("Arial", 10))
 
 L1.grid(row=0, column=0, sticky=W)
-L2.grid(row=0, column=2, sticky=W)
-L3.grid(row=0, column=4, sticky=W)
-L4.grid(row=1, column=0, sticky=W)
-L5.grid(row=1, column=2, sticky=W)
-L6.grid(row=1, column=4, sticky=W)
-L7.grid(row=1, column=6, sticky=W)
-L8.grid(row=1, column=8, sticky=W)
-L9.grid(row=2, column=0, columnspan = 2, sticky=W)
+L2.grid(row=1, column=0, sticky=W)
+L3.grid(row=1, column=2, sticky=W)
+L4.grid(row=0, column=0, sticky=W)
+L5.grid(row=0, column=2, sticky=W)
+L6.grid(row=1, column=0, sticky=W)
+L7.grid(row=1, column=2, sticky=W)
+L8.grid(row=2, column=0, sticky=W)
+L9.grid(row=2, column=2, sticky=W)
 
-E1 = Entry(mainFrame, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+E1 = Entry(mainFrame, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 E1.config(font=("Arial", 10))
-E1.grid(row=0, column=1, pady=0)
-E2 = Entry(mainFrame, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+E1.grid(row=0, column=1, pady=1)
+E2 = Entry(mainFrame, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 E2.config(font=("Arial", 10))
-E2.grid(row=0, column=3, pady=0)
-E3 = Entry(mainFrame, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+E2.grid(row=1, column=1, pady=1)
+E3 = Entry(mainFrame, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 E3.config(font=("Arial", 10))
-E3.grid(row=0, column=5, pady=0)
-E4 = Entry(updateFrameVIV, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+E3.grid(row=1, column=5, pady=1)
+E4 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 E4.config(font=("Arial", 10))
-E4.grid(row=1, column=1, pady=0)
-E5 = Entry(updateFrameVIV, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+E4.grid(row=0, column=1, pady=1)
+E5 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 E5.config(font=("Arial", 10))
-E5.grid(row=1, column=3, pady=0)
-E6 = Entry(updateFrameVIV, relief="solid", width=137, borderwidth=0, bg="#302928", fg="#FFFFFF")
+E5.grid(row=0, column=3, pady=1)
+E6 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 E6.config(font=("Arial", 10))
-E6.grid(row=2, column=2, columnspan = 8, pady=0)
+E6.grid(row=2, column=3, pady=1)
 #E6 = Entry(root, bd=0)
 #E6.grid(row=1, column=5, pady=2)
-
 LC = tk.StringVar
 LCViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=LC, state='readonly')
 LCViTroxIV['values'] = ("NONE","YES","NO","LACK")
-LCViTroxIV.grid(row=1, column=5, pady=0)
+LCViTroxIV.grid(row=1, column=1, pady=1)
 LCViTroxIV.current(0)
 EPI = tk.StringVar
 EPIViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=EPI, state='readonly')
 EPIViTroxIV['values'] = ("NONE","YES","NO","LACK")
-EPIViTroxIV.grid(row=1, column=7, pady=0)
+EPIViTroxIV.grid(row=1, column=3, pady=1)
 EPIViTroxIV.current(0)
 BAAN = tk.StringVar
 BAANViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=BAAN, state='readonly')
 BAANViTroxIV['values'] = ("NONE","YES","NO","LACK")
-BAANViTroxIV.grid(row=1, column=9, pady=0)
+BAANViTroxIV.grid(row=2, column=1, pady=1)
 BAANViTroxIV.current(0)
 
-B1 = ttk.Button(updateFrameVIV, text="Update", width=100, command=updateDisplay)
-B1.grid(row=3, column=0, columnspan = 10, pady=2)
+B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay)
+B1.grid(row=3, column=0, columnspan = 4, pady=2)
 
 #-----------------INSERT-------------------
-mainFrameInsert = ttk.LabelFrame(root, text="Insert Frame:")
+mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
 
-insertFrameVIV = ttk.LabelFrame(root, text="Insert ViTrox V810 Ex III ( V810-3553S2EX ):")
+insertFrameVIV = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
 insertFrameVIV.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 
 #LI1 = Label(mainFrameInsert, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
@@ -218,61 +236,71 @@ LI7 = Label(insertFrameVIV, text="EPI:", width=12, borderwidth=1, relief="solid"
 LI7.config(font=("Arial", 10))
 LI8 = Label(insertFrameVIV, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LI8.config(font=("Arial", 10))
-LI9 = Label(insertFrameVIV, text="V810 Ex III Comments", width=29, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI9 = Label(insertFrameVIV, text="Comments", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LI9.config(font=("Arial", 10))
 
 #LI1.grid(row=0, column=0, sticky=W)
-LI2.grid(row=0, column=2, sticky=W)
-LI3.grid(row=0, column=4, sticky=W)
-LI4.grid(row=1, column=0, sticky=W)
-LI5.grid(row=1, column=2, sticky=W)
-LI6.grid(row=1, column=4, sticky=W)
-LI7.grid(row=1, column=6, sticky=W)
-LI8.grid(row=1, column=8, sticky=W)
-LI9.grid(row=2, column=0, columnspan = 2, sticky=W)
+LI2.grid(row=0, column=0, sticky=W)
+LI3.grid(row=0, column=2, sticky=W)
+
+LI4.grid(row=0, column=0, sticky=W)
+LI5.grid(row=0, column=2, sticky=W)
+LI6.grid(row=1, column=0, sticky=W)
+LI7.grid(row=1, column=2, sticky=W)
+LI8.grid(row=2, column=0, sticky=W)
+LI9.grid(row=2, column=2, sticky=W)
 
 #EI1 = Entry(mainFrameInsert, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
 #EI1.config(font=("Arial", 10))
 #EI1.grid(row=0, column=1, pady=0)
-EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 EI2.config(font=("Arial", 10))
-EI2.grid(row=0, column=3, pady=0)
-EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI2.grid(row=0, column=1, pady=1)
+EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 EI3.config(font=("Arial", 10))
-EI3.grid(row=0, column=5, pady=0)
-EI4 = Entry(insertFrameVIV, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI3.grid(row=0, column=3, pady=1)
+
+EI4 = Entry(insertFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 EI4.config(font=("Arial", 10))
-EI4.grid(row=1, column=1, pady=0)
-EI5 = Entry(insertFrameVIV, relief="solid", borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI4.grid(row=0, column=1, pady=1)
+EI5 = Entry(insertFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 EI5.config(font=("Arial", 10))
-EI5.grid(row=1, column=3, pady=0)
-EI6 = Entry(insertFrameVIV, relief="solid", width=137, borderwidth=0, bg="#302928", fg="#FFFFFF")
+EI5.grid(row=0, column=3, pady=1)
+EI6 = Entry(insertFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 EI6.config(font=("Arial", 10))
-EI6.grid(row=2, column=2, columnspan = 8, pady=0)
+EI6.grid(row=2, column=3, pady=1)
 #E6 = Entry(root, bd=0)
 #E6.grid(row=1, column=5, pady=2)
 
 LCInsert = tk.StringVar
 LCViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=20, textvariable=LCInsert, state='readonly')
 LCViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
-LCViTroxIVInsert.grid(row=1, column=5, pady=0)
+LCViTroxIVInsert.grid(row=1, column=1, pady=1)
 LCViTroxIVInsert.current(0)
 EPIInsert = tk.StringVar
 EPIViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=20, textvariable=EPIInsert, state='readonly')
 EPIViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
-EPIViTroxIVInsert.grid(row=1, column=7, pady=0)
+EPIViTroxIVInsert.grid(row=1, column=3, pady=1)
 EPIViTroxIVInsert.current(0)
 BAANInsert = tk.StringVar
 BAANViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=20, textvariable=BAANInsert, state='readonly')
 BAANViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
-BAANViTroxIVInsert.grid(row=1, column=9, pady=0)
+BAANViTroxIVInsert.grid(row=2, column=1, pady=1)
 BAANViTroxIVInsert.current(0)
 
-BI1 = ttk.Button(insertFrameVIV, text="Insert", width=100, command=insertData)
-BI1.grid(row=3, column=0, columnspan = 10, pady=2)
+BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData)
+BI1.grid(row=3, column=0, columnspan = 4, pady=2)
 #-----------------The End INSERT-----------
 
-tree = ttk.Treeview(root)
+#-----------------Search-------------------
+ESearch = Entry(tab1, relief="solid", borderwidth=1, width=50, bg="#302928", fg="#FFFFFF")
+ESearch.config(font=("Arial", 10))
+ESearch.grid(row=0, column=0, pady=1)
+BSearch = ttk.Button(tab1, text="Search", width=10, command=search)
+BSearch.grid(row=0, column=1, pady=1)
+#----------------The End Search------------
+
+tree = ttk.Treeview(tab1)
 tree["columns"] = ("one", "two", "three", "Four")
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
 tree.column("one", width=35, minwidth=35, stretch=tk.NO)
@@ -294,9 +322,7 @@ count2 = 0
 handling = 15
 
 for row in objDB.selectAll():
-    #if row[7] is not float:
-    #    scanningTime5DX = 0
-    #else:
+
     scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
 
     folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
@@ -342,12 +368,11 @@ for row in objDB.selectAll():
 
     tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
-    #tree.pack(side=tk.BOTTOM, fill=tk.X)
-    tree.grid(row=4, column=0, columnspan = 10, pady=2)
+    tree.grid(row=1, column=0, columnspan=2, pady=2)
 
     count += 1
     count1 += 1
     count2 += 1
-objDB.closeDB()
 
+objDB.closeDB()
 root.mainloop()
