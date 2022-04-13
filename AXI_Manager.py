@@ -71,6 +71,7 @@ def insertData():
     objDB.closeDB()
 
 def search():
+    row[9].delete(0, END)
     return 0
 
 
