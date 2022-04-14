@@ -31,8 +31,8 @@ def getSelectedRow(event):
     for nm in tree.selection():
         #content.clear()
         content = tree.item(nm, 'values')
-    print(content[0])
-    print(type(int(content[0])))
+    #print(content[0])
+    #print(type(int(content[0])))
     if int(content[0]) >= 0:
         for row in objDB.selectSearchID(content[0]):
             # E1.insert(0, f"{content[0]}")
@@ -63,6 +63,7 @@ def updateDisplay():
         #tree.delete(1)
         selected_item = tree.selection()[0]
         tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
+        refresh()
 
 def insertData():
     objDB = DBConnect()
@@ -71,8 +72,84 @@ def insertData():
     objDB.closeDB()
 
 def search():
-    row[9].delete(0, END)
-    return 0
+    for record in tree.get_children():
+        content = tree.item(record, 'values')
+        #if content[1] != ESearch.get():
+        if content[1].find(ESearch.get()) >= 0:
+            print(content[1].find(ESearch.get()))
+        else:
+            #print(content[1])
+            #print(ESearch.get())
+            #print(record)
+            tree.delete(record)
+
+def refresh():
+    ESearch.delete(0, END)
+    for record in tree.get_children():
+        tree.delete(record)
+
+    objDB = DBConnect()
+
+    count = 1
+    count1 = 1
+    count2 = 0
+    handling = 15
+    for row in objDB.selectAll():
+
+        scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
+
+        folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                              values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
+        count1 += 1
+        if int(len(str(row[17]))) > 4:
+            # tree.insert(folder1, index='end', iid=count1, text=f'{row[17]}',
+            #            values=(f"5DX I", f"Scanning Time: {scanningTime5DX}", ""))
+            tree.insert(folder1, index='end', iid=count1, text=f'',
+                        values=(f'{row[0]}', f'5DX I', f"Scanning Time: {scanningTime5DX}", ""))
+        count1 += 2
+        if int(len(str(row[22]))) > 4:
+            # tree.insert(folder1, index='end', iid=count1, text=f'{row[22]}',
+            #            values=(f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
+            tree.insert(folder1, index='end', iid=count1, text=f'',
+                        values=(f'{row[0]}', f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
+        count1 += 3
+        # if row[27] != None:
+        if len(str(row[27])) > 4:
+            # tree.insert(folder1, index='end', iid=count1, text=f'{row[27]}',
+            #            values=(f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
+            tree.insert(folder1, index='end', iid=count1, text=f'',
+                        values=(f'{row[0]}', f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
+        count1 += 4
+        if row[45] != None and int(row[41]) != 0:
+            # tree.insert(folder1, index='end', iid=count1, text=f'{row[45]}',
+            #            values=(f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
+            tree.insert(folder1, index='end', iid=count1, text=f'',
+                        values=(f'{row[0]}', f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
+        count1 += 4
+        if row[54] != None and int(row[50] != 0):
+            # tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
+            #            values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
+            tree.insert(folder1, index='end', iid=count1, text=f'',
+                        values=(f'{row[0]}', f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
+        count1 += 5
+
+        if row[31] != None and int(row[37] != 0):
+            # tree.insert(folder1, index='end', iid=count1, text=f'{row[31]}',
+            #            values=(f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
+            tree.insert(folder1, index='end', iid=count1, text=f'',
+                        values=(f'{row[0]}', f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
+
+        tree.bind("<<TreeviewSelect>>", getSelectedRow)
+
+        tree.grid(row=1, column=0, columnspan=3, pady=2)
+
+        count += 1
+        count1 += 1
+        count2 += 1
+
+    objDB.closeDB()
+
+
 
 
 #def delete():
@@ -299,6 +376,8 @@ ESearch.config(font=("Arial", 10))
 ESearch.grid(row=0, column=0, pady=1)
 BSearch = ttk.Button(tab1, text="Search", width=10, command=search)
 BSearch.grid(row=0, column=1, pady=1)
+BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
+BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
 tree = ttk.Treeview(tab1)
@@ -315,65 +394,6 @@ tree.heading("two", text="Item", anchor=tk.W)
 tree.heading("three", text="Date / Time", anchor=tk.W)
 tree.heading("Four", text="Qty", anchor=tk.W)
 
-objDB = DBConnect()
+refresh()
 
-count = 1
-count1 = 1
-count2 = 0
-handling = 15
-
-for row in objDB.selectAll():
-
-    scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
-
-    folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                          values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
-    count1 += 1
-    if int(len(str(row[17]))) > 4:
-        #tree.insert(folder1, index='end', iid=count1, text=f'{row[17]}',
-        #            values=(f"5DX I", f"Scanning Time: {scanningTime5DX}", ""))
-        tree.insert(folder1, index='end', iid=count1, text=f'',
-                    values =(f'{row[0]}', f'5DX I', f"Scanning Time: {scanningTime5DX}", ""))
-    count1 += 2
-    if int(len(str(row[22]))) > 4:
-        #tree.insert(folder1, index='end', iid=count1, text=f'{row[22]}',
-        #            values=(f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
-        tree.insert(folder1, index='end', iid=count1, text=f'',
-                    values=(f'{row[0]}', f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
-    count1 += 3
-    #if row[27] != None:
-    if len(str(row[27])) > 4:
-        #tree.insert(folder1, index='end', iid=count1, text=f'{row[27]}',
-        #            values=(f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
-        tree.insert(folder1, index='end', iid=count1, text=f'',
-                    values=(f'{row[0]}', f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
-    count1 += 4
-    if row[45] != None and int(row[41]) != 0:
-        #tree.insert(folder1, index='end', iid=count1, text=f'{row[45]}',
-        #            values=(f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
-        tree.insert(folder1, index='end', iid=count1, text=f'',
-                    values=(f'{row[0]}', f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
-    count1 += 4
-    if row[54] != None and int(row[50] != 0):
-        #tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
-        #            values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
-        tree.insert(folder1, index='end', iid=count1, text=f'',
-                    values=(f'{row[0]}', f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
-    count1 += 5
-
-    if row[31] != None and int(row[37] != 0):
-        #tree.insert(folder1, index='end', iid=count1, text=f'{row[31]}',
-        #            values=(f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
-        tree.insert(folder1, index='end', iid=count1, text=f'',
-                    values=(f'{row[0]}', f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
-
-    tree.bind("<<TreeviewSelect>>", getSelectedRow)
-
-    tree.grid(row=1, column=0, columnspan=2, pady=2)
-
-    count += 1
-    count1 += 1
-    count2 += 1
-
-objDB.closeDB()
 root.mainloop()
