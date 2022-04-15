@@ -381,6 +381,11 @@ BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
 tree = ttk.Treeview(tab1)
+
+vsb = ttk.Scrollbar(orient="vertical", command=tree.yview)
+vsb.place(x=469, y=55, height=200+20)
+tree.configure(yscrollcommand=vsb.set)
+
 tree["columns"] = ("one", "two", "three", "Four")
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
 tree.column("one", width=35, minwidth=35, stretch=tk.NO)
