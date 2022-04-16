@@ -51,8 +51,9 @@ def getSelectedRow(event):
             EPIViTroxIV.current(swich(row[56]))
             BAANViTroxIV.current(swich(row[53]))
 
-
         objDB.closeDB()
+    #tree.selection_remove(event)
+
 
 def updateDisplay():
     if int(tab[0]) >= 0:
@@ -70,6 +71,7 @@ def insertData():
     objDB.insert(EI2.get(), EI3.get(), EI4.get(), EI5.get(), LCViTroxIVInsert.get(), EPIViTroxIVInsert.get(),
                  BAANViTroxIVInsert.get(), EI6.get())
     objDB.closeDB()
+    refresh()
 
 def search():
     for record in tree.get_children():
@@ -78,9 +80,6 @@ def search():
         if content[1].find(ESearch.get()) >= 0:
             print(content[1].find(ESearch.get()))
         else:
-            #print(content[1])
-            #print(ESearch.get())
-            #print(record)
             tree.delete(record)
 
 def refresh():
@@ -382,8 +381,8 @@ BSearchR.grid(row=0, column=2, pady=1)
 
 tree = ttk.Treeview(tab1)
 
-vsb = ttk.Scrollbar(orient="vertical", command=tree.yview)
-vsb.place(x=469, y=55, height=200+20)
+vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
+vsb.place(x=458, y=25, height=220)
 tree.configure(yscrollcommand=vsb.set)
 
 tree["columns"] = ("one", "two", "three", "Four")
