@@ -16,7 +16,6 @@ def swich(x):
             return 3
         case _:
             return 0
-
 def getSelectedRow(event):
     tab.clear()
     E1.config(state="normal")
@@ -33,7 +32,8 @@ def getSelectedRow(event):
         content = tree.item(nm, 'values')
     #print(content[0])
     #print(type(int(content[0])))
-    if int(content[0]) >= 0:
+
+    #if int(content[0]) > 0:
         for row in objDB.selectSearchID(content[0]):
             # E1.insert(0, f"{content[0]}")
             tab.append(row[0])
@@ -52,7 +52,8 @@ def getSelectedRow(event):
             BAANViTroxIV.current(swich(row[53]))
 
         objDB.closeDB()
-    #tree.selection_remove(event)
+    #print(tree.selection()[0])
+
 
 
 def updateDisplay():
@@ -74,6 +75,9 @@ def insertData():
     refresh()
 
 def search():
+    #tree.selection()[0]
+    tree.selection_clear()
+    tree.selection_remove(tree.focus())
     for record in tree.get_children():
         content = tree.item(record, 'values')
         #if content[1] != ESearch.get():
@@ -83,12 +87,19 @@ def search():
             tree.delete(record)
 
 def refresh():
+    tree.selection_clear()
+    tree.selection_remove(tree.focus())
     ESearch.delete(0, END)
     for record in tree.get_children():
         tree.delete(record)
 
     objDB = DBConnect()
 
+# Create striped row tags
+    tree.tag_configure('DX', background="#222222")
+    tree.tag_configure('V', background="#333333")
+    tree.tag_configure('one', background="#111111")
+#---The End Create striped row---
     count = 1
     count1 = 1
     count2 = 0
@@ -96,47 +107,56 @@ def refresh():
     for row in objDB.selectAll():
 
         scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
-
-        folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                              values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
+        if count % 2 == 0:
+            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                                values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('one'))
+        else:
+            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                                  values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
         count1 += 1
         if int(len(str(row[17]))) > 4:
             # tree.insert(folder1, index='end', iid=count1, text=f'{row[17]}',
             #            values=(f"5DX I", f"Scanning Time: {scanningTime5DX}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f'5DX I', f"Scanning Time: {scanningTime5DX}", ""))
+                        #values=(f'{row[0]}', f'5DX I', f"Scanning Time: {scanningTime5DX}", ""))
+                        values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", ""), tags=('DX'))
         count1 += 2
         if int(len(str(row[22]))) > 4:
             # tree.insert(folder1, index='end', iid=count1, text=f'{row[22]}',
             #            values=(f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
+                        #values=(f'{row[0]}', f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
+                        values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", ""), tags=('DX'))
         count1 += 3
         # if row[27] != None:
         if len(str(row[27])) > 4:
             # tree.insert(folder1, index='end', iid=count1, text=f'{row[27]}',
             #            values=(f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
+                        #values=(f'{row[0]}', f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
+                        values=(f'{row[0]}', f"ViTroxEx I", f"85%: {row[12]}, 95% {row[14]}", ""), tags=('V'))
         count1 += 4
         if row[45] != None and int(row[41]) != 0:
             # tree.insert(folder1, index='end', iid=count1, text=f'{row[45]}',
             #            values=(f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
+                        #values=(f'{row[0]}', f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
+                        values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95% {row[42]}", ""), tags=('V'))
         count1 += 4
         if row[54] != None and int(row[50] != 0):
             # tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
             #            values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
+                        #values=(f'{row[0]}', f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
+                        values=(f'{row[0]}', f"ViTroxEx III", f"85%: {row[49]}, 95%: {row[51]}", ""), tags=('V'))
         count1 += 5
 
         if row[31] != None and int(row[37] != 0):
             # tree.insert(folder1, index='end', iid=count1, text=f'{row[31]}',
             #            values=(f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
+                        #values=(f'{row[0]}', f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
+                        values=(f'{row[0]}', f"ViTroxXXL I", f"85%: {row[39]}, 95%: {row[36]}", ""), tags=('V'))
 
         tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
@@ -148,18 +168,14 @@ def refresh():
 
     objDB.closeDB()
 
-
-
-
 #def delete():
    # Get selected item to Delete
 #   selected_item = tree.selection()[0]
 #   tree.delete(selected_item)
 
-
 root = tk.Tk()
 root.title('AXI - Manager')
-root.resizable(0,0)
+root.resizable(0, 0)
 root.configure(background='#000000')
 
 tabControl = ttk.Notebook(root)
@@ -173,12 +189,10 @@ tab3 = ttk.Frame(tabControl)
 tabControl.add(tab3, text=" Update ")
 tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
-style= ttk.Style()
+style = ttk.Style()
 style.theme_create('style_class',
-
                    # getting the settings
                    settings={
-
                        # getting through the Labelframe
                        # widget
                        'TLabelframe': {
@@ -216,6 +230,14 @@ noteStyler.configure("TNotebook", background='#000000', borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
 noteStyler.configure("TFrame", background='#555555', foreground='#FFFFFF', borderwidth=1)
 
+style.configure("Treeview",
+                background="#000000",
+                foreground="#FFFFFF",
+                rowheight=25,
+                filedbackground="#777777"
+                )
+style.map('Treeview',
+          background=[('selected', '#170D47')])
 
 mainFrame = ttk.LabelFrame(tab3, text=" Update Main ")
 mainFrame.grid(column=0, row=0, columnspan=10, sticky='W', padx=10, pady=10)
@@ -382,7 +404,7 @@ BSearchR.grid(row=0, column=2, pady=1)
 tree = ttk.Treeview(tab1)
 
 vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-vsb.place(x=458, y=25, height=220)
+vsb.place(x=458, y=25, height=273)
 tree.configure(yscrollcommand=vsb.set)
 
 tree["columns"] = ("one", "two", "three", "Four")
