@@ -52,9 +52,7 @@ def getSelectedRow(event):
             BAANViTroxIV.current(swich(row[53]))
 
         objDB.closeDB()
-    #print(tree.selection()[0])
-
-
+        LMainFreame.configure(text=E2.get())
 
 def updateDisplay():
     if int(tab[0]) >= 0:
@@ -66,14 +64,12 @@ def updateDisplay():
         selected_item = tree.selection()[0]
         tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
         refresh()
-
 def insertData():
     objDB = DBConnect()
     objDB.insert(EI2.get(), EI3.get(), EI4.get(), EI5.get(), LCViTroxIVInsert.get(), EPIViTroxIVInsert.get(),
                  BAANViTroxIVInsert.get(), EI6.get())
     objDB.closeDB()
     refresh()
-
 def search():
     #tree.selection()[0]
     tree.selection_clear()
@@ -85,7 +81,6 @@ def search():
             print(content[1].find(ESearch.get()))
         else:
             tree.delete(record)
-
 def refresh():
     tree.selection_clear()
     tree.selection_remove(tree.focus())
@@ -100,6 +95,7 @@ def refresh():
     tree.tag_configure('V', background="#333333")
     tree.tag_configure('one', background="#111111")
 #---The End Create striped row---
+
     count = 1
     count1 = 1
     count2 = 0
@@ -167,6 +163,11 @@ def refresh():
         count2 += 1
 
     objDB.closeDB()
+# Scrollbar
+    vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
+    vsb.place(x=458, y=25, height=273)
+    tree.configure(yscrollcommand=vsb.set)
+# ---The End of Scrollbar---
 
 #def delete():
    # Get selected item to Delete
@@ -177,6 +178,12 @@ root = tk.Tk()
 root.title('AXI - Manager')
 root.resizable(0, 0)
 root.configure(background='#000000')
+
+mainFrameView = ttk.LabelFrame(root, text=" Main View ")
+mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
+LMainFreame = Label(mainFrameView, text="", bg="#333333", fg="#555555", pady="1")
+LMainFreame.config(font=("Arial", 10))
+LMainFreame.grid(row=0, column=0, sticky=W)
 
 tabControl = ttk.Notebook(root)
 tab1 = ttk.Frame(tabControl)
@@ -196,10 +203,10 @@ style.theme_create('style_class',
                        # getting through the Labelframe
                        # widget
                        'TLabelframe': {
-
                            # configure the changes
                            'configure': {
                                'background': '#333333',
+                               'foreground': '#FFFFFF',
                                'borderwidth': '10'
                            }
                        },
@@ -401,11 +408,8 @@ BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
 BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
+#tree = ttk.Treeview(tab1)
 tree = ttk.Treeview(tab1)
-
-vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-vsb.place(x=458, y=25, height=273)
-tree.configure(yscrollcommand=vsb.set)
 
 tree["columns"] = ("one", "two", "three", "Four")
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
