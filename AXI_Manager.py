@@ -52,7 +52,7 @@ def getSelectedRow(event):
             BAANViTroxIV.current(swich(row[53]))
 
         objDB.closeDB()
-        LMainFreame.configure(text=E2.get())
+        LItem.configure(text=E2.get())
 
 def updateDisplay():
     if int(tab[0]) >= 0:
@@ -181,9 +181,9 @@ root.configure(background='#000000')
 
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
-LMainFreame = Label(mainFrameView, text="", bg="#333333", fg="#555555", pady="1")
-LMainFreame.config(font=("Arial", 10))
-LMainFreame.grid(row=0, column=0, sticky=W)
+LItem = Label(mainFrameView, text="", bg="#333333", fg="#555555", pady="1")
+LItem.config(font=("Arial", 10))
+LItem.grid(row=0, column=0, sticky=W)
 
 tabControl = ttk.Notebook(root)
 tab1 = ttk.Frame(tabControl)
