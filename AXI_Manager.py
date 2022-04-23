@@ -53,6 +53,7 @@ def getSelectedRow(event):
 
         objDB.closeDB()
         LItem.configure(text=E2.get())
+        LItemAmount.configure(text=E3.get())
 
 def updateDisplay():
     if int(tab[0]) >= 0:
@@ -184,6 +185,9 @@ mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
 LItem = Label(mainFrameView, text="", bg="#333333", fg="#555555", pady="1")
 LItem.config(font=("Arial", 10))
 LItem.grid(row=0, column=0, sticky=W)
+LItemAmount = Label(mainFrameView, text="", bg="#333333", fg="#555555", pady="1")
+LItemAmount.config(font=("Arial", 10))
+LItemAmount.grid(row=0, column=1, sticky=W)
 
 tabControl = ttk.Notebook(root)
 tab1 = ttk.Frame(tabControl)
