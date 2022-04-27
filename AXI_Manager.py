@@ -2,6 +2,7 @@ from DBConnect import DBConnect
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
+import pyperclip
 
 tab = []
 def swich(x):
@@ -37,6 +38,7 @@ def getSelectedRow(event):
         for row in objDB.selectSearchID(content[0]):
             # E1.insert(0, f"{content[0]}")
             tab.append(row[0])
+            tab.append(row[2])
             # tab.append(row[49])
             E1.insert(0, f"{row[0]}")
             print(row[1])
@@ -51,13 +53,23 @@ def getSelectedRow(event):
             EPIViTroxIV.current(swich(row[56]))
             BAANViTroxIV.current(swich(row[53]))
 
+        pyperclip.copy(E2.get()) #clipboard
+
         objDB.closeDB()
         LItem.configure(text=E2.get())
         LItemAmount.configure(text=E3.get())
-        #imageBoard = tk.PhotoImage(file="board.png")
-        #LItemImageBoard.configure(image=imageBoard)
-        LItemImageBoard = Label(mainFrameView, image = imageBoard)
-        LItemImageBoard.grid(row=0, column=1, sticky=W)
+        LQty = Label(mainFrameView, text="Qty:", bg="#333333", fg="#555555", pady="1")
+        LQty.config(font=("Arial", 10))
+        LQty.grid(row=0, column=1, sticky=W)
+        LDate = Label(mainFrameView, text="Inserted:", bg="#333333", fg="#555555", pady="1")
+        LDate.config(font=("Arial", 10))
+        LDate.grid(row=0, column=3, sticky=W)
+        LDateDB = Label(mainFrameView, text=f"{tab[1]}", bg="#333333", fg="#999999", pady="1")
+        LDateDB.config(font=("Arial", 10))
+        LDateDB.grid(row=0, column=4, sticky=W)
+
+        #LItemImageBoard = Label(mainFrameView, image = imageBoard)
+        #LItemImageBoard.grid(row=0, column=1, sticky=W)
 
 def updateDisplay():
     if int(tab[0]) >= 0:
@@ -180,19 +192,23 @@ def refresh():
 #   tree.delete(selected_item)
 
 root = tk.Tk()
+ws = root.winfo_screenwidth() # width of the screen
+hs = root.winfo_screenheight() # height of the screen
+x = (ws/2) - (w/2)
+y = (hs/2) - (h/2)
 root.title('AXI - Manager')
+root.geometry(x,y)
 root.resizable(0, 0)
 root.configure(background='#000000')
 
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
-LItem = Label(mainFrameView, text="", bg="#333333", fg="#555555", pady="1")
+#imageBoard = tk.PhotoImage(file="board.png")
+LItem = Label(mainFrameView, text="", bg="#333333", fg="#999999", pady="1")
 LItem.config(font=("Arial", 10))
 LItem.grid(row=0, column=0, sticky=W)
-imageBoard = tk.PhotoImage(file="board.png")
-#LItemImageBoard = Label(mainFrameView, image = imageBoard)
-#LItemImageBoard.grid(row=0, column=1, sticky=W)
-LItemAmount = Label(mainFrameView, text="", bg="#333333", fg="#555555", pady="1")
+
+LItemAmount = Label(mainFrameView, text="", bg="#333333", fg="#999999", pady="1")
 LItemAmount.config(font=("Arial", 10))
 LItemAmount.grid(row=0, column=2, sticky=W)
 
@@ -248,14 +264,8 @@ noteStyler.configure("TNotebook", background='#000000', borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
 noteStyler.configure("TFrame", background='#555555', foreground='#FFFFFF', borderwidth=1)
 
-style.configure("Treeview",
-                background="#000000",
-                foreground="#FFFFFF",
-                rowheight=25,
-                filedbackground="#777777"
-                )
-style.map('Treeview',
-          background=[('selected', '#170D47')])
+style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=25, filedbackground="#777777")
+style.map('Treeview', background=[('selected', '#170D47')])
 
 mainFrame = ttk.LabelFrame(tab3, text=" Update Main ")
 mainFrame.grid(column=0, row=0, columnspan=10, sticky='W', padx=10, pady=10)
