@@ -56,8 +56,18 @@ def getSelectedRow(event):
         pyperclip.copy(E2.get()) #clipboard
 
         objDB.closeDB()
-        LItem.configure(text=E2.get())
-        LItemAmount.configure(text=E3.get())
+
+#---------------- Main View -----------------------------------------
+        LItem = Label(mainFrameView, text=f"{E2.get()}", bg="#333333", fg="#999999", pady="1")
+        LItem.config(font=("Arial", 10))
+        LItem.grid(row=0, column=0, sticky=W)
+
+        LItemAmount = Label(mainFrameView, text=f"{E3.get()}", bg="#333333", fg="#999999", pady="1")
+        LItemAmount.config(font=("Arial", 10))
+        LItemAmount.grid(row=0, column=2, sticky=W)
+
+        #LItem.configure(text=E2.get())
+        #LItemAmount.configure(text=E3.get())
         LQty = Label(mainFrameView, text="Qty:", bg="#333333", fg="#555555", pady="1")
         LQty.config(font=("Arial", 10))
         LQty.grid(row=0, column=1, sticky=W)
@@ -67,9 +77,13 @@ def getSelectedRow(event):
         LDateDB = Label(mainFrameView, text=f"{tab[1]}", bg="#333333", fg="#999999", pady="1")
         LDateDB.config(font=("Arial", 10))
         LDateDB.grid(row=0, column=4, sticky=W)
+        L5DX1 = Label(mainFrameView, text="5DX I ( V849 ):", bg="#333333", fg="#555555", pady="1")
+        L5DX1.configure(font=("Arial", 10))
+        L5DX1.grid(row=1, column=0, sticky=W)
 
         #LItemImageBoard = Label(mainFrameView, image = imageBoard)
         #LItemImageBoard.grid(row=0, column=1, sticky=W)
+#------------------- The End Main View ----------------------------
 
 def updateDisplay():
     if int(tab[0]) >= 0:
@@ -182,7 +196,7 @@ def refresh():
     objDB.closeDB()
 # Scrollbar
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=458, y=25, height=273)
+    vsb.place(x=428, y=25, height=273)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
@@ -194,23 +208,19 @@ def refresh():
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
-x = (ws/2) - (w/2)
-y = (hs/2) - (h/2)
+x = (ws-560)
+y = (hs-550)
+windowPosition = f'560x450+{int(x)}+{int(y)}'
 root.title('AXI - Manager')
-root.geometry(x,y)
-root.resizable(0, 0)
+root.geometry(windowPosition)
+#root.resizable(0, 0)
 root.configure(background='#000000')
 
+#-------------- Main View ---------------------------
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
 #imageBoard = tk.PhotoImage(file="board.png")
-LItem = Label(mainFrameView, text="", bg="#333333", fg="#999999", pady="1")
-LItem.config(font=("Arial", 10))
-LItem.grid(row=0, column=0, sticky=W)
-
-LItemAmount = Label(mainFrameView, text="", bg="#333333", fg="#999999", pady="1")
-LItemAmount.config(font=("Arial", 10))
-LItemAmount.grid(row=0, column=2, sticky=W)
+#-------------- The End Main View -------------------
 
 tabControl = ttk.Notebook(root)
 tab1 = ttk.Frame(tabControl)
@@ -420,7 +430,7 @@ BI1.grid(row=3, column=0, columnspan = 4, pady=2)
 #-----------------The End INSERT-----------
 
 #-----------------Search-------------------
-ESearch = Entry(tab1, relief="solid", borderwidth=1, width=50, bg="#302928", fg="#FFFFFF")
+ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#302928", fg="#FFFFFF")
 ESearch.config(font=("Arial", 10))
 ESearch.grid(row=0, column=0, pady=1)
 BSearch = ttk.Button(tab1, text="Search", width=10, command=search)
