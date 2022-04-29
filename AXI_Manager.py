@@ -70,16 +70,28 @@ def getSelectedRow(event):
         #LItemAmount.configure(text=E3.get())
         LQty = Label(mainFrameView, text="Qty:", bg="#333333", fg="#555555", pady="1")
         LQty.config(font=("Arial", 10))
-        LQty.grid(row=0, column=1, sticky=W)
+        LQty.grid(row=0, column=1, sticky=E)
         LDate = Label(mainFrameView, text="Inserted:", bg="#333333", fg="#555555", pady="1")
         LDate.config(font=("Arial", 10))
         LDate.grid(row=0, column=3, sticky=W)
         LDateDB = Label(mainFrameView, text=f"{tab[1]}", bg="#333333", fg="#999999", pady="1")
         LDateDB.config(font=("Arial", 10))
         LDateDB.grid(row=0, column=4, sticky=W)
-        L5DX1 = Label(mainFrameView, text="5DX I ( V849 ):", bg="#333333", fg="#555555", pady="1")
+
+
+
+        L5DX1 = Label(mainFrameView5DX1, text="5DX I ( V849 ):", bg="#333333", fg="#555555", pady="1")
         L5DX1.configure(font=("Arial", 10))
-        L5DX1.grid(row=1, column=0, sticky=W)
+        L5DX1.grid(row=0, column=0, sticky=W)
+        L5DX1Prog = Label(mainFrameView5DX1, text=f"Program 5dx i", bg="#333333", fg="#999999", pady="1")
+        L5DX1Prog.configure(font=("Arial", 10))
+        L5DX1Prog.grid(row=0, column=1, sticky=W)
+        L5DX1UPH85L = Label(mainFrameView5DX1, text=f"UPH 85%:", bg="#333333", fg="#555555", pady="1")
+        L5DX1UPH85L.configure(font=("Arial", 10))
+        L5DX1UPH85L.grid(row=0, column=2, sticky=W)
+        L5DX1UPH85 = Label(mainFrameView5DX1, text=f"90", bg="#333333", fg="#999999", pady="1")
+        L5DX1UPH85.configure(font=("Arial", 10))
+        L5DX1UPH85.grid(row=0, column=3, sticky=W)
 
         #LItemImageBoard = Label(mainFrameView, image = imageBoard)
         #LItemImageBoard.grid(row=0, column=1, sticky=W)
@@ -219,6 +231,11 @@ root.configure(background='#000000')
 #-------------- Main View ---------------------------
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
+
+mainFrameView5DX1 = ttk.LabelFrame(mainFrameView, text=" 5DX I (V849) ")
+#mainFrameView5DX1.pack(expand=1, fill="both", padx=10, pady=0)
+mainFrameView5DX1.grid(row=1, column=0, sticky=W)
+
 #imageBoard = tk.PhotoImage(file="board.png")
 #-------------- The End Main View -------------------
 
