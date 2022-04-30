@@ -92,6 +92,9 @@ def getSelectedRow(event):
         L5DX1UPH85 = Label(mainFrameView5DX1, text=f"90", bg="#333333", fg="#999999", pady="1")
         L5DX1UPH85.configure(font=("Arial", 10))
         L5DX1UPH85.grid(row=0, column=3, sticky=W)
+        L5DX2Prog = Label(mainFrameView5DX1, text=f"Program 5dx i", bg="#333333", fg="#999999", pady="1")
+        L5DX2Prog.configure(font=("Arial", 10))
+        L5DX2Prog.grid(row=1, column=0, sticky=W)
 
         #LItemImageBoard = Label(mainFrameView, image = imageBoard)
         #LItemImageBoard.grid(row=0, column=1, sticky=W)
