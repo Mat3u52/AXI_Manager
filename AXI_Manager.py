@@ -27,6 +27,7 @@ def getSelectedRow(event):
     E4.delete(0, END)
     E5.delete(0, END)
     E6.delete(0, END)
+
     #print(tree.selection())  # this will print the names of the selected rows
     for nm in tree.selection():
         #content.clear()
@@ -57,59 +58,24 @@ def getSelectedRow(event):
 
         objDB.closeDB()
 
-#---------------- Main View -----------------------------------------
-        LItem = Label(mainFrameView, text=f"{E2.get()}", bg="#333333", fg="#999999", pady="1")
-        LItem.config(font=("Arial", 10))
-        LItem.grid(row=0, column=0, sticky=W)
+        LItem.configure(text=f"{row[1]}")
+        LItemAmount.configure(text=f"{row[3]}")
+        LDateDB.configure(text=f"{row[2]}")
 
-        LItemAmount = Label(mainFrameView, text=f"{E3.get()}", bg="#333333", fg="#999999", pady="1")
-        LItemAmount.config(font=("Arial", 10))
-        LItemAmount.grid(row=0, column=2, sticky=W)
 
-        #LItem.configure(text=E2.get())
-        #LItemAmount.configure(text=E3.get())
-        LQty = Label(mainFrameView, text="Qty:", bg="#333333", fg="#555555", pady="2")
-        LQty.config(font=("Arial", 10))
-        LQty.grid(row=0, column=1, sticky=E)
-        LDate = Label(mainFrameView, text="Inserted:", bg="#333333", fg="#555555", pady="2")
-        LDate.config(font=("Arial", 10))
-        LDate.grid(row=0, column=3, sticky=W)
-        LDateDB = Label(mainFrameView, text=f"{tab[1]}", bg="#333333", fg="#999999", pady="2")
-        LDateDB.config(font=("Arial", 10))
-        LDateDB.grid(row=0, column=4, sticky=W)
+        #tabMain5.destroy()
+        if len(str(row[54])) > 0 and int(row[54] != None):
+            #tabMain5 = ttk.Frame(tabControlMain)
+            tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
+        #else:
+            #tabMain5 = ttk.Frame(tabControlMain)
+            #tabMain5.destroy()
+            #tabMain5.forget()
+        if len(str(row[54])) < 5:
+            #tabMain5.destroy()
+            tabControlMain.hide(tabMain5)
 
-        tabControlMain = ttk.Notebook(mainFrameView)
-        tabMain1 = ttk.Frame(tabControlMain)
-        tabControlMain.add(tabMain1, text=" V849 ")
-        tabMain2 = ttk.Frame(tabControlMain)
-        tabControlMain.add(tabMain2, text=" V817 ")
-        tabMain3 = ttk.Frame(tabControlMain)
-        tabControlMain.add(tabMain3, text=" V810-3163 ")
-        tabMain4 = ttk.Frame(tabControlMain)
-        tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
-        tabMain5 = ttk.Frame(tabControlMain)
-        tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
-        tabMain6 = ttk.Frame(tabControlMain)
-        tabControlMain.add(tabMain6, text=" V810-8120S2 ")
 
-        tabControlMain.grid(row=1, column=0, columnspan= 5, sticky=W)
-
-        L5DX1Prog = Label(tabMain1, text=f"Program 5dx i", bg="#444444", fg="#AAAAAA", pady="1")
-        L5DX1Prog.configure(font=("Arial", 10))
-        L5DX1Prog.grid(row=0, column=1, sticky=W)
-        L5DX1UPH85L = Label(tabMain1, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
-        L5DX1UPH85L.configure(font=("Arial", 10))
-        L5DX1UPH85L.grid(row=0, column=2, sticky=W)
-        L5DX1UPH85 = Label(tabMain1, text=f"90", bg="#444444", fg="#AAAAAA", pady="1")
-        L5DX1UPH85.configure(font=("Arial", 10))
-        L5DX1UPH85.grid(row=0, column=3, sticky=W)
-        #L5DX2Prog = Label(mainFrameView5DX1, text=f"Program 5dx i", bg="#333333", fg="#999999", pady="1")
-        #L5DX2Prog.configure(font=("Arial", 10))
-        #L5DX2Prog.grid(row=1, column=0, sticky=W)
-
-        #LItemImageBoard = Label(mainFrameView, image = imageBoard)
-        #LItemImageBoard.grid(row=0, column=1, sticky=W)
-#------------------- The End Main View ----------------------------
 
 def updateDisplay():
     if int(tab[0]) >= 0:
@@ -253,6 +219,80 @@ mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
 #imageBoard = tk.PhotoImage(file="board.png")
 #-------------- The End Main View -------------------
 
+
+
+
+
+
+#---------------- Main View -----------------------------------------
+LItem = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
+LItem.config(font=("Arial", 10))
+LItem.grid(row=0, column=0, sticky=W)
+
+
+LItemAmount = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
+LItemAmount.config(font=("Arial", 10))
+LItemAmount.grid(row=0, column=2, sticky=W)
+
+        #LItem.configure(text=E2.get())
+        #LItemAmount.configure(text=E3.get())
+LQty = Label(mainFrameView, text="Qty:", bg="#333333", fg="#555555", pady="2")
+LQty.config(font=("Arial", 10))
+LQty.grid(row=0, column=1, sticky=E)
+LDate = Label(mainFrameView, text="Inserted:", bg="#333333", fg="#555555", pady="2")
+LDate.config(font=("Arial", 10))
+LDate.grid(row=0, column=3, sticky=W)
+LDateDB = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="2")
+LDateDB.config(font=("Arial", 10))
+LDateDB.grid(row=0, column=4, sticky=W)
+
+tabControlMain = ttk.Notebook(mainFrameView)
+
+
+tabMain1 = ttk.Frame(tabControlMain)
+tabControlMain.add(tabMain1, text=" V849 ")
+
+tabMain2 = ttk.Frame(tabControlMain)
+tabControlMain.add(tabMain2, text=" V817 ")
+
+tabMain3 = ttk.Frame(tabControlMain)
+tabControlMain.add(tabMain3, text=" V810-3163 ")
+tabMain4 = ttk.Frame(tabControlMain)
+tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+
+tabMain5 = ttk.Frame(tabControlMain)
+#tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
+
+#LV8103553S2EXProg = Label(tabMain5, text=f"prog name", bg="#444444", fg="#AAAAAA", pady="1")
+#LV8103553S2EXProg.configure(font=("Arial", 10))
+#LV8103553S2EXProg.grid(row=0, column=1, sticky=W)
+#LV8103553S2EXUPH85L = Label(tabMain5, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+#LV8103553S2EXUPH85L.configure(font=("Arial", 10))
+#LV8103553S2EXUPH85L.grid(row=0, column=2, sticky=W)
+#LV8103553S2EXUPH85 = Label(tabMain5, text=f"90", bg="#444444", fg="#AAAAAA", pady="1")
+#LV8103553S2EXUPH85.configure(font=("Arial", 10))
+#LV8103553S2EXUPH85.grid(row=0, column=3, sticky=W)
+
+tabMain6 = ttk.Frame(tabControlMain)
+#tabControlMain.add(tabMain6, text=" V810-8120S2 ")
+
+tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
+
+        #LItemImageBoard = Label(mainFrameView, image = imageBoard)
+        #LItemImageBoard.grid(row=0, column=1, sticky=W)
+#------------------- The End Main View ----------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 tabControl = ttk.Notebook(root)
 tab1 = ttk.Frame(tabControl)
 tabControl.add(tab1, text=" Main ")
@@ -301,7 +341,7 @@ style.theme_use('style_class')
 
 #Notebook Style
 noteStyler = ttk.Style()
-noteStyler.configure("TNotebook", background='#000000', borderwidth=0)
+noteStyler.configure("TNotebook", background='#555555', borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
 noteStyler.configure("TFrame", background='#555555', foreground='#FFFFFF', borderwidth=1)
 
