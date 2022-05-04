@@ -61,20 +61,19 @@ def getSelectedRow(event):
         LItem.configure(text=f"{row[1]}")
         LItemAmount.configure(text=f"{row[3]}")
         LDateDB.configure(text=f"{row[2]}")
+        LQty.configure(text=f"Qty:")
+        LDate.configure(text=f"Inserted:")
 
-
-        #tabMain5.destroy()
         if len(str(row[54])) > 0 and int(row[54] != None):
-            #tabMain5 = ttk.Frame(tabControlMain)
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
-        #else:
-            #tabMain5 = ttk.Frame(tabControlMain)
-            #tabMain5.destroy()
-            #tabMain5.forget()
-        if len(str(row[54])) < 5:
-            #tabMain5.destroy()
+            LV8103553S2EXProg.configure(text=f"{row[54]}")
+            LV8103553S2EXScanTime.configure(text=f"Scan Time:{int(row[52])} + 15 input/output = {int(row[52]+15)}s.")
+            LV8103553S2EXUPH85.configure(text=f"{row[49]} ({round(60/int(row[49]), 4)}), Total time of 85%: {round(3600/int(row[49]))}s.")
+            LV8103553S2EXUPH95.configure(text=f"{row[51]} ({round(60/int(row[51]), 4)}), Total time of 95%: {round(3600/int(row[51]))}s.")
+            LV8103553S2EXScanBaan.configure(text=f"{row[53]}")
+        #if len(str(row[54])) < 0 or int(row[54] == None):
+        else:
             tabControlMain.hide(tabMain5)
-
 
 
 def updateDisplay():
@@ -212,34 +211,17 @@ root.configure(background='#000000')
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
 
-#mainFrameView5DX1 = ttk.LabelFrame(mainFrameView, text=" 5DX I (V849) ")
-#mainFrameView5DX1.pack(expand=1, fill="both", padx=10, pady=0)
-#mainFrameView5DX1.grid(row=1, column=0, sticky=W)
 
-#imageBoard = tk.PhotoImage(file="board.png")
-#-------------- The End Main View -------------------
-
-
-
-
-
-
-#---------------- Main View -----------------------------------------
 LItem = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
 LItem.config(font=("Arial", 10))
 LItem.grid(row=0, column=0, sticky=W)
-
-
 LItemAmount = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
 LItemAmount.config(font=("Arial", 10))
 LItemAmount.grid(row=0, column=2, sticky=W)
-
-        #LItem.configure(text=E2.get())
-        #LItemAmount.configure(text=E3.get())
-LQty = Label(mainFrameView, text="Qty:", bg="#333333", fg="#555555", pady="2")
+LQty = Label(mainFrameView, text=f"", bg="#333333", fg="#555555", pady="2")
 LQty.config(font=("Arial", 10))
 LQty.grid(row=0, column=1, sticky=E)
-LDate = Label(mainFrameView, text="Inserted:", bg="#333333", fg="#555555", pady="2")
+LDate = Label(mainFrameView, text=f"", bg="#333333", fg="#555555", pady="2")
 LDate.config(font=("Arial", 10))
 LDate.grid(row=0, column=3, sticky=W)
 LDateDB = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="2")
@@ -247,7 +229,6 @@ LDateDB.config(font=("Arial", 10))
 LDateDB.grid(row=0, column=4, sticky=W)
 
 tabControlMain = ttk.Notebook(mainFrameView)
-
 
 tabMain1 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain1, text=" V849 ")
@@ -257,24 +238,43 @@ tabControlMain.add(tabMain2, text=" V817 ")
 
 tabMain3 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain3, text=" V810-3163 ")
+
 tabMain4 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
 
 tabMain5 = ttk.Frame(tabControlMain)
 #tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
 
-#LV8103553S2EXProg = Label(tabMain5, text=f"prog name", bg="#444444", fg="#AAAAAA", pady="1")
-#LV8103553S2EXProg.configure(font=("Arial", 10))
-#LV8103553S2EXProg.grid(row=0, column=1, sticky=W)
-#LV8103553S2EXUPH85L = Label(tabMain5, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
-#LV8103553S2EXUPH85L.configure(font=("Arial", 10))
-#LV8103553S2EXUPH85L.grid(row=0, column=2, sticky=W)
-#LV8103553S2EXUPH85 = Label(tabMain5, text=f"90", bg="#444444", fg="#AAAAAA", pady="1")
-#LV8103553S2EXUPH85.configure(font=("Arial", 10))
-#LV8103553S2EXUPH85.grid(row=0, column=3, sticky=W)
+LV8103553S2EXProg = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXProg.configure(font=("Arial", 10))
+LV8103553S2EXProg.grid(row=0, column=0, sticky=W)
+
+LV8103553S2EXScanTime = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXScanTime.configure(font=("Arial", 10))
+LV8103553S2EXScanTime.grid(row=0, column=1, sticky=E)
+
+LV8103553S2EXUPH85L = Label(tabMain5, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXUPH85L.configure(font=("Arial", 10))
+LV8103553S2EXUPH85L.grid(row=1, column=0, sticky=E)
+LV8103553S2EXUPH85 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXUPH85.configure(font=("Arial", 10))
+LV8103553S2EXUPH85.grid(row=1, column=1, sticky=W)
+LV8103553S2EXUPH95L = Label(tabMain5, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXUPH95L.configure(font=("Arial", 10))
+LV8103553S2EXUPH95L.grid(row=2, column=0, sticky=E)
+LV8103553S2EXUPH95 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXUPH95.configure(font=("Arial", 10))
+LV8103553S2EXUPH95.grid(row=2, column=1, sticky=W)
+
+LV8103553S2EXScanBaanL = Label(tabMain5, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXScanBaanL.configure(font=("Arial", 10))
+LV8103553S2EXScanBaanL.grid(row=3, column=0, sticky=E)
+LV8103553S2EXScanBaan = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXScanBaan.configure(font=("Arial", 10))
+LV8103553S2EXScanBaan.grid(row=3, column=1, sticky=W)
 
 tabMain6 = ttk.Frame(tabControlMain)
-#tabControlMain.add(tabMain6, text=" V810-8120S2 ")
+tabControlMain.add(tabMain6, text=" V810-8120S2 ")
 
 tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
 
