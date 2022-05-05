@@ -2,9 +2,37 @@ from DBConnect import DBConnect
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
+import time
 import pyperclip
 
 tab = []
+
+Ball_Start_XPosition = 120
+Ball_Start_YPosition = 50
+Ball_min_movement = -1
+Refresh_Sec = 0.01
+
+def animate_ball(root, canvas, xinc, yinc):
+    img = tk.PhotoImage(file='board.png')
+    ball = canvas.create_image(Ball_Start_XPosition, Ball_Start_YPosition, image=img)
+    while True:
+        canvas.move(ball, xinc, 0)
+        root.update()
+        time.sleep(Refresh_Sec)
+        ball_pos = canvas.coords(ball)
+        # unpack array to variables
+        #al, bl, ar, br = ball_pos
+        al, bl = ball_pos
+        if al < abs(xinc):
+            xinc = -xinc
+        if bl < abs(yinc):
+            yinc = -yinc
+        if al == 120/2:
+            break
+    root.mainloop()
+
+
+
 def swich(x):
     match x:
         case "NONE":
@@ -74,6 +102,17 @@ def getSelectedRow(event):
         #if len(str(row[54])) < 0 or int(row[54] == None):
         else:
             tabControlMain.hide(tabMain5)
+
+        # frame = Frame(mainFrameView)
+        # frame.grid(row=0, column=2, rowspan=4, sticky=W)
+        canvasFrame = Label(mainFrameView)
+        #canvasFrame.configure(font=("Arial", 10))
+        canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+        canvas = tk.Canvas(canvasFrame, width=120, height=150)
+        canvas.configure(bg="#444444")
+        canvas.pack(expand=False)
+        animate_ball(root, canvas, Ball_min_movement, Ball_min_movement)
+        # canvas.grid(row=0, column=0, sticky=W)
 
 
 def updateDisplay():
@@ -272,6 +311,9 @@ LV8103553S2EXScanBaanL.grid(row=3, column=0, sticky=E)
 LV8103553S2EXScanBaan = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXScanBaan.configure(font=("Arial", 10))
 LV8103553S2EXScanBaan.grid(row=3, column=1, sticky=W)
+
+
+
 
 tabMain6 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain6, text=" V810-8120S2 ")
