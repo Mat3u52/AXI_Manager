@@ -98,7 +98,7 @@ def getSelectedRow(event):
             LV8103553S2EXScanTime.configure(text=f"Scan Time:{int(row[52])} + 15 input/output = {int(row[52]+15)}s.")
             LV8103553S2EXUPH85.configure(text=f"{row[49]} ({round(60/int(row[49]), 4)}), Total time of 85%: {round(3600/int(row[49]))}s.")
             LV8103553S2EXUPH95.configure(text=f"{row[51]} ({round(60/int(row[51]), 4)}), Total time of 95%: {round(3600/int(row[51]))}s.")
-            LV8103553S2EXScanBaan.configure(text=f"{row[53]}")
+            LV8103553S2EXBaan.configure(text=f"{row[53]}")
         #if len(str(row[54])) < 0 or int(row[54] == None):
         else:
             tabControlMain.hide(tabMain5)
@@ -113,8 +113,6 @@ def getSelectedRow(event):
         canvas.pack(expand=False)
         animate_ball(root, canvas, Ball_min_movement, Ball_min_movement)
         # canvas.grid(row=0, column=0, sticky=W)
-
-
 def updateDisplay():
     if int(tab[0]) >= 0:
         objDB = DBConnect()
@@ -246,7 +244,7 @@ root.geometry(windowPosition)
 #root.resizable(0, 0)
 root.configure(background='#000000')
 
-#-------------- Main View ---------------------------
+#-------------- Main View ----------------------------------------------------------------------------------------------
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
 
@@ -269,6 +267,7 @@ LDateDB.grid(row=0, column=4, sticky=W)
 
 tabControlMain = ttk.Notebook(mainFrameView)
 
+
 tabMain1 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain1, text=" V849 ")
 
@@ -282,35 +281,41 @@ tabMain4 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
 
 tabMain5 = ttk.Frame(tabControlMain)
-#tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
 
-LV8103553S2EXProg = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXProg = Label(tabMain5, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV8103553S2EXProg.configure(font=("Arial", 10))
 LV8103553S2EXProg.grid(row=0, column=0, sticky=W)
 
 LV8103553S2EXScanTime = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXScanTime.configure(font=("Arial", 10))
-LV8103553S2EXScanTime.grid(row=0, column=1, sticky=E)
+LV8103553S2EXScanTime.grid(row=0, column=1, columnspan=3, sticky=E)
 
 LV8103553S2EXUPH85L = Label(tabMain5, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH85L.configure(font=("Arial", 10))
 LV8103553S2EXUPH85L.grid(row=1, column=0, sticky=E)
 LV8103553S2EXUPH85 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXUPH85.configure(font=("Arial", 10))
-LV8103553S2EXUPH85.grid(row=1, column=1, sticky=W)
+LV8103553S2EXUPH85.grid(row=1, column=1, columnspan=3, sticky=W)
 LV8103553S2EXUPH95L = Label(tabMain5, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH95L.configure(font=("Arial", 10))
 LV8103553S2EXUPH95L.grid(row=2, column=0, sticky=E)
 LV8103553S2EXUPH95 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXUPH95.configure(font=("Arial", 10))
-LV8103553S2EXUPH95.grid(row=2, column=1, sticky=W)
+LV8103553S2EXUPH95.grid(row=2, column=1, columnspan=3, sticky=W)
 
-LV8103553S2EXScanBaanL = Label(tabMain5, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
-LV8103553S2EXScanBaanL.configure(font=("Arial", 10))
-LV8103553S2EXScanBaanL.grid(row=3, column=0, sticky=E)
-LV8103553S2EXScanBaan = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXScanBaan.configure(font=("Arial", 10))
-LV8103553S2EXScanBaan.grid(row=3, column=1, sticky=W)
+LV8103553S2EXBaanL = Label(tabMain5, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXBaanL.configure(font=("Arial", 10))
+LV8103553S2EXBaanL.grid(row=3, column=0, sticky=E)
+LV8103553S2EXBaan = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXBaan.configure(font=("Arial", 10))
+LV8103553S2EXBaan.grid(row=3, column=1, sticky=W)
+
+LV8103553S2EXLCL = Label(tabMain5, text=f"LC:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXLCL.configure(font=("Arial", 10))
+LV8103553S2EXLCL.grid(row=3, column=2, sticky=E)
+LV8103553S2EXLC = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXLC.configure(font=("Arial", 10))
+LV8103553S2EXLC.grid(row=3, column=3, sticky=W)
 
 
 
