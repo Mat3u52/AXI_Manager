@@ -33,9 +33,9 @@ class DBConnect:
         self.vitroxIVBAAN1 = str(vitroxIVBAAN1)
         self.vitroxIVComments = str(vitroxIVComments)
         if float(vitroxIVTest) > 0:
-            self.vitroxIVUPH85 = math.floor(3600/(float(self.vitroxIVTest)+15)*0.85)
-            self.vitroxIVUPH95 = math.floor(3600/(float(self.vitroxIVTest)+15)*0.95)
-            self.vitroxIVUPH95Time = (3600/float(self.vitroxIVUPH95))
+            self.vitroxIVUPH85 = math.floor((3600/(float(self.vitroxIVTest)+15)*0.85)) * int(self.itemAmount)
+            self.vitroxIVUPH95 = math.floor((3600/(float(self.vitroxIVTest)+15)*0.95)) * int(self.itemAmount)
+            self.vitroxIVUPH95Time = ((3600/float(self.vitroxIVUPH95)) / int(self.itemAmount))
         else:
             self.vitroxIVUPH85 = 0
             self.vitroxIVUPH95 = 0
@@ -68,9 +68,9 @@ class DBConnect:
                 self.vitroxIVBAAN1 = str(vitroxIVBAAN1)
                 self.vitroxIVComments = str(vitroxIVComments)
                 if float(vitroxIVTest) > 0:
-                    self.vitroxIVUPH85 = math.floor(3600 / (float(self.vitroxIVTest) + 15) * 0.85)
-                    self.vitroxIVUPH95 = math.floor(3600 / (float(self.vitroxIVTest) + 15) * 0.95)
-                    self.vitroxIVUPH95Time = (3600 / float(self.vitroxIVUPH95))
+                    self.vitroxIVUPH85 = math.floor((3600 / (float(self.vitroxIVTest) + 15) * 0.85)) * int(self.itemAmount)
+                    self.vitroxIVUPH95 = math.floor((3600 / (float(self.vitroxIVTest) + 15) * 0.95)) * int(self.itemAmount)
+                    self.vitroxIVUPH95Time = ((3600 / float(self.vitroxIVUPH95)) / int(self.itemAmount))
                 else:
                     self.vitroxIVTest = 0
                     self.vitroxIVUPH85 = 0
