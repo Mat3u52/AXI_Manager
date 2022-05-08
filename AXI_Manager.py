@@ -128,6 +128,16 @@ def insertData():
     objDB.insert(EI2.get(), EI3.get(), EI4.get(), EI5.get(), LCViTroxIVInsert.get(), EPIViTroxIVInsert.get(),
                  BAANViTroxIVInsert.get(), EI6.get())
     objDB.closeDB()
+
+    EI2.delete(0, END)
+    EI3.delete(0, END)
+    EI4.delete(0, END)
+    EI5.delete(0, END)
+    EI6.delete(0, END)
+    LCViTroxIVInsert.current(0)
+    EPIViTroxIVInsert.current(0)
+    BAANViTroxIVInsert.current(0)
+
     refresh()
 def search():
     #tree.selection()[0]
@@ -198,7 +208,7 @@ def refresh():
                         #values=(f'{row[0]}', f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
                         values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95% {row[42]}", ""), tags=('V'))
         count1 += 4
-        if row[54] != None and int(row[50] != 0):
+        if row[54] != None or int(row[50] != 0):
             # tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
             #            values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
