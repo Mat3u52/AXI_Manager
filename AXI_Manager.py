@@ -95,10 +95,17 @@ def getSelectedRow(event):
         if len(str(row[54])) > 0 and int(row[54] != None):
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
-            LV8103553S2EXScanTime.configure(text=f"Scan Time:{int(row[52])} + 15 input/output = {int(row[52]+15)}s.")
-            LV8103553S2EXUPH85.configure(text=f"{row[49]} ({round(60/int(row[49]), 4)}), Total time of 85%: {round(3600/int(row[49]))}s.")
-            LV8103553S2EXUPH95.configure(text=f"{row[51]} ({round(60/int(row[51]), 4)}), Total time of 95%: {round(3600/int(row[51]))}s.")
+            LV8103553S2EXScanTime.configure(text=f"Scan Time: {int(row[52])} + 15 in/out = {int(row[52]+15)}s.")
+            LV8103553S2EXUPH85.configure(text=f"{row[49]} ({round(60/int(row[49]), 4)}), "
+                                              f"Panel: {round(3600/int(row[49]))}s. "
+                                              f"Board: {round((3600/int(row[49]))/int(row[3]), 4)}s."
+                                         )
+            LV8103553S2EXUPH95.configure(text=f"{row[51]} ({round(60/int(row[51]), 4)}), "
+                                              f"Panel: {round(3600/int(row[51]))}s. "
+                                              f"Board: {round((3600/int(row[51]))/int(row[3]), 4)}s."
+                                         )
             LV8103553S2EXBaan.configure(text=f"{row[53]}")
+            LV8103553S2EXLC.configure(text=f"{row[55]}")
         #if len(str(row[54])) < 0 or int(row[54] == None):
         else:
             tabControlMain.hide(tabMain5)
@@ -120,8 +127,8 @@ def updateDisplay():
                     BAANViTroxIV.get(), E6.get())
         objDB.closeDB()
         #tree.delete(1)
-        selected_item = tree.selection()[0]
-        tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
+        #selected_item = tree.selection()[0]
+        #tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
         refresh()
 def insertData():
     objDB = DBConnect()
