@@ -106,6 +106,8 @@ def getSelectedRow(event):
                                          )
             LV8103553S2EXBaan.configure(text=f"{row[53]}")
             LV8103553S2EXLC.configure(text=f"{row[55]}")
+            LV8103553S2EXEPI.configure(text=f"{row[56]}")
+            LV8103553S2EXComment.configure(text=f"{row[57]}")
         #if len(str(row[54])) < 0 or int(row[54] == None):
         else:
             tabControlMain.hide(tabMain5)
@@ -305,20 +307,20 @@ LV8103553S2EXProg.grid(row=0, column=0, sticky=W)
 
 LV8103553S2EXScanTime = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXScanTime.configure(font=("Arial", 10))
-LV8103553S2EXScanTime.grid(row=0, column=1, columnspan=3, sticky=E)
+LV8103553S2EXScanTime.grid(row=0, column=1, columnspan=5, sticky=E)
 
 LV8103553S2EXUPH85L = Label(tabMain5, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH85L.configure(font=("Arial", 10))
 LV8103553S2EXUPH85L.grid(row=1, column=0, sticky=E)
 LV8103553S2EXUPH85 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXUPH85.configure(font=("Arial", 10))
-LV8103553S2EXUPH85.grid(row=1, column=1, columnspan=3, sticky=W)
+LV8103553S2EXUPH85.grid(row=1, column=1, columnspan=5, sticky=W)
 LV8103553S2EXUPH95L = Label(tabMain5, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH95L.configure(font=("Arial", 10))
 LV8103553S2EXUPH95L.grid(row=2, column=0, sticky=E)
 LV8103553S2EXUPH95 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXUPH95.configure(font=("Arial", 10))
-LV8103553S2EXUPH95.grid(row=2, column=1, columnspan=3, sticky=W)
+LV8103553S2EXUPH95.grid(row=2, column=1, columnspan=5, sticky=W)
 
 LV8103553S2EXBaanL = Label(tabMain5, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXBaanL.configure(font=("Arial", 10))
@@ -333,6 +335,20 @@ LV8103553S2EXLCL.grid(row=3, column=2, sticky=E)
 LV8103553S2EXLC = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXLC.configure(font=("Arial", 10))
 LV8103553S2EXLC.grid(row=3, column=3, sticky=W)
+
+LV8103553S2EXEPIL = Label(tabMain5, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXEPIL.configure(font=("Arial", 10))
+LV8103553S2EXEPIL.grid(row=3, column=4, sticky=E)
+LV8103553S2EXEPI = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXEPI.configure(font=("Arial", 10))
+LV8103553S2EXEPI.grid(row=3, column=5, sticky=W)
+
+LV8103553S2EXCommentL = Label(tabMain5, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXCommentL.configure(font=("Arial", 10))
+LV8103553S2EXCommentL.grid(row=4, column=0, sticky=E)
+LV8103553S2EXComment = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103553S2EXComment.configure(font=("Arial", 10))
+LV8103553S2EXComment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 
 
@@ -407,7 +423,7 @@ style.theme_use('style_class')
 noteStyler = ttk.Style()
 noteStyler.configure("TNotebook", background='#555555', borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
-noteStyler.configure("TFrame", background='#555555', foreground='#FFFFFF', borderwidth=1)
+noteStyler.configure("TFrame", background='#444444', foreground='#FFFFFF', borderwidth=1)
 
 style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=25, filedbackground="#777777")
 style.map('Treeview', background=[('selected', '#170D47')])
