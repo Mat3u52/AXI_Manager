@@ -92,7 +92,8 @@ def getSelectedRow(event):
         LQty.configure(text=f"Qty:")
         LDate.configure(text=f"Inserted:")
 
-        if len(str(row[54])) > 0 and int(row[54] != None):
+        #if len(str(row[54])) > 0 and int(row[54] != None):
+        if len(str(row[54])) > 0 and row[54] != None:
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
             LV8103553S2EXScanTime.configure(text=f"Scan Time: {int(row[52])} + 15 in/out = {int(row[52]+15)}s.")
@@ -110,7 +111,15 @@ def getSelectedRow(event):
             LV8103553S2EXComment.configure(text=f"{row[57]}")
         #if len(str(row[54])) < 0 or int(row[54] == None):
         else:
+            #if tabMain5:
             tabControlMain.hide(tabMain5)
+
+        if len(str(row[45])) > 0:
+            tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+        else:
+            #if tabMain4:
+            #if notebook.select
+            tabControlMain.hide(tabMain4)
 
         # frame = Frame(mainFrameView)
         # frame.grid(row=0, column=2, rowspan=4, sticky=W)
@@ -217,7 +226,7 @@ def refresh():
                         #values=(f'{row[0]}', f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
                         values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95% {row[42]}", ""), tags=('V'))
         count1 += 4
-        if row[54] != None or int(row[50] != 0):
+        if row[54] != None:
             # tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
             #            values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
@@ -297,7 +306,7 @@ tabMain3 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain3, text=" V810-3163 ")
 
 tabMain4 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+#tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
 
 tabMain5 = ttk.Frame(tabControlMain)
 
