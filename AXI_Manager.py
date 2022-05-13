@@ -92,7 +92,26 @@ def getSelectedRow(event):
         LQty.configure(text=f"Qty:")
         LDate.configure(text=f"Inserted:")
 
-        #if len(str(row[54])) > 0 and int(row[54] != None):
+        if int(len(str(row[17]))) > 4:
+            tabControlMain.add(tabMain1, text=" V849 ")
+        else:
+            tabControlMain.hide(tabMain1)
+
+        if int(len(str(row[22]))) > 4:
+            tabControlMain.add(tabMain2, text=" V817 ")
+        else:
+            tabControlMain.hide(tabMain2)
+
+        if len(str(row[27])) > 4:
+            tabControlMain.add(tabMain3, text=" V810-3163 ")
+        else:
+            tabControlMain.hide(tabMain3)
+
+        if row[45] != None and int(row[41]) != 0:
+            tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+        else:
+            tabControlMain.hide(tabMain4)
+
         if len(str(row[54])) > 0 and row[54] != None:
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
@@ -109,17 +128,13 @@ def getSelectedRow(event):
             LV8103553S2EXLC.configure(text=f"{row[55]}")
             LV8103553S2EXEPI.configure(text=f"{row[56]}")
             LV8103553S2EXComment.configure(text=f"{row[57]}")
-        #if len(str(row[54])) < 0 or int(row[54] == None):
         else:
-            #if tabMain5:
             tabControlMain.hide(tabMain5)
 
-        if len(str(row[45])) > 0:
-            tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+        if row[31] != None and int(row[37] != 0):
+            tabControlMain.add(tabMain6, text=" V810-8120S2 ")
         else:
-            #if tabMain4:
-            #if notebook.select
-            tabControlMain.hide(tabMain4)
+            tabControlMain.hide(tabMain6)
 
         # frame = Frame(mainFrameView)
         # frame.grid(row=0, column=2, rowspan=4, sticky=W)
@@ -297,13 +312,13 @@ tabControlMain = ttk.Notebook(mainFrameView)
 
 
 tabMain1 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain1, text=" V849 ")
+#tabControlMain.add(tabMain1, text=" V849 ")
 
 tabMain2 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain2, text=" V817 ")
+#tabControlMain.add(tabMain2, text=" V817 ")
 
 tabMain3 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain3, text=" V810-3163 ")
+#tabControlMain.add(tabMain3, text=" V810-3163 ")
 
 tabMain4 = ttk.Frame(tabControlMain)
 #tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
@@ -360,10 +375,8 @@ LV8103553S2EXComment.configure(font=("Arial", 10))
 LV8103553S2EXComment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 
-
-
 tabMain6 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain6, text=" V810-8120S2 ")
+#tabControlMain.add(tabMain6, text=" V810-8120S2 ")
 
 tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
 
