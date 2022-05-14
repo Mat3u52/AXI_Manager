@@ -312,18 +312,19 @@ tabControlMain = ttk.Notebook(mainFrameView)
 
 
 tabMain1 = ttk.Frame(tabControlMain)
-#tabControlMain.add(tabMain1, text=" V849 ")
+tabControlMain.add(tabMain1, text=" V849 ")
 
 tabMain2 = ttk.Frame(tabControlMain)
-#tabControlMain.add(tabMain2, text=" V817 ")
+tabControlMain.add(tabMain2, text=" V817 ")
 
 tabMain3 = ttk.Frame(tabControlMain)
-#tabControlMain.add(tabMain3, text=" V810-3163 ")
+tabControlMain.add(tabMain3, text=" V810-3163 ")
 
 tabMain4 = ttk.Frame(tabControlMain)
-#tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
 
 tabMain5 = ttk.Frame(tabControlMain)
+tabControlMain.add(tabMain5, text=" V810-3483S2EX ")
 
 LV8103553S2EXProg = Label(tabMain5, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV8103553S2EXProg.configure(font=("Arial", 10))
@@ -376,7 +377,7 @@ LV8103553S2EXComment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 
 tabMain6 = ttk.Frame(tabControlMain)
-#tabControlMain.add(tabMain6, text=" V810-8120S2 ")
+tabControlMain.add(tabMain6, text=" V810-8120S2 ")
 
 tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
 
