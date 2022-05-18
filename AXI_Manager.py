@@ -31,7 +31,6 @@ def animate_ball(root, canvas, xinc, yinc):
             break
     root.mainloop()
 
-
 def swich(x):
     match x:
         case "NONE":
@@ -123,9 +122,19 @@ def getSelectedRow(event):
                                               f"Panel: {round(3600/int(row[51]))}s. "
                                               f"Board: {round((3600/int(row[51]))/int(row[3]), 4)}s."
                                          )
-            LV8103553S2EXBaan.configure(text=f"{row[53]}")
-            LV8103553S2EXLC.configure(text=f"{row[55]}")
-            LV8103553S2EXEPI.configure(text=f"{row[56]}")
+            if str(row[53]) == 'YES':
+                LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#AAAAAA")
+            else:
+                LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#D44339")
+            if str(row[55]) == 'YES':
+                LV8103553S2EXLC.configure(text=f"{row[55]}", fg="#AAAAAA")
+            else:
+                LV8103553S2EXLC.configure(text=f"{row[55]}", fg="#D44339")
+            if str(row[56]) == 'YES':
+                LV8103553S2EXEPI.configure(text=f"{row[56]}", fg="#AAAAAA")
+            else:
+                LV8103553S2EXEPI.configure(text=f"{row[56]}", fg="#D44339")
+
             LV8103553S2EXComment.configure(text=f"{row[57]}")
         else:
             tabControlMain.hide(tabMain5)
