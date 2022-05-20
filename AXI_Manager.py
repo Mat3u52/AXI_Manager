@@ -107,6 +107,30 @@ def getSelectedRow(event):
 
         if row[45] != None and int(row[41]) != 0:
             tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+            LV8103483S2EXProg.configure(text=f"{row[45]}")
+            LV8103483S2EXScanTime.configure(text=f"Scan Time: {int(row[43])} + 15 in/out = {int(row[43]+15)}s.")
+            LV8103483S2EXUPH85.configure(text=f"{row[40]} ({round(60/int(row[40]), 4)}), "
+                                              f"Panel: {round((3600/int(row[40])*int(row[3])))}s. "
+                                              f"Board: {round((3600/int(row[40]))/int(row[3]), 4)}s."
+                                         )
+            LV8103483S2EXUPH95.configure(text=f"{row[42]} ({round(60/int(row[42]), 4)}), "
+                                              f"Panel: {round((3600/int(row[42])*int(row[3])))}s. "
+                                              f"Board: {round((3600/int(row[42]))/int(row[3]), 4)}s."
+                                         )
+            if str(row[44]) == 'YES':
+                LV8103483S2EXBaan.configure(text=f"{row[44]}", fg="#AAAAAA")
+            else:
+                LV8103483S2EXBaan.configure(text=f"{row[44]}", fg="#D44339")
+            if str(row[46]) == 'YES':
+                LV8103483S2EXLC.configure(text=f"{row[46]}", fg="#AAAAAA")
+            else:
+                LV8103483S2EXLC.configure(text=f"{row[46]}", fg="#D44339")
+            if str(row[47]) == 'YES':
+                LV8103483S2EXEPI.configure(text=f"{row[47]}", fg="#AAAAAA")
+            else:
+                LV8103483S2EXEPI.configure(text=f"{row[47]}", fg="#D44339")
+
+            LV8103483S2EXComment.configure(text=f"{row[48]}")
         else:
             tabControlMain.hide(tabMain4)
 
@@ -353,8 +377,59 @@ tabControlMain.add(tabMain2, text=" V817 ")
 tabMain3 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain3, text=" V810-3163 ")
 
+
 tabMain4 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+
+LV8103483S2EXProg = Label(tabMain4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+LV8103483S2EXProg.configure(font=("Arial", 10))
+LV8103483S2EXProg.grid(row=0, column=0, sticky=W)
+
+LV8103483S2EXScanTime = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103483S2EXScanTime.configure(font=("Arial", 10))
+LV8103483S2EXScanTime.grid(row=0, column=1, columnspan=5, sticky=E)
+
+LV8103483S2EXUPH85L = Label(tabMain4, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+LV8103483S2EXUPH85L.configure(font=("Arial", 10))
+LV8103483S2EXUPH85L.grid(row=1, column=0, sticky=E)
+LV8103483S2EXUPH85 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103483S2EXUPH85.configure(font=("Arial", 10))
+LV8103483S2EXUPH85.grid(row=1, column=1, columnspan=5, sticky=W)
+LV8103483S2EXUPH95L = Label(tabMain4, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
+LV8103483S2EXUPH95L.configure(font=("Arial", 10))
+LV8103483S2EXUPH95L.grid(row=2, column=0, sticky=E)
+LV8103483S2EXUPH95 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103483S2EXUPH95.configure(font=("Arial", 10))
+LV8103483S2EXUPH95.grid(row=2, column=1, columnspan=5, sticky=W)
+
+LV8103483S2EXBaanL = Label(tabMain4, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+LV8103483S2EXBaanL.configure(font=("Arial", 10))
+LV8103483S2EXBaanL.grid(row=3, column=0, sticky=E)
+LV8103483S2EXBaan = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103483S2EXBaan.configure(font=("Arial", 10))
+LV8103483S2EXBaan.grid(row=3, column=1, sticky=W)
+
+LV8103483S2EXLCL = Label(tabMain4, text=f"LC:", bg="#444444", fg="#666666", pady="1")
+LV8103483S2EXLCL.configure(font=("Arial", 10))
+LV8103483S2EXLCL.grid(row=3, column=2, sticky=E)
+LV8103483S2EXLC = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103483S2EXLC.configure(font=("Arial", 10))
+LV8103483S2EXLC.grid(row=3, column=3, sticky=W)
+
+LV8103483S2EXEPIL = Label(tabMain4, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
+LV8103483S2EXEPIL.configure(font=("Arial", 10))
+LV8103483S2EXEPIL.grid(row=3, column=4, sticky=E)
+LV8103483S2EXEPI = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103483S2EXEPI.configure(font=("Arial", 10))
+LV8103483S2EXEPI.grid(row=3, column=5, sticky=W)
+
+LV8103483S2EXCommentL = Label(tabMain4, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
+LV8103483S2EXCommentL.configure(font=("Arial", 10))
+LV8103483S2EXCommentL.grid(row=4, column=0, sticky=E)
+LV8103483S2EXComment = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103483S2EXComment.configure(font=("Arial", 10))
+LV8103483S2EXComment.grid(row=4, column=1, columnspan=5, sticky=W)
+
 
 tabMain5 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain5, text=" V810-3483S2EX ")
