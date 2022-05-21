@@ -102,6 +102,30 @@ def getSelectedRow(event):
 
         if len(str(row[27])) > 4:
             tabControlMain.add(tabMain3, text=" V810-3163 ")
+            LV8103163Prog.configure(text=f"{row[27]}")
+            LV8103163ScanTime.configure(text=f"Scan Time: {int(row[15])} + 15 in/out = {int(row[15] + 15)}s.")
+            LV8103163UPH85.configure(text=f"{row[12]} ({round(60 / int(row[12]), 4)}), "
+                                              f"Panel: {round((3600 / int(row[12]) * int(row[3])))}s. "
+                                              f"Board: {round((3600 / int(row[12])) / int(row[3]), 4)}s."
+                                         )
+            LV8103163UPH95.configure(text=f"{row[14]} ({round(60 / int(row[14]), 4)}), "
+                                              f"Panel: {round((3600 / int(row[14]) * int(row[3])))}s. "
+                                              f"Board: {round((3600 / int(row[14])) / int(row[3]), 4)}s."
+                                         )
+            if str(row[16]) == 'YES':
+                LV8103163Baan.configure(text=f"{row[16]}", fg="#AAAAAA")
+            else:
+                LV8103163Baan.configure(text=f"{row[16]}", fg="#D44339")
+            if str(row[28]) == 'YES':
+                LV8103163LC.configure(text=f"{row[28]}", fg="#AAAAAA")
+            else:
+                LV8103163LC.configure(text=f"{row[28]}", fg="#D44339")
+            if str(row[29]) == 'YES':
+                LV8103163EPI.configure(text=f"{row[29]}", fg="#AAAAAA")
+            else:
+                LV8103163EPI.configure(text=f"{row[29]}", fg="#D44339")
+
+            LV8103483S2EXComment.configure(text=f"{row[30]}")
         else:
             tabControlMain.hide(tabMain3)
 
@@ -376,6 +400,55 @@ tabControlMain.add(tabMain2, text=" V817 ")
 
 tabMain3 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain3, text=" V810-3163 ")
+
+LV8103163Prog = Label(tabMain3, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+LV8103163Prog.configure(font=("Arial", 10))
+LV8103163Prog.grid(row=0, column=0, sticky=W)
+
+LV8103163ScanTime = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103163ScanTime.configure(font=("Arial", 10))
+LV8103163ScanTime.grid(row=0, column=1, columnspan=5, sticky=E)
+
+LV8103163UPH85L = Label(tabMain3, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+LV8103163UPH85L.configure(font=("Arial", 10))
+LV8103163UPH85L.grid(row=1, column=0, sticky=E)
+LV8103163UPH85 = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103163UPH85.configure(font=("Arial", 10))
+LV8103163UPH85.grid(row=1, column=1, columnspan=5, sticky=W)
+LV8103163UPH95L = Label(tabMain3, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
+LV8103163UPH95L.configure(font=("Arial", 10))
+LV8103163UPH95L.grid(row=2, column=0, sticky=E)
+LV8103163UPH95 = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103163UPH95.configure(font=("Arial", 10))
+LV8103163UPH95.grid(row=2, column=1, columnspan=5, sticky=W)
+
+LV8103163BaanL = Label(tabMain3, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+LV8103163BaanL.configure(font=("Arial", 10))
+LV8103163BaanL.grid(row=3, column=0, sticky=E)
+LV8103163Baan = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103163Baan.configure(font=("Arial", 10))
+LV8103163Baan.grid(row=3, column=1, sticky=W)
+
+LV8103163LCL = Label(tabMain3, text=f"LC:", bg="#444444", fg="#666666", pady="1")
+LV8103163LCL.configure(font=("Arial", 10))
+LV8103163LCL.grid(row=3, column=2, sticky=E)
+LV8103163LC = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103163LC.configure(font=("Arial", 10))
+LV8103163LC.grid(row=3, column=3, sticky=W)
+
+LV8103163EPIL = Label(tabMain3, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
+LV8103163EPIL.configure(font=("Arial", 10))
+LV8103163EPIL.grid(row=3, column=4, sticky=E)
+LV8103163EPI = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103163EPI.configure(font=("Arial", 10))
+LV8103163EPI.grid(row=3, column=5, sticky=W)
+
+LV8103163CommentL = Label(tabMain3, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
+LV8103163CommentL.configure(font=("Arial", 10))
+LV8103163CommentL.grid(row=4, column=0, sticky=E)
+LV8103163Comment = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8103163Comment.configure(font=("Arial", 10))
+LV8103163Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 
 tabMain4 = ttk.Frame(tabControlMain)
