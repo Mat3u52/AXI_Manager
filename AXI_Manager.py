@@ -97,32 +97,33 @@ def getSelectedRow(event):
 
         if int(len(str(row[22]))) > 4:
             tabControlMain.add(tabMain2, text=" V817 ")
-'''
-            LV8103163Prog.configure(text=f"{row[27]}")
-            LV8103163ScanTime.configure(text=f"Scan Time: {int(row[15])} + 15 in/out = {int(row[15] + 15)}s.")
-            LV8103163UPH85.configure(text=f"{row[12]} ({round(60 / int(row[12]), 4)}), "
-                                          f"Panel: {round((3600 / int(row[12]) * int(row[3])))}s. "
-                                          f"Board: {round((3600 / int(row[12])) / int(row[3]), 4)}s."
-                                     )
-            LV8103163UPH95.configure(text=f"{row[14]} ({round(60 / int(row[14]), 4)}), "
-                                          f"Panel: {round((3600 / int(row[14]) * int(row[3])))}s. "
-                                          f"Board: {round((3600 / int(row[14])) / int(row[3]), 4)}s."
-                                     )
-            if str(row[16]) == 'YES':
-                LV8103163Baan.configure(text=f"{row[16]}", fg="#AAAAAA")
-            else:
-                LV8103163Baan.configure(text=f"{row[16]}", fg="#D44339")
-            if str(row[28]) == 'YES':
-                LV8103163LC.configure(text=f"{row[28]}", fg="#AAAAAA")
-            else:
-                LV8103163LC.configure(text=f"{row[28]}", fg="#D44339")
-            if str(row[29]) == 'YES':
-                LV8103163EPI.configure(text=f"{row[29]}", fg="#AAAAAA")
-            else:
-                LV8103163EPI.configure(text=f"{row[29]}", fg="#D44339")
 
-            LV8103483S2EXComment.configure(text=f"{row[30]}")
-'''
+            LV817Prog.configure(text=f"{row[22]}")
+            LV817ScanTime.configure(text=f"Scan Time: {int(row[7])+int(row[8])+int(row[9])+int(row[10])}"
+                                         f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
+            LV817UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
+                                          f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
+                                          f"Board: {round((3600/int(row[4]))/int(row[3]), 4)}s."
+                                     )
+            LV817UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
+                                          f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
+                                          f"Board: {round((3600/int(row[6]))/int(row[3]), 4)}s."
+                                     )
+            if str(row[11]) == 'YES':
+                LV817Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
+            else:
+                LV817Baan.configure(text=f"{row[11]}", fg="#D44339")
+            if str(row[18]) == 'YES':
+                LV817LC.configure(text=f"{row[18]}", fg="#AAAAAA")
+            else:
+                LV817LC.configure(text=f"{row[18]}", fg="#D44339")
+            if str(row[19]) == 'YES':
+                LV817EPI.configure(text=f"{row[19]}", fg="#AAAAAA")
+            else:
+                LV817EPI.configure(text=f"{row[19]}", fg="#D44339")
+
+            LV817Comment.configure(text=f"{row[20]}")
+
         else:
             tabControlMain.hide(tabMain2)
 
