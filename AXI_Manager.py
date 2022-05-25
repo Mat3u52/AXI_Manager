@@ -92,6 +92,31 @@ def getSelectedRow(event):
 
         if int(len(str(row[17]))) > 4:
             tabControlMain.add(tabMain1, text=" V849 ")
+            LV849Prog.configure(text=f"{row[17]}")
+            LV849ScanTime.configure(text=f"Scan Time: {int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}"
+                                         f" + 15 in/out = {int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + 15}s.")
+            LV849UPH85.configure(text=f"{row[4]} ({round(60 / int(row[4]), 4)}), "
+                                      f"Panel: {round((3600 / int(row[4]) * int(row[3])))}s. "
+                                      f"Board: {round((3600 / int(row[4])) / int(row[3]), 4)}s."
+                                 )
+            LV849UPH95.configure(text=f"{row[6]} ({round(60 / int(row[6]), 4)}), "
+                                      f"Panel: {round((3600 / int(row[6]) * int(row[3])))}s. "
+                                      f"Board: {round((3600 / int(row[6])) / int(row[3]), 4)}s."
+                                 )
+            if str(row[11]) == 'YES':
+                LV849Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
+            else:
+                LV849Baan.configure(text=f"{row[11]}", fg="#D44339")
+            if str(row[18]) == 'YES':
+                LV849LC.configure(text=f"{row[18]}", fg="#AAAAAA")
+            else:
+                LV849LC.configure(text=f"{row[18]}", fg="#D44339")
+            if str(row[19]) == 'YES':
+                LV849EPI.configure(text=f"{row[19]}", fg="#AAAAAA")
+            else:
+                LV849EPI.configure(text=f"{row[19]}", fg="#D44339")
+
+            LV849Comment.configure(text=f"{row[20]}")
         else:
             tabControlMain.hide(tabMain1)
 
@@ -113,16 +138,16 @@ def getSelectedRow(event):
                 LV817Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
             else:
                 LV817Baan.configure(text=f"{row[11]}", fg="#D44339")
-            if str(row[18]) == 'YES':
-                LV817LC.configure(text=f"{row[18]}", fg="#AAAAAA")
+            if str(row[23]) == 'YES':
+                LV817LC.configure(text=f"{row[23]}", fg="#AAAAAA")
             else:
-                LV817LC.configure(text=f"{row[18]}", fg="#D44339")
-            if str(row[19]) == 'YES':
-                LV817EPI.configure(text=f"{row[19]}", fg="#AAAAAA")
+                LV817LC.configure(text=f"{row[23]}", fg="#D44339")
+            if str(row[24]) == 'YES':
+                LV817EPI.configure(text=f"{row[24]}", fg="#AAAAAA")
             else:
-                LV817EPI.configure(text=f"{row[19]}", fg="#D44339")
+                LV817EPI.configure(text=f"{row[24]}", fg="#D44339")
 
-            LV817Comment.configure(text=f"{row[20]}")
+            LV817Comment.configure(text=f"{row[25]}")
 
         else:
             tabControlMain.hide(tabMain2)
