@@ -93,15 +93,15 @@ def getSelectedRow(event):
         if int(len(str(row[17]))) > 4:
             tabControlMain.add(tabMain1, text=" V849 ")
             LV849Prog.configure(text=f"{row[17]}")
-            LV849ScanTime.configure(text=f"Scan Time: {int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}"
-                                         f" + 15 in/out = {int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + 15}s.")
-            LV849UPH85.configure(text=f"{row[4]} ({round(60 / int(row[4]), 4)}), "
-                                      f"Panel: {round((3600 / int(row[4]) * int(row[3])))}s. "
-                                      f"Board: {round((3600 / int(row[4])) / int(row[3]), 4)}s."
+            LV849ScanTime.configure(text=f"Scan Time: {int(row[7])+int(row[8])+int(row[9])+int(row[10])}"
+                                         f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
+            LV849UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
+                                      f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
+                                      f"Board: {round((3600/int(row[4]))/int(row[3]), 4)}s."
                                  )
-            LV849UPH95.configure(text=f"{row[6]} ({round(60 / int(row[6]), 4)}), "
-                                      f"Panel: {round((3600 / int(row[6]) * int(row[3])))}s. "
-                                      f"Board: {round((3600 / int(row[6])) / int(row[3]), 4)}s."
+            LV849UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
+                                      f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
+                                      f"Board: {round((3600/int(row[6]))/int(row[3]), 4)}s."
                                  )
             if str(row[11]) == 'YES':
                 LV849Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
@@ -155,14 +155,14 @@ def getSelectedRow(event):
         if len(str(row[27])) > 4:
             tabControlMain.add(tabMain3, text=" V810-3163 ")
             LV8103163Prog.configure(text=f"{row[27]}")
-            LV8103163ScanTime.configure(text=f"Scan Time: {int(row[15])} + 15 in/out = {int(row[15] + 15)}s.")
-            LV8103163UPH85.configure(text=f"{row[12]} ({round(60 / int(row[12]), 4)}), "
-                                              f"Panel: {round((3600 / int(row[12]) * int(row[3])))}s. "
-                                              f"Board: {round((3600 / int(row[12])) / int(row[3]), 4)}s."
+            LV8103163ScanTime.configure(text=f"Scan Time: {int(row[15])} + 15 in/out = {int(row[15]+15)}s.")
+            LV8103163UPH85.configure(text=f"{row[12]} ({round(60/int(row[12]), 4)}), "
+                                              f"Panel: {round((3600/int(row[12]) * int(row[3])))}s. "
+                                              f"Board: {round((3600/int(row[12]))/int(row[3]), 4)}s."
                                          )
-            LV8103163UPH95.configure(text=f"{row[14]} ({round(60 / int(row[14]), 4)}), "
-                                              f"Panel: {round((3600 / int(row[14]) * int(row[3])))}s. "
-                                              f"Board: {round((3600 / int(row[14])) / int(row[3]), 4)}s."
+            LV8103163UPH95.configure(text=f"{row[14]} ({round(60/int(row[14]), 4)}), "
+                                              f"Panel: {round((3600/int(row[14])*int(row[3])))}s. "
+                                              f"Board: {round((3600/int(row[14]))/int(row[3]), 4)}s."
                                          )
             if str(row[16]) == 'YES':
                 LV8103163Baan.configure(text=f"{row[16]}", fg="#AAAAAA")
@@ -324,6 +324,7 @@ def refresh():
         tree.delete(record)
 
     objDB = DBConnect()
+    #objDB.closeDB()
 
 # Create striped row tags
     tree.tag_configure('DX', background="#222222")
@@ -423,7 +424,6 @@ root.configure(background='#000000')
 #-------------- Main View ----------------------------------------------------------------------------------------------
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
-
 
 LItem = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
 LItem.config(font=("Arial", 10))
