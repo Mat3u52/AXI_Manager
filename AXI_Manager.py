@@ -415,7 +415,7 @@ ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
 x = (ws-560)
 y = (hs-550)
-windowPosition = f'560x450+{int(x)}+{int(y)}'
+windowPosition = f'560x550+{int(x)}+{int(y)}'
 root.title('AXI - Manager')
 root.geometry(windowPosition)
 #root.resizable(0, 0)
@@ -765,17 +765,6 @@ tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
         #LItemImageBoard.grid(row=0, column=1, sticky=W)
 #------------------- The End Main View ----------------------------
 
-
-
-
-
-
-
-
-
-
-
-
 tabControl = ttk.Notebook(root)
 tab1 = ttk.Frame(tabControl)
 tabControl.add(tab1, text=" Main ")
@@ -993,7 +982,9 @@ BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
 BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
-#tree = ttk.Treeview(tab1)
+#c1 = tk.Checkbutton(window, text='Python',variable=var1, onvalue=1, offvalue=0, command=print_selection)
+c1 = tk.Checkbutton(root, text='', onvalue=1, offvalue=0)
+
 tree = ttk.Treeview(tab1)
 
 tree["columns"] = ("one", "two", "three", "Four")
