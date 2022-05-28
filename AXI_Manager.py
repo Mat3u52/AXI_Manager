@@ -336,14 +336,24 @@ def refresh():
     count1 = 1
     count2 = 0
     handling = 15
+
+
+
     for row in objDB.selectAll():
+
+
+        var = IntVar()
+        # c1 = tk.Checkbutton(window, text='Python',variable=var1, onvalue=1, offvalue=0, command=print_selection)
+        checkbox = tk.Checkbutton(tree, text='', variable=var, onvalue=1, offvalue=0)
+        checkbox.pack()
+
 
         scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
         if count % 2 == 0:
-            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'{checkbox}',
                                 values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('one'))
         else:
-            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'{checkbox}',
                                   values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
         count1 += 1
         if int(len(str(row[17]))) > 4:
@@ -981,9 +991,6 @@ BSearch.grid(row=0, column=1, pady=1)
 BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
 BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
-
-#c1 = tk.Checkbutton(window, text='Python',variable=var1, onvalue=1, offvalue=0, command=print_selection)
-c1 = tk.Checkbutton(root, text='', onvalue=1, offvalue=0)
 
 tree = ttk.Treeview(tab1)
 
