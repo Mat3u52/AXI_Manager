@@ -342,11 +342,10 @@ def refresh():
     for row in objDB.selectAll():
 
 
-        var = IntVar()
-        # c1 = tk.Checkbutton(window, text='Python',variable=var1, onvalue=1, offvalue=0, command=print_selection)
-        checkbox = tk.Checkbutton(tree, text='', variable=var, onvalue=1, offvalue=0)
-        checkbox.pack()
-
+        #var = IntVar()
+        #c1 = tk.Checkbutton(window, text='Python',variable=var1, onvalue=1, offvalue=0, command=print_selection)
+        #checkbox = tk.Checkbutton(tree, text='', variable=var, onvalue=1, offvalue=0)
+        #checkbox.pack()
 
         scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
         if count % 2 == 0:
