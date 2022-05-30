@@ -1,4 +1,5 @@
 from DBConnect import DBConnect
+from ttkwidgets import CheckboxTreeview
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -349,10 +350,10 @@ def refresh():
 
         scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
         if count % 2 == 0:
-            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'{checkbox}',
+            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                 values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('one'))
         else:
-            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'{checkbox}',
+            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                   values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
         count1 += 1
         if int(len(str(row[17]))) > 4:
@@ -992,6 +993,8 @@ BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
 tree = ttk.Treeview(tab1)
+#tree = CheckboxTreeview(tab1)
+
 
 tree["columns"] = ("one", "two", "three", "Four")
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
