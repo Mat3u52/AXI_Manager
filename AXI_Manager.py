@@ -1,5 +1,5 @@
 from DBConnect import DBConnect
-from ttkwidgets import CheckboxTreeview
+from ttkwidgets import CheckboxTreeview # added
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -992,8 +992,8 @@ BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
 BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
-tree = ttk.Treeview(tab1)
-#tree = CheckboxTreeview(tab1)
+#tree = ttk.Treeview(tab1)
+tree = CheckboxTreeview(tab1)
 
 
 tree["columns"] = ("one", "two", "three", "Four")
