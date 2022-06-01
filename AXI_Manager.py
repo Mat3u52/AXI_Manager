@@ -339,7 +339,7 @@ def refresh():
     handling = 15
 
 
-
+'''
     for row in objDB.selectAll():
 
 
@@ -414,7 +414,7 @@ def refresh():
     vsb.place(x=428, y=25, height=273)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
-
+'''
 #def delete():
    # Get selected item to Delete
 #   selected_item = tree.selection()[0]
@@ -452,7 +452,6 @@ LDateDB.config(font=("Arial", 10))
 LDateDB.grid(row=0, column=4, sticky=W)
 
 tabControlMain = ttk.Notebook(mainFrameView)
-
 
 tabMain1 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain1, text=" V849 ")
@@ -993,8 +992,12 @@ BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
 #tree = ttk.Treeview(tab1)
-tree = CheckboxTreeview(tab1)
-
+tree = CheckboxTreeview(tab1) #to remove
+tree.insert("", "end", "1", text="1") #to remove
+tree.insert("1", "end", "11", text="11") #to remove
+tree.insert("1", "end", "12", text="12") #to remove
+#tree.insert("11", "end", "111", text="111")
+tree.insert("", "end", "2", text="2") #to remove
 
 tree["columns"] = ("one", "two", "three", "Four")
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
@@ -1008,6 +1011,12 @@ tree.heading("one", text="ID", anchor=tk.W)
 tree.heading("two", text="Item", anchor=tk.W)
 tree.heading("three", text="Date / Time", anchor=tk.W)
 tree.heading("Four", text="Qty", anchor=tk.W)
+
+
+tree.bind("<<TreeviewSelect>>", getSelectedRow) # to remove
+tree.grid(row=1, column=0, columnspan=3, pady=2) #to remove
+
+
 
 refresh()
 
