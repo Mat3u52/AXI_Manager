@@ -1,5 +1,4 @@
 from DBConnect import DBConnect
-from ttkwidgets import CheckboxTreeview # added
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -338,8 +337,6 @@ def refresh():
     count2 = 0
     handling = 15
 
-
-'''
     for row in objDB.selectAll():
 
 
@@ -414,7 +411,7 @@ def refresh():
     vsb.place(x=428, y=25, height=273)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
-'''
+
 #def delete():
    # Get selected item to Delete
 #   selected_item = tree.selection()[0]
@@ -991,32 +988,22 @@ BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
 BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
-#tree = ttk.Treeview(tab1)
-tree = CheckboxTreeview(tab1) #to remove
-tree.insert("", "end", "1", text="1") #to remove
-tree.insert("1", "end", "11", text="11") #to remove
-tree.insert("1", "end", "12", text="12") #to remove
-#tree.insert("11", "end", "111", text="111")
-tree.insert("", "end", "2", text="2") #to remove
+tree = ttk.Treeview(tab1)
 
-tree["columns"] = ("one", "two", "three", "Four")
+
+tree["columns"] = ("one", "two", "three", "Four", "Five") #added
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
 tree.column("one", width=35, minwidth=35, stretch=tk.NO)
 tree.column("two", width=190, minwidth=190, stretch=tk.NO)
 tree.column("three", width=130, minwidth=130, stretch=tk.NO)
 tree.column("Four", width=30, minwidth=30, stretch=tk.NO)
+tree.column("Five", width=30, minwidth=30, stretch=tk.NO) # added
 
 tree.heading("#0", text="Box", anchor=tk.W)
 tree.heading("one", text="ID", anchor=tk.W)
 tree.heading("two", text="Item", anchor=tk.W)
 tree.heading("three", text="Date / Time", anchor=tk.W)
 tree.heading("Four", text="Qty", anchor=tk.W)
-
-
-tree.bind("<<TreeviewSelect>>", getSelectedRow) # to remove
-tree.grid(row=1, column=0, columnspan=3, pady=2) #to remove
-
-
 
 refresh()
 
