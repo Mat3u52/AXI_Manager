@@ -326,10 +326,11 @@ def refresh():
     objDB = DBConnect()
     #objDB.closeDB()
 
-# Create striped row tags
+#---Create striped row tags---
     tree.tag_configure('DX', background="#222222")
     tree.tag_configure('V', background="#333333")
     tree.tag_configure('one', background="#111111")
+    tree.tag_configure('baan', foreground="#EB0E0E")
 #---The End Create striped row---
 
     count = 1
@@ -339,25 +340,20 @@ def refresh():
 
     for row in objDB.selectAll():
 
-
-        #var = IntVar()
-        #c1 = tk.Checkbutton(window, text='Python',variable=var1, onvalue=1, offvalue=0, command=print_selection)
-        #checkbox = tk.Checkbutton(tree, text='', variable=var, onvalue=1, offvalue=0)
-        #checkbox.pack()
-
-        scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
+        #scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
         if count % 2 == 0:
-            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('one'))
+            if row[11] != 'YES':
+                folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan'))
+            else:
+                folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                                    values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('one'))
         else:
             folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                   values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
         count1 += 1
         if int(len(str(row[17]))) > 4:
-            # tree.insert(folder1, index='end', iid=count1, text=f'{row[17]}',
-            #            values=(f"5DX I", f"Scanning Time: {scanningTime5DX}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        #values=(f'{row[0]}', f'5DX I', f"Scanning Time: {scanningTime5DX}", ""))
                         values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", ""), tags=('DX'))
         count1 += 2
         if int(len(str(row[22]))) > 4:
@@ -406,9 +402,9 @@ def refresh():
         count2 += 1
 
     objDB.closeDB()
-# Scrollbar
+# ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=428, y=25, height=273)
+    vsb.place(x=515, y=25, height=273)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
@@ -991,19 +987,24 @@ BSearchR.grid(row=0, column=2, pady=1)
 tree = ttk.Treeview(tab1)
 
 
-tree["columns"] = ("one", "two", "three", "Four", "Five") #added
+tree["columns"] = ("one", "two", "three", "Four", "Five", "Six", "Seven") # added
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
 tree.column("one", width=35, minwidth=35, stretch=tk.NO)
 tree.column("two", width=190, minwidth=190, stretch=tk.NO)
 tree.column("three", width=130, minwidth=130, stretch=tk.NO)
 tree.column("Four", width=30, minwidth=30, stretch=tk.NO)
 tree.column("Five", width=30, minwidth=30, stretch=tk.NO) # added
+tree.column("Six", width=30, minwidth=30, stretch=tk.NO) # added
+tree.column("Seven", width=30, minwidth=30, stretch=tk.NO) # added
 
 tree.heading("#0", text="Box", anchor=tk.W)
 tree.heading("one", text="ID", anchor=tk.W)
 tree.heading("two", text="Item", anchor=tk.W)
 tree.heading("three", text="Date / Time", anchor=tk.W)
 tree.heading("Four", text="Qty", anchor=tk.W)
+tree.heading("Five", text="BaaN", anchor=tk.W) # added
+tree.heading("Six", text="LC", anchor=tk.W) # added
+tree.heading("Seven", text="EPI", anchor=tk.W) # added
 
 refresh()
 
