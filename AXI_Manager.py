@@ -330,7 +330,8 @@ def refresh():
     tree.tag_configure('DX', background="#222222")
     tree.tag_configure('V', background="#333333")
     tree.tag_configure('one', background="#111111")
-    tree.tag_configure('baan', foreground="#EB0E0E")
+    tree.tag_configure('baan', background="#111111", foreground="#EB0E0E")
+    tree.tag_configure('baan0', foreground="#EB0E0E")
 #---The End Create striped row---
 
     count = 1
@@ -342,15 +343,27 @@ def refresh():
 
         #scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
         if count % 2 == 0:
-            if row[11] != 'YES':
+            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None) or \
+                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None) or \
+                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None) or \
+                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None) or \
+                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                       values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan'))
             else:
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                     values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('one'))
         else:
-            folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                  values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
+            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and row[11] != '') or \
+                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and row[16] != '') or \
+                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None and row[38] != '') or \
+                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and row[44] != '') or \
+                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and row[53] != ''):
+                folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan0'))
+            else:
+                folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                                    values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
         count1 += 1
         if int(len(str(row[17]))) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
@@ -416,9 +429,9 @@ def refresh():
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
-x = (ws-560)
+x = (ws-660)
 y = (hs-550)
-windowPosition = f'560x550+{int(x)}+{int(y)}'
+windowPosition = f'660x550+{int(x)}+{int(y)}'
 root.title('AXI - Manager')
 root.geometry(windowPosition)
 #root.resizable(0, 0)
@@ -993,8 +1006,8 @@ tree.column("one", width=35, minwidth=35, stretch=tk.NO)
 tree.column("two", width=190, minwidth=190, stretch=tk.NO)
 tree.column("three", width=130, minwidth=130, stretch=tk.NO)
 tree.column("Four", width=30, minwidth=30, stretch=tk.NO)
-tree.column("Five", width=30, minwidth=30, stretch=tk.NO) # added
-tree.column("Six", width=30, minwidth=30, stretch=tk.NO) # added
+tree.column("Five", width=35, minwidth=30, stretch=tk.NO) # added
+tree.column("Six", width=25, minwidth=30, stretch=tk.NO) # added
 tree.column("Seven", width=30, minwidth=30, stretch=tk.NO) # added
 
 tree.heading("#0", text="Box", anchor=tk.W)
