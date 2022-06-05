@@ -343,22 +343,22 @@ def refresh():
 
         #scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
         if count % 2 == 0:
-            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None) or \
-                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None) or \
-                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None) or \
-                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None) or \
-                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None):
+            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and (row[11] == 'NO' or row[11] == 'LACK')) or \
+                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and (row[16] == 'NO' or row[16] == 'LACK')) or \
+                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None and (row[38] == 'NO' or row[38] == 'LACK')) or \
+                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and (row[44] == 'NO' or row[44] == 'LACK')) or \
+                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and (row[53] == 'NO' or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                       values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan'))
             else:
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                     values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('one'))
         else:
-            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and row[11] != '') or \
-                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and row[16] != '') or \
-                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None and row[38] != '') or \
-                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and row[44] != '') or \
-                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and row[53] != ''):
+            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and (row[11] == 'NO' or row[11] == 'LACK')) or \
+                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and (row[16] == 'NO' or row[16] == 'LACK')) or \
+                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None and (row[38] == 'NO' or row[38] == 'LACK')) or \
+                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and (row[44] == 'NO' or row[44] == 'LACK')) or \
+                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and (row[53] == 'NO'  or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                       values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan0'))
             else:
