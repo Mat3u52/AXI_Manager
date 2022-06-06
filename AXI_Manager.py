@@ -6,7 +6,6 @@ import time
 import pyperclip
 
 tab = []
-
 Ball_Start_XPosition = 120
 Ball_Start_YPosition = 50
 Ball_min_movement = -1
@@ -89,6 +88,55 @@ def getSelectedRow(event):
         LDateDB.configure(text=f"{row[2]}")
         LQty.configure(text=f"Qty:")
         LDate.configure(text=f"Inserted:")
+
+        LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+        LV849Prog.configure(font=("Arial", 10))
+        LV849Prog.grid(row=0, column=0, sticky=W)
+
+        LV849ScanTime = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+        LV849ScanTime.configure(font=("Arial", 10))
+        LV849ScanTime.grid(row=0, column=1, columnspan=5, sticky=E)
+
+        LV849UPH85L = Label(tabMain1, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+        LV849UPH85L.configure(font=("Arial", 10))
+        LV849UPH85L.grid(row=1, column=0, sticky=E)
+        LV849UPH85 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+        LV849UPH85.configure(font=("Arial", 10))
+        LV849UPH85.grid(row=1, column=1, columnspan=5, sticky=W)
+        LV849UPH95L = Label(tabMain1, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
+        LV849UPH95L.configure(font=("Arial", 10))
+        LV849UPH95L.grid(row=2, column=0, sticky=E)
+        LV849UPH95 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+        LV849UPH95.configure(font=("Arial", 10))
+        LV849UPH95.grid(row=2, column=1, columnspan=5, sticky=W)
+
+        LV849BaanL = Label(tabMain1, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+        LV849BaanL.configure(font=("Arial", 10))
+        LV849BaanL.grid(row=3, column=0, sticky=E)
+        LV849Baan = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+        LV849Baan.configure(font=("Arial", 10))
+        LV849Baan.grid(row=3, column=1, sticky=W)
+
+        LV849LCL = Label(tabMain1, text=f"LC:", bg="#444444", fg="#666666", pady="1")
+        LV849LCL.configure(font=("Arial", 10))
+        LV849LCL.grid(row=3, column=2, sticky=E)
+        LV849LC = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+        LV849LC.configure(font=("Arial", 10))
+        LV849LC.grid(row=3, column=3, sticky=W)
+
+        LV849EPIL = Label(tabMain1, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
+        LV849EPIL.configure(font=("Arial", 10))
+        LV849EPIL.grid(row=3, column=4, sticky=E)
+        LV849EPI = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+        LV849EPI.configure(font=("Arial", 10))
+        LV849EPI.grid(row=3, column=5, sticky=W)
+
+        LV849CommentL = Label(tabMain1, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
+        LV849CommentL.configure(font=("Arial", 10))
+        LV849CommentL.grid(row=4, column=0, sticky=E)
+        LV849Comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+        LV849Comment.configure(font=("Arial", 10))
+        LV849Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
         if int(len(str(row[17]))) > 4:
             tabControlMain.add(tabMain1, text=" V849 ")
@@ -337,11 +385,8 @@ def refresh():
     count = 1
     count1 = 1
     count2 = 0
-    handling = 15
 
     for row in objDB.selectAll():
-
-        #scanningTime5DX = int(row[7]) + int(row[8]) + int(row[9]) + int(row[10]) + int(handling)
         if count % 2 == 0:
             if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and (row[11] == 'NO' or row[11] == 'LACK')) or \
                     (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and (row[16] == 'NO' or row[16] == 'LACK')) or \
@@ -349,7 +394,7 @@ def refresh():
                     (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and (row[44] == 'NO' or row[44] == 'LACK')) or \
                     (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and (row[53] == 'NO' or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan'))
+                                    values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan'))
             else:
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                     values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('one'))
@@ -360,56 +405,38 @@ def refresh():
                     (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and (row[44] == 'NO' or row[44] == 'LACK')) or \
                     (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and (row[53] == 'NO'  or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan0'))
+                                    values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan0'))
             else:
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                     values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
         count1 += 1
         if int(len(str(row[17]))) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", ""), tags=('DX'))
+                        values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}"), tags=('DX'))
         count1 += 2
         if int(len(str(row[22]))) > 4:
-            # tree.insert(folder1, index='end', iid=count1, text=f'{row[22]}',
-            #            values=(f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        #values=(f'{row[0]}', f"5DX II", f"Scanning Time: {scanningTime5DX}", ""))
-                        values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", ""), tags=('DX'))
+                        values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}"), tags=('DX'))
         count1 += 3
-        # if row[27] != None:
         if len(str(row[27])) > 4:
-            # tree.insert(folder1, index='end', iid=count1, text=f'{row[27]}',
-            #            values=(f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        #values=(f'{row[0]}', f"ViTroxEx I", f"Scanning Time: {int(row[15]) + handling}", ""))
-                        values=(f'{row[0]}', f"ViTroxEx I", f"85%: {row[12]}, 95% {row[14]}", ""), tags=('V'))
+                        values=(f'{row[0]}', f"ViTroxEx I", f"85%: {row[12]}, 95% {row[14]}", "", f"{row[16]}"), tags=('V'))
         count1 += 4
         if row[45] != None and int(row[41]) != 0:
-            # tree.insert(folder1, index='end', iid=count1, text=f'{row[45]}',
-            #            values=(f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        #values=(f'{row[0]}', f"ViTroxEx II", f"Scanning Time: {int(row[41]) + handling}", ""))
-                        values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95% {row[42]}", ""), tags=('V'))
+                        values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95% {row[42]}", "", f"{row[44]}"), tags=('V'))
         count1 += 4
         if row[54] != None:
-            # tree.insert(folder1, index='end', iid=count1, text=f'{row[54]}',
-            #            values=(f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        #values=(f'{row[0]}', f"ViTroxEx III", f"Scanning Time: {int(row[52]) + handling}", ""))
-                        values=(f'{row[0]}', f"ViTroxEx III", f"85%: {row[49]}, 95%: {row[51]}", ""), tags=('V'))
+                        values=(f'{row[0]}', f"ViTroxEx III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}"), tags=('V'))
         count1 += 5
-
         if row[31] != None and int(row[37] != 0):
-            # tree.insert(folder1, index='end', iid=count1, text=f'{row[31]}',
-            #            values=(f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        #values=(f'{row[0]}', f"ViTroxXXL I", f"Scanning Time: {int(row[37]) + handling}", ""))
-                        values=(f'{row[0]}', f"ViTroxXXL I", f"85%: {row[39]}, 95%: {row[36]}", ""), tags=('V'))
+                        values=(f'{row[0]}', f"ViTroxXXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}"), tags=('V'))
 
         tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
         tree.grid(row=1, column=0, columnspan=3, pady=2)
-
         count += 1
         count1 += 1
         count2 += 1
@@ -462,6 +489,7 @@ tabControlMain = ttk.Notebook(mainFrameView)
 tabMain1 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain1, text=" V849 ")
 
+'''
 LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV849Prog.configure(font=("Arial", 10))
 LV849Prog.grid(row=0, column=0, sticky=W)
@@ -510,6 +538,24 @@ LV849CommentL.grid(row=4, column=0, sticky=E)
 LV849Comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849Comment.configure(font=("Arial", 10))
 LV849Comment.grid(row=4, column=1, columnspan=5, sticky=W)
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 tabMain2 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain2, text=" V817 ")
@@ -998,7 +1044,6 @@ BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
 tree = ttk.Treeview(tab1)
-
 
 tree["columns"] = ("one", "two", "three", "Four", "Five", "Six", "Seven") # added
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
