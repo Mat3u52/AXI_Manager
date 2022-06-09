@@ -92,6 +92,12 @@ def getSelectedRow(event):
         if int(len(str(row[17]))) > 4:
             tabControlMain.add(tabMain1, text=" V849 ")
             LV849Prog.configure(text=f"{row[17]}")
+            LV849UPH85L.configure(text=f"UPH 85%:")
+            LV849UPH95L.configure(text=f"UPH 95%:")
+            LV849BaanL.configure(text=f"BaaN:")
+            LV849LCL.configure(text=f"LC:")
+            LV849EPIL.configure(text=f"EPI:")
+            LV849CommentL.configure(text=f"Comment:")
             LV849ScanTime.configure(text=f"Scan Time: {int(row[7])+int(row[8])+int(row[9])+int(row[10])}"
                                          f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
             LV849UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
