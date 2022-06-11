@@ -234,6 +234,12 @@ def getSelectedRow(event):
         if len(str(row[54])) > 0 and row[54] != None:
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
+            LV8103553S2EXUPH85L.configure(text=f"UPH 85%:")
+            LV8103553S2EXUPH95L.configure(text=f"UPH 95%:")
+            LV8103553S2EXBaanL.configure(text=f"BaaN:")
+            LV8103553S2EXLCL.configure(text=f"LC:")
+            LV8103553S2EXEPIL.configure(text=f"EPI:")
+            LV8103553S2EXCommentL.configure(text=f"Comment:")
             LV8103553S2EXScanTime.configure(text=f"Scan Time: {int(row[52])} + 15 in/out = {int(row[52]+15)}s.")
             LV8103553S2EXUPH85.configure(text=f"{row[49]} ({round(60/int(row[49]), 4)}), "
                                               f"Panel: {round((3600/int(row[49])*int(row[3])))}s. "
@@ -263,6 +269,12 @@ def getSelectedRow(event):
         if row[31] != None and int(row[37] != 0):
             tabControlMain.add(tabMain6, text=" V810-8120S2 ")
             LV8108120S2Prog.configure(text=f"{row[31]}")
+            LV8108120S2UPH85L.configure(text=f"UPH 85%:")
+            LV8108120S2UPH95L.configure(text=f"UPH 95%:")
+            LV8108120S2BaanL.configure(text=f"BaaN:")
+            LV8108120S2LCL.configure(text=f"LC:")
+            LV8108120S2EPIL.configure(text=f"EPI:")
+            LV8108120S2CommentL.configure(text=f"Comment:")
             LV8108120S2ScanTime.configure(text=f"Scan Time: {int(row[37])} + 15 in/out = {int(row[37] + 15)}s.")
             LV8108120S2UPH85.configure(text=f"{row[39]} ({round(60/int(row[39]), 4)}), "
                                               f"Panel: {round((3600/int(row[39])*int(row[3])))}s. "
@@ -327,7 +339,6 @@ def insertData():
 
     refresh()
 def search():
-    #tree.selection()[0]
     tree.selection_clear()
     tree.selection_remove(tree.focus())
     for record in tree.get_children():
@@ -385,27 +396,33 @@ def refresh():
         count1 += 1
         if int(len(str(row[17]))) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}"), tags=('DX'))
+                        values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
+                                f"{row[18]}"), tags=('DX'))
         count1 += 2
         if int(len(str(row[22]))) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}"), tags=('DX'))
+                        values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
+                                f"{row[23]}"), tags=('DX'))
         count1 += 3
         if len(str(row[27])) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}"), tags=('V'))
+                        values=(f'{row[0]}', f"ViTroxEx I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
+                                f"{row[28]}"), tags=('V'))
         count1 += 4
         if row[45] != None and int(row[41]) != 0:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}"), tags=('V'))
+                        values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}",
+                                f"{row[46]}"), tags=('V'))
         count1 += 4
         if row[54] != None:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}"), tags=('V'))
+                        values=(f'{row[0]}', f"ViTroxEx III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}",
+                                f"{row[55]}"), tags=('V'))
         count1 += 5
         if row[31] != None and int(row[37] != 0):
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxXXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}"), tags=('V'))
+                        values=(f'{row[0]}', f"ViTroxXXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}",
+                                f"{row[32]}"), tags=('V'))
 
         tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
@@ -706,41 +723,47 @@ LV8103553S2EXScanTime = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pa
 LV8103553S2EXScanTime.configure(font=("Arial", 10))
 LV8103553S2EXScanTime.grid(row=0, column=1, columnspan=5, sticky=E)
 
-LV8103553S2EXUPH85L = Label(tabMain5, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+#LV8103553S2EXUPH85L = Label(tabMain5, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXUPH85L = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH85L.configure(font=("Arial", 10))
 LV8103553S2EXUPH85L.grid(row=1, column=0, sticky=E)
 LV8103553S2EXUPH85 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXUPH85.configure(font=("Arial", 10))
 LV8103553S2EXUPH85.grid(row=1, column=1, columnspan=5, sticky=W)
-LV8103553S2EXUPH95L = Label(tabMain5, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
+#LV8103553S2EXUPH95L = Label(tabMain5, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXUPH95L = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH95L.configure(font=("Arial", 10))
 LV8103553S2EXUPH95L.grid(row=2, column=0, sticky=E)
 LV8103553S2EXUPH95 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXUPH95.configure(font=("Arial", 10))
 LV8103553S2EXUPH95.grid(row=2, column=1, columnspan=5, sticky=W)
 
-LV8103553S2EXBaanL = Label(tabMain5, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+#LV8103553S2EXBaanL = Label(tabMain5, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXBaanL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXBaanL.configure(font=("Arial", 10))
 LV8103553S2EXBaanL.grid(row=3, column=0, sticky=E)
 LV8103553S2EXBaan = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXBaan.configure(font=("Arial", 10))
 LV8103553S2EXBaan.grid(row=3, column=1, sticky=W)
 
-LV8103553S2EXLCL = Label(tabMain5, text=f"LC:", bg="#444444", fg="#666666", pady="1")
+#LV8103553S2EXLCL = Label(tabMain5, text=f"LC:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXLCL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXLCL.configure(font=("Arial", 10))
 LV8103553S2EXLCL.grid(row=3, column=2, sticky=E)
 LV8103553S2EXLC = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXLC.configure(font=("Arial", 10))
 LV8103553S2EXLC.grid(row=3, column=3, sticky=W)
 
-LV8103553S2EXEPIL = Label(tabMain5, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
+#LV8103553S2EXEPIL = Label(tabMain5, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXEPIL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXEPIL.configure(font=("Arial", 10))
 LV8103553S2EXEPIL.grid(row=3, column=4, sticky=E)
 LV8103553S2EXEPI = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXEPI.configure(font=("Arial", 10))
 LV8103553S2EXEPI.grid(row=3, column=5, sticky=W)
 
-LV8103553S2EXCommentL = Label(tabMain5, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
+#LV8103553S2EXCommentL = Label(tabMain5, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
+LV8103553S2EXCommentL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXCommentL.configure(font=("Arial", 10))
 LV8103553S2EXCommentL.grid(row=4, column=0, sticky=E)
 LV8103553S2EXComment = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
@@ -759,41 +782,47 @@ LV8108120S2ScanTime = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady
 LV8108120S2ScanTime.configure(font=("Arial", 10))
 LV8108120S2ScanTime.grid(row=0, column=1, columnspan=5, sticky=E)
 
-LV8108120S2UPH85L = Label(tabMain6, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+#LV8108120S2UPH85L = Label(tabMain6, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
+LV8108120S2UPH85L = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2UPH85L.configure(font=("Arial", 10))
 LV8108120S2UPH85L.grid(row=1, column=0, sticky=E)
 LV8108120S2UPH85 = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2UPH85.configure(font=("Arial", 10))
 LV8108120S2UPH85.grid(row=1, column=1, columnspan=5, sticky=W)
-LV8108120S2UPH95L = Label(tabMain6, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
+#LV8108120S2UPH95L = Label(tabMain6, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
+LV8108120S2UPH95L = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2UPH95L.configure(font=("Arial", 10))
 LV8108120S2UPH95L.grid(row=2, column=0, sticky=E)
 LV8108120S2UPH95 = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2UPH95.configure(font=("Arial", 10))
 LV8108120S2UPH95.grid(row=2, column=1, columnspan=5, sticky=W)
 
-LV8108120S2BaanL = Label(tabMain6, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+#LV8108120S2BaanL = Label(tabMain6, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
+LV8108120S2BaanL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2BaanL.configure(font=("Arial", 10))
 LV8108120S2BaanL.grid(row=3, column=0, sticky=E)
 LV8108120S2Baan = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2Baan.configure(font=("Arial", 10))
 LV8108120S2Baan.grid(row=3, column=1, sticky=W)
 
-LV8108120S2LCL = Label(tabMain6, text=f"LC:", bg="#444444", fg="#666666", pady="1")
+#LV8108120S2LCL = Label(tabMain6, text=f"LC:", bg="#444444", fg="#666666", pady="1")
+LV8108120S2LCL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2LCL.configure(font=("Arial", 10))
 LV8108120S2LCL.grid(row=3, column=2, sticky=E)
 LV8108120S2LC = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2LC.configure(font=("Arial", 10))
 LV8108120S2LC.grid(row=3, column=3, sticky=W)
 
-LV8108120S2EPIL = Label(tabMain6, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
+#LV8108120S2EPIL = Label(tabMain6, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
+LV8108120S2EPIL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2EPIL.configure(font=("Arial", 10))
 LV8108120S2EPIL.grid(row=3, column=4, sticky=E)
 LV8108120S2EPI = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2EPI.configure(font=("Arial", 10))
 LV8108120S2EPI.grid(row=3, column=5, sticky=W)
 
-LV8108120S2CommentL = Label(tabMain6, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
+#LV8108120S2CommentL = Label(tabMain6, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
+LV8108120S2CommentL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2CommentL.configure(font=("Arial", 10))
 LV8108120S2CommentL.grid(row=4, column=0, sticky=E)
 LV8108120S2Comment = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
@@ -852,7 +881,7 @@ style.theme_create('style_class',
                    )
 style.theme_use('style_class')
 
-#Notebook Style
+#---Notebook Style---
 noteStyler = ttk.Style()
 noteStyler.configure("TNotebook", background='#555555', borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
@@ -861,10 +890,10 @@ noteStyler.configure("TFrame", background='#444444', foreground='#FFFFFF', borde
 style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=25, filedbackground="#777777")
 style.map('Treeview', background=[('selected', '#170D47')])
 
+#---UPDATE---
+
 mainFrame = ttk.LabelFrame(tab3, text=" Update Main ")
 mainFrame.grid(column=0, row=0, columnspan=10, sticky='W', padx=10, pady=10)
-updateFrameVIV = ttk.LabelFrame(tab3, text=" Update ViTrox V810 Ex III ( V810-3553S2EX ) ")
-updateFrameVIV.grid(column=0, row=1, columnspan=10, sticky='W', padx=10, pady=10)
 
 L1 = Label(mainFrame, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 L1.config(font=("Arial", 10))
@@ -872,6 +901,12 @@ L2 = Label(mainFrame, text="Item:", width=12, borderwidth=1, relief="solid", bg=
 L2.config(font=("Arial", 10))
 L3 = Label(mainFrame, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 L3.config(font=("Arial", 10))
+
+#---Update ViTrox V810-3553S2EX---
+
+updateFrameVIV = ttk.LabelFrame(tab3, text=" Update ViTrox V810 Ex III ( V810-3553S2EX ) ")
+updateFrameVIV.grid(column=0, row=1, columnspan=10, sticky='W', padx=10, pady=10)
+
 L4 = Label(updateFrameVIV, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 L4.config(font=("Arial", 10))
 L5 = Label(updateFrameVIV, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
@@ -913,8 +948,7 @@ E5.grid(row=0, column=3, pady=1)
 E6 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 E6.config(font=("Arial", 10))
 E6.grid(row=2, column=3, pady=1)
-#E6 = Entry(root, bd=0)
-#E6.grid(row=1, column=5, pady=2)
+
 LC = tk.StringVar
 LCViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=LC, state='readonly')
 LCViTroxIV['values'] = ("NONE","YES","NO","LACK")
@@ -933,8 +967,9 @@ BAANViTroxIV.current(0)
 
 B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay)
 B1.grid(row=3, column=0, columnspan = 4, pady=2)
+#---The End of the UPDATE section---
 
-#-----------------INSERT-------------------
+#---INSERT---
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
 
