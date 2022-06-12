@@ -11,8 +11,10 @@ Ball_Start_YPosition = 50
 Ball_min_movement = -1
 Refresh_Sec = 0.01
 
-def animate_ball(root, canvas, xinc, yinc):
-    img = tk.PhotoImage(file='board.png')
+def animate_ball(root, canvas, xinc, yinc, imgPath = 'board'):
+    #img = tk.PhotoImage(file='board.png')
+    img = tk.PhotoImage(file=imgPath)
+    print(imgPath)
     ball = canvas.create_image(Ball_Start_XPosition, Ball_Start_YPosition, image=img)
     while True:
         canvas.move(ball, xinc, 0)
@@ -228,6 +230,23 @@ def getSelectedRow(event):
                 LV8103483S2EXEPI.configure(text=f"{row[47]}", fg="#D44339")
 
             LV8103483S2EXComment.configure(text=f"{row[48]}")
+
+
+
+
+
+            canvasFrame = Label(mainFrameView)
+            # canvasFrame.configure(font=("Arial", 10))
+            canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas = tk.Canvas(canvasFrame, width=120, height=150)
+            canvas.configure(bg="#444444")
+            canvas.pack(expand=False)
+            animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
+
+
+
+
+
         else:
             tabControlMain.hide(tabMain4)
 
@@ -310,8 +329,8 @@ def getSelectedRow(event):
         canvas = tk.Canvas(canvasFrame, width=120, height=150)
         canvas.configure(bg="#444444")
         canvas.pack(expand=False)
-        animate_ball(root, canvas, Ball_min_movement, Ball_min_movement)
-        # canvas.grid(row=0, column=0, sticky=W)
+        #animate_ball(root, canvas, Ball_min_movement, Ball_min_movement)
+
 def updateDisplay():
     if int(tab[0]) >= 0:
         objDB = DBConnect()
@@ -397,32 +416,32 @@ def refresh():
         if int(len(str(row[17]))) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
-                                f"{row[18]}"), tags=('DX'))
+                                f"{row[18]}", f"{row[19]}"), tags=('DX'))
         count1 += 2
         if int(len(str(row[22]))) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
-                                f"{row[23]}"), tags=('DX'))
+                                f"{row[23]}", f"{row[24]}"), tags=('DX'))
         count1 += 3
         if len(str(row[27])) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTroxEx I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
-                                f"{row[28]}"), tags=('V'))
+                                f"{row[28]}", f"{row[29]}"), tags=('V'))
         count1 += 4
         if row[45] != None and int(row[41]) != 0:
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}",
-                                f"{row[46]}"), tags=('V'))
+                                f"{row[46]}", f"{row[47]}"), tags=('V'))
         count1 += 4
         if row[54] != None:
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTroxEx III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}",
-                                f"{row[55]}"), tags=('V'))
+                                f"{row[55]}", f"{row[56]}"), tags=('V'))
         count1 += 5
         if row[31] != None and int(row[37] != 0):
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTroxXXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}",
-                                f"{row[32]}"), tags=('V'))
+                                f"{row[32]}", f"{row[33]}"), tags=('V'))
 
         tree.bind("<<TreeviewSelect>>", getSelectedRow)
 
@@ -434,7 +453,7 @@ def refresh():
     objDB.closeDB()
 # ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=515, y=25, height=273)
+    vsb.place(x=535, y=25, height=273)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
@@ -1067,8 +1086,8 @@ tree.column("two", width=190, minwidth=190, stretch=tk.NO)
 tree.column("three", width=130, minwidth=130, stretch=tk.NO)
 tree.column("Four", width=30, minwidth=30, stretch=tk.NO)
 tree.column("Five", width=35, minwidth=30, stretch=tk.NO) # added
-tree.column("Six", width=25, minwidth=30, stretch=tk.NO) # added
-tree.column("Seven", width=30, minwidth=30, stretch=tk.NO) # added
+tree.column("Six", width=35, minwidth=30, stretch=tk.NO) # added
+tree.column("Seven", width=35, minwidth=30, stretch=tk.NO) # added
 
 tree.heading("#0", text="Box", anchor=tk.W)
 tree.heading("one", text="ID", anchor=tk.W)
