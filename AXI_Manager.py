@@ -4,17 +4,23 @@ from tkinter import ttk
 from tkinter import *
 import time
 import pyperclip
+import os
 
 tab = []
-Ball_Start_XPosition = 120
-Ball_Start_YPosition = 50
+Ball_Start_XPosition = 170
+Ball_Start_YPosition = 85
 Ball_min_movement = -1
 Refresh_Sec = 0.01
 
-def animate_ball(root, canvas, xinc, yinc, imgPath = 'board'):
+def animate_ball(root, canvas, xinc, yinc, imgPath = 'board.png'):
     #img = tk.PhotoImage(file='board.png')
-    img = tk.PhotoImage(file=imgPath)
+    if os.path.isfile(imgPath):
+        img = tk.PhotoImage(file=imgPath)
+    else:
+        img = tk.PhotoImage(file='board.png')
+
     print(imgPath)
+
     ball = canvas.create_image(Ball_Start_XPosition, Ball_Start_YPosition, image=img)
     while True:
         canvas.move(ball, xinc, 0)
@@ -28,7 +34,7 @@ def animate_ball(root, canvas, xinc, yinc, imgPath = 'board'):
             xinc = -xinc
         if bl < abs(yinc):
             yinc = -yinc
-        if al == 120/2:
+        if al == 170/2:
             break
     root.mainloop()
 def swich(x):
@@ -238,7 +244,7 @@ def getSelectedRow(event):
             canvasFrame = Label(mainFrameView)
             # canvasFrame.configure(font=("Arial", 10))
             canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            canvas = tk.Canvas(canvasFrame, width=120, height=150)
+            canvas = tk.Canvas(canvasFrame, width=170, height=170)
             canvas.configure(bg="#444444")
             canvas.pack(expand=False)
             animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
@@ -321,15 +327,15 @@ def getSelectedRow(event):
         else:
             tabControlMain.hide(tabMain6)
 
-        # frame = Frame(mainFrameView)
-        # frame.grid(row=0, column=2, rowspan=4, sticky=W)
-        canvasFrame = Label(mainFrameView)
-        #canvasFrame.configure(font=("Arial", 10))
-        canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-        canvas = tk.Canvas(canvasFrame, width=120, height=150)
-        canvas.configure(bg="#444444")
-        canvas.pack(expand=False)
-        #animate_ball(root, canvas, Ball_min_movement, Ball_min_movement)
+            # frame = Frame(mainFrameView)
+            # frame.grid(row=0, column=2, rowspan=4, sticky=W)
+        #canvasFrame = Label(mainFrameView)
+            #canvasFrame.configure(font=("Arial", 10))
+        #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+        #canvas = tk.Canvas(canvasFrame, width=120, height=150)
+        #canvas.configure(bg="#444444")
+        #canvas.pack(expand=False)
+            #animate_ball(root, canvas, Ball_min_movement, Ball_min_movement)
 
 def updateDisplay():
     if int(tab[0]) >= 0:
