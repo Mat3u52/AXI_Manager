@@ -238,16 +238,15 @@ def getSelectedRow(event):
             LV8103483S2EXComment.configure(text=f"{row[48]}")
 
 
+            def getSelectedTab(event):
 
-
-
-            canvasFrame = Label(mainFrameView)
-            # canvasFrame.configure(font=("Arial", 10))
-            canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            canvas = tk.Canvas(canvasFrame, width=170, height=170)
-            canvas.configure(bg="#444444")
-            canvas.pack(expand=False)
-            animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
+                canvasFrame = Label(mainFrameView)
+                # canvasFrame.configure(font=("Arial", 10))
+                canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+                canvas = tk.Canvas(canvasFrame, width=170, height=170)
+                canvas.configure(bg="#444444")
+                canvas.pack(expand=False)
+                animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
 
 
 
@@ -680,6 +679,7 @@ LV8103163Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 tabMain4 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+#tabMain4.bind("<<Button-1>>", getSelectedTab)  # <----- added
 
 LV8103483S2EXProg = Label(tabMain4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV8103483S2EXProg.configure(font=("Arial", 10))
