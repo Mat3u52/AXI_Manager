@@ -467,6 +467,12 @@ def refresh():
 #   selected_item = tree.selection()[0]
 #   tree.delete(selected_item)
 
+def pressed2(event):
+#def pressed2(tabMain4name):
+    print('Button-2 pressed at x = % d, y = % d'%(event.x, event.y))
+    #print('tabMain4name')
+
+
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
@@ -679,7 +685,18 @@ LV8103163Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 tabMain4 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
-#tabMain4.bind("<<Button-1>>", getSelectedTab)  # <----- added
+
+tabMain4name = 'V810-3483S2EX'
+#tabMain4.bind('<Button-1>', pressed2(tabMain4name))
+tabControlMain.bind('<Button-1>', pressed2)
+#tabMain4.bind("<Button-1>", getSelectedTab)  # <----- added
+
+
+
+
+
+
+
 
 LV8103483S2EXProg = Label(tabMain4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV8103483S2EXProg.configure(font=("Arial", 10))
