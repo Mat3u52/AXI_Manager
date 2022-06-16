@@ -7,12 +7,13 @@ import pyperclip
 import os
 
 tab = []
-Ball_Start_XPosition = 170
-Ball_Start_YPosition = 85
-Ball_min_movement = -1
-Refresh_Sec = 0.01
+startXPosition = 170
+startYPosition = 85
+minMovement = -1
+refreshSec = 0.01
+imgFlags = 0
 
-def animate_ball(root, canvas, xinc, yinc, imgPath = 'board.png'):
+def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
     #img = tk.PhotoImage(file='board.png')
     if os.path.isfile(imgPath):
         img = tk.PhotoImage(file=imgPath)
@@ -21,15 +22,15 @@ def animate_ball(root, canvas, xinc, yinc, imgPath = 'board.png'):
 
     print(imgPath)
 
-    ball = canvas.create_image(Ball_Start_XPosition, Ball_Start_YPosition, image=img)
+    imageB = canvas.create_image(startXPosition, startYPosition, image=img)
     while True:
-        canvas.move(ball, xinc, 0)
+        canvas.move(imageB, xinc, 0)
         root.update()
-        time.sleep(Refresh_Sec)
-        ball_pos = canvas.coords(ball)
+        time.sleep(refreshSec)
+        imgPos = canvas.coords(imageB)
         # unpack array to variables
         #al, bl, ar, br = ball_pos
-        al, bl = ball_pos
+        al, bl = imgPos
         if al < abs(xinc):
             xinc = -xinc
         if bl < abs(yinc):
@@ -59,6 +60,13 @@ def getSelectedRow(event):
     E4.delete(0, END)
     E5.delete(0, END)
     E6.delete(0, END)
+
+    canvasFrame = Label(mainFrameView)
+    # canvasFrame.configure(font=("Arial", 10))
+    canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+    canvas = tk.Canvas(canvasFrame, width=170, height=170)
+    canvas.configure(bg="#444444")
+    canvas.pack(expand=False)
 
     #print(tree.selection())  # this will print the names of the selected rows
     for nm in tree.selection():
@@ -97,6 +105,7 @@ def getSelectedRow(event):
         LDate.configure(text=f"Inserted:")
 
         if int(len(str(row[17]))) > 4:
+            imgFlags = 1
             tabControlMain.add(tabMain1, text=" V849 ")
             LV849Prog.configure(text=f"{row[17]}")
             LV849UPH85L.configure(text=f"UPH 85%:")
@@ -133,6 +142,7 @@ def getSelectedRow(event):
             tabControlMain.hide(tabMain1)
 
         if int(len(str(row[22]))) > 4:
+            imgFlags = 2
             tabControlMain.add(tabMain2, text=" V817 ")
             LV817Prog.configure(text=f"{row[22]}")
             LV817UPH85L.configure(text=f"UPH 85%:")
@@ -170,6 +180,7 @@ def getSelectedRow(event):
             tabControlMain.hide(tabMain2)
 
         if len(str(row[27])) > 4:
+            imgFlags = 3
             tabControlMain.add(tabMain3, text=" V810-3163 ")
             LV8103163Prog.configure(text=f"{row[27]}")
             LV8103163UPH85L.configure(text=f"UPH 85%:")
@@ -205,6 +216,7 @@ def getSelectedRow(event):
             tabControlMain.hide(tabMain3)
 
         if row[45] != None and int(row[41]) != 0:
+            imgFlags = 4
             tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
             LV8103483S2EXProg.configure(text=f"{row[45]}")
             LV8103483S2EXUPH85L.configure(text=f"UPH 85%:")
@@ -237,16 +249,13 @@ def getSelectedRow(event):
 
             LV8103483S2EXComment.configure(text=f"{row[48]}")
 
-
-            def getSelectedTab(event):
-
-                canvasFrame = Label(mainFrameView)
+            #canvasFrame = Label(mainFrameView)
                 # canvasFrame.configure(font=("Arial", 10))
-                canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-                canvas = tk.Canvas(canvasFrame, width=170, height=170)
-                canvas.configure(bg="#444444")
-                canvas.pack(expand=False)
-                animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
+            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            #canvas.configure(bg="#444444")
+            #canvas.pack(expand=False)
+            #animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
 
 
 
@@ -256,6 +265,7 @@ def getSelectedRow(event):
             tabControlMain.hide(tabMain4)
 
         if len(str(row[54])) > 0 and row[54] != None:
+            imgFlags = 5
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
             LV8103553S2EXUPH85L.configure(text=f"UPH 85%:")
@@ -291,6 +301,7 @@ def getSelectedRow(event):
             tabControlMain.hide(tabMain5)
 
         if row[31] != None and int(row[37] != 0):
+            imgFlags = 6
             tabControlMain.add(tabMain6, text=" V810-8120S2 ")
             LV8108120S2Prog.configure(text=f"{row[31]}")
             LV8108120S2UPH85L.configure(text=f"UPH 85%:")
@@ -467,10 +478,18 @@ def refresh():
 #   selected_item = tree.selection()[0]
 #   tree.delete(selected_item)
 
-def pressed2(event):
-#def pressed2(tabMain4name):
+def getSelectedTab(event):
     print('Button-2 pressed at x = % d, y = % d'%(event.x, event.y))
-    #print('tabMain4name')
+
+    canvasFrame = Label(mainFrameView)
+    # canvasFrame.configure(font=("Arial", 10))
+    canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+    canvas = tk.Canvas(canvasFrame, width=170, height=170)
+    canvas.configure(bg="#444444")
+    canvas.pack(expand=False)
+    #animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
+    animateImage(root, canvas, minMovement, minMovement, 'images/V810-3483S2EX/board.png')
+
 
 
 root = tk.Tk()
@@ -505,10 +524,10 @@ LDateDB.config(font=("Arial", 10))
 LDateDB.grid(row=0, column=4, sticky=W)
 
 tabControlMain = ttk.Notebook(mainFrameView)
+tabControlMain.bind('<Button-1>', getSelectedTab)
 
 tabMain1 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain1, text=" V849 ")
-
 
 LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV849Prog.configure(font=("Arial", 10))
@@ -682,21 +701,8 @@ LV8103163Comment = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1
 LV8103163Comment.configure(font=("Arial", 10))
 LV8103163Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
-
 tabMain4 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
-
-tabMain4name = 'V810-3483S2EX'
-#tabMain4.bind('<Button-1>', pressed2(tabMain4name))
-tabControlMain.bind('<Button-1>', pressed2)
-#tabMain4.bind("<Button-1>", getSelectedTab)  # <----- added
-
-
-
-
-
-
-
 
 LV8103483S2EXProg = Label(tabMain4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV8103483S2EXProg.configure(font=("Arial", 10))
