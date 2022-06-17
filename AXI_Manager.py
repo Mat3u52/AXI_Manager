@@ -11,7 +11,6 @@ startXPosition = 170
 startYPosition = 85
 minMovement = -1
 refreshSec = 0.01
-imgFlags = 0
 
 def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
     #img = tk.PhotoImage(file='board.png')
@@ -37,7 +36,8 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
             yinc = -yinc
         if al == 170/2:
             break
-    root.mainloop()
+    root.update()
+    #root.mainloop()
 def swich(x):
     match x:
         case "NONE":
@@ -61,12 +61,11 @@ def getSelectedRow(event):
     E5.delete(0, END)
     E6.delete(0, END)
 
-    canvasFrame = Label(mainFrameView)
-    # canvasFrame.configure(font=("Arial", 10))
-    canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-    canvas = tk.Canvas(canvasFrame, width=170, height=170)
-    canvas.configure(bg="#444444")
-    canvas.pack(expand=False)
+    #canvasFrame = Label(mainFrameView)
+    #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+    #canvas = tk.Canvas(canvasFrame, width=170, height=170)
+    #canvas.configure(bg="#444444")
+    #canvas.pack(expand=False)
 
     #print(tree.selection())  # this will print the names of the selected rows
     for nm in tree.selection():
@@ -105,7 +104,6 @@ def getSelectedRow(event):
         LDate.configure(text=f"Inserted:")
 
         if int(len(str(row[17]))) > 4:
-            imgFlags = 1
             tabControlMain.add(tabMain1, text=" V849 ")
             LV849Prog.configure(text=f"{row[17]}")
             LV849UPH85L.configure(text=f"UPH 85%:")
@@ -138,11 +136,19 @@ def getSelectedRow(event):
                 LV849EPI.configure(text=f"{row[19]}", fg="#D44339")
 
             LV849Comment.configure(text=f"{row[20]}")
+
+            #canvasFrame = Label(mainFrameView)
+            canvasFrame = Label(tabMain1)
+            canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            canvas.configure(bg="#444444")
+            canvas.pack(expand=False)
+            animateImage(root, canvas, minMovement, minMovement, 'images/V849/'+row[17]+'.png')
+
         else:
             tabControlMain.hide(tabMain1)
 
         if int(len(str(row[22]))) > 4:
-            imgFlags = 2
             tabControlMain.add(tabMain2, text=" V817 ")
             LV817Prog.configure(text=f"{row[22]}")
             LV817UPH85L.configure(text=f"UPH 85%:")
@@ -176,11 +182,17 @@ def getSelectedRow(event):
 
             LV817Comment.configure(text=f"{row[25]}")
 
+            #canvasFrame = Label(mainFrameView)
+            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            #canvas.configure(bg="#444444")
+            #canvas.pack(expand=False)
+            #animateImage(root, canvas, minMovement, minMovement, 'images/V817/' + row[22] + '.png')
+
         else:
             tabControlMain.hide(tabMain2)
 
         if len(str(row[27])) > 4:
-            imgFlags = 3
             tabControlMain.add(tabMain3, text=" V810-3163 ")
             LV8103163Prog.configure(text=f"{row[27]}")
             LV8103163UPH85L.configure(text=f"UPH 85%:")
@@ -212,11 +224,18 @@ def getSelectedRow(event):
                 LV8103163EPI.configure(text=f"{row[29]}", fg="#D44339")
 
             LV8103483S2EXComment.configure(text=f"{row[30]}")
+
+            #canvasFrame = Label(mainFrameView)
+            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            #canvas.configure(bg="#444444")
+            #canvas.pack(expand=False)
+            #animateImage(root, canvas, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+
         else:
             tabControlMain.hide(tabMain3)
 
         if row[45] != None and int(row[41]) != 0:
-            imgFlags = 4
             tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
             LV8103483S2EXProg.configure(text=f"{row[45]}")
             LV8103483S2EXUPH85L.configure(text=f"UPH 85%:")
@@ -250,22 +269,16 @@ def getSelectedRow(event):
             LV8103483S2EXComment.configure(text=f"{row[48]}")
 
             #canvasFrame = Label(mainFrameView)
-                # canvasFrame.configure(font=("Arial", 10))
             #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
             #canvas = tk.Canvas(canvasFrame, width=170, height=170)
             #canvas.configure(bg="#444444")
             #canvas.pack(expand=False)
-            #animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
-
-
-
-
+            #animateImage(root, canvas, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
 
         else:
             tabControlMain.hide(tabMain4)
 
         if len(str(row[54])) > 0 and row[54] != None:
-            imgFlags = 5
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
             LV8103553S2EXUPH85L.configure(text=f"UPH 85%:")
@@ -297,11 +310,18 @@ def getSelectedRow(event):
                 LV8103553S2EXEPI.configure(text=f"{row[56]}", fg="#D44339")
 
             LV8103553S2EXComment.configure(text=f"{row[57]}")
+
+            #canvasFrame = Label(mainFrameView)
+            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            #canvas.configure(bg="#444444")
+            #canvas.pack(expand=False)
+            #animateImage(root, canvas, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+
         else:
             tabControlMain.hide(tabMain5)
 
         if row[31] != None and int(row[37] != 0):
-            imgFlags = 6
             tabControlMain.add(tabMain6, text=" V810-8120S2 ")
             LV8108120S2Prog.configure(text=f"{row[31]}")
             LV8108120S2UPH85L.configure(text=f"UPH 85%:")
@@ -334,6 +354,14 @@ def getSelectedRow(event):
                 LV8108120S2EPI.configure(text=f"{row[33]}", fg="#D44339")
 
             LV8108120S2Comment.configure(text=f"{row[34]}")
+
+            #canvasFrame = Label(mainFrameView)
+            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            #canvas.configure(bg="#444444")
+            #canvas.pack(expand=False)
+            #animateImage(root, canvas, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+
         else:
             tabControlMain.hide(tabMain6)
 
@@ -478,20 +506,8 @@ def refresh():
 #   selected_item = tree.selection()[0]
 #   tree.delete(selected_item)
 
-def getSelectedTab(event):
-    print('Button-2 pressed at x = % d, y = % d'%(event.x, event.y))
 
-    canvasFrame = Label(mainFrameView)
-    # canvasFrame.configure(font=("Arial", 10))
-    canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-    canvas = tk.Canvas(canvasFrame, width=170, height=170)
-    canvas.configure(bg="#444444")
-    canvas.pack(expand=False)
-    #animate_ball(root, canvas, Ball_min_movement, Ball_min_movement, 'images/V810-3483S2EX/'+row[45]+'.png')
-    animateImage(root, canvas, minMovement, minMovement, 'images/V810-3483S2EX/board.png')
-
-
-
+#def getSelectedTab(event):
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
@@ -524,7 +540,7 @@ LDateDB.config(font=("Arial", 10))
 LDateDB.grid(row=0, column=4, sticky=W)
 
 tabControlMain = ttk.Notebook(mainFrameView)
-tabControlMain.bind('<Button-1>', getSelectedTab)
+#tabControlMain.bind('<Button-1>', getSelectedTab)
 
 tabMain1 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain1, text=" V849 ")
