@@ -5,14 +5,14 @@ from tkinter import *
 import time
 import pyperclip
 import os
-#from PIL import Image, ImageTk
+from PIL import Image,ImageTk
 
 tab = []
 startXPosition = 170
 startYPosition = 85
 minMovement = -1
 refreshSec = 0.01
-imageFlags = 0
+
 def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
     #img = tk.PhotoImage(file='board.png')
     if os.path.isfile(imgPath):
@@ -23,6 +23,7 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
     print(imgPath)
 
     imageB = canvas.create_image(startXPosition, startYPosition, image=img)
+
     while True:
         canvas.move(imageB, xinc, 0)
         root.update()
@@ -36,8 +37,27 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
         if bl < abs(yinc):
             yinc = -yinc
         if al == 170/2:
+            img0 = tk.PhotoImage(file='board1.png')
+            canvas.itemconfig(imageB, image=img0)
+            xinc = 0
+            yinc = 0
             break
-    root.mainloop()
+    img0 = tk.PhotoImage(file='board1.png')
+    canvas.itemconfig(imageB, image=img0)
+
+    #canvas.itemconfig(imageB, image=img)
+
+    #canvasFrame1 = Label(tabMain1)
+    #canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
+    #canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
+    #img0 = tk.PhotoImage(file='board.png')
+    #canvas1.create_image(85, 85, image=img0)
+    #canvas1.configure(bg="#999999")
+    #canvas1.itemconfig(imageB, image=img0)
+    #canvas1.pack(expand=False)
+
+    #root.mainloop()
+
 def swich(x):
     match x:
         case "NONE":
@@ -51,7 +71,12 @@ def swich(x):
         case _:
             return 0
 def getSelectedRow(event):
-    imageFlags = 0
+    imageFlagV849 = 0
+    imageFlagV817 = 0
+    imageFlagV8103163 = 0
+    imageFlagV8103483S2EX = 0
+    imageFlagV8103553S2EX = 0
+    imageFlagV8108120S2 = 0
     tab.clear()
     E1.config(state="normal")
     objDB = DBConnect()
@@ -61,13 +86,6 @@ def getSelectedRow(event):
     E4.delete(0, END)
     E5.delete(0, END)
     E6.delete(0, END)
-
-    #tabControlMain.hide(tabMain1)
-    #tabControlMain.hide(tabMain2)
-    #tabControlMain.hide(tabMain3)
-    #tabControlMain.hide(tabMain4)
-    #tabControlMain.hide(tabMain5)
-    #tabControlMain.hide(tabMain6)
 
     #print(tree.selection())  # this will print the names of the selected rows
     for nm in tree.selection():
@@ -139,34 +157,16 @@ def getSelectedRow(event):
 
             LV849Comment.configure(text=f"{row[20]}")
 
-            imageFlags = 1
-            #canvasFrame = Label(tabMain1)
-            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
-            #canvas.configure(bg="#444444")
-            #canvas.pack(expand=False)
-            #animateImage(root, canvas, minMovement, minMovement, 'images/V849/'+row[17]+'.png')
+            canvasFrame1 = Label(tabMain1)
+            canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
+            canvas1.configure(bg="#444444")
+            canvas1.pack(expand=False)
 
+            #gif1 = tk.PhotoImage(file='board.png')
+            #canvas.create_image(85, 85, image=gif1)
 
-
-            #canvas.delete('all')
-
-            #canvasFrame = Label(tabMain1)
-            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
-            #canvas.configure(bg="#444444")
-            #canvas.pack(expand=False)
-            #img = PhotoImage(file='board.png')
-            #canvas.create_image(0, 0, anchor=NW, image=img)
-
-            #canvas = Canvas(canvasFrame, width=170, height=170)
-            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            #canvas.pack()
-            #img = PhotoImage(file='board.png')
-            #canvas.create_image(100, 100, anchor=NW, image=img)
-            #canvasFrame.update()
-            #canvasFrame.mainloop()
-
+            imageFlagV849 = 1
         else:
             tabControlMain.hide(tabMain1)
 
@@ -204,12 +204,17 @@ def getSelectedRow(event):
 
             LV817Comment.configure(text=f"{row[25]}")
 
-            #canvasFrame = Label(mainFrameView)
-            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
-            #canvas.configure(bg="#444444")
-            #canvas.pack(expand=False)
-            #animateImage(root, canvas, minMovement, minMovement, 'images/V817/' + row[22] + '.png')
+            canvasFrame = Label(tabMain2)
+            canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            canvas.configure(bg="#444444")
+            canvas.pack(expand=False)
+
+            #gif1 = tk.PhotoImage(file='board.png')
+            #canvas.create_image(85, 85, image=gif1)
+            #animateImage(root, canvas, minMovement, minMovement, 'images/V849/' + row[17] + '.png')
+
+            imageFlagV817 = 1;
 
         else:
             tabControlMain.hide(tabMain2)
@@ -247,12 +252,16 @@ def getSelectedRow(event):
 
             LV8103483S2EXComment.configure(text=f"{row[30]}")
 
-            #canvasFrame = Label(mainFrameView)
-            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
-            #canvas.configure(bg="#444444")
-            #canvas.pack(expand=False)
-            #animateImage(root, canvas, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+            canvasFrame = Label(tabMain3)
+            canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            canvas.configure(bg="#444444")
+            canvas.pack(expand=False)
+
+            #gif1 = tk.PhotoImage(file='board.png')
+            #canvas.create_image(85, 85, image=gif1)
+
+            imageFlagV8103163 = 1
 
         else:
             tabControlMain.hide(tabMain3)
@@ -290,12 +299,16 @@ def getSelectedRow(event):
 
             LV8103483S2EXComment.configure(text=f"{row[48]}")
 
-            #canvasFrame = Label(mainFrameView)
-            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
-            #canvas.configure(bg="#444444")
-            #canvas.pack(expand=False)
-            #animateImage(root, canvas, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+            canvasFrame = Label(tabMain4)
+            canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            canvas.configure(bg="#444444")
+            canvas.pack(expand=False)
+
+            #gif1 = tk.PhotoImage(file='board.png')
+            #canvas.create_image(85, 85, image=gif1)
+
+            imageFlagV8103483S2EX = 1
 
         else:
             tabControlMain.hide(tabMain4)
@@ -333,12 +346,16 @@ def getSelectedRow(event):
 
             LV8103553S2EXComment.configure(text=f"{row[57]}")
 
-            #canvasFrame = Label(mainFrameView)
-            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
-            #canvas.configure(bg="#444444")
-            #canvas.pack(expand=False)
-            #animateImage(root, canvas, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+            canvasFrame = Label(tabMain5)
+            canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas = tk.Canvas(canvasFrame, width=170, height=170)
+            canvas.configure(bg="#444444")
+            canvas.pack(expand=False)
+
+            #gif1 = tk.PhotoImage(file='board.png')
+            #canvas.create_image(85, 85, image=gif1)
+
+            imageFlagV8103553S2EX = 1
 
         else:
             tabControlMain.hide(tabMain5)
@@ -377,32 +394,33 @@ def getSelectedRow(event):
 
             LV8108120S2Comment.configure(text=f"{row[34]}")
 
-            #canvasFrame = Label(mainFrameView)
-            #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-            #canvas = tk.Canvas(canvasFrame, width=170, height=170)
-            #canvas.configure(bg="#444444")
-            #canvas.pack(expand=False)
-            #animateImage(root, canvas, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
-
-        else:
-            tabControlMain.hide(tabMain6)
-
-            # frame = Frame(mainFrameView)
-            # frame.grid(row=0, column=2, rowspan=4, sticky=W)
-        #canvasFrame = Label(mainFrameView)
-            #canvasFrame.configure(font=("Arial", 10))
-        #canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
-        #canvas = tk.Canvas(canvasFrame, width=120, height=150)
-        #canvas.configure(bg="#444444")
-        #canvas.pack(expand=False)
-            #animate_ball(root, canvas, Ball_min_movement, Ball_min_movement)
-        if imageFlags == 1:
-            canvasFrame = Label(tabMain1)
+            canvasFrame = Label(tabMain6)
             canvasFrame.grid(row=0, column=6, rowspan=6, sticky=W)
             canvas = tk.Canvas(canvasFrame, width=170, height=170)
             canvas.configure(bg="#444444")
             canvas.pack(expand=False)
-            animateImage(root, canvas, minMovement, minMovement, 'images/V849/'+row[17]+'.png')
+
+            #gif1 = tk.PhotoImage(file='board.png')
+            #canvas.create_image(85, 85, image=gif1)
+
+            imageFlagV8108120S2 = 1
+
+        else:
+            tabControlMain.hide(tabMain6)
+
+
+        if imageFlagV849 == 1 and tabMain1:
+            animateImage(root, canvas1, minMovement, minMovement, 'images/V849/'+row[17]+'.png')
+        if imageFlagV817 == 1 and tabMain2:
+            animateImage(root, canvas, minMovement, minMovement, 'images/V817/'+row[22]+'.png')
+        if imageFlagV8103163 == 1 and tabMain3:
+            animateImage(root, canvas, minMovement, minMovement, 'images/V810-3163/'+row[27]+'.png')
+        if imageFlagV8103483S2EX == 1 and tabMain4:
+            animateImage(root, canvas, minMovement, minMovement, 'images/V810-3483S2EX/'+row[45]+'.png')
+        if imageFlagV8103553S2EX == 1 and tabMain5:
+            animateImage(root, canvas, minMovement, minMovement, 'images/V810-3553S2EX/'+row[54]+'.png')
+        if imageFlagV8108120S2 == 1 and tabMain6:
+            animateImage(root, canvas, minMovement, minMovement, 'images/V810-8120S2/'+row[31]+'.png')
 
 
 def updateDisplay():
@@ -530,6 +548,17 @@ def refresh():
     vsb.place(x=535, y=25, height=273)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
+def getSelectedTab(event):
+    print("click")
+    if tabMain1:
+        print("1")
+        canvasFrame1 = Label(tabMain1)
+        canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
+        canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
+        canvas1.configure(bg="#444444")
+        canvas1.pack(expand=False)
+
+        animateImage(root, canvas1, minMovement, minMovement, 'images/V849/board.png')
 
 #def delete():
    # Get selected item to Delete
@@ -570,10 +599,10 @@ LDateDB.config(font=("Arial", 10))
 LDateDB.grid(row=0, column=4, sticky=W)
 
 tabControlMain = ttk.Notebook(mainFrameView)
-#tabControlMain.bind('<Button-1>', getSelectedTab)
 
 tabMain1 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain1, text=" V849 ")
+tabControlMain.bind('<Button-1>', getSelectedTab)
 
 LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV849Prog.configure(font=("Arial", 10))
@@ -933,6 +962,7 @@ LV8108120S2Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
 
+#tabControlMain.bind('<Button-1>', getSelectedTab)
         #LItemImageBoard = Label(mainFrameView, image = imageBoard)
         #LItemImageBoard.grid(row=0, column=1, sticky=W)
 #------------------- The End Main View ----------------------------
