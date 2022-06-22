@@ -5,7 +5,7 @@ from tkinter import *
 import time
 import pyperclip
 import os
-from PIL import Image,ImageTk
+#from PIL import Image,ImageTk
 
 tab = []
 startXPosition = 170
@@ -38,19 +38,6 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
             yinc = -yinc
         if al == 170/2:
             break
-    #img0 = tk.PhotoImage(file='board1.png')
-    #canvas.itemconfig(imageB, image=img0)
-
-    #canvas.itemconfig(imageB, image=img)
-
-    #canvasFrame1 = Label(tabMain1)
-    #canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
-    #canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
-    #img0 = tk.PhotoImage(file='board.png')
-    #canvas1.create_image(85, 85, image=img0)
-    #canvas1.configure(bg="#999999")
-    #canvas1.itemconfig(imageB, image=img0)
-    #canvas1.pack(expand=False)
 
     #root.mainloop()
 
@@ -269,12 +256,25 @@ def getSelectedRow(event):
             canvas3.configure(bg="#444444")
             canvas3.pack(expand=False)
 
+            if flagAnimation == False:
+                tabControlMain.select(tabMain3)
+                animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+                flagAnimation = True
             imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
             if os.path.isfile(imgBoard3):
                 img3 = tk.PhotoImage(file=imgBoard3)
             else:
                 img3 = tk.PhotoImage(file='board.png')
             canvas3.create_image(85, 85, image=img3)
+
+
+
+            #imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
+            #if os.path.isfile(imgBoard3):
+            #    img3 = tk.PhotoImage(file=imgBoard3)
+            #else:
+            #    img3 = tk.PhotoImage(file='board.png')
+            #canvas3.create_image(85, 85, image=img3)
 
             imageFlagV8103163 = 1
 
