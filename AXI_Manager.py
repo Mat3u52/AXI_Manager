@@ -320,12 +320,24 @@ def getSelectedRow(event):
             canvas4.configure(bg="#444444")
             canvas4.pack(expand=False)
 
+            if flagAnimation == False:
+                tabControlMain.select(tabMain4)
+                animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                flagAnimation = True
             imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
             if os.path.isfile(imgBoard4):
                 img4 = tk.PhotoImage(file=imgBoard4)
             else:
                 img4 = tk.PhotoImage(file='board.png')
             canvas4.create_image(85, 85, image=img4)
+
+
+            #imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
+            #if os.path.isfile(imgBoard4):
+            #    img4 = tk.PhotoImage(file=imgBoard4)
+            #else:
+            #    img4 = tk.PhotoImage(file='board.png')
+            #canvas4.create_image(85, 85, image=img4)
 
             imageFlagV8103483S2EX = 1
 
