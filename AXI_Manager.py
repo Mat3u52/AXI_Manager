@@ -383,12 +383,25 @@ def getSelectedRow(event):
             canvas5.configure(bg="#444444")
             canvas5.pack(expand=False)
 
-            imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
+
+            if flagAnimation == False:
+                tabControlMain.select(tabMain5)
+                animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                flagAnimation = True
+            imgBoard5 = 'images/V810-3483S2EX/' + row[54] + '.png'
             if os.path.isfile(imgBoard5):
                 img5 = tk.PhotoImage(file=imgBoard5)
             else:
                 img5 = tk.PhotoImage(file='board.png')
             canvas5.create_image(85, 85, image=img5)
+
+
+            #imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
+            #if os.path.isfile(imgBoard5):
+            #    img5 = tk.PhotoImage(file=imgBoard5)
+            #else:
+            #    img5 = tk.PhotoImage(file='board.png')
+            #canvas5.create_image(85, 85, image=img5)
 
             imageFlagV8103553S2EX = 1
 
