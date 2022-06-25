@@ -388,7 +388,7 @@ def getSelectedRow(event):
                 tabControlMain.select(tabMain5)
                 animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
                 flagAnimation = True
-            imgBoard5 = 'images/V810-3483S2EX/' + row[54] + '.png'
+            imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
             if os.path.isfile(imgBoard5):
                 img5 = tk.PhotoImage(file=imgBoard5)
             else:
@@ -448,12 +448,25 @@ def getSelectedRow(event):
             canvas6.configure(bg="#444444")
             canvas6.pack(expand=False)
 
+            if flagAnimation == False:
+                tabControlMain.select(tabMain6)
+                animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                flagAnimation = True
             imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
             if os.path.isfile(imgBoard6):
                 img6 = tk.PhotoImage(file=imgBoard6)
             else:
                 img6 = tk.PhotoImage(file='board.png')
             canvas6.create_image(85, 85, image=img6)
+
+
+
+            #imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
+            #if os.path.isfile(imgBoard6):
+            #    img6 = tk.PhotoImage(file=imgBoard6)
+            #else:
+            #    img6 = tk.PhotoImage(file='board.png')
+            #canvas6.create_image(85, 85, image=img6)
 
             imageFlagV8108120S2 = 1
 
