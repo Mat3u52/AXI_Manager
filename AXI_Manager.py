@@ -55,12 +55,12 @@ def swich(x):
             return 0
 def getSelectedRow(event):
     flagAnimation = False
-    imageFlagV849 = 0
-    imageFlagV817 = 0
-    imageFlagV8103163 = 0
-    imageFlagV8103483S2EX = 0
-    imageFlagV8103553S2EX = 0
-    imageFlagV8108120S2 = 0
+    #imageFlagV849 = 0
+    #imageFlagV817 = 0
+    #imageFlagV8103163 = 0
+    #imageFlagV8103483S2EX = 0
+    #imageFlagV8103553S2EX = 0
+    #imageFlagV8108120S2 = 0
     tab.clear()
     E1.config(state="normal")
     objDB = DBConnect()
@@ -148,17 +148,19 @@ def getSelectedRow(event):
             canvas1.pack(expand=False)
             if flagAnimation == False:
                 tabControlMain.select(tabMain1)
-                animateImage(root, canvas1, minMovement, minMovement, 'images/V849/' + row[17] + '.png')
+                #animateImage(root, canvas1, minMovement, minMovement, 'images/V849/' + row[17] + '.png')
+                animateImage(root, canvas1, minMovement, minMovement, 'X:/images/V849/' + row[17] + '.png')
                 flagAnimation = True
 
-            imgBoard1 = 'images/V849/'+row[17]+'.png'
+            #imgBoard1 = 'images/V849/'+row[17]+'.png'
+            imgBoard1 = 'X:/images/V849/'+row[17]+'.png'
             if os.path.isfile(imgBoard1):
                 img1 = tk.PhotoImage(file=imgBoard1)
             else:
                 img1 = tk.PhotoImage(file='board.png')
             canvas1.create_image(85, 85, image=img1)
 
-            imageFlagV849 = 1
+            #imageFlagV849 = 1
         else:
             tabControlMain.hide(tabMain1)
 
@@ -203,16 +205,18 @@ def getSelectedRow(event):
             canvas2.pack(expand=False)
             if flagAnimation == False:
                 tabControlMain.select(tabMain2)
-                animateImage(root, canvas2, minMovement, minMovement, 'images/V817/' + row[22] + '.png')
+                #animateImage(root, canvas2, minMovement, minMovement, 'images/V817/' + row[22] + '.png')
+                animateImage(root, canvas2, minMovement, minMovement, 'X:/images/V817/' + row[22] + '.png')
                 flagAnimation = True
-            imgBoard2 = 'images/V817/' + row[22] + '.png'
+            #imgBoard2 = 'images/V817/' + row[22] + '.png'
+            imgBoard2 = 'X:/images/V817/' + row[22] + '.png'
             if os.path.isfile(imgBoard2):
                 img2 = tk.PhotoImage(file=imgBoard2)
             else:
                 img2 = tk.PhotoImage(file='board.png')
             canvas2.create_image(85, 85, image=img2)
 
-            imageFlagV817 = 1;
+            #imageFlagV817 = 1;
 
         else:
             tabControlMain.hide(tabMain2)
@@ -258,9 +262,11 @@ def getSelectedRow(event):
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain3)
-                animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+                #animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+                animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
                 flagAnimation = True
-            imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
+            #imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
+            imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
             if os.path.isfile(imgBoard3):
                 img3 = tk.PhotoImage(file=imgBoard3)
             else:
@@ -276,7 +282,7 @@ def getSelectedRow(event):
             #    img3 = tk.PhotoImage(file='board.png')
             #canvas3.create_image(85, 85, image=img3)
 
-            imageFlagV8103163 = 1
+            #imageFlagV8103163 = 1
 
         else:
             tabControlMain.hide(tabMain3)
@@ -322,9 +328,11 @@ def getSelectedRow(event):
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain4)
-                animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                #animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                animateImage(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
                 flagAnimation = True
-            imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
+            #imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
+            imgBoard4 = 'X:/images/V810-3483S2EX/' + row[45] + '.png'
             if os.path.isfile(imgBoard4):
                 img4 = tk.PhotoImage(file=imgBoard4)
             else:
@@ -339,7 +347,7 @@ def getSelectedRow(event):
             #    img4 = tk.PhotoImage(file='board.png')
             #canvas4.create_image(85, 85, image=img4)
 
-            imageFlagV8103483S2EX = 1
+            #imageFlagV8103483S2EX = 1
 
         else:
             tabControlMain.hide(tabMain4)
@@ -386,9 +394,11 @@ def getSelectedRow(event):
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain5)
-                animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                #animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                animateImage(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
                 flagAnimation = True
-            imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
+            #imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
+            imgBoard5 = 'X:/images/V810-3553S2EX/' + row[54] + '.png'
             if os.path.isfile(imgBoard5):
                 img5 = tk.PhotoImage(file=imgBoard5)
             else:
@@ -403,7 +413,7 @@ def getSelectedRow(event):
             #    img5 = tk.PhotoImage(file='board.png')
             #canvas5.create_image(85, 85, image=img5)
 
-            imageFlagV8103553S2EX = 1
+            #imageFlagV8103553S2EX = 1
 
         else:
             tabControlMain.hide(tabMain5)
@@ -450,9 +460,11 @@ def getSelectedRow(event):
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain6)
-                animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                #animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                animateImage(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
                 flagAnimation = True
-            imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
+            #imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
+            imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
             if os.path.isfile(imgBoard6):
                 img6 = tk.PhotoImage(file=imgBoard6)
             else:
@@ -468,7 +480,7 @@ def getSelectedRow(event):
             #    img6 = tk.PhotoImage(file='board.png')
             #canvas6.create_image(85, 85, image=img6)
 
-            imageFlagV8108120S2 = 1
+            #imageFlagV8108120S2 = 1
 
         else:
             tabControlMain.hide(tabMain6)
