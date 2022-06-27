@@ -1,3 +1,5 @@
+import _tkinter
+
 from DBConnect import DBConnect
 import tkinter as tk
 from tkinter import ttk
@@ -19,6 +21,8 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
         img = tk.PhotoImage(file=imgPath)
     else:
         img = tk.PhotoImage(file='board.png')
+
+
 
     print(imgPath)
 
@@ -149,7 +153,11 @@ def getSelectedRow(event):
             if flagAnimation == False:
                 tabControlMain.select(tabMain1)
                 #animateImage(root, canvas1, minMovement, minMovement, 'images/V849/' + row[17] + '.png')
-                animateImage(root, canvas1, minMovement, minMovement, 'X:/images/V849/' + row[17] + '.png')
+                try:
+                    animateImage(root, canvas1, minMovement, minMovement, 'X:/images/V849/' + row[17] + '.png')
+                except (RuntimeError, _tkinter.TclError):
+                    print("invalid command name")
+                    #pass
                 flagAnimation = True
 
             #imgBoard1 = 'images/V849/'+row[17]+'.png'
