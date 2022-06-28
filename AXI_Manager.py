@@ -1,3 +1,5 @@
+import sys
+
 import _tkinter
 
 from DBConnect import DBConnect
@@ -145,6 +147,7 @@ def getSelectedRow(event):
 
             LV849Comment.configure(text=f"{row[20]}")
 
+
             canvasFrame1 = Label(tabMain1)
             canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
             canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
@@ -155,9 +158,16 @@ def getSelectedRow(event):
                 #animateImage(root, canvas1, minMovement, minMovement, 'images/V849/' + row[17] + '.png')
                 try:
                     animateImage(root, canvas1, minMovement, minMovement, 'X:/images/V849/' + row[17] + '.png')
-                except (RuntimeError, _tkinter.TclError):
+                except _tkinter.TclError:
                     print("invalid command name")
+                    #if RuntimeError.message == 'RuntimeError: Too early to create image: no default root window':
+                    #    print("Too early")
+                #except RuntimeError:
+                    #sys.setrecursionlimit(1200)
+                    #if e.message == ''
+                    #print("Unknown Error")
                     #pass
+
                 flagAnimation = True
 
             #imgBoard1 = 'images/V849/'+row[17]+'.png'
@@ -168,7 +178,7 @@ def getSelectedRow(event):
                 img1 = tk.PhotoImage(file='board.png')
             canvas1.create_image(85, 85, image=img1)
 
-            #imageFlagV849 = 1
+
         else:
             tabControlMain.hide(tabMain1)
 
