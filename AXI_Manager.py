@@ -1129,7 +1129,7 @@ B1.grid(row=3, column=0, columnspan = 4, pady=2)
 #---INSERT---
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
-
+#---INSERT V810-3553S2EX---
 insertFrameVIV = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
 insertFrameVIV.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 
@@ -1200,10 +1200,10 @@ BAANViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=37, textvariable=BAANIns
 BAANViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
 BAANViTroxIVInsert.grid(row=2, column=1, pady=1, sticky=W)
 BAANViTroxIVInsert.current(0)
-
+#---The End INSERT V810-3553S2EX---
 BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData)
 BI1.grid(row=3, column=0, columnspan = 4, pady=2)
-#-----------------The End INSERT-----------
+#---The End INSERT---
 
 #-----------------Search-------------------
 ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#302928", fg="#FFFFFF")
