@@ -594,6 +594,11 @@ def getSelectedTab(event):
 
         animateImage(root, canvas1, minMovement, minMovement, 'images/V849/board.png')
 
+def doPopup(event):
+    try:
+        m.tk_popup(event.x_root, event.y_root)
+    finally:
+        m.grab_release()
 #def delete():
    # Get selected item to Delete
 #   selected_item = tree.selection()[0]
@@ -611,6 +616,13 @@ root.title('AXI - Manager')
 root.geometry(windowPosition)
 #root.resizable(0, 0)
 root.configure(background='#000000')
+
+#---contex menu - right click menu---
+m = Menu(root, tearoff=0)
+m.add_command(label="Copy")
+#pyperclip.copy(E2.get()) <-- to jest zwykłe menu / szukaj w strafa kursow
+#---The End contex menu - right click nemu---
+
 
 #-------------- Main View ----------------------------------------------------------------------------------------------
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
@@ -1209,6 +1221,7 @@ BI1.grid(row=3, column=0, columnspan = 4, pady=2)
 ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#302928", fg="#FFFFFF")
 ESearch.config(font=("Arial", 10))
 ESearch.grid(row=0, column=0, pady=1)
+ESearch.bind("<Button-3>", doPopup)
 BSearch = ttk.Button(tab1, text="Search", width=10, command=search)
 BSearch.grid(row=0, column=1, pady=1)
 BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
