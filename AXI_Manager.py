@@ -596,16 +596,29 @@ def getSelectedTab(event):
 
 def doPopup(event):
     try:
-        m.tk_popup(event.x_root, event.y_root)
+        contextMenu.tk_popup(event.x_root, event.y_root)
     finally:
-        m.grab_release()
+        contextMenu.grab_release()
+def doPopupInsert(event):
+    try:
+        contextInsertMenu.tk_popup(event.x_root, event.y_root)
+    finally:
+        contextInsertMenu.grab_release()
+
+def contextCopy():
+    pyperclip.copy(ESearch.get())
+def contextPasteESearch():
+    ESearch.insert(tk.END, pyperclip.paste())
+def contextCopyEI2():
+    pyperclip.copy(EI2.get())
+def contextPasteEI2():
+    EI2.insert(tk.END, pyperclip.paste())
+
 #def delete():
    # Get selected item to Delete
 #   selected_item = tree.selection()[0]
 #   tree.delete(selected_item)
 
-
-#def getSelectedTab(event):
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
@@ -618,9 +631,13 @@ root.geometry(windowPosition)
 root.configure(background='#000000')
 
 #---contex menu - right click menu---
-m = Menu(root, tearoff=0)
-m.add_command(label="Copy")
-#pyperclip.copy(E2.get()) <-- to jest zwykłe menu / szukaj w strafa kursow
+contextMenu = Menu(root, tearoff=0)
+contextMenu.add_command(label="Copy", command=contextCopy)
+contextMenu.add_command(label="Paste", command=contextPasteESearch)
+
+contextInsertMenu = Menu(root, tearoff=0)
+contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
+contextInsertMenu.add_command(label="Paste", command=contextPasteEI2)
 #---The End contex menu - right click nemu---
 
 
@@ -1181,6 +1198,7 @@ LI9.grid(row=2, column=2, sticky=W)
 EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
 EI2.config(font=("Arial", 10))
 EI2.grid(row=0, column=1, pady=1)
+EI2.bind("<Button-3>", doPopupInsert)
 EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
 EI3.config(font=("Arial", 10))
 EI3.grid(row=0, column=3, pady=1, stick=W)
@@ -1199,22 +1217,22 @@ EI6.grid(row=2, column=3, pady=1)
 
 LCInsert = tk.StringVar
 LCViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=37, textvariable=LCInsert, state='readonly')
-LCViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
+LCViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
 LCViTroxIVInsert.grid(row=1, column=1, pady=1, sticky=W)
 LCViTroxIVInsert.current(0)
 EPIInsert = tk.StringVar
 EPIViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=20, textvariable=EPIInsert, state='readonly')
-EPIViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
+EPIViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
 EPIViTroxIVInsert.grid(row=1, column=3, pady=1, sticky=W)
 EPIViTroxIVInsert.current(0)
 BAANInsert = tk.StringVar
 BAANViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=37, textvariable=BAANInsert, state='readonly')
-BAANViTroxIVInsert['values'] = ("NONE","YES","NO","LACK")
+BAANViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
 BAANViTroxIVInsert.grid(row=2, column=1, pady=1, sticky=W)
 BAANViTroxIVInsert.current(0)
 #---The End INSERT V810-3553S2EX---
 BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData)
-BI1.grid(row=3, column=0, columnspan = 4, pady=2)
+BI1.grid(row=3, column=0, columnspan=4, pady=2)
 #---The End INSERT---
 
 #-----------------Search-------------------
@@ -1230,24 +1248,24 @@ BSearchR.grid(row=0, column=2, pady=1)
 
 tree = ttk.Treeview(tab1)
 
-tree["columns"] = ("one", "two", "three", "Four", "Five", "Six", "Seven") # added
+tree["columns"] = ("one", "two", "three", "Four", "Five", "Six", "Seven")
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
 tree.column("one", width=35, minwidth=35, stretch=tk.NO)
 tree.column("two", width=190, minwidth=190, stretch=tk.NO)
 tree.column("three", width=130, minwidth=130, stretch=tk.NO)
 tree.column("Four", width=30, minwidth=30, stretch=tk.NO)
-tree.column("Five", width=35, minwidth=30, stretch=tk.NO) # added
-tree.column("Six", width=35, minwidth=30, stretch=tk.NO) # added
-tree.column("Seven", width=35, minwidth=30, stretch=tk.NO) # added
+tree.column("Five", width=35, minwidth=30, stretch=tk.NO)
+tree.column("Six", width=35, minwidth=30, stretch=tk.NO)
+tree.column("Seven", width=35, minwidth=30, stretch=tk.NO)
 
 tree.heading("#0", text="Box", anchor=tk.W)
 tree.heading("one", text="ID", anchor=tk.W)
 tree.heading("two", text="Item", anchor=tk.W)
 tree.heading("three", text="Date / Time", anchor=tk.W)
 tree.heading("Four", text="Qty", anchor=tk.W)
-tree.heading("Five", text="BaaN", anchor=tk.W) # added
-tree.heading("Six", text="LC", anchor=tk.W) # added
-tree.heading("Seven", text="EPI", anchor=tk.W) # added
+tree.heading("Five", text="BaaN", anchor=tk.W)
+tree.heading("Six", text="LC", anchor=tk.W)
+tree.heading("Seven", text="EPI", anchor=tk.W)
 
 refresh()
 
