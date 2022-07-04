@@ -594,11 +594,11 @@ def getSelectedTab(event):
 
         animateImage(root, canvas1, minMovement, minMovement, 'images/V849/board.png')
 
-def doPopup(event):
+def doPopupSearch(event):
     try:
-        contextMenu.tk_popup(event.x_root, event.y_root)
+        contextSearchMenu.tk_popup(event.x_root, event.y_root)
     finally:
-        contextMenu.grab_release()
+        contextSearchMenu.grab_release()
 def doPopupInsert(event):
     try:
         contextInsertMenu.tk_popup(event.x_root, event.y_root)
@@ -631,9 +631,9 @@ root.geometry(windowPosition)
 root.configure(background='#000000')
 
 #---contex menu - right click menu---
-contextMenu = Menu(root, tearoff=0)
-contextMenu.add_command(label="Copy", command=contextCopy)
-contextMenu.add_command(label="Paste", command=contextPasteESearch)
+contextSearchMenu = Menu(root, tearoff=0)
+contextSearchMenu.add_command(label="Copy", command=contextCopy)
+contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
 
 contextInsertMenu = Menu(root, tearoff=0)
 contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
@@ -1239,7 +1239,7 @@ BI1.grid(row=3, column=0, columnspan=4, pady=2)
 ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#302928", fg="#FFFFFF")
 ESearch.config(font=("Arial", 10))
 ESearch.grid(row=0, column=0, pady=1)
-ESearch.bind("<Button-3>", doPopup)
+ESearch.bind("<Button-3>", doPopupSearch)
 BSearch = ttk.Button(tab1, text="Search", width=10, command=search)
 BSearch.grid(row=0, column=1, pady=1)
 BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
