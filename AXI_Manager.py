@@ -605,7 +605,7 @@ def doPopupInsert(event):
     finally:
         contextInsertMenu.grab_release()
 
-def contextCopy():
+def contextCopyESearch():
     pyperclip.copy(ESearch.get())
 def contextPasteESearch():
     ESearch.insert(tk.END, pyperclip.paste())
@@ -632,7 +632,7 @@ root.configure(background='#000000')
 
 #---contex menu - right click menu---
 contextSearchMenu = Menu(root, tearoff=0)
-contextSearchMenu.add_command(label="Copy", command=contextCopy)
+contextSearchMenu.add_command(label="Copy", command=contextCopyESearch)
 contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
 
 contextInsertMenu = Menu(root, tearoff=0)
