@@ -116,11 +116,11 @@ def getSelectedRow(event):
                                          f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
             LV849UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
                                       f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
-                                      f"Board: {round((3600/int(row[4]))/int(row[3]), 4)}s."
+                                      f"Board: {round((3600/int(row[4])), 4)}s."
                                  )
             LV849UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
                                       f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
-                                      f"Board: {round((3600/int(row[6]))/int(row[3]), 4)}s."
+                                      f"Board: {round((3600/int(row[6])), 4)}s."
                                  )
             if str(row[11]) == 'YES':
                 LV849Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
@@ -177,11 +177,11 @@ def getSelectedRow(event):
                                          f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
             LV817UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
                                           f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
-                                          f"Board: {round((3600/int(row[4]))/int(row[3]), 4)}s."
+                                          f"Board: {round((3600/int(row[4])), 4)}s."
                                      )
             LV817UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
                                           f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
-                                          f"Board: {round((3600/int(row[6]))/int(row[3]), 4)}s."
+                                          f"Board: {round((3600/int(row[6])), 4)}s."
                                      )
             if str(row[11]) == 'YES':
                 LV817Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
@@ -234,11 +234,11 @@ def getSelectedRow(event):
             LV8103163ScanTime.configure(text=f"Scan Time: {int(row[15])} + 15 in/out = {int(row[15]+15)}s.")
             LV8103163UPH85.configure(text=f"{row[12]} ({round(60/int(row[12]), 4)}), "
                                               f"Panel: {round((3600/int(row[12]) * int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[12]))/int(row[3]), 4)}s."
+                                              f"Board: {round((3600/int(row[12])), 4)}s."
                                          )
             LV8103163UPH95.configure(text=f"{row[14]} ({round(60/int(row[14]), 4)}), "
                                               f"Panel: {round((3600/int(row[14])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[14]))/int(row[3]), 4)}s."
+                                              f"Board: {round((3600/int(row[14])), 4)}s."
                                          )
             if str(row[16]) == 'YES':
                 LV8103163Baan.configure(text=f"{row[16]}", fg="#AAAAAA")
@@ -292,11 +292,11 @@ def getSelectedRow(event):
             LV8103483S2EXScanTime.configure(text=f"Scan Time: {int(row[43])} + 15 in/out = {int(row[43]+15)}s.")
             LV8103483S2EXUPH85.configure(text=f"{row[40]} ({round(60/int(row[40]), 4)}), "
                                               f"Panel: {round((3600/int(row[40])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[40]))/int(row[3]), 4)}s."
+                                              f"Board: {round((3600/int(row[40])), 4)}s."
                                          )
             LV8103483S2EXUPH95.configure(text=f"{row[42]} ({round(60/int(row[42]), 4)}), "
                                               f"Panel: {round((3600/int(row[42])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[42]))/int(row[3]), 4)}s."
+                                              f"Board: {round((3600/int(row[42])), 4)}s."
                                          )
             if str(row[44]) == 'YES':
                 LV8103483S2EXBaan.configure(text=f"{row[44]}", fg="#AAAAAA")
@@ -350,11 +350,11 @@ def getSelectedRow(event):
             LV8103553S2EXScanTime.configure(text=f"Scan Time: {int(row[52])} + 15 in/out = {int(row[52]+15)}s.")
             LV8103553S2EXUPH85.configure(text=f"{row[49]} ({round(60/int(row[49]), 4)}), "
                                               f"Panel: {round((3600/int(row[49])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[49]))/int(row[3]), 4)}s."
+                                              f"Board: {round((3600/int(row[49])), 4)}s."
                                          )
             LV8103553S2EXUPH95.configure(text=f"{row[51]} ({round(60/int(row[51]), 4)}), "
                                               f"Panel: {round((3600/int(row[51])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[51]))/int(row[3]), 4)}s."
+                                              f"Board: {round((3600/int(row[51])), 4)}s."
                                          )
             if str(row[53]) == 'YES':
                 LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#AAAAAA")
@@ -409,11 +409,11 @@ def getSelectedRow(event):
             LV8108120S2ScanTime.configure(text=f"Scan Time: {int(row[37])} + 15 in/out = {int(row[37] + 15)}s.")
             LV8108120S2UPH85.configure(text=f"{row[39]} ({round(60/int(row[39]), 4)}), "
                                               f"Panel: {round((3600/int(row[39])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[39]))/int(row[3]), 4)}s."
+                                              f"Board: {round((3600/int(row[39])), 4)}s."
                                          )
             LV8108120S2UPH95.configure(text=f"{row[36]} ({round(60/int(row[36]), 4)}), "
                                               f"Panel: {round((3600/int(row[36])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[36]))/int(row[3]), 4)}s."
+                                              f"Board: {round((3600/int(row[36])), 4)}s."
                                          )
 
             if str(row[38]) == 'YES':
@@ -609,6 +609,7 @@ def contextCopyESearch():
     pyperclip.copy(ESearch.get())
 def contextPasteESearch():
     ESearch.insert(tk.END, pyperclip.paste())
+
 def contextCopyEI2():
     pyperclip.copy(EI2.get())
 def contextPasteEI2():
@@ -1033,21 +1034,14 @@ tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
 style = ttk.Style()
 style.theme_create('style_class',
-                   # getting the settings
                    settings={
-                       # getting through the Labelframe
-                       # widget
                        'TLabelframe': {
-                           # configure the changes
                            'configure': {
                                'background': '#333333',
                                'foreground': '#FFFFFF',
                                'borderwidth': '10'
                            }
                        },
-
-                       # getting through the Labelframe's
-                       # label widget
                        'TLabelframe.Label': {
                            'configure': {
                                'background': '#000000',
@@ -1059,7 +1053,8 @@ style.theme_create('style_class',
                            'configure':{
                                 'background': '#302928',
                                 'foreground': '#FFFFFF',
-                                'anchor': N
+                                'anchor': N,
+                                'font': ("Arial", 12, 'bold')
                            }
                        }
                    }
@@ -1231,7 +1226,7 @@ BAANViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
 BAANViTroxIVInsert.grid(row=2, column=1, pady=1, sticky=W)
 BAANViTroxIVInsert.current(0)
 #---The End INSERT V810-3553S2EX---
-BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData)
+BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData, cursor="exchange")
 BI1.grid(row=3, column=0, columnspan=4, pady=2)
 #---The End INSERT---
 
