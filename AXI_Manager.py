@@ -579,7 +579,7 @@ def refresh():
     objDB.closeDB()
 # ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=535, y=25, height=273)
+    vsb.place(x=535, y=29, height=273)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 def getSelectedTab(event):
@@ -599,6 +599,7 @@ def doPopupSearch(event):
         contextSearchMenu.tk_popup(event.x_root, event.y_root)
     finally:
         contextSearchMenu.grab_release()
+
 def doPopupInsert(event):
     try:
         contextInsertMenu.tk_popup(event.x_root, event.y_root)
@@ -1146,7 +1147,7 @@ BAANViTroxIV['values'] = ("NONE","YES","NO","LACK")
 BAANViTroxIV.grid(row=2, column=1, pady=1)
 BAANViTroxIV.current(0)
 
-B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay)
+B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay, cursor="hand2")
 B1.grid(row=3, column=0, columnspan = 4, pady=2)
 #---The End of the UPDATE section---
 
@@ -1226,7 +1227,7 @@ BAANViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
 BAANViTroxIVInsert.grid(row=2, column=1, pady=1, sticky=W)
 BAANViTroxIVInsert.current(0)
 #---The End INSERT V810-3553S2EX---
-BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData, cursor="exchange")
+BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData, cursor="hand2")
 BI1.grid(row=3, column=0, columnspan=4, pady=2)
 #---The End INSERT---
 
@@ -1235,9 +1236,9 @@ ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#302928", fg=
 ESearch.config(font=("Arial", 10))
 ESearch.grid(row=0, column=0, pady=1)
 ESearch.bind("<Button-3>", doPopupSearch)
-BSearch = ttk.Button(tab1, text="Search", width=10, command=search)
+BSearch = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
 BSearch.grid(row=0, column=1, pady=1)
-BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh)
+BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh, cursor="exchange")
 BSearchR.grid(row=0, column=2, pady=1)
 #----------------The End Search------------
 
