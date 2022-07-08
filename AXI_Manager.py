@@ -606,6 +606,24 @@ def doPopupInsert(event):
     finally:
         contextInsertMenu.grab_release()
 
+def doPopupInsertName(event):
+    try:
+        contextInsertNameMenu.tk_popup(event.x_root, event.y_root)
+    finally:
+        contextInsertNameMenu.grab_release()
+
+def doPopupUpdate(event):
+    try:
+        contextUpdateMenu.tk_popup(event.x_root, event.y_root)
+    finally:
+        contextUpdateMenu.grab_release()
+
+def doPopupUpdateName(event):
+    try:
+        contextUpdateNameMenu.tk_popup(event.x_root, event.y_root)
+    finally:
+        contextUpdateNameMenu.grab_release()
+
 def contextCopyESearch():
     pyperclip.copy(ESearch.get())
 def contextPasteESearch():
@@ -615,6 +633,21 @@ def contextCopyEI2():
     pyperclip.copy(EI2.get())
 def contextPasteEI2():
     EI2.insert(tk.END, pyperclip.paste())
+
+def contextCopyEI4():
+    pyperclip.copy(EI4.get())
+def contextPasteEI4():
+    EI4.insert(tk.END, pyperclip.paste())
+
+def contextCopyE2():
+    pyperclip.copy(E2.get())
+def contextPasteE2():
+    E2.insert(tk.END, pyperclip.paste())
+
+def contextCopyE4():
+    pyperclip.copy(E4.get())
+def contextPasteE4():
+    E4.insert(tk.END, pyperclip.paste())
 
 #def delete():
    # Get selected item to Delete
@@ -640,6 +673,18 @@ contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
 contextInsertMenu = Menu(root, tearoff=0)
 contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
 contextInsertMenu.add_command(label="Paste", command=contextPasteEI2)
+
+contextInsertNameMenu = Menu(root, tearoff=0)
+contextInsertNameMenu.add_command(label="Copy", command=contextCopyEI4)
+contextInsertNameMenu.add_command(label="Paste", command=contextPasteEI4)
+
+contextUpdateMenu = Menu(root, tearoff=0)
+contextUpdateMenu.add_command(label="Copy", command=contextCopyE2)
+contextUpdateMenu.add_command(label="Paste", command=contextPasteE2)
+
+contextUpdateNameMenu = Menu(root, tearoff=0)
+contextUpdateNameMenu.add_command(label="Copy", command=contextCopyE4)
+contextUpdateNameMenu.add_command(label="Paste", command=contextPasteE4)
 #---The End contex menu - right click nemu---
 
 
@@ -1068,6 +1113,8 @@ noteStyler.configure("TNotebook", background='#555555', borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
 noteStyler.configure("TFrame", background='#444444', foreground='#FFFFFF', borderwidth=1)
 style.configure("TCombobox", fieldbackground="#333333", background="#302928", borderwidth=0)
+style.configure('TCombobox', selectbackground='red') # modify
+style.configure('TCombobox', selectforeground='red') # modify
 
 style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=25, filedbackground="#777777")
 style.map('Treeview', background=[('selected', '#170D47')])
@@ -1112,18 +1159,20 @@ L7.grid(row=1, column=2, sticky=W)
 L8.grid(row=2, column=0, sticky=W)
 L9.grid(row=2, column=2, sticky=W)
 
-E1 = Entry(mainFrame, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+E1 = Entry(mainFrame, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
 E1.config(font=("Arial", 10))
-E1.grid(row=0, column=1, pady=1)
-E2 = Entry(mainFrame, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+E1.grid(row=0, column=1, pady=1, sticky=W)
+E2 = Entry(mainFrame, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
 E2.config(font=("Arial", 10))
 E2.grid(row=1, column=1, pady=1)
-E3 = Entry(mainFrame, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+E2.bind("<Button-3>", doPopupUpdate)
+E3 = Entry(mainFrame, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
 E3.config(font=("Arial", 10))
 E3.grid(row=1, column=5, pady=1)
-E4 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+E4 = Entry(updateFrameVIV, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
 E4.config(font=("Arial", 10))
 E4.grid(row=0, column=1, pady=1)
+E4.bind("<Button-3>", doPopupUpdateName)
 E5 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 E5.config(font=("Arial", 10))
 E5.grid(row=0, column=3, pady=1)
@@ -1132,19 +1181,19 @@ E6.config(font=("Arial", 10))
 E6.grid(row=2, column=3, pady=1)
 
 LC = tk.StringVar
-LCViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=LC, state='readonly')
+LCViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=LC, state='readonly')
 LCViTroxIV['values'] = ("NONE","YES","NO","LACK")
-LCViTroxIV.grid(row=1, column=1, pady=1)
+LCViTroxIV.grid(row=1, column=1, pady=1, sticky=W)
 LCViTroxIV.current(0)
 EPI = tk.StringVar
 EPIViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=EPI, state='readonly')
 EPIViTroxIV['values'] = ("NONE","YES","NO","LACK")
-EPIViTroxIV.grid(row=1, column=3, pady=1)
+EPIViTroxIV.grid(row=1, column=3, pady=1, sticky=W)
 EPIViTroxIV.current(0)
 BAAN = tk.StringVar
-BAANViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=BAAN, state='readonly')
+BAANViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=BAAN, state='readonly')
 BAANViTroxIV['values'] = ("NONE","YES","NO","LACK")
-BAANViTroxIV.grid(row=2, column=1, pady=1)
+BAANViTroxIV.grid(row=2, column=1, pady=1, sticky=W)
 BAANViTroxIV.current(0)
 
 B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay, cursor="hand2")
@@ -1202,6 +1251,7 @@ EI3.grid(row=0, column=3, pady=1, stick=W)
 EI4 = Entry(insertFrameVIV, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
 EI4.config(font=("Arial", 10))
 EI4.grid(row=0, column=1, pady=1)
+EI4.bind("<Button-3>", doPopupInsertName)
 EI5 = Entry(insertFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 EI5.config(font=("Arial", 10))
 EI5.grid(row=0, column=3, pady=1, sticky=W)
