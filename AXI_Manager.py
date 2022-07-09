@@ -1113,8 +1113,8 @@ noteStyler.configure("TNotebook", background='#555555', borderwidth=0)
 noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
 noteStyler.configure("TFrame", background='#444444', foreground='#FFFFFF', borderwidth=1)
 style.configure("TCombobox", fieldbackground="#333333", background="#302928", borderwidth=0)
-style.configure('TCombobox', selectbackground='red') # modify
-style.configure('TCombobox', selectforeground='red') # modify
+root.option_add("*TCombobox*Listbox*Background", "#302928")
+root.option_add("*TCombobox*Listbox*Foreground", "#AAAAAA")
 
 style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=25, filedbackground="#777777")
 style.map('Treeview', background=[('selected', '#170D47')])
@@ -1229,7 +1229,6 @@ LI9.config(font=("Arial", 10))
 #LI1.grid(row=0, column=0, sticky=W)
 LI2.grid(row=0, column=0, sticky=W)
 LI3.grid(row=0, column=2, sticky=W)
-
 LI4.grid(row=0, column=0, sticky=W)
 LI5.grid(row=0, column=2, sticky=W)
 LI6.grid(row=1, column=0, sticky=W)
