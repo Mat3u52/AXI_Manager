@@ -1200,9 +1200,36 @@ B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay, 
 B1.grid(row=3, column=0, columnspan = 4, pady=2)
 #---The End of the UPDATE section---
 
+
+
+
+
+#tabControl = ttk.Notebook(root)
+#tab1 = ttk.Frame(tabControl)
+#tabControl.add(tab1, text=" Main ")
+#tabControl.pack(expand=1, fill="both")
+#tab2 = ttk.Frame(tabControl)
+#tabControl.add(tab2, text=" New ")
+#tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+#tab3 = ttk.Frame(tabControl)
+#tabControl.add(tab3, text=" Update ")
+#tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+
+
+
+
+
+
+
 #---INSERT---
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
+
+#tab2 = ttk.Frame(tabControl)
+
+
+
+
 #---INSERT V810-3553S2EX---
 insertFrameVIV = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
 insertFrameVIV.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
