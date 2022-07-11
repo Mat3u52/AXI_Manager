@@ -649,6 +649,19 @@ def contextCopyE4():
 def contextPasteE4():
     E4.insert(tk.END, pyperclip.paste())
 
+#!!!!!!!!!!test
+def print_selection():
+    print("it is only test of checkbox")
+    #if (var1.get() == 1) & (var2.get() == 0):
+    #    l.config(text='I love Python ')
+    #elif (var1.get() == 0) & (var2.get() == 1):
+    #    l.config(text='I love C++')
+    #elif (var1.get() == 0) & (var2.get() == 0):
+    #    l.config(text='I do not anything')
+    #else:
+    #   l.config(text='I love both')
+
+#!!!!!test
 #def delete():
    # Get selected item to Delete
 #   selected_item = tree.selection()[0]
@@ -1224,8 +1237,22 @@ B1.grid(row=3, column=0, columnspan = 4, pady=2)
 #---INSERT---
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
+BI1 = ttk.Button(mainFrameInsert, text="Insert", command=insertData, cursor="hand2")
+BI1.config(width = 10, height=10)
+BI1.grid(row=0, column=5, rowspan=4, pady=2)
 
-#tab2 = ttk.Frame(tabControl)
+#!!!!!!!!!!!!!test
+var1 = tk.IntVar()
+var2 = tk.IntVar()
+c1 = tk.Checkbutton(tab2, text='Python',variable=var1, onvalue=1, offvalue=0, command=print_selection)
+c1.grid(column=0, row=10, columnspan=10, sticky='W', padx=10, pady=10)
+c2 = tk.Checkbutton(tab2, text='C++',variable=var2, onvalue=1, offvalue=0, command=print_selection)
+c2.grid(column=0, row=10, columnspan=10, sticky='W', padx=10, pady=10)
+
+#!!!!!!!!!!!test the end
+
+
+
 
 
 
@@ -1234,8 +1261,16 @@ mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=1
 insertFrameVIV = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
 insertFrameVIV.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 
-#LI1 = Label(mainFrameInsert, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#LI1.config(font=("Arial", 10))
+
+#!!!!!!!!!!!!!!!!!test
+insertFrameVIII = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex II ( V810-3553S2EX ) ")
+insertFrameVIII.grid(column=0, row=4, columnspan=10, sticky='W', padx=10, pady=10)
+LII2 = Label(insertFrameVIII, text="Item:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LII2.config(font=("Arial", 10))
+LII2.grid(row=3, column=0, sticky=W)
+#!!!!!!!!!!!!!!!!!the end test
+
+
 LI2 = Label(mainFrameInsert, text="Item:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LI2.config(font=("Arial", 10))
 LI3 = Label(mainFrameInsert, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
@@ -1303,8 +1338,8 @@ BAANViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
 BAANViTroxIVInsert.grid(row=2, column=1, pady=1, sticky=W)
 BAANViTroxIVInsert.current(0)
 #---The End INSERT V810-3553S2EX---
-BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData, cursor="hand2")
-BI1.grid(row=3, column=0, columnspan=4, pady=2)
+#BI1 = ttk.Button(insertFrameVIV, text="Insert", width=50, command=insertData, cursor="hand2")
+#BI1.grid(row=3, column=0, columnspan=4, pady=2)
 #---The End INSERT---
 
 #-----------------Search-------------------
