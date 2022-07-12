@@ -1237,9 +1237,9 @@ B1.grid(row=3, column=0, columnspan = 4, pady=2)
 #---INSERT---
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
-BI1 = ttk.Button(mainFrameInsert, text="Insert", command=insertData, cursor="hand2")
-BI1.config(width = 10, height=10)
-BI1.grid(row=0, column=5, rowspan=4, pady=2)
+BI1 = ttk.Button(tab2, text="Insert", width=55, command=insertData, cursor="hand2")
+#BI1.config(width=10, height=5)
+BI1.grid(row=3, column=0, columnspan=4, pady=2)
 
 #!!!!!!!!!!!!!test
 var1 = tk.IntVar()
