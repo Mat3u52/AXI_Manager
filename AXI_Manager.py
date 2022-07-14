@@ -650,10 +650,14 @@ def contextPasteE4():
     E4.insert(tk.END, pyperclip.paste())
 
 #!!!!!!!!!!test
-def print_selection():
+def checkboxInsert():
 
-    if (var1.get() == 1) & (var2.get() == 0):
-        print("it is only test of checkbox")
+    if varV8103553S2EX.get() == 1:
+        print(varV8103553S2EX.get())
+        insertFrameVIV.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
+    elif varV8103553S2EX.get() == 0:
+        print(varV8103553S2EX.get())
+        insertFrameVIV.grid_forget()
 
 
     #if (var1.get() == 1) & (var2.get() == 0):
@@ -1117,7 +1121,9 @@ style.theme_create('style_class',
                                 'background': '#302928',
                                 'foreground': '#FFFFFF',
                                 'anchor': N,
-                                'font': ("Arial", 12, 'bold')
+                                'font': ("Arial", 12, 'bold'),
+                                'borderwidth': 1,
+                                'relief': "solid"
                            }
                        }
                    }
@@ -1261,9 +1267,10 @@ BI1 = ttk.Button(mainFrameInsert, text="Insert", width=55, command=insertData, c
 BI1.grid(row=1, column=0, columnspan=4, pady=2)
 
 #!!!!!!!!!!!!!test
-var1 = tk.IntVar()
+varV8103553S2EX = tk.IntVar()
 var2 = tk.IntVar()
-c1 = tk.Checkbutton(tab2, text='V810-3553S2EX', variable=var1, onvalue=1, offvalue=0, command=print_selection)
+c1 = tk.Checkbutton(tab2, text='V810-3553S2EX', variable=varV8103553S2EX, onvalue=1, offvalue=0, command=checkboxInsert)
+c1.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
 c1.grid(column=0, row=10, columnspan=10, sticky='W', padx=10, pady=10)
 #c2 = tk.Checkbutton(tab2, text='C++',variable=var2, onvalue=1, offvalue=0, command=print_selection)
 #c2.grid(column=0, row=10, columnspan=10, sticky='W', padx=10, pady=10)
@@ -1272,21 +1279,30 @@ c1.grid(column=0, row=10, columnspan=10, sticky='W', padx=10, pady=10)
 
 
 
-#!!!!!!!!!!!!!!!!!test
-#insertFrameVIII = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex II ( V810-3553S2EX ) ")
-#insertFrameVIII.grid(column=0, row=4, columnspan=10, sticky='W', padx=10, pady=10)
-#LII2 = Label(insertFrameVIII, text="Item:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#LII2.config(font=("Arial", 10))
-#LII2.grid(row=3, column=0, sticky=W)
-#!!!!!!!!!!!!!!!!!the end test
-
-
 
 #---INSERT V810-3553S2EX---
 
 insertFrameVIV = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
-insertFrameVIV.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 
+
+LI4 = Label(insertFrameVIV, text="", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI4.config(font=("Arial", 10))
+LI4.grid(row=0, column=0, sticky=W)
+LI5 = Label(insertFrameVIV, text="", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI5.config(font=("Arial", 10))
+LI5.grid(row=0, column=2, sticky=W)
+LI6 = Label(insertFrameVIV, text="", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI6.config(font=("Arial", 10))
+LI6.grid(row=1, column=0, sticky=W)
+LI7 = Label(insertFrameVIV, text="", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI7.config(font=("Arial", 10))
+LI7.grid(row=1, column=2, sticky=W)
+LI8 = Label(insertFrameVIV, text="", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI8.config(font=("Arial", 10))
+LI8.grid(row=2, column=0, sticky=W)
+LI9 = Label(insertFrameVIV, text="", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI9.config(font=("Arial", 10))
+LI9.grid(row=2, column=2, sticky=W)
 
 LI4 = Label(insertFrameVIV, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LI4.config(font=("Arial", 10))
@@ -1306,6 +1322,7 @@ LI8.grid(row=2, column=0, sticky=W)
 LI9 = Label(insertFrameVIV, text="Comments:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LI9.config(font=("Arial", 10))
 LI9.grid(row=2, column=2, sticky=W)
+
 
 
 EI4 = Entry(insertFrameVIV, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
