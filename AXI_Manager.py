@@ -6,6 +6,7 @@ from tkinter import *
 import time
 import pyperclip
 import os
+from PIL import Image
 
 tab = []
 startXPosition = 170
@@ -14,7 +15,7 @@ minMovement = -1
 refreshSec = 0.01
 
 def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
-    #img = tk.PhotoImage(file='board.png')
+
     if os.path.isfile(imgPath):
         img = tk.PhotoImage(file=imgPath)
     else:
@@ -145,16 +146,28 @@ def getSelectedRow(event):
             canvas1.pack(expand=False)
             if flagAnimation == False:
                 tabControlMain.select(tabMain1)
-                #animateImage(root, canvas1, minMovement, minMovement, 'images/V849/' + row[17] + '.png')
                 try:
-                    animateImage(root, canvas1, minMovement, minMovement, 'X:/images/V849/' + row[17] + '.png')
+                    if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
+                    #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png'):
+                        animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                        #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
+                    else:
+                        try:
+                            convertJpgtoPng = Image.open(r'5DX/images/V849/' + row[17] + '.jpg')
+                            convertJpgtoPng.save(r'5DX/images/V849/' + row[17] + '.png')
+                            animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                            #Image.open(r'Y:/5DX/images/V849/' + row[17] + '.jpg')
+                            #Image.save(r'Y:/5DX/images/V849/' + row[17] + '.png')
+                            #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
+                        except FileNotFoundError:
+                            pass
                 except _tkinter.TclError:
                     pass
 
                 flagAnimation = True
 
-            #imgBoard1 = 'images/V849/'+row[17]+'.png'
-            imgBoard1 = 'X:/images/V849/'+row[17]+'.png'
+            imgBoard1 = '5DX/images/V849/'+row[17]+'.png'
+            #imgBoard1 = 'Y:/5DX/images/V849/'+row[17]+'.png'
             if os.path.isfile(imgBoard1):
                 img1 = tk.PhotoImage(file=imgBoard1)
             else:
@@ -203,21 +216,48 @@ def getSelectedRow(event):
             canvas2 = tk.Canvas(canvasFrame2, width=170, height=170)
             canvas2.configure(bg="#444444")
             canvas2.pack(expand=False)
-            if flagAnimation == False:
-                tabControlMain.select(tabMain2)
+            #if flagAnimation == False:
+            #    tabControlMain.select(tabMain2)
                 #animateImage(root, canvas2, minMovement, minMovement, 'images/V817/' + row[22] + '.png')
+            #    try:
+            #        animateImage(root, canvas2, minMovement, minMovement, 'X:/images/V817/' + row[22] + '.png')
+            #    except _tkinter.TclError:
+            #        pass
+            #    flagAnimation = True
+                #imgBoard2 = 'images/V817/' + row[22] + '.png'
+            #imgBoard2 = 'X:/images/V817/' + row[22] + '.png'
+            #if os.path.isfile(imgBoard2):
+            #    img2 = tk.PhotoImage(file=imgBoard2)
+            #else:
+            #    img2 = tk.PhotoImage(file='board.png')
+            #canvas2.create_image(85, 85, image=img2)
+
+            if flagAnimation == False:
+                tabControlMain.select(tabMain1)
                 try:
-                    animateImage(root, canvas2, minMovement, minMovement, 'X:/images/V817/' + row[22] + '.png')
+                    #if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
+                    if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
+                        #animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                        animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+                    else:
+                        #convertJpgtoPng = Image.open(r'5DX/images/V817/' + row[22] + '.jpg')
+                        #convertJpgtoPng.save(r'5DX/images/V817/' + row[22] + '.png')
+                        #animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                        Image.open(r'Y:/5DX/images/V817/' + row[22] + '.jpg')
+                        Image.save(r'Y:/5DX/images/V817/' + row[22] + '.png')
+                        animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
                 except _tkinter.TclError:
                     pass
+
                 flagAnimation = True
-            #imgBoard2 = 'images/V817/' + row[22] + '.png'
-            imgBoard2 = 'X:/images/V817/' + row[22] + '.png'
-            if os.path.isfile(imgBoard2):
-                img2 = tk.PhotoImage(file=imgBoard2)
+
+            #imgBoard1 = '5DX/images/V817/'+row[22]+'.png'
+            imgBoard1 = 'Y:/5DX/images/V817/'+row[22]+'.png'
+            if os.path.isfile(imgBoard1):
+                img1 = tk.PhotoImage(file=imgBoard1)
             else:
-                img2 = tk.PhotoImage(file='board.png')
-            canvas2.create_image(85, 85, image=img2)
+                img1 = tk.PhotoImage(file='board.png')
+            canvas1.create_image(85, 85, image=img1)
 
         else:
             tabControlMain.hide(tabMain2)
