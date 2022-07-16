@@ -21,8 +21,6 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
     else:
         img = tk.PhotoImage(file='board.png')
 
-
-
     print(imgPath)
 
     imageB = canvas.create_image(startXPosition, startYPosition, image=img)
@@ -43,6 +41,28 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
             break
 
     #root.mainloop()
+def resizeImage(path):
+    basewidth = 150
+
+    if os.path.isfile(path):
+        if path.endswith('.jpg'):
+            print(".jpg")
+            print(path)
+
+            convertJpgtoPng = Image.open(path)
+            wpercent = (basewidth / float(convertJpgtoPng.size[0]))
+            hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
+            convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST)  # Image.LANCZOS / Image.Resampling.NEAREST / Image.Dither.NONE
+            convertJpgtoPng.save(path)
+
+        elif path.endswith('.png'):
+            convertJpgtoPng = Image.open(r'' + path)
+            wpercent = (basewidth / float(convertJpgtoPng.size[0]))
+            if wpercent == float(convertJpgtoPng.size[0]):
+                print(".png - the picture has been changed previously")
+            else:
+                print(".png")
+
 def swich(x):
     match x:
         case "NONE":
@@ -153,12 +173,29 @@ def getSelectedRow(event):
                         #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
                     else:
                         try:
-                            convertJpgtoPng = Image.open(r'5DX/images/V849/' + row[17] + '.jpg')
-                            convertJpgtoPng.save(r'5DX/images/V849/' + row[17] + '.png')
+
+                            #basewidth = 150
+                            #convertJpgtoPng = Image.open(r'5DX/images/V849/' + row[17] + '.jpg')
+                            #wpercent = (basewidth / float(convertJpgtoPng.size[0]))
+                            #hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
+                            #convertJpgtoPng = convertJpgtoPng.resize(basewidth, hsize) #Image.LANCZOS
+                            #convertJpgtoPng.save(r'5DX/images/V849/' + row[17] + '.png')
+
+                            resizeImage('5DX/images/V849/' + row[17] + '.jpg') #!!!!!!!!test
+
                             animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+
+
+
+
+
+
+
+
                             #Image.open(r'Y:/5DX/images/V849/' + row[17] + '.jpg')
                             #Image.save(r'Y:/5DX/images/V849/' + row[17] + '.png')
                             #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
+
                         except FileNotFoundError:
                             pass
                 except _tkinter.TclError:
