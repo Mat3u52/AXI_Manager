@@ -21,7 +21,7 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
     else:
         img = tk.PhotoImage(file='board.png')
 
-    print(imgPath)
+    print("f: animateImage - "+imgPath)
 
     imageB = canvas.create_image(startXPosition, startYPosition, image=img)
 
@@ -41,27 +41,38 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
             break
 
     #root.mainloop()
-def resizeImage(path):
-    basewidth = 150
+def resizeImage(path, recipeName):
+    basewidth = 120
 
     if os.path.isfile(path):
         if path.endswith('.jpg'):
             print(".jpg")
-            print(path)
+            print("f: resizeImage -"+path)
 
-            convertJpgtoPng = Image.open(path)
+            #convertJpgtoPng = Image.open(r'5DX/images/V849/'+recipeName+'.jpg')
+            convertJpgtoPng = Image.open(r''+path)
             wpercent = (basewidth / float(convertJpgtoPng.size[0]))
             hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
             convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST)  # Image.LANCZOS / Image.Resampling.NEAREST / Image.Dither.NONE
-            convertJpgtoPng.save(path)
+            #convertJpgtoPng.save(r'5DX/images/V849/'+recipeName+'.png')
+            path.replace(".jpg", ".png", 4) # new !!!!!!!!!!!!!!!!
+            convertJpgtoPng.save(r'5DX/images/V849/'+recipeName+'.png')
+
+            #convertJpgtoPng = Image.open(r'5DX/images/V849/XILHTZ-PCA0015836R000-10.jpg')
+            #wpercent = (basewidth / float(convertJpgtoPng.size[0]))
+            #hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
+            #convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST) #Image.LANCZOS
+            #convertJpgtoPng.save(r'5DX/images/V849/XILHTZ-PCA0015836R000-10.png')
+
 
         elif path.endswith('.png'):
-            convertJpgtoPng = Image.open(r'' + path)
-            wpercent = (basewidth / float(convertJpgtoPng.size[0]))
-            if wpercent == float(convertJpgtoPng.size[0]):
-                print(".png - the picture has been changed previously")
-            else:
-                print(".png")
+            print(".png")
+            #convertJpgtoPng = Image.open(r'' + path)
+            #wpercent = (basewidth / float(convertJpgtoPng.size[0]))
+            #if wpercent == float(convertJpgtoPng.size[0]):
+            #    print(".png - the picture has been changed previously")
+            #else:
+            #    print(".png")
 
 def swich(x):
     match x:
@@ -178,10 +189,11 @@ def getSelectedRow(event):
                             #convertJpgtoPng = Image.open(r'5DX/images/V849/' + row[17] + '.jpg')
                             #wpercent = (basewidth / float(convertJpgtoPng.size[0]))
                             #hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
-                            #convertJpgtoPng = convertJpgtoPng.resize(basewidth, hsize) #Image.LANCZOS
+                            #convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST) #Image.LANCZOS
                             #convertJpgtoPng.save(r'5DX/images/V849/' + row[17] + '.png')
 
-                            resizeImage('5DX/images/V849/' + row[17] + '.jpg') #!!!!!!!!test
+                            #resizeImage(r'5DX/images/V849/' + row[17] + '.jpg') #!!!!!!!!test
+                            resizeImage('5DX/images/V849/' + row[17] + '.jpg', row[17]) #!!!!!!!!test
 
                             animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
 

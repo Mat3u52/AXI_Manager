@@ -1,4 +1,5 @@
 import pymysql
+from tkinter import messagebox
 import math
 class DBConnect:
     def __init__(self):
@@ -16,7 +17,6 @@ class DBConnect:
 
     def selectSearchID(self, ID):
         self.ID = ID
-        #self.dbCursor.execute("SELECT * FROM mk_diary WHERE ITEM_ID LIKE '%"+self.ID+"%'")
         self.dbCursor.execute("SELECT * FROM mk_diary WHERE ITEM_ID LIKE "+self.ID+"")
         records = self.dbCursor.fetchall()
         return records
@@ -86,7 +86,7 @@ class DBConnect:
                 self.vitroxIVUPH85 = 0
                 self.vitroxIVUPH95 = 0
                 self.vitroxIVUPH95Time = 0
-#----------The End Vitrox IV----------
+#-----------The End Vitrox IV-------------------
 
             self.vitroxIIIProg = ""
             self.vitroxIIITest = 0
@@ -191,7 +191,7 @@ class DBConnect:
             self.db.commit()
 
         else:
-            print("Lack of Item and Qty")
+            messagebox.showwarning("Warning", "Lack of Item or Qty")
 
     def closeDB(self):
         self.dbCursor.close()
