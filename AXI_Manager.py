@@ -37,11 +37,11 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
             xinc = -xinc
         if bl < abs(yinc):
             yinc = -yinc
-        if al == 170/2:
+        if al == int(startXPosition)/2:
             break
 
     #root.mainloop()
-def resizeImage(path, recipeName):
+def resizeImage(path):
     basewidth = 120
 
     if os.path.isfile(path):
@@ -49,21 +49,12 @@ def resizeImage(path, recipeName):
             print(".jpg")
             print("f: resizeImage -"+path)
 
-            #convertJpgtoPng = Image.open(r'5DX/images/V849/'+recipeName+'.jpg')
             convertJpgtoPng = Image.open(r''+path)
             wpercent = (basewidth / float(convertJpgtoPng.size[0]))
             hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
-            convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST)  # Image.LANCZOS / Image.Resampling.NEAREST / Image.Dither.NONE
-            #convertJpgtoPng.save(r'5DX/images/V849/'+recipeName+'.png')
-            path.replace(".jpg", ".png", 4) # new !!!!!!!!!!!!!!!!
-            convertJpgtoPng.save(r'5DX/images/V849/'+recipeName+'.png')
-
-            #convertJpgtoPng = Image.open(r'5DX/images/V849/XILHTZ-PCA0015836R000-10.jpg')
-            #wpercent = (basewidth / float(convertJpgtoPng.size[0]))
-            #hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
-            #convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST) #Image.LANCZOS
-            #convertJpgtoPng.save(r'5DX/images/V849/XILHTZ-PCA0015836R000-10.png')
-
+            convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST)
+            pathPNG = path.replace(".jpg", ".png")
+            convertJpgtoPng.save(r''+pathPNG)
 
         elif path.endswith('.png'):
             print(".png")
@@ -175,6 +166,10 @@ def getSelectedRow(event):
             canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
             canvas1.configure(bg="#444444")
             canvas1.pack(expand=False)
+
+            resizeImage('5DX/images/V849/' + row[17] + '.jpg')
+            #resizeImage('Y:/5DX/images/V849/' + row[17] + '.jpg')
+
             if flagAnimation == False:
                 tabControlMain.select(tabMain1)
                 try:
@@ -184,28 +179,7 @@ def getSelectedRow(event):
                         #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
                     else:
                         try:
-
-                            #basewidth = 150
-                            #convertJpgtoPng = Image.open(r'5DX/images/V849/' + row[17] + '.jpg')
-                            #wpercent = (basewidth / float(convertJpgtoPng.size[0]))
-                            #hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
-                            #convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST) #Image.LANCZOS
-                            #convertJpgtoPng.save(r'5DX/images/V849/' + row[17] + '.png')
-
-                            #resizeImage(r'5DX/images/V849/' + row[17] + '.jpg') #!!!!!!!!test
-                            resizeImage('5DX/images/V849/' + row[17] + '.jpg', row[17]) #!!!!!!!!test
-
                             animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
-
-
-
-
-
-
-
-
-                            #Image.open(r'Y:/5DX/images/V849/' + row[17] + '.jpg')
-                            #Image.save(r'Y:/5DX/images/V849/' + row[17] + '.png')
                             #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
 
                         except FileNotFoundError:
@@ -265,48 +239,37 @@ def getSelectedRow(event):
             canvas2 = tk.Canvas(canvasFrame2, width=170, height=170)
             canvas2.configure(bg="#444444")
             canvas2.pack(expand=False)
-            #if flagAnimation == False:
-            #    tabControlMain.select(tabMain2)
-                #animateImage(root, canvas2, minMovement, minMovement, 'images/V817/' + row[22] + '.png')
-            #    try:
-            #        animateImage(root, canvas2, minMovement, minMovement, 'X:/images/V817/' + row[22] + '.png')
-            #    except _tkinter.TclError:
-            #        pass
-            #    flagAnimation = True
-                #imgBoard2 = 'images/V817/' + row[22] + '.png'
-            #imgBoard2 = 'X:/images/V817/' + row[22] + '.png'
-            #if os.path.isfile(imgBoard2):
-            #    img2 = tk.PhotoImage(file=imgBoard2)
-            #else:
-            #    img2 = tk.PhotoImage(file='board.png')
-            #canvas2.create_image(85, 85, image=img2)
+
+            resizeImage('5DX/images/V817/' + row[22] + '.jpg')
+            #resizeImage('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
             if flagAnimation == False:
-                tabControlMain.select(tabMain1)
+                tabControlMain.select(tabMain2)
+                resizeImage('5DX/images/V817/' + row[22] + '.jpg')
                 try:
-                    #if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
-                    if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
-                        #animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                        animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+                    if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
+                    #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
+                        animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                        #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
                     else:
-                        #convertJpgtoPng = Image.open(r'5DX/images/V817/' + row[22] + '.jpg')
-                        #convertJpgtoPng.save(r'5DX/images/V817/' + row[22] + '.png')
-                        #animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                        Image.open(r'Y:/5DX/images/V817/' + row[22] + '.jpg')
-                        Image.save(r'Y:/5DX/images/V817/' + row[22] + '.png')
-                        animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+                        try:
+                            animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                            #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+
+                        except FileNotFoundError:
+                            pass
                 except _tkinter.TclError:
                     pass
 
                 flagAnimation = True
 
-            #imgBoard1 = '5DX/images/V817/'+row[22]+'.png'
-            imgBoard1 = 'Y:/5DX/images/V817/'+row[22]+'.png'
-            if os.path.isfile(imgBoard1):
-                img1 = tk.PhotoImage(file=imgBoard1)
+            imgBoard2 = '5DX/images/V817/'+row[22]+'.png'
+            #imgBoard2 = 'Y:/5DX/images/V817/'+row[22]+'.png'
+            if os.path.isfile(imgBoard2):
+                img2 = tk.PhotoImage(file=imgBoard2)
             else:
-                img1 = tk.PhotoImage(file='board.png')
-            canvas1.create_image(85, 85, image=img1)
+                img2 = tk.PhotoImage(file='board.png')
+            canvas2.create_image(85, 85, image=img2)
 
         else:
             tabControlMain.hide(tabMain2)
@@ -354,12 +317,13 @@ def getSelectedRow(event):
                 tabControlMain.select(tabMain3)
                 #animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
                 try:
-                    animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
+                    #animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
+                    animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
                 except _tkinter.TclError:
                     pass
                 flagAnimation = True
-            #imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
-            imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
+            imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
+            #imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
             if os.path.isfile(imgBoard3):
                 img3 = tk.PhotoImage(file=imgBoard3)
             else:
@@ -416,8 +380,8 @@ def getSelectedRow(event):
                 except _tkinter.TclError:
                     pass
                 flagAnimation = True
-            #imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
-            imgBoard4 = 'X:/images/V810-3483S2EX/' + row[45] + '.png'
+            imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
+            #imgBoard4 = 'X:/images/V810-3483S2EX/' + row[45] + '.png'
             if os.path.isfile(imgBoard4):
                 img4 = tk.PhotoImage(file=imgBoard4)
             else:
@@ -475,8 +439,8 @@ def getSelectedRow(event):
                 except _tkinter.TclError:
                     pass
                 flagAnimation = True
-            #imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
-            imgBoard5 = 'X:/images/V810-3553S2EX/' + row[54] + '.png'
+            imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
+            #imgBoard5 = 'X:/images/V810-3553S2EX/' + row[54] + '.png'
             if os.path.isfile(imgBoard5):
                 img5 = tk.PhotoImage(file=imgBoard5)
             else:
@@ -534,8 +498,8 @@ def getSelectedRow(event):
                 except _tkinter.TclError:
                     pass
                 flagAnimation = True
-            #imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
-            imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
+            imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
+            #imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
             if os.path.isfile(imgBoard6):
                 img6 = tk.PhotoImage(file=imgBoard6)
             else:
@@ -767,9 +731,9 @@ def checkboxInsert():
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
-x = (ws-660)
-y = (hs-650)
-windowPosition = f'660x550+{int(x)}+{int(y)}'
+x = (ws-670)
+y = (hs-750)
+windowPosition = f'660x650+{int(x)}+{int(y)}'
 root.title('AXI - Manager')
 root.geometry(windowPosition)
 #root.resizable(0, 0)
