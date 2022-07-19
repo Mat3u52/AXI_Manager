@@ -376,7 +376,8 @@ def getSelectedRow(event):
                 tabControlMain.select(tabMain4)
                 #animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
                 try:
-                    animateImage(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
+                    animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                    #animateImage(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
                 except _tkinter.TclError:
                     pass
                 flagAnimation = True
