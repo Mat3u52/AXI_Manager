@@ -46,8 +46,8 @@ def resizeImage(path):
 
     if os.path.isfile(path):
         if path.endswith('.jpg'):
-            print(".jpg")
-            print("f: resizeImage -"+path)
+            print("f: resizeImage - .jpg")
+            print("f: resizeImage - "+path)
 
             convertJpgtoPng = Image.open(r''+path)
             wpercent = (basewidth / float(convertJpgtoPng.size[0]))
@@ -57,13 +57,7 @@ def resizeImage(path):
             convertJpgtoPng.save(r''+pathPNG)
 
         elif path.endswith('.png'):
-            print(".png")
-            #convertJpgtoPng = Image.open(r'' + path)
-            #wpercent = (basewidth / float(convertJpgtoPng.size[0]))
-            #if wpercent == float(convertJpgtoPng.size[0]):
-            #    print(".png - the picture has been changed previously")
-            #else:
-            #    print(".png")
+            print("f: ewsizeImage - .png")
 
 def swich(x):
     match x:
@@ -94,8 +88,9 @@ def getSelectedRow(event):
     for nm in tree.selection():
         #content.clear()
         content = tree.item(nm, 'values')
-    #print(content[0])
-    #print(type(int(content[0])))
+
+        #print(content[0])
+        #print(type(int(content[0])))
 
     #if int(content[0]) > 0:
         for row in objDB.selectSearchID(content[0]):
@@ -167,8 +162,9 @@ def getSelectedRow(event):
             canvas1.configure(bg="#444444")
             canvas1.pack(expand=False)
 
-            resizeImage('5DX/images/V849/' + row[17] + '.jpg')
-            #resizeImage('Y:/5DX/images/V849/' + row[17] + '.jpg')
+            if os.path.isfile('5DX/images/V849/' + row[17] + '.png') == False:
+                resizeImage('5DX/images/V849/' + row[17] + '.jpg')
+                #resizeImage('Y:/5DX/images/V849/' + row[17] + '.jpg')
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain1)
@@ -240,12 +236,13 @@ def getSelectedRow(event):
             canvas2.configure(bg="#444444")
             canvas2.pack(expand=False)
 
-            resizeImage('5DX/images/V817/' + row[22] + '.jpg')
-            #resizeImage('Y:/5DX/images/V817/' + row[22] + '.jpg')
+            if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
+                resizeImage('5DX/images/V817/' + row[22] + '.jpg')
+                #resizeImage('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain2)
-                resizeImage('5DX/images/V817/' + row[22] + '.jpg')
+                #resizeImage('5DX/images/V817/' + row[22] + '.jpg')
                 try:
                     if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
                     #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
@@ -436,7 +433,8 @@ def getSelectedRow(event):
                 tabControlMain.select(tabMain5)
                 #animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
                 try:
-                    animateImage(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
+                    animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                    #animateImage(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
                 except _tkinter.TclError:
                     pass
                 flagAnimation = True
@@ -495,7 +493,8 @@ def getSelectedRow(event):
                 tabControlMain.select(tabMain6)
                 #animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
                 try:
-                    animateImage(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
+                    animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                    #animateImage(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
                 except _tkinter.TclError:
                     pass
                 flagAnimation = True
