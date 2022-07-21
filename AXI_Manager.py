@@ -89,7 +89,10 @@ def getSelectedRow(event):
         #content.clear()
         content = tree.item(nm, 'values')
 
-        #print(content[0])
+        #curItem = tree.focus()
+        #print(tree.item(curItem))
+
+        print(content[1])
         #print(type(int(content[0])))
 
     #if int(content[0]) > 0:
@@ -731,9 +734,9 @@ def checkboxInsert():
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
-x = (ws-670)
+x = (ws-720)
 y = (hs-750)
-windowPosition = f'660x650+{int(x)}+{int(y)}'
+windowPosition = f'720x650+{int(x)}+{int(y)}'
 root.title('AXI - Manager')
 root.geometry(windowPosition)
 #root.resizable(0, 0)
