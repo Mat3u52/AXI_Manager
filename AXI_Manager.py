@@ -93,6 +93,9 @@ def getSelectedRow(event):
         #print(tree.item(curItem))
 
         print(content[1])
+        if content[1] == '5DX II':
+            print('5dx 2')
+            tabControlMain.select(tabMain2)
         #print(type(int(content[0])))
 
     #if int(content[0]) > 0:
