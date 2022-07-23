@@ -8,6 +8,7 @@ import pyperclip
 import os
 from PIL import Image
 
+
 tab = []
 startXPosition = 170
 startYPosition = 85
@@ -73,6 +74,7 @@ def swich(x):
             return 0
 def getSelectedRow(event):
     flagAnimation = False
+    flagClick = False
 
     tab.clear()
     E1.config(state="normal")
@@ -95,7 +97,8 @@ def getSelectedRow(event):
         print(content[1])
         if content[1] == '5DX II':
             print('5dx 2')
-            tabControlMain.select(tabMain2)
+            flagClick = True
+
         #print(type(int(content[0])))
 
     #if int(content[0]) > 0:
@@ -174,20 +177,21 @@ def getSelectedRow(event):
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain1)
-                try:
-                    if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
-                    #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png'):
-                        animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
-                        #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
-                    else:
-                        try:
+                if flagClick == False:
+                    try:
+                        if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
+                        #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png'):
                             animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
                             #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
+                        else:
+                            try:
+                                animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                                #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
 
-                        except FileNotFoundError:
-                            pass
-                except _tkinter.TclError:
-                    pass
+                            except FileNotFoundError:
+                                pass
+                    except _tkinter.TclError:
+                        pass
 
                 flagAnimation = True
 
@@ -514,6 +518,11 @@ def getSelectedRow(event):
 
         else:
             tabControlMain.hide(tabMain6)
+
+        if flagClick == True:
+            flagClick = False
+            tabControlMain.select(tabMain2)
+
 
         root.mainloop()
 def updateDisplay():
