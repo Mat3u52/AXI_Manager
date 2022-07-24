@@ -95,9 +95,13 @@ def getSelectedRow(event):
         #print(tree.item(curItem))
 
         print(content[1])
-        if content[1] == '5DX II':
-            print('5dx 2')
+        if content[1] == '5DX II' or \
+                content[1] == 'ViTrox Ex I' or \
+                content[1] == 'ViTrox Ex II' or \
+                content[1] == 'ViTrox Ex III' or \
+                content[1] == 'ViTrox XXL I':
             flagClick = True
+
 
         #print(type(int(content[0])))
 
@@ -164,7 +168,7 @@ def getSelectedRow(event):
 
             LV849Comment.configure(text=f"{row[20]}")
 
-
+#---getSelectedRow 5DX V849---
             canvasFrame1 = Label(tabMain1)
             canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
             canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
@@ -205,6 +209,9 @@ def getSelectedRow(event):
 
         else:
             tabControlMain.hide(tabMain1)
+
+#---The End getSelectedRow 5DX V849---
+#---getSelectedRow 5DX V817---
 
         if int(len(str(row[22]))) > 4:
             tabControlMain.add(tabMain2, text=" V817 ")
@@ -253,20 +260,21 @@ def getSelectedRow(event):
             if flagAnimation == False:
                 tabControlMain.select(tabMain2)
                 #resizeImage('5DX/images/V817/' + row[22] + '.jpg')
-                try:
-                    if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
-                    #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
-                        animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                        #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
-                    else:
-                        try:
+                if flagClick == False:
+                    try:
+                        if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
+                        #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
                             animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
                             #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+                        else:
+                            try:
+                                animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                                #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
 
-                        except FileNotFoundError:
-                            pass
-                except _tkinter.TclError:
-                    pass
+                            except FileNotFoundError:
+                                pass
+                    except _tkinter.TclError:
+                        pass
 
                 flagAnimation = True
 
@@ -280,7 +288,8 @@ def getSelectedRow(event):
 
         else:
             tabControlMain.hide(tabMain2)
-
+#---The End getSelectedRow 5DX V817---
+#---getSelectedRow V810-3163--
         if len(str(row[27])) > 4:
             tabControlMain.add(tabMain3, text=" V810-3163 ")
             LV8103163Prog.configure(text=f"{row[27]}")
@@ -323,12 +332,15 @@ def getSelectedRow(event):
             if flagAnimation == False:
                 tabControlMain.select(tabMain3)
                 #animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
-                try:
-                    #animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
-                    animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
-                except _tkinter.TclError:
-                    pass
+                if flagClick == False:
+                    try:
+                        #animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
+                        animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+                    except _tkinter.TclError:
+                        pass
+
                 flagAnimation = True
+
             imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
             #imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
             if os.path.isfile(imgBoard3):
@@ -340,6 +352,9 @@ def getSelectedRow(event):
         else:
             tabControlMain.hide(tabMain3)
 
+#---The End getSelectedRow V810-3163---
+
+#---getSelectedRow V810-V3483S2EX---
         if row[45] != None and int(row[41]) != 0:
             tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
             LV8103483S2EXProg.configure(text=f"{row[45]}")
@@ -382,12 +397,15 @@ def getSelectedRow(event):
             if flagAnimation == False:
                 tabControlMain.select(tabMain4)
                 #animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
-                try:
-                    animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
-                    #animateImage(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
-                except _tkinter.TclError:
-                    pass
+                if flagClick == False:
+                    try:
+                        animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                        #animateImage(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
+                    except _tkinter.TclError:
+                        pass
+
                 flagAnimation = True
+
             imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
             #imgBoard4 = 'X:/images/V810-3483S2EX/' + row[45] + '.png'
             if os.path.isfile(imgBoard4):
@@ -398,7 +416,9 @@ def getSelectedRow(event):
 
         else:
             tabControlMain.hide(tabMain4)
+#--- The End getSelectedRow V810-3483S2EX ---
 
+#--- getSelectedRow V810-3553S2EX ---
         if len(str(row[54])) > 0 and row[54] != None:
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
@@ -442,12 +462,15 @@ def getSelectedRow(event):
             if flagAnimation == False:
                 tabControlMain.select(tabMain5)
                 #animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
-                try:
-                    animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
-                    #animateImage(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
-                except _tkinter.TclError:
-                    pass
+                if flagClick == False:
+                    try:
+                        animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                        #animateImage(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
+                    except _tkinter.TclError:
+                        pass
+
                 flagAnimation = True
+
             imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
             #imgBoard5 = 'X:/images/V810-3553S2EX/' + row[54] + '.png'
             if os.path.isfile(imgBoard5):
@@ -458,7 +481,9 @@ def getSelectedRow(event):
 
         else:
             tabControlMain.hide(tabMain5)
+#--- The End getSelectedRow V810-3553S2EX ---
 
+#--- getSelectedRow V810-8120S2 ---
         if row[31] != None and int(row[37] != 0):
             tabControlMain.add(tabMain6, text=" V810-8120S2 ")
             LV8108120S2Prog.configure(text=f"{row[31]}")
@@ -502,12 +527,15 @@ def getSelectedRow(event):
             if flagAnimation == False:
                 tabControlMain.select(tabMain6)
                 #animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
-                try:
-                    animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
-                    #animateImage(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
-                except _tkinter.TclError:
-                    pass
+                if flagClick == False:
+                    try:
+                        animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                        #animateImage(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
+                    except _tkinter.TclError:
+                        pass
+
                 flagAnimation = True
+
             imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
             #imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
             if os.path.isfile(imgBoard6):
@@ -518,10 +546,20 @@ def getSelectedRow(event):
 
         else:
             tabControlMain.hide(tabMain6)
+#--- The End getSelectedRow V810-8120S2 ---
 
         if flagClick == True:
             flagClick = False
-            tabControlMain.select(tabMain2)
+            if content[1] == '5DX II':
+                tabControlMain.select(tabMain2)
+            elif content[1] == 'ViTrox Ex I':
+                tabControlMain.select(tabMain3)
+            elif content[1] == 'ViTrox Ex II':
+                tabControlMain.select(tabMain4)
+            elif content[1] == 'ViTrox Ex III':
+                tabControlMain.select(tabMain5)
+            elif content[1] == 'ViTrox XXL I':
+                tabControlMain.select(tabMain6)
 
 
         root.mainloop()
@@ -619,22 +657,22 @@ def refresh():
         count1 += 3
         if len(str(row[27])) > 4:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
+                        values=(f'{row[0]}', f"ViTrox Ex I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
                                 f"{row[28]}", f"{row[29]}"), tags=('V'))
         count1 += 4
         if row[45] != None and int(row[41]) != 0:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}",
+                        values=(f'{row[0]}', f"ViTrox Ex II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}",
                                 f"{row[46]}", f"{row[47]}"), tags=('V'))
         count1 += 4
         if row[54] != None:
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxEx III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}",
+                        values=(f'{row[0]}', f"ViTrox Ex III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}",
                                 f"{row[55]}", f"{row[56]}"), tags=('V'))
         count1 += 5
         if row[31] != None and int(row[37] != 0):
             tree.insert(folder1, index='end', iid=count1, text=f'',
-                        values=(f'{row[0]}', f"ViTroxXXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}",
+                        values=(f'{row[0]}', f"ViTrox XXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}",
                                 f"{row[32]}", f"{row[33]}"), tags=('V'))
 
         tree.bind("<<TreeviewSelect>>", getSelectedRow)
