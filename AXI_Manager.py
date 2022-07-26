@@ -580,18 +580,21 @@ def updateDisplay():
         refresh()
 def insertData():
     objDB = DBConnect()
-    objDB.insert(EI2.get(), EI3.get(), EI4.get(), EI5.get(), LCViTroxIVInsert.get(), EPIViTroxIVInsert.get(),
-                 BAANViTroxIVInsert.get(), EI6.get())
+    objDB.insert(EI2.get(), EI3.get(),
+                 EIV8103553S2EX_0.get(), EIV8103553S2EX_1.get(), CIV8103553S2EX_2.get(),
+                 CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get())
     objDB.closeDB()
 
+#--- Clean "Entry" & "Combobox" V8103553S2EX ---
     EI2.delete(0, END)
     EI3.delete(0, END)
-    EI4.delete(0, END)
-    EI5.delete(0, END)
-    EI6.delete(0, END)
-    LCViTroxIVInsert.current(0)
-    EPIViTroxIVInsert.current(0)
-    BAANViTroxIVInsert.current(0)
+    EIV8103553S2EX_0.delete(0, END)
+    EIV8103553S2EX_1.delete(0, END)
+    EIV8103553S2EX_5.delete(0, END)
+    CIV8103553S2EX_2.current(0)
+    CIV8103553S2EX_3.current(0)
+    CIV8103553S2EX_4.current(0)
+# --- The End Clean "Entry" & "Combobox" V8103553S2EX ---
 
     refresh()
 def search():
@@ -717,11 +720,17 @@ def doPopupInsert(event):
     finally:
         contextInsertMenu.grab_release()
 
-def doPopupInsertName(event):
+def doPopupInsertNameV8103553S2EX(event):
     try:
-        contextInsertNameMenu.tk_popup(event.x_root, event.y_root)
+        contextInsertNameMenuV8103553S2EX.tk_popup(event.x_root, event.y_root)
     finally:
-        contextInsertNameMenu.grab_release()
+        contextInsertNameMenuV8103553S2EX.grab_release()
+
+def doPopupInsertNameV8103483S2EX(event):
+        try:
+            contextInsertNameMenuV8103483S2EX.tk_popup(event.x_root, event.y_root)
+        finally:
+            contextInsertNameMenuV8103483S2EX.grab_release()
 
 def doPopupUpdate(event):
     try:
@@ -745,10 +754,15 @@ def contextCopyEI2():
 def contextPasteEI2():
     EI2.insert(tk.END, pyperclip.paste())
 
-def contextCopyEI4():
-    pyperclip.copy(EI4.get())
-def contextPasteEI4():
-    EI4.insert(tk.END, pyperclip.paste())
+def contextCopyEIV8103553S2EX_0():
+    pyperclip.copy(EIV8103553S2EX_0.get())
+def contextPasteEIV8103553S2EX_0():
+    EIV8103553S2EX_0.insert(tk.END, pyperclip.paste())
+
+def contextCopyEIV8103483S2EX_0():
+    pyperclip.copy(EIV8103483S2EX_0.get())
+def contextPasteEIV8103483S2EX_0():
+    EIV8103483S2EX_0.insert(tk.END, pyperclip.paste())
 
 def contextCopyE2():
     pyperclip.copy(E2.get())
@@ -797,7 +811,7 @@ root.geometry(windowPosition)
 #root.resizable(0, 0)
 root.configure(background='#000000')
 
-#---contex menu - right click menu---
+#--- contex menu - right click menu ---
 contextSearchMenu = Menu(root, tearoff=0)
 contextSearchMenu.add_command(label="Copy", command=contextCopyESearch)
 contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
@@ -806,9 +820,13 @@ contextInsertMenu = Menu(root, tearoff=0)
 contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
 contextInsertMenu.add_command(label="Paste", command=contextPasteEI2)
 
-contextInsertNameMenu = Menu(root, tearoff=0)
-contextInsertNameMenu.add_command(label="Copy", command=contextCopyEI4)
-contextInsertNameMenu.add_command(label="Paste", command=contextPasteEI4)
+contextInsertNameMenuV8103553S2EX = Menu(root, tearoff=0)
+contextInsertNameMenuV8103553S2EX.add_command(label="Copy", command=contextCopyEIV8103553S2EX_0)
+contextInsertNameMenuV8103553S2EX.add_command(label="Paste", command=contextPasteEIV8103553S2EX_0)
+
+contextInsertNameMenuV8103483S2EX = Menu(root, tearoff=0)
+contextInsertNameMenuV8103483S2EX.add_command(label="Copy", command=contextCopyEIV8103483S2EX_0)
+contextInsertNameMenuV8103483S2EX.add_command(label="Paste", command=contextPasteEIV8103483S2EX_0)
 
 contextUpdateMenu = Menu(root, tearoff=0)
 contextUpdateMenu.add_command(label="Copy", command=contextCopyE2)
@@ -817,10 +835,10 @@ contextUpdateMenu.add_command(label="Paste", command=contextPasteE2)
 contextUpdateNameMenu = Menu(root, tearoff=0)
 contextUpdateNameMenu.add_command(label="Copy", command=contextCopyE4)
 contextUpdateNameMenu.add_command(label="Paste", command=contextPasteE4)
-#---The End contex menu - right click nemu---
+#--- The End contex menu - right click nemu ---
 
 
-#-------------- Main View ----------------------------------------------------------------------------------------------
+#--- Main View ---
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
 
@@ -1374,72 +1392,56 @@ checkbox1.grid(column=0, row=10, columnspan=10, sticky='W', padx=10, pady=10)
 
 insertFrameVIV = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
 
-LI4 = Label(insertFrameVIV, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-LI4.config(font=("Arial", 10))
-LI4.grid(row=0, column=0, sticky=W)
-LI5 = Label(insertFrameVIV, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-LI5.config(font=("Arial", 10))
-LI5.grid(row=0, column=2, sticky=W)
-LI6 = Label(insertFrameVIV, text="LC:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-LI6.config(font=("Arial", 10))
-LI6.grid(row=1, column=0, sticky=W)
-LI7 = Label(insertFrameVIV, text="EPI:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-LI7.config(font=("Arial", 10))
-LI7.grid(row=1, column=2, sticky=W)
-LI8 = Label(insertFrameVIV, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-LI8.config(font=("Arial", 10))
-LI8.grid(row=2, column=0, sticky=W)
-LI9 = Label(insertFrameVIV, text="Comments:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-LI9.config(font=("Arial", 10))
-LI9.grid(row=2, column=2, sticky=W)
+LIV8103553S2EX_0 = Label(insertFrameVIV, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103553S2EX_0.config(font=("Arial", 10))
+LIV8103553S2EX_0.grid(row=0, column=0, sticky=W)
+EIV8103553S2EX_0 = Entry(insertFrameVIV, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
+EIV8103553S2EX_0.config(font=("Arial", 10))
+EIV8103553S2EX_0.grid(row=0, column=1, pady=1)
+EIV8103553S2EX_0.bind("<Button-3>", doPopupInsertNameV8103553S2EX)
 
-EI4 = Entry(insertFrameVIV, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
-EI4.config(font=("Arial", 10))
-EI4.grid(row=0, column=1, pady=1)
-EI4.bind("<Button-3>", doPopupInsertName)
-EI5 = Entry(insertFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
-EI5.config(font=("Arial", 10))
-EI5.grid(row=0, column=3, pady=1, sticky=W)
-EI6 = Entry(insertFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
-EI6.config(font=("Arial", 10))
-EI6.grid(row=2, column=3, pady=1)
+LIV8103553S2EX_1 = Label(insertFrameVIV, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103553S2EX_1.config(font=("Arial", 10))
+LIV8103553S2EX_1.grid(row=0, column=2, sticky=W)
+EIV8103553S2EX_1 = Entry(insertFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+EIV8103553S2EX_1.config(font=("Arial", 10))
+EIV8103553S2EX_1.grid(row=0, column=3, pady=1, sticky=W)
 
-LCInsert = tk.StringVar
-LCViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=37, textvariable=LCInsert, state='readonly')
-LCViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
-LCViTroxIVInsert.grid(row=1, column=1, pady=1, sticky=W)
-LCViTroxIVInsert.current(0)
-EPIInsert = tk.StringVar
-EPIViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=20, textvariable=EPIInsert, state='readonly')
-EPIViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
-EPIViTroxIVInsert.grid(row=1, column=3, pady=1, sticky=W)
-EPIViTroxIVInsert.current(0)
-BAANInsert = tk.StringVar
-BAANViTroxIVInsert = ttk.Combobox(insertFrameVIV, width=37, textvariable=BAANInsert, state='readonly')
-BAANViTroxIVInsert['values'] = ("NONE", "YES", "NO", "LACK")
-BAANViTroxIVInsert.grid(row=2, column=1, pady=1, sticky=W)
-BAANViTroxIVInsert.current(0)
+LIV8103553S2EX_2 = Label(insertFrameVIV, text="LC:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103553S2EX_2.config(font=("Arial", 10))
+LIV8103553S2EX_2.grid(row=1, column=0, sticky=W)
+VIV8103553S2EX_2 = tk.StringVar
+CIV8103553S2EX_2 = ttk.Combobox(insertFrameVIV, width=37, textvariable=VIV8103553S2EX_2, state='readonly')
+CIV8103553S2EX_2['values'] = ("NONE", "YES", "NO", "LACK")
+CIV8103553S2EX_2.grid(row=1, column=1, pady=1, sticky=W)
+CIV8103553S2EX_2.current(0)
+
+LIV8103553S2EX_3 = Label(insertFrameVIV, text="EPI:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103553S2EX_3.config(font=("Arial", 10))
+LIV8103553S2EX_3.grid(row=1, column=2, sticky=W)
+VIV8103553S2EX_3 = tk.StringVar
+CIV8103553S2EX_3 = ttk.Combobox(insertFrameVIV, width=20, textvariable=VIV8103553S2EX_3, state='readonly')
+CIV8103553S2EX_3['values'] = ("NONE", "YES", "NO", "LACK")
+CIV8103553S2EX_3.grid(row=1, column=3, pady=1, sticky=W)
+CIV8103553S2EX_3.current(0)
+
+LIV8103553S2EX_4 = Label(insertFrameVIV, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103553S2EX_4.config(font=("Arial", 10))
+LIV8103553S2EX_4.grid(row=2, column=0, sticky=W)
+VIV8103553S2EX_4 = tk.StringVar
+CIV8103553S2EX_4 = ttk.Combobox(insertFrameVIV, width=37, textvariable=VIV8103553S2EX_4, state='readonly')
+CIV8103553S2EX_4['values'] = ("NONE", "YES", "NO", "LACK")
+CIV8103553S2EX_4.grid(row=2, column=1, pady=1, sticky=W)
+CIV8103553S2EX_4.current(0)
+
+LIV8103553S2EX_5 = Label(insertFrameVIV, text="Comments:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103553S2EX_5.config(font=("Arial", 10))
+LIV8103553S2EX_5.grid(row=2, column=2, sticky=W)
+EIV8103553S2EX_5 = Entry(insertFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+EIV8103553S2EX_5.config(font=("Arial", 10))
+EIV8103553S2EX_5.grid(row=2, column=3, pady=1)
 
 #--- The End INSERT V810-3553S2EX ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #--- INSERT VV810-3483S2EX ---
@@ -1452,7 +1454,7 @@ LIV8103483S2EX_0.grid(row=0, column=0, sticky=W)
 EIV8103483S2EX_0 = Entry(insertFrameV8103483S2EX, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
 EIV8103483S2EX_0.config(font=("Arial", 10))
 EIV8103483S2EX_0.grid(row=0, column=1, pady=1)
-EIV8103483S2EX_0.bind("<Button-3>", doPopupInsertName)
+EIV8103483S2EX_0.bind("<Button-3>", doPopupInsertNameV8103483S2EX)
 
 LIV8103483S2EX_1 = Label(insertFrameV8103483S2EX, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LIV8103483S2EX_1.config(font=("Arial", 10))
@@ -1464,8 +1466,8 @@ EIV8103483S2EX_1.grid(row=0, column=3, pady=1, sticky=W)
 LIV8103483S2EX_2 = Label(insertFrameV8103483S2EX, text="LC:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LIV8103483S2EX_2.config(font=("Arial", 10))
 LIV8103483S2EX_2.grid(row=1, column=0, sticky=W)
-CIV8103483S2EX_2 = tk.StringVar
-CIV8103483S2EX_2 = ttk.Combobox(insertFrameV8103483S2EX, width=37, textvariable=CIV8103483S2EX_2, state='readonly')
+VIV8103483S2EX_2 = tk.StringVar
+CIV8103483S2EX_2 = ttk.Combobox(insertFrameV8103483S2EX, width=37, textvariable=VIV8103483S2EX_2, state='readonly')
 CIV8103483S2EX_2['values'] = ("NONE", "YES", "NO", "LACK")
 CIV8103483S2EX_2.grid(row=1, column=1, pady=1, sticky=W)
 CIV8103483S2EX_2.current(0)
