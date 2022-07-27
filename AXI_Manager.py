@@ -1376,10 +1376,14 @@ BI1.grid(row=1, column=0, columnspan=4, pady=2)
 
 #!!!!!!!!!!!!!test
 varV8103553S2EX = tk.IntVar()
-var2 = tk.IntVar()
 checkbox1 = tk.Checkbutton(tab2, text='V810-3553S2EX', variable=varV8103553S2EX, onvalue=1, offvalue=0, command=checkboxInsert)
 checkbox1.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
 checkbox1.grid(column=0, row=10, columnspan=10, sticky='W', padx=10, pady=10)
+
+varV8103483S2EX = tk.IntVar()
+checkbox2 = tk.Checkbutton(tab2, text='V810-3483S2EX', variable=varV8103483S2EX, onvalue=1, offvalue=0, command=checkboxInsert)
+checkbox2.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
+checkbox2.grid(column=0, row=11, columnspan=10, sticky='W', padx=10, pady=10)
 #c2 = tk.Checkbutton(tab2, text='C++',variable=var2, onvalue=1, offvalue=0, command=print_selection)
 #c2.grid(column=0, row=10, columnspan=10, sticky='W', padx=10, pady=10)
 
