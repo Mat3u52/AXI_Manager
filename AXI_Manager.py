@@ -582,19 +582,32 @@ def insertData():
     objDB = DBConnect()
     objDB.insert(EI2.get(), EI3.get(),
                  EIV8103553S2EX_0.get(), EIV8103553S2EX_1.get(), CIV8103553S2EX_2.get(),
-                 CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get())
+                 CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get(),
+                 EIV8103483S2EX_0.get(), EIV8103483S2EX_1.get(), CIV8103483S2EX_2.get(),
+                 CIV8103483S2EX_3.get(), CIV8103483S2EX_4.get(), EIV8103483S2EX_5.get()
+                 )
     objDB.closeDB()
 
-#--- Clean "Entry" & "Combobox" V8103553S2EX ---
+#--- Clean "Entry" & "Combobox" ---
     EI2.delete(0, END)
     EI3.delete(0, END)
+#--- ViTrox IV ---
     EIV8103553S2EX_0.delete(0, END)
     EIV8103553S2EX_1.delete(0, END)
     EIV8103553S2EX_5.delete(0, END)
     CIV8103553S2EX_2.current(0)
     CIV8103553S2EX_3.current(0)
     CIV8103553S2EX_4.current(0)
-# --- The End Clean "Entry" & "Combobox" V8103553S2EX ---
+#--- The End ViTrox IV ---
+#--- ViTrox III ---
+    EIV8103483S2EX_0.delete(0, END)
+    EIV8103483S2EX_1.delete(0, END)
+    EIV8103483S2EX_5.delete(0, END)
+    CIV8103483S2EX_2.current(0)
+    CIV8103483S2EX_3.current(0)
+    CIV8103483S2EX_4.current(0)
+#--- The End ViTrox III ---
+#--- The End Clean "Entry" & "Combobox" ---
 
     refresh()
 def search():
@@ -663,7 +676,7 @@ def refresh():
                         values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
                                 f"{row[23]}", f"{row[24]}"), tags=('DX'))
         count1 += 3
-        if len(str(row[27])) > 4:
+        if len(str(row[27])) > 4: # !!!!!!!!!!!!!!!!!!!!!! it is different than other
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
                                 f"{row[28]}", f"{row[29]}"), tags=('V'))
@@ -673,7 +686,7 @@ def refresh():
                         values=(f'{row[0]}', f"ViTrox Ex II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}",
                                 f"{row[46]}", f"{row[47]}"), tags=('V'))
         count1 += 4
-        if row[54] != None:
+        if row[54] != None and int(row[50]) != 0:
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}",
                                 f"{row[55]}", f"{row[56]}"), tags=('V'))
