@@ -740,10 +740,16 @@ def doPopupInsertNameV8103553S2EX(event):
         contextInsertNameMenuV8103553S2EX.grab_release()
 
 def doPopupInsertNameV8103483S2EX(event):
-        try:
-            contextInsertNameMenuV8103483S2EX.tk_popup(event.x_root, event.y_root)
-        finally:
-            contextInsertNameMenuV8103483S2EX.grab_release()
+    try:
+        contextInsertNameMenuV8103483S2EX.tk_popup(event.x_root, event.y_root)
+    finally:
+        contextInsertNameMenuV8103483S2EX.grab_release()
+
+def doPopupInsertNameV8103163(event):
+    try:
+        contextInsertNameMenuV8103163.tk_popup(event.x_root, event.y_root)
+    finally:
+        contextInsertNameMenuV8103163.grab_release()
 
 def doPopupUpdate(event):
     try:
@@ -777,6 +783,11 @@ def contextCopyEIV8103483S2EX_0():
 def contextPasteEIV8103483S2EX_0():
     EIV8103483S2EX_0.insert(tk.END, pyperclip.paste())
 
+def contextCopyEIV8103163_0():
+    pyperclip.copy(EIV8103483S2EX_0.get())
+def contextPasteEIV8103163_0():
+    EIV8103483S2EX_0.insert(tk.END, pyperclip.paste())
+
 def contextCopyE2():
     pyperclip.copy(E2.get())
 def contextPasteE2():
@@ -803,6 +814,13 @@ def checkboxInsert():
     elif varV8103483S2EX.get() == 2:
         print(varV8103483S2EX.get())
         insertFrameV8103483S2EX.grid_forget()
+
+    if varV8103163.get() == 5:
+        print(varV8103163.get())
+        insertFrameV8103163.grid(column=0, row=6, columnspan=10, sticky='W', padx=10, pady=10)
+    elif varV8103163.get() == 4:
+        print(varV8103163.get())
+        insertFrameV8103163.grid_forget()
 
 
     #if (var1.get() == 1) & (var2.get() == 0):
@@ -847,6 +865,10 @@ contextInsertNameMenuV8103553S2EX.add_command(label="Paste", command=contextPast
 contextInsertNameMenuV8103483S2EX = Menu(root, tearoff=0)
 contextInsertNameMenuV8103483S2EX.add_command(label="Copy", command=contextCopyEIV8103483S2EX_0)
 contextInsertNameMenuV8103483S2EX.add_command(label="Paste", command=contextPasteEIV8103483S2EX_0)
+
+contextInsertNameMenuV8103163 = Menu(root, tearoff=0)
+contextInsertNameMenuV8103163.add_command(label="Copy", command=contextCopyEIV8103163_0)
+contextInsertNameMenuV8103163.add_command(label="Paste", command=contextPasteEIV8103163_0)
 
 contextUpdateMenu = Menu(root, tearoff=0)
 contextUpdateMenu.add_command(label="Copy", command=contextCopyE2)
@@ -936,7 +958,7 @@ LV849CommentL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849CommentL.configure(font=("Arial", 10))
 LV849CommentL.grid(row=4, column=0, sticky=E)
 LV849Comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV849Comment.configure(font=("Arial", 10))
+LV849Comment.configure(font=("Arial", 10, "italic"))
 LV849Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 tabMain2 = ttk.Frame(tabControlMain)
@@ -993,7 +1015,7 @@ LV817CommentL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
 LV817CommentL.configure(font=("Arial", 10))
 LV817CommentL.grid(row=4, column=0, sticky=E)
 LV817Comment = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV817Comment.configure(font=("Arial", 10))
+LV817Comment.configure(font=("Arial", 10, "italic"))
 LV817Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 tabMain3 = ttk.Frame(tabControlMain)
@@ -1051,7 +1073,7 @@ LV8103163CommentL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="
 LV8103163CommentL.configure(font=("Arial", 10))
 LV8103163CommentL.grid(row=4, column=0, sticky=E)
 LV8103163Comment = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103163Comment.configure(font=("Arial", 10))
+LV8103163Comment.configure(font=("Arial", 10, "italic"))
 LV8103163Comment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 tabMain4 = ttk.Frame(tabControlMain)
@@ -1109,7 +1131,7 @@ LV8103483S2EXCommentL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pa
 LV8103483S2EXCommentL.configure(font=("Arial", 10))
 LV8103483S2EXCommentL.grid(row=4, column=0, sticky=E)
 LV8103483S2EXComment = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103483S2EXComment.configure(font=("Arial", 10))
+LV8103483S2EXComment.configure(font=("Arial", 10, "italic"))
 LV8103483S2EXComment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 
@@ -1168,7 +1190,7 @@ LV8103553S2EXCommentL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pa
 LV8103553S2EXCommentL.configure(font=("Arial", 10))
 LV8103553S2EXCommentL.grid(row=4, column=0, sticky=E)
 LV8103553S2EXComment = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXComment.configure(font=("Arial", 10))
+LV8103553S2EXComment.configure(font=("Arial", 10, "italic"))
 LV8103553S2EXComment.grid(row=4, column=1, columnspan=5, sticky=W)
 
 
@@ -1406,6 +1428,12 @@ checkbox2 = tk.Checkbutton(tab2, text='V810-3483S2EX', variable=varV8103483S2EX,
 checkbox2.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
 checkbox2.grid(column=3, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 
+varV8103163 = tk.IntVar()
+checkbox3 = tk.Checkbutton(tab2, text='V810-3163', variable=varV8103163, onvalue=5, offvalue=4, command=checkboxInsert)
+checkbox3.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
+checkbox3.grid(column=6, row=3, columnspan=10, sticky='W', padx=10, pady=10)
+
+
 
 #--- The End checkbox area ---
 
@@ -1468,7 +1496,7 @@ EIV8103553S2EX_5.grid(row=2, column=3, pady=1)
 #--- The End INSERT V810-3553S2EX ---
 
 
-#--- INSERT VV810-3483S2EX ---
+#--- INSERT V810-3483S2EX ---
 
 insertFrameV8103483S2EX = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
 
@@ -1522,6 +1550,61 @@ EIV8103483S2EX_5.config(font=("Arial", 10))
 EIV8103483S2EX_5.grid(row=2, column=3, pady=1)
 
 #--- The End INSERT V810-3483S2EX ---
+
+#--- INSERT V810-3163 ---
+
+insertFrameV8103163 = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex I ( V810-3163 ) ")
+
+LIV8103163_0 = Label(insertFrameV8103163, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103163_0.config(font=("Arial", 10))
+LIV8103163_0.grid(row=0, column=0, sticky=W)
+EIV8103163_0 = Entry(insertFrameV8103163, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
+EIV8103163_0.config(font=("Arial", 10))
+EIV8103163_0.grid(row=0, column=1, pady=1)
+EIV8103163_0.bind("<Button-3>", doPopupInsertNameV8103163)
+
+LIV8103163_1 = Label(insertFrameV8103163, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103163_1.config(font=("Arial", 10))
+LIV8103163_1.grid(row=0, column=2, sticky=W)
+EIV8103163_1 = Entry(insertFrameV8103163, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+EIV8103163_1.config(font=("Arial", 10))
+EIV8103163_1.grid(row=0, column=3, pady=1, sticky=W)
+
+LIV8103163_2 = Label(insertFrameV8103163, text="LC:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103163_2.config(font=("Arial", 10))
+LIV8103163_2.grid(row=1, column=0, sticky=W)
+VIV8103163_2 = tk.StringVar
+CIV8103163_2 = ttk.Combobox(insertFrameV8103163, width=37, textvariable=VIV8103163_2, state='readonly')
+CIV8103163_2['values'] = ("NONE", "YES", "NO", "LACK")
+CIV8103163_2.grid(row=1, column=1, pady=1, sticky=W)
+CIV8103163_2.current(0)
+
+LIV8103163_3 = Label(insertFrameV8103163, text="EPI:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103163_3.config(font=("Arial", 10))
+LIV8103163_3.grid(row=1, column=2, sticky=W)
+VIV8103163_3 = tk.StringVar
+CIV8103163_3 = ttk.Combobox(insertFrameV8103163, width=20, textvariable=VIV8103163_3, state='readonly')
+CIV8103163_3['values'] = ("NONE", "YES", "NO", "LACK")
+CIV8103163_3.grid(row=1, column=3, pady=1, sticky=W)
+CIV8103163_3.current(0)
+
+LIV8103163_4 = Label(insertFrameV8103163, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103163_4.config(font=("Arial", 10))
+LIV8103163_4.grid(row=2, column=0, sticky=W)
+VIV8103163_4 = tk.StringVar
+CIV8103163_4 = ttk.Combobox(insertFrameV8103163, width=37, textvariable=VIV8103163_4, state='readonly')
+CIV8103163_4['values'] = ("NONE", "YES", "NO", "LACK")
+CIV8103163_4.grid(row=2, column=1, pady=1, sticky=W)
+CIV8103163_4.current(0)
+
+LIV8103163_5 = Label(insertFrameV8103163, text="Comments:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LIV8103163_5.config(font=("Arial", 10))
+LIV8103163_5.grid(row=2, column=2, sticky=W)
+EIV8103163_5 = Entry(insertFrameV8103163, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+EIV8103163_5.config(font=("Arial", 10))
+EIV8103163_5.grid(row=2, column=3, pady=1)
+
+#--- The End INSERT V810-3163 ---
 
 
 
