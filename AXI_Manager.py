@@ -325,7 +325,7 @@ def getSelectedRow(event):
             else:
                 LV8103163EPI.configure(text=f"{row[29]}", fg="#D44339")
 
-            LV8103483S2EXComment.configure(text=f"{row[30]}")
+            LV8103163Comment.configure(text=f"{row[30]}")
 
             canvasFrame3 = Label(tabMain3)
             canvasFrame3.grid(row=0, column=6, rowspan=6, sticky=W)
@@ -583,12 +583,17 @@ def insertData():
     objDB.insert(EI2.get(), EI3.get(),
                  EIV8103553S2EX_0.get(), EIV8103553S2EX_1.get(), CIV8103553S2EX_2.get(),
                  CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get(),
+
                  EIV8103483S2EX_0.get(), EIV8103483S2EX_1.get(), CIV8103483S2EX_2.get(),
-                 CIV8103483S2EX_3.get(), CIV8103483S2EX_4.get(), EIV8103483S2EX_5.get()
+                 CIV8103483S2EX_3.get(), CIV8103483S2EX_4.get(), EIV8103483S2EX_5.get(),
+
+                 EIV8103163_0.get(), EIV8103163_1.get(), CIV8103163_2.get(),
+                 CIV8103163_3.get(), CIV8103163_4.get(), EIV8103163_5.get()
                  )
     objDB.closeDB()
 
-#--- Clean "Entry" & "Combobox" ---
+
+#--- CleanUp "Entry" & "Combobox" ---
     EI2.delete(0, END)
     EI3.delete(0, END)
 #--- ViTrox IV ---
@@ -607,7 +612,15 @@ def insertData():
     CIV8103483S2EX_3.current(0)
     CIV8103483S2EX_4.current(0)
 #--- The End ViTrox III ---
-#--- The End Clean "Entry" & "Combobox" ---
+# --- ViTrox I ---
+    EIV8103163_0.delete(0, END)
+    EIV8103163_1.delete(0, END)
+    EIV8103163_5.delete(0, END)
+    CIV8103163_2.current(0)
+    CIV8103163_3.current(0)
+    CIV8103163_4.current(0)
+# --- The End ViTrox I ---
+#--- The End CleanUp "Entry" & "Combobox" ---
 
     refresh()
 def search():
@@ -784,9 +797,9 @@ def contextPasteEIV8103483S2EX_0():
     EIV8103483S2EX_0.insert(tk.END, pyperclip.paste())
 
 def contextCopyEIV8103163_0():
-    pyperclip.copy(EIV8103483S2EX_0.get())
+    pyperclip.copy(EIV8103163_0.get())
 def contextPasteEIV8103163_0():
-    EIV8103483S2EX_0.insert(tk.END, pyperclip.paste())
+    EIV8103163_0.insert(tk.END, pyperclip.paste())
 
 def contextCopyE2():
     pyperclip.copy(E2.get())
@@ -803,21 +816,21 @@ def checkboxInsert():
 
     if varV8103553S2EX.get() == 1:
         print(varV8103553S2EX.get())
-        insertFrameV8103553S2EX.grid(column=0, row=4, columnspan=10, sticky='W', padx=10, pady=10)
+        insertFrameV8103553S2EX.grid(column=0, row=5, columnspan=10, sticky='W', padx=10, pady=10)
     elif varV8103553S2EX.get() == 0:
         print(varV8103553S2EX.get())
         insertFrameV8103553S2EX.grid_forget()
 
     if varV8103483S2EX.get() == 3:
         print(varV8103483S2EX.get())
-        insertFrameV8103483S2EX.grid(column=0, row=5, columnspan=10, sticky='W', padx=10, pady=10)
+        insertFrameV8103483S2EX.grid(column=0, row=6, columnspan=10, sticky='W', padx=10, pady=10)
     elif varV8103483S2EX.get() == 2:
         print(varV8103483S2EX.get())
         insertFrameV8103483S2EX.grid_forget()
 
     if varV8103163.get() == 5:
         print(varV8103163.get())
-        insertFrameV8103163.grid(column=0, row=6, columnspan=10, sticky='W', padx=10, pady=10)
+        insertFrameV8103163.grid(column=0, row=7, columnspan=10, sticky='W', padx=10, pady=10)
     elif varV8103163.get() == 4:
         print(varV8103163.get())
         insertFrameV8103163.grid_forget()
@@ -1417,23 +1430,25 @@ BI1 = ttk.Button(mainFrameInsert, text="Insert", width=55, command=insertData, c
 BI1.grid(row=1, column=0, columnspan=4, pady=2)
 
 #--- checkbox area ---
-
+checkboxFrameViTroxEx = ttk.LabelFrame(tab2, text=" ViTrox Ex ") #---test
+checkboxFrameViTroxEx.grid(column=0, row=4, sticky='W', padx=10, pady=10)
 varV8103553S2EX = tk.IntVar()
-checkbox1 = tk.Checkbutton(tab2, text='V810-3553S2EX', variable=varV8103553S2EX, onvalue=1, offvalue=0, command=checkboxInsert)
+checkbox1 = tk.Checkbutton(checkboxFrameViTroxEx, text='V810-3553S2EX', variable=varV8103553S2EX, onvalue=1, offvalue=0, command=checkboxInsert)
 checkbox1.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
-checkbox1.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
+#checkbox1.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
+checkbox1.grid(column=0, row=0, sticky='W', padx=10, pady=10)
 
 varV8103483S2EX = tk.IntVar()
-checkbox2 = tk.Checkbutton(tab2, text='V810-3483S2EX', variable=varV8103483S2EX, onvalue=3, offvalue=2, command=checkboxInsert)
+checkbox2 = tk.Checkbutton(checkboxFrameViTroxEx, text='V810-3483S2EX', variable=varV8103483S2EX, onvalue=3, offvalue=2, command=checkboxInsert)
 checkbox2.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
-checkbox2.grid(column=3, row=3, columnspan=10, sticky='W', padx=10, pady=10)
+#checkbox2.grid(column=3, row=3, columnspan=10, sticky='W', padx=10, pady=10)
+checkbox2.grid(column=1, row=0, sticky='W', padx=10, pady=10)
 
 varV8103163 = tk.IntVar()
-checkbox3 = tk.Checkbutton(tab2, text='V810-3163', variable=varV8103163, onvalue=5, offvalue=4, command=checkboxInsert)
+checkbox3 = tk.Checkbutton(checkboxFrameViTroxEx, text='V810-3163', variable=varV8103163, onvalue=5, offvalue=4, command=checkboxInsert)
 checkbox3.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
-checkbox3.grid(column=6, row=3, columnspan=10, sticky='W', padx=10, pady=10)
-
-
+#checkbox3.grid(column=6, row=3, columnspan=10, sticky='W', padx=10, pady=10)
+checkbox3.grid(column=3, row=0, sticky='W', padx=10, pady=10)
 
 #--- The End checkbox area ---
 
