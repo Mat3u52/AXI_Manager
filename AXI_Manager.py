@@ -444,7 +444,8 @@ def getSelectedRow(event):
             if str(row[53]) == 'YES':
                 LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#AAAAAA")
             else:
-                LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#D44339")
+                #LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#D44339")
+                LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#FCBA03")
             if str(row[55]) == 'YES':
                 LV8103553S2EXLC.configure(text=f"{row[55]}", fg="#AAAAAA")
             else:
@@ -648,7 +649,8 @@ def refresh():
     tree.tag_configure('V', background="#333333")
     tree.tag_configure('one', background="#111111")
     tree.tag_configure('baan', background="#111111", foreground="#EB0E0E")
-    tree.tag_configure('baan0', foreground="#EB0E0E")
+    #tree.tag_configure('baan0', foreground="#EB0E0E")
+    tree.tag_configure('baan0', foreground="#FC8403")
 #---The End Create striped row---
 
     count = 1
