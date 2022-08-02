@@ -141,13 +141,14 @@ def getSelectedRow(event):
         if int(len(str(row[17]))) > 4:
             tabControlMain.add(tabMain1, text=" V849 ")
             LV849Prog.configure(text=f"{row[17]}")
+            LV849ScanTimeL.configure(text=f"Scan Time:")
             LV849UPH85L.configure(text=f"UPH 85%:")
             LV849UPH95L.configure(text=f"UPH 95%:")
             LV849BaanL.configure(text=f"BaaN:")
             LV849LCL.configure(text=f"LC:")
             LV849EPIL.configure(text=f"EPI:")
             LV849CommentL.configure(text=f"Comment:")
-            LV849ScanTime.configure(text=f"Scan Time: {int(row[7])+int(row[8])+int(row[9])+int(row[10])}"
+            LV849ScanTime.configure(text=f"{int(row[7])+int(row[8])+int(row[9])+int(row[10])}"
                                          f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
             LV849UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
                                       f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
@@ -444,8 +445,7 @@ def getSelectedRow(event):
             if str(row[53]) == 'YES':
                 LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#AAAAAA")
             else:
-                #LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#D44339")
-                LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#FCBA03")
+                LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#D44339")
             if str(row[55]) == 'YES':
                 LV8103553S2EXLC.configure(text=f"{row[55]}", fg="#AAAAAA")
             else:
@@ -649,8 +649,8 @@ def refresh():
     tree.tag_configure('V', background="#333333")
     tree.tag_configure('one', background="#111111")
     tree.tag_configure('baan', background="#111111", foreground="#EB0E0E")
-    #tree.tag_configure('baan0', foreground="#EB0E0E")
-    tree.tag_configure('baan0', foreground="#FC8403")
+    tree.tag_configure('baan0', foreground="#EB0E0E")
+    #tree.tag_configure('baan0', foreground="#B03045")
 #---The End Create striped row---
 
     count = 1
@@ -923,58 +923,61 @@ tabControlMain.add(tabMain1, text=" V849 ")
 
 LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV849Prog.configure(font=("Arial", 10))
-LV849Prog.grid(row=0, column=0, sticky=W)
+LV849Prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
+LV849ScanTimeL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+LV849ScanTimeL.configure(font=("Arial", 10))
+LV849ScanTimeL.grid(row=1, column=0, sticky=E)
 LV849ScanTime = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849ScanTime.configure(font=("Arial", 10))
-LV849ScanTime.grid(row=0, column=1, columnspan=5, sticky=E)
+LV849ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
 
 #LV849UPH85L = Label(tabMain1, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV849UPH85L = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849UPH85L.configure(font=("Arial", 10))
-LV849UPH85L.grid(row=1, column=0, sticky=E)
+LV849UPH85L.grid(row=2, column=0, sticky=E)
 LV849UPH85 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849UPH85.configure(font=("Arial", 10))
-LV849UPH85.grid(row=1, column=1, columnspan=5, sticky=W)
+LV849UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
 #LV849UPH95L = Label(tabMain1, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV849UPH95L = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849UPH95L.configure(font=("Arial", 10))
-LV849UPH95L.grid(row=2, column=0, sticky=E)
+LV849UPH95L.grid(row=3, column=0, sticky=E)
 LV849UPH95 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849UPH95.configure(font=("Arial", 10))
-LV849UPH95.grid(row=2, column=1, columnspan=5, sticky=W)
+LV849UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
 #LV849BaanL = Label(tabMain1, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
 LV849BaanL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849BaanL.configure(font=("Arial", 10))
-LV849BaanL.grid(row=3, column=0, sticky=E)
+LV849BaanL.grid(row=4, column=0, sticky=E)
 LV849Baan = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849Baan.configure(font=("Arial", 10))
-LV849Baan.grid(row=3, column=1, sticky=W)
+LV849Baan.grid(row=4, column=1, sticky=W)
 
 #LV849LCL = Label(tabMain1, text=f"LC:", bg="#444444", fg="#666666", pady="1")
 LV849LCL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849LCL.configure(font=("Arial", 10))
-LV849LCL.grid(row=3, column=2, sticky=E)
+LV849LCL.grid(row=4, column=2, sticky=E)
 LV849LC = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849LC.configure(font=("Arial", 10))
-LV849LC.grid(row=3, column=3, sticky=W)
+LV849LC.grid(row=4, column=3, sticky=W)
 
 #LV849EPIL = Label(tabMain1, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
 LV849EPIL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849EPIL.configure(font=("Arial", 10))
-LV849EPIL.grid(row=3, column=4, sticky=E)
+LV849EPIL.grid(row=4, column=4, sticky=E)
 LV849EPI = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849EPI.configure(font=("Arial", 10))
-LV849EPI.grid(row=3, column=5, sticky=W)
+LV849EPI.grid(row=4, column=5, sticky=W)
 
 #LV849CommentL = Label(tabMain1, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
 LV849CommentL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849CommentL.configure(font=("Arial", 10))
-LV849CommentL.grid(row=4, column=0, sticky=E)
+LV849CommentL.grid(row=5, column=0, sticky=E)
 LV849Comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849Comment.configure(font=("Arial", 10, "italic"))
-LV849Comment.grid(row=4, column=1, columnspan=5, sticky=W)
+LV849Comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
 tabMain2 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain2, text=" V817 ")
@@ -1301,7 +1304,7 @@ style.theme_create('style_class',
 
                        'TButton':{
                            'configure':{
-                                'background': '#302928',
+                                'background': '#212121', #302928
                                 'foreground': '#FFFFFF',
                                 'anchor': N,
                                 'font': ("Arial", 12, 'bold'),
@@ -1323,7 +1326,8 @@ root.option_add("*TCombobox*Listbox*Background", "#302928")
 root.option_add("*TCombobox*Listbox*Foreground", "#AAAAAA")
 
 style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=25, filedbackground="#777777")
-style.map('Treeview', background=[('selected', '#170D47')])
+#style.map('Treeview', background=[('selected', '#170D47')])
+style.map('Treeview', background=[('selected', '#46464A')])
 #--- The End Style ---
 
 #--- UPDATE ---
@@ -1413,18 +1417,18 @@ B1.grid(row=3, column=0, columnspan = 4, pady=2)
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
 
-LI2 = Label(mainFrameInsert, text="Item:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI2 = Label(mainFrameInsert, text="Item:", width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
 LI2.config(font=("Arial", 10))
-LI3 = Label(mainFrameInsert, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+LI3 = Label(mainFrameInsert, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
 LI3.config(font=("Arial", 10))
 LI2.grid(row=0, column=0, sticky=W)
 LI3.grid(row=0, column=2, sticky=W)
 
-EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
+EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
 EI2.config(font=("Arial", 10))
 EI2.grid(row=0, column=1, pady=1)
 EI2.bind("<Button-3>", doPopupInsert)
-EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
+EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#212121", fg="#FFFFFF")
 EI3.config(font=("Arial", 10))
 EI3.grid(row=0, column=3, pady=1, stick=W)
 
