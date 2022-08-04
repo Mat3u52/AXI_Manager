@@ -1,5 +1,6 @@
 import _tkinter
 from DBConnect import DBConnect
+from tip import tip
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -129,6 +130,11 @@ def getSelectedRow(event):
             BAANViTroxIV.current(swich(row[53]))
 
         pyperclip.copy(E2.get()) #clipboard
+        # --- Object tip ---
+        objTip = tip(E2.get(), root)
+        objTip.labelTip()
+
+        # --- The End object tip ---
 
         objDB.closeDB()
 
@@ -1325,7 +1331,7 @@ style.theme_create('style_class',
 
                        'TButton':{
                            'configure':{
-                                'background': '#212121', #302928
+                                'background': '#111111', #302928
                                 'foreground': '#FFFFFF',
                                 'anchor': N,
                                 'font': ("Arial", 12, 'bold'),
