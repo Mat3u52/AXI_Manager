@@ -131,8 +131,10 @@ def getSelectedRow(event):
 
         pyperclip.copy(E2.get()) #clipboard
         # --- Object tip ---
-        objTip = tip(E2.get(), root)
+        #objTip = tip(E2.get(), root)
+        objTip = tip(E2.get(), mainFrameView)
         objTip.labelTip()
+        #objTip.destroyTip()
 
         # --- The End object tip ---
 
