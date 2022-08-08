@@ -1,6 +1,6 @@
 import _tkinter
 from DBConnect import DBConnect
-from tip import tip
+from Tip import Tip
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -130,11 +130,11 @@ def getSelectedRow(event):
             BAANViTroxIV.current(swich(row[53]))
 
         pyperclip.copy(E2.get()) #clipboard
+
         # --- Object tip ---
-        #objTip = tip(E2.get(), root)
-        objTip = tip(E2.get(), mainFrameView)
+
+        objTip = Tip(E2.get(), mainFrameView)
         objTip.labelTip()
-        #objTip.destroyTip()
 
         # --- The End object tip ---
 
@@ -581,6 +581,7 @@ def getSelectedRow(event):
             elif content[1] == 'ViTrox XXL I':
                 tabControlMain.select(tabMain6)
 
+        objTip.destroyTip()
         root.mainloop()
 def updateDisplay():
     if int(tab[0]) >= 0:
@@ -605,6 +606,11 @@ def insertData():
                  CIV8103163_3.get(), CIV8103163_4.get(), EIV8103163_5.get()
                  )
     objDB.closeDB()
+
+    objTipNew = Tip(EI2.get(), mainFrameInsert)
+    objTipNew.newRecordTip()
+    objTipNew.animateTip(root)
+
 
 
 #--- CleanUp "Entry" & "Combobox" ---
