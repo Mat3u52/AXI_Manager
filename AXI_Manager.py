@@ -608,7 +608,7 @@ def insertData():
     objDB.closeDB()
 
     objTipNew = Tip(EI2.get(), mainFrameInsert)
-    objTipNew.newRecordTip()
+    #objTipNew.newRecordTip()
     objTipNew.animateTip(root)
 
 
