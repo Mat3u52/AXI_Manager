@@ -131,13 +131,6 @@ def getSelectedRow(event):
 
         pyperclip.copy(E2.get()) #clipboard
 
-        # --- Object tip ---
-
-        objTip = Tip(E2.get(), mainFrameView)
-        objTip.labelTip()
-
-        # --- The End object tip ---
-
         objDB.closeDB()
 
         LItem.configure(text=f"{row[1]}")
