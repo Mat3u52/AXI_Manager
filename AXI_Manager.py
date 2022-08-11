@@ -574,7 +574,7 @@ def getSelectedRow(event):
             elif content[1] == 'ViTrox XXL I':
                 tabControlMain.select(tabMain6)
 
-        objTip.destroyTip()
+        #objTip.destroyTip()
         root.mainloop()
 def updateDisplay():
     if int(tab[0]) >= 0:
