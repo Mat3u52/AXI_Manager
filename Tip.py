@@ -4,20 +4,18 @@ import time
 from PIL import Image
 
 class Tip:
-    def __init__(self, capture, mainFrameView, root):
-        self.capture = capture
+    def __init__(self, root, mainFrameView, primePng = 'img/tip/okBegin.png'):
+        self.root = root
         self.mainFrameView = mainFrameView
         self.startXPosition = 120
         self.startYPosition = 20
         self.minMovement = -1
         self.refreshSec = 0.01
-        self.root = root
+        self.primePng = primePng
 
     #def animateTip(self, root, xinc=minMovement, yinc=minMovement):
     #def animateTip(self, root):
     def animateTip(self):
-
-
 
         self.canvasFrame1 = Label(self.mainFrameView)
         self.canvasFrame1.configure(bg="#333333", bd=0)
@@ -26,9 +24,10 @@ class Tip:
         self.canvas1.configure(bg="#333333", bd=0, highlightthickness=0, highlightbackground="black")
         self.canvas1.pack(expand=False)
 
-        print("f: animateTip")
+        #print("f: animateTip")
 
-        self.im = Image.open('img/tip/okBegin.png')
+        #self.im = Image.open('img/tip/okBegin.png')
+        self.im = Image.open(self.primePng)
         self.im.putalpha(120)
         self.im.save('img/tip/ok.png')
         self.photo = PhotoImage(file='img/tip/ok.png')
@@ -47,7 +46,7 @@ class Tip:
             self.al, self.bl = self.imgPos
 
             self.transparency = 120 + (2*(int(self.al) - 120))
-            print(self.transparency)
+            #print(self.transparency)
             self.im = Image.open('img/tip/ok.png')
             # im.putalpha(155)
             self.im.putalpha(self.transparency)
@@ -64,7 +63,7 @@ class Tip:
             #    yinc = -yinc
             if self.al == int(self.startXPosition) / 2:
                 break
-            print(self.al)
+            #print(self.al)
 
 
 
