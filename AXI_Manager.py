@@ -1,6 +1,8 @@
 import _tkinter
 from DBConnect import DBConnect
 from Tip import Tip
+from ContextualMenu import ContextualMenu
+from MainView import MainView
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -600,9 +602,8 @@ def insertData():
                  )
     objDB.closeDB()
 
-    objTipNew = Tip(EI2.get(), mainFrameInsert)
-    #objTipNew.newRecordTip()
-    objTipNew.animateTip(root)
+    objTipNew = Tip(root, mainFrameInsert)
+    objTipNew.animateTip()
 
 
 
@@ -754,11 +755,11 @@ def doPopupSearch(event):
     finally:
         contextSearchMenu.grab_release()
 
-def doPopupInsert(event):
-    try:
-        contextInsertMenu.tk_popup(event.x_root, event.y_root)
-    finally:
-        contextInsertMenu.grab_release()
+#def doPopupInsert(event):
+#    try:
+#        contextInsertMenu.tk_popup(event.x_root, event.y_root)
+#    finally:
+#        contextInsertMenu.grab_release()
 
 def doPopupInsertNameV8103553S2EX(event):
     try:
@@ -795,10 +796,10 @@ def contextCopyESearch():
 def contextPasteESearch():
     ESearch.insert(tk.END, pyperclip.paste())
 
-def contextCopyEI2():
-    pyperclip.copy(EI2.get())
-def contextPasteEI2():
-    EI2.insert(tk.END, pyperclip.paste())
+#def contextCopyEI2():
+#    pyperclip.copy(EI2.get())
+#def contextPasteEI2():
+#    EI2.insert(tk.END, pyperclip.paste())
 
 def contextCopyEIV8103553S2EX_0():
     pyperclip.copy(EIV8103553S2EX_0.get())
@@ -881,9 +882,9 @@ contextSearchMenu = Menu(root, tearoff=0)
 contextSearchMenu.add_command(label="Copy", command=contextCopyESearch)
 contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
 
-contextInsertMenu = Menu(root, tearoff=0)
-contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
-contextInsertMenu.add_command(label="Paste", command=contextPasteEI2)
+#contextInsertMenu = Menu(root, tearoff=0)
+#contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
+#contextInsertMenu.add_command(label="Paste", command=contextPasteEI2)
 
 contextInsertNameMenuV8103553S2EX = Menu(root, tearoff=0)
 contextInsertNameMenuV8103553S2EX.add_command(label="Copy", command=contextCopyEIV8103553S2EX_0)
@@ -908,6 +909,7 @@ contextUpdateNameMenu.add_command(label="Paste", command=contextPasteE4)
 
 
 #--- Main View ---
+
 mainFrameView = ttk.LabelFrame(root, text=" Main View ")
 mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
 
@@ -1442,6 +1444,10 @@ B1.grid(row=3, column=0, columnspan = 4, pady=2)
 
 
 #--- INSERT ---
+
+objContextualMenu = ContextualMenu(root)
+
+
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
 
@@ -1455,7 +1461,9 @@ LI3.grid(row=0, column=2, sticky=W)
 EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
 EI2.config(font=("Arial", 10))
 EI2.grid(row=0, column=1, pady=1)
-EI2.bind("<Button-3>", doPopupInsert)
+#EI2.bind("<Button-3>", doPopupInsert)
+EI2.bind("<Button-3>", objContextualMenu.doPopup)
+#objContextualMenu.doPopupInsert(EI2)
 EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#212121", fg="#FFFFFF")
 EI3.config(font=("Arial", 10))
 EI3.grid(row=0, column=3, pady=1, stick=W)
