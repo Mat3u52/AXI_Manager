@@ -1462,7 +1462,7 @@ EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=35, bg="#21212
 EI2.config(font=("Arial", 10))
 EI2.grid(row=0, column=1, pady=1)
 #EI2.bind("<Button-3>", doPopupInsert)
-EI2.bind("<Button-3>", objContextualMenu.doPopup)
+EI2.bind("<Button-3>", objContextualMenu.doPopup())
 #objContextualMenu.doPopupInsert(EI2)
 EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#212121", fg="#FFFFFF")
 EI3.config(font=("Arial", 10))
