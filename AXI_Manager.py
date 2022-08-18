@@ -756,6 +756,7 @@ def doPopupSearch(event):
         contextSearchMenu.grab_release()
 
 #def doPopupInsert(event):
+#    print(event.x_root)
 #    try:
 #        contextInsertMenu.tk_popup(event.x_root, event.y_root)
 #    finally:
@@ -1444,10 +1445,6 @@ B1.grid(row=3, column=0, columnspan = 4, pady=2)
 
 
 #--- INSERT ---
-
-objContextualMenu = ContextualMenu(root)
-
-
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
 
@@ -1458,12 +1455,19 @@ LI3.config(font=("Arial", 10))
 LI2.grid(row=0, column=0, sticky=W)
 LI3.grid(row=0, column=2, sticky=W)
 
+
 EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
 EI2.config(font=("Arial", 10))
 EI2.grid(row=0, column=1, pady=1)
 #EI2.bind("<Button-3>", doPopupInsert)
-EI2.bind("<Button-3>", objContextualMenu.doPopup())
-#objContextualMenu.doPopupInsert(EI2)
+
+objContextualMenu = ContextualMenu(root)
+EI2.bind("<Button-3>", objContextualMenu.doPopup)
+#objContextualMenu.contextCopyEI2
+#objContextualMenu.test("test")
+
+
+
 EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#212121", fg="#FFFFFF")
 EI3.config(font=("Arial", 10))
 EI3.grid(row=0, column=3, pady=1, stick=W)
@@ -1723,5 +1727,4 @@ tree.heading("Six", text="LC", anchor=tk.W)
 tree.heading("Seven", text="EPI", anchor=tk.W)
 
 refresh()
-
 root.mainloop()
