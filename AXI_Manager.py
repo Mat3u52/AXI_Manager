@@ -11,7 +11,6 @@ import pyperclip
 import os
 from PIL import Image
 
-
 tab = []
 startXPosition = 170
 startYPosition = 85
@@ -756,7 +755,7 @@ def doPopupSearch(event):
         contextSearchMenu.grab_release()
 
 #def doPopupInsert(event):
-#    print(event.x_root)
+    #print(event.x_root)
 #    try:
 #        contextInsertMenu.tk_popup(event.x_root, event.y_root)
 #    finally:
@@ -1429,12 +1428,12 @@ LCViTroxIV.grid(row=1, column=1, pady=1, sticky=W)
 LCViTroxIV.current(0)
 EPI = tk.StringVar
 EPIViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=EPI, state='readonly')
-EPIViTroxIV['values'] = ("NONE","YES","NO","LACK")
+EPIViTroxIV['values'] = ("NONE", "YES", "NO", "LACK")
 EPIViTroxIV.grid(row=1, column=3, pady=1, sticky=W)
 EPIViTroxIV.current(0)
 BAAN = tk.StringVar
 BAANViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=BAAN, state='readonly')
-BAANViTroxIV['values'] = ("NONE","YES","NO","LACK")
+BAANViTroxIV['values'] = ("NONE", "YES", "NO", "LACK")
 BAANViTroxIV.grid(row=2, column=1, pady=1, sticky=W)
 BAANViTroxIV.current(0)
 
@@ -1445,6 +1444,8 @@ B1.grid(row=3, column=0, columnspan = 4, pady=2)
 
 
 #--- INSERT ---
+objCM = ContextualMenu(root)
+
 mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
 mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
 
@@ -1456,13 +1457,13 @@ LI2.grid(row=0, column=0, sticky=W)
 LI3.grid(row=0, column=2, sticky=W)
 
 
-EI2 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
+EI2 = Entry(mainFrameInsert, relief="solid", textvariable=objCM.captureEntry, borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
 EI2.config(font=("Arial", 10))
 EI2.grid(row=0, column=1, pady=1)
 #EI2.bind("<Button-3>", doPopupInsert)
 
-objContextualMenu = ContextualMenu(root)
-EI2.bind("<Button-3>", objContextualMenu.doPopup)
+#objContextualMenu = ContextualMenu(root)
+EI2.bind("<Button-3>", objCM.doPopup)
 #objContextualMenu.contextCopyEI2
 #objContextualMenu.test("test")
 
@@ -1502,16 +1503,20 @@ checkbox3.grid(column=3, row=0, sticky='W', padx=10, pady=10)
 
 
 #---INSERT V810-3553S2EX---
+objContextualMenu0 = ContextualMenu(root)
+
 
 insertFrameV8103553S2EX = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
 
 LIV8103553S2EX_0 = Label(insertFrameV8103553S2EX, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LIV8103553S2EX_0.config(font=("Arial", 10))
 LIV8103553S2EX_0.grid(row=0, column=0, sticky=W)
-EIV8103553S2EX_0 = Entry(insertFrameV8103553S2EX, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
+EIV8103553S2EX_0 = Entry(insertFrameV8103553S2EX, relief="solid", textvariable=objContextualMenu0.captureEntry, borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
 EIV8103553S2EX_0.config(font=("Arial", 10))
 EIV8103553S2EX_0.grid(row=0, column=1, pady=1)
-EIV8103553S2EX_0.bind("<Button-3>", doPopupInsertNameV8103553S2EX)
+#EIV8103553S2EX_0.bind("<Button-3>", doPopupInsertNameV8103553S2EX)
+EIV8103553S2EX_0.bind("<Button-3>", objContextualMenu0.doPopup)
+
 
 LIV8103553S2EX_1 = Label(insertFrameV8103553S2EX, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LIV8103553S2EX_1.config(font=("Arial", 10))
