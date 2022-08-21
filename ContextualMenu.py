@@ -5,31 +5,26 @@ import pyperclip
 class ContextualMenu:
     def __init__(self, root):
         self.root = root
+        self.captureEntry = StringVar()
 
-        self.contextInsertMenu = Menu(self.root, tearoff=0)
-        #self.contextInsertMenu.add_command(label="Copy", command=self.test)
+        self.contextMenu = Menu(self.root, tearoff=0)
+        self.contextMenu.add_command(label="Copy", command=self.copy)
         #self.contextInsertMenu.add_command(label="Copy", command=pyperclip.copy(self.test))
         #self.contextInsertMenu.add_command(label="Paste", command=contextPasteEI2)
 
 
+
     def doPopup(self, event):
-        #print(event.x_root)
-        #print(event.y_root)
         try:
-            self.contextInsertMenu.tk_popup(event.x_root, event.y_root)
+            self.contextMenu.tk_popup(event.x_root, event.y_root)
+            #print(self.text)
         finally:
-            self.contextInsertMenu.grab_release()
+            self.contextMenu.grab_release()
 
-    def test(self, ee):
-        self.ee = ee
-        print(self.ee)
+    def copy(self):
+        pyperclip.copy(self.captureEntry.get())
+        #print(self.text.get())
 
-
-    #def contextCopyEI2(self):
-        #self.copy = copy
-        #self.contextInsertMenu.add_command(label="Copy", command=pyperclip.copy(self.copy))
-        #self.contextInsertMenu.add_command(label="Copy", command=pyperclip.copy(self.EI2))
-        #pyperclip.copy(EI2.get())
 
     #def contextPasteEI2(self):
     #    EI2.insert(tk.END, pyperclip.paste())
