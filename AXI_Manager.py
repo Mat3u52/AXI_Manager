@@ -2,6 +2,7 @@ import _tkinter
 from DBConnect import DBConnect
 from Tip import Tip
 from ContextualMenu import ContextualMenu
+from NewItem import NewItem
 from MainView import MainView
 import tkinter as tk
 from tkinter import ttk
@@ -587,28 +588,28 @@ def updateDisplay():
         #selected_item = tree.selection()[0]
         #tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
         refresh()
-def insertData():
-    objDB = DBConnect()
-    objDB.insert(EI2.get(), EI3.get(),
-                 EIV8103553S2EX_0.get(), EIV8103553S2EX_1.get(), CIV8103553S2EX_2.get(),
-                 CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get(),
+#def insertData():
+#    objDB = DBConnect()
+#    objDB.insert(EI2.get(), EI3.get(),
+#                 EIV8103553S2EX_0.get(), EIV8103553S2EX_1.get(), CIV8103553S2EX_2.get(),
+#                 CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get(),
 
-                 EIV8103483S2EX_0.get(), EIV8103483S2EX_1.get(), CIV8103483S2EX_2.get(),
-                 CIV8103483S2EX_3.get(), CIV8103483S2EX_4.get(), EIV8103483S2EX_5.get(),
+#                 EIV8103483S2EX_0.get(), EIV8103483S2EX_1.get(), CIV8103483S2EX_2.get(),
+#                 CIV8103483S2EX_3.get(), CIV8103483S2EX_4.get(), EIV8103483S2EX_5.get(),
 
-                 EIV8103163_0.get(), EIV8103163_1.get(), CIV8103163_2.get(),
-                 CIV8103163_3.get(), CIV8103163_4.get(), EIV8103163_5.get()
-                 )
-    objDB.closeDB()
+#                 EIV8103163_0.get(), EIV8103163_1.get(), CIV8103163_2.get(),
+#                 CIV8103163_3.get(), CIV8103163_4.get(), EIV8103163_5.get()
+#                 )
+#    objDB.closeDB()
 
-    objTipNew = Tip(root, mainFrameInsert)
-    objTipNew.animateTip()
+#    objTipNew = Tip(root, mainFrameInsert)
+#    objTipNew.animateTip()
 
 
 
 #--- CleanUp "Entry" & "Combobox" ---
-    EI2.delete(0, END)
-    EI3.delete(0, END)
+#    EI2.delete(0, END)
+#    EI3.delete(0, END)
 #--- ViTrox IV ---
     EIV8103553S2EX_0.delete(0, END)
     EIV8103553S2EX_1.delete(0, END)
@@ -761,11 +762,11 @@ def doPopupSearch(event):
 #    finally:
 #        contextInsertMenu.grab_release()
 
-def doPopupInsertNameV8103553S2EX(event):
-    try:
-        contextInsertNameMenuV8103553S2EX.tk_popup(event.x_root, event.y_root)
-    finally:
-        contextInsertNameMenuV8103553S2EX.grab_release()
+#def doPopupInsertNameV8103553S2EX(event):
+#    try:
+#        contextInsertNameMenuV8103553S2EX.tk_popup(event.x_root, event.y_root)
+#    finally:
+#        contextInsertNameMenuV8103553S2EX.grab_release()
 
 def doPopupInsertNameV8103483S2EX(event):
     try:
@@ -801,10 +802,10 @@ def contextPasteESearch():
 #def contextPasteEI2():
 #    EI2.insert(tk.END, pyperclip.paste())
 
-def contextCopyEIV8103553S2EX_0():
-    pyperclip.copy(EIV8103553S2EX_0.get())
-def contextPasteEIV8103553S2EX_0():
-    EIV8103553S2EX_0.insert(tk.END, pyperclip.paste())
+#def contextCopyEIV8103553S2EX_0():
+#    pyperclip.copy(EIV8103553S2EX_0.get())
+#def contextPasteEIV8103553S2EX_0():
+#    EIV8103553S2EX_0.insert(tk.END, pyperclip.paste())
 
 def contextCopyEIV8103483S2EX_0():
     pyperclip.copy(EIV8103483S2EX_0.get())
@@ -886,9 +887,9 @@ contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
 #contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
 #contextInsertMenu.add_command(label="Paste", command=contextPasteEI2)
 
-contextInsertNameMenuV8103553S2EX = Menu(root, tearoff=0)
-contextInsertNameMenuV8103553S2EX.add_command(label="Copy", command=contextCopyEIV8103553S2EX_0)
-contextInsertNameMenuV8103553S2EX.add_command(label="Paste", command=contextPasteEIV8103553S2EX_0)
+#contextInsertNameMenuV8103553S2EX = Menu(root, tearoff=0)
+#contextInsertNameMenuV8103553S2EX.add_command(label="Copy", command=contextCopyEIV8103553S2EX_0)
+#contextInsertNameMenuV8103553S2EX.add_command(label="Paste", command=contextPasteEIV8103553S2EX_0)
 
 contextInsertNameMenuV8103483S2EX = Menu(root, tearoff=0)
 contextInsertNameMenuV8103483S2EX.add_command(label="Copy", command=contextCopyEIV8103483S2EX_0)
@@ -1438,63 +1439,53 @@ BAANViTroxIV.grid(row=2, column=1, pady=1, sticky=W)
 BAANViTroxIV.current(0)
 
 B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay, cursor="hand2")
-B1.grid(row=3, column=0, columnspan = 4, pady=2)
+B1.grid(row=3, column=0, columnspan=4, pady=2)
 #--- The End of the UPDATE section ---
 
 
 
 #--- INSERT ---
-objCM = ContextualMenu(root)
+objNewItm = NewItem(tab2, root)
+objNewItm.mainFrameInsert()
 
-mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
-mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
+#mainFrameInsert = ttk.LabelFrame(tab2, text=" Insert Main ")
+#mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
+#LI2 = Label(mainFrameInsert, text="Item:", width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
+#LI2.config(font=("Arial", 10))
+#LI3 = Label(mainFrameInsert, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
+#LI3.config(font=("Arial", 10))
+#LI2.grid(row=0, column=0, sticky=W)
+#LI3.grid(row=0, column=2, sticky=W)
+#objCM = ContextualMenu(root)
+#EI2 = Entry(mainFrameInsert, relief="solid", textvariable=objCM.captureEntry, borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
+#EI2.config(font=("Arial", 10))
+#EI2.grid(row=0, column=1, pady=1)
+#EI2.bind("<Button-3>", objCM.doPopup)
+#objCM.setEntry(EI2)
 
-LI2 = Label(mainFrameInsert, text="Item:", width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
-LI2.config(font=("Arial", 10))
-LI3 = Label(mainFrameInsert, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
-LI3.config(font=("Arial", 10))
-LI2.grid(row=0, column=0, sticky=W)
-LI3.grid(row=0, column=2, sticky=W)
+#EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#212121", fg="#FFFFFF")
+#EI3.config(font=("Arial", 10))
+#EI3.grid(row=0, column=3, pady=1, stick=W)
 
-
-EI2 = Entry(mainFrameInsert, relief="solid", textvariable=objCM.captureEntry, borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
-EI2.config(font=("Arial", 10))
-EI2.grid(row=0, column=1, pady=1)
-#EI2.bind("<Button-3>", doPopupInsert)
-
-#objContextualMenu = ContextualMenu(root)
-EI2.bind("<Button-3>", objCM.doPopup)
-#objContextualMenu.contextCopyEI2
-#objContextualMenu.test("test")
-
-
-
-EI3 = Entry(mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#212121", fg="#FFFFFF")
-EI3.config(font=("Arial", 10))
-EI3.grid(row=0, column=3, pady=1, stick=W)
-
-BI1 = ttk.Button(mainFrameInsert, text="Insert", width=55, command=insertData, cursor="hand2")
-BI1.grid(row=1, column=0, columnspan=4, pady=2)
+#BI1 = ttk.Button(mainFrameInsert, text="Insert", width=55, command=insertData, cursor="hand2")
+#BI1.grid(row=1, column=0, columnspan=4, pady=2)
 
 #--- checkbox area ---
-checkboxFrameViTroxEx = ttk.LabelFrame(tab2, text=" ViTrox Ex ") #---test
+checkboxFrameViTroxEx = ttk.LabelFrame(tab2, text=" ViTrox Ex ")
 checkboxFrameViTroxEx.grid(column=0, row=4, sticky='W', padx=10, pady=10)
 varV8103553S2EX = tk.IntVar()
 checkbox1 = tk.Checkbutton(checkboxFrameViTroxEx, text='V810-3553S2EX', variable=varV8103553S2EX, onvalue=1, offvalue=0, command=checkboxInsert)
 checkbox1.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
-#checkbox1.grid(column=0, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 checkbox1.grid(column=0, row=0, sticky='W', padx=10, pady=10)
 
 varV8103483S2EX = tk.IntVar()
 checkbox2 = tk.Checkbutton(checkboxFrameViTroxEx, text='V810-3483S2EX', variable=varV8103483S2EX, onvalue=3, offvalue=2, command=checkboxInsert)
 checkbox2.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
-#checkbox2.grid(column=3, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 checkbox2.grid(column=1, row=0, sticky='W', padx=10, pady=10)
 
 varV8103163 = tk.IntVar()
 checkbox3 = tk.Checkbutton(checkboxFrameViTroxEx, text='V810-3163', variable=varV8103163, onvalue=5, offvalue=4, command=checkboxInsert)
 checkbox3.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
-#checkbox3.grid(column=6, row=3, columnspan=10, sticky='W', padx=10, pady=10)
 checkbox3.grid(column=3, row=0, sticky='W', padx=10, pady=10)
 
 #--- The End checkbox area ---
@@ -1503,20 +1494,16 @@ checkbox3.grid(column=3, row=0, sticky='W', padx=10, pady=10)
 
 
 #---INSERT V810-3553S2EX---
-objContextualMenu0 = ContextualMenu(root)
-
-
 insertFrameV8103553S2EX = ttk.LabelFrame(tab2, text=" Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
-
 LIV8103553S2EX_0 = Label(insertFrameV8103553S2EX, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LIV8103553S2EX_0.config(font=("Arial", 10))
 LIV8103553S2EX_0.grid(row=0, column=0, sticky=W)
-EIV8103553S2EX_0 = Entry(insertFrameV8103553S2EX, relief="solid", textvariable=objContextualMenu0.captureEntry, borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
+objCMV8103553SEX = ContextualMenu(root)
+EIV8103553S2EX_0 = Entry(insertFrameV8103553S2EX, relief="solid", textvariable=objCMV8103553SEX.captureEntry, borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
 EIV8103553S2EX_0.config(font=("Arial", 10))
 EIV8103553S2EX_0.grid(row=0, column=1, pady=1)
-#EIV8103553S2EX_0.bind("<Button-3>", doPopupInsertNameV8103553S2EX)
-EIV8103553S2EX_0.bind("<Button-3>", objContextualMenu0.doPopup)
-
+EIV8103553S2EX_0.bind("<Button-3>", objCMV8103553SEX.doPopup)
+objCMV8103553SEX.setEntry(EIV8103553S2EX_0)
 
 LIV8103553S2EX_1 = Label(insertFrameV8103553S2EX, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LIV8103553S2EX_1.config(font=("Arial", 10))
@@ -1555,9 +1542,13 @@ CIV8103553S2EX_4.current(0)
 LIV8103553S2EX_5 = Label(insertFrameV8103553S2EX, text="Comments:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
 LIV8103553S2EX_5.config(font=("Arial", 10))
 LIV8103553S2EX_5.grid(row=2, column=2, sticky=W)
-EIV8103553S2EX_5 = Entry(insertFrameV8103553S2EX, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+
+objCMV8103553SEX_Comments = ContextualMenu(root)
+EIV8103553S2EX_5 = Entry(insertFrameV8103553S2EX, textvariable=objCMV8103553SEX_Comments.captureEntry, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
 EIV8103553S2EX_5.config(font=("Arial", 10))
 EIV8103553S2EX_5.grid(row=2, column=3, pady=1)
+EIV8103553S2EX_5.bind("<Button-3>", objCMV8103553SEX_Comments.doPopup)
+objCMV8103553SEX_Comments.setEntry(EIV8103553S2EX_5)
 
 #--- The End INSERT V810-3553S2EX ---
 
