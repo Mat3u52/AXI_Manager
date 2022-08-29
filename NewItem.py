@@ -1,5 +1,6 @@
 from tkinter import ttk
 from tkinter import *
+import tkinter as tk
 from ContextualMenu import ContextualMenu
 from DBConnect import DBConnect
 from Tip import Tip
@@ -37,8 +38,9 @@ class NewItem:
         #objTipNew = Tip(root, mainFrameInsert)
         #objTipNew.animateTip()
 
-    def mainFrameInsert(self):
-        self.mainFrameInsert = ttk.LabelFrame(self.tab, text=" Insert Main ")
+    def mainFrameInsert(self, mainName):
+        self.mainName = mainName
+        self.mainFrameInsert = ttk.LabelFrame(self.tab, text=self.mainName)
         self.mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
         self.LI2 = Label(self.mainFrameInsert, text="Item:", width=12, borderwidth=1,
                          relief="solid", bg="#212121", fg="#555555", pady="1")
@@ -63,3 +65,8 @@ class NewItem:
         #self.BI1 = ttk.Button(self.mainFrameInsert, text="Insert", width=55, command=self.objDB.insert(
         #                        self.EI2.get(), self.EI3.get()), cursor="hand2")
         #self.BI1.grid(row=1, column=0, columnspan=4, pady=2)
+
+    def checkboxTitle(self, title):
+        self.title = title
+        self.checkboxFrameViTroxEx = ttk.LabelFrame(self.tab, text=self.title)
+        self.checkboxFrameViTroxEx.grid(column=0, row=4, sticky='W', padx=10, pady=10)
