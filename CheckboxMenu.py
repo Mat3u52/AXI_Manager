@@ -8,6 +8,7 @@ class CheckboxMenu:
         self.tab = tab
         self.root = root
         self.checkboxFrameViTroxEx = frame
+
     #def checkboxTitle(self, title):
     #    self.title = title
     #    self.checkboxFrameViTroxEx = ttk.LabelFrame(self.tab, text=self.title)
@@ -25,24 +26,10 @@ class CheckboxMenu:
         self.checkbox1.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
         self.checkbox1.grid(column=self.number-1, row=0, sticky='W', padx=10, pady=10)
 
-        #self.varV8103483S2EX = tk.IntVar()
-        #self.checkbox2 = tk.Checkbutton(self.checkboxFrameViTroxEx, text='V810-3483S2EX',
-                                        #variable=self.varV8103483S2EX, onvalue=3, offvalue=2, command=self._checkbox)
-        #self.checkbox2.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
-        #self.checkbox2.grid(column=1, row=0, sticky='W', padx=10, pady=10)
-
-        #self.varV8103163 = tk.IntVar()
-        #self.checkbox3 = tk.Checkbutton(self.checkboxFrameViTroxEx, text='V810-3163',
-                                        #variable=self.varV8103163, onvalue=5, offvalue=4, command=self._checkbox)
-        #self.checkbox3.config(font=("Arial", 10), borderwidth=1, relief="solid", bg="#333333", fg="#000000")
-        #self.checkbox3.grid(column=3, row=0, sticky='W', padx=10, pady=10)
 
     def _checkbox(self):
-        #self.value = value
         if self.varV8103553S2EX.get() == 1:
-        #if self.value == 1:
             print(self.varV8103553S2EX.get())
-            #self.insertFrameV8103553S2EX.grid(column=0, row=5, columnspan=10, sticky='W', padx=10, pady=10)
 
         # ---INSERT V810-3553S2EX---
             self.insertFrameV8103553S2EX = ttk.LabelFrame(self.tab, text=self.description)
@@ -119,21 +106,6 @@ class CheckboxMenu:
 
             self.insertFrameV8103553S2EX.grid(column=0, row=4+self.number, columnspan=10, sticky='W', padx=10, pady=10)
 
-        # --- The End INSERT V810-3553S2EX ---
         elif self.varV8103553S2EX.get() == 0:
             print(self.varV8103553S2EX.get())
             self.insertFrameV8103553S2EX.grid_forget()
-
-        #if self.varV8103483S2EX.get() == 3:
-            #print(varV8103483S2EX.get())
-        #    self.insertFrameV8103483S2EX.grid(column=0, row=6, columnspan=10, sticky='W', padx=10, pady=10)
-        #elif self.varV8103483S2EX.get() == 2:
-            #print(varV8103483S2EX.get())
-        #    self.insertFrameV8103483S2EX.grid_forget()
-
-        #if self.varV8103163.get() == 5:
-            #print(varV8103163.get())
-        #    self.insertFrameV8103163.grid(column=0, row=7, columnspan=10, sticky='W', padx=10, pady=10)
-        #elif self.varV8103163.get() == 4:
-            #print(varV8103163.get())
-        #    self.insertFrameV8103163.grid_forget()
