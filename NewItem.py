@@ -66,7 +66,11 @@ class NewItem:
         #                        self.EI2.get(), self.EI3.get()), cursor="hand2")
         #self.BI1.grid(row=1, column=0, columnspan=4, pady=2)
 
-    def checkboxTitle(self, title):
-        self.title = title
-        self.checkboxFrameViTroxEx = ttk.LabelFrame(self.tab, text=self.title)
-        self.checkboxFrameViTroxEx.grid(column=0, row=4, sticky='W', padx=10, pady=10)
+    def checkboxTitle(self, title0, row):
+        self.row = row
+        self.title0 = title0
+        self.checkboxFrameViTroxEx = ttk.LabelFrame(self.tab, text=self.title0)
+        self.checkboxFrameViTroxEx.grid(column=0, row=self.row, sticky='W', padx=10, pady=10)
+        #self.checkboxFrameViTroxEx.grid(column=0, row=4, sticky='W', padx=10, pady=10)
+
+        #ttk.LabelFrame(self.tab, text=self.title0).grid(column=0, row=4, sticky='W', padx=10, pady=10)
