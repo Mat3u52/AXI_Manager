@@ -769,17 +769,17 @@ def doPopupSearch(event):
 #    finally:
 #        contextInsertNameMenuV8103553S2EX.grab_release()
 
-def doPopupInsertNameV8103483S2EX(event):
-    try:
-        contextInsertNameMenuV8103483S2EX.tk_popup(event.x_root, event.y_root)
-    finally:
-        contextInsertNameMenuV8103483S2EX.grab_release()
+#def doPopupInsertNameV8103483S2EX(event):
+#    try:
+#        contextInsertNameMenuV8103483S2EX.tk_popup(event.x_root, event.y_root)
+#    finally:
+#        contextInsertNameMenuV8103483S2EX.grab_release()
 
-def doPopupInsertNameV8103163(event):
-    try:
-        contextInsertNameMenuV8103163.tk_popup(event.x_root, event.y_root)
-    finally:
-        contextInsertNameMenuV8103163.grab_release()
+#def doPopupInsertNameV8103163(event):
+#    try:
+#        contextInsertNameMenuV8103163.tk_popup(event.x_root, event.y_root)
+#    finally:
+#        contextInsertNameMenuV8103163.grab_release()
 
 def doPopupUpdate(event):
     try:
@@ -808,15 +808,15 @@ def contextPasteESearch():
 #def contextPasteEIV8103553S2EX_0():
 #    EIV8103553S2EX_0.insert(tk.END, pyperclip.paste())
 
-def contextCopyEIV8103483S2EX_0():
-    pyperclip.copy(EIV8103483S2EX_0.get())
-def contextPasteEIV8103483S2EX_0():
-    EIV8103483S2EX_0.insert(tk.END, pyperclip.paste())
+#def contextCopyEIV8103483S2EX_0():
+#    pyperclip.copy(EIV8103483S2EX_0.get())
+#def contextPasteEIV8103483S2EX_0():
+#    EIV8103483S2EX_0.insert(tk.END, pyperclip.paste())
 
-def contextCopyEIV8103163_0():
-    pyperclip.copy(EIV8103163_0.get())
-def contextPasteEIV8103163_0():
-    EIV8103163_0.insert(tk.END, pyperclip.paste())
+#def contextCopyEIV8103163_0():
+#    pyperclip.copy(EIV8103163_0.get())
+#def contextPasteEIV8103163_0():
+#    EIV8103163_0.insert(tk.END, pyperclip.paste())
 
 def contextCopyE2():
     pyperclip.copy(E2.get())
@@ -891,13 +891,13 @@ contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
 #contextInsertNameMenuV8103553S2EX.add_command(label="Copy", command=contextCopyEIV8103553S2EX_0)
 #contextInsertNameMenuV8103553S2EX.add_command(label="Paste", command=contextPasteEIV8103553S2EX_0)
 
-contextInsertNameMenuV8103483S2EX = Menu(root, tearoff=0)
-contextInsertNameMenuV8103483S2EX.add_command(label="Copy", command=contextCopyEIV8103483S2EX_0)
-contextInsertNameMenuV8103483S2EX.add_command(label="Paste", command=contextPasteEIV8103483S2EX_0)
+#contextInsertNameMenuV8103483S2EX = Menu(root, tearoff=0)
+#contextInsertNameMenuV8103483S2EX.add_command(label="Copy", command=contextCopyEIV8103483S2EX_0)
+#contextInsertNameMenuV8103483S2EX.add_command(label="Paste", command=contextPasteEIV8103483S2EX_0)
 
-contextInsertNameMenuV8103163 = Menu(root, tearoff=0)
-contextInsertNameMenuV8103163.add_command(label="Copy", command=contextCopyEIV8103163_0)
-contextInsertNameMenuV8103163.add_command(label="Paste", command=contextPasteEIV8103163_0)
+#contextInsertNameMenuV8103163 = Menu(root, tearoff=0)
+#contextInsertNameMenuV8103163.add_command(label="Copy", command=contextCopyEIV8103163_0)
+#contextInsertNameMenuV8103163.add_command(label="Paste", command=contextPasteEIV8103163_0)
 
 contextUpdateMenu = Menu(root, tearoff=0)
 contextUpdateMenu.add_command(label="Copy", command=contextCopyE2)
@@ -1443,27 +1443,121 @@ B1.grid(row=3, column=0, columnspan=4, pady=2)
 #--- The End of the UPDATE section ---
 
 
+def insertButton():
+    #print(objNewItemEx.EI2.get())
+    #print(objNewItemEx.EI3.get())
+
+    #print(objCheckboxMenuEx0.EI_0.get())
+    #print(objCheckboxMenuEx0.EI_1.get())
+    #print(objCheckboxMenuEx0.CI_2.get())
+    #print(objCheckboxMenuEx0.CI_3.get())
+    #print(objCheckboxMenuEx0.CI_4.get())
+    #print(objCheckboxMenuEx0.EI_5.get())
+
+    #print(objCheckboxMenuEx1.EI_0.get())
+    #print(objCheckboxMenuEx1.EI_1.get())
+    #print(objCheckboxMenuEx1.CI_2.get())
+    #print(objCheckboxMenuEx1.CI_3.get())
+    #print(objCheckboxMenuEx1.CI_4.get())
+    #print(objCheckboxMenuEx1.EI_5.get())
+
+    #print(objCheckboxMenuEx2.EI_0.get())
+    #print(objCheckboxMenuEx2.EI_1.get())
+    #print(objCheckboxMenuEx2.CI_2.get())
+    #print(objCheckboxMenuEx2.CI_3.get())
+    #print(objCheckboxMenuEx2.CI_4.get())
+    #print(objCheckboxMenuEx2.EI_5.get())
+
+    #print(objCheckboxMenuXXL0.EI_0.get())
+    #print(objCheckboxMenuXXL0.EI_1.get())
+    #print(objCheckboxMenuXXL0.CI_2.get())
+    #print(objCheckboxMenuXXL0.CI_3.get())
+    #print(objCheckboxMenuXXL0.CI_4.get())
+    #print(objCheckboxMenuXXL0.EI_5.get())
+
+
+    #try:
+    objDB = DBConnect()
+    objDB.insertValidator(
+                            objNewItemEx.EI2.get(),
+                            objNewItemEx.EI3.get(),
+
+                            objCheckboxMenuEx0.EI_0.get(),
+                            objCheckboxMenuEx0.EI_1.get(),
+                            objCheckboxMenuEx0.CI_2.get(),
+                            objCheckboxMenuEx0.CI_3.get(),
+                            objCheckboxMenuEx0.CI_4.get(),
+                            objCheckboxMenuEx0.EI_5.get(),
+
+                            objCheckboxMenuEx1.EI_0.get(),
+                            objCheckboxMenuEx1.EI_1.get(),
+                            objCheckboxMenuEx1.CI_2.get(),
+                            objCheckboxMenuEx1.CI_3.get(),
+                            objCheckboxMenuEx1.CI_4.get(),
+                            objCheckboxMenuEx1.EI_5.get(),
+
+                            objCheckboxMenuEx2.EI_0.get(),
+                            objCheckboxMenuEx2.EI_1.get(),
+                            objCheckboxMenuEx2.CI_2.get(),
+                            objCheckboxMenuEx2.CI_3.get(),
+                            objCheckboxMenuEx2.CI_4.get(),
+                            objCheckboxMenuEx2.EI_5.get(),
+
+                            objCheckboxMenuXXL0.EI_0.get(),
+                            objCheckboxMenuXXL0.EI_1.get(),
+                            objCheckboxMenuXXL0.CI_2.get(),
+                            objCheckboxMenuXXL0.CI_3.get(),
+                            objCheckboxMenuXXL0.CI_4.get(),
+                            objCheckboxMenuXXL0.EI_5.get()
+                        )
+    objDB.closeDB()
+    #except AttributeError:
+    #    pass
+
+
 
 #--- INSERT ---
-objNewItm = NewItem(tab2, root)
-objNewItm.mainFrameInsert(" Insert Main ")
+objNewItemEx = NewItem(tab2, root)
+objNewItemEx.mainFrameInsert(" Insert Main ")
 
-objNewItm.checkboxTitle(" ViTrox Ex ", 4)
-objCheckboxMenu0 = CheckboxMenu(tab2, root, objNewItm.checkboxFrameViTroxEx)
-objCheckboxMenu0.checkboxMenu("V810-3553S2EX", 1, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
+objNewItemEx.checkboxTitle(" ViTrox Ex ", 4)
+objCheckboxMenuEx0 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame)
+objCheckboxMenuEx0.checkboxMenu("V810-3553S2EX", 1, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
 
-#objCheckboxMenu1 = CheckboxMenu(tab2, root, objNewItm.checkboxFrameViTroxEx)
-#objCheckboxMenu1.checkboxMenu("V810-3483S2EX", 2, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
+objCheckboxMenuEx1 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame)
+objCheckboxMenuEx1.checkboxMenu("V810-3483S2EX", 2, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
 
-#objCheckboxMenu2 = CheckboxMenu(tab2, root, objNewItm.checkboxFrameViTroxEx)
-#objCheckboxMenu2.checkboxMenu("V810-3163", 3, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
+objCheckboxMenuEx2 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame)
+objCheckboxMenuEx2.checkboxMenu("V810-3163", 3, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
 
-objNewItm0 = NewItem(tab2, root)
+objNewItemXXL = NewItem(tab2, root)
+objNewItemXXL.checkboxTitle(" ViTrox XXL ", 5)
 
-objNewItm0.checkboxTitle(" ViTrox Exxxxxxxxxxxxxx ", 5)
-objCheckboxMenu = CheckboxMenu(tab2, root, objNewItm0.checkboxFrameViTroxEx)
-objCheckboxMenu.checkboxMenu("V810-3553S2ExxxxxxxxxxxxxxxxxxxxxX", 1, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
+objCheckboxMenuXXL0 = CheckboxMenu(tab2, root, objNewItemXXL.checkboxFrame)
+objCheckboxMenuXXL0.checkboxMenu("V810-8120S2", 1, " Insert ViTrox V810 XXL I ( V810-8120S2 ) ")
 
+BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=55, command=insertButton, cursor="hand2")
+BI1.grid(row=1, column=0, columnspan=4, pady=2)
+
+
+
+
+#objNewItemEx.collection(
+#    objNewItemEx.EI2.get(), objNewItemEx.EI3.get(),
+
+#    objCheckboxMenuEx0.prog
+#)
+#, objCheckboxMenuEx0.test,
+#    objCheckboxMenuEx0.linecapa, objCheckboxMenuEx0.epi,
+#    objCheckboxMenuEx0.baan1, objCheckboxMenuEx0.comments,
+
+#    objCheckboxMenuEx1.prog, objCheckboxMenuEx1.test,
+#    objCheckboxMenuEx1.linecapa, objCheckboxMenuEx1.epi,
+#    objCheckboxMenuEx1.baan1, objCheckboxMenuEx1.comments,
+
+#    objCheckboxMenuEx2.prog, objCheckboxMenuEx2.test,
+#    objCheckboxMenuEx2.linecapa, objCheckboxMenuEx2.epi,
+#    objCheckboxMenuEx2.baan1, objCheckboxMenuEx2.comments
 #--- The End INSERT ---
 
 #--- Search ---
