@@ -5,35 +5,11 @@ from ContextualMenu import ContextualMenu
 from DBConnect import DBConnect
 from Tip import Tip
 
-class NewItem:
+class NewItem():
     def __init__(self, tab, root):
         self.tab = tab
         self.root = root
-        self.objDB = DBConnect()
-
-    #def _insertData(self, newItem, amountOfTheBoards):
-    #    self.newItem = newItem
-    #    self.amountOfTheBoards = amountOfTheBoards
-                     #EIV8103553S2EX_0.get(), EIV8103553S2EX_1.get(), CIV8103553S2EX_2.get(),
-                     #CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get(),
-
-                     #EIV8103483S2EX_0.get(), EIV8103483S2EX_1.get(), CIV8103483S2EX_2.get(),
-                     #CIV8103483S2EX_3.get(), CIV8103483S2EX_4.get(), EIV8103483S2EX_5.get(),
-
-                     #EIV8103163_0.get(), EIV8103163_1.get(), CIV8103163_2.get(),
-                     #CIV8103163_3.get(), CIV8103163_4.get(), EIV8103163_5.get()):
-
-    #    self.objDB.insert(self.newItem, self.amountOfTheBoards)
-        #             EIV8103553S2EX_0.get(), EIV8103553S2EX_1.get(), CIV8103553S2EX_2.get(),
-        #             CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get(),
-
-        #             EIV8103483S2EX_0.get(), EIV8103483S2EX_1.get(), CIV8103483S2EX_2.get(),
-        #             CIV8103483S2EX_3.get(), CIV8103483S2EX_4.get(), EIV8103483S2EX_5.get(),
-
-         #            EIV8103163_0.get(), EIV8103163_1.get(), CIV8103163_2.get(),
-         #            CIV8103163_3.get(), CIV8103163_4.get(), EIV8103163_5.get()
-         #            )
-    #    self.objDB.closeDB()
+        #self.objDB = DBConnect()
 
         #objTipNew = Tip(root, mainFrameInsert)
         #objTipNew.animateTip()
@@ -62,15 +38,13 @@ class NewItem:
         self.EI3.config(font=("Arial", 10))
         self.EI3.grid(row=0, column=3, pady=1, stick=W)
 
-        #self.BI1 = ttk.Button(self.mainFrameInsert, text="Insert", width=55, command=self.objDB.insert(
-        #                        self.EI2.get(), self.EI3.get()), cursor="hand2")
-        #self.BI1.grid(row=1, column=0, columnspan=4, pady=2)
-
     def checkboxTitle(self, title0, row):
         self.row = row
         self.title0 = title0
-        self.checkboxFrameViTroxEx = ttk.LabelFrame(self.tab, text=self.title0)
-        self.checkboxFrameViTroxEx.grid(column=0, row=self.row, sticky='W', padx=10, pady=10)
-        #self.checkboxFrameViTroxEx.grid(column=0, row=4, sticky='W', padx=10, pady=10)
+        self.checkboxFrame = ttk.LabelFrame(self.tab, text=self.title0)
+        self.checkboxFrame.grid(column=0, row=self.row, sticky='W', padx=10, pady=10)
 
-        #ttk.LabelFrame(self.tab, text=self.title0).grid(column=0, row=4, sticky='W', padx=10, pady=10)
+
+
+
+

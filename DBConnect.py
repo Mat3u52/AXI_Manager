@@ -51,17 +51,16 @@ class DBConnect:
         self.dbCursor.execute(sql, val)
         self.db.commit()
 
-    def insert(self, item, itemAmount,
+    def insertValidator(self, item, itemAmount,
                initialV8103553S2EXProg, initialV8103553S2EXTest, initialV8103553S2EXLinecapa, initialV8103553S2EXEPI, initialV8103553S2EXBAAN1, initialV8103553S2EXComments,
                initialV8103483S2EXProg, initialV8103483S2EXTest, initialV8103483S2EXLinecapa, initialV8103483S2EXEPI, initialV8103483S2EXBAAN1, initialV8103483S2EXComments,
-               initialV8103163Prog, initialV8103163Test, initialV8103163Linecapa, initialV8103163EPI, initialV8103163BAAN1, initialV8103163Comments):
-
-        #if item and type(itemAmount) == int:
+               initialV8103163Prog, initialV8103163Test, initialV8103163Linecapa, initialV8103163EPI, initialV8103163BAAN1, initialV8103163Comments,
+               initialV8108120S2Prog, initialV8108120S2Test, initialV8108120S2Linecapa, initialV8108120S2EPI, initialV8108120S2BAAN1, initialV8108120S2Comments):
         if item and int(itemAmount) > 0:
             self.item = str(item.strip())
             self.itemAmount = int(itemAmount)
 
-#--- ViTrox IV ---
+            # --- ViTrox IV ---
             if initialV8103553S2EXProg and int(initialV8103553S2EXTest) > 0:
                 self.V8103553S2EXProg = str(initialV8103553S2EXProg.strip())
                 self.V8103553S2EXTest = str(initialV8103553S2EXTest)
@@ -70,8 +69,10 @@ class DBConnect:
                 self.V8103553S2EXBAAN1 = str(initialV8103553S2EXBAAN1)
                 self.V8103553S2EXComments = str(initialV8103553S2EXComments)
                 if float(self.V8103553S2EXTest) > 0:
-                    self.V8103553S2EXUPH85 = math.floor((3600 / (float(self.V8103553S2EXTest) + 15) * 0.85)) * int(self.itemAmount)
-                    self.V8103553S2EXUPH95 = math.floor((3600 / (float(self.V8103553S2EXTest) + 15) * 0.95)) * int(self.itemAmount)
+                    self.V8103553S2EXUPH85 = math.floor((3600 / (float(self.V8103553S2EXTest) + 15) * 0.85)) * int(
+                        self.itemAmount)
+                    self.V8103553S2EXUPH95 = math.floor((3600 / (float(self.V8103553S2EXTest) + 15) * 0.95)) * int(
+                        self.itemAmount)
                     self.V8103553S2EXUPH95Time = ((3600 / float(self.V8103553S2EXUPH95)) / int(self.itemAmount))
                 else:
                     self.V8103553S2EXTest = 0
@@ -88,8 +89,8 @@ class DBConnect:
                 self.V8103553S2EXUPH85 = 0
                 self.V8103553S2EXUPH95 = 0
                 self.V8103553S2EXUPH95Time = 0
-#--- The End ViTrox IV ---
-#--- ViTrox III ---
+            # --- The End ViTrox IV ---
+            # --- ViTrox III ---
             if initialV8103483S2EXProg and int(initialV8103483S2EXTest) > 0:
                 self.V8103483S2EXProg = str(initialV8103483S2EXProg.strip())
                 self.V8103483S2EXTest = str(initialV8103483S2EXTest)
@@ -98,8 +99,10 @@ class DBConnect:
                 self.V8103483S2EXBAAN1 = str(initialV8103483S2EXBAAN1)
                 self.V8103483S2EXComments = str(initialV8103483S2EXComments)
                 if float(self.V8103483S2EXTest) > 0:
-                    self.V8103483S2EXUPH85 = math.floor((3600 / (float(self.V8103483S2EXTest) + 15) * 0.85)) * int(self.itemAmount)
-                    self.V8103483S2EXUPH95 = math.floor((3600 / (float(self.V8103483S2EXTest) + 15) * 0.95)) * int(self.itemAmount)
+                    self.V8103483S2EXUPH85 = math.floor((3600 / (float(self.V8103483S2EXTest) + 15) * 0.85)) * int(
+                        self.itemAmount)
+                    self.V8103483S2EXUPH95 = math.floor((3600 / (float(self.V8103483S2EXTest) + 15) * 0.95)) * int(
+                        self.itemAmount)
                     self.V8103483S2EXUPH95Time = ((3600 / float(self.V8103483S2EXUPH95)) / int(self.itemAmount))
                 else:
                     self.V8103483S2EXTest = 0
@@ -116,19 +119,38 @@ class DBConnect:
                 self.V8103483S2EXUPH85 = 0
                 self.V8103483S2EXUPH95 = 0
                 self.V8103483S2EXUPH95Time = 0
-#--- The End ViTrxo III ---
-#--- ViTrox XXL ---
-            self.vitroxIIProg = ""
-            self.vitroxIITest = 0
-            self.vitroxIILinecapa = "NONE"
-            self.vitroxIIEPI = "NONE"
-            self.vitroxIIBAAN1 = "NONE"
-            self.vitroxIIComments = ""
-            self.vitroxIIUPH85 = 0
-            self.vitroxIIUPH95 = 0
-            self.vitroxIIUPH95Time = 0
-#--- The End ViTrox XXL ---
-#--- ViTroxEx I ---
+            # --- The End ViTrxo III ---
+            # --- ViTrox XXL ---
+            if initialV8108120S2Prog and int(initialV8108120S2Test) > 0:
+                self.V8108120S2Prog = str(initialV8108120S2Prog.strip())
+                self.V8108120S2Test = str(initialV8108120S2Test)
+                self.V8108120S2Linecapa = str(initialV8108120S2Linecapa)
+                self.V8108120S2EPI = str(initialV8108120S2EPI)
+                self.V8108120S2BAAN1 = str(initialV8108120S2BAAN1)
+                self.V8108120S2Comments = str(initialV8108120S2Comments)
+                if float(self.V8108120S2Test) > 0:
+                    self.V8108120S2UPH85 = math.floor((3600 / (float(self.V8108120S2Test) + 15) * 0.85)) * int(
+                        self.itemAmount)
+                    self.V8108120S2UPH95 = math.floor((3600 / (float(self.V8108120S2Test) + 15) * 0.95)) * int(
+                        self.itemAmount)
+                    self.V8108120S2UPH95Time = ((3600 / float(self.V8108120S2UPH95)) / int(self.itemAmount))
+                else:
+                    self.V8108120S2Test = 0
+                    self.V8108120S2UPH85 = 0
+                    self.V8108120S2UPH95 = 0
+                    self.V8108120S2UPH95Time = 0
+            else:
+                self.V8108120S2Prog = ""
+                self.V8108120S2Test = 0
+                self.V8108120S2Linecapa = "NONE"
+                self.V8108120S2EPI = "NONE"
+                self.V8108120S2BAAN1 = "NONE"
+                self.V8108120S2Comments = ""
+                self.V8108120S2UPH85 = 0
+                self.V8108120S2UPH95 = 0
+                self.V8108120S2UPH95Time = 0
+            # --- The End ViTrox XXL ---
+            # --- ViTroxEx I ---
             if initialV8103163Prog and int(initialV8103163Test) > 0:
                 self.V8103163Prog = str(initialV8103163Prog.strip())
                 self.V8103163Test = str(initialV8103163Test)
@@ -157,17 +179,17 @@ class DBConnect:
                 self.V8103163UPH85 = 0
                 self.V8103163UPH95 = 0
                 self.V8103163UPH95Time = 0
-#--- The End ViTrox I ---
+            # --- The End ViTrox I ---
 
-            #self.vitroxIProg = ""
-            #self.vitroxITest = 0
-            #self.vitroxILinecapa = "NONE"
-            #self.vitroxIEPI = "NONE"
-            #self.vitroxIBAAN1 = "NONE"
-            #self.vitroxIComments = ""
-            #self.vitroxIUPH85 = 0
-            #self.vitroxIUPH95 = 0
-            #self.vitroxIUPH95Time = 0
+            # self.vitroxIProg = ""
+            # self.vitroxITest = 0
+            # self.vitroxILinecapa = "NONE"
+            # self.vitroxIEPI = "NONE"
+            # self.vitroxIBAAN1 = "NONE"
+            # self.vitroxIComments = ""
+            # self.vitroxIUPH85 = 0
+            # self.vitroxIUPH95 = 0
+            # self.vitroxIUPH95Time = 0
 
             self.dxIProg = ""
             self.dxILinecapa = "NONE"
@@ -188,8 +210,16 @@ class DBConnect:
             self.dxAutoThickness = 0
             self.dxTest = 0
 
+            messagebox.showwarning("Awesome!", "The record is added :)")
+        else:
+            messagebox.showwarning("Warning!", "Lack of Item or Qty.")
 
-            sql = "INSERT mk_diary SET ITEM = %s, ITEM_AMOUNT = %s, " \
+    #def insert(self, item, itemAmount,
+    #           initialV8103553S2EXProg, initialV8103553S2EXTest, initialV8103553S2EXLinecapa, initialV8103553S2EXEPI, initialV8103553S2EXBAAN1, initialV8103553S2EXComments,
+    #           initialV8103483S2EXProg, initialV8103483S2EXTest, initialV8103483S2EXLinecapa, initialV8103483S2EXEPI, initialV8103483S2EXBAAN1, initialV8103483S2EXComments,
+    #           initialV8103163Prog, initialV8103163Test, initialV8103163Linecapa, initialV8103163EPI, initialV8103163BAAN1, initialV8103163Comments):
+    def _insert(self):
+        sql = "INSERT mk_diary SET ITEM = %s, ITEM_AMOUNT = %s, " \
                     "VITROXIV_PROG = %s, VITROXIV_TEST = %s, VITROXIV_LINECAPA = %s," \
                     " VITROXIV_EPI = %s, VITROXIV_BAAN1 = %s, VITROXIV_COMMENTS = %s, VITROXIV_BAAN = %s," \
                     " VITROXIV_DSVR = %s, VITROXIV_TIME = %s," \
@@ -206,7 +236,7 @@ class DBConnect:
                     " 5DX_TEST = %s, 5DX_BAAN1 = %s, 5DXI_PROG = %s, 5DXI_LINECAPA = %s, 5DXI_EPI = %s," \
                     " 5DXI_COMMENTS = %s, HEXI = %s, 5DXII_PROG = %s, 5DXII_LINECAPA = %s, 5DXII_EPI = %s," \
                     " 5DXII_COMMENTS = %s, HEXII = %s"
-            val = (
+        val = (
             self.item, self.itemAmount,
 
             self.V8103553S2EXProg, self.V8103553S2EXTest, self.V8103553S2EXLinecapa, self.V8103553S2EXEPI,
@@ -215,9 +245,9 @@ class DBConnect:
             self.V8103483S2EXProg, self.V8103483S2EXTest, self.V8103483S2EXLinecapa, self.V8103483S2EXEPI,
             self.V8103483S2EXBAAN1, self.V8103483S2EXComments, self.V8103483S2EXUPH85, self.V8103483S2EXUPH95, self.V8103483S2EXUPH95Time,
 
-            self.vitroxIIProg, self.vitroxIITest, self.vitroxIILinecapa, self.vitroxIIEPI,
-            self.vitroxIIBAAN1, self.vitroxIIComments, self.vitroxIIUPH85, self.vitroxIIUPH95,
-            self.vitroxIIUPH95Time,
+            self.V8108120S2Prog, self.V8108120S2Test, self.V8108120S2Linecapa, self.V8108120S2EPI,
+            self.V8108120S2BAAN1, self.V8108120S2Comments, self.V8108120S2UPH85, self.V8108120S2UPH95,
+            self.V8108120S2UPH95Time,
 
             self.V8103163Prog, self.V8103163Test, self.V8103163Linecapa, self.V8103163EPI,
             self.V8103163BAAN1, self.V8103163Comments, self.V8103163UPH85, self.V8103163UPH95, self.V8103163UPH95Time,
@@ -226,12 +256,9 @@ class DBConnect:
             self.dxTest, self.dxBAAN1, self.dxIProg, self.dxILinecapa, self.dxIEPI, self.dxIComments,
             self.dxIHEX, self.dxIIProg, self.dxIILinecapa, self.dxIIEPI, self.dxIIComments, self.dxIIHEX
 
-            )
-            self.dbCursor.execute(sql, val)
-            self.db.commit()
-
-        else:
-            messagebox.showwarning("Warning!", "Lack of Item or Qty.")
+        )
+        self.dbCursor.execute(sql, val)
+        self.db.commit()
 
     def closeDB(self):
         self.dbCursor.close()
