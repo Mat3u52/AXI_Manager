@@ -1475,6 +1475,26 @@ def insertButton():
     #print(objCheckboxMenuXXL0.CI_4.get())
     #print(objCheckboxMenuXXL0.EI_5.get())
 
+        #V849Prog = ""
+        #V849Linecapa = "NONE"
+        #V849EPI = "NONE"
+        #V849Comments = ""
+    #V849HEX = ""
+
+    #V817Prog = ""
+    #V817Linecapa = "NONE"
+    #V817EPI = "NONE"
+    #V817Comments = ""
+    #V817HEX = ""
+
+        #dxBAAN1 = "NONE"
+#dxUPH85 = 0
+#dxUPH95 = 0
+#dxUPH95Time = 0
+    #dxAlign = 0
+    #dxMap = 0
+    #dxAutoThickness = 0
+        #dxTest = 0
 
     #try:
     objDB = DBConnect()
@@ -1508,7 +1528,14 @@ def insertButton():
                             objCheckboxMenuXXL0.CI_2.get(),
                             objCheckboxMenuXXL0.CI_3.get(),
                             objCheckboxMenuXXL0.CI_4.get(),
-                            objCheckboxMenuXXL0.EI_5.get()
+                            objCheckboxMenuXXL0.EI_5.get(),
+
+                            objCheckboxMenu5DX0.EI_0.get(),
+                            objCheckboxMenu5DX0.EI_1.get(),
+                            objCheckboxMenu5DX0.CI_2.get(),
+                            objCheckboxMenu5DX0.CI_3.get(),
+                            objCheckboxMenu5DX0.CI_4.get(),
+                            objCheckboxMenu5DX0.EI_5.get()
                         )
     objDB.closeDB()
     #except AttributeError:
@@ -1521,43 +1548,34 @@ objNewItemEx = NewItem(tab2, root)
 objNewItemEx.mainFrameInsert(" Insert Main ")
 
 objNewItemEx.checkboxTitle(" ViTrox Ex ", 4)
-objCheckboxMenuEx0 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame)
-objCheckboxMenuEx0.checkboxMenu("V810-3553S2EX", 1, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
+objCheckboxMenuEx0 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
+objCheckboxMenuEx0.checkboxMenu("V810-3553S2EX", 1)
 
-objCheckboxMenuEx1 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame)
-objCheckboxMenuEx1.checkboxMenu("V810-3483S2EX", 2, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
+objCheckboxMenuEx1 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
+objCheckboxMenuEx1.checkboxMenu("V810-3483S2EX", 2)
 
-objCheckboxMenuEx2 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame)
-objCheckboxMenuEx2.checkboxMenu("V810-3163", 3, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
+objCheckboxMenuEx2 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
+objCheckboxMenuEx2.checkboxMenu("V810-3163", 3)
 
 objNewItemXXL = NewItem(tab2, root)
 objNewItemXXL.checkboxTitle(" ViTrox XXL ", 5)
 
-objCheckboxMenuXXL0 = CheckboxMenu(tab2, root, objNewItemXXL.checkboxFrame)
-objCheckboxMenuXXL0.checkboxMenu("V810-8120S2", 1, " Insert ViTrox V810 XXL I ( V810-8120S2 ) ")
+objCheckboxMenuXXL0 = CheckboxMenu(tab2, root, objNewItemXXL.checkboxFrame, " Insert ViTrox V810 XXL I ( V810-8120S2 ) ")
+objCheckboxMenuXXL0.checkboxMenu("V810-8120S2", 1)
+
+objNewItem5DX = NewItem(tab2, root)
+objNewItem5DX.checkboxTitle(" 5DX ", 6)
+
+objCheckboxMenu5DX0 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX I ( V849 ) ")
+objCheckboxMenu5DX0.checkboxMenu("V849", 1)
+objCheckboxMenu5DX0.aligmentTime()
+
+objCheckboxMenu5DX1 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX II ( V817 ) ")
+objCheckboxMenu5DX1.checkboxMenu("V817", 2)
+objCheckboxMenu5DX1.aligmentTime()
 
 BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=55, command=insertButton, cursor="hand2")
 BI1.grid(row=1, column=0, columnspan=4, pady=2)
-
-
-
-
-#objNewItemEx.collection(
-#    objNewItemEx.EI2.get(), objNewItemEx.EI3.get(),
-
-#    objCheckboxMenuEx0.prog
-#)
-#, objCheckboxMenuEx0.test,
-#    objCheckboxMenuEx0.linecapa, objCheckboxMenuEx0.epi,
-#    objCheckboxMenuEx0.baan1, objCheckboxMenuEx0.comments,
-
-#    objCheckboxMenuEx1.prog, objCheckboxMenuEx1.test,
-#    objCheckboxMenuEx1.linecapa, objCheckboxMenuEx1.epi,
-#    objCheckboxMenuEx1.baan1, objCheckboxMenuEx1.comments,
-
-#    objCheckboxMenuEx2.prog, objCheckboxMenuEx2.test,
-#    objCheckboxMenuEx2.linecapa, objCheckboxMenuEx2.epi,
-#    objCheckboxMenuEx2.baan1, objCheckboxMenuEx2.comments
 #--- The End INSERT ---
 
 #--- Search ---
