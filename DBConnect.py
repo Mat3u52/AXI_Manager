@@ -180,27 +180,19 @@ class DBConnect:
                 self.V8103163UPH95 = 0
                 self.V8103163UPH95Time = 0
             # --- The End ViTrox I ---
+            # --- 5DX I & II ---
+            self.V849Prog = ""
+            self.V849Linecapa = "NONE"
+            self.V849EPI = "NONE"
+            self.V849Comments = ""
+            self.V849HEX = ""
 
-            # self.vitroxIProg = ""
-            # self.vitroxITest = 0
-            # self.vitroxILinecapa = "NONE"
-            # self.vitroxIEPI = "NONE"
-            # self.vitroxIBAAN1 = "NONE"
-            # self.vitroxIComments = ""
-            # self.vitroxIUPH85 = 0
-            # self.vitroxIUPH95 = 0
-            # self.vitroxIUPH95Time = 0
+            self.V817Prog = ""
+            self.V817Linecapa = "NONE"
+            self.V817EPI = "NONE"
+            self.V817Comments = ""
+            self.V817HEX = ""
 
-            self.dxIProg = ""
-            self.dxILinecapa = "NONE"
-            self.dxIEPI = "NONE"
-            self.dxIComments = ""
-            self.dxIHEX = ""
-            self.dxIIProg = ""
-            self.dxIILinecapa = "NONE"
-            self.dxIIEPI = "NONE"
-            self.dxIIComments = ""
-            self.dxIIHEX = ""
             self.dxBAAN1 = "NONE"
             self.dxUPH85 = 0
             self.dxUPH95 = 0
@@ -209,6 +201,7 @@ class DBConnect:
             self.dxMap = 0
             self.dxAutoThickness = 0
             self.dxTest = 0
+            # --- The End 5DX I & II ---
 
             messagebox.showwarning("Awesome!", "The record is added :)")
         else:
@@ -240,10 +233,12 @@ class DBConnect:
             self.item, self.itemAmount,
 
             self.V8103553S2EXProg, self.V8103553S2EXTest, self.V8103553S2EXLinecapa, self.V8103553S2EXEPI,
-            self.V8103553S2EXBAAN1, self.V8103553S2EXComments, self.V8103553S2EXUPH85, self.V8103553S2EXUPH95, self.V8103553S2EXUPH95Time,
+            self.V8103553S2EXBAAN1, self.V8103553S2EXComments, self.V8103553S2EXUPH85, self.V8103553S2EXUPH95,
+            self.V8103553S2EXUPH95Time,
 
             self.V8103483S2EXProg, self.V8103483S2EXTest, self.V8103483S2EXLinecapa, self.V8103483S2EXEPI,
-            self.V8103483S2EXBAAN1, self.V8103483S2EXComments, self.V8103483S2EXUPH85, self.V8103483S2EXUPH95, self.V8103483S2EXUPH95Time,
+            self.V8103483S2EXBAAN1, self.V8103483S2EXComments, self.V8103483S2EXUPH85, self.V8103483S2EXUPH95,
+            self.V8103483S2EXUPH95Time,
 
             self.V8108120S2Prog, self.V8108120S2Test, self.V8108120S2Linecapa, self.V8108120S2EPI,
             self.V8108120S2BAAN1, self.V8108120S2Comments, self.V8108120S2UPH85, self.V8108120S2UPH95,
@@ -253,8 +248,8 @@ class DBConnect:
             self.V8103163BAAN1, self.V8103163Comments, self.V8103163UPH85, self.V8103163UPH95, self.V8103163UPH95Time,
 
             self.dxUPH85, self.dxUPH95Time, self.dxUPH95, self.dxAlign, self.dxMap, self.dxAutoThickness,
-            self.dxTest, self.dxBAAN1, self.dxIProg, self.dxILinecapa, self.dxIEPI, self.dxIComments,
-            self.dxIHEX, self.dxIIProg, self.dxIILinecapa, self.dxIIEPI, self.dxIIComments, self.dxIIHEX
+            self.dxTest, self.dxBAAN1, self.V849Prog, self.V849Linecapa, self.V849EPI, self.V849Comments,
+            self.V849HEX, self.V817Prog, self.V817Linecapa, self.V817EPI, self.V817Comments, self.V817HEX
 
         )
         self.dbCursor.execute(sql, val)
