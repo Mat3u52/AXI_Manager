@@ -9,7 +9,6 @@ class NewItem():
     def __init__(self, tab, root):
         self.tab = tab
         self.root = root
-        #self.objDB = DBConnect()
 
         #objTipNew = Tip(root, mainFrameInsert)
         #objTipNew.animateTip()
