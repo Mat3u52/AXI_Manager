@@ -64,7 +64,7 @@ def resizeImage(path):
         elif path.endswith('.png'):
             print("f: ewsizeImage - .png")
 
-def swich(x):
+def switch(x):
     match x:
         case "NONE":
             return 0
@@ -128,9 +128,9 @@ def getSelectedRow(event):
             E5.insert(0, f"{row[52]}")
             E6.insert(0, f"{row[57]}")
 
-            LCViTroxIV.current(swich(row[55]))
-            EPIViTroxIV.current(swich(row[56]))
-            BAANViTroxIV.current(swich(row[53]))
+            LCViTroxIV.current(switch(row[55]))
+            EPIViTroxIV.current(switch(row[56]))
+            BAANViTroxIV.current(switch(row[53]))
 
         pyperclip.copy(E2.get()) #clipboard
 
@@ -1481,10 +1481,10 @@ def insertButton():
         #V849Comments = ""
     #V849HEX = ""
 
-    #V817Prog = ""
-    #V817Linecapa = "NONE"
-    #V817EPI = "NONE"
-    #V817Comments = ""
+        #V817Prog = ""
+        #V817Linecapa = "NONE"
+        #V817EPI = "NONE"
+        #V817Comments = ""
     #V817HEX = ""
 
         #dxBAAN1 = "NONE"
@@ -1494,50 +1494,142 @@ def insertButton():
     #dxAlign = 0
     #dxMap = 0
     #dxAutoThickness = 0
-        #dxTest = 0
+    #dxTest = 0
 
-    #try:
-    objDB = DBConnect()
-    objDB.insertValidator(
-                            objNewItemEx.EI2.get(),
-                            objNewItemEx.EI3.get(),
+    #if objCheckboxMenu5DX0.CI_4.get() != "NONE" or \
+    #        objCheckboxMenu5DX1.CI_4.get() != "NONE":
+    #    baan5DX = objCheckboxMenu5DX0.CI_4.get()
+    #elif
 
-                            objCheckboxMenuEx0.EI_0.get(),
-                            objCheckboxMenuEx0.EI_1.get(),
-                            objCheckboxMenuEx0.CI_2.get(),
-                            objCheckboxMenuEx0.CI_3.get(),
-                            objCheckboxMenuEx0.CI_4.get(),
-                            objCheckboxMenuEx0.EI_5.get(),
+    #LCViTroxIV.current(swich(row[55]))
+    #EPIViTroxIV.current(swich(row[56]))
+    #BAANViTroxIV.current(swich(row[53]))
+    #baan5DX = 0
+    #print(switch(objCheckboxMenu5DX0.CI_4.get()))
+    #if int(baan5DX) < int(switch(objCheckboxMenu5DX0.CI_4.get())):
 
-                            objCheckboxMenuEx1.EI_0.get(),
-                            objCheckboxMenuEx1.EI_1.get(),
-                            objCheckboxMenuEx1.CI_2.get(),
-                            objCheckboxMenuEx1.CI_3.get(),
-                            objCheckboxMenuEx1.CI_4.get(),
-                            objCheckboxMenuEx1.EI_5.get(),
+    baan5DXStatus = objCheckboxMenu5DX0.CI_4.get()
+    if int(switch(objCheckboxMenu5DX0.CI_4.get())) < int(switch(objCheckboxMenu5DX1.CI_4.get())):
+        baan5DXStatus = objCheckboxMenu5DX1.CI_4.get()
 
-                            objCheckboxMenuEx2.EI_0.get(),
-                            objCheckboxMenuEx2.EI_1.get(),
-                            objCheckboxMenuEx2.CI_2.get(),
-                            objCheckboxMenuEx2.CI_3.get(),
-                            objCheckboxMenuEx2.CI_4.get(),
-                            objCheckboxMenuEx2.EI_5.get(),
+    print(baan5DXStatus)
+# ---
+    scanningTime5DX0, scanningTime5DX1 = 0, 0
+    timeTime, alignTime, laserTime, thicknessTime = 0, 0, 0, 0
 
-                            objCheckboxMenuXXL0.EI_0.get(),
-                            objCheckboxMenuXXL0.EI_1.get(),
-                            objCheckboxMenuXXL0.CI_2.get(),
-                            objCheckboxMenuXXL0.CI_3.get(),
-                            objCheckboxMenuXXL0.CI_4.get(),
-                            objCheckboxMenuXXL0.EI_5.get(),
+    progV849 = ""
+    commentsV849 = ""
+    hexV849 = ""
 
-                            objCheckboxMenu5DX0.EI_0.get(),
-                            objCheckboxMenu5DX0.EI_1.get(),
-                            objCheckboxMenu5DX0.CI_2.get(),
-                            objCheckboxMenu5DX0.CI_3.get(),
-                            objCheckboxMenu5DX0.CI_4.get(),
-                            objCheckboxMenu5DX0.EI_5.get()
-                        )
-    objDB.closeDB()
+    progV817 = ""
+    commentsV817 = ""
+    hexV817 = ""
+
+    if objCheckboxMenu5DX0.EI_0.get():
+
+        scanningTime5DX0 = int(objCheckboxMenu5DX0.EI_1.get()) + \
+                        int(objCheckboxMenu5DX0.EI_6.get()) + \
+                        int(objCheckboxMenu5DX0.EI_7.get()) + \
+                        int(objCheckboxMenu5DX0.EI_8.get())
+
+        #print(objCheckboxMenu5DX0.EI_1.get()) # test time
+        #print(objCheckboxMenu5DX0.EI_6.get()) # align
+        #print(objCheckboxMenu5DX0.EI_7.get()) # laser points
+        #print(objCheckboxMenu5DX0.EI_8.get()) # thicknes
+
+        print(scanningTime5DX0)
+    else:
+        print("empty")
+
+    if objCheckboxMenu5DX1.EI_0.get():
+
+        scanningTime5DX1 = int(objCheckboxMenu5DX1.EI_1.get()) + \
+                        int(objCheckboxMenu5DX1.EI_6.get()) + \
+                        int(objCheckboxMenu5DX1.EI_7.get()) + \
+                        int(objCheckboxMenu5DX1.EI_8.get())
+
+        #print(objCheckboxMenu5DX1.EI_1.get())  # test time
+        #print(objCheckboxMenu5DX1.EI_6.get())  # align
+        #print(objCheckboxMenu5DX1.EI_7.get())  # laser points
+        #print(objCheckboxMenu5DX1.EI_8.get())  # thicknes
+
+        print(scanningTime5DX1)
+
+    else:
+        print("empty")
+
+    if scanningTime5DX0 > scanningTime5DX1:
+        print(f"the winner is 5dx1")
+        timeTime = int(objCheckboxMenu5DX0.EI_1.get())
+        alignTime = int(objCheckboxMenu5DX0.EI_6.get())
+        laserTime = int(objCheckboxMenu5DX0.EI_7.get())
+        thicknessTime = int(objCheckboxMenu5DX0.EI_8.get())
+
+        progV849 = objCheckboxMenu5DX0.EI_0.get()
+        commentsV849 = objCheckboxMenu5DX0.EI_5.get()
+        hexV849 = ""
+
+        print(f"progV849: {progV849}, commentsV849: {commentsV849}, hexV849: {hexV849}")
+        print(f"timeTime: {timeTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
+
+
+    elif scanningTime5DX0 < scanningTime5DX1:
+        print(f"the winner is 5dx2")
+        timeTime = int(objCheckboxMenu5DX1.EI_1.get())
+        alignTime = int(objCheckboxMenu5DX1.EI_6.get())
+        laserTime = int(objCheckboxMenu5DX1.EI_7.get())
+        thicknessTime = int(objCheckboxMenu5DX1.EI_8.get())
+
+        progV817 = objCheckboxMenu5DX1.EI_0.get()
+        commentsV817 = objCheckboxMenu5DX1.EI_5.get()
+        hexV817 = ""
+
+        print(f"progV817: {progV817}, commentsV817: {commentsV817}, hexV849: {hexV817}")
+        print(f"timeTime: {timeTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
+
+    else:
+        print(f"the winner is not 5DX2 nor 5dx2")
+
+
+
+
+
+#    objDB = DBConnect()
+#    objDB.insertValidator(
+#                            objNewItemEx.EI2.get(),
+#                            objNewItemEx.EI3.get(),
+
+#                            objCheckboxMenuEx0.EI_0.get(),
+#                            objCheckboxMenuEx0.EI_1.get(),
+#                            objCheckboxMenuEx0.CI_2.get(),
+#                            objCheckboxMenuEx0.CI_3.get(),
+#                            objCheckboxMenuEx0.CI_4.get(),
+#                            objCheckboxMenuEx0.EI_5.get(),
+
+#                            objCheckboxMenuEx1.EI_0.get(),
+#                            objCheckboxMenuEx1.EI_1.get(),
+#                            objCheckboxMenuEx1.CI_2.get(),
+#                            objCheckboxMenuEx1.CI_3.get(),
+#                            objCheckboxMenuEx1.CI_4.get(),
+#                            objCheckboxMenuEx1.EI_5.get(),
+
+#                            objCheckboxMenuEx2.EI_0.get(),
+#                            objCheckboxMenuEx2.EI_1.get(),
+#                            objCheckboxMenuEx2.CI_2.get(),
+#                            objCheckboxMenuEx2.CI_3.get(),
+#                            objCheckboxMenuEx2.CI_4.get(),
+#                            objCheckboxMenuEx2.EI_5.get(),
+
+#                            objCheckboxMenuXXL0.EI_0.get(),
+#                            objCheckboxMenuXXL0.EI_1.get(),
+#                            objCheckboxMenuXXL0.CI_2.get(),
+#                            objCheckboxMenuXXL0.CI_3.get(),
+#                            objCheckboxMenuXXL0.CI_4.get(),
+#                            objCheckboxMenuXXL0.EI_5.get(),
+
+#
+#                        )
+#    objDB.closeDB()
     #except AttributeError:
     #    pass
 
@@ -1568,11 +1660,11 @@ objNewItem5DX.checkboxTitle(" 5DX ", 6)
 
 objCheckboxMenu5DX0 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX I ( V849 ) ")
 objCheckboxMenu5DX0.checkboxMenu("V849", 1)
-objCheckboxMenu5DX0.aligmentTime()
+objCheckboxMenu5DX0.alignmentTime()
 
 objCheckboxMenu5DX1 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX II ( V817 ) ")
 objCheckboxMenu5DX1.checkboxMenu("V817", 2)
-objCheckboxMenu5DX1.aligmentTime()
+objCheckboxMenu5DX1.alignmentTime()
 
 BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=55, command=insertButton, cursor="hand2")
 BI1.grid(row=1, column=0, columnspan=4, pady=2)
