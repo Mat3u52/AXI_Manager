@@ -74,13 +74,14 @@ class CheckboxMenu():
         self.EI_5.bind("<Button-3>", self.objCM_Comments.doPopup)
         self.objCM_Comments.setEntry(self.EI_5)
 
-    def aligmentTime(self):
+
+    def alignmentTime(self):
         self.LI_6 = Label(self.insertFrame, text="Aligment Time:",
                           width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
         self.LI_6.config(font=("Arial", 10))
         self.LI_6.grid(row=3, column=0, sticky=W)
         self.EI_6 = Entry(self.insertFrame, relief="solid",
-                          textvariable=self.objCM.captureEntry,
+                          #textvariable=self.objCM.captureEntry,
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI_6.config(font=("Arial", 10))
         self.EI_6.grid(row=3, column=1, pady=1)
@@ -89,7 +90,7 @@ class CheckboxMenu():
         self.LI_7.config(font=("Arial", 10))
         self.LI_7.grid(row=4, column=0, sticky=W)
         self.EI_7 = Entry(self.insertFrame, relief="solid",
-                          textvariable=self.objCM.captureEntry,
+                          #textvariable=self.objCM.captureEntry,
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI_7.config(font=("Arial", 10))
         self.EI_7.grid(row=4, column=1, pady=1)
@@ -98,7 +99,7 @@ class CheckboxMenu():
         self.LI_8.config(font=("Arial", 10))
         self.LI_8.grid(row=5, column=0, sticky=W)
         self.EI_8 = Entry(self.insertFrame, relief="solid",
-                          textvariable=self.objCM.captureEntry,
+                          #textvariable=self.objCM.captureEntry,
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI_8.config(font=("Arial", 10))
         self.EI_8.grid(row=5, column=1, pady=1)
