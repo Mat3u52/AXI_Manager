@@ -69,11 +69,11 @@ class DBConnect:
                 self.V8103553S2EXBAAN1 = str(initialV8103553S2EXBAAN1)
                 self.V8103553S2EXComments = str(initialV8103553S2EXComments)
                 if float(self.V8103553S2EXTest) > 0:
-                    self.V8103553S2EXUPH85 = math.floor((3600 / (float(self.V8103553S2EXTest) + 15) * 0.85)) * int(
+                    self.V8103553S2EXUPH85 = math.floor((3600 // (float(self.V8103553S2EXTest) + 15) * 0.85)) * int(
                         self.itemAmount)
-                    self.V8103553S2EXUPH95 = math.floor((3600 / (float(self.V8103553S2EXTest) + 15) * 0.95)) * int(
+                    self.V8103553S2EXUPH95 = math.floor((3600 // (float(self.V8103553S2EXTest) + 15) * 0.95)) * int(
                         self.itemAmount)
-                    self.V8103553S2EXUPH95Time = ((3600 / float(self.V8103553S2EXUPH95)) / int(self.itemAmount))
+                    self.V8103553S2EXUPH95Time = ((3600 // float(self.V8103553S2EXUPH95)) // int(self.itemAmount))
                 else:
                     self.V8103553S2EXTest = 0
                     self.V8103553S2EXUPH85 = 0
@@ -99,11 +99,11 @@ class DBConnect:
                 self.V8103483S2EXBAAN1 = str(initialV8103483S2EXBAAN1)
                 self.V8103483S2EXComments = str(initialV8103483S2EXComments)
                 if float(self.V8103483S2EXTest) > 0:
-                    self.V8103483S2EXUPH85 = math.floor((3600 / (float(self.V8103483S2EXTest) + 15) * 0.85)) * int(
+                    self.V8103483S2EXUPH85 = math.floor((3600 // (float(self.V8103483S2EXTest) + 15) * 0.85)) * int(
                         self.itemAmount)
-                    self.V8103483S2EXUPH95 = math.floor((3600 / (float(self.V8103483S2EXTest) + 15) * 0.95)) * int(
+                    self.V8103483S2EXUPH95 = math.floor((3600 // (float(self.V8103483S2EXTest) + 15) * 0.95)) * int(
                         self.itemAmount)
-                    self.V8103483S2EXUPH95Time = ((3600 / float(self.V8103483S2EXUPH95)) / int(self.itemAmount))
+                    self.V8103483S2EXUPH95Time = ((3600 // float(self.V8103483S2EXUPH95)) // int(self.itemAmount))
                 else:
                     self.V8103483S2EXTest = 0
                     self.V8103483S2EXUPH85 = 0
@@ -129,11 +129,11 @@ class DBConnect:
                 self.V8108120S2BAAN1 = str(initialV8108120S2BAAN1)
                 self.V8108120S2Comments = str(initialV8108120S2Comments)
                 if float(self.V8108120S2Test) > 0:
-                    self.V8108120S2UPH85 = math.floor((3600 / (float(self.V8108120S2Test) + 15) * 0.85)) * int(
+                    self.V8108120S2UPH85 = math.floor((3600 // (float(self.V8108120S2Test) + 15) * 0.85)) * int(
                         self.itemAmount)
-                    self.V8108120S2UPH95 = math.floor((3600 / (float(self.V8108120S2Test) + 15) * 0.95)) * int(
+                    self.V8108120S2UPH95 = math.floor((3600 // (float(self.V8108120S2Test) + 15) * 0.95)) * int(
                         self.itemAmount)
-                    self.V8108120S2UPH95Time = ((3600 / float(self.V8108120S2UPH95)) / int(self.itemAmount))
+                    self.V8108120S2UPH95Time = ((3600 // float(self.V8108120S2UPH95)) // int(self.itemAmount))
                 else:
                     self.V8108120S2Test = 0
                     self.V8108120S2UPH85 = 0
@@ -159,11 +159,11 @@ class DBConnect:
                 self.V8103163BAAN1 = str(initialV8103163BAAN1)
                 self.V8103163Comments = str(initialV8103163Comments)
                 if float(self.V8103163Test) > 0:
-                    self.V8103163UPH85 = math.floor((3600 / (float(self.V8103163Test) + 15) * 0.85)) * int(
+                    self.V8103163UPH85 = math.floor((3600 // (float(self.V8103163Test) + 15) * 0.85)) * int(
                         self.itemAmount)
-                    self.V8103163UPH95 = math.floor((3600 / (float(self.V8103163Test) + 15) * 0.95)) * int(
+                    self.V8103163UPH95 = math.floor((3600 // (float(self.V8103163Test) + 15) * 0.95)) * int(
                         self.itemAmount)
-                    self.V8103163UPH95Time = ((3600 / float(self.V8103163UPH95)) / int(self.itemAmount))
+                    self.V8103163UPH95Time = ((3600 // float(self.V8103163UPH95)) // int(self.itemAmount))
                 else:
                     self.V8103163Test = 0
                     self.V8103163UPH85 = 0
