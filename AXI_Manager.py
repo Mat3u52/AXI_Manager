@@ -1,4 +1,5 @@
 import _tkinter
+from math import *
 from DBConnect import DBConnect
 from Tip import Tip
 from ContextualMenu import ContextualMenu
@@ -300,7 +301,8 @@ def getSelectedRow(event):
             tabControlMain.hide(tabMain2)
 #---The End getSelectedRow 5DX V817---
 #---getSelectedRow V810-3163--
-        if len(str(row[27])) > 4:
+        #if len(str(row[27])) > 4:
+        if row[27] != None and int(row[15]) != 0:
             tabControlMain.add(tabMain3, text=" V810-3163 ")
             LV8103163Prog.configure(text=f"{row[27]}")
             LV8103163ScanTimeL.configure(text=f"Scan Time:")
@@ -705,7 +707,8 @@ def refresh():
                         values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
                                 f"{row[23]}", f"{row[24]}"), tags=('DX'))
         count1 += 3
-        if len(str(row[27])) > 4: # !!!!!!!!!!!!!!!!!!!!!! it is different than other
+        #if len(str(row[27])) > 4: # !!!!!!!!!!!!!!!!!!!!!! it is different than other
+        if row[27] != None and int(row[15]) != 0:
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
                                 f"{row[28]}", f"{row[29]}"), tags=('V'))
@@ -1443,70 +1446,45 @@ B1.grid(row=3, column=0, columnspan=4, pady=2)
 #--- The End of the UPDATE section ---
 
 
+def computeUPH(totalScaningTime, capability, qtyPCB):
+    uph = floor((3600 / (float(totalScaningTime) + 15) * (float(capability) / 100))) * int(qtyPCB)
+    return uph
+def convertUPHToTime(uph, qtyPCB):
+    cycleTime = ((3600 / float(uph)) / int(qtyPCB))
+    return cycleTime
+
 def insertButton():
-    #print(objNewItemEx.EI2.get())
-    #print(objNewItemEx.EI3.get())
+    print(objNewItemEx.EI2.get())
+    print(objNewItemEx.EI3.get())
 
-    #print(objCheckboxMenuEx0.EI_0.get())
-    #print(objCheckboxMenuEx0.EI_1.get())
-    #print(objCheckboxMenuEx0.CI_2.get())
-    #print(objCheckboxMenuEx0.CI_3.get())
-    #print(objCheckboxMenuEx0.CI_4.get())
-    #print(objCheckboxMenuEx0.EI_5.get())
+    print(objCheckboxMenuEx0.EI_0.get())
+    print(objCheckboxMenuEx0.EI_1.get())
+    print(objCheckboxMenuEx0.CI_2.get())
+    print(objCheckboxMenuEx0.CI_3.get())
+    print(objCheckboxMenuEx0.CI_4.get())
+    print(objCheckboxMenuEx0.EI_5.get())
 
-    #print(objCheckboxMenuEx1.EI_0.get())
-    #print(objCheckboxMenuEx1.EI_1.get())
-    #print(objCheckboxMenuEx1.CI_2.get())
-    #print(objCheckboxMenuEx1.CI_3.get())
-    #print(objCheckboxMenuEx1.CI_4.get())
-    #print(objCheckboxMenuEx1.EI_5.get())
+    print(objCheckboxMenuEx1.EI_0.get())
+    print(objCheckboxMenuEx1.EI_1.get())
+    print(objCheckboxMenuEx1.CI_2.get())
+    print(objCheckboxMenuEx1.CI_3.get())
+    print(objCheckboxMenuEx1.CI_4.get())
+    print(objCheckboxMenuEx1.EI_5.get())
 
-    #print(objCheckboxMenuEx2.EI_0.get())
-    #print(objCheckboxMenuEx2.EI_1.get())
-    #print(objCheckboxMenuEx2.CI_2.get())
-    #print(objCheckboxMenuEx2.CI_3.get())
-    #print(objCheckboxMenuEx2.CI_4.get())
-    #print(objCheckboxMenuEx2.EI_5.get())
+    print(objCheckboxMenuEx2.EI_0.get())
+    print(objCheckboxMenuEx2.EI_1.get())
+    print(objCheckboxMenuEx2.CI_2.get())
+    print(objCheckboxMenuEx2.CI_3.get())
+    print(objCheckboxMenuEx2.CI_4.get())
+    print(objCheckboxMenuEx2.EI_5.get())
 
-    #print(objCheckboxMenuXXL0.EI_0.get())
-    #print(objCheckboxMenuXXL0.EI_1.get())
-    #print(objCheckboxMenuXXL0.CI_2.get())
-    #print(objCheckboxMenuXXL0.CI_3.get())
-    #print(objCheckboxMenuXXL0.CI_4.get())
-    #print(objCheckboxMenuXXL0.EI_5.get())
+    print(objCheckboxMenuXXL0.EI_0.get())
+    print(objCheckboxMenuXXL0.EI_1.get())
+    print(objCheckboxMenuXXL0.CI_2.get())
+    print(objCheckboxMenuXXL0.CI_3.get())
+    print(objCheckboxMenuXXL0.CI_4.get())
+    print(objCheckboxMenuXXL0.EI_5.get())
 
-        #V849Prog = ""
-        #V849Linecapa = "NONE"
-        #V849EPI = "NONE"
-        #V849Comments = ""
-    #V849HEX = ""
-
-        #V817Prog = ""
-        #V817Linecapa = "NONE"
-        #V817EPI = "NONE"
-        #V817Comments = ""
-    #V817HEX = ""
-
-        #dxBAAN1 = "NONE"
-#dxUPH85 = 0
-#dxUPH95 = 0
-#dxUPH95Time = 0
-    #dxAlign = 0
-    #dxMap = 0
-    #dxAutoThickness = 0
-    #dxTest = 0
-
-    #if objCheckboxMenu5DX0.CI_4.get() != "NONE" or \
-    #        objCheckboxMenu5DX1.CI_4.get() != "NONE":
-    #    baan5DX = objCheckboxMenu5DX0.CI_4.get()
-    #elif
-
-    #LCViTroxIV.current(swich(row[55]))
-    #EPIViTroxIV.current(swich(row[56]))
-    #BAANViTroxIV.current(swich(row[53]))
-    #baan5DX = 0
-    #print(switch(objCheckboxMenu5DX0.CI_4.get()))
-    #if int(baan5DX) < int(switch(objCheckboxMenu5DX0.CI_4.get())):
 
     baan5DXStatus = objCheckboxMenu5DX0.CI_4.get()
     if int(switch(objCheckboxMenu5DX0.CI_4.get())) < int(switch(objCheckboxMenu5DX1.CI_4.get())):
@@ -1515,7 +1493,7 @@ def insertButton():
     print(baan5DXStatus)
 # ---
     scanningTime5DX0, scanningTime5DX1 = 0, 0
-    timeTime, alignTime, laserTime, thicknessTime = 0, 0, 0, 0
+    testTime, alignTime, laserTime, thicknessTime = 0, 0, 0, 0
 
     progV849 = ""
     commentsV849 = ""
@@ -1524,6 +1502,10 @@ def insertButton():
     progV817 = ""
     commentsV817 = ""
     hexV817 = ""
+
+    dxUPH85 = 0
+    dxUPH95Time = 0
+    dxUPH95 = 0
 
     if objCheckboxMenu5DX0.EI_0.get():
 
@@ -1558,9 +1540,9 @@ def insertButton():
     else:
         print("empty")
 
-    if scanningTime5DX0 > scanningTime5DX1:
+    if objCheckboxMenu5DX0.EI_0.get() and (scanningTime5DX0 >= scanningTime5DX1):
         print(f"the winner is 5dx1")
-        timeTime = int(objCheckboxMenu5DX0.EI_1.get())
+        testTime = int(objCheckboxMenu5DX0.EI_1.get())
         alignTime = int(objCheckboxMenu5DX0.EI_6.get())
         laserTime = int(objCheckboxMenu5DX0.EI_7.get())
         thicknessTime = int(objCheckboxMenu5DX0.EI_8.get())
@@ -1570,12 +1552,18 @@ def insertButton():
         hexV849 = ""
 
         print(f"progV849: {progV849}, commentsV849: {commentsV849}, hexV849: {hexV849}")
-        print(f"timeTime: {timeTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
+        print(f"timeTime: {testTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
 
+        dxUPH85 = computeUPH(scanningTime5DX0, 85, objNewItemEx.EI3.get())
+        dxUPH95 = computeUPH(scanningTime5DX0, 95, objNewItemEx.EI3.get())
+        dxUPH95Time = convertUPHToTime(dxUPH95, objNewItemEx.EI3.get())
+        print(dxUPH85)
+        print(dxUPH95)
+        print(dxUPH95Time)
 
-    elif scanningTime5DX0 < scanningTime5DX1:
+    elif objCheckboxMenu5DX1.EI_0.get() and (scanningTime5DX0 < scanningTime5DX1):
         print(f"the winner is 5dx2")
-        timeTime = int(objCheckboxMenu5DX1.EI_1.get())
+        testTime = int(objCheckboxMenu5DX1.EI_1.get())
         alignTime = int(objCheckboxMenu5DX1.EI_6.get())
         laserTime = int(objCheckboxMenu5DX1.EI_7.get())
         thicknessTime = int(objCheckboxMenu5DX1.EI_8.get())
@@ -1584,55 +1572,79 @@ def insertButton():
         commentsV817 = objCheckboxMenu5DX1.EI_5.get()
         hexV817 = ""
 
-        print(f"progV817: {progV817}, commentsV817: {commentsV817}, hexV849: {hexV817}")
-        print(f"timeTime: {timeTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
+        print(f"progV817: {progV817}, commentsV817: {commentsV817}, hexV817: {hexV817}")
+        print(f"timeTime: {testTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
+
+        dxUPH85 = computeUPH(scanningTime5DX1, 85, objNewItemEx.EI3.get())
+        dxUPH95 = computeUPH(scanningTime5DX1, 95, objNewItemEx.EI3.get())
+        dxUPH95Time = convertUPHToTime(dxUPH95, objNewItemEx.EI3.get())
+        print(dxUPH85)
+        print(dxUPH95)
+        print(dxUPH95Time)
+
 
     else:
         print(f"the winner is not 5DX2 nor 5dx2")
 
+    objDB = DBConnect()
+    objDB.insertValidator(
+                            objNewItemEx.EI2.get(),
+                            objNewItemEx.EI3.get(),
+
+                            objCheckboxMenuEx0.EI_0.get(),
+                            objCheckboxMenuEx0.EI_1.get(),
+                            objCheckboxMenuEx0.CI_2.get(),
+                            objCheckboxMenuEx0.CI_3.get(),
+                            objCheckboxMenuEx0.CI_4.get(),
+                            objCheckboxMenuEx0.EI_5.get(),
+
+                            objCheckboxMenuEx1.EI_0.get(),
+                            objCheckboxMenuEx1.EI_1.get(),
+                            objCheckboxMenuEx1.CI_2.get(),
+                            objCheckboxMenuEx1.CI_3.get(),
+                            objCheckboxMenuEx1.CI_4.get(),
+                            objCheckboxMenuEx1.EI_5.get(),
+
+                            objCheckboxMenuEx2.EI_0.get(),
+                            objCheckboxMenuEx2.EI_1.get(),
+                            objCheckboxMenuEx2.CI_2.get(),
+                            objCheckboxMenuEx2.CI_3.get(),
+                            objCheckboxMenuEx2.CI_4.get(),
+                            objCheckboxMenuEx2.EI_5.get(),
+
+                            objCheckboxMenuXXL0.EI_0.get(),
+                            objCheckboxMenuXXL0.EI_1.get(),
+                            objCheckboxMenuXXL0.CI_2.get(),
+                            objCheckboxMenuXXL0.CI_3.get(),
+                            objCheckboxMenuXXL0.CI_4.get(),
+                            objCheckboxMenuXXL0.EI_5.get(),
+
+                            dxUPH85,
+                            dxUPH95Time,
+                            dxUPH95,
+
+                            alignTime,
+                            laserTime,
+                            thicknessTime,
+                            testTime,
+
+                            baan5DXStatus,
+
+                            progV849,
+                            objCheckboxMenu5DX0.CI_2.get(),
+                            objCheckboxMenu5DX0.CI_3.get(),
+                            commentsV849,
+                            hexV849,
+
+                            progV817,
+                            objCheckboxMenu5DX1.CI_2.get(),
+                            objCheckboxMenu5DX1.CI_3.get(),
+                            commentsV817,
+                            hexV817
 
 
-
-
-#    objDB = DBConnect()
-#    objDB.insertValidator(
-#                            objNewItemEx.EI2.get(),
-#                            objNewItemEx.EI3.get(),
-
-#                            objCheckboxMenuEx0.EI_0.get(),
-#                            objCheckboxMenuEx0.EI_1.get(),
-#                            objCheckboxMenuEx0.CI_2.get(),
-#                            objCheckboxMenuEx0.CI_3.get(),
-#                            objCheckboxMenuEx0.CI_4.get(),
-#                            objCheckboxMenuEx0.EI_5.get(),
-
-#                            objCheckboxMenuEx1.EI_0.get(),
-#                            objCheckboxMenuEx1.EI_1.get(),
-#                            objCheckboxMenuEx1.CI_2.get(),
-#                            objCheckboxMenuEx1.CI_3.get(),
-#                            objCheckboxMenuEx1.CI_4.get(),
-#                            objCheckboxMenuEx1.EI_5.get(),
-
-#                            objCheckboxMenuEx2.EI_0.get(),
-#                            objCheckboxMenuEx2.EI_1.get(),
-#                            objCheckboxMenuEx2.CI_2.get(),
-#                            objCheckboxMenuEx2.CI_3.get(),
-#                            objCheckboxMenuEx2.CI_4.get(),
-#                            objCheckboxMenuEx2.EI_5.get(),
-
-#                            objCheckboxMenuXXL0.EI_0.get(),
-#                            objCheckboxMenuXXL0.EI_1.get(),
-#                            objCheckboxMenuXXL0.CI_2.get(),
-#                            objCheckboxMenuXXL0.CI_3.get(),
-#                            objCheckboxMenuXXL0.CI_4.get(),
-#                            objCheckboxMenuXXL0.EI_5.get(),
-
-#
-#                        )
-#    objDB.closeDB()
-    #except AttributeError:
-    #    pass
-
+                        )
+    objDB.closeDB()
 
 
 #--- INSERT ---
