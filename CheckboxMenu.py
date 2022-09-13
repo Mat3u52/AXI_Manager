@@ -121,3 +121,4 @@ class CheckboxMenu():
         elif self.var.get() == 0:
             self.insertFrame.grid_forget()
 
+
