@@ -55,7 +55,18 @@ class DBConnect:
                initialV8103553S2EXProg, initialV8103553S2EXTest, initialV8103553S2EXLinecapa, initialV8103553S2EXEPI, initialV8103553S2EXBAAN1, initialV8103553S2EXComments,
                initialV8103483S2EXProg, initialV8103483S2EXTest, initialV8103483S2EXLinecapa, initialV8103483S2EXEPI, initialV8103483S2EXBAAN1, initialV8103483S2EXComments,
                initialV8103163Prog, initialV8103163Test, initialV8103163Linecapa, initialV8103163EPI, initialV8103163BAAN1, initialV8103163Comments,
-               initialV8108120S2Prog, initialV8108120S2Test, initialV8108120S2Linecapa, initialV8108120S2EPI, initialV8108120S2BAAN1, initialV8108120S2Comments):
+               initialV8108120S2Prog, initialV8108120S2Test, initialV8108120S2Linecapa, initialV8108120S2EPI, initialV8108120S2BAAN1, initialV8108120S2Comments,
+
+                initialDXUPH85, initialDXUPH95Time, initialDXUPH95,
+
+                initialAlignTime, initialLaserTime, initialThicknessTime, initialTestTime,
+
+                initialBaan5DXStatus,
+
+                initialProgV849, initialV849Linecapa, initialV849EPI, initialCommentsV849, initialHexV849,
+
+                initialProgV817, initialV817Linecapa, initialV817EPI, initialCommentsV817, initialHexV817
+                        ):
         if item and int(itemAmount) > 0:
             self.item = str(item.strip())
             self.itemAmount = int(itemAmount)
@@ -69,11 +80,11 @@ class DBConnect:
                 self.V8103553S2EXBAAN1 = str(initialV8103553S2EXBAAN1)
                 self.V8103553S2EXComments = str(initialV8103553S2EXComments)
                 if float(self.V8103553S2EXTest) > 0:
-                    self.V8103553S2EXUPH85 = math.floor((3600 // (float(self.V8103553S2EXTest) + 15) * 0.85)) * int(
+                    self.V8103553S2EXUPH85 = math.floor((3600 / (float(self.V8103553S2EXTest) + 15) * 0.85)) * int(
                         self.itemAmount)
-                    self.V8103553S2EXUPH95 = math.floor((3600 // (float(self.V8103553S2EXTest) + 15) * 0.95)) * int(
+                    self.V8103553S2EXUPH95 = math.floor((3600 / (float(self.V8103553S2EXTest) + 15) * 0.95)) * int(
                         self.itemAmount)
-                    self.V8103553S2EXUPH95Time = ((3600 // float(self.V8103553S2EXUPH95)) // int(self.itemAmount))
+                    self.V8103553S2EXUPH95Time = ((3600 / float(self.V8103553S2EXUPH95)) / int(self.itemAmount))
                 else:
                     self.V8103553S2EXTest = 0
                     self.V8103553S2EXUPH85 = 0
@@ -99,11 +110,11 @@ class DBConnect:
                 self.V8103483S2EXBAAN1 = str(initialV8103483S2EXBAAN1)
                 self.V8103483S2EXComments = str(initialV8103483S2EXComments)
                 if float(self.V8103483S2EXTest) > 0:
-                    self.V8103483S2EXUPH85 = math.floor((3600 // (float(self.V8103483S2EXTest) + 15) * 0.85)) * int(
+                    self.V8103483S2EXUPH85 = math.floor((3600 / (float(self.V8103483S2EXTest) + 15) * 0.85)) * int(
                         self.itemAmount)
-                    self.V8103483S2EXUPH95 = math.floor((3600 // (float(self.V8103483S2EXTest) + 15) * 0.95)) * int(
+                    self.V8103483S2EXUPH95 = math.floor((3600 / (float(self.V8103483S2EXTest) + 15) * 0.95)) * int(
                         self.itemAmount)
-                    self.V8103483S2EXUPH95Time = ((3600 // float(self.V8103483S2EXUPH95)) // int(self.itemAmount))
+                    self.V8103483S2EXUPH95Time = ((3600 / float(self.V8103483S2EXUPH95)) / int(self.itemAmount))
                 else:
                     self.V8103483S2EXTest = 0
                     self.V8103483S2EXUPH85 = 0
@@ -129,11 +140,11 @@ class DBConnect:
                 self.V8108120S2BAAN1 = str(initialV8108120S2BAAN1)
                 self.V8108120S2Comments = str(initialV8108120S2Comments)
                 if float(self.V8108120S2Test) > 0:
-                    self.V8108120S2UPH85 = math.floor((3600 // (float(self.V8108120S2Test) + 15) * 0.85)) * int(
+                    self.V8108120S2UPH85 = math.floor((3600 / (float(self.V8108120S2Test) + 15) * 0.85)) * int(
                         self.itemAmount)
-                    self.V8108120S2UPH95 = math.floor((3600 // (float(self.V8108120S2Test) + 15) * 0.95)) * int(
+                    self.V8108120S2UPH95 = math.floor((3600 / (float(self.V8108120S2Test) + 15) * 0.95)) * int(
                         self.itemAmount)
-                    self.V8108120S2UPH95Time = ((3600 // float(self.V8108120S2UPH95)) // int(self.itemAmount))
+                    self.V8108120S2UPH95Time = ((3600 / float(self.V8108120S2UPH95)) / int(self.itemAmount))
                 else:
                     self.V8108120S2Test = 0
                     self.V8108120S2UPH85 = 0
@@ -159,11 +170,11 @@ class DBConnect:
                 self.V8103163BAAN1 = str(initialV8103163BAAN1)
                 self.V8103163Comments = str(initialV8103163Comments)
                 if float(self.V8103163Test) > 0:
-                    self.V8103163UPH85 = math.floor((3600 // (float(self.V8103163Test) + 15) * 0.85)) * int(
+                    self.V8103163UPH85 = math.floor((3600 / (float(self.V8103163Test) + 15) * 0.85)) * int(
                         self.itemAmount)
-                    self.V8103163UPH95 = math.floor((3600 // (float(self.V8103163Test) + 15) * 0.95)) * int(
+                    self.V8103163UPH95 = math.floor((3600 / (float(self.V8103163Test) + 15) * 0.95)) * int(
                         self.itemAmount)
-                    self.V8103163UPH95Time = ((3600 // float(self.V8103163UPH95)) // int(self.itemAmount))
+                    self.V8103163UPH95Time = ((3600 / float(self.V8103163UPH95)) / int(self.itemAmount))
                 else:
                     self.V8103163Test = 0
                     self.V8103163UPH85 = 0
@@ -180,30 +191,56 @@ class DBConnect:
                 self.V8103163UPH95 = 0
                 self.V8103163UPH95Time = 0
             # --- The End ViTrox I ---
+
             # --- 5DX I & II ---
-            self.V849Prog = ""
-            self.V849Linecapa = "NONE"
-            self.V849EPI = "NONE"
-            self.V849Comments = ""
-            self.V849HEX = ""
+            if (initialProgV849 and int(initialTestTime) > 0) or \
+                    (initialProgV817 and int(initialTestTime) > 0):
+                self.V849Prog = str(initialProgV849)
+                self.V849Linecapa = str(initialV849Linecapa)
+                self.V849EPI = str(initialV849EPI)
+                self.V849Comments = str(initialCommentsV849)
+                self.V849HEX = str(initialHexV849)
 
-            self.V817Prog = ""
-            self.V817Linecapa = "NONE"
-            self.V817EPI = "NONE"
-            self.V817Comments = ""
-            self.V817HEX = ""
+                self.V817Prog = str(initialProgV817)
+                self.V817Linecapa = str(initialV817Linecapa)
+                self.V817EPI = str(initialV817EPI)
+                self.V817Comments = str(initialCommentsV817)
+                self.V817HEX = str(initialHexV817)
 
-            self.dxBAAN1 = "NONE"
-            self.dxUPH85 = 0
-            self.dxUPH95 = 0
-            self.dxUPH95Time = 0
-            self.dxAlign = 0
-            self.dxMap = 0
-            self.dxAutoThickness = 0
-            self.dxTest = 0
+                self.dxBAAN1 = str(initialBaan5DXStatus)
+                self.dxUPH85 = int(initialDXUPH85)
+                self.dxUPH95 = int(initialDXUPH95)
+                self.dxUPH95Time = int(initialDXUPH95Time)
+                self.dxAlign = int(initialAlignTime)
+                self.dxMap = int(initialLaserTime)
+                self.dxAutoThickness = int(initialThicknessTime)
+                self.dxTest = int(initialTestTime)
+
+            else:
+                self.V849Prog = ""
+                self.V849Linecapa = "NONE"
+                self.V849EPI = "NONE"
+                self.V849Comments = ""
+                self.V849HEX = ""
+
+                self.V817Prog = ""
+                self.V817Linecapa = "NONE"
+                self.V817EPI = "NONE"
+                self.V817Comments = ""
+                self.V817HEX = ""
+
+                self.dxBAAN1 = "NONE"
+                self.dxUPH85 = 0
+                self.dxUPH95 = 0
+                self.dxUPH95Time = 0
+                self.dxAlign = 0
+                self.dxMap = 0
+                self.dxAutoThickness = 0
+                self.dxTest = 0
             # --- The End 5DX I & II ---
 
             messagebox.showwarning("Awesome!", "The record is added :)")
+            self._insert()
         else:
             messagebox.showwarning("Warning!", "Lack of Item or Qty.")
 
