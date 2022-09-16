@@ -6,6 +6,7 @@ from ContextualMenu import ContextualMenu
 from CheckboxMenu import CheckboxMenu
 from NewItem import NewItem
 from MainView import MainView
+from FormValidation import  FormValidation
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -1454,197 +1455,225 @@ def convertUPHToTime(uph, qtyPCB):
     return cycleTime
 
 def insertButton():
-    print(objNewItemEx.EI2.get())
-    print(objNewItemEx.EI3.get())
+    objFormValidatorItem = FormValidation()
+    objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
+    objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
 
-    print(objCheckboxMenuEx0.EI_0.get())
-    print(objCheckboxMenuEx0.EI_1.get())
-    print(objCheckboxMenuEx0.CI_2.get())
-    print(objCheckboxMenuEx0.CI_3.get())
-    print(objCheckboxMenuEx0.CI_4.get())
-    print(objCheckboxMenuEx0.EI_5.get())
+    objFormValidatorV8103553S2EX = FormValidation()
+    objFormValidatorV8103553S2EX.validatorViTrox(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
+                                     objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
+                                     objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
+                                     objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+    objFormValidatorV8103553S2EX.cleanUpViTrox(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
+                                     objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
+                                     objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
 
-    print(objCheckboxMenuEx1.EI_0.get())
-    print(objCheckboxMenuEx1.EI_1.get())
-    print(objCheckboxMenuEx1.CI_2.get())
-    print(objCheckboxMenuEx1.CI_3.get())
-    print(objCheckboxMenuEx1.CI_4.get())
-    print(objCheckboxMenuEx1.EI_5.get())
-
-    print(objCheckboxMenuEx2.EI_0.get())
-    print(objCheckboxMenuEx2.EI_1.get())
-    print(objCheckboxMenuEx2.CI_2.get())
-    print(objCheckboxMenuEx2.CI_3.get())
-    print(objCheckboxMenuEx2.CI_4.get())
-    print(objCheckboxMenuEx2.EI_5.get())
-
-    print(objCheckboxMenuXXL0.EI_0.get())
-    print(objCheckboxMenuXXL0.EI_1.get())
-    print(objCheckboxMenuXXL0.CI_2.get())
-    print(objCheckboxMenuXXL0.CI_3.get())
-    print(objCheckboxMenuXXL0.CI_4.get())
-    print(objCheckboxMenuXXL0.EI_5.get())
+    objFormValidatorV849 = FormValidation()
+    objFormValidatorV849.validator5DX(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
+                                      objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
+                                      objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
+                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
+                                      objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
+                                      objCheckboxMenu5DX0.EI_8.get())
+    objFormValidatorV849.cleanUp5DX(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
+                                        objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
+                                        objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
+                                        objCheckboxMenu5DX0.EI_6, objCheckboxMenu5DX0.EI_7,
+                                        objCheckboxMenu5DX0.EI_8)
 
 
-    baan5DXStatus = objCheckboxMenu5DX0.CI_4.get()
-    if int(switch(objCheckboxMenu5DX0.CI_4.get())) < int(switch(objCheckboxMenu5DX1.CI_4.get())):
-        baan5DXStatus = objCheckboxMenu5DX1.CI_4.get()
+#    baan5DXStatus = objCheckboxMenu5DX0.CI_4.get()
+#    if int(switch(objCheckboxMenu5DX0.CI_4.get())) < int(switch(objCheckboxMenu5DX1.CI_4.get())):
+#        baan5DXStatus = objCheckboxMenu5DX1.CI_4.get()
 
-    print(baan5DXStatus)
-# ---
-    scanningTime5DX0, scanningTime5DX1 = 0, 0
-    testTime, alignTime, laserTime, thicknessTime = 0, 0, 0, 0
+#    print(baan5DXStatus)
 
-    progV849 = ""
-    commentsV849 = ""
-    hexV849 = ""
+#    scanningTime5DX0, scanningTime5DX1 = 0, 0
+#    testTime, alignTime, laserTime, thicknessTime = 0, 0, 0, 0
 
-    progV817 = ""
-    commentsV817 = ""
-    hexV817 = ""
+#    progV849 = ""
+#    commentsV849 = ""
+#    hexV849 = ""
 
-    dxUPH85 = 0
-    dxUPH95Time = 0
-    dxUPH95 = 0
+#    progV817 = ""
+#    commentsV817 = ""
+#    hexV817 = ""
 
-    if objCheckboxMenu5DX0.EI_0.get():
+#    dxUPH85 = 0
+#    dxUPH95Time = 0
+#    dxUPH95 = 0
 
-        scanningTime5DX0 = int(objCheckboxMenu5DX0.EI_1.get()) + \
-                        int(objCheckboxMenu5DX0.EI_6.get()) + \
-                        int(objCheckboxMenu5DX0.EI_7.get()) + \
-                        int(objCheckboxMenu5DX0.EI_8.get())
+#    if objCheckboxMenu5DX0.EI_0.get():
+
+#        scanningTime5DX0 = int(objCheckboxMenu5DX0.EI_1.get()) + \
+#                        int(objCheckboxMenu5DX0.EI_6.get()) + \
+#                        int(objCheckboxMenu5DX0.EI_7.get()) + \
+#                        int(objCheckboxMenu5DX0.EI_8.get())
 
         #print(objCheckboxMenu5DX0.EI_1.get()) # test time
         #print(objCheckboxMenu5DX0.EI_6.get()) # align
         #print(objCheckboxMenu5DX0.EI_7.get()) # laser points
         #print(objCheckboxMenu5DX0.EI_8.get()) # thicknes
 
-        print(scanningTime5DX0)
-    else:
-        print("empty")
+#        print(scanningTime5DX0)
+#    else:
+#        print("empty")
 
-    if objCheckboxMenu5DX1.EI_0.get():
+#    if objCheckboxMenu5DX1.EI_0.get():
 
-        scanningTime5DX1 = int(objCheckboxMenu5DX1.EI_1.get()) + \
-                        int(objCheckboxMenu5DX1.EI_6.get()) + \
-                        int(objCheckboxMenu5DX1.EI_7.get()) + \
-                        int(objCheckboxMenu5DX1.EI_8.get())
+#        scanningTime5DX1 = int(objCheckboxMenu5DX1.EI_1.get()) + \
+#                        int(objCheckboxMenu5DX1.EI_6.get()) + \
+#                        int(objCheckboxMenu5DX1.EI_7.get()) + \
+#                        int(objCheckboxMenu5DX1.EI_8.get())
 
         #print(objCheckboxMenu5DX1.EI_1.get())  # test time
         #print(objCheckboxMenu5DX1.EI_6.get())  # align
         #print(objCheckboxMenu5DX1.EI_7.get())  # laser points
         #print(objCheckboxMenu5DX1.EI_8.get())  # thicknes
 
-        print(scanningTime5DX1)
+#        print(scanningTime5DX1)
 
-    else:
-        print("empty")
+#    else:
+#        print("empty")
 
-    if objCheckboxMenu5DX0.EI_0.get() and (scanningTime5DX0 >= scanningTime5DX1):
-        print(f"the winner is 5dx1")
-        testTime = int(objCheckboxMenu5DX0.EI_1.get())
-        alignTime = int(objCheckboxMenu5DX0.EI_6.get())
-        laserTime = int(objCheckboxMenu5DX0.EI_7.get())
-        thicknessTime = int(objCheckboxMenu5DX0.EI_8.get())
+#    if objCheckboxMenu5DX0.EI_0.get() and (scanningTime5DX0 >= scanningTime5DX1):
+#        print(f"the winner is 5dx1")
+#        testTime = int(objCheckboxMenu5DX0.EI_1.get())
+#        alignTime = int(objCheckboxMenu5DX0.EI_6.get())
+#        laserTime = int(objCheckboxMenu5DX0.EI_7.get())
+#        thicknessTime = int(objCheckboxMenu5DX0.EI_8.get())
 
-        progV849 = objCheckboxMenu5DX0.EI_0.get()
-        commentsV849 = objCheckboxMenu5DX0.EI_5.get()
-        hexV849 = ""
+#        progV849 = objCheckboxMenu5DX0.EI_0.get()
+#        commentsV849 = objCheckboxMenu5DX0.EI_5.get()
+#        hexV849 = ""
 
-        print(f"progV849: {progV849}, commentsV849: {commentsV849}, hexV849: {hexV849}")
-        print(f"timeTime: {testTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
+#        print(f"progV849: {progV849}, commentsV849: {commentsV849}, hexV849: {hexV849}")
+#        print(f"timeTime: {testTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
 
-        dxUPH85 = computeUPH(scanningTime5DX0, 85, objNewItemEx.EI3.get())
-        dxUPH95 = computeUPH(scanningTime5DX0, 95, objNewItemEx.EI3.get())
-        dxUPH95Time = convertUPHToTime(dxUPH95, objNewItemEx.EI3.get())
-        print(dxUPH85)
-        print(dxUPH95)
-        print(dxUPH95Time)
+#        dxUPH85 = computeUPH(scanningTime5DX0, 85, objNewItemEx.EI3.get())
+#        dxUPH95 = computeUPH(scanningTime5DX0, 95, objNewItemEx.EI3.get())
+#        dxUPH95Time = convertUPHToTime(dxUPH95, objNewItemEx.EI3.get())
+#        print(dxUPH85)
+#        print(dxUPH95)
+#        print(dxUPH95Time)
 
-    elif objCheckboxMenu5DX1.EI_0.get() and (scanningTime5DX0 < scanningTime5DX1):
-        print(f"the winner is 5dx2")
-        testTime = int(objCheckboxMenu5DX1.EI_1.get())
-        alignTime = int(objCheckboxMenu5DX1.EI_6.get())
-        laserTime = int(objCheckboxMenu5DX1.EI_7.get())
-        thicknessTime = int(objCheckboxMenu5DX1.EI_8.get())
+#    elif objCheckboxMenu5DX1.EI_0.get() and (scanningTime5DX0 < scanningTime5DX1):
+#        print(f"the winner is 5dx2")
+#        testTime = int(objCheckboxMenu5DX1.EI_1.get())
+#        alignTime = int(objCheckboxMenu5DX1.EI_6.get())
+#        laserTime = int(objCheckboxMenu5DX1.EI_7.get())
+#        thicknessTime = int(objCheckboxMenu5DX1.EI_8.get())
 
-        progV817 = objCheckboxMenu5DX1.EI_0.get()
-        commentsV817 = objCheckboxMenu5DX1.EI_5.get()
-        hexV817 = ""
+#        progV817 = objCheckboxMenu5DX1.EI_0.get()
+#        commentsV817 = objCheckboxMenu5DX1.EI_5.get()
+#        hexV817 = ""
 
-        print(f"progV817: {progV817}, commentsV817: {commentsV817}, hexV817: {hexV817}")
-        print(f"timeTime: {testTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
+#        print(f"progV817: {progV817}, commentsV817: {commentsV817}, hexV817: {hexV817}")
+#        print(f"timeTime: {testTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
 
-        dxUPH85 = computeUPH(scanningTime5DX1, 85, objNewItemEx.EI3.get())
-        dxUPH95 = computeUPH(scanningTime5DX1, 95, objNewItemEx.EI3.get())
-        dxUPH95Time = convertUPHToTime(dxUPH95, objNewItemEx.EI3.get())
-        print(dxUPH85)
-        print(dxUPH95)
-        print(dxUPH95Time)
-
-
-    else:
-        print(f"the winner is not 5DX2 nor 5dx2")
-
-    objDB = DBConnect()
-    objDB.insertValidator(
-                            objNewItemEx.EI2.get(),
-                            objNewItemEx.EI3.get(),
-
-                            objCheckboxMenuEx0.EI_0.get(),
-                            objCheckboxMenuEx0.EI_1.get(),
-                            objCheckboxMenuEx0.CI_2.get(),
-                            objCheckboxMenuEx0.CI_3.get(),
-                            objCheckboxMenuEx0.CI_4.get(),
-                            objCheckboxMenuEx0.EI_5.get(),
-
-                            objCheckboxMenuEx1.EI_0.get(),
-                            objCheckboxMenuEx1.EI_1.get(),
-                            objCheckboxMenuEx1.CI_2.get(),
-                            objCheckboxMenuEx1.CI_3.get(),
-                            objCheckboxMenuEx1.CI_4.get(),
-                            objCheckboxMenuEx1.EI_5.get(),
-
-                            objCheckboxMenuEx2.EI_0.get(),
-                            objCheckboxMenuEx2.EI_1.get(),
-                            objCheckboxMenuEx2.CI_2.get(),
-                            objCheckboxMenuEx2.CI_3.get(),
-                            objCheckboxMenuEx2.CI_4.get(),
-                            objCheckboxMenuEx2.EI_5.get(),
-
-                            objCheckboxMenuXXL0.EI_0.get(),
-                            objCheckboxMenuXXL0.EI_1.get(),
-                            objCheckboxMenuXXL0.CI_2.get(),
-                            objCheckboxMenuXXL0.CI_3.get(),
-                            objCheckboxMenuXXL0.CI_4.get(),
-                            objCheckboxMenuXXL0.EI_5.get(),
-
-                            dxUPH85,
-                            dxUPH95Time,
-                            dxUPH95,
-
-                            alignTime,
-                            laserTime,
-                            thicknessTime,
-                            testTime,
-
-                            baan5DXStatus,
-
-                            progV849,
-                            objCheckboxMenu5DX0.CI_2.get(),
-                            objCheckboxMenu5DX0.CI_3.get(),
-                            commentsV849,
-                            hexV849,
-
-                            progV817,
-                            objCheckboxMenu5DX1.CI_2.get(),
-                            objCheckboxMenu5DX1.CI_3.get(),
-                            commentsV817,
-                            hexV817
+#        dxUPH85 = computeUPH(scanningTime5DX1, 85, objNewItemEx.EI3.get())
+#        dxUPH95 = computeUPH(scanningTime5DX1, 95, objNewItemEx.EI3.get())
+#        dxUPH95Time = convertUPHToTime(dxUPH95, objNewItemEx.EI3.get())
+#        print(dxUPH85)
+#        print(dxUPH95)
+#        print(dxUPH95Time)
 
 
-                        )
-    objDB.closeDB()
+#    else:
+#        print(f"the winner is not 5DX2 nor 5dx2")
+
+#    objDB = DBConnect()
+#    objDB.insertValidator(
+#                            objNewItemEx.EI2.get(),
+#                            objNewItemEx.EI3.get(),
+
+#                            objCheckboxMenuEx0.EI_0.get(),
+#                            objCheckboxMenuEx0.EI_1.get(),
+#                            objCheckboxMenuEx0.CI_2.get(),
+#                            objCheckboxMenuEx0.CI_3.get(),
+#                            objCheckboxMenuEx0.CI_4.get(),
+#                            objCheckboxMenuEx0.EI_5.get(),
+
+#                            objCheckboxMenuEx1.EI_0.get(),
+#                            objCheckboxMenuEx1.EI_1.get(),
+#                            objCheckboxMenuEx1.CI_2.get(),
+#                            objCheckboxMenuEx1.CI_3.get(),
+#                            objCheckboxMenuEx1.CI_4.get(),
+#                            objCheckboxMenuEx1.EI_5.get(),
+
+#                            objCheckboxMenuEx2.EI_0.get(),
+#                            objCheckboxMenuEx2.EI_1.get(),
+#                            objCheckboxMenuEx2.CI_2.get(),
+#                            objCheckboxMenuEx2.CI_3.get(),
+#                            objCheckboxMenuEx2.CI_4.get(),
+#                            objCheckboxMenuEx2.EI_5.get(),
+
+#                            objCheckboxMenuXXL0.EI_0.get(),
+#                            objCheckboxMenuXXL0.EI_1.get(),
+#                            objCheckboxMenuXXL0.CI_2.get(),
+#                            objCheckboxMenuXXL0.CI_3.get(),
+#                            objCheckboxMenuXXL0.CI_4.get(),
+#                            objCheckboxMenuXXL0.EI_5.get(),
+
+#                            dxUPH85,
+#                            dxUPH95Time,
+#                            dxUPH95,
+
+#                            alignTime,
+#                            laserTime,
+#                            thicknessTime,
+#                            testTime,
+
+#                            baan5DXStatus,
+
+#                            progV849,
+#                            objCheckboxMenu5DX0.CI_2.get(),
+#                            objCheckboxMenu5DX0.CI_3.get(),
+#                            commentsV849,
+#                            hexV849,
+
+#                            progV817,
+#                            objCheckboxMenu5DX1.CI_2.get(),
+#                            objCheckboxMenu5DX1.CI_3.get(),
+#                            commentsV817,
+#                            hexV817
+#                        )
+#    objDB.closeDB()
+
+#--- cleanUp
+
+    #objNewItemEx.EI2.delete(0, END)
+    #objNewItemEx.EI3.delete(0, END)
+
+    #objCheckboxMenuEx0.delete(0, END)
+    #objCheckboxMenuEx0.delete(0, END)
+    #objCheckboxMenuEx0.current(0)
+    #objCheckboxMenuEx0.current(0)
+    #objCheckboxMenuEx0.current(0)
+    #objCheckboxMenuEx0.delete(0, END)
+
+    #objCheckboxMenuEx1.delete(0, END)
+    #objCheckboxMenuEx1.delete(0, END)
+    #objCheckboxMenuEx1.current(0)
+    #objCheckboxMenuEx1.current(0)
+    #objCheckboxMenuEx1.current(0)
+    #objCheckboxMenuEx1.delete(0, END)
+
+    #objCheckboxMenuEx2.delete(0, END)
+    #objCheckboxMenuEx2.delete(0, END)
+    #objCheckboxMenuEx2.current(0)
+    #objCheckboxMenuEx2.current(0)
+    #objCheckboxMenuEx2.current(0)
+    #objCheckboxMenuEx2.delete(0, END)
+
+    #objCheckboxMenuXXL0.delete(0, END)
+    #objCheckboxMenuXXL0.delete(0, END)
+    #objCheckboxMenuXXL0.current(0)
+    #objCheckboxMenuXXL0.current(0)
+    #objCheckboxMenuXXL0.current(0)
+    #objCheckboxMenuXXL0.delete(0, END)
+
+#-- The End cleanUp
 
 
 #--- INSERT ---
@@ -1681,6 +1710,7 @@ objCheckboxMenu5DX1.alignmentTime()
 BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=55, command=insertButton, cursor="hand2")
 BI1.grid(row=1, column=0, columnspan=4, pady=2)
 #--- The End INSERT ---
+
 
 #--- Search ---
 ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#302928", fg="#FFFFFF")
