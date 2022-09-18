@@ -3,7 +3,7 @@ from tkinter import *
 import tkinter as tk
 from ContextualMenu import ContextualMenu
 
-class CheckboxMenu():
+class CheckboxMenu:
     def __init__(self, tab, root, frame, description):
         self.tab = tab
         self.root = root
