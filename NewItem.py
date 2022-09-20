@@ -5,7 +5,7 @@ from ContextualMenu import ContextualMenu
 from DBConnect import DBConnect
 from Tip import Tip
 
-class NewItem():
+class NewItem:
     def __init__(self, tab, root):
         self.tab = tab
         self.root = root
