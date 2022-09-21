@@ -1459,27 +1459,47 @@ def insertButton():
     objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
     objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
 
+    objDBConnect0 = DBConnect()
+    objDBConnect0.insert("V810-3163", objFormValidatorItem.flagInit, objFormValidatorItem.item, objFormValidatorItem.itemAmount)
+    objDBConnect0.closeDB()
+
+
     objFormValidatorV8103553S2EX = FormValidation()
-    objFormValidatorV8103553S2EX.validatorViTrox(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
+    objFormValidatorV8103553S2EX.validator(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
                                      objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
                                      objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-    objFormValidatorV8103553S2EX.cleanUpViTrox(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
+    objFormValidatorV8103553S2EX.cleanUp(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
                                      objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
                                      objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
 
     objFormValidatorV849 = FormValidation()
-    objFormValidatorV849.validator5DX(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
+    objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
                                       objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
                                       objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
                                       objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
                                       objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
                                       objCheckboxMenu5DX0.EI_8.get())
-    objFormValidatorV849.cleanUp5DX(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
-                                        objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
-                                        objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
-                                        objCheckboxMenu5DX0.EI_6, objCheckboxMenu5DX0.EI_7,
-                                        objCheckboxMenu5DX0.EI_8)
+    objFormValidatorV849.cleanUp(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
+                                    objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
+                                    objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
+                                    objCheckboxMenu5DX0.EI_6, objCheckboxMenu5DX0.EI_7,
+                                    objCheckboxMenu5DX0.EI_8)
+
+    objFormValidatorV817 = FormValidation()
+    objFormValidatorV817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
+                                      objCheckboxMenu5DX1.CI_2.get(), objCheckboxMenu5DX1.CI_3.get(),
+                                      objCheckboxMenu5DX1.CI_4.get(), objCheckboxMenu5DX1.EI_5.get(),
+                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
+                                      objCheckboxMenu5DX1.EI_6.get(), objCheckboxMenu5DX1.EI_7.get(),
+                                      objCheckboxMenu5DX1.EI_8.get())
+    objFormValidatorV817.cleanUp(objCheckboxMenu5DX1.EI_0, objCheckboxMenu5DX1.EI_1,
+                                    objCheckboxMenu5DX1.CI_2, objCheckboxMenu5DX1.CI_3,
+                                    objCheckboxMenu5DX1.CI_4, objCheckboxMenu5DX1.EI_5,
+                                    objCheckboxMenu5DX1.EI_6, objCheckboxMenu5DX1.EI_7,
+                                    objCheckboxMenu5DX1.EI_8)
+
+
 
 
 #    baan5DXStatus = objCheckboxMenu5DX0.CI_4.get()
