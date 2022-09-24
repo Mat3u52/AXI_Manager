@@ -1251,9 +1251,9 @@ LV8108120S2Prog = Label(tabMain6, text=f"", bg="#444444", fg="#FFFFFF", pady="1"
 LV8108120S2Prog.configure(font=("Arial", 10))
 LV8108120S2Prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-LV8108120S2ScanTimeL = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+LV8108120S2ScanTimeL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2ScanTimeL.configure(font=("Arial", 10))
-LV8108120S2ScanTimeL.grid(row=1, column=1, sticky=E)
+LV8108120S2ScanTimeL.grid(row=1, column=0, sticky=E)
 LV8108120S2ScanTime = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2ScanTime.configure(font=("Arial", 10))
 LV8108120S2ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
@@ -1459,19 +1459,81 @@ def insertButton():
     objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
     objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
 
-    objDBConnect0 = DBConnect()
-    objDBConnect0.insert("V810-3163", objFormValidatorItem.flagInit, objFormValidatorItem.item, objFormValidatorItem.itemAmount)
-    objDBConnect0.closeDB()
-
-
     objFormValidatorV8103553S2EX = FormValidation()
     objFormValidatorV8103553S2EX.validator(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
-                                     objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
-                                     objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
-                                     objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+                                            objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
+                                            objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
+                                            objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
     objFormValidatorV8103553S2EX.cleanUp(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
-                                     objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
-                                     objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
+                                            objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
+                                            objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
+
+    objDBConnectV8103553S2EX = DBConnect()
+    objDBConnectV8103553S2EX.insert("V810-3553S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                    objFormValidatorItem.itemAmount,
+                                    objFormValidatorV8103553S2EX.prog, objFormValidatorV8103553S2EX.test,
+                                    objFormValidatorV8103553S2EX.linecapa, objFormValidatorV8103553S2EX.epi,
+                                    objFormValidatorV8103553S2EX.baan1, objFormValidatorV8103553S2EX.comments,
+                                    objFormValidatorV8103553S2EX.uph85, objFormValidatorV8103553S2EX.uph95,
+                                    objFormValidatorV8103553S2EX.uph95Time, objFormValidatorV8103553S2EX.flagValidator)
+    objDBConnectV8103553S2EX.closeDB()
+
+    objFormValidatorV8103483S2EX = FormValidation()
+    objFormValidatorV8103483S2EX.validator(objCheckboxMenuEx1.EI_0.get(), objCheckboxMenuEx1.EI_1.get(),
+                                           objCheckboxMenuEx1.CI_2.get(), objCheckboxMenuEx1.CI_3.get(),
+                                           objCheckboxMenuEx1.CI_4.get(), objCheckboxMenuEx1.EI_5.get(),
+                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+    objFormValidatorV8103483S2EX.cleanUp(objCheckboxMenuEx1.EI_0, objCheckboxMenuEx1.EI_1,
+                                         objCheckboxMenuEx1.CI_2, objCheckboxMenuEx1.CI_3,
+                                         objCheckboxMenuEx1.CI_4, objCheckboxMenuEx1.EI_5)
+
+    objDBConnectV8103483S2EX = DBConnect()
+    objDBConnectV8103483S2EX.insert("V810-3483S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                    objFormValidatorItem.itemAmount,
+                                    objFormValidatorV8103483S2EX.prog, objFormValidatorV8103483S2EX.test,
+                                    objFormValidatorV8103483S2EX.linecapa, objFormValidatorV8103483S2EX.epi,
+                                    objFormValidatorV8103483S2EX.baan1, objFormValidatorV8103483S2EX.comments,
+                                    objFormValidatorV8103483S2EX.uph85, objFormValidatorV8103483S2EX.uph95,
+                                    objFormValidatorV8103483S2EX.uph95Time, objFormValidatorV8103483S2EX.flagValidator)
+    objDBConnectV8103483S2EX.closeDB()
+
+    objFormValidatorV8103163 = FormValidation()
+    objFormValidatorV8103163.validator(objCheckboxMenuEx2.EI_0.get(), objCheckboxMenuEx2.EI_1.get(),
+                                           objCheckboxMenuEx2.CI_2.get(), objCheckboxMenuEx2.CI_3.get(),
+                                           objCheckboxMenuEx2.CI_4.get(), objCheckboxMenuEx2.EI_5.get(),
+                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+    objFormValidatorV8103163.cleanUp(objCheckboxMenuEx2.EI_0, objCheckboxMenuEx2.EI_1,
+                                         objCheckboxMenuEx2.CI_2, objCheckboxMenuEx2.CI_3,
+                                         objCheckboxMenuEx2.CI_4, objCheckboxMenuEx2.EI_5)
+
+    objDBConnectV8103163 = DBConnect()
+    objDBConnectV8103163.insert("V810-3163", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                    objFormValidatorItem.itemAmount,
+                                    objFormValidatorV8103163.prog, objFormValidatorV8103163.test,
+                                    objFormValidatorV8103163.linecapa, objFormValidatorV8103163.epi,
+                                    objFormValidatorV8103163.baan1, objFormValidatorV8103163.comments,
+                                    objFormValidatorV8103163.uph85, objFormValidatorV8103163.uph95,
+                                    objFormValidatorV8103163.uph95Time, objFormValidatorV8103163.flagValidator)
+    objDBConnectV8103163.closeDB()
+
+    objFormValidatorV8108120S2 = FormValidation()
+    objFormValidatorV8108120S2.validator(objCheckboxMenuXXL0.EI_0.get(), objCheckboxMenuXXL0.EI_1.get(),
+                                           objCheckboxMenuXXL0.CI_2.get(), objCheckboxMenuXXL0.CI_3.get(),
+                                           objCheckboxMenuXXL0.CI_4.get(), objCheckboxMenuXXL0.EI_5.get(),
+                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+    objFormValidatorV8108120S2.cleanUp(objCheckboxMenuXXL0.EI_0, objCheckboxMenuXXL0.EI_1,
+                                         objCheckboxMenuXXL0.CI_2, objCheckboxMenuXXL0.CI_3,
+                                         objCheckboxMenuXXL0.CI_4, objCheckboxMenuXXL0.EI_5)
+
+    objDBConnectV8108120S2 = DBConnect()
+    objDBConnectV8108120S2.insert("V810-8120S2", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                    objFormValidatorItem.itemAmount,
+                                    objFormValidatorV8108120S2.prog, objFormValidatorV8108120S2.test,
+                                    objFormValidatorV8108120S2.linecapa, objFormValidatorV8108120S2.epi,
+                                    objFormValidatorV8108120S2.baan1, objFormValidatorV8108120S2.comments,
+                                    objFormValidatorV8108120S2.uph85, objFormValidatorV8108120S2.uph95,
+                                    objFormValidatorV8108120S2.uph95Time, objFormValidatorV8108120S2.flagValidator)
+    objDBConnectV8108120S2.closeDB()
 
     objFormValidatorV849 = FormValidation()
     objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
@@ -1499,201 +1561,29 @@ def insertButton():
                                     objCheckboxMenu5DX1.EI_6, objCheckboxMenu5DX1.EI_7,
                                     objCheckboxMenu5DX1.EI_8)
 
+    objDBConnect5DX = DBConnect()
+    objDBConnect5DX.insert("V849_V817", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                    objFormValidatorItem.itemAmount,
 
+                                    objFormValidatorV849.prog, objFormValidatorV849.test,
+                                    objFormValidatorV849.linecapa, objFormValidatorV849.epi,
+                                    objFormValidatorV849.baan1, objFormValidatorV849.comments,
+                                    objFormValidatorV849.uph85, objFormValidatorV849.uph95,
+                                    objFormValidatorV849.uph95Time, objFormValidatorV849.flagValidator,
+                                    objFormValidatorV849.alignTime, objFormValidatorV849.laserTime,
+                                    objFormValidatorV849.thicknessTime, objFormValidatorV849.totalTime,
 
+                                    objFormValidatorV817.flagValidator,
+                                    objFormValidatorV817.prog, objFormValidatorV817.test,
+                                    objFormValidatorV817.linecapa, objFormValidatorV817.epi,
+                                    objFormValidatorV817.baan1, objFormValidatorV817.comments,
+                                    objFormValidatorV817.uph85, objFormValidatorV817.uph95,
+                                    objFormValidatorV817.uph95Time,
+                                    objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
+                                    objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime
+                           )
+    objDBConnect5DX.closeDB()
 
-#    baan5DXStatus = objCheckboxMenu5DX0.CI_4.get()
-#    if int(switch(objCheckboxMenu5DX0.CI_4.get())) < int(switch(objCheckboxMenu5DX1.CI_4.get())):
-#        baan5DXStatus = objCheckboxMenu5DX1.CI_4.get()
-
-#    print(baan5DXStatus)
-
-#    scanningTime5DX0, scanningTime5DX1 = 0, 0
-#    testTime, alignTime, laserTime, thicknessTime = 0, 0, 0, 0
-
-#    progV849 = ""
-#    commentsV849 = ""
-#    hexV849 = ""
-
-#    progV817 = ""
-#    commentsV817 = ""
-#    hexV817 = ""
-
-#    dxUPH85 = 0
-#    dxUPH95Time = 0
-#    dxUPH95 = 0
-
-#    if objCheckboxMenu5DX0.EI_0.get():
-
-#        scanningTime5DX0 = int(objCheckboxMenu5DX0.EI_1.get()) + \
-#                        int(objCheckboxMenu5DX0.EI_6.get()) + \
-#                        int(objCheckboxMenu5DX0.EI_7.get()) + \
-#                        int(objCheckboxMenu5DX0.EI_8.get())
-
-        #print(objCheckboxMenu5DX0.EI_1.get()) # test time
-        #print(objCheckboxMenu5DX0.EI_6.get()) # align
-        #print(objCheckboxMenu5DX0.EI_7.get()) # laser points
-        #print(objCheckboxMenu5DX0.EI_8.get()) # thicknes
-
-#        print(scanningTime5DX0)
-#    else:
-#        print("empty")
-
-#    if objCheckboxMenu5DX1.EI_0.get():
-
-#        scanningTime5DX1 = int(objCheckboxMenu5DX1.EI_1.get()) + \
-#                        int(objCheckboxMenu5DX1.EI_6.get()) + \
-#                        int(objCheckboxMenu5DX1.EI_7.get()) + \
-#                        int(objCheckboxMenu5DX1.EI_8.get())
-
-        #print(objCheckboxMenu5DX1.EI_1.get())  # test time
-        #print(objCheckboxMenu5DX1.EI_6.get())  # align
-        #print(objCheckboxMenu5DX1.EI_7.get())  # laser points
-        #print(objCheckboxMenu5DX1.EI_8.get())  # thicknes
-
-#        print(scanningTime5DX1)
-
-#    else:
-#        print("empty")
-
-#    if objCheckboxMenu5DX0.EI_0.get() and (scanningTime5DX0 >= scanningTime5DX1):
-#        print(f"the winner is 5dx1")
-#        testTime = int(objCheckboxMenu5DX0.EI_1.get())
-#        alignTime = int(objCheckboxMenu5DX0.EI_6.get())
-#        laserTime = int(objCheckboxMenu5DX0.EI_7.get())
-#        thicknessTime = int(objCheckboxMenu5DX0.EI_8.get())
-
-#        progV849 = objCheckboxMenu5DX0.EI_0.get()
-#        commentsV849 = objCheckboxMenu5DX0.EI_5.get()
-#        hexV849 = ""
-
-#        print(f"progV849: {progV849}, commentsV849: {commentsV849}, hexV849: {hexV849}")
-#        print(f"timeTime: {testTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
-
-#        dxUPH85 = computeUPH(scanningTime5DX0, 85, objNewItemEx.EI3.get())
-#        dxUPH95 = computeUPH(scanningTime5DX0, 95, objNewItemEx.EI3.get())
-#        dxUPH95Time = convertUPHToTime(dxUPH95, objNewItemEx.EI3.get())
-#        print(dxUPH85)
-#        print(dxUPH95)
-#        print(dxUPH95Time)
-
-#    elif objCheckboxMenu5DX1.EI_0.get() and (scanningTime5DX0 < scanningTime5DX1):
-#        print(f"the winner is 5dx2")
-#        testTime = int(objCheckboxMenu5DX1.EI_1.get())
-#        alignTime = int(objCheckboxMenu5DX1.EI_6.get())
-#        laserTime = int(objCheckboxMenu5DX1.EI_7.get())
-#        thicknessTime = int(objCheckboxMenu5DX1.EI_8.get())
-
-#        progV817 = objCheckboxMenu5DX1.EI_0.get()
-#        commentsV817 = objCheckboxMenu5DX1.EI_5.get()
-#        hexV817 = ""
-
-#        print(f"progV817: {progV817}, commentsV817: {commentsV817}, hexV817: {hexV817}")
-#        print(f"timeTime: {testTime}, alignTime: {alignTime}, laserTime: {laserTime}, thicknessTime: {thicknessTime}")
-
-#        dxUPH85 = computeUPH(scanningTime5DX1, 85, objNewItemEx.EI3.get())
-#        dxUPH95 = computeUPH(scanningTime5DX1, 95, objNewItemEx.EI3.get())
-#        dxUPH95Time = convertUPHToTime(dxUPH95, objNewItemEx.EI3.get())
-#        print(dxUPH85)
-#        print(dxUPH95)
-#        print(dxUPH95Time)
-
-
-#    else:
-#        print(f"the winner is not 5DX2 nor 5dx2")
-
-#    objDB = DBConnect()
-#    objDB.insertValidator(
-#                            objNewItemEx.EI2.get(),
-#                            objNewItemEx.EI3.get(),
-
-#                            objCheckboxMenuEx0.EI_0.get(),
-#                            objCheckboxMenuEx0.EI_1.get(),
-#                            objCheckboxMenuEx0.CI_2.get(),
-#                            objCheckboxMenuEx0.CI_3.get(),
-#                            objCheckboxMenuEx0.CI_4.get(),
-#                            objCheckboxMenuEx0.EI_5.get(),
-
-#                            objCheckboxMenuEx1.EI_0.get(),
-#                            objCheckboxMenuEx1.EI_1.get(),
-#                            objCheckboxMenuEx1.CI_2.get(),
-#                            objCheckboxMenuEx1.CI_3.get(),
-#                            objCheckboxMenuEx1.CI_4.get(),
-#                            objCheckboxMenuEx1.EI_5.get(),
-
-#                            objCheckboxMenuEx2.EI_0.get(),
-#                            objCheckboxMenuEx2.EI_1.get(),
-#                            objCheckboxMenuEx2.CI_2.get(),
-#                            objCheckboxMenuEx2.CI_3.get(),
-#                            objCheckboxMenuEx2.CI_4.get(),
-#                            objCheckboxMenuEx2.EI_5.get(),
-
-#                            objCheckboxMenuXXL0.EI_0.get(),
-#                            objCheckboxMenuXXL0.EI_1.get(),
-#                            objCheckboxMenuXXL0.CI_2.get(),
-#                            objCheckboxMenuXXL0.CI_3.get(),
-#                            objCheckboxMenuXXL0.CI_4.get(),
-#                            objCheckboxMenuXXL0.EI_5.get(),
-
-#                            dxUPH85,
-#                            dxUPH95Time,
-#                            dxUPH95,
-
-#                            alignTime,
-#                            laserTime,
-#                            thicknessTime,
-#                            testTime,
-
-#                            baan5DXStatus,
-
-#                            progV849,
-#                            objCheckboxMenu5DX0.CI_2.get(),
-#                            objCheckboxMenu5DX0.CI_3.get(),
-#                            commentsV849,
-#                            hexV849,
-
-#                            progV817,
-#                            objCheckboxMenu5DX1.CI_2.get(),
-#                            objCheckboxMenu5DX1.CI_3.get(),
-#                            commentsV817,
-#                            hexV817
-#                        )
-#    objDB.closeDB()
-
-#--- cleanUp
-
-    #objNewItemEx.EI2.delete(0, END)
-    #objNewItemEx.EI3.delete(0, END)
-
-    #objCheckboxMenuEx0.delete(0, END)
-    #objCheckboxMenuEx0.delete(0, END)
-    #objCheckboxMenuEx0.current(0)
-    #objCheckboxMenuEx0.current(0)
-    #objCheckboxMenuEx0.current(0)
-    #objCheckboxMenuEx0.delete(0, END)
-
-    #objCheckboxMenuEx1.delete(0, END)
-    #objCheckboxMenuEx1.delete(0, END)
-    #objCheckboxMenuEx1.current(0)
-    #objCheckboxMenuEx1.current(0)
-    #objCheckboxMenuEx1.current(0)
-    #objCheckboxMenuEx1.delete(0, END)
-
-    #objCheckboxMenuEx2.delete(0, END)
-    #objCheckboxMenuEx2.delete(0, END)
-    #objCheckboxMenuEx2.current(0)
-    #objCheckboxMenuEx2.current(0)
-    #objCheckboxMenuEx2.current(0)
-    #objCheckboxMenuEx2.delete(0, END)
-
-    #objCheckboxMenuXXL0.delete(0, END)
-    #objCheckboxMenuXXL0.delete(0, END)
-    #objCheckboxMenuXXL0.current(0)
-    #objCheckboxMenuXXL0.current(0)
-    #objCheckboxMenuXXL0.current(0)
-    #objCheckboxMenuXXL0.delete(0, END)
-
-#-- The End cleanUp
 
 
 #--- INSERT ---
