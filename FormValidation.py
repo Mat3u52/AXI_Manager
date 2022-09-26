@@ -5,6 +5,7 @@ from tkinter import *
 class FormValidation:
     def __init__(self):
         self.flagInit = False
+        self.totalTime = 0
 
     def validatorItem(self, item, itemAmount):
         self.item = ""
@@ -17,9 +18,9 @@ class FormValidation:
                 self.itemAmount = int(itemAmount)
                 self.flagInit = True
 
-                print(self.item)
-                print(self.itemAmount)
-                messagebox.showwarning("OK")
+                #print(self.item)
+                #print(self.itemAmount)
+                #messagebox.showwarning("OK")
             else:
                 self.flagInit = False
                 messagebox.showwarning("Warning!", "Lack of Item or Qty.")
@@ -42,7 +43,7 @@ class FormValidation:
     def validator(self, prog="", test=0, linecapa="NONE", epi="NONE", baan1="NONE", comments="",
                         flagItemStatus=False, itemAmount=0, alignTime=0, laserTime=0, thicknessTime=0):
         try:
-            self.flagValidatorViTrox = False
+            self.flagValidator = False
             self.flagInitStatus = flagItemStatus
             if self.flagInitStatus is True and\
                     prog != '' and \
@@ -83,23 +84,23 @@ class FormValidation:
                     self.uph85 = self._computeUPH(int(self.totalTime), 85, int(self.itemAmount))
                     self.uph95 = self._computeUPH(int(self.totalTime), 95, int(self.itemAmount))
                     self.uph95Time = self._convertUPHToTime(self.uph95, self.itemAmount)
-                    self.flagValidatorViTrox = True
+                    self.flagValidator = True
 
-                    messagebox.showwarning("OK")
+                    #messagebox.showwarning("OK")
 
-                    print(self.itemAmount)
-                    print(self.prog)
-                    print(self.test)
-                    print(self.linecapa)
-                    print(self.epi)
-                    print(self.baan1)
-                    print(self.comments)
-                    print(self.uph85)
-                    print(self.uph95)
-                    print(self.uph95Time)
+                    #print(self.itemAmount)
+                    #print(self.prog)
+                    #print(self.test)
+                    #print(self.linecapa)
+                    #print(self.epi)
+                    #print(self.baan1)
+                    #print(self.comments)
+                    #print(self.uph85)
+                    #print(self.uph95)
+                    #print(self.uph95Time)
 
                 else:
-                    self.flagValidatorViTrox = False
+                    self.flagValidator = False
 
             else:
                 self.prog = ""
@@ -118,7 +119,7 @@ class FormValidation:
 
                 self.hex = ""
 
-                self.flagValidatorViTrox = False
+                self.flagValidator = False
         except ValueError:
             messagebox.showwarning("Warning!", "Wrong value.")
 
@@ -221,7 +222,7 @@ class FormValidation:
             pass
 
     def cleanUp(self, ei0, ei1, ci2, ci3, ci4, ei5, ei6=0, ei7=0, ei8=0):
-        if (self.flagValidatorViTrox is True) \
+        if (self.flagValidator is True) \
                 and ei0 and ei1 and ci2 and ci3 and ci4 and ei5:
             self.flagInitStatus = False
             self.ei0 = ei0
