@@ -739,7 +739,7 @@ def refresh():
     objDB.closeDB()
 # ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=535, y=29, height=273)
+    vsb.place(x=535, y=27, height=423)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 def getSelectedTab(event):
@@ -875,8 +875,8 @@ root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
 x = (ws-720)
-y = (hs-750)
-windowPosition = f'720x650+{int(x)}+{int(y)}'
+y = (hs-820)
+windowPosition = f'720x820+{int(x)}+{int(y)}'
 root.title('AXI - Manager')
 root.geometry(windowPosition)
 #root.resizable(0, 0)
@@ -1360,7 +1360,7 @@ style.configure("TCombobox", fieldbackground="#333333", background="#302928", bo
 root.option_add("*TCombobox*Listbox*Background", "#302928")
 root.option_add("*TCombobox*Listbox*Foreground", "#AAAAAA")
 
-style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=25, filedbackground="#777777")
+style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=40, filedbackground="#777777")
 #style.map('Treeview', background=[('selected', '#170D47')])
 style.map('Treeview', background=[('selected', '#46464A')])
 #--- The End Style ---
@@ -1447,12 +1447,12 @@ B1.grid(row=3, column=0, columnspan=4, pady=2)
 #--- The End of the UPDATE section ---
 
 
-def computeUPH(totalScaningTime, capability, qtyPCB):
-    uph = floor((3600 / (float(totalScaningTime) + 15) * (float(capability) / 100))) * int(qtyPCB)
-    return uph
-def convertUPHToTime(uph, qtyPCB):
-    cycleTime = ((3600 / float(uph)) / int(qtyPCB))
-    return cycleTime
+#def computeUPH(totalScaningTime, capability, qtyPCB):
+#    uph = floor((3600 / (float(totalScaningTime) + 15) * (float(capability) / 100))) * int(qtyPCB)
+#    return uph
+#def convertUPHToTime(uph, qtyPCB):
+#    cycleTime = ((3600 / float(uph)) / int(qtyPCB))
+#    return cycleTime
 
 def insertButton():
     objFormValidatorItem = FormValidation()
@@ -1583,6 +1583,13 @@ def insertButton():
                                     objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime
                            )
     objDBConnect5DX.closeDB()
+    if objDBConnectV8103553S2EX.flagSucceeded or \
+            objDBConnectV8103483S2EX.flagSucceeded or \
+            objDBConnectV8103163.flagSucceeded or \
+            objDBConnectV8108120S2.flagSucceeded or \
+            objDBConnect5DX.flagSucceeded:
+        objTipNew = Tip(root, objNewItemEx.mainFrameInsert)
+        objTipNew.animateTip()
 
 
 
