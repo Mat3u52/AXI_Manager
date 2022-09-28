@@ -2,6 +2,7 @@ from tkinter import ttk
 from tkinter import *
 import tkinter as tk
 from ContextualMenu import ContextualMenu
+from DBConnect import DBConnect
 
 class CheckboxMenu:
     def __init__(self, tab, root, frame, description):
@@ -9,6 +10,8 @@ class CheckboxMenu:
         self.root = root
         self.checkboxFrame = frame
         self.description = description
+
+
 
         self.insertFrame = ttk.LabelFrame(self.checkboxFrame, text=self.description)
         self.LI_0 = Label(self.insertFrame, text="Program name:",
