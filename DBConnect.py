@@ -1,6 +1,7 @@
 import pymysql
 from tkinter import messagebox
 import math
+
 class DBConnect:
     def __init__(self):
         self.db = pymysql.connect(host='localhost',
@@ -9,6 +10,7 @@ class DBConnect:
                              database='mk_database',
                              charset='utf8mb4')
         self.dbCursor = self.db.cursor()
+        self.flagSucceeded = False
 
     def selectAll(self):
         self.dbCursor.execute("SELECT * FROM mk_diary ORDER BY ITEM ASC")
@@ -87,7 +89,7 @@ class DBConnect:
             self.status = initStatus
             self.item = initItem
             self.itemAmount = initAmount
-            messagebox.showwarning("OK!", f"Flag Item: {initStatus}\n Flag prog: {initStatusDevice}")
+            #messagebox.showwarning("OK!", f"Flag Item: {initStatus}\n Flag prog: {initStatusDevice}")
             self.flag = False
 
             self.devices = ('V849_V817', 'V810-3163', 'V810-3483S2EX', 'V810-3553S2EX', 'V810-8120S2')
@@ -141,9 +143,7 @@ class DBConnect:
             self.dxAutoThickness = 0 #added
             self.dxTest = 0
 
-
             self.dxBAAN1 = "NONE" #common
-
 
             self.V849Prog = ""
             self.V849Linecapa = "NONE"
@@ -157,35 +157,40 @@ class DBConnect:
             self.V817Comments = ""
             self.V817HEX = "" #added
 
-
-
             for self.machine in self.devices:
                 if self.machine == self.device:
-                    print(self.device)
-                    print(self.status)
-                    print(self.item)
-                    print(self.itemAmount)
+                    #print(self.device)
+                    #print(self.status)
+                    #print(self.item)
+                    #print(self.itemAmount)
 
                     if self.selectSearchItem(self.item):
-                        print("exist")
                         for self.row in self.selectSearchItem(self.item):
-                            print(f"From DB:")
-                            print(f"db item: {self.row[1]}")
-                            msgBox = messagebox.askquestion("The record already exist in DB!", f"Existing Item: {self.row[1]}\n\n "
-                                                    f"Amount of the PCB in panel: {self.row[3]}\n\n "
-                                                    f"V810-3553S2EX: {self.row[54]} Scanning Time: {self.row[52]}\n "
-                                                    f"V810-3483S2EX: {self.row[45]} Scanning Time: {self.row[50]}\n "
-                                                    f"V810-8120S2: {self.row[31]} Scanning Time: {self.row[35]}\n "
-                                                    f"V849: {self.row[17]}\n "
-                                                    f"V817: {self.row[22]}")
-                            if msgBox == 'yes':
-                                print("update!!!!!!!")
-                            else:
-                                print("NOT update")
+                            pass
+                            #print(f"From DB:")
+                            #print(f"db item: {self.row[1]}")
+                        msgBox = messagebox.askquestion("The record already exist in DB!", f"Existing Item: {self.row[1]}\n\n "
+                                                        f"Amount of the board in one panel: {self.row[3]}\n\n "
+                                                        f"ViTroxEx:\n\n"
+                                                        f"V810-3553S2EX: {self.row[54]} Scanning Time: {self.row[52]}\n "
+                                                        f"V810-3483S2EX: {self.row[45]} Scanning Time: {self.row[50]}\n "
+                                                        f"V810-3163: {self.row[27]} Scanning Time: {self.row[13]}\n "
+                                                        f"\n\nViTrox XXL:\n\n"
+                                                        f"V810-8120S2: {self.row[31]} Scanning Time: {self.row[35]}\n "
+                                                        f"\n\n5DX:\n\n"
+                                                        f"V849: {self.row[17]}\n" 
+                                                        f"V817: {self.row[22]}\n\n "
+                                                        f"A:{self.row[7]} M:{self.row[8]} Th:{self.row[9]} T:{self.row[5]} \n\n"
+                                                        f"Do you want to update the record?")
+                        if msgBox == 'yes':
+                            print("update!!!!!!!")
+                            self.flagSucceeded = True
+                        else:
+                            print("NOT update")
 
-                            self.flag = True
+                        self.flag = True
                     else:
-                        print("not exist")
+                        #print("not exist")
                         if self.device == 'V810-3553S2EX':
                             self.V8103553S2EXProg = initProg
                             self.V8103553S2EXTest = initTest
@@ -240,17 +245,17 @@ class DBConnect:
                             self.V817Comments = initComments5DX
                             self.V817HEX = ""
 
-                            print(self.V849Prog)
-                            print(self.V849Linecapa)
-                            print(self.V849EPI)
-                            print(self.V849Comments)
-                            print(self.V849HEX)
+                            #print(self.V849Prog)
+                            #print(self.V849Linecapa)
+                            #print(self.V849EPI)
+                            #print(self.V849Comments)
+                            #print(self.V849HEX)
 
-                            print(self.V817Prog)
-                            print(self.V817Linecapa)
-                            print(self.V817EPI)
-                            print(self.V817Comments)
-                            print(self.V817HEX)
+                            #print(self.V817Prog)
+                            #print(self.V817Linecapa)
+                            #print(self.V817EPI)
+                            #print(self.V817Comments)
+                            #print(self.V817HEX)
 
                             if initTotalTest >= initTotalTest5DX:
                                 #5dx 1
@@ -276,26 +281,24 @@ class DBConnect:
                                 self.dxUPH95Time = initUPH95Time5DX
                                 self.dxUPH95 = initUPH955DX
 
-
                             if int(self.switch(initBAAN1)) >= int(self.switch(initBAAN15DX)):
                                 self.initBAAN1 = initBAAN1
                             else:
                                 self.initBAAN1 = initBAAN15DX
 
-                            print(self.initBAAN1)
+                            #print(self.initBAAN1)
 
-                            print(self.dxAlign)
-                            print(self.dxMap)
-                            print(self.dxAutoThickness)
-                            print(self.dxTest)
-                            print(self.dxUPH85)
-                            print(self.dxUPH95)
-                            print(self.dxUPH95Time)
+                            #print(self.dxAlign)
+                            #print(self.dxMap)
+                            #print(self.dxAutoThickness)
+                            #print(self.dxTest)
+                            #print(self.dxUPH85)
+                            #print(self.dxUPH95)
+                            #print(self.dxUPH95Time)
 
-                        messagebox.showwarning("Awesome!", "The record is added :)")
+                        #messagebox.showwarning("Awesome!", "The record is added :)")
+                        self.flagSucceeded = True
                         self.flag = False
-
-                    #print(self.flag)
 
 
             #self._insert()
