@@ -6,6 +6,8 @@ class FormValidation:
     def __init__(self):
         self.flagInit = False
         self.totalTime = 0
+        self.uph85 = 0
+        self.uph95 = 0
 
     def validatorItem(self, item, itemAmount):
         self.item = ""
@@ -18,9 +20,6 @@ class FormValidation:
                 self.itemAmount = int(itemAmount)
                 self.flagInit = True
 
-                #print(self.item)
-                #print(self.itemAmount)
-                #messagebox.showwarning("OK")
             else:
                 self.flagInit = False
                 messagebox.showwarning("Warning!", "Lack of Item or Qty.")
@@ -45,14 +44,15 @@ class FormValidation:
         try:
             self.flagValidator = False
             self.flagInitStatus = flagItemStatus
-            if self.flagInitStatus is True and\
+            if self.flagInitStatus is True and \
                     prog != '' and \
-                    test != '' and int(test) > 0 and\
-                    linecapa and epi and baan1 and\
-                    comments and \
+                    test != '' and int(test) > 0 and \
+                    linecapa and epi and baan1 and \
                     itemAmount != '' and int(itemAmount) > 0:
 
                 self.prog = str(prog.strip())
+                self.prog = self.prog.replace('/', '_')
+                self.prog = self.prog.replace('\\', '_')
                 self.test = int(test)
                 self.linecapa = str(linecapa)
                 self.epi = str(epi)
@@ -75,7 +75,6 @@ class FormValidation:
 
                 self.hex = ""
 
-                # self.totalTime = self.test
                 self.totalTime = int(self.test) + int(self.alignTime) + int(self.laserTime) + int(self.thicknessTime)
 
                 if (self._computeUPH(int(self.totalTime), 85, int(self.itemAmount)) > 0) and \
@@ -85,19 +84,6 @@ class FormValidation:
                     self.uph95 = self._computeUPH(int(self.totalTime), 95, int(self.itemAmount))
                     self.uph95Time = self._convertUPHToTime(self.uph95, self.itemAmount)
                     self.flagValidator = True
-
-                    #messagebox.showwarning("OK")
-
-                    #print(self.itemAmount)
-                    #print(self.prog)
-                    #print(self.test)
-                    #print(self.linecapa)
-                    #print(self.epi)
-                    #print(self.baan1)
-                    #print(self.comments)
-                    #print(self.uph85)
-                    #print(self.uph95)
-                    #print(self.uph95Time)
 
                 else:
                     self.flagValidator = False
@@ -120,75 +106,9 @@ class FormValidation:
                 self.hex = ""
 
                 self.flagValidator = False
+
         except ValueError:
             messagebox.showwarning("Warning!", "Wrong value.")
-
-
-    def _status5DX(self, baanV849="NONE", baanV817="NONE"):
-        self.baanV849 = baanV849
-        self.baanV817 = baanV817
-        if int(self.switch(self.baanV849)) <= int(self.switch(self.baanV817)):
-            return self.baanV817
-        else:
-            return self.baanV849
-
-
-    def readyToInsert(self, totalTestV849=0, totalTestV817=0):
-        #self.totalTestV849 = totalTestV849
-        #self.totalTestV817 = totalTestV817
-        if totalTestV849 >= totalTestV817:
-            print("5dx1")
-
-            #print(cls.itemAmount)
-            #print(cls.prog)
-            #print(cls.test)
-            #print(cls.linecapa)
-            #print(cls.epi)
-            #print(cls.baan1) # !!!!
-            #print(cls.comments)
-            #print(cls.uph85)
-            #print(cls.uph95)
-            #print(cls.uph95Time)
-        else:
-            print("5dx2")
-            #print(cls.itemAmount)
-            #print(cls.prog)
-            #print(cls.test)
-            #print(cls.linecapa)
-            #print(cls.epi)
-            #print(cls.baan1) # !!!!
-            #print(cls.comments)
-            #print(cls.uph85)
-            #print(cls.uph95)
-            #print(cls.uph95Time)
-
-
-
-
-
-
-    #                            dxUPH85,
-    #                            dxUPH95Time,
-    #                            dxUPH95,
-
-    #                            alignTime,
-    #                            laserTime,
-    #                            thicknessTime,
-    #                            testTime,
-
-    #                            baan5DXStatus,
-
-    #                               progV849,
-    #                               objCheckboxMenu5DX0.CI_2.get(),
-    #                               objCheckboxMenu5DX0.CI_3.get(),
-    #                               commentsV849,
-    #                            hexV849,
-
-    #                            progV817,
-    #                            objCheckboxMenu5DX1.CI_2.get(),
-    #                            objCheckboxMenu5DX1.CI_3.get(),
-    #                            commentsV817,
-    #                            hexV817
 
     def _computeUPH(self, totalScaningTime, capability, qtyPCB):
         if totalScaningTime > 0 and capability > 0 and qtyPCB > 0:
