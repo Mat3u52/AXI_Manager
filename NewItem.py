@@ -10,9 +10,6 @@ class NewItem:
         self.tab = tab
         self.root = root
 
-        #objTipNew = Tip(root, mainFrameInsert)
-        #objTipNew.animateTip()
-
     def mainFrameInsert(self, mainName):
         self.mainName = mainName
         self.mainFrameInsert = ttk.LabelFrame(self.tab, text=self.mainName)
