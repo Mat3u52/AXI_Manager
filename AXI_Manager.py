@@ -6,7 +6,7 @@ from ContextualMenu import ContextualMenu
 from CheckboxMenu import CheckboxMenu
 from NewItem import NewItem
 from MainView import MainView
-from FormValidation import  FormValidation
+from FormValidation import FormValidation
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -15,7 +15,6 @@ import pyperclip
 import os
 from PIL import Image
 
-tab = []
 startXPosition = 170
 startYPosition = 85
 minMovement = -1
@@ -28,7 +27,7 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
     else:
         img = tk.PhotoImage(file='board.png')
 
-    print("f: animateImage - "+imgPath)
+    #print("f: animateImage - "+imgPath)
 
     imageB = canvas.create_image(startXPosition, startYPosition, image=img)
 
@@ -53,8 +52,8 @@ def resizeImage(path):
 
     if os.path.isfile(path):
         if path.endswith('.jpg'):
-            print("f: resizeImage - .jpg")
-            print("f: resizeImage - "+path)
+            #print("f: resizeImage - .jpg")
+            #print("f: resizeImage - "+path)
 
             convertJpgtoPng = Image.open(r''+path)
             wpercent = (basewidth / float(convertJpgtoPng.size[0]))
@@ -78,65 +77,266 @@ def switch(x):
             return 3
         case _:
             return 0
+
+def insertButton():
+    objFormValidatorItem = FormValidation()
+    objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
+    objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
+
+    objFormValidatorV8103553S2EX = FormValidation()
+    objFormValidatorV8103553S2EX.validator(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
+                                            objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
+                                            objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
+                                            objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+    objFormValidatorV8103553S2EX.cleanUp(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
+                                            objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
+                                            objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
+    objCheckboxMenuEx0.insertFrame.grid_forget()
+
+    objDBConnectV8103553S2EX = DBConnect()
+    objDBConnectV8103553S2EX.insert("V810-3553S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                    objFormValidatorItem.itemAmount,
+                                    objFormValidatorV8103553S2EX.prog, objFormValidatorV8103553S2EX.test,
+                                    objFormValidatorV8103553S2EX.linecapa, objFormValidatorV8103553S2EX.epi,
+                                    objFormValidatorV8103553S2EX.baan1, objFormValidatorV8103553S2EX.comments,
+                                    objFormValidatorV8103553S2EX.uph85, objFormValidatorV8103553S2EX.uph95,
+                                    objFormValidatorV8103553S2EX.uph95Time,
+                                    objFormValidatorV8103553S2EX.flagValidator)
+    objDBConnectV8103553S2EX.closeDB()
+
+    objFormValidatorV8103483S2EX = FormValidation()
+    objFormValidatorV8103483S2EX.validator(objCheckboxMenuEx1.EI_0.get(), objCheckboxMenuEx1.EI_1.get(),
+                                            objCheckboxMenuEx1.CI_2.get(), objCheckboxMenuEx1.CI_3.get(),
+                                            objCheckboxMenuEx1.CI_4.get(), objCheckboxMenuEx1.EI_5.get(),
+                                            objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+    objFormValidatorV8103483S2EX.cleanUp(objCheckboxMenuEx1.EI_0, objCheckboxMenuEx1.EI_1,
+                                            objCheckboxMenuEx1.CI_2, objCheckboxMenuEx1.CI_3,
+                                            objCheckboxMenuEx1.CI_4, objCheckboxMenuEx1.EI_5)
+    objCheckboxMenuEx1.insertFrame.grid_forget()
+
+    objDBConnectV8103483S2EX = DBConnect()
+    objDBConnectV8103483S2EX.insert("V810-3483S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                    objFormValidatorItem.itemAmount,
+                                    objFormValidatorV8103483S2EX.prog, objFormValidatorV8103483S2EX.test,
+                                    objFormValidatorV8103483S2EX.linecapa, objFormValidatorV8103483S2EX.epi,
+                                    objFormValidatorV8103483S2EX.baan1, objFormValidatorV8103483S2EX.comments,
+                                    objFormValidatorV8103483S2EX.uph85, objFormValidatorV8103483S2EX.uph95,
+                                    objFormValidatorV8103483S2EX.uph95Time,
+                                    objFormValidatorV8103483S2EX.flagValidator)
+    objDBConnectV8103483S2EX.closeDB()
+
+    objFormValidatorV8103163 = FormValidation()
+    objFormValidatorV8103163.validator(objCheckboxMenuEx2.EI_0.get(), objCheckboxMenuEx2.EI_1.get(),
+                                        objCheckboxMenuEx2.CI_2.get(), objCheckboxMenuEx2.CI_3.get(),
+                                        objCheckboxMenuEx2.CI_4.get(), objCheckboxMenuEx2.EI_5.get(),
+                                        objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+    objFormValidatorV8103163.cleanUp(objCheckboxMenuEx2.EI_0, objCheckboxMenuEx2.EI_1,
+                                    objCheckboxMenuEx2.CI_2, objCheckboxMenuEx2.CI_3,
+                                    objCheckboxMenuEx2.CI_4, objCheckboxMenuEx2.EI_5)
+    objCheckboxMenuEx2.insertFrame.grid_forget()
+
+    objDBConnectV8103163 = DBConnect()
+    objDBConnectV8103163.insert("V810-3163", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                objFormValidatorItem.itemAmount,
+                                objFormValidatorV8103163.prog, objFormValidatorV8103163.test,
+                                objFormValidatorV8103163.linecapa, objFormValidatorV8103163.epi,
+                                objFormValidatorV8103163.baan1, objFormValidatorV8103163.comments,
+                                objFormValidatorV8103163.uph85, objFormValidatorV8103163.uph95,
+                                objFormValidatorV8103163.uph95Time, objFormValidatorV8103163.flagValidator)
+    objDBConnectV8103163.closeDB()
+
+    objFormValidatorV8108120S2 = FormValidation()
+    objFormValidatorV8108120S2.validator(objCheckboxMenuXXL0.EI_0.get(), objCheckboxMenuXXL0.EI_1.get(),
+                                        objCheckboxMenuXXL0.CI_2.get(), objCheckboxMenuXXL0.CI_3.get(),
+                                        objCheckboxMenuXXL0.CI_4.get(), objCheckboxMenuXXL0.EI_5.get(),
+                                        objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+    objFormValidatorV8108120S2.cleanUp(objCheckboxMenuXXL0.EI_0, objCheckboxMenuXXL0.EI_1,
+                                        objCheckboxMenuXXL0.CI_2, objCheckboxMenuXXL0.CI_3,
+                                        objCheckboxMenuXXL0.CI_4, objCheckboxMenuXXL0.EI_5)
+    objCheckboxMenuXXL0.insertFrame.grid_forget()
+
+    objDBConnectV8108120S2 = DBConnect()
+    objDBConnectV8108120S2.insert("V810-8120S2", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                                    objFormValidatorItem.itemAmount,
+                                    objFormValidatorV8108120S2.prog, objFormValidatorV8108120S2.test,
+                                    objFormValidatorV8108120S2.linecapa, objFormValidatorV8108120S2.epi,
+                                    objFormValidatorV8108120S2.baan1, objFormValidatorV8108120S2.comments,
+                                    objFormValidatorV8108120S2.uph85, objFormValidatorV8108120S2.uph95,
+                                    objFormValidatorV8108120S2.uph95Time,
+                                    objFormValidatorV8108120S2.flagValidator)
+    objDBConnectV8108120S2.closeDB()
+
+    objFormValidatorV849 = FormValidation()
+    objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
+                                    objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
+                                    objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
+                                    objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
+                                    objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
+                                    objCheckboxMenu5DX0.EI_8.get())
+    objFormValidatorV849.cleanUp(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
+                                    objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
+                                    objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
+                                    objCheckboxMenu5DX0.EI_6, objCheckboxMenu5DX0.EI_7,
+                                    objCheckboxMenu5DX0.EI_8)
+    objCheckboxMenu5DX0.insertFrame.grid_forget()
+
+    objFormValidatorV817 = FormValidation()
+    objFormValidatorV817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
+                                    objCheckboxMenu5DX1.CI_2.get(), objCheckboxMenu5DX1.CI_3.get(),
+                                    objCheckboxMenu5DX1.CI_4.get(), objCheckboxMenu5DX1.EI_5.get(),
+                                    objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
+                                    objCheckboxMenu5DX1.EI_6.get(), objCheckboxMenu5DX1.EI_7.get(),
+                                    objCheckboxMenu5DX1.EI_8.get())
+    objFormValidatorV817.cleanUp(objCheckboxMenu5DX1.EI_0, objCheckboxMenu5DX1.EI_1,
+                                    objCheckboxMenu5DX1.CI_2, objCheckboxMenu5DX1.CI_3,
+                                    objCheckboxMenu5DX1.CI_4, objCheckboxMenu5DX1.EI_5,
+                                    objCheckboxMenu5DX1.EI_6, objCheckboxMenu5DX1.EI_7,
+                                    objCheckboxMenu5DX1.EI_8)
+    objCheckboxMenu5DX1.insertFrame.grid_forget()
+
+    objDBConnect5DX = DBConnect()
+    objDBConnect5DX.insert("V849_V817", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+                            objFormValidatorItem.itemAmount,
+
+                            objFormValidatorV849.prog, objFormValidatorV849.test,
+                            objFormValidatorV849.linecapa, objFormValidatorV849.epi,
+                            objFormValidatorV849.baan1, objFormValidatorV849.comments,
+                            objFormValidatorV849.uph85, objFormValidatorV849.uph95,
+                            objFormValidatorV849.uph95Time, objFormValidatorV849.flagValidator,
+                            objFormValidatorV849.alignTime, objFormValidatorV849.laserTime,
+                            objFormValidatorV849.thicknessTime, objFormValidatorV849.totalTime,
+
+                            objFormValidatorV817.flagValidator,
+                            objFormValidatorV817.prog, objFormValidatorV817.test,
+                            objFormValidatorV817.linecapa, objFormValidatorV817.epi,
+                            objFormValidatorV817.baan1, objFormValidatorV817.comments,
+                            objFormValidatorV817.uph85, objFormValidatorV817.uph95,
+                            objFormValidatorV817.uph95Time,
+                            objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
+                            objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime
+                            )
+    objDBConnect5DX.closeDB()
+    if objDBConnectV8103553S2EX.flagSucceeded or \
+            objDBConnectV8103483S2EX.flagSucceeded or \
+            objDBConnectV8103163.flagSucceeded or \
+            objDBConnectV8108120S2.flagSucceeded or \
+            objDBConnect5DX.flagSucceeded:
+        objTipNew = Tip(root, objNewItemEx.mainFrameInsert)
+        objTipNew.animateTip()
+        refresh()
+
+def reset():
+    objNewItemEx.cleanUp()
+
+    objCheckboxMenuEx0.cleanUp()
+    objCheckboxMenuEx0.insertFrame.grid_forget()
+
+    objCheckboxMenuEx1.cleanUp()
+    objCheckboxMenuEx1.insertFrame.grid_forget()
+
+    objCheckboxMenuEx2.cleanUp()
+    objCheckboxMenuEx2.insertFrame.grid_forget()
+
+    objCheckboxMenuXXL0.cleanUp()
+    objCheckboxMenuXXL0.insertFrame.grid_forget()
+
+    objCheckboxMenu5DX0.cleanUp()
+    objCheckboxMenu5DX0.cleanUp5DX()
+    objCheckboxMenu5DX0.insertFrame.grid_forget()
+
+    objCheckboxMenu5DX1.cleanUp()
+    objCheckboxMenu5DX1.cleanUp5DX()
+    objCheckboxMenu5DX1.insertFrame.grid_forget()
+
 def getSelectedRow(event):
     flagAnimation = False
     flagClick = False
 
-    tab.clear()
-    E1.config(state="normal")
-    objDB = DBConnect()
-    E1.delete(0, END)
-    E2.delete(0, END)
-    E3.delete(0, END)
-    E4.delete(0, END)
-    E5.delete(0, END)
-    E6.delete(0, END)
+    reset()
 
-    #print(tree.selection())  # this will print the names of the selected rows
+
     for nm in tree.selection():
-        #content.clear()
         content = tree.item(nm, 'values')
 
         #curItem = tree.focus()
         #print(tree.item(curItem))
 
         print(content[1])
-        #if content[1] == '5DX I' or \
-        #        content[1] == '5DX II' or\
-        #        content[1] == 'ViTrox Ex I' or \
-        #        content[1] == 'ViTrox Ex II' or \
-        #        content[1] == 'ViTrox Ex III' or \
-        #        content[1] == 'ViTrox XXL I':
-        #    flagClick = True
 
         machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
         if content[1] in machines:
             flagClick = True
 
-        #print(type(int(content[0])))
-
-    #if int(content[0]) > 0:
+        objDB = DBConnect()
         for row in objDB.selectSearchID(content[0]):
-            # E1.insert(0, f"{content[0]}")
-            tab.append(row[0])
-            tab.append(row[2])
-            # tab.append(row[49])
-            E1.insert(0, f"{row[0]}")
-            print(row[1])
-            E1.config(state="disabled")
-            E2.insert(0, f"{row[1]}")
-            E3.insert(0, f"{row[3]}")
-            E4.insert(0, f"{row[54]}")
-            E5.insert(0, f"{row[52]}")
-            E6.insert(0, f"{row[57]}")
-
-            LCViTroxIV.current(switch(row[55]))
-            EPIViTroxIV.current(switch(row[56]))
-            BAANViTroxIV.current(switch(row[53]))
-
-        pyperclip.copy(E2.get()) #clipboard
-
+            pass
         objDB.closeDB()
+
+        pyperclip.copy(row[1])  # clipboard
+
+
+        objNewItemEx.EI2.insert(0, f"{row[1]}")
+        objNewItemEx.EI3.insert(0, f"{row[3]}")
+
+        if row[54] != None and (row[52] != None and int(row[52]) > 0):
+            objCheckboxMenuEx0.EI_0.insert(0, f"{row[54]}")
+            objCheckboxMenuEx0.EI_1.insert(0, f"{int(row[52])}")
+            objCheckboxMenuEx0.CI_2.current(switch(row[55]))
+            objCheckboxMenuEx0.CI_3.current(switch(row[56]))
+            objCheckboxMenuEx0.CI_4.current(switch(row[53]))
+            objCheckboxMenuEx0.EI_5.insert(0, f"{row[57]}")
+            objCheckboxMenuEx0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
+
+        if row[45] != None and (row[43] != None and int(row[43]) > 0):
+            objCheckboxMenuEx1.EI_0.insert(0, f"{row[45]}")
+            objCheckboxMenuEx1.EI_1.insert(0, f"{int(row[43])}")
+            objCheckboxMenuEx1.CI_2.current(switch(row[46]))
+            objCheckboxMenuEx1.CI_3.current(switch(row[47]))
+            objCheckboxMenuEx1.CI_4.current(switch(row[44]))
+            objCheckboxMenuEx1.EI_5.insert(0, f"{row[48]}")
+            objCheckboxMenuEx1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
+
+        if row[27] != None and (row[15] != None and int(row[15]) > 0):
+            objCheckboxMenuEx2.EI_0.insert(0, f"{row[27]}")
+            objCheckboxMenuEx2.EI_1.insert(0, f"{int(row[15])}")
+            objCheckboxMenuEx2.CI_2.current(switch(row[28]))
+            objCheckboxMenuEx2.CI_3.current(switch(row[29]))
+            objCheckboxMenuEx2.CI_4.current(switch(row[16]))
+            objCheckboxMenuEx2.EI_5.insert(0, f"{row[30]}")
+            objCheckboxMenuEx2.insertFrame.grid(column=0, row=5 + 3, columnspan=10, sticky='W', padx=10, pady=10)
+
+        if row[31] != None and (row[37] != None and int(row[37]) > 0):
+            objCheckboxMenuXXL0.EI_0.insert(0, f"{row[31]}")
+            objCheckboxMenuXXL0.EI_1.insert(0, f"{int(row[37])}")
+            objCheckboxMenuXXL0.CI_2.current(switch(row[32]))
+            objCheckboxMenuXXL0.CI_3.current(switch(row[33]))
+            objCheckboxMenuXXL0.CI_4.current(switch(row[38]))
+            objCheckboxMenuXXL0.EI_5.insert(0, f"{row[34]}")
+            objCheckboxMenuXXL0.insertFrame.grid(column=0, row=5 + 5, columnspan=10, sticky='W', padx=10, pady=10)
+
+        if (row[17] != None and row[17] != '') and (row[5] != None and int(row[5]) > 0):
+            objCheckboxMenu5DX0.EI_0.insert(0, f"{row[17]}")
+            objCheckboxMenu5DX0.EI_1.insert(0, f"{int(row[5])}")
+            objCheckboxMenu5DX0.CI_2.current(switch(row[18]))
+            objCheckboxMenu5DX0.CI_3.current(switch(row[19]))
+            objCheckboxMenu5DX0.CI_4.current(switch(row[11]))
+            objCheckboxMenu5DX0.EI_5.insert(0, f"{row[20]}")
+            objCheckboxMenu5DX0.EI_6.insert(0, f"{int(row[7])}")
+            objCheckboxMenu5DX0.EI_7.insert(0, f"{int(row[8])}")
+            objCheckboxMenu5DX0.EI_8.insert(0, f"{int(row[9])}")
+            objCheckboxMenu5DX0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
+
+        if (row[22] != None and row[22] != '') and (row[5] != None and int(row[5]) > 0):
+            objCheckboxMenu5DX1.EI_0.insert(0, f"{row[22]}")
+            objCheckboxMenu5DX1.EI_1.insert(0, f"{int(row[5])}")
+            objCheckboxMenu5DX1.CI_2.current(switch(row[23]))
+            objCheckboxMenu5DX1.CI_3.current(switch(row[24]))
+            objCheckboxMenu5DX1.CI_4.current(switch(row[11]))
+            objCheckboxMenu5DX1.EI_5.insert(0, f"{row[25]}")
+            objCheckboxMenu5DX1.EI_6.insert(0, f"{int(row[7])}")
+            objCheckboxMenu5DX1.EI_7.insert(0, f"{int(row[8])}")
+            objCheckboxMenu5DX1.EI_8.insert(0, f"{int(row[9])}")
+            objCheckboxMenu5DX1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
 
         LItem.configure(text=f"{row[1]}")
         LItemAmount.configure(text=f"{row[3]}")
@@ -582,16 +782,23 @@ def getSelectedRow(event):
 
         #objTip.destroyTip()
         root.mainloop()
-def updateDisplay():
-    if int(tab[0]) >= 0:
-        objDB = DBConnect()
-        objDB.update(tab[0], E2.get(), E3.get(), E4.get(), E5.get(), LCViTroxIV.get(), EPIViTroxIV.get(),
-                    BAANViTroxIV.get(), E6.get())
-        objDB.closeDB()
+
+
+
+
+
+
+
+#def updateDisplay():
+#    if int(tab[0]) >= 0:
+#        objDB = DBConnect()
+#        objDB.update(tab[0], E2.get(), E3.get(), E4.get(), E5.get(), LCViTroxIV.get(), EPIViTroxIV.get(),
+#                    BAANViTroxIV.get(), E6.get())
+#        objDB.closeDB()
         #tree.delete(1)
         #selected_item = tree.selection()[0]
         #tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
-        refresh()
+#        refresh()
 #def insertData():
 #    objDB = DBConnect()
 #    objDB.insert(EI2.get(), EI3.get(),
@@ -640,7 +847,7 @@ def updateDisplay():
 # --- The End ViTrox I ---
 #--- The End CleanUp "Entry" & "Combobox" ---
 
-    refresh()
+    #refresh()
 def search():
     tree.selection_clear()
     tree.selection_remove(tree.focus())
@@ -742,17 +949,17 @@ def refresh():
     vsb.place(x=535, y=27, height=423)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
-def getSelectedTab(event):
-    print("click")
-    if tabMain1:
-        print("1")
-        canvasFrame1 = Label(tabMain1)
-        canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
-        canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
-        canvas1.configure(bg="#444444")
-        canvas1.pack(expand=False)
+#def getSelectedTab(event):
+    #print("click")
+#    if tabMain1:
+        #print("1")
+#        canvasFrame1 = Label(tabMain1)
+#        canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
+#        canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
+#        canvas1.configure(bg="#444444")
+#        canvas1.pack(expand=False)
 
-        animateImage(root, canvas1, minMovement, minMovement, 'images/V849/board.png')
+#        animateImage(root, canvas1, minMovement, minMovement, 'images/V849/board.png')
 
 def doPopupSearch(event):
     try:
@@ -785,17 +992,17 @@ def doPopupSearch(event):
 #    finally:
 #        contextInsertNameMenuV8103163.grab_release()
 
-def doPopupUpdate(event):
-    try:
-        contextUpdateMenu.tk_popup(event.x_root, event.y_root)
-    finally:
-        contextUpdateMenu.grab_release()
+#def doPopupUpdate(event):
+#    try:
+#        contextUpdateMenu.tk_popup(event.x_root, event.y_root)
+#    finally:
+#        contextUpdateMenu.grab_release()
 
-def doPopupUpdateName(event):
-    try:
-        contextUpdateNameMenu.tk_popup(event.x_root, event.y_root)
-    finally:
-        contextUpdateNameMenu.grab_release()
+#def doPopupUpdateName(event):
+#    try:
+#        contextUpdateNameMenu.tk_popup(event.x_root, event.y_root)
+#    finally:
+#        contextUpdateNameMenu.grab_release()
 
 def contextCopyESearch():
     pyperclip.copy(ESearch.get())
@@ -822,15 +1029,15 @@ def contextPasteESearch():
 #def contextPasteEIV8103163_0():
 #    EIV8103163_0.insert(tk.END, pyperclip.paste())
 
-def contextCopyE2():
-    pyperclip.copy(E2.get())
-def contextPasteE2():
-    E2.insert(tk.END, pyperclip.paste())
+#def contextCopyE2():
+#    pyperclip.copy(E2.get())
+#def contextPasteE2():
+#    E2.insert(tk.END, pyperclip.paste())
 
-def contextCopyE4():
-    pyperclip.copy(E4.get())
-def contextPasteE4():
-    E4.insert(tk.END, pyperclip.paste())
+#def contextCopyE4():
+#    pyperclip.copy(E4.get())
+#def contextPasteE4():
+#    E4.insert(tk.END, pyperclip.paste())
 
 #def checkboxInsert():
 
@@ -874,9 +1081,9 @@ def contextPasteE4():
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
-x = (ws-720)
+x = (ws-660)
 y = (hs-820)
-windowPosition = f'720x820+{int(x)}+{int(y)}'
+windowPosition = f'660x820+{int(x)}+{int(y)}'
 root.title('AXI - Manager')
 root.geometry(windowPosition)
 #root.resizable(0, 0)
@@ -886,6 +1093,11 @@ root.configure(background='#000000')
 contextSearchMenu = Menu(root, tearoff=0)
 contextSearchMenu.add_command(label="Copy", command=contextCopyESearch)
 contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
+
+
+
+
+#print(tab)
 
 #contextInsertMenu = Menu(root, tearoff=0)
 #contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
@@ -903,13 +1115,13 @@ contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
 #contextInsertNameMenuV8103163.add_command(label="Copy", command=contextCopyEIV8103163_0)
 #contextInsertNameMenuV8103163.add_command(label="Paste", command=contextPasteEIV8103163_0)
 
-contextUpdateMenu = Menu(root, tearoff=0)
-contextUpdateMenu.add_command(label="Copy", command=contextCopyE2)
-contextUpdateMenu.add_command(label="Paste", command=contextPasteE2)
+#contextUpdateMenu = Menu(root, tearoff=0)
+#contextUpdateMenu.add_command(label="Copy", command=contextCopyE2)
+#contextUpdateMenu.add_command(label="Paste", command=contextPasteE2)
 
-contextUpdateNameMenu = Menu(root, tearoff=0)
-contextUpdateNameMenu.add_command(label="Copy", command=contextCopyE4)
-contextUpdateNameMenu.add_command(label="Paste", command=contextPasteE4)
+#contextUpdateNameMenu = Menu(root, tearoff=0)
+#contextUpdateNameMenu.add_command(label="Copy", command=contextCopyE4)
+#contextUpdateNameMenu.add_command(label="Paste", command=contextPasteE4)
 #--- The End contex menu - right click nemu ---
 
 
@@ -1316,9 +1528,10 @@ tabControl.pack(expand=1, fill="both")
 tab2 = ttk.Frame(tabControl)
 tabControl.add(tab2, text=" New ")
 tabControl.pack(expand=1, fill="both", padx=10, pady=10)
-tab3 = ttk.Frame(tabControl)
-tabControl.add(tab3, text=" Update ")
-tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+
+#tab3 = ttk.Frame(tabControl)
+#tabControl.add(tab3, text=" Update ")
+#tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
 style = ttk.Style()
 style.theme_create('style_class',
@@ -1367,83 +1580,83 @@ style.map('Treeview', background=[('selected', '#46464A')])
 
 #--- UPDATE ---
 
-mainFrame = ttk.LabelFrame(tab3, text=" Update Main ")
-mainFrame.grid(column=0, row=0, columnspan=10, sticky='W', padx=10, pady=10)
+#mainFrame = ttk.LabelFrame(tab3, text=" Update Main ")
+#mainFrame.grid(column=0, row=0, columnspan=10, sticky='W', padx=10, pady=10)
 
-L1 = Label(mainFrame, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L1.config(font=("Arial", 10))
-L2 = Label(mainFrame, text="Item:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L2.config(font=("Arial", 10))
-L3 = Label(mainFrame, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L3.config(font=("Arial", 10))
+#L1 = Label(mainFrame, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L1.config(font=("Arial", 10))
+#L2 = Label(mainFrame, text="Item:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L2.config(font=("Arial", 10))
+#L3 = Label(mainFrame, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L3.config(font=("Arial", 10))
 
 #--- Update ViTrox V810-3553S2EX ---
 
-updateFrameVIV = ttk.LabelFrame(tab3, text=" Update ViTrox V810 Ex III ( V810-3553S2EX ) ")
-updateFrameVIV.grid(column=0, row=1, columnspan=10, sticky='W', padx=10, pady=10)
+#updateFrameVIV = ttk.LabelFrame(tab3, text=" Update ViTrox V810 Ex III ( V810-3553S2EX ) ")
+#updateFrameVIV.grid(column=0, row=1, columnspan=10, sticky='W', padx=10, pady=10)
 
-L4 = Label(updateFrameVIV, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L4.config(font=("Arial", 10))
-L5 = Label(updateFrameVIV, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L5.config(font=("Arial", 10))
-L6 = Label(updateFrameVIV, text="LC:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L6.config(font=("Arial", 10))
-L7 = Label(updateFrameVIV, text="EPI:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L7.config(font=("Arial", 10))
-L8 = Label(updateFrameVIV, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L8.config(font=("Arial", 10))
-L9 = Label(updateFrameVIV, text="Comments:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-L9.config(font=("Arial", 10))
+#L4 = Label(updateFrameVIV, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L4.config(font=("Arial", 10))
+#L5 = Label(updateFrameVIV, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L5.config(font=("Arial", 10))
+#L6 = Label(updateFrameVIV, text="LC:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L6.config(font=("Arial", 10))
+#L7 = Label(updateFrameVIV, text="EPI:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L7.config(font=("Arial", 10))
+#L8 = Label(updateFrameVIV, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L8.config(font=("Arial", 10))
+#L9 = Label(updateFrameVIV, text="Comments:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
+#L9.config(font=("Arial", 10))
 
-L1.grid(row=0, column=0, sticky=W)
-L2.grid(row=1, column=0, sticky=W)
-L3.grid(row=1, column=2, sticky=W)
-L4.grid(row=0, column=0, sticky=W)
-L5.grid(row=0, column=2, sticky=W)
-L6.grid(row=1, column=0, sticky=W)
-L7.grid(row=1, column=2, sticky=W)
-L8.grid(row=2, column=0, sticky=W)
-L9.grid(row=2, column=2, sticky=W)
+#L1.grid(row=0, column=0, sticky=W)
+#L2.grid(row=1, column=0, sticky=W)
+#L3.grid(row=1, column=2, sticky=W)
+#L4.grid(row=0, column=0, sticky=W)
+#L5.grid(row=0, column=2, sticky=W)
+#L6.grid(row=1, column=0, sticky=W)
+#L7.grid(row=1, column=2, sticky=W)
+#L8.grid(row=2, column=0, sticky=W)
+#L9.grid(row=2, column=2, sticky=W)
 
-E1 = Entry(mainFrame, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
-E1.config(font=("Arial", 10))
-E1.grid(row=0, column=1, pady=1, sticky=W)
-E2 = Entry(mainFrame, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
-E2.config(font=("Arial", 10))
-E2.grid(row=1, column=1, pady=1)
-E2.bind("<Button-3>", doPopupUpdate)
-E3 = Entry(mainFrame, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
-E3.config(font=("Arial", 10))
-E3.grid(row=1, column=5, pady=1)
-E4 = Entry(updateFrameVIV, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
-E4.config(font=("Arial", 10))
-E4.grid(row=0, column=1, pady=1)
-E4.bind("<Button-3>", doPopupUpdateName)
-E5 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
-E5.config(font=("Arial", 10))
-E5.grid(row=0, column=3, pady=1)
-E6 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
-E6.config(font=("Arial", 10))
-E6.grid(row=2, column=3, pady=1)
+#E1 = Entry(mainFrame, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
+#E1.config(font=("Arial", 10))
+#E1.grid(row=0, column=1, pady=1, sticky=W)
+#E2 = Entry(mainFrame, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
+#E2.config(font=("Arial", 10))
+#E2.grid(row=1, column=1, pady=1)
+#E2.bind("<Button-3>", doPopupUpdate)
+#E3 = Entry(mainFrame, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
+#E3.config(font=("Arial", 10))
+#E3.grid(row=1, column=5, pady=1)
+#E4 = Entry(updateFrameVIV, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
+#E4.config(font=("Arial", 10))
+#E4.grid(row=0, column=1, pady=1)
+#E4.bind("<Button-3>", doPopupUpdateName)
+#E5 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+#E5.config(font=("Arial", 10))
+#E5.grid(row=0, column=3, pady=1)
+#E6 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
+#E6.config(font=("Arial", 10))
+#E6.grid(row=2, column=3, pady=1)
 
-LC = tk.StringVar
-LCViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=LC, state='readonly')
-LCViTroxIV['values'] = ("NONE","YES","NO","LACK")
-LCViTroxIV.grid(row=1, column=1, pady=1, sticky=W)
-LCViTroxIV.current(0)
-EPI = tk.StringVar
-EPIViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=EPI, state='readonly')
-EPIViTroxIV['values'] = ("NONE", "YES", "NO", "LACK")
-EPIViTroxIV.grid(row=1, column=3, pady=1, sticky=W)
-EPIViTroxIV.current(0)
-BAAN = tk.StringVar
-BAANViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=BAAN, state='readonly')
-BAANViTroxIV['values'] = ("NONE", "YES", "NO", "LACK")
-BAANViTroxIV.grid(row=2, column=1, pady=1, sticky=W)
-BAANViTroxIV.current(0)
+#LC = tk.StringVar
+#LCViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=LC, state='readonly')
+#LCViTroxIV['values'] = ("NONE","YES","NO","LACK")
+#LCViTroxIV.grid(row=1, column=1, pady=1, sticky=W)
+#LCViTroxIV.current(0)
+#EPI = tk.StringVar
+#EPIViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=EPI, state='readonly')
+#EPIViTroxIV['values'] = ("NONE", "YES", "NO", "LACK")
+#EPIViTroxIV.grid(row=1, column=3, pady=1, sticky=W)
+#EPIViTroxIV.current(0)
+#BAAN = tk.StringVar
+#BAANViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=BAAN, state='readonly')
+#BAANViTroxIV['values'] = ("NONE", "YES", "NO", "LACK")
+#BAANViTroxIV.grid(row=2, column=1, pady=1, sticky=W)
+#BAANViTroxIV.current(0)
 
-B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay, cursor="hand2")
-B1.grid(row=3, column=0, columnspan=4, pady=2)
+#B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay, cursor="hand2")
+#B1.grid(row=3, column=0, columnspan=4, pady=2)
 #--- The End of the UPDATE section ---
 
 
@@ -1454,146 +1667,147 @@ B1.grid(row=3, column=0, columnspan=4, pady=2)
 #    cycleTime = ((3600 / float(uph)) / int(qtyPCB))
 #    return cycleTime
 
-def insertButton():
-    objFormValidatorItem = FormValidation()
-    objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
-    objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
+#def insertButton():
+#    objFormValidatorItem = FormValidation()
+#    objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
+#    objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
 
-    objFormValidatorV8103553S2EX = FormValidation()
-    objFormValidatorV8103553S2EX.validator(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
-                                            objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
-                                            objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
-                                            objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-    objFormValidatorV8103553S2EX.cleanUp(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
-                                            objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
-                                            objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
+#    objFormValidatorV8103553S2EX = FormValidation()
+#    objFormValidatorV8103553S2EX.validator(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
+#                                            objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
+#                                            objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
+#                                            objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+#    objFormValidatorV8103553S2EX.cleanUp(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
+#                                            objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
+#                                            objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
 
-    objDBConnectV8103553S2EX = DBConnect()
-    objDBConnectV8103553S2EX.insert("V810-3553S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                    objFormValidatorItem.itemAmount,
-                                    objFormValidatorV8103553S2EX.prog, objFormValidatorV8103553S2EX.test,
-                                    objFormValidatorV8103553S2EX.linecapa, objFormValidatorV8103553S2EX.epi,
-                                    objFormValidatorV8103553S2EX.baan1, objFormValidatorV8103553S2EX.comments,
-                                    objFormValidatorV8103553S2EX.uph85, objFormValidatorV8103553S2EX.uph95,
-                                    objFormValidatorV8103553S2EX.uph95Time, objFormValidatorV8103553S2EX.flagValidator)
-    objDBConnectV8103553S2EX.closeDB()
+#    objDBConnectV8103553S2EX = DBConnect()
+#    objDBConnectV8103553S2EX.insert("V810-3553S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+#                                    objFormValidatorItem.itemAmount,
+#                                    objFormValidatorV8103553S2EX.prog, objFormValidatorV8103553S2EX.test,
+#                                    objFormValidatorV8103553S2EX.linecapa, objFormValidatorV8103553S2EX.epi,
+#                                    objFormValidatorV8103553S2EX.baan1, objFormValidatorV8103553S2EX.comments,
+#                                    objFormValidatorV8103553S2EX.uph85, objFormValidatorV8103553S2EX.uph95,
+#                                    objFormValidatorV8103553S2EX.uph95Time, objFormValidatorV8103553S2EX.flagValidator)
+#    objDBConnectV8103553S2EX.closeDB()
 
-    objFormValidatorV8103483S2EX = FormValidation()
-    objFormValidatorV8103483S2EX.validator(objCheckboxMenuEx1.EI_0.get(), objCheckboxMenuEx1.EI_1.get(),
-                                           objCheckboxMenuEx1.CI_2.get(), objCheckboxMenuEx1.CI_3.get(),
-                                           objCheckboxMenuEx1.CI_4.get(), objCheckboxMenuEx1.EI_5.get(),
-                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-    objFormValidatorV8103483S2EX.cleanUp(objCheckboxMenuEx1.EI_0, objCheckboxMenuEx1.EI_1,
-                                         objCheckboxMenuEx1.CI_2, objCheckboxMenuEx1.CI_3,
-                                         objCheckboxMenuEx1.CI_4, objCheckboxMenuEx1.EI_5)
+#    objFormValidatorV8103483S2EX = FormValidation()
+#    objFormValidatorV8103483S2EX.validator(objCheckboxMenuEx1.EI_0.get(), objCheckboxMenuEx1.EI_1.get(),
+#                                           objCheckboxMenuEx1.CI_2.get(), objCheckboxMenuEx1.CI_3.get(),
+#                                           objCheckboxMenuEx1.CI_4.get(), objCheckboxMenuEx1.EI_5.get(),
+#                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+#    objFormValidatorV8103483S2EX.cleanUp(objCheckboxMenuEx1.EI_0, objCheckboxMenuEx1.EI_1,
+#                                         objCheckboxMenuEx1.CI_2, objCheckboxMenuEx1.CI_3,
+#                                         objCheckboxMenuEx1.CI_4, objCheckboxMenuEx1.EI_5)
 
-    objDBConnectV8103483S2EX = DBConnect()
-    objDBConnectV8103483S2EX.insert("V810-3483S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                    objFormValidatorItem.itemAmount,
-                                    objFormValidatorV8103483S2EX.prog, objFormValidatorV8103483S2EX.test,
-                                    objFormValidatorV8103483S2EX.linecapa, objFormValidatorV8103483S2EX.epi,
-                                    objFormValidatorV8103483S2EX.baan1, objFormValidatorV8103483S2EX.comments,
-                                    objFormValidatorV8103483S2EX.uph85, objFormValidatorV8103483S2EX.uph95,
-                                    objFormValidatorV8103483S2EX.uph95Time, objFormValidatorV8103483S2EX.flagValidator)
-    objDBConnectV8103483S2EX.closeDB()
+#    objDBConnectV8103483S2EX = DBConnect()
+#    objDBConnectV8103483S2EX.insert("V810-3483S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+#                                    objFormValidatorItem.itemAmount,
+#                                    objFormValidatorV8103483S2EX.prog, objFormValidatorV8103483S2EX.test,
+#                                    objFormValidatorV8103483S2EX.linecapa, objFormValidatorV8103483S2EX.epi,
+#                                    objFormValidatorV8103483S2EX.baan1, objFormValidatorV8103483S2EX.comments,
+#                                    objFormValidatorV8103483S2EX.uph85, objFormValidatorV8103483S2EX.uph95,
+#                                    objFormValidatorV8103483S2EX.uph95Time, objFormValidatorV8103483S2EX.flagValidator)
+#    objDBConnectV8103483S2EX.closeDB()
 
-    objFormValidatorV8103163 = FormValidation()
-    objFormValidatorV8103163.validator(objCheckboxMenuEx2.EI_0.get(), objCheckboxMenuEx2.EI_1.get(),
-                                           objCheckboxMenuEx2.CI_2.get(), objCheckboxMenuEx2.CI_3.get(),
-                                           objCheckboxMenuEx2.CI_4.get(), objCheckboxMenuEx2.EI_5.get(),
-                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-    objFormValidatorV8103163.cleanUp(objCheckboxMenuEx2.EI_0, objCheckboxMenuEx2.EI_1,
-                                         objCheckboxMenuEx2.CI_2, objCheckboxMenuEx2.CI_3,
-                                         objCheckboxMenuEx2.CI_4, objCheckboxMenuEx2.EI_5)
+#    objFormValidatorV8103163 = FormValidation()
+#    objFormValidatorV8103163.validator(objCheckboxMenuEx2.EI_0.get(), objCheckboxMenuEx2.EI_1.get(),
+#                                           objCheckboxMenuEx2.CI_2.get(), objCheckboxMenuEx2.CI_3.get(),
+#                                           objCheckboxMenuEx2.CI_4.get(), objCheckboxMenuEx2.EI_5.get(),
+#                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+#    objFormValidatorV8103163.cleanUp(objCheckboxMenuEx2.EI_0, objCheckboxMenuEx2.EI_1,
+#                                         objCheckboxMenuEx2.CI_2, objCheckboxMenuEx2.CI_3,
+#                                         objCheckboxMenuEx2.CI_4, objCheckboxMenuEx2.EI_5)
 
-    objDBConnectV8103163 = DBConnect()
-    objDBConnectV8103163.insert("V810-3163", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                    objFormValidatorItem.itemAmount,
-                                    objFormValidatorV8103163.prog, objFormValidatorV8103163.test,
-                                    objFormValidatorV8103163.linecapa, objFormValidatorV8103163.epi,
-                                    objFormValidatorV8103163.baan1, objFormValidatorV8103163.comments,
-                                    objFormValidatorV8103163.uph85, objFormValidatorV8103163.uph95,
-                                    objFormValidatorV8103163.uph95Time, objFormValidatorV8103163.flagValidator)
-    objDBConnectV8103163.closeDB()
+#    objDBConnectV8103163 = DBConnect()
+#    objDBConnectV8103163.insert("V810-3163", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+#                                    objFormValidatorItem.itemAmount,
+#                                    objFormValidatorV8103163.prog, objFormValidatorV8103163.test,
+#                                    objFormValidatorV8103163.linecapa, objFormValidatorV8103163.epi,
+#                                    objFormValidatorV8103163.baan1, objFormValidatorV8103163.comments,
+#                                    objFormValidatorV8103163.uph85, objFormValidatorV8103163.uph95,
+#                                    objFormValidatorV8103163.uph95Time, objFormValidatorV8103163.flagValidator)
+#    objDBConnectV8103163.closeDB()
 
-    objFormValidatorV8108120S2 = FormValidation()
-    objFormValidatorV8108120S2.validator(objCheckboxMenuXXL0.EI_0.get(), objCheckboxMenuXXL0.EI_1.get(),
-                                           objCheckboxMenuXXL0.CI_2.get(), objCheckboxMenuXXL0.CI_3.get(),
-                                           objCheckboxMenuXXL0.CI_4.get(), objCheckboxMenuXXL0.EI_5.get(),
-                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-    objFormValidatorV8108120S2.cleanUp(objCheckboxMenuXXL0.EI_0, objCheckboxMenuXXL0.EI_1,
-                                         objCheckboxMenuXXL0.CI_2, objCheckboxMenuXXL0.CI_3,
-                                         objCheckboxMenuXXL0.CI_4, objCheckboxMenuXXL0.EI_5)
+#    objFormValidatorV8108120S2 = FormValidation()
+#    objFormValidatorV8108120S2.validator(objCheckboxMenuXXL0.EI_0.get(), objCheckboxMenuXXL0.EI_1.get(),
+#                                           objCheckboxMenuXXL0.CI_2.get(), objCheckboxMenuXXL0.CI_3.get(),
+#                                           objCheckboxMenuXXL0.CI_4.get(), objCheckboxMenuXXL0.EI_5.get(),
+#                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+#    objFormValidatorV8108120S2.cleanUp(objCheckboxMenuXXL0.EI_0, objCheckboxMenuXXL0.EI_1,
+#                                         objCheckboxMenuXXL0.CI_2, objCheckboxMenuXXL0.CI_3,
+#                                         objCheckboxMenuXXL0.CI_4, objCheckboxMenuXXL0.EI_5)
 
-    objDBConnectV8108120S2 = DBConnect()
-    objDBConnectV8108120S2.insert("V810-8120S2", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                    objFormValidatorItem.itemAmount,
-                                    objFormValidatorV8108120S2.prog, objFormValidatorV8108120S2.test,
-                                    objFormValidatorV8108120S2.linecapa, objFormValidatorV8108120S2.epi,
-                                    objFormValidatorV8108120S2.baan1, objFormValidatorV8108120S2.comments,
-                                    objFormValidatorV8108120S2.uph85, objFormValidatorV8108120S2.uph95,
-                                    objFormValidatorV8108120S2.uph95Time, objFormValidatorV8108120S2.flagValidator)
-    objDBConnectV8108120S2.closeDB()
+#    objDBConnectV8108120S2 = DBConnect()
+#    objDBConnectV8108120S2.insert("V810-8120S2", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+#                                    objFormValidatorItem.itemAmount,
+#                                    objFormValidatorV8108120S2.prog, objFormValidatorV8108120S2.test,
+#                                    objFormValidatorV8108120S2.linecapa, objFormValidatorV8108120S2.epi,
+#                                    objFormValidatorV8108120S2.baan1, objFormValidatorV8108120S2.comments,
+#                                    objFormValidatorV8108120S2.uph85, objFormValidatorV8108120S2.uph95,
+#                                    objFormValidatorV8108120S2.uph95Time, objFormValidatorV8108120S2.flagValidator)
+#    objDBConnectV8108120S2.closeDB()
 
-    objFormValidatorV849 = FormValidation()
-    objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
-                                      objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
-                                      objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
-                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
-                                      objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
-                                      objCheckboxMenu5DX0.EI_8.get())
-    objFormValidatorV849.cleanUp(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
-                                    objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
-                                    objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
-                                    objCheckboxMenu5DX0.EI_6, objCheckboxMenu5DX0.EI_7,
-                                    objCheckboxMenu5DX0.EI_8)
+#    objFormValidatorV849 = FormValidation()
+#    objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
+#                                      objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
+#                                      objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
+#                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
+#                                      objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
+#                                      objCheckboxMenu5DX0.EI_8.get())
+#    objFormValidatorV849.cleanUp(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
+#                                    objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
+#                                    objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
+#                                    objCheckboxMenu5DX0.EI_6, objCheckboxMenu5DX0.EI_7,
+#                                    objCheckboxMenu5DX0.EI_8)
 
-    objFormValidatorV817 = FormValidation()
-    objFormValidatorV817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
-                                      objCheckboxMenu5DX1.CI_2.get(), objCheckboxMenu5DX1.CI_3.get(),
-                                      objCheckboxMenu5DX1.CI_4.get(), objCheckboxMenu5DX1.EI_5.get(),
-                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
-                                      objCheckboxMenu5DX1.EI_6.get(), objCheckboxMenu5DX1.EI_7.get(),
-                                      objCheckboxMenu5DX1.EI_8.get())
-    objFormValidatorV817.cleanUp(objCheckboxMenu5DX1.EI_0, objCheckboxMenu5DX1.EI_1,
-                                    objCheckboxMenu5DX1.CI_2, objCheckboxMenu5DX1.CI_3,
-                                    objCheckboxMenu5DX1.CI_4, objCheckboxMenu5DX1.EI_5,
-                                    objCheckboxMenu5DX1.EI_6, objCheckboxMenu5DX1.EI_7,
-                                    objCheckboxMenu5DX1.EI_8)
+#    objFormValidatorV817 = FormValidation()
+#    objFormValidatorV817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
+#                                      objCheckboxMenu5DX1.CI_2.get(), objCheckboxMenu5DX1.CI_3.get(),
+#                                      objCheckboxMenu5DX1.CI_4.get(), objCheckboxMenu5DX1.EI_5.get(),
+#                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
+#                                      objCheckboxMenu5DX1.EI_6.get(), objCheckboxMenu5DX1.EI_7.get(),
+#                                      objCheckboxMenu5DX1.EI_8.get())
+#    objFormValidatorV817.cleanUp(objCheckboxMenu5DX1.EI_0, objCheckboxMenu5DX1.EI_1,
+#                                    objCheckboxMenu5DX1.CI_2, objCheckboxMenu5DX1.CI_3,
+#                                    objCheckboxMenu5DX1.CI_4, objCheckboxMenu5DX1.EI_5,
+#                                    objCheckboxMenu5DX1.EI_6, objCheckboxMenu5DX1.EI_7,
+#                                    objCheckboxMenu5DX1.EI_8)
 
-    objDBConnect5DX = DBConnect()
-    objDBConnect5DX.insert("V849_V817", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                    objFormValidatorItem.itemAmount,
+#    objDBConnect5DX = DBConnect()
+#    objDBConnect5DX.insert("V849_V817", objFormValidatorItem.flagInit, objFormValidatorItem.item,
+#                                    objFormValidatorItem.itemAmount,
 
-                                    objFormValidatorV849.prog, objFormValidatorV849.test,
-                                    objFormValidatorV849.linecapa, objFormValidatorV849.epi,
-                                    objFormValidatorV849.baan1, objFormValidatorV849.comments,
-                                    objFormValidatorV849.uph85, objFormValidatorV849.uph95,
-                                    objFormValidatorV849.uph95Time, objFormValidatorV849.flagValidator,
-                                    objFormValidatorV849.alignTime, objFormValidatorV849.laserTime,
-                                    objFormValidatorV849.thicknessTime, objFormValidatorV849.totalTime,
+#                                    objFormValidatorV849.prog, objFormValidatorV849.test,
+#                                    objFormValidatorV849.linecapa, objFormValidatorV849.epi,
+#                                    objFormValidatorV849.baan1, objFormValidatorV849.comments,
+#                                    objFormValidatorV849.uph85, objFormValidatorV849.uph95,
+#                                    objFormValidatorV849.uph95Time, objFormValidatorV849.flagValidator,
+#                                    objFormValidatorV849.alignTime, objFormValidatorV849.laserTime,
+#                                    objFormValidatorV849.thicknessTime, objFormValidatorV849.totalTime,
 
-                                    objFormValidatorV817.flagValidator,
-                                    objFormValidatorV817.prog, objFormValidatorV817.test,
-                                    objFormValidatorV817.linecapa, objFormValidatorV817.epi,
-                                    objFormValidatorV817.baan1, objFormValidatorV817.comments,
-                                    objFormValidatorV817.uph85, objFormValidatorV817.uph95,
-                                    objFormValidatorV817.uph95Time,
-                                    objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
-                                    objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime
-                           )
-    objDBConnect5DX.closeDB()
-    if objDBConnectV8103553S2EX.flagSucceeded or \
-            objDBConnectV8103483S2EX.flagSucceeded or \
-            objDBConnectV8103163.flagSucceeded or \
-            objDBConnectV8108120S2.flagSucceeded or \
-            objDBConnect5DX.flagSucceeded:
-        objTipNew = Tip(root, objNewItemEx.mainFrameInsert)
-        objTipNew.animateTip()
+#                                    objFormValidatorV817.flagValidator,
+#                                    objFormValidatorV817.prog, objFormValidatorV817.test,
+#                                    objFormValidatorV817.linecapa, objFormValidatorV817.epi,
+#                                    objFormValidatorV817.baan1, objFormValidatorV817.comments,
+#                                    objFormValidatorV817.uph85, objFormValidatorV817.uph95,
+#                                    objFormValidatorV817.uph95Time,
+#                                    objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
+#                                    objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime
+#                           )
+#    objDBConnect5DX.closeDB()
+#    if objDBConnectV8103553S2EX.flagSucceeded or \
+#            objDBConnectV8103483S2EX.flagSucceeded or \
+#            objDBConnectV8103163.flagSucceeded or \
+#            objDBConnectV8108120S2.flagSucceeded or \
+#            objDBConnect5DX.flagSucceeded:
+#        objTipNew = Tip(root, objNewItemEx.mainFrameInsert)
+#        objTipNew.animateTip()
 
 
 
 #--- INSERT ---
+
 objNewItemEx = NewItem(tab2, root)
 objNewItemEx.mainFrameInsert(" Insert Main ")
 
@@ -1624,13 +1838,17 @@ objCheckboxMenu5DX1 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " In
 objCheckboxMenu5DX1.checkboxMenu("V817", 2)
 objCheckboxMenu5DX1.alignmentTime()
 
-BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=55, command=insertButton, cursor="hand2")
-BI1.grid(row=1, column=0, columnspan=4, pady=2)
+#BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=55, command=insertButton, cursor="hand2")
+#BI1.grid(row=1, column=0, columnspan=4, pady=2)
+BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=35, command=insertButton, cursor="hand2")
+BI1.grid(row=1, column=0, columnspan=2, pady=2)
+BI2 = ttk.Button(objNewItemEx.mainFrameInsert, text="Reset", width=15, command=reset, cursor="hand2")
+BI2.grid(row=1, column=2, columnspan=2, pady=2)
 #--- The End INSERT ---
 
 
 #--- Search ---
-ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#302928", fg="#FFFFFF")
+ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
 ESearch.config(font=("Arial", 10))
 ESearch.grid(row=0, column=0, pady=1)
 ESearch.bind("<Button-3>", doPopupSearch)
