@@ -11,8 +11,6 @@ class CheckboxMenu:
         self.checkboxFrame = frame
         self.description = description
 
-
-
         self.insertFrame = ttk.LabelFrame(self.checkboxFrame, text=self.description)
         self.LI_0 = Label(self.insertFrame, text="Program name:",
                           width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
@@ -84,7 +82,6 @@ class CheckboxMenu:
         self.LI_6.config(font=("Arial", 10))
         self.LI_6.grid(row=3, column=0, sticky=W)
         self.EI_6 = Entry(self.insertFrame, relief="solid",
-                          #textvariable=self.objCM.captureEntry,
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI_6.config(font=("Arial", 10))
         self.EI_6.grid(row=3, column=1, pady=1)
@@ -93,7 +90,6 @@ class CheckboxMenu:
         self.LI_7.config(font=("Arial", 10))
         self.LI_7.grid(row=4, column=0, sticky=W)
         self.EI_7 = Entry(self.insertFrame, relief="solid",
-                          #textvariable=self.objCM.captureEntry,
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI_7.config(font=("Arial", 10))
         self.EI_7.grid(row=4, column=1, pady=1)
@@ -102,7 +98,6 @@ class CheckboxMenu:
         self.LI_8.config(font=("Arial", 10))
         self.LI_8.grid(row=5, column=0, sticky=W)
         self.EI_8 = Entry(self.insertFrame, relief="solid",
-                          #textvariable=self.objCM.captureEntry,
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI_8.config(font=("Arial", 10))
         self.EI_8.grid(row=5, column=1, pady=1)
@@ -124,4 +119,15 @@ class CheckboxMenu:
         elif self.var.get() == 0:
             self.insertFrame.grid_forget()
 
+    def cleanUp(self):
+        self.EI_0.delete(0, END)
+        self.EI_1.delete(0, END)
+        self.CI_2.current(0)
+        self.CI_3.current(0)
+        self.CI_4.current(0)
+        self.EI_5.delete(0, END)
 
+    def cleanUp5DX(self):
+        self.EI_6.delete(0, END)
+        self.EI_7.delete(0, END)
+        self.EI_8.delete(0, END)
