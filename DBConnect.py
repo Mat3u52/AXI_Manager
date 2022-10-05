@@ -169,7 +169,8 @@ class DBConnect:
                             pass
                             #print(f"From DB:")
                             #print(f"db item: {self.row[1]}")
-                        msgBox = messagebox.askquestion("The record already exist in DB!", f"Existing Item: {self.row[1]}\n\n "
+                        msgBox = messagebox.askquestion(f"The record already exist in DB! - {self.machine}",
+                                                        f"Existing Item: {self.row[1]}\n\n "
                                                         f"Amount of the board in one panel: {self.row[3]}\n\n "
                                                         f"ViTroxEx:\n\n"
                                                         f"V810-3553S2EX: {self.row[54]} Scanning Time: {self.row[52]}\n "
