@@ -158,6 +158,8 @@ class FormValidation:
             self.ci4.current(0)
             self.ei5.delete(0, END)
 
+
+
             if ei6 or ei7 or ei8:
                 self.ei6 = ei6
                 self.ei7 = ei7
