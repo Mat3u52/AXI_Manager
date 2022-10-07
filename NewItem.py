@@ -1,9 +1,6 @@
 from tkinter import ttk
 from tkinter import *
-import tkinter as tk
 from ContextualMenu import ContextualMenu
-from DBConnect import DBConnect
-from Tip import Tip
 
 class NewItem:
     def __init__(self, tab, root):
@@ -40,8 +37,7 @@ class NewItem:
         self.checkboxFrame = ttk.LabelFrame(self.tab, text=self.title0)
         self.checkboxFrame.grid(column=0, row=self.row, sticky='W', padx=10, pady=10)
 
-
-
-
-
+    def cleanUp(self):
+        self.EI2.delete(0, END)
+        self.EI3.delete(0, END)
 
