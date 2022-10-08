@@ -278,7 +278,8 @@ def getSelectedRow(event):
         objNewItemEx.EI2.insert(0, f"{row[1]}")
         objNewItemEx.EI3.insert(0, f"{row[3]}")
 
-        if row[54] != None and (row[52] != None and int(row[52]) > 0):
+        if row[54] != None and \
+                ((row[52] != None and int(row[52]) > 0) or int(row[49])):
             objCheckboxMenuEx0.EI_0.insert(0, f"{row[54]}")
             objCheckboxMenuEx0.EI_1.insert(0, f"{int(row[52])}")
             objCheckboxMenuEx0.CI_2.current(switch(row[55]))
@@ -287,7 +288,8 @@ def getSelectedRow(event):
             objCheckboxMenuEx0.EI_5.insert(0, f"{row[57]}")
             objCheckboxMenuEx0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
 
-        if row[45] != None and (row[43] != None and int(row[43]) > 0):
+        if row[45] != None and \
+                ((row[43] != None and int(row[43]) > 0) or int(row[40])):
             objCheckboxMenuEx1.EI_0.insert(0, f"{row[45]}")
             objCheckboxMenuEx1.EI_1.insert(0, f"{int(row[43])}")
             objCheckboxMenuEx1.CI_2.current(switch(row[46]))
@@ -296,7 +298,8 @@ def getSelectedRow(event):
             objCheckboxMenuEx1.EI_5.insert(0, f"{row[48]}")
             objCheckboxMenuEx1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
 
-        if row[27] != None and (row[15] != None and int(row[15]) > 0):
+        if row[27] != None and \
+                ((row[15] != None and int(row[15]) > 0) or int(row[12])):
             objCheckboxMenuEx2.EI_0.insert(0, f"{row[27]}")
             objCheckboxMenuEx2.EI_1.insert(0, f"{int(row[15])}")
             objCheckboxMenuEx2.CI_2.current(switch(row[28]))
@@ -305,7 +308,8 @@ def getSelectedRow(event):
             objCheckboxMenuEx2.EI_5.insert(0, f"{row[30]}")
             objCheckboxMenuEx2.insertFrame.grid(column=0, row=5 + 3, columnspan=10, sticky='W', padx=10, pady=10)
 
-        if row[31] != None and (row[37] != None and int(row[37]) > 0):
+        if row[31] != None and \
+                ((row[37] != None and int(row[37]) > 0) or int(row[39])):
             objCheckboxMenuXXL0.EI_0.insert(0, f"{row[31]}")
             objCheckboxMenuXXL0.EI_1.insert(0, f"{int(row[37])}")
             objCheckboxMenuXXL0.CI_2.current(switch(row[32]))
@@ -314,9 +318,10 @@ def getSelectedRow(event):
             objCheckboxMenuXXL0.EI_5.insert(0, f"{row[34]}")
             objCheckboxMenuXXL0.insertFrame.grid(column=0, row=5 + 5, columnspan=10, sticky='W', padx=10, pady=10)
 
-        if (row[17] != None and row[17] != '') and (row[5] != None and int(row[5]) > 0):
+        if (row[17] != None and row[17] != '') and \
+                ((row[5] != None and int(row[5]) > 0) or int(row[4])):
             objCheckboxMenu5DX0.EI_0.insert(0, f"{row[17]}")
-            objCheckboxMenu5DX0.EI_1.insert(0, f"{int(row[5])}")
+            objCheckboxMenu5DX0.EI_1.insert(0, f"{int(row[10])}")
             objCheckboxMenu5DX0.CI_2.current(switch(row[18]))
             objCheckboxMenu5DX0.CI_3.current(switch(row[19]))
             objCheckboxMenu5DX0.CI_4.current(switch(row[11]))
@@ -326,9 +331,10 @@ def getSelectedRow(event):
             objCheckboxMenu5DX0.EI_8.insert(0, f"{int(row[9])}")
             objCheckboxMenu5DX0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
 
-        if (row[22] != None and row[22] != '') and (row[5] != None and int(row[5]) > 0):
+        if (row[22] != None and row[22] != '') and \
+                ((row[5] != None and int(row[5]) > 0) or int(row[4])):
             objCheckboxMenu5DX1.EI_0.insert(0, f"{row[22]}")
-            objCheckboxMenu5DX1.EI_1.insert(0, f"{int(row[5])}")
+            objCheckboxMenu5DX1.EI_1.insert(0, f"{int(row[10])}")
             objCheckboxMenu5DX1.CI_2.current(switch(row[23]))
             objCheckboxMenu5DX1.CI_3.current(switch(row[24]))
             objCheckboxMenu5DX1.CI_4.current(switch(row[11]))
@@ -344,6 +350,7 @@ def getSelectedRow(event):
         LQty.configure(text=f"Qty:")
         LDate.configure(text=f"Inserted:")
 
+# ---getSelectedRow 5DX V849---
         if int(len(str(row[17]))) > 4:
             tabControlMain.add(tabMain1, text=" V849 ")
             LV849Prog.configure(text=f"{row[17]}")
@@ -387,6 +394,7 @@ def getSelectedRow(event):
             canvas1.pack(expand=False)
 
             if os.path.isfile('5DX/images/V849/' + row[17] + '.png') == False:
+            #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png') == False:
                 resizeImage('5DX/images/V849/' + row[17] + '.jpg')
                 #resizeImage('Y:/5DX/images/V849/' + row[17] + '.jpg')
 
@@ -466,12 +474,12 @@ def getSelectedRow(event):
             canvas2.pack(expand=False)
 
             if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
+            #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png') == False:
                 resizeImage('5DX/images/V817/' + row[22] + '.jpg')
                 #resizeImage('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain2)
-                #resizeImage('5DX/images/V817/' + row[22] + '.jpg')
                 if flagClick == False:
                     try:
                         if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
@@ -503,7 +511,8 @@ def getSelectedRow(event):
 #---The End getSelectedRow 5DX V817---
 #---getSelectedRow V810-3163--
         #if len(str(row[27])) > 4:
-        if row[27] != None and int(row[15]) != 0:
+        if row[27] != None and \
+                ((int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])):
             tabControlMain.add(tabMain3, text=" V810-3163 ")
             LV8103163Prog.configure(text=f"{row[27]}")
             LV8103163ScanTimeL.configure(text=f"Scan Time:")
@@ -514,13 +523,25 @@ def getSelectedRow(event):
             LV8103163EPIL.configure(text=f"EPI:")
             LV8103163CommentL.configure(text=f"Comment:")
             LV8103163ScanTime.configure(text=f"{int(row[15])} + 15 in/out = {int(row[15]+15)}s.")
-            LV8103163UPH85.configure(text=f"{row[12]} ({round(60/int(row[12]), 4)}), "
+            try:
+                LV8103163UPH85.configure(text=f"{row[12]} ({round(60/int(row[12]), 4)}), "
                                               f"Panel: {round((3600/int(row[12]) * int(row[3])))}s. "
                                               f"Board: {round((3600/int(row[12])), 4)}s."
                                          )
-            LV8103163UPH95.configure(text=f"{row[14]} ({round(60/int(row[14]), 4)}), "
+            except ZeroDivisionError:
+                LV8103163UPH85.configure(text=f"0, "
+                                              f"Panel: 0s. "
+                                              f"Board: 0s."
+                                         )
+            try:
+                LV8103163UPH95.configure(text=f"{row[14]} ({round(60/int(row[14]), 4)}), "
                                               f"Panel: {round((3600/int(row[14])*int(row[3])))}s. "
                                               f"Board: {round((3600/int(row[14])), 4)}s."
+                                         )
+            except ZeroDivisionError:
+                LV8103163UPH95.configure(text=f"0, "
+                                              f"Panel: 0s. "
+                                              f"Board: 0s."
                                          )
             if str(row[16]) == 'YES':
                 LV8103163Baan.configure(text=f"{row[16]}", fg="#AAAAAA")
@@ -545,7 +566,6 @@ def getSelectedRow(event):
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain3)
-                #animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
                 if flagClick == False:
                     try:
                         #animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
@@ -569,7 +589,9 @@ def getSelectedRow(event):
 #---The End getSelectedRow V810-3163---
 
 #---getSelectedRow V810-V3483S2EX---
-        if row[45] != None and int(row[41]) != 0:
+        #if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
+        if row[45] != None and \
+                ((row[43] != None and int(row[43]) > 0) or int(row[40])):
             tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
             LV8103483S2EXProg.configure(text=f"{row[45]}")
             LV8103483S2EXScanTimeL.configure(text=f"Scan Time:")
@@ -634,7 +656,9 @@ def getSelectedRow(event):
 #--- The End getSelectedRow V810-3483S2EX ---
 
 #--- getSelectedRow V810-3553S2EX ---
-        if len(str(row[54])) > 0 and row[54] != None:
+        #if (len(str(row[54])) > 0 and row[54] != None) and (int(row[50]) != 0 or int(row[49]) != 0):
+        if row[54] != None and \
+                ((row[52] != None and int(row[52]) > 0) or int(row[49])):
             tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
             LV8103553S2EXScanTimeL.configure(text=f"Scan Time: ")
@@ -700,7 +724,9 @@ def getSelectedRow(event):
 #--- The End getSelectedRow V810-3553S2EX ---
 
 #--- getSelectedRow V810-8120S2 ---
-        if row[31] != None and int(row[37] != 0):
+        #if row[31] != None and (int(row[37] != 0) or int(row[39]) != 0):
+        if row[31] != None and \
+                ((row[37] != None and int(row[37]) > 0) or int(row[39])):
             tabControlMain.add(tabMain6, text=" V810-8120S2 ")
             LV8108120S2Prog.configure(text=f"{row[31]}")
             LV8108120S2ScanTimeL.configure(text=f"Scan Time:")
@@ -780,72 +806,8 @@ def getSelectedRow(event):
             elif content[1] == 'ViTrox XXL I':
                 tabControlMain.select(tabMain6)
 
-        #objTip.destroyTip()
         root.mainloop()
 
-
-
-
-
-
-
-#def updateDisplay():
-#    if int(tab[0]) >= 0:
-#        objDB = DBConnect()
-#        objDB.update(tab[0], E2.get(), E3.get(), E4.get(), E5.get(), LCViTroxIV.get(), EPIViTroxIV.get(),
-#                    BAANViTroxIV.get(), E6.get())
-#        objDB.closeDB()
-        #tree.delete(1)
-        #selected_item = tree.selection()[0]
-        #tree.item(selected_item, text=E2.get(), values=("foo", "bar")) #<-- in values I have to download data from DB
-#        refresh()
-#def insertData():
-#    objDB = DBConnect()
-#    objDB.insert(EI2.get(), EI3.get(),
-#                 EIV8103553S2EX_0.get(), EIV8103553S2EX_1.get(), CIV8103553S2EX_2.get(),
-#                 CIV8103553S2EX_3.get(), CIV8103553S2EX_4.get(), EIV8103553S2EX_5.get(),
-
-#                 EIV8103483S2EX_0.get(), EIV8103483S2EX_1.get(), CIV8103483S2EX_2.get(),
-#                 CIV8103483S2EX_3.get(), CIV8103483S2EX_4.get(), EIV8103483S2EX_5.get(),
-
-#                 EIV8103163_0.get(), EIV8103163_1.get(), CIV8103163_2.get(),
-#                 CIV8103163_3.get(), CIV8103163_4.get(), EIV8103163_5.get()
-#                 )
-#    objDB.closeDB()
-
-#    objTipNew = Tip(root, mainFrameInsert)
-#    objTipNew.animateTip()
-
-
-
-#--- CleanUp "Entry" & "Combobox" ---
-#    EI2.delete(0, END)
-#    EI3.delete(0, END)
-#--- ViTrox IV ---
-    #EIV8103553S2EX_0.delete(0, END)
-    #EIV8103553S2EX_1.delete(0, END)
-    #EIV8103553S2EX_5.delete(0, END)
-    #CIV8103553S2EX_2.current(0)
-    #CIV8103553S2EX_3.current(0)
-    #CIV8103553S2EX_4.current(0)
-#--- The End ViTrox IV ---
-#--- ViTrox III ---
-    #EIV8103483S2EX_0.delete(0, END)
-    #EIV8103483S2EX_1.delete(0, END)
-    #EIV8103483S2EX_5.delete(0, END)
-    #CIV8103483S2EX_2.current(0)
-    #CIV8103483S2EX_3.current(0)
-    #CIV8103483S2EX_4.current(0)
-#--- The End ViTrox III ---
-# --- ViTrox I ---
-    #EIV8103163_0.delete(0, END)
-    #EIV8103163_1.delete(0, END)
-    #EIV8103163_5.delete(0, END)
-    #CIV8103163_2.current(0)
-    #CIV8103163_3.current(0)
-    #CIV8103163_4.current(0)
-# --- The End ViTrox I ---
-#--- The End CleanUp "Entry" & "Combobox" ---
 
     #refresh()
 def search():
@@ -866,7 +828,6 @@ def refresh():
         tree.delete(record)
 
     objDB = DBConnect()
-    #objDB.closeDB()
 
 #---Create striped row tags---
     tree.tag_configure('DX', background="#222222")
@@ -916,22 +877,30 @@ def refresh():
                                 f"{row[23]}", f"{row[24]}"), tags=('DX'))
         count1 += 3
         #if len(str(row[27])) > 4: # !!!!!!!!!!!!!!!!!!!!!! it is different than other
-        if row[27] != None and int(row[15]) != 0:
+        #if row[27] != None and (int(row[15]) != 0 or int(row[14]) != 0):
+        if row[27] != None and \
+                ((int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])):
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
                                 f"{row[28]}", f"{row[29]}"), tags=('V'))
         count1 += 4
-        if row[45] != None and int(row[41]) != 0:
+        #if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
+        if row[45] != None and \
+                ((row[43] != None and int(row[43]) > 0) or int(row[40])):
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}",
                                 f"{row[46]}", f"{row[47]}"), tags=('V'))
         count1 += 4
-        if row[54] != None and int(row[50]) != 0:
+        #if row[54] != None and (int(row[50]) != 0 or int(row[49]) != 0):
+        if row[54] != None and \
+                ((row[52] != None and int(row[52]) > 0) or int(row[49])):
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}",
                                 f"{row[55]}", f"{row[56]}"), tags=('V'))
         count1 += 5
-        if row[31] != None and int(row[37] != 0):
+        #if row[31] != None and (int(row[37]) != 0 or int(row[39]) != 0):
+        if row[31] != None and \
+                ((row[37] != None and int(row[37]) > 0) or int(row[39])):
             tree.insert(folder1, index='end', iid=count1, text=f'',
                         values=(f'{row[0]}', f"ViTrox XXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}",
                                 f"{row[32]}", f"{row[33]}"), tags=('V'))
@@ -946,20 +915,9 @@ def refresh():
     objDB.closeDB()
 # ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=535, y=27, height=423)
+    vsb.place(x=625, y=27, height=423)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
-#def getSelectedTab(event):
-    #print("click")
-#    if tabMain1:
-        #print("1")
-#        canvasFrame1 = Label(tabMain1)
-#        canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
-#        canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
-#        canvas1.configure(bg="#444444")
-#        canvas1.pack(expand=False)
-
-#        animateImage(root, canvas1, minMovement, minMovement, 'images/V849/board.png')
 
 def doPopupSearch(event):
     try:
@@ -967,162 +925,28 @@ def doPopupSearch(event):
     finally:
         contextSearchMenu.grab_release()
 
-#def doPopupInsert(event):
-    #print(event.x_root)
-#    try:
-#        contextInsertMenu.tk_popup(event.x_root, event.y_root)
-#    finally:
-#        contextInsertMenu.grab_release()
-
-#def doPopupInsertNameV8103553S2EX(event):
-#    try:
-#        contextInsertNameMenuV8103553S2EX.tk_popup(event.x_root, event.y_root)
-#    finally:
-#        contextInsertNameMenuV8103553S2EX.grab_release()
-
-#def doPopupInsertNameV8103483S2EX(event):
-#    try:
-#        contextInsertNameMenuV8103483S2EX.tk_popup(event.x_root, event.y_root)
-#    finally:
-#        contextInsertNameMenuV8103483S2EX.grab_release()
-
-#def doPopupInsertNameV8103163(event):
-#    try:
-#        contextInsertNameMenuV8103163.tk_popup(event.x_root, event.y_root)
-#    finally:
-#        contextInsertNameMenuV8103163.grab_release()
-
-#def doPopupUpdate(event):
-#    try:
-#        contextUpdateMenu.tk_popup(event.x_root, event.y_root)
-#    finally:
-#        contextUpdateMenu.grab_release()
-
-#def doPopupUpdateName(event):
-#    try:
-#        contextUpdateNameMenu.tk_popup(event.x_root, event.y_root)
-#    finally:
-#        contextUpdateNameMenu.grab_release()
 
 def contextCopyESearch():
     pyperclip.copy(ESearch.get())
 def contextPasteESearch():
     ESearch.insert(tk.END, pyperclip.paste())
 
-#def contextCopyEI2():
-#    pyperclip.copy(EI2.get())
-#def contextPasteEI2():
-#    EI2.insert(tk.END, pyperclip.paste())
-
-#def contextCopyEIV8103553S2EX_0():
-#    pyperclip.copy(EIV8103553S2EX_0.get())
-#def contextPasteEIV8103553S2EX_0():
-#    EIV8103553S2EX_0.insert(tk.END, pyperclip.paste())
-
-#def contextCopyEIV8103483S2EX_0():
-#    pyperclip.copy(EIV8103483S2EX_0.get())
-#def contextPasteEIV8103483S2EX_0():
-#    EIV8103483S2EX_0.insert(tk.END, pyperclip.paste())
-
-#def contextCopyEIV8103163_0():
-#    pyperclip.copy(EIV8103163_0.get())
-#def contextPasteEIV8103163_0():
-#    EIV8103163_0.insert(tk.END, pyperclip.paste())
-
-#def contextCopyE2():
-#    pyperclip.copy(E2.get())
-#def contextPasteE2():
-#    E2.insert(tk.END, pyperclip.paste())
-
-#def contextCopyE4():
-#    pyperclip.copy(E4.get())
-#def contextPasteE4():
-#    E4.insert(tk.END, pyperclip.paste())
-
-#def checkboxInsert():
-
-#    if varV8103553S2EX.get() == 1:
-#        print(varV8103553S2EX.get())
-#        insertFrameV8103553S2EX.grid(column=0, row=5, columnspan=10, sticky='W', padx=10, pady=10)
-#    elif varV8103553S2EX.get() == 0:
-#        print(varV8103553S2EX.get())
-#        insertFrameV8103553S2EX.grid_forget()
-
-#    if varV8103483S2EX.get() == 3:
-#        print(varV8103483S2EX.get())
-#        insertFrameV8103483S2EX.grid(column=0, row=6, columnspan=10, sticky='W', padx=10, pady=10)
-#    elif varV8103483S2EX.get() == 2:
-#        print(varV8103483S2EX.get())
-#        insertFrameV8103483S2EX.grid_forget()
-
-#    if varV8103163.get() == 5:
-#        print(varV8103163.get())
-#        insertFrameV8103163.grid(column=0, row=7, columnspan=10, sticky='W', padx=10, pady=10)
-#    elif varV8103163.get() == 4:
-#        print(varV8103163.get())
-#        insertFrameV8103163.grid_forget()
-
-
-    #if (var1.get() == 1) & (var2.get() == 0):
-    #    l.config(text='I love Python ')
-    #elif (var1.get() == 0) & (var2.get() == 1):
-    #    l.config(text='I love C++')
-    #elif (var1.get() == 0) & (var2.get() == 0):
-    #    l.config(text='I do not anything')
-    #else:
-    #   l.config(text='I love both')
-
-#!!!!!test
-#def delete():
-   # Get selected item to Delete
-#   selected_item = tree.selection()[0]
-#   tree.delete(selected_item)
-
 root = tk.Tk()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
-x = (ws-660)
+x = (ws-690)
 y = (hs-820)
-windowPosition = f'660x820+{int(x)}+{int(y)}'
+windowPosition = f'690x820+{int(x)}+{int(y)}'
 root.title('AXI - Manager')
 root.geometry(windowPosition)
 #root.resizable(0, 0)
+#root.iconbitmap("AXI_ManagerIcon.ico")
 root.configure(background='#000000')
 
 #--- contex menu - right click menu ---
 contextSearchMenu = Menu(root, tearoff=0)
 contextSearchMenu.add_command(label="Copy", command=contextCopyESearch)
 contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
-
-
-
-
-#print(tab)
-
-#contextInsertMenu = Menu(root, tearoff=0)
-#contextInsertMenu.add_command(label="Copy", command=contextCopyEI2)
-#contextInsertMenu.add_command(label="Paste", command=contextPasteEI2)
-
-#contextInsertNameMenuV8103553S2EX = Menu(root, tearoff=0)
-#contextInsertNameMenuV8103553S2EX.add_command(label="Copy", command=contextCopyEIV8103553S2EX_0)
-#contextInsertNameMenuV8103553S2EX.add_command(label="Paste", command=contextPasteEIV8103553S2EX_0)
-
-#contextInsertNameMenuV8103483S2EX = Menu(root, tearoff=0)
-#contextInsertNameMenuV8103483S2EX.add_command(label="Copy", command=contextCopyEIV8103483S2EX_0)
-#contextInsertNameMenuV8103483S2EX.add_command(label="Paste", command=contextPasteEIV8103483S2EX_0)
-
-#contextInsertNameMenuV8103163 = Menu(root, tearoff=0)
-#contextInsertNameMenuV8103163.add_command(label="Copy", command=contextCopyEIV8103163_0)
-#contextInsertNameMenuV8103163.add_command(label="Paste", command=contextPasteEIV8103163_0)
-
-#contextUpdateMenu = Menu(root, tearoff=0)
-#contextUpdateMenu.add_command(label="Copy", command=contextCopyE2)
-#contextUpdateMenu.add_command(label="Paste", command=contextPasteE2)
-
-#contextUpdateNameMenu = Menu(root, tearoff=0)
-#contextUpdateNameMenu.add_command(label="Copy", command=contextCopyE4)
-#contextUpdateNameMenu.add_command(label="Paste", command=contextPasteE4)
-#--- The End contex menu - right click nemu ---
 
 
 #--- Main View ---
@@ -1578,232 +1402,6 @@ style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheigh
 style.map('Treeview', background=[('selected', '#46464A')])
 #--- The End Style ---
 
-#--- UPDATE ---
-
-#mainFrame = ttk.LabelFrame(tab3, text=" Update Main ")
-#mainFrame.grid(column=0, row=0, columnspan=10, sticky='W', padx=10, pady=10)
-
-#L1 = Label(mainFrame, text="ID:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L1.config(font=("Arial", 10))
-#L2 = Label(mainFrame, text="Item:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L2.config(font=("Arial", 10))
-#L3 = Label(mainFrame, text="Qty:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L3.config(font=("Arial", 10))
-
-#--- Update ViTrox V810-3553S2EX ---
-
-#updateFrameVIV = ttk.LabelFrame(tab3, text=" Update ViTrox V810 Ex III ( V810-3553S2EX ) ")
-#updateFrameVIV.grid(column=0, row=1, columnspan=10, sticky='W', padx=10, pady=10)
-
-#L4 = Label(updateFrameVIV, text="Program name:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L4.config(font=("Arial", 10))
-#L5 = Label(updateFrameVIV, text="Scanning Time:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L5.config(font=("Arial", 10))
-#L6 = Label(updateFrameVIV, text="LC:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L6.config(font=("Arial", 10))
-#L7 = Label(updateFrameVIV, text="EPI:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L7.config(font=("Arial", 10))
-#L8 = Label(updateFrameVIV, text="BAAN:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L8.config(font=("Arial", 10))
-#L9 = Label(updateFrameVIV, text="Comments:", width=12, borderwidth=1, relief="solid", bg="#302928", fg="#555555", pady="1")
-#L9.config(font=("Arial", 10))
-
-#L1.grid(row=0, column=0, sticky=W)
-#L2.grid(row=1, column=0, sticky=W)
-#L3.grid(row=1, column=2, sticky=W)
-#L4.grid(row=0, column=0, sticky=W)
-#L5.grid(row=0, column=2, sticky=W)
-#L6.grid(row=1, column=0, sticky=W)
-#L7.grid(row=1, column=2, sticky=W)
-#L8.grid(row=2, column=0, sticky=W)
-#L9.grid(row=2, column=2, sticky=W)
-
-#E1 = Entry(mainFrame, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
-#E1.config(font=("Arial", 10))
-#E1.grid(row=0, column=1, pady=1, sticky=W)
-#E2 = Entry(mainFrame, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
-#E2.config(font=("Arial", 10))
-#E2.grid(row=1, column=1, pady=1)
-#E2.bind("<Button-3>", doPopupUpdate)
-#E3 = Entry(mainFrame, relief="solid", borderwidth=1, width=10, bg="#302928", fg="#FFFFFF")
-#E3.config(font=("Arial", 10))
-#E3.grid(row=1, column=5, pady=1)
-#E4 = Entry(updateFrameVIV, relief="solid", borderwidth=1, width=35, bg="#302928", fg="#FFFFFF")
-#E4.config(font=("Arial", 10))
-#E4.grid(row=0, column=1, pady=1)
-#E4.bind("<Button-3>", doPopupUpdateName)
-#E5 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
-#E5.config(font=("Arial", 10))
-#E5.grid(row=0, column=3, pady=1)
-#E6 = Entry(updateFrameVIV, relief="solid", borderwidth=1, bg="#302928", fg="#FFFFFF")
-#E6.config(font=("Arial", 10))
-#E6.grid(row=2, column=3, pady=1)
-
-#LC = tk.StringVar
-#LCViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=LC, state='readonly')
-#LCViTroxIV['values'] = ("NONE","YES","NO","LACK")
-#LCViTroxIV.grid(row=1, column=1, pady=1, sticky=W)
-#LCViTroxIV.current(0)
-#EPI = tk.StringVar
-#EPIViTroxIV = ttk.Combobox(updateFrameVIV, width=20, textvariable=EPI, state='readonly')
-#EPIViTroxIV['values'] = ("NONE", "YES", "NO", "LACK")
-#EPIViTroxIV.grid(row=1, column=3, pady=1, sticky=W)
-#EPIViTroxIV.current(0)
-#BAAN = tk.StringVar
-#BAANViTroxIV = ttk.Combobox(updateFrameVIV, width=37, textvariable=BAAN, state='readonly')
-#BAANViTroxIV['values'] = ("NONE", "YES", "NO", "LACK")
-#BAANViTroxIV.grid(row=2, column=1, pady=1, sticky=W)
-#BAANViTroxIV.current(0)
-
-#B1 = ttk.Button(updateFrameVIV, text="Update", width=50, command=updateDisplay, cursor="hand2")
-#B1.grid(row=3, column=0, columnspan=4, pady=2)
-#--- The End of the UPDATE section ---
-
-
-#def computeUPH(totalScaningTime, capability, qtyPCB):
-#    uph = floor((3600 / (float(totalScaningTime) + 15) * (float(capability) / 100))) * int(qtyPCB)
-#    return uph
-#def convertUPHToTime(uph, qtyPCB):
-#    cycleTime = ((3600 / float(uph)) / int(qtyPCB))
-#    return cycleTime
-
-#def insertButton():
-#    objFormValidatorItem = FormValidation()
-#    objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
-#    objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
-
-#    objFormValidatorV8103553S2EX = FormValidation()
-#    objFormValidatorV8103553S2EX.validator(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
-#                                            objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
-#                                            objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
-#                                            objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-#    objFormValidatorV8103553S2EX.cleanUp(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
-#                                            objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
-#                                            objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
-
-#    objDBConnectV8103553S2EX = DBConnect()
-#    objDBConnectV8103553S2EX.insert("V810-3553S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-#                                    objFormValidatorItem.itemAmount,
-#                                    objFormValidatorV8103553S2EX.prog, objFormValidatorV8103553S2EX.test,
-#                                    objFormValidatorV8103553S2EX.linecapa, objFormValidatorV8103553S2EX.epi,
-#                                    objFormValidatorV8103553S2EX.baan1, objFormValidatorV8103553S2EX.comments,
-#                                    objFormValidatorV8103553S2EX.uph85, objFormValidatorV8103553S2EX.uph95,
-#                                    objFormValidatorV8103553S2EX.uph95Time, objFormValidatorV8103553S2EX.flagValidator)
-#    objDBConnectV8103553S2EX.closeDB()
-
-#    objFormValidatorV8103483S2EX = FormValidation()
-#    objFormValidatorV8103483S2EX.validator(objCheckboxMenuEx1.EI_0.get(), objCheckboxMenuEx1.EI_1.get(),
-#                                           objCheckboxMenuEx1.CI_2.get(), objCheckboxMenuEx1.CI_3.get(),
-#                                           objCheckboxMenuEx1.CI_4.get(), objCheckboxMenuEx1.EI_5.get(),
-#                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-#    objFormValidatorV8103483S2EX.cleanUp(objCheckboxMenuEx1.EI_0, objCheckboxMenuEx1.EI_1,
-#                                         objCheckboxMenuEx1.CI_2, objCheckboxMenuEx1.CI_3,
-#                                         objCheckboxMenuEx1.CI_4, objCheckboxMenuEx1.EI_5)
-
-#    objDBConnectV8103483S2EX = DBConnect()
-#    objDBConnectV8103483S2EX.insert("V810-3483S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-#                                    objFormValidatorItem.itemAmount,
-#                                    objFormValidatorV8103483S2EX.prog, objFormValidatorV8103483S2EX.test,
-#                                    objFormValidatorV8103483S2EX.linecapa, objFormValidatorV8103483S2EX.epi,
-#                                    objFormValidatorV8103483S2EX.baan1, objFormValidatorV8103483S2EX.comments,
-#                                    objFormValidatorV8103483S2EX.uph85, objFormValidatorV8103483S2EX.uph95,
-#                                    objFormValidatorV8103483S2EX.uph95Time, objFormValidatorV8103483S2EX.flagValidator)
-#    objDBConnectV8103483S2EX.closeDB()
-
-#    objFormValidatorV8103163 = FormValidation()
-#    objFormValidatorV8103163.validator(objCheckboxMenuEx2.EI_0.get(), objCheckboxMenuEx2.EI_1.get(),
-#                                           objCheckboxMenuEx2.CI_2.get(), objCheckboxMenuEx2.CI_3.get(),
-#                                           objCheckboxMenuEx2.CI_4.get(), objCheckboxMenuEx2.EI_5.get(),
-#                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-#    objFormValidatorV8103163.cleanUp(objCheckboxMenuEx2.EI_0, objCheckboxMenuEx2.EI_1,
-#                                         objCheckboxMenuEx2.CI_2, objCheckboxMenuEx2.CI_3,
-#                                         objCheckboxMenuEx2.CI_4, objCheckboxMenuEx2.EI_5)
-
-#    objDBConnectV8103163 = DBConnect()
-#    objDBConnectV8103163.insert("V810-3163", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-#                                    objFormValidatorItem.itemAmount,
-#                                    objFormValidatorV8103163.prog, objFormValidatorV8103163.test,
-#                                    objFormValidatorV8103163.linecapa, objFormValidatorV8103163.epi,
-#                                    objFormValidatorV8103163.baan1, objFormValidatorV8103163.comments,
-#                                    objFormValidatorV8103163.uph85, objFormValidatorV8103163.uph95,
-#                                    objFormValidatorV8103163.uph95Time, objFormValidatorV8103163.flagValidator)
-#    objDBConnectV8103163.closeDB()
-
-#    objFormValidatorV8108120S2 = FormValidation()
-#    objFormValidatorV8108120S2.validator(objCheckboxMenuXXL0.EI_0.get(), objCheckboxMenuXXL0.EI_1.get(),
-#                                           objCheckboxMenuXXL0.CI_2.get(), objCheckboxMenuXXL0.CI_3.get(),
-#                                           objCheckboxMenuXXL0.CI_4.get(), objCheckboxMenuXXL0.EI_5.get(),
-#                                           objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
-#    objFormValidatorV8108120S2.cleanUp(objCheckboxMenuXXL0.EI_0, objCheckboxMenuXXL0.EI_1,
-#                                         objCheckboxMenuXXL0.CI_2, objCheckboxMenuXXL0.CI_3,
-#                                         objCheckboxMenuXXL0.CI_4, objCheckboxMenuXXL0.EI_5)
-
-#    objDBConnectV8108120S2 = DBConnect()
-#    objDBConnectV8108120S2.insert("V810-8120S2", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-#                                    objFormValidatorItem.itemAmount,
-#                                    objFormValidatorV8108120S2.prog, objFormValidatorV8108120S2.test,
-#                                    objFormValidatorV8108120S2.linecapa, objFormValidatorV8108120S2.epi,
-#                                    objFormValidatorV8108120S2.baan1, objFormValidatorV8108120S2.comments,
-#                                    objFormValidatorV8108120S2.uph85, objFormValidatorV8108120S2.uph95,
-#                                    objFormValidatorV8108120S2.uph95Time, objFormValidatorV8108120S2.flagValidator)
-#    objDBConnectV8108120S2.closeDB()
-
-#    objFormValidatorV849 = FormValidation()
-#    objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
-#                                      objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
-#                                      objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
-#                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
-#                                      objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
-#                                      objCheckboxMenu5DX0.EI_8.get())
-#    objFormValidatorV849.cleanUp(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
-#                                    objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
-#                                    objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
-#                                    objCheckboxMenu5DX0.EI_6, objCheckboxMenu5DX0.EI_7,
-#                                    objCheckboxMenu5DX0.EI_8)
-
-#    objFormValidatorV817 = FormValidation()
-#    objFormValidatorV817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
-#                                      objCheckboxMenu5DX1.CI_2.get(), objCheckboxMenu5DX1.CI_3.get(),
-#                                      objCheckboxMenu5DX1.CI_4.get(), objCheckboxMenu5DX1.EI_5.get(),
-#                                      objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
-#                                      objCheckboxMenu5DX1.EI_6.get(), objCheckboxMenu5DX1.EI_7.get(),
-#                                      objCheckboxMenu5DX1.EI_8.get())
-#    objFormValidatorV817.cleanUp(objCheckboxMenu5DX1.EI_0, objCheckboxMenu5DX1.EI_1,
-#                                    objCheckboxMenu5DX1.CI_2, objCheckboxMenu5DX1.CI_3,
-#                                    objCheckboxMenu5DX1.CI_4, objCheckboxMenu5DX1.EI_5,
-#                                    objCheckboxMenu5DX1.EI_6, objCheckboxMenu5DX1.EI_7,
-#                                    objCheckboxMenu5DX1.EI_8)
-
-#    objDBConnect5DX = DBConnect()
-#    objDBConnect5DX.insert("V849_V817", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-#                                    objFormValidatorItem.itemAmount,
-
-#                                    objFormValidatorV849.prog, objFormValidatorV849.test,
-#                                    objFormValidatorV849.linecapa, objFormValidatorV849.epi,
-#                                    objFormValidatorV849.baan1, objFormValidatorV849.comments,
-#                                    objFormValidatorV849.uph85, objFormValidatorV849.uph95,
-#                                    objFormValidatorV849.uph95Time, objFormValidatorV849.flagValidator,
-#                                    objFormValidatorV849.alignTime, objFormValidatorV849.laserTime,
-#                                    objFormValidatorV849.thicknessTime, objFormValidatorV849.totalTime,
-
-#                                    objFormValidatorV817.flagValidator,
-#                                    objFormValidatorV817.prog, objFormValidatorV817.test,
-#                                    objFormValidatorV817.linecapa, objFormValidatorV817.epi,
-#                                    objFormValidatorV817.baan1, objFormValidatorV817.comments,
-#                                    objFormValidatorV817.uph85, objFormValidatorV817.uph95,
-#                                    objFormValidatorV817.uph95Time,
-#                                    objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
-#                                    objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime
-#                           )
-#    objDBConnect5DX.closeDB()
-#    if objDBConnectV8103553S2EX.flagSucceeded or \
-#            objDBConnectV8103483S2EX.flagSucceeded or \
-#            objDBConnectV8103163.flagSucceeded or \
-#            objDBConnectV8108120S2.flagSucceeded or \
-#            objDBConnect5DX.flagSucceeded:
-#        objTipNew = Tip(root, objNewItemEx.mainFrameInsert)
-#        objTipNew.animateTip()
-
 
 
 #--- INSERT ---
@@ -1838,8 +1436,6 @@ objCheckboxMenu5DX1 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " In
 objCheckboxMenu5DX1.checkboxMenu("V817", 2)
 objCheckboxMenu5DX1.alignmentTime()
 
-#BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=55, command=insertButton, cursor="hand2")
-#BI1.grid(row=1, column=0, columnspan=4, pady=2)
 BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=35, command=insertButton, cursor="hand2")
 BI1.grid(row=1, column=0, columnspan=2, pady=2)
 BI2 = ttk.Button(objNewItemEx.mainFrameInsert, text="Reset", width=15, command=reset, cursor="hand2")
@@ -1863,12 +1459,12 @@ tree = ttk.Treeview(tab1)
 tree["columns"] = ("one", "two", "three", "Four", "Five", "Six", "Seven")
 tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
 tree.column("one", width=35, minwidth=35, stretch=tk.NO)
-tree.column("two", width=190, minwidth=190, stretch=tk.NO)
-tree.column("three", width=130, minwidth=130, stretch=tk.NO)
-tree.column("Four", width=30, minwidth=30, stretch=tk.NO)
-tree.column("Five", width=35, minwidth=30, stretch=tk.NO)
-tree.column("Six", width=35, minwidth=30, stretch=tk.NO)
-tree.column("Seven", width=35, minwidth=30, stretch=tk.NO)
+tree.column("two", width=250, minwidth=190, stretch=tk.NO)
+tree.column("three", width=140, minwidth=130, stretch=tk.NO)
+tree.column("Four", width=35, minwidth=30, stretch=tk.NO)
+tree.column("Five", width=40, minwidth=30, stretch=tk.NO)
+tree.column("Six", width=40, minwidth=30, stretch=tk.NO)
+tree.column("Seven", width=40, minwidth=30, stretch=tk.NO)
 
 tree.heading("#0", text="Box", anchor=tk.W)
 tree.heading("one", text="ID", anchor=tk.W)
