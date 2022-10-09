@@ -89,7 +89,6 @@ class DBConnect:
             self.status = initStatus
             self.item = initItem
             self.itemAmount = initAmount
-            #messagebox.showwarning("OK!", f"Flag Item: {initStatus}\n Flag prog: {initStatusDevice}")
             self.flag = False
 
             self.devices = ('V849_V817', 'V810-3163', 'V810-3483S2EX', 'V810-3553S2EX', 'V810-8120S2')
@@ -159,39 +158,128 @@ class DBConnect:
 
             for self.machine in self.devices:
                 if self.machine == self.device:
-                    #print(self.device)
-                    #print(self.status)
-                    #print(self.item)
-                    #print(self.itemAmount)
-
                     if self.selectSearchItem(self.item):
                         for self.row in self.selectSearchItem(self.item):
                             pass
-                            #print(f"From DB:")
-                            #print(f"db item: {self.row[1]}")
                         msgBox = messagebox.askquestion(f"The record already exist in DB! - {self.machine}",
-                                                        f"Existing Item: {self.row[1]}\n\n "
+                                                        f"Existing Item: {self.row[1]} [  {self.row[0]} ]\n\n "
                                                         f"Amount of the board in one panel: {self.row[3]}\n\n "
                                                         f"ViTroxEx:\n\n"
                                                         f"V810-3553S2EX: {self.row[54]} Scanning Time: {self.row[52]}\n "
-                                                        f"V810-3483S2EX: {self.row[45]} Scanning Time: {self.row[50]}\n "
+                                                        f"V810-3483S2EX: {self.row[45]} Scanning Time: {self.row[41]}\n "
                                                         f"V810-3163: {self.row[27]} Scanning Time: {self.row[13]}\n "
                                                         f"\n\nViTrox XXL:\n\n"
                                                         f"V810-8120S2: {self.row[31]} Scanning Time: {self.row[35]}\n "
                                                         f"\n\n5DX:\n\n"
                                                         f"V849: {self.row[17]}\n" 
                                                         f"V817: {self.row[22]}\n\n "
-                                                        f"A:{self.row[7]} M:{self.row[8]} Th:{self.row[9]} T:{self.row[5]} \n\n"
+                                                        f"A:{self.row[7]} M:{self.row[8]} Th:{self.row[9]} T:{self.row[10]} \n\n"
                                                         f"Do you want to update the record?")
                         if msgBox == 'yes':
-                            print("update!!!!!!!")
+                            if self.device == 'V810-3553S2EX':
+                                self.V8103553S2EXProg = initProg
+                                self.V8103553S2EXTest = initTest
+                                self.V8103553S2EXLinecapa = initLinecapa
+                                self.V8103553S2EXEPI = initEPI
+                                self.V8103553S2EXBAAN1 = initBAAN1
+                                self.V8103553S2EXComments = initComments
+                                self.V8103553S2EXUPH85 = initUPH85
+                                self.V8103553S2EXUPH95 = initUPH95
+                                self.V8103553S2EXUPH95Time = initUPH95Time
+
+                                if self.V8103553S2EXProg != "" and int(self.V8103553S2EXTest) > 0:
+                                    self._updateV8103553S2EX(self.row[0])
+
+                            elif self.device == 'V810-3483S2EX':
+                                self.V8103483S2EXProg = initProg
+                                self.V8103483S2EXTest = initTest
+                                self.V8103483S2EXLinecapa = initLinecapa
+                                self.V8103483S2EXEPI = initEPI
+                                self.V8103483S2EXBAAN1 = initBAAN1
+                                self.V8103483S2EXComments = initComments
+                                self.V8103483S2EXUPH85 = initUPH85
+                                self.V8103483S2EXUPH95 = initUPH95
+                                self.V8103483S2EXUPH95Time = initUPH95Time
+
+                                if self.V8103483S2EXProg != "" and int(self.V8103483S2EXTest) > 0:
+                                    self._updateV8103483S2EX(self.row[0])
+
+                            elif self.device == 'V810-8120S2':
+                                self.V8108120S2Prog = initProg
+                                self.V8108120S2Test = initTest
+                                self.V8108120S2Linecapa = initLinecapa
+                                self.V8108120S2EPI = initEPI
+                                self.V8108120S2BAAN1 = initBAAN1
+                                self.V8108120S2Comments = initComments
+                                self.V8108120S2UPH85 = initUPH85
+                                self.V8108120S2UPH95 = initUPH95
+                                self.V8108120S2UPH95Time = initUPH95Time
+
+                                if self.V8108120S2Prog != "" and int(self.V8108120S2Test) > 0:
+                                    self._updateV8108120S2(self.row[0])
+
+                            elif self.device == 'V810-3163':
+                                self.V8103163Prog = initProg
+                                self.V8103163Test = initTest
+                                self.V8103163Linecapa = initLinecapa
+                                self.V8103163EPI = initEPI
+                                self.V8103163BAAN1 = initBAAN1
+                                self.V8103163Comments = initComments
+                                self.V8103163UPH85 = initUPH85
+                                self.V8103163UPH95 = initUPH95
+                                self.V8103163UPH95Time = initUPH95Time
+
+                                if self.V8103163Prog != "" and int(self.V8103163Test) > 0:
+                                    self._updateV8103163(self.row[0])
+
+                            elif self.device == 'V849_V817':
+
+                                self.V849Prog = initProg
+                                self.V849Linecapa = initLinecapa
+                                self.V849EPI = initEPI
+                                self.V849Comments = initComments
+                                self.V849HEX = ""
+
+                                self.V817Prog = initProg5DX
+                                self.V817Linecapa = initLinecapa5DX
+                                self.V817EPI = initEPI5DX
+                                self.V817Comments = initComments5DX
+                                self.V817HEX = ""
+
+                                if initTotalTest >= initTotalTest5DX:
+                                    # 5dx 1
+                                    self.dxAlign = initAlignTime
+                                    self.dxMap = initLaserTime
+                                    self.dxAutoThickness = initThicknessTime
+                                    self.dxTest = initTest
+
+                                    self.dxUPH85 = initUPH85
+                                    self.dxUPH95Time = initUPH95Time
+                                    self.dxUPH95 = initUPH95
+
+                                else:
+                                    # 5dx 2
+                                    self.dxAlign = initAlignTime5DX
+                                    self.dxMap = initLaserTime5DX
+                                    self.dxAutoThickness = initThicknessTime5DX
+                                    self.dxTest = initTest5DX
+
+                                    self.dxUPH85 = initUPH855DX
+                                    self.dxUPH95Time = initUPH95Time5DX
+                                    self.dxUPH95 = initUPH955DX
+
+                                if int(self.switch(initBAAN1)) >= int(self.switch(initBAAN15DX)):
+                                    self.dxBAAN1 = initBAAN1
+                                else:
+                                    self.dxBAAN1 = initBAAN15DX
+
+                            if (self.V849Prog != "" or self.V817Prog != "") and int(self.dxTest) > 0:
+                                self._updateV849V817(self.row[0])
+
                             self.flagSucceeded = True
-                        else:
-                            print("NOT update")
 
                         self.flag = True
                     else:
-                        #print("not exist")
                         if self.device == 'V810-3553S2EX':
                             self.V8103553S2EXProg = initProg
                             self.V8103553S2EXTest = initTest
@@ -246,21 +334,8 @@ class DBConnect:
                             self.V817Comments = initComments5DX
                             self.V817HEX = ""
 
-                            #print(self.V849Prog)
-                            #print(self.V849Linecapa)
-                            #print(self.V849EPI)
-                            #print(self.V849Comments)
-                            #print(self.V849HEX)
-
-                            #print(self.V817Prog)
-                            #print(self.V817Linecapa)
-                            #print(self.V817EPI)
-                            #print(self.V817Comments)
-                            #print(self.V817HEX)
-
                             if initTotalTest >= initTotalTest5DX:
                                 #5dx 1
-
                                 self.dxAlign = initAlignTime
                                 self.dxMap = initLaserTime
                                 self.dxAutoThickness = initThicknessTime
@@ -272,7 +347,6 @@ class DBConnect:
 
                             else:
                                 #5dx 2
-
                                 self.dxAlign = initAlignTime5DX
                                 self.dxMap = initLaserTime5DX
                                 self.dxAutoThickness = initThicknessTime5DX
@@ -283,26 +357,14 @@ class DBConnect:
                                 self.dxUPH95 = initUPH955DX
 
                             if int(self.switch(initBAAN1)) >= int(self.switch(initBAAN15DX)):
-                                self.initBAAN1 = initBAAN1
+                                self.dxBAAN1 = initBAAN1
                             else:
-                                self.initBAAN1 = initBAAN15DX
+                                self.dxBAAN1 = initBAAN15DX
 
-                            #print(self.initBAAN1)
-
-                            #print(self.dxAlign)
-                            #print(self.dxMap)
-                            #print(self.dxAutoThickness)
-                            #print(self.dxTest)
-                            #print(self.dxUPH85)
-                            #print(self.dxUPH95)
-                            #print(self.dxUPH95Time)
-
-                        #messagebox.showwarning("Awesome!", "The record is added :)")
                         self.flagSucceeded = True
                         self.flag = False
+                        self._insert()
 
-
-            #self._insert()
 
 
     def _insert(self):
@@ -349,7 +411,75 @@ class DBConnect:
         self.dbCursor.execute(sql, val)
         self.db.commit()
 
-    def _update(self):
+    def _updateV8103553S2EX(self, id):
+        self.ID = id
+        sql = "UPDATE mk_diary SET " \
+              "VITROXIV_PROG = %s, VITROXIV_TEST = %s, VITROXIV_LINECAPA = %s," \
+              " VITROXIV_EPI = %s, VITROXIV_BAAN1 = %s, VITROXIV_COMMENTS = %s, VITROXIV_BAAN = %s," \
+              " VITROXIV_DSVR = %s, VITROXIV_TIME = %s WHERE ITEM_ID = %s"
+        val = (
+            self.V8103553S2EXProg, self.V8103553S2EXTest, self.V8103553S2EXLinecapa, self.V8103553S2EXEPI,
+            self.V8103553S2EXBAAN1, self.V8103553S2EXComments, self.V8103553S2EXUPH85, self.V8103553S2EXUPH95,
+            self.V8103553S2EXUPH95Time, self.ID
+        )
+        self.dbCursor.execute(sql, val)
+        self.db.commit()
+    def _updateV8103483S2EX(self, id):
+        self.ID = id
+        sql = "UPDATE mk_diary SET " \
+              " VITROXIII_PROG = %s, VITROXIII_TEST = %s, VITROXIII_LINECAPA = %s," \
+              " VITROXIII_EPI = %s, VITROXIII_BAAN1 = %s, VITROXIII_COMMENTS = %s, VITROXIII_BAAN = %s," \
+              " VITROXIII_DSVR = %s, VITROXIII_TIME = %s WHERE ITEM_ID = %s"
+        val = (
+            self.V8103483S2EXProg, self.V8103483S2EXTest, self.V8103483S2EXLinecapa, self.V8103483S2EXEPI,
+            self.V8103483S2EXBAAN1, self.V8103483S2EXComments, self.V8103483S2EXUPH85, self.V8103483S2EXUPH95,
+            self.V8103483S2EXUPH95Time, self.ID
+        )
+        self.dbCursor.execute(sql, val)
+        self.db.commit()
+    def _updateV8108120S2(self, id):
+        self.ID = id
+        sql = "UPDATE mk_diary SET " \
+              " VITROXII_PROG = %s, VITROXII_TEST = %s, VITROXII_LINECAPA = %s," \
+              " VITROXII_EPI = %s, VITROXII_BAAN1 = %s, VITROXII_COMMENTS = %s, VITROXII_BAAN = %s," \
+              " VITROXII_DSVR = %s, VITROXII_TIME = %s WHERE ITEM_ID = %s"
+        val = (
+            self.V8108120S2Prog, self.V8108120S2Test, self.V8108120S2Linecapa, self.V8108120S2EPI,
+            self.V8108120S2BAAN1, self.V8108120S2Comments, self.V8108120S2UPH85, self.V8108120S2UPH95,
+            self.V8108120S2UPH95Time, self.ID
+        )
+        self.dbCursor.execute(sql, val)
+        self.db.commit()
+    def _updateV8103163(self, id):
+        self.ID = id
+        sql = "UPDATE mk_diary SET " \
+              " VITROXI_PROG = %s, VITROX_TEST = %s, VITROXI_LINECAPA = %s," \
+              " VITROXI_EPI = %s, VITROX_BAAN1 = %s, VITROXI_COMMENTS = %s, VITROX_BAAN = %s," \
+              " VITROX_DSVR = %s, VITROX_TIME = %s WHERE ITEM_ID = %s"
+        val = (
+            self.V8103163Prog, self.V8103163Test, self.V8103163Linecapa, self.V8103163EPI,
+            self.V8103163BAAN1, self.V8103163Comments, self.V8103163UPH85, self.V8103163UPH95,
+            self.V8103163UPH95Time, self.ID
+        )
+        self.dbCursor.execute(sql, val)
+        self.db.commit()
+    def _updateV849V817(self, id):
+        self.ID = id
+        sql = "UPDATE mk_diary SET " \
+                " 5DX_BAAN = %s, 5DX_TIME = %s, 5DX_DSVR = %s, 5DX_ALIGN = %s, 5DX_MAP = %s, 5DX_AUTO_THICKNESS = %s," \
+                " 5DX_TEST = %s, 5DX_BAAN1 = %s, 5DXI_PROG = %s, 5DXI_LINECAPA = %s, 5DXI_EPI = %s," \
+                " 5DXI_COMMENTS = %s, HEXI = %s, 5DXII_PROG = %s, 5DXII_LINECAPA = %s, 5DXII_EPI = %s," \
+                " 5DXII_COMMENTS = %s, HEXII = %s WHERE ITEM_ID = %s"
+        val = (
+            self.dxUPH85, self.dxUPH95Time, self.dxUPH95, self.dxAlign, self.dxMap, self.dxAutoThickness,
+            self.dxTest, self.dxBAAN1, self.V849Prog, self.V849Linecapa, self.V849EPI, self.V849Comments,
+            self.V849HEX, self.V817Prog, self.V817Linecapa, self.V817EPI, self.V817Comments, self.V817HEX,
+            self.ID
+        )
+        self.dbCursor.execute(sql, val)
+        self.db.commit()
+    def _update(self, id):
+        self.ID = id
         sql = "UPDATE mk_diary SET ITEM = %s, ITEM_AMOUNT = %s, " \
                   "VITROXIV_PROG = %s, VITROXIV_TEST = %s, VITROXIV_LINECAPA = %s," \
                   " VITROXIV_EPI = %s, VITROXIV_BAAN1 = %s, VITROXIV_COMMENTS = %s, VITROXIV_BAAN = %s," \
@@ -366,7 +496,8 @@ class DBConnect:
                   " 5DX_BAAN = %s, 5DX_TIME = %s, 5DX_DSVR = %s, 5DX_ALIGN = %s, 5DX_MAP = %s, 5DX_AUTO_THICKNESS = %s," \
                   " 5DX_TEST = %s, 5DX_BAAN1 = %s, 5DXI_PROG = %s, 5DXI_LINECAPA = %s, 5DXI_EPI = %s," \
                   " 5DXI_COMMENTS = %s, HEXI = %s, 5DXII_PROG = %s, 5DXII_LINECAPA = %s, 5DXII_EPI = %s," \
-                  " 5DXII_COMMENTS = %s, HEXII = %s"
+                  " 5DXII_COMMENTS = %s, HEXII = %s" \
+                  " WHERE ITEM_ID = %s"
         val = (
                 self.item, self.itemAmount,
 
@@ -388,7 +519,9 @@ class DBConnect:
 
                 self.dxUPH85, self.dxUPH95Time, self.dxUPH95, self.dxAlign, self.dxMap, self.dxAutoThickness,
                 self.dxTest, self.dxBAAN1, self.V849Prog, self.V849Linecapa, self.V849EPI, self.V849Comments,
-                self.V849HEX, self.V817Prog, self.V817Linecapa, self.V817EPI, self.V817Comments, self.V817HEX
+                self.V849HEX, self.V817Prog, self.V817Linecapa, self.V817EPI, self.V817Comments, self.V817HEX,
+
+                self.ID
 
         )
         self.dbCursor.execute(sql, val)
