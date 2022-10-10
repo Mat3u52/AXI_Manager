@@ -74,7 +74,7 @@ class FormValidation:
                     self.thicknessTime = 0
 
                 self.hex = ""
-
+                print(self.test)
                 self.totalTime = int(self.test) + int(self.alignTime) + int(self.laserTime) + int(self.thicknessTime)
 
                 if (self._computeUPH(int(self.totalTime), 85, int(self.itemAmount)) > 0) and \
@@ -122,7 +122,6 @@ class FormValidation:
         else:
             return 0
 
-
     def _convertUPHToTime(self, uph, qtyPCB):
         if uph > 0 and qtyPCB > 0:
             self.uph = uph
@@ -138,8 +137,6 @@ class FormValidation:
             self.ei3 = ei3
             self.ei2.delete(0, END)
             self.ei3.delete(0, END)
-        else:
-            pass
 
     def cleanUp(self, ei0, ei1, ci2, ci3, ci4, ei5, ei6=0, ei7=0, ei8=0):
         if (self.flagValidator is True) \
@@ -158,8 +155,6 @@ class FormValidation:
             self.ci4.current(0)
             self.ei5.delete(0, END)
 
-
-
             if ei6 or ei7 or ei8:
                 self.ei6 = ei6
                 self.ei7 = ei7
@@ -167,5 +162,3 @@ class FormValidation:
                 self.ei6.delete(0, END)
                 self.ei7.delete(0, END)
                 self.ei8.delete(0, END)
-        else:
-            pass
