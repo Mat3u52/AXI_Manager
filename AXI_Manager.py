@@ -1,4 +1,6 @@
 import _tkinter
+from Config import Config
+from Styles import Styles
 from math import *
 from DBConnect import DBConnect
 from Tip import Tip
@@ -363,14 +365,22 @@ def getSelectedRow(event):
             LV849CommentL.configure(text=f"Comment:")
             LV849ScanTime.configure(text=f"{int(row[7])+int(row[8])+int(row[9])+int(row[10])}"
                                          f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
-            LV849UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
-                                      f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
-                                      f"Board: {round((3600/int(row[4])), 4)}s."
-                                 )
-            LV849UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
-                                      f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
-                                      f"Board: {round((3600/int(row[6])), 4)}s."
-                                 )
+            try:
+                LV849UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
+                                        f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
+                                        f"Board: {round((3600/int(row[4])), 4)}s.")
+            except ZeroDivisionError:
+                LV849UPH85.configure(text=f"(0), "
+                                          f"Panel: 0 s. "
+                                          f"Board: 0 s.")
+            try:
+                LV849UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
+                                        f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
+                                        f"Board: {round((3600/int(row[6])), 4)}s.")
+            except ZeroDivisionError:
+                LV849UPH95.configure(text=f"(0), "
+                                          f"Panel: 0 s. "
+                                          f"Board: 0 s.")
             if str(row[11]) == 'YES':
                 LV849Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
             else:
@@ -393,22 +403,27 @@ def getSelectedRow(event):
             canvas1.configure(bg="#444444")
             canvas1.pack(expand=False)
 
-            if os.path.isfile('5DX/images/V849/' + row[17] + '.png') == False:
+            #if os.path.isfile('5DX/images/V849/' + row[17] + '.png') == False:
+            if os.path.isfile(objConfig.pathImg5DX1 + row[17] + '.png') == False:
             #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png') == False:
-                resizeImage('5DX/images/V849/' + row[17] + '.jpg')
+                #resizeImage('5DX/images/V849/' + row[17] + '.jpg')
+                resizeImage(objConfig.pathImg5DX1 + row[17] + '.jpg')
                 #resizeImage('Y:/5DX/images/V849/' + row[17] + '.jpg')
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain1)
                 if flagClick == False:
                     try:
-                        if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
+                        #if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
+                        if os.path.isfile(objConfig.pathImg5DX1 + row[17] + '.png'):
                         #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png'):
-                            animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                            #animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                            animateImage(root, canvas1, minMovement, minMovement, objConfig.pathImg5DX1 + row[17] + '.png')
                             #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
                         else:
                             try:
-                                animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                                #animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                                animateImage(root, canvas1, minMovement, minMovement, objConfig.pathImg5DX1 + row[17] + '.png')
                                 #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
 
                             except FileNotFoundError:
@@ -418,12 +433,14 @@ def getSelectedRow(event):
 
                 flagAnimation = True
 
-            imgBoard1 = '5DX/images/V849/'+row[17]+'.png'
+            #imgBoard1 = '5DX/images/V849/'+row[17]+'.png'
+            imgBoard1 = objConfig.pathImg5DX1+row[17]+'.png'
             #imgBoard1 = 'Y:/5DX/images/V849/'+row[17]+'.png'
             if os.path.isfile(imgBoard1):
                 img1 = tk.PhotoImage(file=imgBoard1)
             else:
-                img1 = tk.PhotoImage(file='board.png')
+                #img1 = tk.PhotoImage(file='board.png')
+                img1 = tk.PhotoImage(file=objConfig.pathImgDefault)
             canvas1.create_image(85, 85, image=img1)
 
         else:
@@ -444,14 +461,24 @@ def getSelectedRow(event):
             LV817CommentL.configure(text=f"Comment:")
             LV817ScanTime.configure(text=f"{int(row[7])+int(row[8])+int(row[9])+int(row[10])}"
                                          f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
-            LV817UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
+            try:
+                LV817UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
                                           f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
-                                          f"Board: {round((3600/int(row[4])), 4)}s."
-                                     )
-            LV817UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
+                                          f"Board: {round((3600/int(row[4])), 4)}s.")
+            except ZeroDivisionError:
+                LV817UPH85.configure(text=f"(0), "
+                                          f"Panel: 0 s. "
+                                          f"Board: 0 s.")
+
+            try:
+                LV817UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
                                           f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
-                                          f"Board: {round((3600/int(row[6])), 4)}s."
-                                     )
+                                          f"Board: {round((3600/int(row[6])), 4)}s.")
+            except ZeroDivisionError:
+                LV817UPH95.configure(text=f"(0), "
+                                          f"Panel: 0 s. "
+                                          f"Board: 0 s.")
+
             if str(row[11]) == 'YES':
                 LV817Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
             else:
@@ -473,22 +500,27 @@ def getSelectedRow(event):
             canvas2.configure(bg="#444444")
             canvas2.pack(expand=False)
 
-            if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
+            #if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
+            if os.path.isfile(objConfig.pathImg5DX2 + row[22] + '.png') == False:
             #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png') == False:
-                resizeImage('5DX/images/V817/' + row[22] + '.jpg')
+                #resizeImage('5DX/images/V817/' + row[22] + '.jpg')
+                resizeImage(objConfig.pathImg5DX2 + row[22] + '.jpg')
                 #resizeImage('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain2)
                 if flagClick == False:
                     try:
-                        if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
+                        #if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
+                        if os.path.isfile(objConfig.pathImg5DX2 + row[22] + '.png'):
                         #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
-                            animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                            #animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                            animateImage(root, canvas2, minMovement, minMovement, objConfig.pathImg5DX2 + row[22] + '.png')
                             #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
                         else:
                             try:
-                                animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                                #animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                                animateImage(root, canvas2, minMovement, minMovement, objConfig.pathImg5DX2 + row[22] + '.png')
                                 #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
 
                             except FileNotFoundError:
@@ -498,12 +530,14 @@ def getSelectedRow(event):
 
                 flagAnimation = True
 
-            imgBoard2 = '5DX/images/V817/'+row[22]+'.png'
+            #imgBoard2 = '5DX/images/V817/'+row[22]+'.png'
+            imgBoard2 = objConfig.pathImg5DX2+row[22]+'.png'
             #imgBoard2 = 'Y:/5DX/images/V817/'+row[22]+'.png'
             if os.path.isfile(imgBoard2):
                 img2 = tk.PhotoImage(file=imgBoard2)
             else:
-                img2 = tk.PhotoImage(file='board.png')
+                #img2 = tk.PhotoImage(file='board.png')
+                img2 = tk.PhotoImage(file=objConfig.pathImgDefault)
             canvas2.create_image(85, 85, image=img2)
 
         else:
@@ -526,23 +560,19 @@ def getSelectedRow(event):
             try:
                 LV8103163UPH85.configure(text=f"{row[12]} ({round(60/int(row[12]), 4)}), "
                                               f"Panel: {round((3600/int(row[12]) * int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[12])), 4)}s."
-                                         )
+                                              f"Board: {round((3600/int(row[12])), 4)}s.")
             except ZeroDivisionError:
-                LV8103163UPH85.configure(text=f"0, "
+                LV8103163UPH85.configure(text=f"(0), "
                                               f"Panel: 0s. "
-                                              f"Board: 0s."
-                                         )
+                                              f"Board: 0s.")
             try:
                 LV8103163UPH95.configure(text=f"{row[14]} ({round(60/int(row[14]), 4)}), "
                                               f"Panel: {round((3600/int(row[14])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[14])), 4)}s."
-                                         )
+                                              f"Board: {round((3600/int(row[14])), 4)}s.")
             except ZeroDivisionError:
-                LV8103163UPH95.configure(text=f"0, "
+                LV8103163UPH95.configure(text=f"(0), "
                                               f"Panel: 0s. "
-                                              f"Board: 0s."
-                                         )
+                                              f"Board: 0s.")
             if str(row[16]) == 'YES':
                 LV8103163Baan.configure(text=f"{row[16]}", fg="#AAAAAA")
             else:
@@ -569,18 +599,21 @@ def getSelectedRow(event):
                 if flagClick == False:
                     try:
                         #animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
-                        animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+                        #animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+                        animateImage(root, canvas3, minMovement, minMovement, objConfig.pathImgV8103163 + row[27] + '.png')
                     except _tkinter.TclError:
                         pass
 
                 flagAnimation = True
 
-            imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
+            #imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
+            imgBoard3 = objConfig.pathImgV8103163 + row[27] + '.png'
             #imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
             if os.path.isfile(imgBoard3):
                 img3 = tk.PhotoImage(file=imgBoard3)
             else:
-                img3 = tk.PhotoImage(file='board.png')
+                #img3 = tk.PhotoImage(file='board.png')
+                img3 = tk.PhotoImage(file=objConfig.pathImgDefault)
             canvas3.create_image(85, 85, image=img3)
 
         else:
@@ -602,14 +635,23 @@ def getSelectedRow(event):
             LV8103483S2EXEPIL.configure(text=f"EPI:")
             LV8103483S2EXCommentL.configure(text=f"Comment:")
             LV8103483S2EXScanTime.configure(text=f"{int(row[43])} + 15 in/out = {int(row[43]+15)}s.")
-            LV8103483S2EXUPH85.configure(text=f"{row[40]} ({round(60/int(row[40]), 4)}), "
+            try:
+                LV8103483S2EXUPH85.configure(text=f"{row[40]} ({round(60/int(row[40]), 4)}), "
                                               f"Panel: {round((3600/int(row[40])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[40])), 4)}s."
-                                         )
-            LV8103483S2EXUPH95.configure(text=f"{row[42]} ({round(60/int(row[42]), 4)}), "
+                                              f"Board: {round((3600/int(row[40])), 4)}s.")
+            except ZeroDivisionError:
+                LV8103483S2EXUPH85.configure(text=f"(0), "
+                                              f"Panel: 0 s. "
+                                              f"Board: 0 s.")
+
+            try:
+                LV8103483S2EXUPH95.configure(text=f"{row[42]} ({round(60/int(row[42]), 4)}), "
                                               f"Panel: {round((3600/int(row[42])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[42])), 4)}s."
-                                         )
+                                              f"Board: {round((3600/int(row[42])), 4)}s.")
+            except ZeroDivisionError:
+                LV8103483S2EXUPH95.configure(text=f"(0), "
+                                                f"Panel: 0 s. "
+                                                f"Board: 0 s.")
             if str(row[44]) == 'YES':
                 LV8103483S2EXBaan.configure(text=f"{row[44]}", fg="#AAAAAA")
             else:
@@ -636,19 +678,22 @@ def getSelectedRow(event):
                 #animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
                 if flagClick == False:
                     try:
-                        animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                        #animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                        animateImage(root, canvas4, minMovement, minMovement, objConfig.pathImgV8103483S2EX + row[45] + '.png')
                         #animateImage(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
                     except _tkinter.TclError:
                         pass
 
                 flagAnimation = True
 
-            imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
+            #imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
+            imgBoard4 = objConfig.pathImgV8103483S2EX + row[45] + '.png'
             #imgBoard4 = 'X:/images/V810-3483S2EX/' + row[45] + '.png'
             if os.path.isfile(imgBoard4):
                 img4 = tk.PhotoImage(file=imgBoard4)
             else:
-                img4 = tk.PhotoImage(file='board.png')
+                #img4 = tk.PhotoImage(file='board.png')
+                img4 = tk.PhotoImage(file=objConfig.pathImgDefault)
             canvas4.create_image(85, 85, image=img4)
 
         else:
@@ -669,14 +714,23 @@ def getSelectedRow(event):
             LV8103553S2EXEPIL.configure(text=f"EPI:")
             LV8103553S2EXCommentL.configure(text=f"Comment:")
             LV8103553S2EXScanTime.configure(text=f"{int(row[52])} + 15 in/out = {int(row[52]+15)}s.")
-            LV8103553S2EXUPH85.configure(text=f"{row[49]} ({round(60/int(row[49]), 4)}), "
+            try:
+                LV8103553S2EXUPH85.configure(text=f"{row[49]} ({round(60/int(row[49]), 4)}), "
                                               f"Panel: {round((3600/int(row[49])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[49])), 4)}s."
-                                         )
-            LV8103553S2EXUPH95.configure(text=f"{row[51]} ({round(60/int(row[51]), 4)}), "
+                                              f"Board: {round((3600/int(row[49])), 4)}s.")
+            except ZeroDivisionError:
+                LV8103553S2EXUPH85.configure(text=f"(0), "
+                                                  f"Panel: 0 s. "
+                                                  f"Board: 0 s.")
+            try:
+                LV8103553S2EXUPH95.configure(text=f"{row[51]} ({round(60/int(row[51]), 4)}), "
                                               f"Panel: {round((3600/int(row[51])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[51])), 4)}s."
-                                         )
+                                              f"Board: {round((3600/int(row[51])), 4)}s.")
+            except ZeroDivisionError:
+                LV8103553S2EXUPH95.configure(text=f"(0), "
+                                                  f"Panel: 0 s. "
+                                                  f"Board: 0 s.")
+
             if str(row[53]) == 'YES':
                 LV8103553S2EXBaan.configure(text=f"{row[53]}", fg="#AAAAAA")
             else:
@@ -704,19 +758,22 @@ def getSelectedRow(event):
                 #animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
                 if flagClick == False:
                     try:
-                        animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                        #animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                        animateImage(root, canvas5, minMovement, minMovement, objConfig.pathImgV8103553S2EX + row[54] + '.png')
                         #animateImage(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
                     except _tkinter.TclError:
                         pass
 
                 flagAnimation = True
 
-            imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
+            #imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
+            imgBoard5 = objConfig.pathImgV8103553S2EX + row[54] + '.png'
             #imgBoard5 = 'X:/images/V810-3553S2EX/' + row[54] + '.png'
             if os.path.isfile(imgBoard5):
                 img5 = tk.PhotoImage(file=imgBoard5)
             else:
-                img5 = tk.PhotoImage(file='board.png')
+                #img5 = tk.PhotoImage(file='board.png')
+                img5 = tk.PhotoImage(file=objConfig.pathImgDefault)
             canvas5.create_image(85, 85, image=img5)
 
         else:
@@ -737,14 +794,22 @@ def getSelectedRow(event):
             LV8108120S2EPIL.configure(text=f"EPI:")
             LV8108120S2CommentL.configure(text=f"Comment:")
             LV8108120S2ScanTime.configure(text=f"{int(row[37])} + 15 in/out = {int(row[37] + 15)}s.")
-            LV8108120S2UPH85.configure(text=f"{row[39]} ({round(60/int(row[39]), 4)}), "
+            try:
+                LV8108120S2UPH85.configure(text=f"{row[39]} ({round(60/int(row[39]), 4)}), "
                                               f"Panel: {round((3600/int(row[39])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[39])), 4)}s."
-                                         )
-            LV8108120S2UPH95.configure(text=f"{row[36]} ({round(60/int(row[36]), 4)}), "
+                                              f"Board: {round((3600/int(row[39])), 4)}s.")
+            except ZeroDivisionError:
+                LV8108120S2UPH85.configure(text=f"(0), "
+                                                f"Panel: 0 s. "
+                                                f"Board: 0 s.")
+            try:
+                LV8108120S2UPH95.configure(text=f"{row[36]} ({round(60/int(row[36]), 4)}), "
                                               f"Panel: {round((3600/int(row[36])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[36])), 4)}s."
-                                         )
+                                              f"Board: {round((3600/int(row[36])), 4)}s.")
+            except ZeroDivisionError:
+                LV8108120S2UPH95.configure(text=f"(0), "
+                                                f"Panel: 0 s. "
+                                                f"Board: 0 s.")
 
             if str(row[38]) == 'YES':
                 LV8108120S2Baan.configure(text=f"{row[38]}", fg="#AAAAAA")
@@ -772,19 +837,21 @@ def getSelectedRow(event):
                 #animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
                 if flagClick == False:
                     try:
-                        animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                        #animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                        animateImage(root, canvas6, minMovement, minMovement, objConfig.pathImgV8108120S2 + row[31] + '.png')
                         #animateImage(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
                     except _tkinter.TclError:
                         pass
 
                 flagAnimation = True
 
-            imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
+            #imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
+            imgBoard6 = objConfig.pathImgV8108120S2 + row[31] + '.png'
             #imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
             if os.path.isfile(imgBoard6):
                 img6 = tk.PhotoImage(file=imgBoard6)
             else:
-                img6 = tk.PhotoImage(file='board.png')
+                img6 = tk.PhotoImage(file=objConfig.pathImgDefault)
             canvas6.create_image(85, 85, image=img6)
 
         else:
@@ -915,39 +982,22 @@ def refresh():
     objDB.closeDB()
 # ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=625, y=27, height=423)
+    vsb.place(x=objConfig.scrollX, y=objConfig.scrollY, height=objConfig.scrollHeight)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
-def doPopupSearch(event):
-    try:
-        contextSearchMenu.tk_popup(event.x_root, event.y_root)
-    finally:
-        contextSearchMenu.grab_release()
-
-
-def contextCopyESearch():
-    pyperclip.copy(ESearch.get())
-def contextPasteESearch():
-    ESearch.insert(tk.END, pyperclip.paste())
-
 root = tk.Tk()
+objConfig = Config()
 ws = root.winfo_screenwidth() # width of the screen
 hs = root.winfo_screenheight() # height of the screen
-x = (ws-690)
-y = (hs-820)
-windowPosition = f'690x820+{int(x)}+{int(y)}'
-root.title('AXI - Manager')
+x = (ws-int(objConfig.screenWidth))
+y = (hs-int(objConfig.screenHeight))
+windowPosition = f'{int(objConfig.screenWidth)}x{int(objConfig.screenHeight)}+{int(x)}+{int(y)}'
+root.title(objConfig.title)
 root.geometry(windowPosition)
 #root.resizable(0, 0)
 #root.iconbitmap("AXI_ManagerIcon.ico")
-root.configure(background='#000000')
-
-#--- contex menu - right click menu ---
-contextSearchMenu = Menu(root, tearoff=0)
-contextSearchMenu.add_command(label="Copy", command=contextCopyESearch)
-contextSearchMenu.add_command(label="Paste", command=contextPasteESearch)
-
+root.configure(background=objConfig.bgColor)
 
 #--- Main View ---
 
@@ -974,7 +1024,6 @@ tabControlMain = ttk.Notebook(mainFrameView)
 
 tabMain1 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain1, text=" V849 ")
-#tabControlMain.bind('<Button-1>', getSelectedTab)
 
 LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
 LV849Prog.configure(font=("Arial", 10))
@@ -987,14 +1036,12 @@ LV849ScanTime = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849ScanTime.configure(font=("Arial", 10))
 LV849ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
 
-#LV849UPH85L = Label(tabMain1, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV849UPH85L = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849UPH85L.configure(font=("Arial", 10))
 LV849UPH85L.grid(row=2, column=0, sticky=E)
 LV849UPH85 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849UPH85.configure(font=("Arial", 10))
 LV849UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-#LV849UPH95L = Label(tabMain1, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV849UPH95L = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849UPH95L.configure(font=("Arial", 10))
 LV849UPH95L.grid(row=3, column=0, sticky=E)
@@ -1002,7 +1049,6 @@ LV849UPH95 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849UPH95.configure(font=("Arial", 10))
 LV849UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-#LV849BaanL = Label(tabMain1, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
 LV849BaanL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849BaanL.configure(font=("Arial", 10))
 LV849BaanL.grid(row=4, column=0, sticky=E)
@@ -1010,7 +1056,6 @@ LV849Baan = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849Baan.configure(font=("Arial", 10))
 LV849Baan.grid(row=4, column=1, sticky=W)
 
-#LV849LCL = Label(tabMain1, text=f"LC:", bg="#444444", fg="#666666", pady="1")
 LV849LCL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849LCL.configure(font=("Arial", 10))
 LV849LCL.grid(row=4, column=2, sticky=E)
@@ -1018,7 +1063,6 @@ LV849LC = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849LC.configure(font=("Arial", 10))
 LV849LC.grid(row=4, column=3, sticky=W)
 
-#LV849EPIL = Label(tabMain1, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
 LV849EPIL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849EPIL.configure(font=("Arial", 10))
 LV849EPIL.grid(row=4, column=4, sticky=E)
@@ -1026,7 +1070,6 @@ LV849EPI = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV849EPI.configure(font=("Arial", 10))
 LV849EPI.grid(row=4, column=5, sticky=W)
 
-#LV849CommentL = Label(tabMain1, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
 LV849CommentL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
 LV849CommentL.configure(font=("Arial", 10))
 LV849CommentL.grid(row=5, column=0, sticky=E)
@@ -1048,14 +1091,12 @@ LV817ScanTime = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV817ScanTime.configure(font=("Arial", 10))
 LV817ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
 
-#LV817UPH85L = Label(tabMain2, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV817UPH85L = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
 LV817UPH85L.configure(font=("Arial", 10))
 LV817UPH85L.grid(row=2, column=0, sticky=E)
 LV817UPH85 = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV817UPH85.configure(font=("Arial", 10))
 LV817UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-#LV817UPH95L = Label(tabMain2, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV817UPH95L = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
 LV817UPH95L.configure(font=("Arial", 10))
 LV817UPH95L.grid(row=3, column=0, sticky=E)
@@ -1063,7 +1104,6 @@ LV817UPH95 = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV817UPH95.configure(font=("Arial", 10))
 LV817UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-#LV817BaanL = Label(tabMain2, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
 LV817BaanL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
 LV817BaanL.configure(font=("Arial", 10))
 LV817BaanL.grid(row=4, column=0, sticky=E)
@@ -1071,7 +1111,6 @@ LV817Baan = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV817Baan.configure(font=("Arial", 10))
 LV817Baan.grid(row=4, column=1, sticky=W)
 
-#LV817LCL = Label(tabMain2, text=f"LC:", bg="#444444", fg="#666666", pady="1")
 LV817LCL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
 LV817LCL.configure(font=("Arial", 10))
 LV817LCL.grid(row=4, column=2, sticky=E)
@@ -1079,7 +1118,6 @@ LV817LC = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV817LC.configure(font=("Arial", 10))
 LV817LC.grid(row=4, column=3, sticky=W)
 
-#LV817EPIL = Label(tabMain2, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
 LV817EPIL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
 LV817EPIL.configure(font=("Arial", 10))
 LV817EPIL.grid(row=4, column=4, sticky=E)
@@ -1087,7 +1125,6 @@ LV817EPI = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV817EPI.configure(font=("Arial", 10))
 LV817EPI.grid(row=4, column=5, sticky=W)
 
-#LV817CommentL = Label(tabMain2, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
 LV817CommentL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
 LV817CommentL.configure(font=("Arial", 10))
 LV817CommentL.grid(row=5, column=0, sticky=E)
@@ -1109,14 +1146,12 @@ LV8103163ScanTime = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="
 LV8103163ScanTime.configure(font=("Arial", 10))
 LV8103163ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
 
-#LV8103163UPH85L = Label(tabMain3, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV8103163UPH85L = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103163UPH85L.configure(font=("Arial", 10))
 LV8103163UPH85L.grid(row=2, column=0, sticky=E)
 LV8103163UPH85 = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103163UPH85.configure(font=("Arial", 10))
 LV8103163UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-#LV8103163UPH95L = Label(tabMain3, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV8103163UPH95L = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103163UPH95L.configure(font=("Arial", 10))
 LV8103163UPH95L.grid(row=3, column=0, sticky=E)
@@ -1124,7 +1159,6 @@ LV8103163UPH95 = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103163UPH95.configure(font=("Arial", 10))
 LV8103163UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-#LV8103163BaanL = Label(tabMain3, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
 LV8103163BaanL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103163BaanL.configure(font=("Arial", 10))
 LV8103163BaanL.grid(row=4, column=0, sticky=E)
@@ -1132,7 +1166,6 @@ LV8103163Baan = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103163Baan.configure(font=("Arial", 10))
 LV8103163Baan.grid(row=4, column=1, sticky=W)
 
-#LV8103163LCL = Label(tabMain3, text=f"LC:", bg="#444444", fg="#666666", pady="1")
 LV8103163LCL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103163LCL.configure(font=("Arial", 10))
 LV8103163LCL.grid(row=4, column=2, sticky=E)
@@ -1140,7 +1173,6 @@ LV8103163LC = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103163LC.configure(font=("Arial", 10))
 LV8103163LC.grid(row=4, column=3, sticky=W)
 
-#LV8103163EPIL = Label(tabMain3, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
 LV8103163EPIL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103163EPIL.configure(font=("Arial", 10))
 LV8103163EPIL.grid(row=4, column=4, sticky=E)
@@ -1148,7 +1180,6 @@ LV8103163EPI = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103163EPI.configure(font=("Arial", 10))
 LV8103163EPI.grid(row=4, column=5, sticky=W)
 
-#LV8103163CommentL = Label(tabMain3, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
 LV8103163CommentL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103163CommentL.configure(font=("Arial", 10))
 LV8103163CommentL.grid(row=5, column=0, sticky=E)
@@ -1170,14 +1201,12 @@ LV8103483S2EXScanTime = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pa
 LV8103483S2EXScanTime.configure(font=("Arial", 10))
 LV8103483S2EXScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
 
-#LV8103483S2EXUPH85L = Label(tabMain4, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXUPH85L = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXUPH85L.configure(font=("Arial", 10))
 LV8103483S2EXUPH85L.grid(row=2, column=0, sticky=E)
 LV8103483S2EXUPH85 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103483S2EXUPH85.configure(font=("Arial", 10))
 LV8103483S2EXUPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-#LV8103483S2EXUPH95L = Label(tabMain4, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXUPH95L = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXUPH95L.configure(font=("Arial", 10))
 LV8103483S2EXUPH95L.grid(row=3, column=0, sticky=E)
@@ -1185,7 +1214,6 @@ LV8103483S2EXUPH95 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady=
 LV8103483S2EXUPH95.configure(font=("Arial", 10))
 LV8103483S2EXUPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-#LV8103483S2EXBaanL = Label(tabMain4, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXBaanL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXBaanL.configure(font=("Arial", 10))
 LV8103483S2EXBaanL.grid(row=4, column=0, sticky=E)
@@ -1193,7 +1221,6 @@ LV8103483S2EXBaan = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="
 LV8103483S2EXBaan.configure(font=("Arial", 10))
 LV8103483S2EXBaan.grid(row=4, column=1, sticky=W)
 
-#LV8103483S2EXLCL = Label(tabMain4, text=f"LC:", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXLCL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXLCL.configure(font=("Arial", 10))
 LV8103483S2EXLCL.grid(row=4, column=2, sticky=E)
@@ -1201,7 +1228,6 @@ LV8103483S2EXLC = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
 LV8103483S2EXLC.configure(font=("Arial", 10))
 LV8103483S2EXLC.grid(row=4, column=3, sticky=W)
 
-#LV8103483S2EXEPIL = Label(tabMain4, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXEPIL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXEPIL.configure(font=("Arial", 10))
 LV8103483S2EXEPIL.grid(row=4, column=4, sticky=E)
@@ -1209,14 +1235,12 @@ LV8103483S2EXEPI = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1
 LV8103483S2EXEPI.configure(font=("Arial", 10))
 LV8103483S2EXEPI.grid(row=4, column=5, sticky=W)
 
-#LV8103483S2EXCommentL = Label(tabMain4, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXCommentL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103483S2EXCommentL.configure(font=("Arial", 10))
 LV8103483S2EXCommentL.grid(row=5, column=0, sticky=E)
 LV8103483S2EXComment = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103483S2EXComment.configure(font=("Arial", 10, "italic"))
 LV8103483S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
-
 
 tabMain5 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain5, text=" V810-3483S2EX ")
@@ -1232,14 +1256,12 @@ LV8103553S2EXScanTime = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pa
 LV8103553S2EXScanTime.configure(font=("Arial", 10))
 LV8103553S2EXScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
 
-#LV8103553S2EXUPH85L = Label(tabMain5, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH85L = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH85L.configure(font=("Arial", 10))
 LV8103553S2EXUPH85L.grid(row=2, column=0, sticky=E)
 LV8103553S2EXUPH85 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXUPH85.configure(font=("Arial", 10))
 LV8103553S2EXUPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-#LV8103553S2EXUPH95L = Label(tabMain5, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH95L = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXUPH95L.configure(font=("Arial", 10))
 LV8103553S2EXUPH95L.grid(row=3, column=0, sticky=E)
@@ -1247,7 +1269,6 @@ LV8103553S2EXUPH95 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady=
 LV8103553S2EXUPH95.configure(font=("Arial", 10))
 LV8103553S2EXUPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-#LV8103553S2EXBaanL = Label(tabMain5, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXBaanL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXBaanL.configure(font=("Arial", 10))
 LV8103553S2EXBaanL.grid(row=4, column=0, sticky=E)
@@ -1255,7 +1276,6 @@ LV8103553S2EXBaan = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="
 LV8103553S2EXBaan.configure(font=("Arial", 10))
 LV8103553S2EXBaan.grid(row=4, column=1, sticky=W)
 
-#LV8103553S2EXLCL = Label(tabMain5, text=f"LC:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXLCL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXLCL.configure(font=("Arial", 10))
 LV8103553S2EXLCL.grid(row=4, column=2, sticky=E)
@@ -1263,7 +1283,6 @@ LV8103553S2EXLC = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
 LV8103553S2EXLC.configure(font=("Arial", 10))
 LV8103553S2EXLC.grid(row=4, column=3, sticky=W)
 
-#LV8103553S2EXEPIL = Label(tabMain5, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXEPIL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXEPIL.configure(font=("Arial", 10))
 LV8103553S2EXEPIL.grid(row=4, column=4, sticky=E)
@@ -1271,14 +1290,12 @@ LV8103553S2EXEPI = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1
 LV8103553S2EXEPI.configure(font=("Arial", 10))
 LV8103553S2EXEPI.grid(row=4, column=5, sticky=W)
 
-#LV8103553S2EXCommentL = Label(tabMain5, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXCommentL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8103553S2EXCommentL.configure(font=("Arial", 10))
 LV8103553S2EXCommentL.grid(row=5, column=0, sticky=E)
 LV8103553S2EXComment = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8103553S2EXComment.configure(font=("Arial", 10, "italic"))
 LV8103553S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
-
 
 tabMain6 = ttk.Frame(tabControlMain)
 tabControlMain.add(tabMain6, text=" V810-8120S2 ")
@@ -1294,14 +1311,12 @@ LV8108120S2ScanTime = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady
 LV8108120S2ScanTime.configure(font=("Arial", 10))
 LV8108120S2ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
 
-#LV8108120S2UPH85L = Label(tabMain6, text=f"UPH 85%:", bg="#444444", fg="#666666", pady="1")
 LV8108120S2UPH85L = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2UPH85L.configure(font=("Arial", 10))
 LV8108120S2UPH85L.grid(row=2, column=0, sticky=E)
 LV8108120S2UPH85 = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2UPH85.configure(font=("Arial", 10))
 LV8108120S2UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-#LV8108120S2UPH95L = Label(tabMain6, text=f"UPH 95%:", bg="#444444", fg="#666666", pady="1")
 LV8108120S2UPH95L = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2UPH95L.configure(font=("Arial", 10))
 LV8108120S2UPH95L.grid(row=3, column=0, sticky=E)
@@ -1309,7 +1324,6 @@ LV8108120S2UPH95 = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1
 LV8108120S2UPH95.configure(font=("Arial", 10))
 LV8108120S2UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-#LV8108120S2BaanL = Label(tabMain6, text=f"BaaN:", bg="#444444", fg="#666666", pady="1")
 LV8108120S2BaanL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2BaanL.configure(font=("Arial", 10))
 LV8108120S2BaanL.grid(row=4, column=0, sticky=E)
@@ -1317,7 +1331,6 @@ LV8108120S2Baan = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
 LV8108120S2Baan.configure(font=("Arial", 10))
 LV8108120S2Baan.grid(row=4, column=1, sticky=W)
 
-#LV8108120S2LCL = Label(tabMain6, text=f"LC:", bg="#444444", fg="#666666", pady="1")
 LV8108120S2LCL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2LCL.configure(font=("Arial", 10))
 LV8108120S2LCL.grid(row=4, column=2, sticky=E)
@@ -1325,7 +1338,6 @@ LV8108120S2LC = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2LC.configure(font=("Arial", 10))
 LV8108120S2LC.grid(row=4, column=3, sticky=W)
 
-#LV8108120S2EPIL = Label(tabMain6, text=f"EPI:", bg="#444444", fg="#666666", pady="1")
 LV8108120S2EPIL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2EPIL.configure(font=("Arial", 10))
 LV8108120S2EPIL.grid(row=4, column=4, sticky=E)
@@ -1333,7 +1345,6 @@ LV8108120S2EPI = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
 LV8108120S2EPI.configure(font=("Arial", 10))
 LV8108120S2EPI.grid(row=4, column=5, sticky=W)
 
-#LV8108120S2CommentL = Label(tabMain6, text=f"Comment:", bg="#444444", fg="#666666", pady="1")
 LV8108120S2CommentL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
 LV8108120S2CommentL.configure(font=("Arial", 10))
 LV8108120S2CommentL.grid(row=5, column=0, sticky=E)
@@ -1353,53 +1364,55 @@ tab2 = ttk.Frame(tabControl)
 tabControl.add(tab2, text=" New ")
 tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
+objStyles = Styles(root)
 #tab3 = ttk.Frame(tabControl)
 #tabControl.add(tab3, text=" Update ")
 #tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
-style = ttk.Style()
-style.theme_create('style_class',
-                   settings={
-                       'TLabelframe': {
-                           'configure': {
-                               'background': '#333333',
-                               'foreground': '#FFFFFF',
-                               'borderwidth': '10'
-                           }
-                       },
-                       'TLabelframe.Label': {
-                           'configure': {
-                               'background': '#000000',
-                               'foreground': '#FFFFFF'
-                           }
-                       },
 
-                       'TButton':{
-                           'configure':{
-                                'background': '#111111', #302928
-                                'foreground': '#FFFFFF',
-                                'anchor': N,
-                                'font': ("Arial", 12, 'bold'),
-                                'borderwidth': 1,
-                                'relief': "solid"
-                           }
-                       }
-                   }
-                   )
-style.theme_use('style_class')
+#style = ttk.Style()
+#style.theme_create('style_class',
+#                   settings={
+#                       'TLabelframe': {
+#                           'configure': {
+#                               'background': '#333333',
+#                               'foreground': '#FFFFFF',
+#                               'borderwidth': '10'
+#                           }
+#                       },
+#                       'TLabelframe.Label': {
+#                           'configure': {
+#                               'background': '#000000',
+#                               'foreground': '#FFFFFF'
+#                           }
+#                       },
+
+#                       'TButton':{
+#                           'configure':{
+#                                'background': '#111111', #302928
+#                                'foreground': '#FFFFFF',
+#                                'anchor': N,
+#                                'font': ("Arial", 12, 'bold'),
+#                                'borderwidth': 1,
+#                                'relief': "solid"
+#                           }
+#                       }
+#                   }
+#                   )
+#style.theme_use('style_class')
 
 #---Notebook Style---
-noteStyler = ttk.Style()
-noteStyler.configure("TNotebook", background='#555555', borderwidth=0)
-noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
-noteStyler.configure("TFrame", background='#444444', foreground='#FFFFFF', borderwidth=1)
-style.configure("TCombobox", fieldbackground="#333333", background="#302928", borderwidth=0)
-root.option_add("*TCombobox*Listbox*Background", "#302928")
-root.option_add("*TCombobox*Listbox*Foreground", "#AAAAAA")
+#noteStyler = ttk.Style()
+#oteStyler.configure("TNotebook", background='#555555', borderwidth=0)
+#noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
+#noteStyler.configure("TFrame", background='#444444', foreground='#FFFFFF', borderwidth=1)
+#style.configure("TCombobox", fieldbackground="#333333", background="#302928", borderwidth=0)
+#root.option_add("*TCombobox*Listbox*Background", "#302928")
+#root.option_add("*TCombobox*Listbox*Foreground", "#AAAAAA")
 
-style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=40, filedbackground="#777777")
-#style.map('Treeview', background=[('selected', '#170D47')])
-style.map('Treeview', background=[('selected', '#46464A')])
+#style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=40, filedbackground="#777777")
+
+#style.map('Treeview', background=[('selected', '#46464A')])
 #--- The End Style ---
 
 
@@ -1444,10 +1457,15 @@ BI2.grid(row=1, column=2, columnspan=2, pady=2)
 
 
 #--- Search ---
-ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
+objCMSearch = ContextualMenu(root)
+#ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
+ESearch = Entry(tab1, relief="solid", textvariable=objCMSearch.captureEntry,
+                borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
 ESearch.config(font=("Arial", 10))
 ESearch.grid(row=0, column=0, pady=1)
-ESearch.bind("<Button-3>", doPopupSearch)
+#ESearch.bind("<Button-3>", doPopupSearch)
+ESearch.bind("<Button-3>", objCMSearch.doPopup)
+objCMSearch.setEntry(ESearch)
 BSearch = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
 BSearch.grid(row=0, column=1, pady=1)
 BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh, cursor="exchange")
