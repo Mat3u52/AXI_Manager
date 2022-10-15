@@ -1,15 +1,66 @@
 import os
 from Config import Config
 
-class AutomaticUpdates:
+class AutomaticUpdates(Config):
     def __init__(self):
-        pass
+        Config.__init__(self)
+        #super().__init__()
+        self.flag = False
+        self.id = 0
+        self.dicRecipe = {}
 
     def bildGrid(self):
-        showFiles = os.listdir("C:\\_PythonProject\\AXI_Manager\\Log\\V810-3163")
-        print(showFiles)
+        for self.device in self.devices:
+            self.showFiles = os.listdir(self.pathLog+"\\"+self.device)
+            for self.showFile in self.showFiles:
+                self.file = open(self.pathLog+"\\"+self.device+"\\"+self.showFile, "r")
+                self.contentOfFile = self.file.readlines()
+                self.strCycleTime = self.contentOfFile[14]
+                self.cycleTime = (int(self.strCycleTime[18:21]) * 60) + int(self.strCycleTime[24:26])
 
+                if os.path.isfile(self.pathRecipe+"\\"+self.device+"\\"+self.showFile[7:-5]+".txt"):
+                    try:
+                        self.fileRecipe = open(self.pathRecipe + "\\" + self.device + "\\" + self.showFile[7:-5]+".txt", "r").read()
+                        self.lines = self.fileRecipe.split('\n')
+                        self.i = 0
+                        for self.line in self.lines:
+                            if self.line == '# number of boards':
+                                #print(self.i)
+                                self.handle = self.i
+                                self.id += 1
+                                #self.dicRecipe[int(self.id)] = {}
+                                #self.dicRecipe[int(self.id)]['device'] = self.device
+                                #self.dicRecipe[int(self.id)]['recipe'] = self.showFile[7:-5]
+                                #self.dicRecipe[int(self.id)]['cycleTime'] = self.cycleTime
+                            self.i += 1
+                        try:
+                            self.fileRecipeInfo = open(
+                                self.pathRecipe + "\\" + self.device + "\\" + self.showFile[7:-5] + ".txt", "r")
+                            self.contentOfFileRecipe = self.fileRecipeInfo.readlines()
+                            self.strBoardQTY = self.contentOfFileRecipe[int(self.handle)+1].strip('\n')
+
+                            self.dicRecipe[int(self.id)] = {}
+                            self.dicRecipe[int(self.id)]['device'] = self.device
+                            self.dicRecipe[int(self.id)]['recipe'] = self.showFile[7:-5]
+                            self.dicRecipe[int(self.id)]['cycleTime'] = self.cycleTime
+                            self.dicRecipe[int(self.id)]['boardQty'] = self.strBoardQTY
+                        except FileNotFoundError:
+                            pass
+                        finally:
+                            self.fileRecipeInfo.close()
+
+
+                    except FileNotFoundError:
+                        pass
+                    finally:
+                        self.fileRecipe.close()
+
+                self.file.close()
+        return self.dicRecipe
 
 if __name__ == "__main__":
     objAutomaticUpdates = AutomaticUpdates()
-    objAutomaticUpdates.bildGrid()
+    print(objAutomaticUpdates.bildGrid())
+    for id in objAutomaticUpdates.bildGrid():
+        pass
+        #print(id)
