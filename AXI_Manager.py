@@ -256,7 +256,6 @@ def getSelectedRow(event):
 
     reset()
 
-
     for nm in tree.selection():
         content = tree.item(nm, 'values')
 
