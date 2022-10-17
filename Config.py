@@ -11,6 +11,10 @@ class Config:
 
         self.pathImgDefault = 'img/lackOfPicture/board.png'
 
+        self.pathLog = 'C:\\_PythonProject\\AXI_Manager\\Log'
+        self.pathRecipe = 'C:\\_PythonProject\\AXI_Manager\\images'
+        self.devices = ('V810-3163', 'V810-3483S2EX', 'V810-3553S2EX', 'V810-8120S2')
+
         self.pathImg5DX1 = '5DX/images/V849/'
         #self.pathImg5DX1 = 'Y:/5DX/images/V849/'
 
