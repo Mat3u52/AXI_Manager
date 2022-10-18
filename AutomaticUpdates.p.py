@@ -53,8 +53,8 @@ class AutomaticUpdates(Config):
                     except FileNotFoundError:
                         pass
                     finally:
-                        self.fileRecipe.close()
-
+                        pass
+                        #self.fileRecipe.close()
                 self.file.close()
         return self.dicRecipe
 
