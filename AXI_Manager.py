@@ -9,6 +9,7 @@ from CheckboxMenu import CheckboxMenu
 from NewItem import NewItem
 from MainView import MainView
 from FormValidation import FormValidation
+from AutomaticUpdates import AutomaticUpdates
 import tkinter as tk
 from tkinter import ttk
 from tkinter import *
@@ -255,7 +256,6 @@ def getSelectedRow(event):
     flagClick = False
 
     reset()
-
     for nm in tree.selection():
         content = tree.item(nm, 'values')
 
@@ -995,7 +995,7 @@ windowPosition = f'{int(objConfig.screenWidth)}x{int(objConfig.screenHeight)}+{i
 root.title(objConfig.title)
 root.geometry(windowPosition)
 #root.resizable(0, 0)
-#root.iconbitmap("AXI_ManagerIcon.ico")
+root.iconbitmap(objConfig.ico)
 root.configure(background=objConfig.bgColor)
 
 #--- Main View ---
@@ -1357,17 +1357,17 @@ tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
 
 tabControl = ttk.Notebook(root)
 tab1 = ttk.Frame(tabControl)
-tabControl.add(tab1, text=" Main ")
-tabControl.pack(expand=1, fill="both")
+tabControl.add(tab1, text=" --- Main --- ")
+tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 tab2 = ttk.Frame(tabControl)
-tabControl.add(tab2, text=" New ")
+tabControl.add(tab2, text=" --- New --- ")
+tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+
+tab3 = ttk.Frame(tabControl)
+tabControl.add(tab3, text=" --- Add --- ")
 tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
 objStyles = Styles(root)
-#tab3 = ttk.Frame(tabControl)
-#tabControl.add(tab3, text=" Update ")
-#tabControl.pack(expand=1, fill="both", padx=10, pady=10)
-
 
 #style = ttk.Style()
 #style.theme_create('style_class',
@@ -1454,6 +1454,21 @@ BI2 = ttk.Button(objNewItemEx.mainFrameInsert, text="Reset", width=15, command=r
 BI2.grid(row=1, column=2, columnspan=2, pady=2)
 #--- The End INSERT ---
 
+
+#--- Automatic Upadate ---
+objAutomaticUpdates = AutomaticUpdates()
+for record in range(len(objAutomaticUpdates.bildGrid())):
+    Label(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')}: ", bg="#444444", fg="#666666", pady="1")\
+        .grid(row=int(record), column=0, sticky=E)
+    Label(tab3, text=f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.", bg="#444444", fg="#666666", pady="1")\
+        .grid(row=int(record), column=1, sticky=W)
+    Label(tab3, text=f"Board QTY: {objAutomaticUpdates.bildGrid().get(record).get('boardQty')}", bg="#444444", fg="#666666", pady="1")\
+        .grid(row=int(record), column=3, sticky=W)
+    Label(tab3, text=f"Device: {objAutomaticUpdates.bildGrid().get(record).get('device')}", bg="#444444", fg="#666666",pady="1")\
+        .grid(row=int(record), column=4, sticky=W)
+    ttk.Button(tab3, text="+", width=3, command=insertButton, cursor="hand2")\
+        .grid(row=int(record), column=5, pady=1)
+#--- The End of Automatic Update ---
 
 #--- Search ---
 objCMSearch = ContextualMenu(root)
