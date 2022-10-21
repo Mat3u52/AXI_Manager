@@ -4,6 +4,7 @@ class Config:
         self.screenWidth = 690
         self.screenHeight = 820
         self.bgColor = '#000000'
+        self.ico = 'img\\main\\25x25\\axi.ico'
 
         self.scrollX = 625
         self.scrollY = 27
