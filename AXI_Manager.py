@@ -11,7 +11,7 @@ from MainView import MainView
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from tkinter import *
 import time
 import pyperclip
@@ -985,6 +985,13 @@ def refresh():
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
+def automaticInsert():
+    msgBox = messagebox.askquestion(f"Automation adding",
+                                    "In automation tab you have a new record. Do you want to add this now?")
+    if msgBox == 'yes':
+        print(varNewRecord.get())
+
+
 root = tk.Tk()
 objConfig = Config()
 ws = root.winfo_screenwidth() # width of the screen
@@ -1456,18 +1463,21 @@ BI2.grid(row=1, column=2, columnspan=2, pady=2)
 
 
 #--- Automatic Upadate ---
+
 objAutomaticUpdates = AutomaticUpdates()
+varNewRecord = IntVar()
 for record in range(len(objAutomaticUpdates.bildGrid())):
-    Label(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')}: ", bg="#444444", fg="#666666", pady="1")\
-        .grid(row=int(record), column=0, sticky=E)
-    Label(tab3, text=f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.", bg="#444444", fg="#666666", pady="1")\
-        .grid(row=int(record), column=1, sticky=W)
-    Label(tab3, text=f"Board QTY: {objAutomaticUpdates.bildGrid().get(record).get('boardQty')}", bg="#444444", fg="#666666", pady="1")\
-        .grid(row=int(record), column=3, sticky=W)
-    Label(tab3, text=f"Device: {objAutomaticUpdates.bildGrid().get(record).get('device')}", bg="#444444", fg="#666666",pady="1")\
-        .grid(row=int(record), column=4, sticky=W)
-    ttk.Button(tab3, text="+", width=3, command=insertButton, cursor="hand2")\
-        .grid(row=int(record), column=5, pady=1)
+    radioBox = ttk.Radiobutton(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('device')} - "
+                                        f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')} "
+                                        f"    [ {objAutomaticUpdates.bildGrid().get(record).get('boardQty')} ] - "
+                                        f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.",
+                             style="AutomaticInsert.TRadiobutton",
+                             variable=varNewRecord,
+                             value=int(record),
+                             command=automaticInsert)
+    radioBox.grid(row=int(record), column=0, sticky=W)
+radioBox.invoke()
+
 #--- The End of Automatic Update ---
 
 #--- Search ---
