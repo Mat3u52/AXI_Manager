@@ -51,6 +51,10 @@ class AutomaticUpdates(Config):
                         #self.fileRecipe.close()
                 self.file.close()
         return self.dicRecipe
+    def updateDic(self, id):
+        self.id = id
+        del self.dicRecipe[self.id]
+
 
 #if __name__ == "__main__":
 #    objAutomaticUpdates = AutomaticUpdates()
