@@ -67,7 +67,6 @@ def resizeImage(path):
 
         elif path.endswith('.png'):
             print("f: ewsizeImage - .png")
-
 def switch(x):
     match x:
         case "NONE":
@@ -80,7 +79,6 @@ def switch(x):
             return 3
         case _:
             return 0
-
 def insertButton():
     objFormValidatorItem = FormValidation()
     objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
@@ -227,7 +225,6 @@ def insertButton():
         objTipNew = Tip(root, objNewItemEx.mainFrameInsert)
         objTipNew.animateTip()
         refresh()
-
 def reset():
     objNewItemEx.cleanUp()
 
@@ -250,7 +247,6 @@ def reset():
     objCheckboxMenu5DX1.cleanUp()
     objCheckboxMenu5DX1.cleanUp5DX()
     objCheckboxMenu5DX1.insertFrame.grid_forget()
-
 def getSelectedRow(event):
     flagAnimation = False
     flagClick = False
@@ -984,13 +980,62 @@ def refresh():
     vsb.place(x=objConfig.scrollX, y=objConfig.scrollY, height=objConfig.scrollHeight)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
-
+varNewRecord = IntVar()
+objAutomaticUpdates = AutomaticUpdates()
 def automaticInsert():
-    msgBox = messagebox.askquestion(f"Automation adding",
-                                    "In automation tab you have a new record. Do you want to add this now?")
+    msgBox = messagebox.askquestion(f"Automatic adding",
+                                    "In the \"Add\" tab you have a new record. Do you want to upload this now?")
     if msgBox == 'yes':
-        print(varNewRecord.get())
+        reset()
+        tabControl.select(tab2)
+        #print(varNewRecord.get())
+        #objAutomaticUpdates = AutomaticUpdates()
+        newItem = varNewRecord.get()
+        if newItem in objAutomaticUpdates.bildGrid():
+            #print(f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get())}")
+            itemName = objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('recipe').replace('_', '/')
+            objNewItemEx.EI2.insert(0, f"{itemName}")
+            objNewItemEx.EI3.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('boardQty')}")
+            if objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('device') == 'V810-3553S2EX':
+                objCheckboxMenuEx0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
+                objCheckboxMenuEx0.EI_0.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('recipe')}")
+                objCheckboxMenuEx0.EI_1.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('cycleTime')}")
+                #radioBox.grid_forget()
+                #remove the file
+            if objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('device') == 'V810-3483S2EX':
+                objCheckboxMenuEx1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
+                objCheckboxMenuEx1.EI_0.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('recipe')}")
+                objCheckboxMenuEx1.EI_1.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('cycleTime')}")
+                #remove the file
+            if objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('device') == 'V810-3163':
+                objCheckboxMenuEx2.insertFrame.grid(column=0, row=5 + 3, columnspan=10, sticky='W', padx=10, pady=10)
+                objCheckboxMenuEx2.EI_0.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('recipe')}")
+                objCheckboxMenuEx2.EI_1.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('cycleTime')}")
+            if objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('device') == 'V810-8120S2':
+                objCheckboxMenuXXL0.insertFrame.grid(column=0, row=5 + 5, columnspan=10, sticky='W', padx=10, pady=10)
+                objCheckboxMenuXXL0.EI_0.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('recipe')}")
+                objCheckboxMenuXXL0.EI_1.insert(0, f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get()).get('cycleTime')}")
 
+    #objAutomaticUpdates.updateDic(0)
+    #print(objAutomaticUpdates.bildGrid())
+
+def tabSelected(event):
+    objAutomaticUpdates = AutomaticUpdates()
+
+
+    #varNewRecord = IntVar()
+
+    for record in range(len(objAutomaticUpdates.bildGrid())):
+        radioBox = ttk.Radiobutton(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('device')} - "
+                                          f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')} "
+                                          f"    [ {objAutomaticUpdates.bildGrid().get(record).get('boardQty')} ] - "
+                                          f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.",
+                               style="AutomaticInsert.TRadiobutton",
+                               variable=varNewRecord,
+                               value=int(record),
+                               command=automaticInsert)
+    radioBox.grid(row=int(record), column=0, sticky=W)
+    radioBox.invoke()
 
 root = tk.Tk()
 objConfig = Config()
@@ -1373,55 +1418,10 @@ tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 tab3 = ttk.Frame(tabControl)
 tabControl.add(tab3, text=" --- Add --- ")
 tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+tabControl.bind("<<NotebookTabChanged>>", tabSelected)
+
 
 objStyles = Styles(root)
-
-#style = ttk.Style()
-#style.theme_create('style_class',
-#                   settings={
-#                       'TLabelframe': {
-#                           'configure': {
-#                               'background': '#333333',
-#                               'foreground': '#FFFFFF',
-#                               'borderwidth': '10'
-#                           }
-#                       },
-#                       'TLabelframe.Label': {
-#                           'configure': {
-#                               'background': '#000000',
-#                               'foreground': '#FFFFFF'
-#                           }
-#                       },
-
-#                       'TButton':{
-#                           'configure':{
-#                                'background': '#111111', #302928
-#                                'foreground': '#FFFFFF',
-#                                'anchor': N,
-#                                'font': ("Arial", 12, 'bold'),
-#                                'borderwidth': 1,
-#                                'relief': "solid"
-#                           }
-#                       }
-#                   }
-#                   )
-#style.theme_use('style_class')
-
-#---Notebook Style---
-#noteStyler = ttk.Style()
-#oteStyler.configure("TNotebook", background='#555555', borderwidth=0)
-#noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF', borderwidth=1)
-#noteStyler.configure("TFrame", background='#444444', foreground='#FFFFFF', borderwidth=1)
-#style.configure("TCombobox", fieldbackground="#333333", background="#302928", borderwidth=0)
-#root.option_add("*TCombobox*Listbox*Background", "#302928")
-#root.option_add("*TCombobox*Listbox*Foreground", "#AAAAAA")
-
-#style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=40, filedbackground="#777777")
-
-#style.map('Treeview', background=[('selected', '#46464A')])
-#--- The End Style ---
-
-
 
 #--- INSERT ---
 
@@ -1464,19 +1464,20 @@ BI2.grid(row=1, column=2, columnspan=2, pady=2)
 
 #--- Automatic Upadate ---
 
-objAutomaticUpdates = AutomaticUpdates()
-varNewRecord = IntVar()
-for record in range(len(objAutomaticUpdates.bildGrid())):
-    radioBox = ttk.Radiobutton(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('device')} - "
-                                        f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')} "
-                                        f"    [ {objAutomaticUpdates.bildGrid().get(record).get('boardQty')} ] - "
-                                        f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.",
-                             style="AutomaticInsert.TRadiobutton",
-                             variable=varNewRecord,
-                             value=int(record),
-                             command=automaticInsert)
-    radioBox.grid(row=int(record), column=0, sticky=W)
-radioBox.invoke()
+#objAutomaticUpdates = AutomaticUpdates()
+#varNewRecord = IntVar()
+
+#for record in range(len(objAutomaticUpdates.bildGrid())):
+#    radioBox = ttk.Radiobutton(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('device')} - "
+#                                        f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')} "
+#                                        f"    [ {objAutomaticUpdates.bildGrid().get(record).get('boardQty')} ] - "
+#                                        f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.",
+#                                    style="AutomaticInsert.TRadiobutton",
+#                                    variable=varNewRecord,
+#                                    value=int(record),
+#                                    command=automaticInsert)
+#    radioBox.grid(row=int(record), column=0, sticky=W)
+#radioBox.invoke()
 
 #--- The End of Automatic Update ---
 
