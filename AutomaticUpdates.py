@@ -53,7 +53,9 @@ class AutomaticUpdates(Config):
         return self.dicRecipe
     def updateDic(self, id):
         self.id = id
-        del self.dicRecipe[self.id]
+        os.remove(self.pathLog+"\\"+self.dicRecipe[self.id].get("device")+"\\Recipe="+self.dicRecipe[self.id].get("recipe")+"$.txt")
+        #del self.dicRecipe[self.id]
+        self.dicRecipe.clear()
 
 
 #if __name__ == "__main__":
