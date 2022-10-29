@@ -5,7 +5,6 @@ class AutomaticUpdates(Config):
     def __init__(self):
         Config.__init__(self)
         #super().__init__()
-        #self.flag = False
         self.id = 0
         self.dicRecipe = {}
 
