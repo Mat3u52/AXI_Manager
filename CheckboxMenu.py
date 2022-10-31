@@ -2,7 +2,6 @@ from tkinter import ttk
 from tkinter import *
 import tkinter as tk
 from ContextualMenu import ContextualMenu
-from DBConnect import DBConnect
 
 class CheckboxMenu:
     def __init__(self, tab, root, frame, description):
