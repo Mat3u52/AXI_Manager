@@ -74,7 +74,7 @@ class FormValidation:
                     self.thicknessTime = 0
 
                 self.hex = ""
-                print(self.test)
+                #print(self.test)
                 self.totalTime = int(self.test) + int(self.alignTime) + int(self.laserTime) + int(self.thicknessTime)
 
                 if (self._computeUPH(int(self.totalTime), 85, int(self.itemAmount)) > 0) and \
