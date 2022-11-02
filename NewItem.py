@@ -40,4 +40,3 @@ class NewItem:
     def cleanUp(self):
         self.EI2.delete(0, END)
         self.EI3.delete(0, END)
-
