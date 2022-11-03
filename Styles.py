@@ -40,7 +40,7 @@ class Styles:
                                         'focusthickness': '8',
                                         'highlightthickness': '#000000',
                                         'padding': '4',
-                                        'background': '#444444',
+                                        'background': '#333333',
                                         'foreground': '#AAAAAA'
                                    },
                                    'map': {
@@ -63,5 +63,5 @@ class Styles:
         self.root.option_add("*TCombobox*Listbox*Foreground", "#AAAAAA")
 
         self.style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=40, filedbackground="#777777")
-        self.style.map('Treeview', background=[('selected', '#46464A')])
+        self.style.map('Treeview', background=[('selected', '#46464A'), ('active', '#000000')])
 
