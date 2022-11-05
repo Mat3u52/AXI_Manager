@@ -1,13 +1,13 @@
 import _tkinter
 from Config import Config
 from Styles import Styles
-from math import *
+#from math import *
 from DBConnect import DBConnect
 from Tip import Tip
 from ContextualMenu import ContextualMenu
 from CheckboxMenu import CheckboxMenu
 from NewItem import NewItem
-from MainView import MainView
+#from MainView import MainView
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
 import tkinter as tk
@@ -28,7 +28,7 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
     if os.path.isfile(imgPath):
         img = tk.PhotoImage(file=imgPath)
     else:
-        img = tk.PhotoImage(file='board.png')
+        img = tk.PhotoImage(file='img/lackOfPicture/board.png')
 
     #print("f: animateImage - "+imgPath)
 
@@ -50,9 +50,8 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
             break
 
     #root.mainloop()
-def resizeImage(path):
+def resizeImage(path: str) -> None:
     basewidth = 120
-
     if os.path.isfile(path):
         if path.endswith('.jpg'):
             #print("f: resizeImage - .jpg")
@@ -67,7 +66,8 @@ def resizeImage(path):
 
         elif path.endswith('.png'):
             print("f: ewsizeImage - .png")
-def switch(x):
+
+def switch(x: str) -> int:
     match x:
         case "NONE":
             return 0
@@ -247,7 +247,7 @@ def reset():
     objCheckboxMenu5DX1.cleanUp()
     objCheckboxMenu5DX1.cleanUp5DX()
     objCheckboxMenu5DX1.insertFrame.grid_forget()
-def getSelectedRow(event):
+def getSelectedRow(event) -> None:
     flagAnimation = False
     flagClick = False
 
@@ -981,7 +981,6 @@ def refresh():
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
-
 def automaticInsert():
     msgBox = messagebox.askquestion(f"Automatic adding",
                                     "In the \"Add\" tab you have a new record. Do you want to upload this now?")
@@ -1049,8 +1048,6 @@ def tabSelected(event):
             #radioBox.grid_forget()
             radioBox.grid(row=int(record), column=0, sticky=W)
         radioBox.invoke()
-
-
 
 root = tk.Tk()
 objConfig = Config()
