@@ -1,18 +1,21 @@
-import _tkinter
+#import _tkinter
+#import _tkinter as tk
+
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk, messagebox
+
+
 from Config import Config
 from Styles import Styles
-#from math import *
 from DBConnect import DBConnect
 from Tip import Tip
 from ContextualMenu import ContextualMenu
 from CheckboxMenu import CheckboxMenu
 from NewItem import NewItem
-#from MainView import MainView
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
-import tkinter as tk
-from tkinter import ttk, messagebox
-from tkinter import *
+
 import time
 import pyperclip
 import os
@@ -51,12 +54,18 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
 
     #root.mainloop()
 def resizeImage(path: str) -> None:
+    """
+    The function resizes an image
+
+    :param path: Given path to file
+    :type path: str
+    :return: New size of file
+    :rtype: None
+    """
+
     basewidth = 120
     if os.path.isfile(path):
         if path.endswith('.jpg'):
-            #print("f: resizeImage - .jpg")
-            #print("f: resizeImage - "+path)
-
             convertJpgtoPng = Image.open(r''+path)
             wpercent = (basewidth / float(convertJpgtoPng.size[0]))
             hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
@@ -66,8 +75,18 @@ def resizeImage(path: str) -> None:
 
         elif path.endswith('.png'):
             print("f: ewsizeImage - .png")
+#print(resizeImage.__doc__)
 
 def switch(x: str) -> int:
+    """
+    Switch function is a multiway branch statement that provides a way to organize the flow of execution to
+    parts of code based on the value of the expression.
+
+    :param x: Given string NONE, YES, NO and LACK
+    :type x: str
+    :return: type int
+    """
+
     match x:
         case "NONE":
             return 0
@@ -79,6 +98,8 @@ def switch(x: str) -> int:
             return 3
         case _:
             return 0
+#print(switch.__doc__)
+
 def insertButton():
     objFormValidatorItem = FormValidation()
     objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
@@ -423,7 +444,8 @@ def getSelectedRow(event) -> None:
 
                             except FileNotFoundError:
                                 pass
-                    except _tkinter.TclError:
+                    #except _tkinter.TclError:
+                    except tk.TclError:
                         pass
 
                 flagAnimation = True
@@ -520,7 +542,8 @@ def getSelectedRow(event) -> None:
 
                             except FileNotFoundError:
                                 pass
-                    except _tkinter.TclError:
+                    #except _tkinter.TclError:
+                    except tk.TclError:
                         pass
 
                 flagAnimation = True
@@ -596,7 +619,8 @@ def getSelectedRow(event) -> None:
                         #animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
                         #animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
                         animateImage(root, canvas3, minMovement, minMovement, objConfig.pathImgV8103163 + row[27] + '.png')
-                    except _tkinter.TclError:
+                    #except _tkinter.TclError:
+                    except tk.TclError:
                         pass
 
                 flagAnimation = True
@@ -676,7 +700,8 @@ def getSelectedRow(event) -> None:
                         #animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
                         animateImage(root, canvas4, minMovement, minMovement, objConfig.pathImgV8103483S2EX + row[45] + '.png')
                         #animateImage(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
-                    except _tkinter.TclError:
+                    #except _tkinter.TclError:
+                    except tk.TclError:
                         pass
 
                 flagAnimation = True
@@ -756,7 +781,8 @@ def getSelectedRow(event) -> None:
                         #animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
                         animateImage(root, canvas5, minMovement, minMovement, objConfig.pathImgV8103553S2EX + row[54] + '.png')
                         #animateImage(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
-                    except _tkinter.TclError:
+                    #except _tkinter.TclError:
+                    except tk.TclError:
                         pass
 
                 flagAnimation = True
@@ -835,7 +861,8 @@ def getSelectedRow(event) -> None:
                         #animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
                         animateImage(root, canvas6, minMovement, minMovement, objConfig.pathImgV8108120S2 + row[31] + '.png')
                         #animateImage(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
-                    except _tkinter.TclError:
+                    #except _tkinter.TclError:
+                    except tk.TclError:
                         pass
 
                 flagAnimation = True
