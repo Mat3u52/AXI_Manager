@@ -2,9 +2,12 @@
 #import _tkinter as tk
 
 import tkinter as tk
-from tkinter import *
-from tkinter import ttk, messagebox
+from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox
+import time
+import os
 
+import pyperclip
+from PIL import Image
 
 from Config import Config
 from Styles import Styles
@@ -16,10 +19,6 @@ from NewItem import NewItem
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
 
-import time
-import pyperclip
-import os
-from PIL import Image
 
 startXPosition = 170
 startYPosition = 85
@@ -1009,7 +1008,7 @@ def refresh():
 # ---The End of Scrollbar---
 
 def automaticInsert():
-    msgBox = messagebox.askquestion(f"Automatic adding",
+    msgBox = tk.messagebox.askquestion(f"Automatic adding",
                                     "In the \"Add\" tab you have a new record. Do you want to upload this now?")
     if msgBox == 'yes':
         reset()
