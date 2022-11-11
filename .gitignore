@@ -1,1 +1,8 @@
+my_env
+img
 __pycache__/
+*.pyc
+*~
+/static
+.DS_Store
+venv
