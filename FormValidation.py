@@ -1,6 +1,6 @@
-from math import *
-from tkinter import messagebox
-from tkinter import *
+from math import floor
+#from tkinter import messagebox
+from tkinter import END, messagebox
 
 class FormValidation:
     def __init__(self):

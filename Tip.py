@@ -1,5 +1,5 @@
-from tkinter import *
 import tkinter as tk
+from tkinter import Label, W, PhotoImage
 import time
 from PIL import Image
 
