@@ -234,8 +234,7 @@ def insertButton():
                             objFormValidatorV817.uph85, objFormValidatorV817.uph95,
                             objFormValidatorV817.uph95Time,
                             objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
-                            objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime
-                            )
+                            objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime)
     objDBConnect5DX.closeDB()
     if objDBConnectV8103553S2EX.flagSucceeded or \
             objDBConnectV8103483S2EX.flagSucceeded or \
