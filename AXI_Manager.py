@@ -52,6 +52,8 @@ def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
             break
 
     #root.mainloop()
+
+
 def resizeImage(path: str) -> None:
     """
     The function resizes an image
@@ -76,17 +78,19 @@ def resizeImage(path: str) -> None:
             print("f: ewsizeImage - .png")
 #print(resizeImage.__doc__)
 
-def switch(x: str) -> int:
+
+def switch(var: str) -> int:
     """
     Switch function is a multiway branch statement that provides a way to organize the flow of execution to
     parts of code based on the value of the expression.
 
-    :param x: Given string NONE, YES, NO and LACK
-    :type x: str
-    :return: type int
+    :param var: Given string NONE, YES, NO and LACK
+    :type var: str
+    :return: Given number from 0 to 3
+    :rtype: type int
     """
 
-    match x:
+    match var:
         case "NONE":
             return 0
         case "YES":
@@ -99,7 +103,15 @@ def switch(x: str) -> int:
             return 0
 #print(switch.__doc__)
 
-def insertButton():
+
+def insertButton() -> None:
+    """
+    The function is responsible for verifying data and inserting it into the database after the button has been pressed.
+
+    :return: invoking the class FormValidation and DBConnect
+    :rtype: None
+    """
+
     objFormValidatorItem = FormValidation()
     objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
     objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
@@ -245,7 +257,9 @@ def insertButton():
         objTipNew = Tip(root, objNewItemEx.mainFrameInsert)
         objTipNew.animateTip()
         refresh()
-def reset():
+
+
+def reset() -> None:
     objNewItemEx.cleanUp()
 
     objCheckboxMenuEx0.cleanUp()
@@ -267,6 +281,8 @@ def reset():
     objCheckboxMenu5DX1.cleanUp()
     objCheckboxMenu5DX1.cleanUp5DX()
     objCheckboxMenu5DX1.insertFrame.grid_forget()
+
+
 def getSelectedRow(event) -> None:
     flagAnimation = False
     flagClick = False
