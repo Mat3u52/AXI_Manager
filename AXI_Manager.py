@@ -6,7 +6,7 @@ from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox
 import time
 import os
 
-import pyperclip
+import pyperclip # clipboard Win / Linux: sudo apt-get install xclip
 from PIL import Image
 
 from Config import Config
@@ -25,7 +25,8 @@ startYPosition = 85
 minMovement = -1
 refreshSec = 0.01
 
-def animateImage(root, canvas, xinc, yinc, imgPath = 'board.png'):
+
+def animateImage(root, canvas, xinc, yinc, imgPath: str = 'board.png') -> None:
 
     if os.path.isfile(imgPath):
         img = tk.PhotoImage(file=imgPath)
@@ -288,7 +289,7 @@ def getSelectedRow(event) -> None:
             pass
         objDB.closeDB()
 
-        pyperclip.copy(row[1])  # clipboard
+        pyperclip.copy(row[1])  # clipboard Win / Linux: sudo apt-get install xclip
 
 
         objNewItemEx.EI2.insert(0, f"{row[1]}")

@@ -6,7 +6,7 @@ class DBConnect:
     def __init__(self):
         self.db = pymysql.connect(host='localhost',
                              user='root',
-                             password='',
+                             password='toor',
                              database='mk_database',
                              charset='utf8mb4')
         self.dbCursor = self.db.cursor()

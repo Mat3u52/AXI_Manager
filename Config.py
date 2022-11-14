@@ -4,7 +4,8 @@ class Config:
         self.screenWidth = 690
         self.screenHeight = 820
         self.bgColor = '#000000'
-        self.ico = 'img\\main\\25x25\\axi.ico'
+        #self.ico = 'img\\main\\25x25\\axi.ico'
+        self.ico = ''
 
         self.scrollX = 625
         self.scrollY = 27
@@ -13,9 +14,9 @@ class Config:
         self.devices = ('V810-3163', 'V810-3483S2EX', 'V810-3553S2EX', 'V810-8120S2')
         self.pathImgDefault = 'img/lackOfPicture/board.png'
 
-        self.pathLog = '\\root\\PythonDeveloper\\AXI_Manager_Source_Files\\Log'
+        self.pathLog = '/root/PythonDeveloper/AXI_Manager_Source_Files/Log'
         #self.pathLog = 'C:\\_PythonProject\\AXI_Manager_Source_Files\\Log'
-        self.pathRecipe = '\\root\\PythonDeveloper\\AXI_Manager_Source_Files\\images'
+        self.pathRecipe = '/root/PythonDeveloper/AXI_Manager_Source_Files/images'
         # self.pathRecipe = 'C:\\_PythonProject\\AXI_Manager_Source_Files\\images'
 
         self.pathImg5DX1 = '/root/PythonDeveloper/AXI_Manager_Source_Files/5DX/images/V849/'

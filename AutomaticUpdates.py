@@ -10,16 +10,16 @@ class AutomaticUpdates(Config):
 
     def bildGrid(self):
         for self.device in self.devices:
-            self.showFiles = os.listdir(self.pathLog+"\\"+self.device)
+            self.showFiles = os.listdir(self.pathLog+"/"+self.device)
             for self.showFile in self.showFiles:
-                self.file = open(self.pathLog+"\\"+self.device+"\\"+self.showFile, "r")
+                self.file = open(self.pathLog+"/"+self.device+"/"+self.showFile, "r")
                 self.contentOfFile = self.file.readlines()
                 self.strCycleTime = self.contentOfFile[14]
                 self.cycleTime = (int(self.strCycleTime[18:21]) * 60) + int(self.strCycleTime[24:26])
 
-                if os.path.isfile(self.pathRecipe+"\\"+self.device+"\\"+self.showFile[7:-5]+".txt"):
+                if os.path.isfile(self.pathRecipe+"/"+self.device+"/"+self.showFile[7:-5]+".txt"):
                     try:
-                        self.fileRecipe = open(self.pathRecipe + "\\" + self.device + "\\" + self.showFile[7:-5]+".txt", "r").read()
+                        self.fileRecipe = open(self.pathRecipe + "/" + self.device + "/" + self.showFile[7:-5]+".txt", "r").read()
                         self.lines = self.fileRecipe.split('\n')
                         self.i = 0
                         for self.line in self.lines:
@@ -29,7 +29,7 @@ class AutomaticUpdates(Config):
                             self.i += 1
                         try:
                             self.fileRecipeInfo = open(
-                                self.pathRecipe + "\\" + self.device + "\\" + self.showFile[7:-5] + ".txt", "r")
+                                self.pathRecipe + "/" + self.device + "/" + self.showFile[7:-5] + ".txt", "r")
                             self.contentOfFileRecipe = self.fileRecipeInfo.readlines()
                             self.strBoardQTY = self.contentOfFileRecipe[int(self.handle)+1].strip('\n')
 
@@ -52,7 +52,7 @@ class AutomaticUpdates(Config):
         return self.dicRecipe
     def updateDic(self, id):
         self.id = id
-        os.remove(self.pathLog+"\\"+self.dicRecipe[self.id].get("device")+"\\Recipe="+self.dicRecipe[self.id].get("recipe")+"$.txt")
+        os.remove(self.pathLog+"/"+self.dicRecipe[self.id].get("device")+"/Recipe="+self.dicRecipe[self.id].get("recipe")+"$.txt")
         #del self.dicRecipe[self.id]
         self.dicRecipe.clear()
 
