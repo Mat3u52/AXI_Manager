@@ -1,6 +1,3 @@
-#import _tkinter
-#import _tkinter as tk
-
 import tkinter as tk
 from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox
 import time
