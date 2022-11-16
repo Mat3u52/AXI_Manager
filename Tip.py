@@ -4,7 +4,7 @@ import time
 from PIL import Image
 
 class Tip:
-    def __init__(self, root, mainFrameView, primePng = 'img/tip/okBegin.png'):
+    def __init__(self, root, mainFrameView, primePng='img/tip/okBegin.png'):
         self.root = root
         self.mainFrameView = mainFrameView
         self.startXPosition = 120
@@ -27,8 +27,6 @@ class Tip:
         self.im.save('img/tip/ok.png')
         self.photo = PhotoImage(file='img/tip/ok.png')
         self.imageB = self.canvas1.create_image(120, 15, image=self.photo)
-
-
 
         while True:
             self.canvas1.move(self.imageB, self.minMovement, 0)

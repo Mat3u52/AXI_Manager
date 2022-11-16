@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox
+from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage
 import time
 import os
 
@@ -21,6 +21,7 @@ startXPosition: int = 170
 startYPosition: int = 85
 minMovement: int = -1
 refreshSec: float = 0.01
+
 
 def animateImage(root, canvas, xinc, yinc, imgPath: str = 'board.png') -> None:
 
@@ -1097,7 +1098,9 @@ windowPosition = f'{int(objConfig.screenWidth)}x{int(objConfig.screenHeight)}+{i
 root.title(objConfig.title)
 root.geometry(windowPosition)
 #root.resizable(0, 0)
-root.iconbitmap(objConfig.ico)
+#root.iconbitmap(objConfig.ico) # Icon for Win
+photo = PhotoImage(file=objConfig.ico)# Icon for Linux
+root.iconphoto(False, photo)# Incon for Linux
 
 root.configure(background=objConfig.bgColor)
 
