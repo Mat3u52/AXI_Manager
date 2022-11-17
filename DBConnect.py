@@ -2,8 +2,15 @@ import pymysql
 from tkinter import messagebox
 import math
 
+
 class DBConnect:
-    def __init__(self):
+    def __init__(self) -> None:
+        """
+        Constructor of DBConnect class. It establishes a connection to database mk_database.
+
+        :return: Credentials to database
+        :rtype: None
+        """
         self.db = pymysql.connect(host='localhost',
                              user='root',
                              password='toor',
@@ -29,7 +36,8 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
-    def update(self, ID, item, itemAmount, vitroxIVProg, vitroxIVTest, vitroxIVLinecapa, vitroxIVEPI, vitroxIVBAAN1, vitroxIVComments):
+    def update(self, ID, item, itemAmount, vitroxIVProg, vitroxIVTest, vitroxIVLinecapa,
+                vitroxIVEPI, vitroxIVBAAN1, vitroxIVComments):
         self.ID = int(ID)
         self.item = str(item)
         self.itemAmount = int(itemAmount)
