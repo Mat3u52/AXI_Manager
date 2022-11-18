@@ -252,7 +252,7 @@ def insertButton() -> None:
             objDBConnectV8108120S2.flagSucceeded or \
             objDBConnect5DX.flagSucceeded:
         obj_tip_new = Tip(root, objNewItemEx.mainFrameInsert)
-        obj_tip_new.animate_translucent()
+        obj_tip_new.animate_non_translucent()
         refresh()
 
 
