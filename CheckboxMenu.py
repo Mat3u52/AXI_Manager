@@ -20,7 +20,7 @@ class CheckboxMenu:
                           textvariable=self.objCM.captureEntry,
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI_0.config(font=("Arial", 10))
-        self.EI_0.grid(row=0, column=1, pady=1)
+        self.EI_0.grid(row=0, column=1, pady=1, sticky=W)
         self.EI_0.bind("<Button-3>", self.objCM.doPopup)
         self.objCM.setEntry(self.EI_0)
         self.LI_1 = Label(self.insertFrame, text="Scanning Time:", width=12, borderwidth=1,
@@ -70,7 +70,7 @@ class CheckboxMenu:
                           textvariable=self.objCM_Comments.captureEntry,
                           relief="solid", borderwidth=1, bg="#212121", fg="#FFFFFF")
         self.EI_5.config(font=("Arial", 10))
-        self.EI_5.grid(row=2, column=3, pady=1)
+        self.EI_5.grid(row=2, column=3, pady=1, sticky=W)
         self.EI_5.bind("<Button-3>", self.objCM_Comments.doPopup)
         self.objCM_Comments.setEntry(self.EI_5)
 
