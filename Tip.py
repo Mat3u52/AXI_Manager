@@ -74,17 +74,17 @@ class Tip:
         #self.im = Image.open(self.primePng)
         #self.im.putalpha(120)
         #self.im.save('img/tip/ok.png')
-        self.photo = PhotoImage(file='img/tip/okBegin.PNG')
-        self.imageB = self.canv.create_image(120, 15, image=self.photo)
+        photo = PhotoImage(file='img/tip/okBegin.PNG')
+        imageB = self.canv.create_image(120, 15, image=self.photo)
 
 
         while True:
-            self.canv.move(self.imageB, self.minMovement, 0)
+            self.canv.move(imageB, self.minMovement, 0)
             self.root.update()
             time.sleep(self.refreshSec)
-            self.imgPos = self.canv.coords(self.imageB)
+            imgPos = self.canv.coords(self.imageB)
 
-            self.al, self.bl = self.imgPos
+            al, bl = imgPos
 
             #self.transparency = 120 + (2*(int(self.al) - 120))
             #self.im = Image.open('img/tip/ok.png')
