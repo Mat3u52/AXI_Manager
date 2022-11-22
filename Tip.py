@@ -75,14 +75,14 @@ class Tip:
         #self.im.putalpha(120)
         #self.im.save('img/tip/ok.png')
         photo = PhotoImage(file='img/tip/okBegin.PNG')
-        imageB = self.canv.create_image(120, 15, image=self.photo)
+        imageB = self.canv.create_image(120, 15, image=photo)
 
 
         while True:
             self.canv.move(imageB, self.minMovement, 0)
             self.root.update()
             time.sleep(self.refreshSec)
-            imgPos = self.canv.coords(self.imageB)
+            imgPos = self.canv.coords(imageB)
 
             al, bl = imgPos
 
@@ -90,12 +90,12 @@ class Tip:
             #self.im = Image.open('img/tip/ok.png')
             #self.im.putalpha(self.transparency)
             #self.im.save('img/tip/ok.png')
-            self.photo = PhotoImage(file='img/tip/okBegin.PNG')
-            self.imageB = self.canv.create_image(self.al, self.bl, image=self.photo)
+            photo = PhotoImage(file='img/tip/okBegin.PNG')
+            imageB = self.canv.create_image(al, bl, image=photo)
 
-            if self.al < abs(self.minMovement):
+            if al < abs(self.minMovement):
                 self.minMovement = -self.minMovement
-            if self.al == int(self.startXPosition) / 2:
+            if al == int(self.startXPosition) / 2:
                 break
 
     def __del__(self):
