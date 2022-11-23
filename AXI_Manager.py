@@ -911,7 +911,7 @@ def getSelectedRow(event) -> None:
 
 
     #refresh()
-def search():
+def search() -> None:
     tree.selection_clear()
     tree.selection_remove(tree.focus())
     for record in tree.get_children():
@@ -921,7 +921,7 @@ def search():
             print(content[1].find(ESearch.get()))
         else:
             tree.delete(record)
-def refresh():
+def refresh() -> None:
     tree.selection_clear()
     tree.selection_remove(tree.focus())
     ESearch.delete(0, END)
@@ -1020,7 +1020,7 @@ def refresh():
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
-def automaticInsert():
+def automaticInsert() -> None:
     msgBox = tk.messagebox.askquestion(f"Automatic adding",
                                     "In the \"Add\" tab you have a new record. Do you want to upload this now?")
     if msgBox == 'yes':
