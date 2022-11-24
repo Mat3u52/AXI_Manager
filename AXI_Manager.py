@@ -1,3 +1,4 @@
+import tkinter
 import tkinter as tk
 from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage
 import time
@@ -23,8 +24,15 @@ minMovement: int = -1
 refreshSec: float = 0.01
 
 
-def animateImage(root, canvas, xinc, yinc, imgPath: str = 'board.png') -> None:
+def animateImage(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int, imgPath: str = 'board.png') -> None:
+    """
+        The function moves the picture from the right to the left side.
 
+        :param path: Given path to file
+        :type path: str
+        :return: New size of file
+        :rtype: None
+    """
     if os.path.isfile(imgPath):
         img = tk.PhotoImage(file=imgPath)
     else:
