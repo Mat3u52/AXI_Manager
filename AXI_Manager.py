@@ -28,9 +28,21 @@ def animateImage(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int,
     """
         The function moves the picture from the right to the left side.
 
-        :param path: Given path to file
-        :type path: str
-        :return: New size of file
+        :param root: Given object from tkinter.Tk
+        :type root: tkinter.Tk
+        :param canvas: Given object from tkinter.Canvas
+        :type canvas: tkinter.Canvas
+
+        :param xint: Given value of axis x
+        :type xinc: int
+
+        :param int: Given value of axis y
+        :type yinc: int
+
+        :param imgPath: Given path to .png file
+        :type imgPath: str
+
+        :return: animate the picture
         :rtype: None
     """
     if os.path.isfile(imgPath):
