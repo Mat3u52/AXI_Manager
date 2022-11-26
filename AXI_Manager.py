@@ -277,6 +277,12 @@ def insertButton() -> None:
 
 
 def reset() -> None:
+    """
+    The function cleanup the form
+
+    :return: cleanup part of form
+    :rtype: None
+    """
     objNewItemEx.cleanUp()
 
     objCheckboxMenuEx0.cleanUp()
@@ -1566,7 +1572,7 @@ objCMSearch = ContextualMenu(root)
 #ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
 ESearch = Entry(tab1, relief="solid", textvariable=objCMSearch.captureEntry,
                 borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
-ESearch.config(font=("Arial", 10))
+ESearch.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
 ESearch.grid(row=0, column=0, pady=1)
 #ESearch.bind("<Button-3>", doPopupSearch)
 ESearch.bind("<Button-3>", objCMSearch.doPopup)
