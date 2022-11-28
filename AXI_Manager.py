@@ -24,7 +24,7 @@ minMovement: int = -1
 refreshSec: float = 0.01
 
 
-def animateImage(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int, imgPath: str = 'board.png') -> None:
+def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int, imgPath: str = 'board.png') -> None:
     """
         The function moves the picture from the right to the left side.
 
@@ -50,7 +50,7 @@ def animateImage(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int,
     else:
         img = tk.PhotoImage(file='img/lackOfPicture/board.png')
 
-    #print("f: animateImage - "+imgPath)
+    #print("f: animate_image - "+imgPath)
 
     imageB = canvas.create_image(startXPosition, startYPosition, image=img)
 
@@ -471,14 +471,14 @@ def getSelectedRow(event) -> None:
                         #if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
                         if os.path.isfile(objConfig.pathImg5DX1 + row[17] + '.png'):
                         #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png'):
-                            #animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
-                            animateImage(root, canvas1, minMovement, minMovement, objConfig.pathImg5DX1 + row[17] + '.png')
-                            #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
+                            #animate_image(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                            animate_image(root, canvas1, minMovement, minMovement, objConfig.pathImg5DX1 + row[17] + '.png')
+                            #animate_image(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
                         else:
                             try:
-                                #animateImage(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
-                                animateImage(root, canvas1, minMovement, minMovement, objConfig.pathImg5DX1 + row[17] + '.png')
-                                #animateImage(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
+                                #animate_image(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                                animate_image(root, canvas1, minMovement, minMovement, objConfig.pathImg5DX1 + row[17] + '.png')
+                                #animate_image(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
 
                             except FileNotFoundError:
                                 pass
@@ -569,14 +569,14 @@ def getSelectedRow(event) -> None:
                         #if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
                         if os.path.isfile(objConfig.pathImg5DX2 + row[22] + '.png'):
                         #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
-                            #animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                            animateImage(root, canvas2, minMovement, minMovement, objConfig.pathImg5DX2 + row[22] + '.png')
-                            #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+                            #animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                            animate_image(root, canvas2, minMovement, minMovement, objConfig.pathImg5DX2 + row[22] + '.png')
+                            #animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
                         else:
                             try:
-                                #animateImage(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                                animateImage(root, canvas2, minMovement, minMovement, objConfig.pathImg5DX2 + row[22] + '.png')
-                                #animateImage(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+                                #animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                                animate_image(root, canvas2, minMovement, minMovement, objConfig.pathImg5DX2 + row[22] + '.png')
+                                #animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
 
                             except FileNotFoundError:
                                 pass
@@ -654,9 +654,9 @@ def getSelectedRow(event) -> None:
                 tabControlMain.select(tabMain3)
                 if flagClick == False:
                     try:
-                        #animateImage(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
-                        #animateImage(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
-                        animateImage(root, canvas3, minMovement, minMovement, objConfig.pathImgV8103163 + row[27] + '.png')
+                        #animate_image(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
+                        #animate_image(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+                        animate_image(root, canvas3, minMovement, minMovement, objConfig.pathImgV8103163 + row[27] + '.png')
                     #except _tkinter.TclError:
                     except tk.TclError:
                         pass
@@ -732,12 +732,12 @@ def getSelectedRow(event) -> None:
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain4)
-                #animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
                 if flagClick == False:
                     try:
-                        #animateImage(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
-                        animateImage(root, canvas4, minMovement, minMovement, objConfig.pathImgV8103483S2EX + row[45] + '.png')
-                        #animateImage(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
+                        #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                        animate_image(root, canvas4, minMovement, minMovement, objConfig.pathImgV8103483S2EX + row[45] + '.png')
+                        #animate_image(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
                     #except _tkinter.TclError:
                     except tk.TclError:
                         pass
@@ -813,12 +813,12 @@ def getSelectedRow(event) -> None:
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain5)
-                #animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                #animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
                 if flagClick == False:
                     try:
-                        #animateImage(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
-                        animateImage(root, canvas5, minMovement, minMovement, objConfig.pathImgV8103553S2EX + row[54] + '.png')
-                        #animateImage(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
+                        #animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                        animate_image(root, canvas5, minMovement, minMovement, objConfig.pathImgV8103553S2EX + row[54] + '.png')
+                        #animate_image(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
                     #except _tkinter.TclError:
                     except tk.TclError:
                         pass
@@ -893,12 +893,12 @@ def getSelectedRow(event) -> None:
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain6)
-                #animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                #animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
                 if flagClick == False:
                     try:
-                        #animateImage(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
-                        animateImage(root, canvas6, minMovement, minMovement, objConfig.pathImgV8108120S2 + row[31] + '.png')
-                        #animateImage(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
+                        #animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                        animate_image(root, canvas6, minMovement, minMovement, objConfig.pathImgV8108120S2 + row[31] + '.png')
+                        #animate_image(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
                     #except _tkinter.TclError:
                     except tk.TclError:
                         pass
