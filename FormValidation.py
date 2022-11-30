@@ -1,5 +1,4 @@
 from math import floor
-#from tkinter import messagebox
 from tkinter import END, messagebox
 
 class FormValidation:
