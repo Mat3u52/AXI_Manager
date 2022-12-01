@@ -22,13 +22,13 @@ class NewItem:
         self.objCM = ContextualMenu(self.root)
         self.EI2 = Entry(self.mainFrameInsert, relief="solid", textvariable=self.objCM.captureEntry,
                          borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
-        self.EI2.config(font=("Arial", 10))
+        self.EI2.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
         self.EI2.grid(row=0, column=1, pady=1)
         self.EI2.bind("<Button-3>", self.objCM.doPopup)
         self.objCM.setEntry(self.EI2)
 
         self.EI3 = Entry(self.mainFrameInsert, relief="solid", borderwidth=1, width=10, bg="#212121", fg="#FFFFFF")
-        self.EI3.config(font=("Arial", 10))
+        self.EI3.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
         self.EI3.grid(row=0, column=3, pady=1, stick=W)
 
     def checkboxTitle(self, title0, row):
