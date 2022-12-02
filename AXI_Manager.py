@@ -307,6 +307,12 @@ def reset() -> None:
 
 
 def getSelectedRow(event) -> None:
+    """
+    Capture the row
+
+    :return: show information of one record from DB
+    :rtype: None
+    """
     flagAnimation = False
     flagClick = False
 
