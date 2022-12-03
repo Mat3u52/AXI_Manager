@@ -1096,7 +1096,7 @@ def automaticInsert() -> None:
             for widget in addFrame.winfo_children():
                 widget.destroy()
 
-def tabSelected(event):
+def tabSelected(event) -> None:
     objAutomaticUpdates = AutomaticUpdates()
     #varNewRecord = IntVar()
 
