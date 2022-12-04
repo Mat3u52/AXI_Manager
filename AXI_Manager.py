@@ -1059,11 +1059,9 @@ def automaticInsert() -> None:
         reset()
         tabControl.select(tab2)
         flagSelectedRecored = False
-        #print(varNewRecord.get())
         objAutomaticUpdates = AutomaticUpdates()
         newItem = varNewRecord.get()
         if newItem in objAutomaticUpdates.bildGrid():
-            #print(f"{objAutomaticUpdates.bildGrid().get(varNewRecord.get())}")
             itemName = objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe').replace('_', '/')
             objNewItemEx.EI2.insert(0, f"{itemName}")
             objNewItemEx.EI3.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('boardQty')}")
@@ -1090,11 +1088,10 @@ def automaticInsert() -> None:
 
         if flagSelectedRecored is True:
             objAutomaticUpdates.updateDic(varNewRecord.get())
-            #flagSelectedRecored = False
-            #print(objAutomaticUpdates.dicRecipe)
             addFrame.pack_forget()
             for widget in addFrame.winfo_children():
                 widget.destroy()
+
 
 def tabSelected(event) -> None:
     objAutomaticUpdates = AutomaticUpdates()
