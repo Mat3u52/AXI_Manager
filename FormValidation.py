@@ -1,6 +1,7 @@
 from math import floor
 from tkinter import END, messagebox
 
+
 class FormValidation:
     def __init__(self):
         self.flagInit = False
