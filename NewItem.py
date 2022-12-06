@@ -2,6 +2,7 @@ from tkinter import ttk
 from tkinter import *
 from ContextualMenu import ContextualMenu
 
+
 class NewItem:
     def __init__(self, tab, root):
         self.tab = tab
