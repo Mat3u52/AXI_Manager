@@ -1,4 +1,6 @@
 from tkinter import ttk
+
+
 class Styles:
     def __init__(self, root):
         self.root = root
