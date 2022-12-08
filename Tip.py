@@ -98,5 +98,5 @@ class Tip:
             if al == int(self.startXPosition) / 2:
                 break
 
-    def __del__(self):
+    def __del__(self) -> None:
         pass
