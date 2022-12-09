@@ -944,16 +944,29 @@ def getSelectedRow(event) -> None:
 
     #refresh()
 def search() -> None:
+    """
+    The function is looking for the recipe by the phrase
+
+    :return: records from DB according to phrase
+    :rtype: None
+    """
     tree.selection_clear()
     tree.selection_remove(tree.focus())
     for record in tree.get_children():
         content = tree.item(record, 'values')
         #if content[1] != ESearch.get():
         if content[1].find(ESearch.get()) >= 0:
-            print(content[1].find(ESearch.get()))
+            pass
+            #print(content[1].find(ESearch.get()))
         else:
             tree.delete(record)
 def refresh() -> None:
+    """
+    The function returns the table to the default shape. Show all record from DB.
+
+    :return: Show all records in table from DB
+    :rtype: None
+    """
     tree.selection_clear()
     tree.selection_remove(tree.focus())
     ESearch.delete(0, END)
@@ -1052,7 +1065,14 @@ def refresh() -> None:
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
+
 def automaticInsert() -> None:
+    """
+    The function fulfills the form with data from a selected new recipe.
+
+    :return: Fulfills the entry with data
+    :rtype: None
+    """
     msgBox = tk.messagebox.askquestion(f"Automatic adding",
                                     "In the \"Add\" tab you have a new record. Do you want to upload this now?")
     if msgBox == 'yes':
@@ -1094,8 +1114,13 @@ def automaticInsert() -> None:
 
 
 def tabSelected(event) -> None:
+    """
+    The function show list of not yet added records to DB.
+
+    :return: Show list of not yet added recipe
+    :rtype: None
+    """
     objAutomaticUpdates = AutomaticUpdates()
-    #varNewRecord = IntVar()
 
     if event.widget.tab(event.widget.select(), "text") == " --- Add --- ":
 
@@ -1103,8 +1128,6 @@ def tabSelected(event) -> None:
         objAutomaticUpdates.bildGrid()
 
         for record in range(len(objAutomaticUpdates.dicRecipe)):
-            #print(objAutomaticUpdates.dicRecipe)
-            #print(f"{objAutomaticUpdates.dicRecipe.get(record).get('device')}")
             radioBox = ttk.Radiobutton(addFrame, text=f"{objAutomaticUpdates.dicRecipe.get(record).get('device')} - "
                                           f"{objAutomaticUpdates.dicRecipe.get(record).get('recipe')} "
                                           f"    [ {objAutomaticUpdates.dicRecipe.get(record).get('boardQty')} ] - "
@@ -1113,7 +1136,6 @@ def tabSelected(event) -> None:
                                variable=varNewRecord,
                                value=int(record),
                                command=automaticInsert)
-            #radioBox.grid_forget()
             radioBox.grid(row=int(record), column=0, sticky=W)
         radioBox.invoke()
 
