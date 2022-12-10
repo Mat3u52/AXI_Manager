@@ -1,6 +1,7 @@
 import os
 from Config import Config
 
+
 class AutomaticUpdates(Config):
     def __init__(self):
         Config.__init__(self)
@@ -8,7 +9,7 @@ class AutomaticUpdates(Config):
         self.id = 0
         self.dicRecipe = {}
 
-    def bildGrid(self):
+    def bildGrid(self) -> None:
         for self.device in self.devices:
             self.showFiles = os.listdir(self.pathLog+"/"+self.device)
             for self.showFile in self.showFiles:
@@ -50,7 +51,8 @@ class AutomaticUpdates(Config):
                         #self.fileRecipe.close()
                 self.file.close()
         return self.dicRecipe
-    def updateDic(self, id):
+
+    def updateDic(self, id: int) -> None:
         self.id = id
         os.remove(self.pathLog+"/"+self.dicRecipe[self.id].get("device")+"/Recipe="+self.dicRecipe[self.id].get("recipe")+"$.txt")
         #del self.dicRecipe[self.id]
