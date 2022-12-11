@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tk
 import pyperclip
 
+
 class ContextualMenu:
     def __init__(self, root):
         self.root = root
