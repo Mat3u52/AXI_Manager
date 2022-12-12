@@ -1139,495 +1139,496 @@ def tabSelected(event) -> None:
             radioBox.grid(row=int(record), column=0, sticky=W)
         radioBox.invoke()
 
-root = tk.Tk()
-objConfig = Config()
-ws = root.winfo_screenwidth() # width of the screen
-hs = root.winfo_screenheight() # height of the screen
-x = (ws-int(objConfig.screenWidth))
-y = (hs-int(objConfig.screenHeight))
-windowPosition = f'{int(objConfig.screenWidth)}x{int(objConfig.screenHeight)}+{int(x)}+{int(y)}'
-root.title(objConfig.title)
-root.geometry(windowPosition)
-#root.resizable(0, 0)
-#root.iconbitmap(objConfig.ico) # Icon for Win
-photo = PhotoImage(file=objConfig.ico)# Icon for Linux
-root.iconphoto(False, photo)# Incon for Linux
-
-root.configure(background=objConfig.bgColor)
-
-#--- Main View ---
-
-mainFrameView = ttk.LabelFrame(root, text=" Main View ")
-mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
-
-LItem = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
-LItem.config(font=("Arial", 12, 'bold'))
-LItem.grid(row=0, column=0, sticky=W)
-LItemAmount = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
-LItemAmount.config(font=("Arial", 12, 'bold'))
-LItemAmount.grid(row=0, column=2, sticky=W)
-LQty = Label(mainFrameView, text=f"", bg="#333333", fg="#555555", pady="2")
-LQty.config(font=("Arial", 10))
-LQty.grid(row=0, column=1, sticky=E)
-LDate = Label(mainFrameView, text=f"", bg="#333333", fg="#555555", pady="2")
-LDate.config(font=("Arial", 10))
-LDate.grid(row=0, column=3, sticky=W)
-LDateDB = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="2")
-LDateDB.config(font=("Arial", 10))
-LDateDB.grid(row=0, column=4, sticky=W)
-
-tabControlMain = ttk.Notebook(mainFrameView)
-
-tabMain1 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain1, text=" V849 ")
-
-LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
-LV849Prog.configure(font=("Arial", 10))
-LV849Prog.grid(row=0, column=0, columnspan=6, sticky=W)
-
-LV849ScanTimeL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
-LV849ScanTimeL.configure(font=("Arial", 10))
-LV849ScanTimeL.grid(row=1, column=0, sticky=E)
-LV849ScanTime = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV849ScanTime.configure(font=("Arial", 10))
-LV849ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
-
-LV849UPH85L = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
-LV849UPH85L.configure(font=("Arial", 10))
-LV849UPH85L.grid(row=2, column=0, sticky=E)
-LV849UPH85 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV849UPH85.configure(font=("Arial", 10))
-LV849UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-LV849UPH95L = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
-LV849UPH95L.configure(font=("Arial", 10))
-LV849UPH95L.grid(row=3, column=0, sticky=E)
-LV849UPH95 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV849UPH95.configure(font=("Arial", 10))
-LV849UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
-
-LV849BaanL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
-LV849BaanL.configure(font=("Arial", 10))
-LV849BaanL.grid(row=4, column=0, sticky=E)
-LV849Baan = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV849Baan.configure(font=("Arial", 10))
-LV849Baan.grid(row=4, column=1, sticky=W)
-
-LV849LCL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
-LV849LCL.configure(font=("Arial", 10))
-LV849LCL.grid(row=4, column=2, sticky=E)
-LV849LC = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV849LC.configure(font=("Arial", 10))
-LV849LC.grid(row=4, column=3, sticky=W)
-
-LV849EPIL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
-LV849EPIL.configure(font=("Arial", 10))
-LV849EPIL.grid(row=4, column=4, sticky=E)
-LV849EPI = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV849EPI.configure(font=("Arial", 10))
-LV849EPI.grid(row=4, column=5, sticky=W)
-
-LV849CommentL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
-LV849CommentL.configure(font=("Arial", 10))
-LV849CommentL.grid(row=5, column=0, sticky=E)
-LV849Comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV849Comment.configure(font=("Arial", 10, "italic"))
-LV849Comment.grid(row=5, column=1, columnspan=5, sticky=W)
-
-tabMain2 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain2, text=" V817 ")
-
-LV817Prog = Label(tabMain2, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
-LV817Prog.configure(font=("Arial", 10))
-LV817Prog.grid(row=0, column=0, columnspan=6, sticky=W)
-
-LV817ScanTimeL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
-LV817ScanTimeL.configure(font=("Arial", 10))
-LV817ScanTimeL.grid(row=1, column=0, sticky=E)
-LV817ScanTime = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV817ScanTime.configure(font=("Arial", 10))
-LV817ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
-
-LV817UPH85L = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
-LV817UPH85L.configure(font=("Arial", 10))
-LV817UPH85L.grid(row=2, column=0, sticky=E)
-LV817UPH85 = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV817UPH85.configure(font=("Arial", 10))
-LV817UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-LV817UPH95L = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
-LV817UPH95L.configure(font=("Arial", 10))
-LV817UPH95L.grid(row=3, column=0, sticky=E)
-LV817UPH95 = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV817UPH95.configure(font=("Arial", 10))
-LV817UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
-
-LV817BaanL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
-LV817BaanL.configure(font=("Arial", 10))
-LV817BaanL.grid(row=4, column=0, sticky=E)
-LV817Baan = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV817Baan.configure(font=("Arial", 10))
-LV817Baan.grid(row=4, column=1, sticky=W)
-
-LV817LCL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
-LV817LCL.configure(font=("Arial", 10))
-LV817LCL.grid(row=4, column=2, sticky=E)
-LV817LC = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV817LC.configure(font=("Arial", 10))
-LV817LC.grid(row=4, column=3, sticky=W)
-
-LV817EPIL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
-LV817EPIL.configure(font=("Arial", 10))
-LV817EPIL.grid(row=4, column=4, sticky=E)
-LV817EPI = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV817EPI.configure(font=("Arial", 10))
-LV817EPI.grid(row=4, column=5, sticky=W)
-
-LV817CommentL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
-LV817CommentL.configure(font=("Arial", 10))
-LV817CommentL.grid(row=5, column=0, sticky=E)
-LV817Comment = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV817Comment.configure(font=("Arial", 10, "italic"))
-LV817Comment.grid(row=5, column=1, columnspan=5, sticky=W)
-
-tabMain3 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain3, text=" V810-3163 ")
-
-LV8103163Prog = Label(tabMain3, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
-LV8103163Prog.configure(font=("Arial", 10))
-LV8103163Prog.grid(row=0, column=0, columnspan=6, sticky=W)
-
-LV8103163ScanTimeL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103163ScanTimeL.configure(font=("Arial", 10))
-LV8103163ScanTimeL.grid(row=1, column=0, sticky=E)
-LV8103163ScanTime = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103163ScanTime.configure(font=("Arial", 10))
-LV8103163ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
-
-LV8103163UPH85L = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103163UPH85L.configure(font=("Arial", 10))
-LV8103163UPH85L.grid(row=2, column=0, sticky=E)
-LV8103163UPH85 = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103163UPH85.configure(font=("Arial", 10))
-LV8103163UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-LV8103163UPH95L = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103163UPH95L.configure(font=("Arial", 10))
-LV8103163UPH95L.grid(row=3, column=0, sticky=E)
-LV8103163UPH95 = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103163UPH95.configure(font=("Arial", 10))
-LV8103163UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
-
-LV8103163BaanL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103163BaanL.configure(font=("Arial", 10))
-LV8103163BaanL.grid(row=4, column=0, sticky=E)
-LV8103163Baan = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103163Baan.configure(font=("Arial", 10))
-LV8103163Baan.grid(row=4, column=1, sticky=W)
-
-LV8103163LCL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103163LCL.configure(font=("Arial", 10))
-LV8103163LCL.grid(row=4, column=2, sticky=E)
-LV8103163LC = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103163LC.configure(font=("Arial", 10))
-LV8103163LC.grid(row=4, column=3, sticky=W)
-
-LV8103163EPIL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103163EPIL.configure(font=("Arial", 10))
-LV8103163EPIL.grid(row=4, column=4, sticky=E)
-LV8103163EPI = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103163EPI.configure(font=("Arial", 10))
-LV8103163EPI.grid(row=4, column=5, sticky=W)
-
-LV8103163CommentL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103163CommentL.configure(font=("Arial", 10))
-LV8103163CommentL.grid(row=5, column=0, sticky=E)
-LV8103163Comment = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103163Comment.configure(font=("Arial", 10, "italic"))
-LV8103163Comment.grid(row=5, column=1, columnspan=5, sticky=W)
-
-tabMain4 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
-
-LV8103483S2EXProg = Label(tabMain4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
-LV8103483S2EXProg.configure(font=("Arial", 10))
-LV8103483S2EXProg.grid(row=0, column=0, columnspan=6, sticky=W)
-
-LV8103483S2EXScanTimeL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103483S2EXScanTimeL.configure(font=("Arial", 10))
-LV8103483S2EXScanTimeL.grid(row=1, column=0, sticky=E)
-LV8103483S2EXScanTime = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103483S2EXScanTime.configure(font=("Arial", 10))
-LV8103483S2EXScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
-
-LV8103483S2EXUPH85L = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103483S2EXUPH85L.configure(font=("Arial", 10))
-LV8103483S2EXUPH85L.grid(row=2, column=0, sticky=E)
-LV8103483S2EXUPH85 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103483S2EXUPH85.configure(font=("Arial", 10))
-LV8103483S2EXUPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-LV8103483S2EXUPH95L = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103483S2EXUPH95L.configure(font=("Arial", 10))
-LV8103483S2EXUPH95L.grid(row=3, column=0, sticky=E)
-LV8103483S2EXUPH95 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103483S2EXUPH95.configure(font=("Arial", 10))
-LV8103483S2EXUPH95.grid(row=3, column=1, columnspan=5, sticky=W)
-
-LV8103483S2EXBaanL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103483S2EXBaanL.configure(font=("Arial", 10))
-LV8103483S2EXBaanL.grid(row=4, column=0, sticky=E)
-LV8103483S2EXBaan = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103483S2EXBaan.configure(font=("Arial", 10))
-LV8103483S2EXBaan.grid(row=4, column=1, sticky=W)
-
-LV8103483S2EXLCL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103483S2EXLCL.configure(font=("Arial", 10))
-LV8103483S2EXLCL.grid(row=4, column=2, sticky=E)
-LV8103483S2EXLC = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103483S2EXLC.configure(font=("Arial", 10))
-LV8103483S2EXLC.grid(row=4, column=3, sticky=W)
-
-LV8103483S2EXEPIL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103483S2EXEPIL.configure(font=("Arial", 10))
-LV8103483S2EXEPIL.grid(row=4, column=4, sticky=E)
-LV8103483S2EXEPI = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103483S2EXEPI.configure(font=("Arial", 10))
-LV8103483S2EXEPI.grid(row=4, column=5, sticky=W)
-
-LV8103483S2EXCommentL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103483S2EXCommentL.configure(font=("Arial", 10))
-LV8103483S2EXCommentL.grid(row=5, column=0, sticky=E)
-LV8103483S2EXComment = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103483S2EXComment.configure(font=("Arial", 10, "italic"))
-LV8103483S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
-
-tabMain5 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain5, text=" V810-3483S2EX ")
-
-LV8103553S2EXProg = Label(tabMain5, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
-LV8103553S2EXProg.configure(font=("Arial", 10))
-LV8103553S2EXProg.grid(row=0, column=0, columnspan=6, sticky=W)
-
-LV8103553S2EXScanTimeL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103553S2EXScanTimeL.configure(font=("Arial", 10))
-LV8103553S2EXScanTimeL.grid(row=1, column=0, sticky=E)
-LV8103553S2EXScanTime = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXScanTime.configure(font=("Arial", 10))
-LV8103553S2EXScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
-
-LV8103553S2EXUPH85L = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103553S2EXUPH85L.configure(font=("Arial", 10))
-LV8103553S2EXUPH85L.grid(row=2, column=0, sticky=E)
-LV8103553S2EXUPH85 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXUPH85.configure(font=("Arial", 10))
-LV8103553S2EXUPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-LV8103553S2EXUPH95L = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103553S2EXUPH95L.configure(font=("Arial", 10))
-LV8103553S2EXUPH95L.grid(row=3, column=0, sticky=E)
-LV8103553S2EXUPH95 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXUPH95.configure(font=("Arial", 10))
-LV8103553S2EXUPH95.grid(row=3, column=1, columnspan=5, sticky=W)
-
-LV8103553S2EXBaanL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103553S2EXBaanL.configure(font=("Arial", 10))
-LV8103553S2EXBaanL.grid(row=4, column=0, sticky=E)
-LV8103553S2EXBaan = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXBaan.configure(font=("Arial", 10))
-LV8103553S2EXBaan.grid(row=4, column=1, sticky=W)
-
-LV8103553S2EXLCL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103553S2EXLCL.configure(font=("Arial", 10))
-LV8103553S2EXLCL.grid(row=4, column=2, sticky=E)
-LV8103553S2EXLC = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXLC.configure(font=("Arial", 10))
-LV8103553S2EXLC.grid(row=4, column=3, sticky=W)
-
-LV8103553S2EXEPIL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103553S2EXEPIL.configure(font=("Arial", 10))
-LV8103553S2EXEPIL.grid(row=4, column=4, sticky=E)
-LV8103553S2EXEPI = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXEPI.configure(font=("Arial", 10))
-LV8103553S2EXEPI.grid(row=4, column=5, sticky=W)
-
-LV8103553S2EXCommentL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8103553S2EXCommentL.configure(font=("Arial", 10))
-LV8103553S2EXCommentL.grid(row=5, column=0, sticky=E)
-LV8103553S2EXComment = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8103553S2EXComment.configure(font=("Arial", 10, "italic"))
-LV8103553S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
-
-tabMain6 = ttk.Frame(tabControlMain)
-tabControlMain.add(tabMain6, text=" V810-8120S2 ")
-
-LV8108120S2Prog = Label(tabMain6, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
-LV8108120S2Prog.configure(font=("Arial", 10))
-LV8108120S2Prog.grid(row=0, column=0, columnspan=6, sticky=W)
-
-LV8108120S2ScanTimeL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8108120S2ScanTimeL.configure(font=("Arial", 10))
-LV8108120S2ScanTimeL.grid(row=1, column=0, sticky=E)
-LV8108120S2ScanTime = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8108120S2ScanTime.configure(font=("Arial", 10))
-LV8108120S2ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
-
-LV8108120S2UPH85L = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8108120S2UPH85L.configure(font=("Arial", 10))
-LV8108120S2UPH85L.grid(row=2, column=0, sticky=E)
-LV8108120S2UPH85 = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8108120S2UPH85.configure(font=("Arial", 10))
-LV8108120S2UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-LV8108120S2UPH95L = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8108120S2UPH95L.configure(font=("Arial", 10))
-LV8108120S2UPH95L.grid(row=3, column=0, sticky=E)
-LV8108120S2UPH95 = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8108120S2UPH95.configure(font=("Arial", 10))
-LV8108120S2UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
-
-LV8108120S2BaanL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8108120S2BaanL.configure(font=("Arial", 10))
-LV8108120S2BaanL.grid(row=4, column=0, sticky=E)
-LV8108120S2Baan = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8108120S2Baan.configure(font=("Arial", 10))
-LV8108120S2Baan.grid(row=4, column=1, sticky=W)
-
-LV8108120S2LCL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8108120S2LCL.configure(font=("Arial", 10))
-LV8108120S2LCL.grid(row=4, column=2, sticky=E)
-LV8108120S2LC = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8108120S2LC.configure(font=("Arial", 10))
-LV8108120S2LC.grid(row=4, column=3, sticky=W)
-
-LV8108120S2EPIL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8108120S2EPIL.configure(font=("Arial", 10))
-LV8108120S2EPIL.grid(row=4, column=4, sticky=E)
-LV8108120S2EPI = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8108120S2EPI.configure(font=("Arial", 10))
-LV8108120S2EPI.grid(row=4, column=5, sticky=W)
-
-LV8108120S2CommentL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
-LV8108120S2CommentL.configure(font=("Arial", 10))
-LV8108120S2CommentL.grid(row=5, column=0, sticky=E)
-LV8108120S2Comment = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-LV8108120S2Comment.configure(font=("Arial", 10))
-LV8108120S2Comment.grid(row=5, column=1, columnspan=5, sticky=W)
-
-tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
-
-#------------------- The End Main View ----------------------------
-
-tabControl = ttk.Notebook(root)
-
-tab1 = ttk.Frame(tabControl)
-tabControl.add(tab1, text=" --- Main --- ")
-tabControl.pack(expand=1, fill="both", padx=10, pady=10)
-tab2 = ttk.Frame(tabControl)
-tabControl.add(tab2, text=" --- New --- ")
-tabControl.pack(expand=1, fill="both", padx=10, pady=10)
-tab3 = ttk.Frame(tabControl)
-tabControl.add(tab3, text=" --- Add --- ")
-tabControl.pack(expand=1, fill="both", padx=10, pady=10)
-
-tabControl.bind("<<NotebookTabChanged>>", tabSelected)
-
-addFrame = ttk.LabelFrame(tab3, text=" New Items: ")
-#addFrame.pack(expand=1, fill="both", padx=10, pady=10)
-#addFrame.pack_Forget()
-varNewRecord = IntVar()
-
-
-objStyles = Styles(root)
-
-#--- INSERT ---
-
-objNewItemEx = NewItem(tab2, root)
-objNewItemEx.mainFrameInsert(" Insert Main ")
-
-objNewItemEx.checkboxTitle(" ViTrox Ex ", 4)
-objCheckboxMenuEx0 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
-objCheckboxMenuEx0.checkboxMenu("V810-3553S2EX", 1)
-
-objCheckboxMenuEx1 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
-objCheckboxMenuEx1.checkboxMenu("V810-3483S2EX", 2)
-
-objCheckboxMenuEx2 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
-objCheckboxMenuEx2.checkboxMenu("V810-3163", 3)
-
-objNewItemXXL = NewItem(tab2, root)
-objNewItemXXL.checkboxTitle(" ViTrox XXL ", 5)
-
-objCheckboxMenuXXL0 = CheckboxMenu(tab2, root, objNewItemXXL.checkboxFrame, " Insert ViTrox V810 XXL I ( V810-8120S2 ) ")
-objCheckboxMenuXXL0.checkboxMenu("V810-8120S2", 1)
-
-objNewItem5DX = NewItem(tab2, root)
-objNewItem5DX.checkboxTitle(" 5DX ", 6)
-
-objCheckboxMenu5DX0 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX I ( V849 ) ")
-objCheckboxMenu5DX0.checkboxMenu("V849", 1)
-objCheckboxMenu5DX0.alignmentTime()
-
-objCheckboxMenu5DX1 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX II ( V817 ) ")
-objCheckboxMenu5DX1.checkboxMenu("V817", 2)
-objCheckboxMenu5DX1.alignmentTime()
-
-BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=35, command=insertButton, cursor="hand2")
-BI1.grid(row=1, column=0, columnspan=2, pady=2)
-BI2 = ttk.Button(objNewItemEx.mainFrameInsert, text="Reset", width=15, command=reset, cursor="hand2")
-BI2.grid(row=1, column=2, columnspan=2, pady=2)
-#--- The End INSERT ---
-
-
-#--- Automatic Upadate ---
-
-#objAutomaticUpdates = AutomaticUpdates()
-#varNewRecord = IntVar()
-
-#for record in range(len(objAutomaticUpdates.bildGrid())):
-#    radioBox = ttk.Radiobutton(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('device')} - "
-#                                        f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')} "
-#                                        f"    [ {objAutomaticUpdates.bildGrid().get(record).get('boardQty')} ] - "
-#                                        f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.",
-#                                    style="AutomaticInsert.TRadiobutton",
-#                                    variable=varNewRecord,
-#                                    value=int(record),
-#                                    command=automaticInsert)
-#    radioBox.grid(row=int(record), column=0, sticky=W)
-#radioBox.invoke()
-
-#--- The End of Automatic Update ---
-
-#--- Search ---
-objCMSearch = ContextualMenu(root)
-#ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
-ESearch = Entry(tab1, relief="solid", textvariable=objCMSearch.captureEntry,
-                borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
-ESearch.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
-ESearch.grid(row=0, column=0, pady=1)
-#ESearch.bind("<Button-3>", doPopupSearch)
-ESearch.bind("<Button-3>", objCMSearch.doPopup)
-objCMSearch.setEntry(ESearch)
-BSearch = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
-BSearch.grid(row=0, column=1, pady=1)
-BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh, cursor="exchange")
-BSearchR.grid(row=0, column=2, pady=1)
-#--- The End Search ---
-
-tree = ttk.Treeview(tab1)
-
-tree["columns"] = ("one", "two", "three", "Four", "Five", "Six", "Seven")
-tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
-tree.column("one", width=35, minwidth=35, stretch=tk.NO)
-tree.column("two", width=250, minwidth=190, stretch=tk.NO)
-tree.column("three", width=140, minwidth=130, stretch=tk.NO)
-tree.column("Four", width=35, minwidth=30, stretch=tk.NO)
-tree.column("Five", width=40, minwidth=30, stretch=tk.NO)
-tree.column("Six", width=40, minwidth=30, stretch=tk.NO)
-tree.column("Seven", width=40, minwidth=30, stretch=tk.NO)
-
-tree.heading("#0", text="Box", anchor=tk.W)
-tree.heading("one", text="ID", anchor=tk.W)
-tree.heading("two", text="Item", anchor=tk.W)
-tree.heading("three", text="Date / Time", anchor=tk.W)
-tree.heading("Four", text="Qty", anchor=tk.W)
-tree.heading("Five", text="BaaN", anchor=tk.W)
-tree.heading("Six", text="LC", anchor=tk.W)
-tree.heading("Seven", text="EPI", anchor=tk.W)
-
-refresh()
-root.mainloop()
+if __name__ == "__main__":
+    root = tk.Tk()
+    objConfig = Config()
+    ws = root.winfo_screenwidth() # width of the screen
+    hs = root.winfo_screenheight() # height of the screen
+    x = (ws-int(objConfig.screenWidth))
+    y = (hs-int(objConfig.screenHeight))
+    windowPosition = f'{int(objConfig.screenWidth)}x{int(objConfig.screenHeight)}+{int(x)}+{int(y)}'
+    root.title(objConfig.title)
+    root.geometry(windowPosition)
+    #root.resizable(0, 0)
+    #root.iconbitmap(objConfig.ico) # Icon for Win
+    photo = PhotoImage(file=objConfig.ico)# Icon for Linux
+    root.iconphoto(False, photo)# Incon for Linux
+
+    root.configure(background=objConfig.bgColor)
+
+    #--- Main View ---
+
+    mainFrameView = ttk.LabelFrame(root, text=" Main View ")
+    mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
+
+    LItem = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
+    LItem.config(font=("Arial", 12, 'bold'))
+    LItem.grid(row=0, column=0, sticky=W)
+    LItemAmount = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
+    LItemAmount.config(font=("Arial", 12, 'bold'))
+    LItemAmount.grid(row=0, column=2, sticky=W)
+    LQty = Label(mainFrameView, text=f"", bg="#333333", fg="#555555", pady="2")
+    LQty.config(font=("Arial", 10))
+    LQty.grid(row=0, column=1, sticky=E)
+    LDate = Label(mainFrameView, text=f"", bg="#333333", fg="#555555", pady="2")
+    LDate.config(font=("Arial", 10))
+    LDate.grid(row=0, column=3, sticky=W)
+    LDateDB = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="2")
+    LDateDB.config(font=("Arial", 10))
+    LDateDB.grid(row=0, column=4, sticky=W)
+
+    tabControlMain = ttk.Notebook(mainFrameView)
+
+    tabMain1 = ttk.Frame(tabControlMain)
+    tabControlMain.add(tabMain1, text=" V849 ")
+
+    LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    LV849Prog.configure(font=("Arial", 10))
+    LV849Prog.grid(row=0, column=0, columnspan=6, sticky=W)
+
+    LV849ScanTimeL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV849ScanTimeL.configure(font=("Arial", 10))
+    LV849ScanTimeL.grid(row=1, column=0, sticky=E)
+    LV849ScanTime = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV849ScanTime.configure(font=("Arial", 10))
+    LV849ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
+
+    LV849UPH85L = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV849UPH85L.configure(font=("Arial", 10))
+    LV849UPH85L.grid(row=2, column=0, sticky=E)
+    LV849UPH85 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV849UPH85.configure(font=("Arial", 10))
+    LV849UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
+    LV849UPH95L = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV849UPH95L.configure(font=("Arial", 10))
+    LV849UPH95L.grid(row=3, column=0, sticky=E)
+    LV849UPH95 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV849UPH95.configure(font=("Arial", 10))
+    LV849UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+
+    LV849BaanL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV849BaanL.configure(font=("Arial", 10))
+    LV849BaanL.grid(row=4, column=0, sticky=E)
+    LV849Baan = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV849Baan.configure(font=("Arial", 10))
+    LV849Baan.grid(row=4, column=1, sticky=W)
+
+    LV849LCL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV849LCL.configure(font=("Arial", 10))
+    LV849LCL.grid(row=4, column=2, sticky=E)
+    LV849LC = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV849LC.configure(font=("Arial", 10))
+    LV849LC.grid(row=4, column=3, sticky=W)
+
+    LV849EPIL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV849EPIL.configure(font=("Arial", 10))
+    LV849EPIL.grid(row=4, column=4, sticky=E)
+    LV849EPI = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV849EPI.configure(font=("Arial", 10))
+    LV849EPI.grid(row=4, column=5, sticky=W)
+
+    LV849CommentL = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV849CommentL.configure(font=("Arial", 10))
+    LV849CommentL.grid(row=5, column=0, sticky=E)
+    LV849Comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV849Comment.configure(font=("Arial", 10, "italic"))
+    LV849Comment.grid(row=5, column=1, columnspan=5, sticky=W)
+
+    tabMain2 = ttk.Frame(tabControlMain)
+    tabControlMain.add(tabMain2, text=" V817 ")
+
+    LV817Prog = Label(tabMain2, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    LV817Prog.configure(font=("Arial", 10))
+    LV817Prog.grid(row=0, column=0, columnspan=6, sticky=W)
+
+    LV817ScanTimeL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817ScanTimeL.configure(font=("Arial", 10))
+    LV817ScanTimeL.grid(row=1, column=0, sticky=E)
+    LV817ScanTime = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817ScanTime.configure(font=("Arial", 10))
+    LV817ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
+
+    LV817UPH85L = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817UPH85L.configure(font=("Arial", 10))
+    LV817UPH85L.grid(row=2, column=0, sticky=E)
+    LV817UPH85 = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817UPH85.configure(font=("Arial", 10))
+    LV817UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
+    LV817UPH95L = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817UPH95L.configure(font=("Arial", 10))
+    LV817UPH95L.grid(row=3, column=0, sticky=E)
+    LV817UPH95 = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817UPH95.configure(font=("Arial", 10))
+    LV817UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+
+    LV817BaanL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817BaanL.configure(font=("Arial", 10))
+    LV817BaanL.grid(row=4, column=0, sticky=E)
+    LV817Baan = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817Baan.configure(font=("Arial", 10))
+    LV817Baan.grid(row=4, column=1, sticky=W)
+
+    LV817LCL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817LCL.configure(font=("Arial", 10))
+    LV817LCL.grid(row=4, column=2, sticky=E)
+    LV817LC = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817LC.configure(font=("Arial", 10))
+    LV817LC.grid(row=4, column=3, sticky=W)
+
+    LV817EPIL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817EPIL.configure(font=("Arial", 10))
+    LV817EPIL.grid(row=4, column=4, sticky=E)
+    LV817EPI = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817EPI.configure(font=("Arial", 10))
+    LV817EPI.grid(row=4, column=5, sticky=W)
+
+    LV817CommentL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817CommentL.configure(font=("Arial", 10))
+    LV817CommentL.grid(row=5, column=0, sticky=E)
+    LV817Comment = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817Comment.configure(font=("Arial", 10, "italic"))
+    LV817Comment.grid(row=5, column=1, columnspan=5, sticky=W)
+
+    tabMain3 = ttk.Frame(tabControlMain)
+    tabControlMain.add(tabMain3, text=" V810-3163 ")
+
+    LV8103163Prog = Label(tabMain3, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    LV8103163Prog.configure(font=("Arial", 10))
+    LV8103163Prog.grid(row=0, column=0, columnspan=6, sticky=W)
+
+    LV8103163ScanTimeL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103163ScanTimeL.configure(font=("Arial", 10))
+    LV8103163ScanTimeL.grid(row=1, column=0, sticky=E)
+    LV8103163ScanTime = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103163ScanTime.configure(font=("Arial", 10))
+    LV8103163ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
+
+    LV8103163UPH85L = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103163UPH85L.configure(font=("Arial", 10))
+    LV8103163UPH85L.grid(row=2, column=0, sticky=E)
+    LV8103163UPH85 = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103163UPH85.configure(font=("Arial", 10))
+    LV8103163UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
+    LV8103163UPH95L = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103163UPH95L.configure(font=("Arial", 10))
+    LV8103163UPH95L.grid(row=3, column=0, sticky=E)
+    LV8103163UPH95 = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103163UPH95.configure(font=("Arial", 10))
+    LV8103163UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+
+    LV8103163BaanL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103163BaanL.configure(font=("Arial", 10))
+    LV8103163BaanL.grid(row=4, column=0, sticky=E)
+    LV8103163Baan = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103163Baan.configure(font=("Arial", 10))
+    LV8103163Baan.grid(row=4, column=1, sticky=W)
+
+    LV8103163LCL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103163LCL.configure(font=("Arial", 10))
+    LV8103163LCL.grid(row=4, column=2, sticky=E)
+    LV8103163LC = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103163LC.configure(font=("Arial", 10))
+    LV8103163LC.grid(row=4, column=3, sticky=W)
+
+    LV8103163EPIL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103163EPIL.configure(font=("Arial", 10))
+    LV8103163EPIL.grid(row=4, column=4, sticky=E)
+    LV8103163EPI = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103163EPI.configure(font=("Arial", 10))
+    LV8103163EPI.grid(row=4, column=5, sticky=W)
+
+    LV8103163CommentL = Label(tabMain3, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103163CommentL.configure(font=("Arial", 10))
+    LV8103163CommentL.grid(row=5, column=0, sticky=E)
+    LV8103163Comment = Label(tabMain3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103163Comment.configure(font=("Arial", 10, "italic"))
+    LV8103163Comment.grid(row=5, column=1, columnspan=5, sticky=W)
+
+    tabMain4 = ttk.Frame(tabControlMain)
+    tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+
+    LV8103483S2EXProg = Label(tabMain4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    LV8103483S2EXProg.configure(font=("Arial", 10))
+    LV8103483S2EXProg.grid(row=0, column=0, columnspan=6, sticky=W)
+
+    LV8103483S2EXScanTimeL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXScanTimeL.configure(font=("Arial", 10))
+    LV8103483S2EXScanTimeL.grid(row=1, column=0, sticky=E)
+    LV8103483S2EXScanTime = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXScanTime.configure(font=("Arial", 10))
+    LV8103483S2EXScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
+
+    LV8103483S2EXUPH85L = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXUPH85L.configure(font=("Arial", 10))
+    LV8103483S2EXUPH85L.grid(row=2, column=0, sticky=E)
+    LV8103483S2EXUPH85 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXUPH85.configure(font=("Arial", 10))
+    LV8103483S2EXUPH85.grid(row=2, column=1, columnspan=5, sticky=W)
+    LV8103483S2EXUPH95L = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXUPH95L.configure(font=("Arial", 10))
+    LV8103483S2EXUPH95L.grid(row=3, column=0, sticky=E)
+    LV8103483S2EXUPH95 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXUPH95.configure(font=("Arial", 10))
+    LV8103483S2EXUPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+
+    LV8103483S2EXBaanL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXBaanL.configure(font=("Arial", 10))
+    LV8103483S2EXBaanL.grid(row=4, column=0, sticky=E)
+    LV8103483S2EXBaan = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXBaan.configure(font=("Arial", 10))
+    LV8103483S2EXBaan.grid(row=4, column=1, sticky=W)
+
+    LV8103483S2EXLCL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXLCL.configure(font=("Arial", 10))
+    LV8103483S2EXLCL.grid(row=4, column=2, sticky=E)
+    LV8103483S2EXLC = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXLC.configure(font=("Arial", 10))
+    LV8103483S2EXLC.grid(row=4, column=3, sticky=W)
+
+    LV8103483S2EXEPIL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXEPIL.configure(font=("Arial", 10))
+    LV8103483S2EXEPIL.grid(row=4, column=4, sticky=E)
+    LV8103483S2EXEPI = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXEPI.configure(font=("Arial", 10))
+    LV8103483S2EXEPI.grid(row=4, column=5, sticky=W)
+
+    LV8103483S2EXCommentL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXCommentL.configure(font=("Arial", 10))
+    LV8103483S2EXCommentL.grid(row=5, column=0, sticky=E)
+    LV8103483S2EXComment = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXComment.configure(font=("Arial", 10, "italic"))
+    LV8103483S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
+
+    tabMain5 = ttk.Frame(tabControlMain)
+    tabControlMain.add(tabMain5, text=" V810-3483S2EX ")
+
+    LV8103553S2EXProg = Label(tabMain5, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    LV8103553S2EXProg.configure(font=("Arial", 10))
+    LV8103553S2EXProg.grid(row=0, column=0, columnspan=6, sticky=W)
+
+    LV8103553S2EXScanTimeL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103553S2EXScanTimeL.configure(font=("Arial", 10))
+    LV8103553S2EXScanTimeL.grid(row=1, column=0, sticky=E)
+    LV8103553S2EXScanTime = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103553S2EXScanTime.configure(font=("Arial", 10))
+    LV8103553S2EXScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
+
+    LV8103553S2EXUPH85L = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103553S2EXUPH85L.configure(font=("Arial", 10))
+    LV8103553S2EXUPH85L.grid(row=2, column=0, sticky=E)
+    LV8103553S2EXUPH85 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103553S2EXUPH85.configure(font=("Arial", 10))
+    LV8103553S2EXUPH85.grid(row=2, column=1, columnspan=5, sticky=W)
+    LV8103553S2EXUPH95L = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103553S2EXUPH95L.configure(font=("Arial", 10))
+    LV8103553S2EXUPH95L.grid(row=3, column=0, sticky=E)
+    LV8103553S2EXUPH95 = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103553S2EXUPH95.configure(font=("Arial", 10))
+    LV8103553S2EXUPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+
+    LV8103553S2EXBaanL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103553S2EXBaanL.configure(font=("Arial", 10))
+    LV8103553S2EXBaanL.grid(row=4, column=0, sticky=E)
+    LV8103553S2EXBaan = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103553S2EXBaan.configure(font=("Arial", 10))
+    LV8103553S2EXBaan.grid(row=4, column=1, sticky=W)
+
+    LV8103553S2EXLCL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103553S2EXLCL.configure(font=("Arial", 10))
+    LV8103553S2EXLCL.grid(row=4, column=2, sticky=E)
+    LV8103553S2EXLC = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103553S2EXLC.configure(font=("Arial", 10))
+    LV8103553S2EXLC.grid(row=4, column=3, sticky=W)
+
+    LV8103553S2EXEPIL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103553S2EXEPIL.configure(font=("Arial", 10))
+    LV8103553S2EXEPIL.grid(row=4, column=4, sticky=E)
+    LV8103553S2EXEPI = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103553S2EXEPI.configure(font=("Arial", 10))
+    LV8103553S2EXEPI.grid(row=4, column=5, sticky=W)
+
+    LV8103553S2EXCommentL = Label(tabMain5, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103553S2EXCommentL.configure(font=("Arial", 10))
+    LV8103553S2EXCommentL.grid(row=5, column=0, sticky=E)
+    LV8103553S2EXComment = Label(tabMain5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103553S2EXComment.configure(font=("Arial", 10, "italic"))
+    LV8103553S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
+
+    tabMain6 = ttk.Frame(tabControlMain)
+    tabControlMain.add(tabMain6, text=" V810-8120S2 ")
+
+    LV8108120S2Prog = Label(tabMain6, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    LV8108120S2Prog.configure(font=("Arial", 10))
+    LV8108120S2Prog.grid(row=0, column=0, columnspan=6, sticky=W)
+
+    LV8108120S2ScanTimeL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8108120S2ScanTimeL.configure(font=("Arial", 10))
+    LV8108120S2ScanTimeL.grid(row=1, column=0, sticky=E)
+    LV8108120S2ScanTime = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8108120S2ScanTime.configure(font=("Arial", 10))
+    LV8108120S2ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
+
+    LV8108120S2UPH85L = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8108120S2UPH85L.configure(font=("Arial", 10))
+    LV8108120S2UPH85L.grid(row=2, column=0, sticky=E)
+    LV8108120S2UPH85 = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8108120S2UPH85.configure(font=("Arial", 10))
+    LV8108120S2UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
+    LV8108120S2UPH95L = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8108120S2UPH95L.configure(font=("Arial", 10))
+    LV8108120S2UPH95L.grid(row=3, column=0, sticky=E)
+    LV8108120S2UPH95 = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8108120S2UPH95.configure(font=("Arial", 10))
+    LV8108120S2UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+
+    LV8108120S2BaanL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8108120S2BaanL.configure(font=("Arial", 10))
+    LV8108120S2BaanL.grid(row=4, column=0, sticky=E)
+    LV8108120S2Baan = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8108120S2Baan.configure(font=("Arial", 10))
+    LV8108120S2Baan.grid(row=4, column=1, sticky=W)
+
+    LV8108120S2LCL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8108120S2LCL.configure(font=("Arial", 10))
+    LV8108120S2LCL.grid(row=4, column=2, sticky=E)
+    LV8108120S2LC = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8108120S2LC.configure(font=("Arial", 10))
+    LV8108120S2LC.grid(row=4, column=3, sticky=W)
+
+    LV8108120S2EPIL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8108120S2EPIL.configure(font=("Arial", 10))
+    LV8108120S2EPIL.grid(row=4, column=4, sticky=E)
+    LV8108120S2EPI = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8108120S2EPI.configure(font=("Arial", 10))
+    LV8108120S2EPI.grid(row=4, column=5, sticky=W)
+
+    LV8108120S2CommentL = Label(tabMain6, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8108120S2CommentL.configure(font=("Arial", 10))
+    LV8108120S2CommentL.grid(row=5, column=0, sticky=E)
+    LV8108120S2Comment = Label(tabMain6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8108120S2Comment.configure(font=("Arial", 10))
+    LV8108120S2Comment.grid(row=5, column=1, columnspan=5, sticky=W)
+
+    tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
+
+    #------------------- The End Main View ----------------------------
+
+    tabControl = ttk.Notebook(root)
+
+    tab1 = ttk.Frame(tabControl)
+    tabControl.add(tab1, text=" --- Main --- ")
+    tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+    tab2 = ttk.Frame(tabControl)
+    tabControl.add(tab2, text=" --- New --- ")
+    tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+    tab3 = ttk.Frame(tabControl)
+    tabControl.add(tab3, text=" --- Add --- ")
+    tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+
+    tabControl.bind("<<NotebookTabChanged>>", tabSelected)
+
+    addFrame = ttk.LabelFrame(tab3, text=" New Items: ")
+    #addFrame.pack(expand=1, fill="both", padx=10, pady=10)
+    #addFrame.pack_Forget()
+    varNewRecord = IntVar()
+
+
+    objStyles = Styles(root)
+
+    #--- INSERT ---
+
+    objNewItemEx = NewItem(tab2, root)
+    objNewItemEx.mainFrameInsert(" Insert Main ")
+
+    objNewItemEx.checkboxTitle(" ViTrox Ex ", 4)
+    objCheckboxMenuEx0 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
+    objCheckboxMenuEx0.checkboxMenu("V810-3553S2EX", 1)
+
+    objCheckboxMenuEx1 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
+    objCheckboxMenuEx1.checkboxMenu("V810-3483S2EX", 2)
+
+    objCheckboxMenuEx2 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
+    objCheckboxMenuEx2.checkboxMenu("V810-3163", 3)
+
+    objNewItemXXL = NewItem(tab2, root)
+    objNewItemXXL.checkboxTitle(" ViTrox XXL ", 5)
+
+    objCheckboxMenuXXL0 = CheckboxMenu(tab2, root, objNewItemXXL.checkboxFrame, " Insert ViTrox V810 XXL I ( V810-8120S2 ) ")
+    objCheckboxMenuXXL0.checkboxMenu("V810-8120S2", 1)
+
+    objNewItem5DX = NewItem(tab2, root)
+    objNewItem5DX.checkboxTitle(" 5DX ", 6)
+
+    objCheckboxMenu5DX0 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX I ( V849 ) ")
+    objCheckboxMenu5DX0.checkboxMenu("V849", 1)
+    objCheckboxMenu5DX0.alignmentTime()
+
+    objCheckboxMenu5DX1 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX II ( V817 ) ")
+    objCheckboxMenu5DX1.checkboxMenu("V817", 2)
+    objCheckboxMenu5DX1.alignmentTime()
+
+    BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=35, command=insertButton, cursor="hand2")
+    BI1.grid(row=1, column=0, columnspan=2, pady=2)
+    BI2 = ttk.Button(objNewItemEx.mainFrameInsert, text="Reset", width=15, command=reset, cursor="hand2")
+    BI2.grid(row=1, column=2, columnspan=2, pady=2)
+    #--- The End INSERT ---
+
+
+    #--- Automatic Upadate ---
+
+    #objAutomaticUpdates = AutomaticUpdates()
+    #varNewRecord = IntVar()
+
+    #for record in range(len(objAutomaticUpdates.bildGrid())):
+    #    radioBox = ttk.Radiobutton(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('device')} - "
+    #                                        f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')} "
+    #                                        f"    [ {objAutomaticUpdates.bildGrid().get(record).get('boardQty')} ] - "
+    #                                        f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.",
+    #                                    style="AutomaticInsert.TRadiobutton",
+    #                                    variable=varNewRecord,
+    #                                    value=int(record),
+    #                                    command=automaticInsert)
+    #    radioBox.grid(row=int(record), column=0, sticky=W)
+    #radioBox.invoke()
+
+    #--- The End of Automatic Update ---
+
+    #--- Search ---
+    objCMSearch = ContextualMenu(root)
+    #ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
+    ESearch = Entry(tab1, relief="solid", textvariable=objCMSearch.captureEntry,
+                    borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
+    ESearch.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
+    ESearch.grid(row=0, column=0, pady=1)
+    #ESearch.bind("<Button-3>", doPopupSearch)
+    ESearch.bind("<Button-3>", objCMSearch.doPopup)
+    objCMSearch.setEntry(ESearch)
+    BSearch = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
+    BSearch.grid(row=0, column=1, pady=1)
+    BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh, cursor="exchange")
+    BSearchR.grid(row=0, column=2, pady=1)
+    #--- The End Search ---
+
+    tree = ttk.Treeview(tab1)
+
+    tree["columns"] = ("one", "two", "three", "Four", "Five", "Six", "Seven")
+    tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
+    tree.column("one", width=35, minwidth=35, stretch=tk.NO)
+    tree.column("two", width=250, minwidth=190, stretch=tk.NO)
+    tree.column("three", width=140, minwidth=130, stretch=tk.NO)
+    tree.column("Four", width=35, minwidth=30, stretch=tk.NO)
+    tree.column("Five", width=40, minwidth=30, stretch=tk.NO)
+    tree.column("Six", width=40, minwidth=30, stretch=tk.NO)
+    tree.column("Seven", width=40, minwidth=30, stretch=tk.NO)
+
+    tree.heading("#0", text="Box", anchor=tk.W)
+    tree.heading("one", text="ID", anchor=tk.W)
+    tree.heading("two", text="Item", anchor=tk.W)
+    tree.heading("three", text="Date / Time", anchor=tk.W)
+    tree.heading("Four", text="Qty", anchor=tk.W)
+    tree.heading("Five", text="BaaN", anchor=tk.W)
+    tree.heading("Six", text="LC", anchor=tk.W)
+    tree.heading("Seven", text="EPI", anchor=tk.W)
+
+    refresh()
+    root.mainloop()
