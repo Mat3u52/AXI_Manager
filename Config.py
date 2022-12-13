@@ -1,5 +1,5 @@
 class Config:
-    def __init__(self):
+    def __init__(self) -> None:
         self.title = 'AXI - Manager'
         self.screenWidth = 690
         self.screenHeight = 820
