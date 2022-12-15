@@ -5,7 +5,7 @@ from PIL import Image
 
 
 class Tip:
-    def __init__(self, root, mainFrameView, primePng='img/tip/okBegin.png') -> None:
+    def __init__(self, root: tk.tkinter, mainFrameView: tk.tkinter, primePng: str = 'img/tip/okBegin.png') -> None:
         self.root = root
         self.mainFrameView = mainFrameView
         self.startXPosition = 120
