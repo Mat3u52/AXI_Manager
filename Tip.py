@@ -5,7 +5,14 @@ from PIL import Image
 
 
 class Tip:
-    def __init__(self, root: tk.tkinter, mainFrameView: tk.tkinter, primePng: str = 'img/tip/okBegin.png') -> None:
+    def __init__(self, root: tk, mainFrameView: tk, primePng: str = 'img/tip/okBegin.png') -> None:
+        """
+        Preparation of canvas area.
+
+        :return: prepare canvas area
+        :rtype: None
+        """
+
         self.root = root
         self.mainFrameView = mainFrameView
         self.startXPosition = 120
