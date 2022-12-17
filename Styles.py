@@ -2,7 +2,7 @@ from tkinter import ttk
 
 
 class Styles:
-    def __init__(self, root):
+    def __init__(self, root: ttk.tkinter) -> None:
         self.root = root
         self.style = ttk.Style()
         self.style.theme_create('style_class',
