@@ -84,7 +84,6 @@ class Tip:
         photo = PhotoImage(file='img/tip/okBegin.PNG')
         imageB = self.canv.create_image(120, 15, image=photo)
 
-
         while True:
             self.canv.move(imageB, self.minMovement, 0)
             self.root.update()
