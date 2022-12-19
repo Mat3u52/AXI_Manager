@@ -4,7 +4,7 @@ from ContextualMenu import ContextualMenu
 
 
 class NewItem:
-    def __init__(self, tab, root):
+    def __init__(self, tab, root) -> None:
         self.tab = tab
         self.root = root
 
