@@ -170,19 +170,24 @@ class DBConnect:
                         for self.row in self.selectSearchItem(self.item):
                             pass
                         msgBox = messagebox.askquestion(f"The record already exist in DB! - {self.machine}",
+                                                        f"Device: {self.machine}\n\n"
                                                         f"Existing Item: {self.row[1]} [  {self.row[0]} ]\n\n "
                                                         f"Amount of the board in one panel: {self.row[3]}\n\n "
-                                                        f"ViTroxEx:\n\n"
-                                                        f"V810-3553S2EX: {self.row[54]} Scanning Time: {self.row[52]}\n "
-                                                        f"V810-3483S2EX: {self.row[45]} Scanning Time: {self.row[41]}\n "
-                                                        f"V810-3163: {self.row[27]} Scanning Time: {self.row[13]}\n "
-                                                        f"\n\nViTrox XXL:\n\n"
-                                                        f"V810-8120S2: {self.row[31]} Scanning Time: {self.row[35]}\n "
-                                                        f"\n\n5DX:\n\n"
-                                                        f"V849: {self.row[17]}\n" 
-                                                        f"V817: {self.row[22]}\n\n "
-                                                        f"A:{self.row[7]} M:{self.row[8]} Th:{self.row[9]} T:{self.row[10]} \n\n"
                                                         f"Do you want to update the record?")
+                        # msgBox = messagebox.askquestion(f"The record already exist in DB! - {self.machine}",
+                        #                                 f"Existing Item: {self.row[1]} [  {self.row[0]} ]\n\n "
+                        #                                 f"Amount of the board in one panel: {self.row[3]}\n\n "
+                        #                                 f"ViTroxEx:\n\n"
+                        #                                 f"V810-3553S2EX: {self.row[54]} Scanning Time: {self.row[52]}\n "
+                        #                                 f"V810-3483S2EX: {self.row[45]} Scanning Time: {self.row[41]}\n "
+                        #                                 f"V810-3163: {self.row[27]} Scanning Time: {self.row[13]}\n "
+                        #                                 f"\n\nViTrox XXL:\n\n"
+                        #                                 f"V810-8120S2: {self.row[31]} Scanning Time: {self.row[35]}\n "
+                        #                                 f"\n\n5DX:\n\n"
+                        #                                 f"V849: {self.row[17]}\n"
+                        #                                 f"V817: {self.row[22]}\n\n "
+                        #                                 f"A:{self.row[7]} M:{self.row[8]} Th:{self.row[9]} T:{self.row[10]} \n\n"
+                        #                                 f"Do you want to update the record?")
                         if msgBox == 'yes':
                             if self.device == 'V810-3553S2EX':
                                 self.V8103553S2EXProg = initProg
@@ -375,7 +380,7 @@ class DBConnect:
 
 
 
-    def _insert(self):
+    def _insert(self) -> None:
         sql = "INSERT mk_diary SET ITEM = %s, ITEM_AMOUNT = %s, " \
                     "VITROXIV_PROG = %s, VITROXIV_TEST = %s, VITROXIV_LINECAPA = %s," \
                     " VITROXIV_EPI = %s, VITROXIV_BAAN1 = %s, VITROXIV_COMMENTS = %s, VITROXIV_BAAN = %s," \
@@ -419,7 +424,7 @@ class DBConnect:
         self.dbCursor.execute(sql, val)
         self.db.commit()
 
-    def _updateV8103553S2EX(self, id):
+    def _updateV8103553S2EX(self, id: int) -> None:
         self.ID = id
         sql = "UPDATE mk_diary SET " \
               "VITROXIV_PROG = %s, VITROXIV_TEST = %s, VITROXIV_LINECAPA = %s," \
@@ -432,7 +437,7 @@ class DBConnect:
         )
         self.dbCursor.execute(sql, val)
         self.db.commit()
-    def _updateV8103483S2EX(self, id):
+    def _updateV8103483S2EX(self, id: int) -> None:
         self.ID = id
         sql = "UPDATE mk_diary SET " \
               " VITROXIII_PROG = %s, VITROXIII_TEST = %s, VITROXIII_LINECAPA = %s," \
@@ -445,7 +450,7 @@ class DBConnect:
         )
         self.dbCursor.execute(sql, val)
         self.db.commit()
-    def _updateV8108120S2(self, id):
+    def _updateV8108120S2(self, id: int) -> None:
         self.ID = id
         sql = "UPDATE mk_diary SET " \
               " VITROXII_PROG = %s, VITROXII_TEST = %s, VITROXII_LINECAPA = %s," \
@@ -458,7 +463,7 @@ class DBConnect:
         )
         self.dbCursor.execute(sql, val)
         self.db.commit()
-    def _updateV8103163(self, id):
+    def _updateV8103163(self, id: int) -> None:
         self.ID = id
         sql = "UPDATE mk_diary SET " \
               " VITROXI_PROG = %s, VITROX_TEST = %s, VITROXI_LINECAPA = %s," \
@@ -471,7 +476,7 @@ class DBConnect:
         )
         self.dbCursor.execute(sql, val)
         self.db.commit()
-    def _updateV849V817(self, id):
+    def _updateV849V817(self, id: int) -> None:
         self.ID = id
         sql = "UPDATE mk_diary SET " \
                 " 5DX_BAAN = %s, 5DX_TIME = %s, 5DX_DSVR = %s, 5DX_ALIGN = %s, 5DX_MAP = %s, 5DX_AUTO_THICKNESS = %s," \
@@ -486,7 +491,7 @@ class DBConnect:
         )
         self.dbCursor.execute(sql, val)
         self.db.commit()
-    def _update(self, id):
+    def _update(self, id: int) -> None:
         self.ID = id
         sql = "UPDATE mk_diary SET ITEM = %s, ITEM_AMOUNT = %s, " \
                   "VITROXIV_PROG = %s, VITROXIV_TEST = %s, VITROXIV_LINECAPA = %s," \
@@ -535,7 +540,7 @@ class DBConnect:
         self.dbCursor.execute(sql, val)
         self.db.commit()
 
-    def closeDB(self):
+    def closeDB(self) -> None:
         self.dbCursor.close()
         self.db.close()
 #def __del__(self):
