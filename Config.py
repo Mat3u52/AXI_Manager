@@ -1,5 +1,11 @@
 class Config:
     def __init__(self) -> None:
+        """
+        The config file contains the paths and settings.
+
+        :return: settings and paths
+        :rtype: None
+        """
         self.title = 'AXI - Manager'
         self.screenWidth = 690
         self.screenHeight = 820
