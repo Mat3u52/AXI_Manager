@@ -3,13 +3,13 @@ from tkinter import END, messagebox
 
 
 class FormValidation:
-    def __init__(self):
+    def __init__(self) -> None:
         self.flagInit = False
         self.totalTime = 0
         self.uph85 = 0
         self.uph95 = 0
 
-    def validatorItem(self, item, itemAmount):
+    def validatorItem(self, item: str, itemAmount: int) -> None:
         self.item = ""
         self.itemAmount = 0
         try:
