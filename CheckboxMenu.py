@@ -3,8 +3,9 @@ from tkinter import *
 import tkinter as tk
 from ContextualMenu import ContextualMenu
 
+
 class CheckboxMenu:
-    def __init__(self, tab, root, frame, description):
+    def __init__(self, tab: tk, root: tk, frame: tk, description: str) -> None:
         self.tab = tab
         self.root = root
         self.checkboxFrame = frame
@@ -74,8 +75,7 @@ class CheckboxMenu:
         self.EI_5.bind("<Button-3>", self.objCM_Comments.doPopup)
         self.objCM_Comments.setEntry(self.EI_5)
 
-
-    def alignmentTime(self):
+    def alignmentTime(self) -> None:
         self.LI_6 = Label(self.insertFrame, text="Aligment Time:",
                           width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
         self.LI_6.config(font=("Arial", 10))
@@ -101,7 +101,7 @@ class CheckboxMenu:
         self.EI_8.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
         self.EI_8.grid(row=5, column=1, pady=1)
 
-    def checkboxMenu(self, name, number):
+    def checkboxMenu(self, name: str, number: int) -> None:
         self.name = name
         self.number = int(number)
         self.var = tk.IntVar()
@@ -112,14 +112,14 @@ class CheckboxMenu:
                               highlightbackground="#000000", highlightcolor="#33FFBE")
         self.checkbox1.grid(column=self.number-1, row=0, sticky='W', padx=10, pady=10)
 
-    def _checkbox(self):
+    def _checkbox(self) -> None:
         if self.var.get() == 1:
             self.insertFrame.grid(column=0, row=5+self.number, columnspan=10, sticky='W', padx=10, pady=10)
 
         elif self.var.get() == 0:
             self.insertFrame.grid_forget()
 
-    def cleanUp(self):
+    def cleanUp(self) -> None:
         self.EI_0.delete(0, END)
         self.EI_1.delete(0, END)
         self.CI_2.current(0)
@@ -127,7 +127,7 @@ class CheckboxMenu:
         self.CI_4.current(0)
         self.EI_5.delete(0, END)
 
-    def cleanUp5DX(self):
+    def cleanUp5DX(self) -> None:
         self.EI_6.delete(0, END)
         self.EI_7.delete(0, END)
         self.EI_8.delete(0, END)
