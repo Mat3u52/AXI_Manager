@@ -18,10 +18,10 @@ from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
 
 
-startXPosition: int = 170
-startYPosition: int = 85
+#startXPosition: int = 170
+#startYPosition: int = 85
 minMovement: int = -1
-refreshSec: float = 0.01
+#refreshSec: float = 0.01
 
 
 def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int, imgPath: str = 'board.png') -> None:
@@ -45,6 +45,9 @@ def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int
         :return: animate the picture
         :rtype: None
     """
+    startXPosition: int = 170
+    startYPosition: int = 85
+    refreshSec: float = 0.01
     if os.path.isfile(imgPath):
         img = tk.PhotoImage(file=imgPath)
     else:
