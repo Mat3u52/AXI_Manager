@@ -4,7 +4,7 @@ import pyperclip
 
 
 class ContextualMenu:
-    def __init__(self, root):
+    def __init__(self, root: tk) -> None:
         self.root = root
         self.captureEntry = StringVar()
 
@@ -12,20 +12,20 @@ class ContextualMenu:
         self.contextMenu.add_command(label="Copy", command=self._copy)
         self.contextMenu.add_command(label="Paste", command=self._paste)
 
-    def doPopup(self, event):
+    def doPopup(self, event: str) -> None:
         try:
             self.contextMenu.tk_popup(event.x_root, event.y_root)
         finally:
             self.contextMenu.grab_release()
 
-    def _copy(self):
+    def _copy(self) -> None:
         try:
             pyperclip.copy(self.captureEntry.get())
         except AttributeError:
             pass
 
-    def setEntry(self, entryFild):
+    def setEntry(self, entryFild) -> None:
         self.entryFild = entryFild
 
-    def _paste(self):
+    def _paste(self) -> None:
         self.entryFild.insert(tk.END, pyperclip.paste())
