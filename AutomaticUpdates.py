@@ -3,7 +3,7 @@ from Config import Config
 
 
 class AutomaticUpdates(Config):
-    def __init__(self):
+    def __init__(self) -> None:
         Config.__init__(self)
         #super().__init__()
         self.id = 0
