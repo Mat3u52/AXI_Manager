@@ -24,7 +24,7 @@ min_movement: int = -1
 #refreshSec: float = 0.01
 
 
-def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int, imgPath: str = 'board.png') -> None:
+def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int, img_path: str = 'board.png') -> None:
     """
         The function moves the picture from the right to the left side.
 
@@ -39,8 +39,8 @@ def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int
         :param int: Given value of axis y
         :type yinc: int
 
-        :param imgPath: Given path to .png file
-        :type imgPath: str
+        :param img_path: Given path to .png file
+        :type img_path: str
 
         :return: animate the picture
         :rtype: None
@@ -48,12 +48,12 @@ def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int
     startXPosition: int = 170
     startYPosition: int = 85
     refreshSec: float = 0.01
-    if os.path.isfile(imgPath):
-        img = tk.PhotoImage(file=imgPath)
+    if os.path.isfile(img_path):
+        img = tk.PhotoImage(file=img_path)
     else:
         img = tk.PhotoImage(file='img/lackOfPicture/board.png')
 
-    #print("f: animate_image - "+imgPath)
+    #print("f: animate_image - "+img_path)
 
     imageB = canvas.create_image(startXPosition, startYPosition, image=img)
 
