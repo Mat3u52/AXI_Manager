@@ -24,7 +24,7 @@ min_movement: int = -1
 #refreshSec: float = 0.01
 
 
-def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int, img_path: str = 'board.png') -> None:
+def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, x_pos: int, y_pos: int, img_path: str = 'board.png') -> None:
     """
         The function moves the picture from the right to the left side.
 
@@ -33,11 +33,11 @@ def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int
         :param canvas: Given object from tkinter.Canvas
         :type canvas: tkinter.Canvas
 
-        :param xint: Given value of axis x
-        :type xinc: int
+        :param x_pos: Given value of axis x
+        :type x_pos: int
 
-        :param int: Given value of axis y
-        :type yinc: int
+        :param y_pos: Given value of axis y
+        :type y_pos: int
 
         :param img_path: Given path to .png file
         :type img_path: str
@@ -58,17 +58,17 @@ def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, xinc: int, yinc: int
     imageB = canvas.create_image(startXPosition, startYPosition, image=img)
 
     while True:
-        canvas.move(imageB, xinc, 0)
+        canvas.move(imageB, x_pos, 0)
         root.update()
         time.sleep(refreshSec)
         imgPos = canvas.coords(imageB)
         # unpack array to variables
         #al, bl, ar, br = ball_pos
         al, bl = imgPos
-        if al < abs(xinc):
-            xinc = -xinc
-        if bl < abs(yinc):
-            yinc = -yinc
+        if al < abs(x_pos):
+            x_pos = -x_pos
+        if bl < abs(y_pos):
+            y_pos = -y_pos
         if al == int(startXPosition)/2:
             break
 
