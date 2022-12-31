@@ -4,7 +4,7 @@ from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage
 import time
 import os
 
-import pyperclip # clipboard Win / Linux: sudo apt-get install xclip
+import pyperclip  # clipboard Win / Linux: sudo apt-get install xclip
 from PIL import Image
 
 from Config import Config
@@ -17,19 +17,20 @@ from NewItem import NewItem
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
 
-
-#startXPosition: int = 170
-#startYPosition: int = 85
 min_movement: int = -1
-#refreshSec: float = 0.01
 
 
-def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, x_pos: int, y_pos: int, img_path: str = 'board.png') -> None:
+def animate_image(ai_root: tkinter.Tk,
+                  canvas: tkinter.Canvas,
+                  x_pos: int,
+                  y_pos: int,
+                  img_path: str = 'board.png'
+                  ) -> None:
     """
         The function moves the picture from the right to the left side.
 
-        :param root: Given object from tkinter.Tk
-        :type root: tkinter.Tk
+        :param ai_root: Given object from tkinter.Tk
+        :type ai_root: tkinter.Tk
         :param canvas: Given object from tkinter.Canvas
         :type canvas: tkinter.Canvas
 
@@ -59,7 +60,7 @@ def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, x_pos: int, y_pos: i
 
     while True:
         canvas.move(imageB, x_pos, 0)
-        root.update()
+        ai_root.update()
         time.sleep(refreshSec)
         imgPos = canvas.coords(imageB)
         # unpack array to variables
@@ -72,7 +73,7 @@ def animate_image(root: tkinter.Tk, canvas: tkinter.Canvas, x_pos: int, y_pos: i
         if al == int(startXPosition)/2:
             break
 
-    #root.mainloop()
+    #ai_root.mainloop()
 
 
 def resizeImage(path: str) -> None:
