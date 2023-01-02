@@ -56,15 +56,13 @@ def animate_image(ai_root: tkinter.Tk,
 
     #print("f: animate_image - "+img_path)
 
-    imageB = canvas.create_image(startXPosition, startYPosition, image=img)
+    ai_image = canvas.create_image(startXPosition, startYPosition, image=img)
 
     while True:
-        canvas.move(imageB, x_pos, 0)
+        canvas.move(ai_image, x_pos, 0)
         ai_root.update()
         time.sleep(refreshSec)
-        imgPos = canvas.coords(imageB)
-        # unpack array to variables
-        #al, bl, ar, br = ball_pos
+        imgPos = canvas.coords(ai_image)
         al, bl = imgPos
         if al < abs(x_pos):
             x_pos = -x_pos
