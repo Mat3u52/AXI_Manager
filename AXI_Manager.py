@@ -46,9 +46,9 @@ def animate_image(ai_root: tkinter.Tk,
         :return: animate the picture
         :rtype: None
     """
-    startXPosition: int = 170
-    startYPosition: int = 85
-    refreshSec: float = 0.01
+    start_x_position: int = 170
+    start_y_position: int = 85
+    refresh_sec: float = 0.01
     if os.path.isfile(img_path):
         img = tk.PhotoImage(file=img_path)
     else:
@@ -56,19 +56,19 @@ def animate_image(ai_root: tkinter.Tk,
 
     #print("f: animate_image - "+img_path)
 
-    ai_image = canvas.create_image(startXPosition, startYPosition, image=img)
+    ai_image = canvas.create_image(start_x_position, start_y_position, image=img)
 
     while True:
         canvas.move(ai_image, x_pos, 0)
         ai_root.update()
-        time.sleep(refreshSec)
+        time.sleep(refresh_sec)
         imgPos = canvas.coords(ai_image)
         al, bl = imgPos
         if al < abs(x_pos):
             x_pos = -x_pos
         if bl < abs(y_pos):
             y_pos = -y_pos
-        if al == int(startXPosition)/2:
+        if al == int(start_x_position)/2:
             break
 
     #ai_root.mainloop()
