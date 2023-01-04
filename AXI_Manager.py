@@ -74,7 +74,7 @@ def animate_image(ai_root: tkinter.Tk,
     #ai_root.mainloop()
 
 
-def resizeImage(path: str) -> None:
+def resize_image(path: str) -> None:
     """
     The function resizes an image
 
@@ -96,7 +96,7 @@ def resizeImage(path: str) -> None:
 
         elif path.endswith('.png'):
             print("f: ewsizeImage - .png")
-#print(resizeImage.__doc__)
+#print(resize_image.__doc__)
 
 
 def switch(var: str) -> int:
@@ -466,7 +466,7 @@ def getSelectedRow(event) -> None:
             canvas1.pack(expand=False)
 
             if os.path.isfile(objConfig.pathImg5DX1 + row[17] + '.png') == False:
-                resizeImage(objConfig.pathImg5DX1 + row[17] + '.jpg')
+                resize_image(objConfig.pathImg5DX1 + row[17] + '.jpg')
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain1)
@@ -562,9 +562,9 @@ def getSelectedRow(event) -> None:
             #if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
             if os.path.isfile(objConfig.pathImg5DX2 + row[22] + '.png') == False:
             #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png') == False:
-                #resizeImage('5DX/images/V817/' + row[22] + '.jpg')
-                resizeImage(objConfig.pathImg5DX2 + row[22] + '.jpg')
-                #resizeImage('Y:/5DX/images/V817/' + row[22] + '.jpg')
+                #resize_image('5DX/images/V817/' + row[22] + '.jpg')
+                resize_image(objConfig.pathImg5DX2 + row[22] + '.jpg')
+                #resize_image('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
             if flagAnimation == False:
                 tabControlMain.select(tabMain2)
