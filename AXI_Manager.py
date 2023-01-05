@@ -84,15 +84,15 @@ def resize_image(path: str) -> None:
     :rtype: None
     """
 
-    basewidth: int = 120
+    base_width: int = 120
     if os.path.isfile(path):
         if path.endswith('.jpg'):
-            convertJpgtoPng = Image.open(r''+path)
-            wpercent = (basewidth / float(convertJpgtoPng.size[0]))
-            hsize = int((float(convertJpgtoPng.size[1]) * float(wpercent)))
-            convertJpgtoPng = convertJpgtoPng.resize((basewidth, hsize), Image.Resampling.NEAREST)
-            pathPNG = path.replace(".jpg", ".png")
-            convertJpgtoPng.save(r''+pathPNG)
+            convert_jpg_to_png = Image.open(r'' + path)
+            width_percent = (base_width / float(convert_jpg_to_png.size[0]))
+            hsize = int((float(convert_jpg_to_png.size[1]) * float(width_percent)))
+            convert_jpg_to_png = convert_jpg_to_png.resize((base_width, hsize), Image.Resampling.NEAREST)
+            path_png = path.replace(".jpg", ".png")
+            convert_jpg_to_png.save(r'' + path_png)
 
         elif path.endswith('.png'):
             print("f: ewsizeImage - .png")
