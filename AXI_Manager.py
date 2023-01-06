@@ -133,23 +133,23 @@ def insert_button() -> None:
     :rtype: None
     """
 
-    objFormValidatorItem = FormValidation()
-    objFormValidatorItem.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
-    objFormValidatorItem.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
+    obj_form_validator_item = FormValidation()
+    obj_form_validator_item.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
+    obj_form_validator_item.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
 
     objFormValidatorV8103553S2EX = FormValidation()
     objFormValidatorV8103553S2EX.validator(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
-                                            objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
-                                            objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
-                                            objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+                                           objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
+                                           objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
+                                           obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
     objFormValidatorV8103553S2EX.cleanUp(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
                                             objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
                                             objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
     objCheckboxMenuEx0.insertFrame.grid_forget()
 
     objDBConnectV8103553S2EX = DBConnect()
-    objDBConnectV8103553S2EX.insert("V810-3553S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                    objFormValidatorItem.itemAmount,
+    objDBConnectV8103553S2EX.insert("V810-3553S2EX", obj_form_validator_item.flagInit, obj_form_validator_item.item,
+                                    obj_form_validator_item.itemAmount,
                                     objFormValidatorV8103553S2EX.prog, objFormValidatorV8103553S2EX.test,
                                     objFormValidatorV8103553S2EX.linecapa, objFormValidatorV8103553S2EX.epi,
                                     objFormValidatorV8103553S2EX.baan1, objFormValidatorV8103553S2EX.comments,
@@ -160,17 +160,17 @@ def insert_button() -> None:
 
     objFormValidatorV8103483S2EX = FormValidation()
     objFormValidatorV8103483S2EX.validator(objCheckboxMenuEx1.EI_0.get(), objCheckboxMenuEx1.EI_1.get(),
-                                            objCheckboxMenuEx1.CI_2.get(), objCheckboxMenuEx1.CI_3.get(),
-                                            objCheckboxMenuEx1.CI_4.get(), objCheckboxMenuEx1.EI_5.get(),
-                                            objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+                                           objCheckboxMenuEx1.CI_2.get(), objCheckboxMenuEx1.CI_3.get(),
+                                           objCheckboxMenuEx1.CI_4.get(), objCheckboxMenuEx1.EI_5.get(),
+                                           obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
     objFormValidatorV8103483S2EX.cleanUp(objCheckboxMenuEx1.EI_0, objCheckboxMenuEx1.EI_1,
                                             objCheckboxMenuEx1.CI_2, objCheckboxMenuEx1.CI_3,
                                             objCheckboxMenuEx1.CI_4, objCheckboxMenuEx1.EI_5)
     objCheckboxMenuEx1.insertFrame.grid_forget()
 
     objDBConnectV8103483S2EX = DBConnect()
-    objDBConnectV8103483S2EX.insert("V810-3483S2EX", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                    objFormValidatorItem.itemAmount,
+    objDBConnectV8103483S2EX.insert("V810-3483S2EX", obj_form_validator_item.flagInit, obj_form_validator_item.item,
+                                    obj_form_validator_item.itemAmount,
                                     objFormValidatorV8103483S2EX.prog, objFormValidatorV8103483S2EX.test,
                                     objFormValidatorV8103483S2EX.linecapa, objFormValidatorV8103483S2EX.epi,
                                     objFormValidatorV8103483S2EX.baan1, objFormValidatorV8103483S2EX.comments,
@@ -181,17 +181,17 @@ def insert_button() -> None:
 
     objFormValidatorV8103163 = FormValidation()
     objFormValidatorV8103163.validator(objCheckboxMenuEx2.EI_0.get(), objCheckboxMenuEx2.EI_1.get(),
-                                        objCheckboxMenuEx2.CI_2.get(), objCheckboxMenuEx2.CI_3.get(),
-                                        objCheckboxMenuEx2.CI_4.get(), objCheckboxMenuEx2.EI_5.get(),
-                                        objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+                                       objCheckboxMenuEx2.CI_2.get(), objCheckboxMenuEx2.CI_3.get(),
+                                       objCheckboxMenuEx2.CI_4.get(), objCheckboxMenuEx2.EI_5.get(),
+                                       obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
     objFormValidatorV8103163.cleanUp(objCheckboxMenuEx2.EI_0, objCheckboxMenuEx2.EI_1,
                                     objCheckboxMenuEx2.CI_2, objCheckboxMenuEx2.CI_3,
                                     objCheckboxMenuEx2.CI_4, objCheckboxMenuEx2.EI_5)
     objCheckboxMenuEx2.insertFrame.grid_forget()
 
     objDBConnectV8103163 = DBConnect()
-    objDBConnectV8103163.insert("V810-3163", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                objFormValidatorItem.itemAmount,
+    objDBConnectV8103163.insert("V810-3163", obj_form_validator_item.flagInit, obj_form_validator_item.item,
+                                obj_form_validator_item.itemAmount,
                                 objFormValidatorV8103163.prog, objFormValidatorV8103163.test,
                                 objFormValidatorV8103163.linecapa, objFormValidatorV8103163.epi,
                                 objFormValidatorV8103163.baan1, objFormValidatorV8103163.comments,
@@ -201,32 +201,32 @@ def insert_button() -> None:
 
     objFormValidatorV8108120S2 = FormValidation()
     objFormValidatorV8108120S2.validator(objCheckboxMenuXXL0.EI_0.get(), objCheckboxMenuXXL0.EI_1.get(),
-                                        objCheckboxMenuXXL0.CI_2.get(), objCheckboxMenuXXL0.CI_3.get(),
-                                        objCheckboxMenuXXL0.CI_4.get(), objCheckboxMenuXXL0.EI_5.get(),
-                                        objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount)
+                                         objCheckboxMenuXXL0.CI_2.get(), objCheckboxMenuXXL0.CI_3.get(),
+                                         objCheckboxMenuXXL0.CI_4.get(), objCheckboxMenuXXL0.EI_5.get(),
+                                         obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
     objFormValidatorV8108120S2.cleanUp(objCheckboxMenuXXL0.EI_0, objCheckboxMenuXXL0.EI_1,
                                         objCheckboxMenuXXL0.CI_2, objCheckboxMenuXXL0.CI_3,
                                         objCheckboxMenuXXL0.CI_4, objCheckboxMenuXXL0.EI_5)
     objCheckboxMenuXXL0.insertFrame.grid_forget()
 
     objDBConnectV8108120S2 = DBConnect()
-    objDBConnectV8108120S2.insert("V810-8120S2", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                                    objFormValidatorItem.itemAmount,
-                                    objFormValidatorV8108120S2.prog, objFormValidatorV8108120S2.test,
-                                    objFormValidatorV8108120S2.linecapa, objFormValidatorV8108120S2.epi,
-                                    objFormValidatorV8108120S2.baan1, objFormValidatorV8108120S2.comments,
-                                    objFormValidatorV8108120S2.uph85, objFormValidatorV8108120S2.uph95,
-                                    objFormValidatorV8108120S2.uph95Time,
-                                    objFormValidatorV8108120S2.flagValidator)
+    objDBConnectV8108120S2.insert("V810-8120S2", obj_form_validator_item.flagInit, obj_form_validator_item.item,
+                                  obj_form_validator_item.itemAmount,
+                                  objFormValidatorV8108120S2.prog, objFormValidatorV8108120S2.test,
+                                  objFormValidatorV8108120S2.linecapa, objFormValidatorV8108120S2.epi,
+                                  objFormValidatorV8108120S2.baan1, objFormValidatorV8108120S2.comments,
+                                  objFormValidatorV8108120S2.uph85, objFormValidatorV8108120S2.uph95,
+                                  objFormValidatorV8108120S2.uph95Time,
+                                  objFormValidatorV8108120S2.flagValidator)
     objDBConnectV8108120S2.closeDB()
 
     objFormValidatorV849 = FormValidation()
     objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
-                                    objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
-                                    objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
-                                    objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
-                                    objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
-                                    objCheckboxMenu5DX0.EI_8.get())
+                                   objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
+                                   objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
+                                   obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount,
+                                   objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
+                                   objCheckboxMenu5DX0.EI_8.get())
     objFormValidatorV849.cleanUp(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
                                     objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
                                     objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
@@ -236,11 +236,11 @@ def insert_button() -> None:
 
     objFormValidatorV817 = FormValidation()
     objFormValidatorV817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
-                                    objCheckboxMenu5DX1.CI_2.get(), objCheckboxMenu5DX1.CI_3.get(),
-                                    objCheckboxMenu5DX1.CI_4.get(), objCheckboxMenu5DX1.EI_5.get(),
-                                    objFormValidatorItem.flagInit, objFormValidatorItem.itemAmount,
-                                    objCheckboxMenu5DX1.EI_6.get(), objCheckboxMenu5DX1.EI_7.get(),
-                                    objCheckboxMenu5DX1.EI_8.get())
+                                   objCheckboxMenu5DX1.CI_2.get(), objCheckboxMenu5DX1.CI_3.get(),
+                                   objCheckboxMenu5DX1.CI_4.get(), objCheckboxMenu5DX1.EI_5.get(),
+                                   obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount,
+                                   objCheckboxMenu5DX1.EI_6.get(), objCheckboxMenu5DX1.EI_7.get(),
+                                   objCheckboxMenu5DX1.EI_8.get())
     objFormValidatorV817.cleanUp(objCheckboxMenu5DX1.EI_0, objCheckboxMenu5DX1.EI_1,
                                     objCheckboxMenu5DX1.CI_2, objCheckboxMenu5DX1.CI_3,
                                     objCheckboxMenu5DX1.CI_4, objCheckboxMenu5DX1.EI_5,
@@ -249,25 +249,25 @@ def insert_button() -> None:
     objCheckboxMenu5DX1.insertFrame.grid_forget()
 
     objDBConnect5DX = DBConnect()
-    objDBConnect5DX.insert("V849_V817", objFormValidatorItem.flagInit, objFormValidatorItem.item,
-                            objFormValidatorItem.itemAmount,
+    objDBConnect5DX.insert("V849_V817", obj_form_validator_item.flagInit, obj_form_validator_item.item,
+                           obj_form_validator_item.itemAmount,
 
-                            objFormValidatorV849.prog, objFormValidatorV849.test,
-                            objFormValidatorV849.linecapa, objFormValidatorV849.epi,
-                            objFormValidatorV849.baan1, objFormValidatorV849.comments,
-                            objFormValidatorV849.uph85, objFormValidatorV849.uph95,
-                            objFormValidatorV849.uph95Time, objFormValidatorV849.flagValidator,
-                            objFormValidatorV849.alignTime, objFormValidatorV849.laserTime,
-                            objFormValidatorV849.thicknessTime, objFormValidatorV849.totalTime,
+                           objFormValidatorV849.prog, objFormValidatorV849.test,
+                           objFormValidatorV849.linecapa, objFormValidatorV849.epi,
+                           objFormValidatorV849.baan1, objFormValidatorV849.comments,
+                           objFormValidatorV849.uph85, objFormValidatorV849.uph95,
+                           objFormValidatorV849.uph95Time, objFormValidatorV849.flagValidator,
+                           objFormValidatorV849.alignTime, objFormValidatorV849.laserTime,
+                           objFormValidatorV849.thicknessTime, objFormValidatorV849.totalTime,
 
-                            objFormValidatorV817.flagValidator,
-                            objFormValidatorV817.prog, objFormValidatorV817.test,
-                            objFormValidatorV817.linecapa, objFormValidatorV817.epi,
-                            objFormValidatorV817.baan1, objFormValidatorV817.comments,
-                            objFormValidatorV817.uph85, objFormValidatorV817.uph95,
-                            objFormValidatorV817.uph95Time,
-                            objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
-                            objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime)
+                           objFormValidatorV817.flagValidator,
+                           objFormValidatorV817.prog, objFormValidatorV817.test,
+                           objFormValidatorV817.linecapa, objFormValidatorV817.epi,
+                           objFormValidatorV817.baan1, objFormValidatorV817.comments,
+                           objFormValidatorV817.uph85, objFormValidatorV817.uph95,
+                           objFormValidatorV817.uph95Time,
+                           objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
+                           objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime)
     objDBConnect5DX.closeDB()
     if objDBConnectV8103553S2EX.flagSucceeded or \
             objDBConnectV8103483S2EX.flagSucceeded or \
