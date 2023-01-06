@@ -72,6 +72,7 @@ def animate_image(ai_root: tkinter.Tk,
             break
 
     #ai_root.mainloop()
+# print(animation_image.__doc__)
 
 
 def resize_image(path: str) -> None:
@@ -96,7 +97,7 @@ def resize_image(path: str) -> None:
 
         elif path.endswith('.png'):
             print("f: ewsizeImage - .png")
-#print(resize_image.__doc__)
+# print(resize_image.__doc__)
 
 
 def switch(var: str) -> int:
@@ -121,10 +122,10 @@ def switch(var: str) -> int:
             return 3
         case _:
             return 0
-#print(switch.__doc__)
+# print(switch.__doc__)
 
 
-def insertButton() -> None:
+def insert_button() -> None:
     """
     The function is responsible for verifying data and inserting it into the database after the button has been pressed.
 
@@ -1565,7 +1566,7 @@ if __name__ == "__main__":
     objCheckboxMenu5DX1.checkboxMenu("V817", 2)
     objCheckboxMenu5DX1.alignmentTime()
 
-    BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=35, command=insertButton, cursor="hand2")
+    BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=35, command=insert_button, cursor="hand2")
     BI1.grid(row=1, column=0, columnspan=2, pady=2)
     BI2 = ttk.Button(objNewItemEx.mainFrameInsert, text="Reset", width=15, command=reset, cursor="hand2")
     BI2.grid(row=1, column=2, columnspan=2, pady=2)
