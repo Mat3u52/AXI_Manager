@@ -309,7 +309,7 @@ def reset() -> None:
     objCheckboxMenu5DX1.insertFrame.grid_forget()
 
 
-def getSelectedRow(event) -> None:
+def get_selected_row(event) -> None:
     """
     Capture the row
 
@@ -415,7 +415,7 @@ def getSelectedRow(event) -> None:
         LQty.configure(text=f"Qty:")
         LDate.configure(text=f"Inserted:")
 
-# ---getSelectedRow 5DX V849---
+# ---get_selected_row 5DX V849---
         if int(len(str(row[17]))) > 4:
             tabControlMain.add(tabMain1, text=" V849 ")
             LV849Prog.configure(text=f"{row[17]}")
@@ -459,7 +459,7 @@ def getSelectedRow(event) -> None:
 
             LV849Comment.configure(text=f"{row[20]}")
 
-#---getSelectedRow 5DX V849---
+#---get_selected_row 5DX V849---
             canvasFrame1 = Label(tabMain1)
             canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
             canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
@@ -506,8 +506,8 @@ def getSelectedRow(event) -> None:
         else:
             tabControlMain.hide(tabMain1)
 
-#---The End getSelectedRow 5DX V849---
-#---getSelectedRow 5DX V817---
+#---The End get_selected_row 5DX V849---
+#---get_selected_row 5DX V817---
 
         if int(len(str(row[22]))) > 4:
             tabControlMain.add(tabMain2, text=" V817 ")
@@ -603,8 +603,8 @@ def getSelectedRow(event) -> None:
 
         else:
             tabControlMain.hide(tabMain2)
-#---The End getSelectedRow 5DX V817---
-#---getSelectedRow V810-3163--
+#---The End get_selected_row 5DX V817---
+#---get_selected_row V810-3163--
         #if len(str(row[27])) > 4:
         if row[27] != None and \
                 ((int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])):
@@ -681,9 +681,9 @@ def getSelectedRow(event) -> None:
         else:
             tabControlMain.hide(tabMain3)
 
-#---The End getSelectedRow V810-3163---
+#---The End get_selected_row V810-3163---
 
-#---getSelectedRow V810-V3483S2EX---
+#---get_selected_row V810-V3483S2EX---
         #if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
         if row[45] != None and \
                 ((row[43] != None and int(row[43]) > 0) or int(row[40])):
@@ -761,9 +761,9 @@ def getSelectedRow(event) -> None:
 
         else:
             tabControlMain.hide(tabMain4)
-#--- The End getSelectedRow V810-3483S2EX ---
+#--- The End get_selected_row V810-3483S2EX ---
 
-#--- getSelectedRow V810-3553S2EX ---
+#--- get_selected_row V810-3553S2EX ---
         #if (len(str(row[54])) > 0 and row[54] != None) and (int(row[50]) != 0 or int(row[49]) != 0):
         if row[54] != None and \
                 ((row[52] != None and int(row[52]) > 0) or int(row[49])):
@@ -842,9 +842,9 @@ def getSelectedRow(event) -> None:
 
         else:
             tabControlMain.hide(tabMain5)
-#--- The End getSelectedRow V810-3553S2EX ---
+#--- The End get_selected_row V810-3553S2EX ---
 
-#--- getSelectedRow V810-8120S2 ---
+#--- get_selected_row V810-8120S2 ---
         #if row[31] != None and (int(row[37] != 0) or int(row[39]) != 0):
         if row[31] != None and \
                 ((row[37] != None and int(row[37]) > 0) or int(row[39])):
@@ -921,7 +921,7 @@ def getSelectedRow(event) -> None:
 
         else:
             tabControlMain.hide(tabMain6)
-#--- The End getSelectedRow V810-8120S2 ---
+#--- The End get_selected_row V810-8120S2 ---
 
         if flagClick == True:
             flagClick = False
@@ -1050,7 +1050,7 @@ def refresh() -> None:
                         values=(f'{row[0]}', f"ViTrox XXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}",
                                 f"{row[32]}", f"{row[33]}"), tags=('V'))
 
-        tree.bind("<<TreeviewSelect>>", getSelectedRow)
+        tree.bind("<<TreeviewSelect>>", get_selected_row)
 
         tree.grid(row=1, column=0, columnspan=3, pady=2)
         count += 1
