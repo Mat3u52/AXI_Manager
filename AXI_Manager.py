@@ -137,25 +137,25 @@ def insert_button() -> None:
     obj_form_validator_item.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
     obj_form_validator_item.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
 
-    objFormValidatorV8103553S2EX = FormValidation()
-    objFormValidatorV8103553S2EX.validator(objCheckboxMenuEx0.EI_0.get(), objCheckboxMenuEx0.EI_1.get(),
-                                           objCheckboxMenuEx0.CI_2.get(), objCheckboxMenuEx0.CI_3.get(),
-                                           objCheckboxMenuEx0.CI_4.get(), objCheckboxMenuEx0.EI_5.get(),
-                                           obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
-    objFormValidatorV8103553S2EX.cleanUp(objCheckboxMenuEx0.EI_0, objCheckboxMenuEx0.EI_1,
-                                            objCheckboxMenuEx0.CI_2, objCheckboxMenuEx0.CI_3,
-                                            objCheckboxMenuEx0.CI_4, objCheckboxMenuEx0.EI_5)
-    objCheckboxMenuEx0.insertFrame.grid_forget()
+    obj_form_validator_v8103553_s2_ex = FormValidation()
+    obj_form_validator_v8103553_s2_ex.validator(obj_checkbox_menu_ex_0.EI_0.get(), obj_checkbox_menu_ex_0.EI_1.get(),
+                                                obj_checkbox_menu_ex_0.CI_2.get(), obj_checkbox_menu_ex_0.CI_3.get(),
+                                                obj_checkbox_menu_ex_0.CI_4.get(), obj_checkbox_menu_ex_0.EI_5.get(),
+                                                obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
+    obj_form_validator_v8103553_s2_ex.cleanUp(obj_checkbox_menu_ex_0.EI_0, obj_checkbox_menu_ex_0.EI_1,
+                                              obj_checkbox_menu_ex_0.CI_2, obj_checkbox_menu_ex_0.CI_3,
+                                              obj_checkbox_menu_ex_0.CI_4, obj_checkbox_menu_ex_0.EI_5)
+    obj_checkbox_menu_ex_0.insertFrame.grid_forget()
 
     objDBConnectV8103553S2EX = DBConnect()
     objDBConnectV8103553S2EX.insert("V810-3553S2EX", obj_form_validator_item.flagInit, obj_form_validator_item.item,
                                     obj_form_validator_item.itemAmount,
-                                    objFormValidatorV8103553S2EX.prog, objFormValidatorV8103553S2EX.test,
-                                    objFormValidatorV8103553S2EX.linecapa, objFormValidatorV8103553S2EX.epi,
-                                    objFormValidatorV8103553S2EX.baan1, objFormValidatorV8103553S2EX.comments,
-                                    objFormValidatorV8103553S2EX.uph85, objFormValidatorV8103553S2EX.uph95,
-                                    objFormValidatorV8103553S2EX.uph95Time,
-                                    objFormValidatorV8103553S2EX.flagValidator)
+                                    obj_form_validator_v8103553_s2_ex.prog, obj_form_validator_v8103553_s2_ex.test,
+                                    obj_form_validator_v8103553_s2_ex.linecapa, obj_form_validator_v8103553_s2_ex.epi,
+                                    obj_form_validator_v8103553_s2_ex.baan1, obj_form_validator_v8103553_s2_ex.comments,
+                                    obj_form_validator_v8103553_s2_ex.uph85, obj_form_validator_v8103553_s2_ex.uph95,
+                                    obj_form_validator_v8103553_s2_ex.uph95Time,
+                                    obj_form_validator_v8103553_s2_ex.flagValidator)
     objDBConnectV8103553S2EX.closeDB()
 
     objFormValidatorV8103483S2EX = FormValidation()
@@ -288,8 +288,8 @@ def reset() -> None:
     """
     objNewItemEx.cleanUp()
 
-    objCheckboxMenuEx0.cleanUp()
-    objCheckboxMenuEx0.insertFrame.grid_forget()
+    obj_checkbox_menu_ex_0.cleanUp()
+    obj_checkbox_menu_ex_0.insertFrame.grid_forget()
 
     objCheckboxMenuEx1.cleanUp()
     objCheckboxMenuEx1.insertFrame.grid_forget()
@@ -345,13 +345,13 @@ def get_selected_row(event) -> None:
 
         if row[54] != None and \
                 ((row[52] != None and int(row[52]) > 0) or int(row[49])):
-            objCheckboxMenuEx0.EI_0.insert(0, f"{row[54]}")
-            objCheckboxMenuEx0.EI_1.insert(0, f"{int(row[52])}")
-            objCheckboxMenuEx0.CI_2.current(switch(row[55]))
-            objCheckboxMenuEx0.CI_3.current(switch(row[56]))
-            objCheckboxMenuEx0.CI_4.current(switch(row[53]))
-            objCheckboxMenuEx0.EI_5.insert(0, f"{row[57]}")
-            objCheckboxMenuEx0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
+            obj_checkbox_menu_ex_0.EI_0.insert(0, f"{row[54]}")
+            obj_checkbox_menu_ex_0.EI_1.insert(0, f"{int(row[52])}")
+            obj_checkbox_menu_ex_0.CI_2.current(switch(row[55]))
+            obj_checkbox_menu_ex_0.CI_3.current(switch(row[56]))
+            obj_checkbox_menu_ex_0.CI_4.current(switch(row[53]))
+            obj_checkbox_menu_ex_0.EI_5.insert(0, f"{row[57]}")
+            obj_checkbox_menu_ex_0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
 
         if row[45] != None and \
                 ((row[43] != None and int(row[43]) > 0) or int(row[40])):
@@ -1085,9 +1085,9 @@ def automaticInsert() -> None:
             objNewItemEx.EI2.insert(0, f"{itemName}")
             objNewItemEx.EI3.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('boardQty')}")
             if objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3553S2EX':
-                objCheckboxMenuEx0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
-                objCheckboxMenuEx0.EI_0.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                objCheckboxMenuEx0.EI_1.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+                obj_checkbox_menu_ex_0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
+                obj_checkbox_menu_ex_0.EI_0.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
+                obj_checkbox_menu_ex_0.EI_1.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
                 flagSelectedRecored = True
             if objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3483S2EX':
                 objCheckboxMenuEx1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
@@ -1540,8 +1540,8 @@ if __name__ == "__main__":
     objNewItemEx.mainFrameInsert(" Insert Main ")
 
     objNewItemEx.checkboxTitle(" ViTrox Ex ", 4)
-    objCheckboxMenuEx0 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
-    objCheckboxMenuEx0.checkboxMenu("V810-3553S2EX", 1)
+    obj_checkbox_menu_ex_0 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
+    obj_checkbox_menu_ex_0.checkboxMenu("V810-3553S2EX", 1)
 
     objCheckboxMenuEx1 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
     objCheckboxMenuEx1.checkboxMenu("V810-3483S2EX", 2)
