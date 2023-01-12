@@ -134,8 +134,8 @@ def insert_button() -> None:
     """
 
     obj_form_validator_item = FormValidation()
-    obj_form_validator_item.validatorItem(objNewItemEx.EI2.get(), objNewItemEx.EI3.get())
-    obj_form_validator_item.cleanUpItem(objNewItemEx.EI2, objNewItemEx.EI3)
+    obj_form_validator_item.validatorItem(obj_new_item_ex.EI2.get(), obj_new_item_ex.EI3.get())
+    obj_form_validator_item.cleanUpItem(obj_new_item_ex.EI2, obj_new_item_ex.EI3)
 
     obj_form_validator_v8103553_s2_ex = FormValidation()
     obj_form_validator_v8103553_s2_ex.validator(obj_checkbox_menu_ex_0.EI_0.get(), obj_checkbox_menu_ex_0.EI_1.get(),
@@ -279,7 +279,7 @@ def insert_button() -> None:
             objDBConnectV8103163.flagSucceeded or \
             objDBConnectV8108120S2.flagSucceeded or \
             objDBConnect5DX.flagSucceeded:
-        obj_tip_new = Tip(root, objNewItemEx.mainFrameInsert)
+        obj_tip_new = Tip(root, obj_new_item_ex.mainFrameInsert)
         obj_tip_new.animate_non_translucent()
         refresh()
 
@@ -291,7 +291,7 @@ def reset() -> None:
     :return: cleanup part of form
     :rtype: None
     """
-    objNewItemEx.cleanUp()
+    obj_new_item_ex.cleanUp()
 
     obj_checkbox_menu_ex_0.cleanUp()
     obj_checkbox_menu_ex_0.insertFrame.grid_forget()
@@ -345,8 +345,8 @@ def get_selected_row(event) -> None:
         pyperclip.copy(row[1])  # clipboard Win / Linux: sudo apt-get install xclip
 
 
-        objNewItemEx.EI2.insert(0, f"{row[1]}")
-        objNewItemEx.EI3.insert(0, f"{row[3]}")
+        obj_new_item_ex.EI2.insert(0, f"{row[1]}")
+        obj_new_item_ex.EI3.insert(0, f"{row[3]}")
 
         if row[54] != None and \
                 ((row[52] != None and int(row[52]) > 0) or int(row[49])):
@@ -1087,8 +1087,8 @@ def automaticInsert() -> None:
         newItem = varNewRecord.get()
         if newItem in objAutomaticUpdates.bildGrid():
             itemName = objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe').replace('_', '/')
-            objNewItemEx.EI2.insert(0, f"{itemName}")
-            objNewItemEx.EI3.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('boardQty')}")
+            obj_new_item_ex.EI2.insert(0, f"{itemName}")
+            obj_new_item_ex.EI3.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('boardQty')}")
             if objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3553S2EX':
                 obj_checkbox_menu_ex_0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
                 obj_checkbox_menu_ex_0.EI_0.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
@@ -1541,17 +1541,17 @@ if __name__ == "__main__":
 
     #--- INSERT ---
 
-    objNewItemEx = NewItem(tab2, root)
-    objNewItemEx.mainFrameInsert(" Insert Main ")
+    obj_new_item_ex = NewItem(tab2, root)
+    obj_new_item_ex.mainFrameInsert(" Insert Main ")
 
-    objNewItemEx.checkboxTitle(" ViTrox Ex ", 4)
-    obj_checkbox_menu_ex_0 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
+    obj_new_item_ex.checkboxTitle(" ViTrox Ex ", 4)
+    obj_checkbox_menu_ex_0 = CheckboxMenu(tab2, root, obj_new_item_ex.checkboxFrame, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
     obj_checkbox_menu_ex_0.checkboxMenu("V810-3553S2EX", 1)
 
-    objCheckboxMenuEx1 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
+    objCheckboxMenuEx1 = CheckboxMenu(tab2, root, obj_new_item_ex.checkboxFrame, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
     objCheckboxMenuEx1.checkboxMenu("V810-3483S2EX", 2)
 
-    objCheckboxMenuEx2 = CheckboxMenu(tab2, root, objNewItemEx.checkboxFrame, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
+    objCheckboxMenuEx2 = CheckboxMenu(tab2, root, obj_new_item_ex.checkboxFrame, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
     objCheckboxMenuEx2.checkboxMenu("V810-3163", 3)
 
     objNewItemXXL = NewItem(tab2, root)
@@ -1571,9 +1571,9 @@ if __name__ == "__main__":
     objCheckboxMenu5DX1.checkboxMenu("V817", 2)
     objCheckboxMenu5DX1.alignmentTime()
 
-    BI1 = ttk.Button(objNewItemEx.mainFrameInsert, text="Insert", width=35, command=insert_button, cursor="hand2")
+    BI1 = ttk.Button(obj_new_item_ex.mainFrameInsert, text="Insert", width=35, command=insert_button, cursor="hand2")
     BI1.grid(row=1, column=0, columnspan=2, pady=2)
-    BI2 = ttk.Button(objNewItemEx.mainFrameInsert, text="Reset", width=15, command=reset, cursor="hand2")
+    BI2 = ttk.Button(obj_new_item_ex.mainFrameInsert, text="Reset", width=15, command=reset, cursor="hand2")
     BI2.grid(row=1, column=2, columnspan=2, pady=2)
     #--- The End INSERT ---
 
