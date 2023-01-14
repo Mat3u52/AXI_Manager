@@ -134,17 +134,26 @@ def insert_button() -> None:
     """
 
     obj_form_validator_item = FormValidation()
-    obj_form_validator_item.validatorItem(obj_new_item_ex.EI2.get(), obj_new_item_ex.EI3.get())
-    obj_form_validator_item.cleanUpItem(obj_new_item_ex.EI2, obj_new_item_ex.EI3)
+    obj_form_validator_item.validatorItem(obj_new_item_ex.EI2.get(),
+                                          obj_new_item_ex.EI3.get())
+    obj_form_validator_item.cleanUpItem(obj_new_item_ex.EI2,
+                                        obj_new_item_ex.EI3)
 
     obj_form_validator_v8103553_s2_ex = FormValidation()
-    obj_form_validator_v8103553_s2_ex.validator(obj_checkbox_menu_ex_0.EI_0.get(), obj_checkbox_menu_ex_0.EI_1.get(),
-                                                obj_checkbox_menu_ex_0.CI_2.get(), obj_checkbox_menu_ex_0.CI_3.get(),
-                                                obj_checkbox_menu_ex_0.CI_4.get(), obj_checkbox_menu_ex_0.EI_5.get(),
-                                                obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
-    obj_form_validator_v8103553_s2_ex.cleanUp(obj_checkbox_menu_ex_0.EI_0, obj_checkbox_menu_ex_0.EI_1,
-                                              obj_checkbox_menu_ex_0.CI_2, obj_checkbox_menu_ex_0.CI_3,
-                                              obj_checkbox_menu_ex_0.CI_4, obj_checkbox_menu_ex_0.EI_5)
+    obj_form_validator_v8103553_s2_ex.validator(obj_checkbox_menu_ex_0.EI_0.get(),
+                                                obj_checkbox_menu_ex_0.EI_1.get(),
+                                                obj_checkbox_menu_ex_0.CI_2.get(),
+                                                obj_checkbox_menu_ex_0.CI_3.get(),
+                                                obj_checkbox_menu_ex_0.CI_4.get(),
+                                                obj_checkbox_menu_ex_0.EI_5.get(),
+                                                obj_form_validator_item.flagInit,
+                                                obj_form_validator_item.itemAmount)
+    obj_form_validator_v8103553_s2_ex.cleanUp(obj_checkbox_menu_ex_0.EI_0,
+                                              obj_checkbox_menu_ex_0.EI_1,
+                                              obj_checkbox_menu_ex_0.CI_2,
+                                              obj_checkbox_menu_ex_0.CI_3,
+                                              obj_checkbox_menu_ex_0.CI_4,
+                                              obj_checkbox_menu_ex_0.EI_5)
     obj_checkbox_menu_ex_0.insertFrame.grid_forget()
 
     obj_db_connect_v8103553_s2_ex = DBConnect()
@@ -164,13 +173,20 @@ def insert_button() -> None:
     obj_db_connect_v8103553_s2_ex.closeDB()
 
     obj_form_validator_v8103483_s2_ex = FormValidation()
-    obj_form_validator_v8103483_s2_ex.validator(obj_checkbox_menu_ex_1.EI_0.get(), obj_checkbox_menu_ex_1.EI_1.get(),
-                                                obj_checkbox_menu_ex_1.CI_2.get(), obj_checkbox_menu_ex_1.CI_3.get(),
-                                                obj_checkbox_menu_ex_1.CI_4.get(), obj_checkbox_menu_ex_1.EI_5.get(),
-                                                obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
-    obj_form_validator_v8103483_s2_ex.cleanUp(obj_checkbox_menu_ex_1.EI_0, obj_checkbox_menu_ex_1.EI_1,
-                                              obj_checkbox_menu_ex_1.CI_2, obj_checkbox_menu_ex_1.CI_3,
-                                              obj_checkbox_menu_ex_1.CI_4, obj_checkbox_menu_ex_1.EI_5)
+    obj_form_validator_v8103483_s2_ex.validator(obj_checkbox_menu_ex_1.EI_0.get(),
+                                                obj_checkbox_menu_ex_1.EI_1.get(),
+                                                obj_checkbox_menu_ex_1.CI_2.get(),
+                                                obj_checkbox_menu_ex_1.CI_3.get(),
+                                                obj_checkbox_menu_ex_1.CI_4.get(),
+                                                obj_checkbox_menu_ex_1.EI_5.get(),
+                                                obj_form_validator_item.flagInit,
+                                                obj_form_validator_item.itemAmount)
+    obj_form_validator_v8103483_s2_ex.cleanUp(obj_checkbox_menu_ex_1.EI_0,
+                                              obj_checkbox_menu_ex_1.EI_1,
+                                              obj_checkbox_menu_ex_1.CI_2,
+                                              obj_checkbox_menu_ex_1.CI_3,
+                                              obj_checkbox_menu_ex_1.CI_4,
+                                              obj_checkbox_menu_ex_1.EI_5)
     obj_checkbox_menu_ex_1.insertFrame.grid_forget()
 
     obj_db_connect_v8103483_s2_ex = DBConnect()
@@ -189,12 +205,12 @@ def insert_button() -> None:
                                          obj_form_validator_v8103483_s2_ex.flagValidator)
     obj_db_connect_v8103483_s2_ex.closeDB()
 
-    objFormValidatorV8103163 = FormValidation()
-    objFormValidatorV8103163.validator(objCheckboxMenuEx2.EI_0.get(), objCheckboxMenuEx2.EI_1.get(),
+    obj_form_validator_v8103163 = FormValidation()
+    obj_form_validator_v8103163.validator(objCheckboxMenuEx2.EI_0.get(), objCheckboxMenuEx2.EI_1.get(),
                                        objCheckboxMenuEx2.CI_2.get(), objCheckboxMenuEx2.CI_3.get(),
                                        objCheckboxMenuEx2.CI_4.get(), objCheckboxMenuEx2.EI_5.get(),
                                        obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
-    objFormValidatorV8103163.cleanUp(objCheckboxMenuEx2.EI_0, objCheckboxMenuEx2.EI_1,
+    obj_form_validator_v8103163.cleanUp(objCheckboxMenuEx2.EI_0, objCheckboxMenuEx2.EI_1,
                                     objCheckboxMenuEx2.CI_2, objCheckboxMenuEx2.CI_3,
                                     objCheckboxMenuEx2.CI_4, objCheckboxMenuEx2.EI_5)
     objCheckboxMenuEx2.insertFrame.grid_forget()
@@ -202,11 +218,11 @@ def insert_button() -> None:
     objDBConnectV8103163 = DBConnect()
     objDBConnectV8103163.insert("V810-3163", obj_form_validator_item.flagInit, obj_form_validator_item.item,
                                 obj_form_validator_item.itemAmount,
-                                objFormValidatorV8103163.prog, objFormValidatorV8103163.test,
-                                objFormValidatorV8103163.linecapa, objFormValidatorV8103163.epi,
-                                objFormValidatorV8103163.baan1, objFormValidatorV8103163.comments,
-                                objFormValidatorV8103163.uph85, objFormValidatorV8103163.uph95,
-                                objFormValidatorV8103163.uph95Time, objFormValidatorV8103163.flagValidator)
+                                obj_form_validator_v8103163.prog, obj_form_validator_v8103163.test,
+                                obj_form_validator_v8103163.linecapa, obj_form_validator_v8103163.epi,
+                                obj_form_validator_v8103163.baan1, obj_form_validator_v8103163.comments,
+                                obj_form_validator_v8103163.uph85, obj_form_validator_v8103163.uph95,
+                                obj_form_validator_v8103163.uph95Time, obj_form_validator_v8103163.flagValidator)
     objDBConnectV8103163.closeDB()
 
     objFormValidatorV8108120S2 = FormValidation()
