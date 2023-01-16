@@ -157,7 +157,8 @@ def insert_button() -> None:
     obj_checkbox_menu_ex_0.insertFrame.grid_forget()
 
     obj_db_connect_v8103553_s2_ex = DBConnect()
-    obj_db_connect_v8103553_s2_ex.insert("V810-3553S2EX", obj_form_validator_item.flagInit,
+    obj_db_connect_v8103553_s2_ex.insert("V810-3553S2EX",
+                                         obj_form_validator_item.flagInit,
                                          obj_form_validator_item.item,
                                          obj_form_validator_item.itemAmount,
                                          obj_form_validator_v8103553_s2_ex.prog,
@@ -190,7 +191,8 @@ def insert_button() -> None:
     obj_checkbox_menu_ex_1.insertFrame.grid_forget()
 
     obj_db_connect_v8103483_s2_ex = DBConnect()
-    obj_db_connect_v8103483_s2_ex.insert("V810-3483S2EX", obj_form_validator_item.flagInit,
+    obj_db_connect_v8103483_s2_ex.insert("V810-3483S2EX",
+                                         obj_form_validator_item.flagInit,
                                          obj_form_validator_item.item,
                                          obj_form_validator_item.itemAmount,
                                          obj_form_validator_v8103483_s2_ex.prog,
@@ -223,15 +225,22 @@ def insert_button() -> None:
                                         obj_checkbox_menu_ex_2.EI_5)
     obj_checkbox_menu_ex_2.insertFrame.grid_forget()
 
-    objDBConnectV8103163 = DBConnect()
-    objDBConnectV8103163.insert("V810-3163", obj_form_validator_item.flagInit, obj_form_validator_item.item,
-                                obj_form_validator_item.itemAmount,
-                                obj_form_validator_v8103163.prog, obj_form_validator_v8103163.test,
-                                obj_form_validator_v8103163.linecapa, obj_form_validator_v8103163.epi,
-                                obj_form_validator_v8103163.baan1, obj_form_validator_v8103163.comments,
-                                obj_form_validator_v8103163.uph85, obj_form_validator_v8103163.uph95,
-                                obj_form_validator_v8103163.uph95Time, obj_form_validator_v8103163.flagValidator)
-    objDBConnectV8103163.closeDB()
+    obj_db_connect_v8103163 = DBConnect()
+    obj_db_connect_v8103163.insert("V810-3163",
+                                   obj_form_validator_item.flagInit,
+                                   obj_form_validator_item.item,
+                                   obj_form_validator_item.itemAmount,
+                                   obj_form_validator_v8103163.prog, 
+                                   obj_form_validator_v8103163.test,
+                                   obj_form_validator_v8103163.linecapa,
+                                   obj_form_validator_v8103163.epi,
+                                   obj_form_validator_v8103163.baan1,
+                                   obj_form_validator_v8103163.comments,
+                                   obj_form_validator_v8103163.uph85,
+                                   obj_form_validator_v8103163.uph95,
+                                   obj_form_validator_v8103163.uph95Time,
+                                   obj_form_validator_v8103163.flagValidator)
+    obj_db_connect_v8103163.closeDB()
 
     objFormValidatorV8108120S2 = FormValidation()
     objFormValidatorV8108120S2.validator(objCheckboxMenuXXL0.EI_0.get(), objCheckboxMenuXXL0.EI_1.get(),
@@ -305,7 +314,7 @@ def insert_button() -> None:
     objDBConnect5DX.closeDB()
     if obj_db_connect_v8103553_s2_ex.flagSucceeded or \
             obj_db_connect_v8103483_s2_ex.flagSucceeded or \
-            objDBConnectV8103163.flagSucceeded or \
+            obj_db_connect_v8103163.flagSucceeded or \
             objDBConnectV8108120S2.flagSucceeded or \
             objDBConnect5DX.flagSucceeded:
         obj_tip_new = Tip(root, obj_new_item_ex.mainFrameInsert)
