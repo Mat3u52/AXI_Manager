@@ -242,12 +242,16 @@ def insert_button() -> None:
                                    obj_form_validator_v8103163.flagValidator)
     obj_db_connect_v8103163.closeDB()
 
-    objFormValidatorV8108120S2 = FormValidation()
-    objFormValidatorV8108120S2.validator(objCheckboxMenuXXL0.EI_0.get(), objCheckboxMenuXXL0.EI_1.get(),
-                                         objCheckboxMenuXXL0.CI_2.get(), objCheckboxMenuXXL0.CI_3.get(),
-                                         objCheckboxMenuXXL0.CI_4.get(), objCheckboxMenuXXL0.EI_5.get(),
-                                         obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount)
-    objFormValidatorV8108120S2.cleanUp(objCheckboxMenuXXL0.EI_0, objCheckboxMenuXXL0.EI_1,
+    obj_form_validator_v8108120_s2 = FormValidation()
+    obj_form_validator_v8108120_s2.validator(objCheckboxMenuXXL0.EI_0.get(),
+                                             objCheckboxMenuXXL0.EI_1.get(),
+                                             objCheckboxMenuXXL0.CI_2.get(),
+                                             objCheckboxMenuXXL0.CI_3.get(),
+                                             objCheckboxMenuXXL0.CI_4.get(),
+                                             objCheckboxMenuXXL0.EI_5.get(),
+                                             obj_form_validator_item.flagInit,
+                                             obj_form_validator_item.itemAmount)
+    obj_form_validator_v8108120_s2.cleanUp(objCheckboxMenuXXL0.EI_0, objCheckboxMenuXXL0.EI_1,
                                         objCheckboxMenuXXL0.CI_2, objCheckboxMenuXXL0.CI_3,
                                         objCheckboxMenuXXL0.CI_4, objCheckboxMenuXXL0.EI_5)
     objCheckboxMenuXXL0.insertFrame.grid_forget()
@@ -255,12 +259,12 @@ def insert_button() -> None:
     objDBConnectV8108120S2 = DBConnect()
     objDBConnectV8108120S2.insert("V810-8120S2", obj_form_validator_item.flagInit, obj_form_validator_item.item,
                                   obj_form_validator_item.itemAmount,
-                                  objFormValidatorV8108120S2.prog, objFormValidatorV8108120S2.test,
-                                  objFormValidatorV8108120S2.linecapa, objFormValidatorV8108120S2.epi,
-                                  objFormValidatorV8108120S2.baan1, objFormValidatorV8108120S2.comments,
-                                  objFormValidatorV8108120S2.uph85, objFormValidatorV8108120S2.uph95,
-                                  objFormValidatorV8108120S2.uph95Time,
-                                  objFormValidatorV8108120S2.flagValidator)
+                                  obj_form_validator_v8108120_s2.prog, obj_form_validator_v8108120_s2.test,
+                                  obj_form_validator_v8108120_s2.linecapa, obj_form_validator_v8108120_s2.epi,
+                                  obj_form_validator_v8108120_s2.baan1, obj_form_validator_v8108120_s2.comments,
+                                  obj_form_validator_v8108120_s2.uph85, obj_form_validator_v8108120_s2.uph95,
+                                  obj_form_validator_v8108120_s2.uph95Time,
+                                  obj_form_validator_v8108120_s2.flagValidator)
     objDBConnectV8108120S2.closeDB()
 
     objFormValidatorV849 = FormValidation()
