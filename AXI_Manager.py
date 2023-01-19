@@ -259,16 +259,22 @@ def insert_button() -> None:
                                            obj_checkbox_menu_xxl_0.EI_5)
     obj_checkbox_menu_xxl_0.insertFrame.grid_forget()
 
-    objDBConnectV8108120S2 = DBConnect()
-    objDBConnectV8108120S2.insert("V810-8120S2", obj_form_validator_item.flagInit, obj_form_validator_item.item,
-                                  obj_form_validator_item.itemAmount,
-                                  obj_form_validator_v8108120_s2.prog, obj_form_validator_v8108120_s2.test,
-                                  obj_form_validator_v8108120_s2.linecapa, obj_form_validator_v8108120_s2.epi,
-                                  obj_form_validator_v8108120_s2.baan1, obj_form_validator_v8108120_s2.comments,
-                                  obj_form_validator_v8108120_s2.uph85, obj_form_validator_v8108120_s2.uph95,
-                                  obj_form_validator_v8108120_s2.uph95Time,
-                                  obj_form_validator_v8108120_s2.flagValidator)
-    objDBConnectV8108120S2.closeDB()
+    obj_db_connect_v8108120_s2 = DBConnect()
+    obj_db_connect_v8108120_s2.insert("V810-8120S2",
+                                      obj_form_validator_item.flagInit,
+                                      obj_form_validator_item.item,
+                                      obj_form_validator_item.itemAmount,
+                                      obj_form_validator_v8108120_s2.prog,
+                                      obj_form_validator_v8108120_s2.test,
+                                      obj_form_validator_v8108120_s2.linecapa,
+                                      obj_form_validator_v8108120_s2.epi,
+                                      obj_form_validator_v8108120_s2.baan1,
+                                      obj_form_validator_v8108120_s2.comments,
+                                      obj_form_validator_v8108120_s2.uph85,
+                                      obj_form_validator_v8108120_s2.uph95,
+                                      obj_form_validator_v8108120_s2.uph95Time,
+                                      obj_form_validator_v8108120_s2.flagValidator)
+    obj_db_connect_v8108120_s2.closeDB()
 
     objFormValidatorV849 = FormValidation()
     objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
@@ -322,7 +328,7 @@ def insert_button() -> None:
     if obj_db_connect_v8103553_s2_ex.flagSucceeded or \
             obj_db_connect_v8103483_s2_ex.flagSucceeded or \
             obj_db_connect_v8103163.flagSucceeded or \
-            objDBConnectV8108120S2.flagSucceeded or \
+            obj_db_connect_v8108120_s2.flagSucceeded or \
             objDBConnect5DX.flagSucceeded:
         obj_tip_new = Tip(root, obj_new_item_ex.mainFrameInsert)
         obj_tip_new.animate_non_translucent()
