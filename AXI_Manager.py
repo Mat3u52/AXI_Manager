@@ -276,19 +276,28 @@ def insert_button() -> None:
                                       obj_form_validator_v8108120_s2.flagValidator)
     obj_db_connect_v8108120_s2.closeDB()
 
-    objFormValidatorV849 = FormValidation()
-    objFormValidatorV849.validator(objCheckboxMenu5DX0.EI_0.get(), objCheckboxMenu5DX0.EI_1.get(),
-                                   objCheckboxMenu5DX0.CI_2.get(), objCheckboxMenu5DX0.CI_3.get(),
-                                   objCheckboxMenu5DX0.CI_4.get(), objCheckboxMenu5DX0.EI_5.get(),
-                                   obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount,
-                                   objCheckboxMenu5DX0.EI_6.get(), objCheckboxMenu5DX0.EI_7.get(),
-                                   objCheckboxMenu5DX0.EI_8.get())
-    objFormValidatorV849.cleanUp(objCheckboxMenu5DX0.EI_0, objCheckboxMenu5DX0.EI_1,
-                                    objCheckboxMenu5DX0.CI_2, objCheckboxMenu5DX0.CI_3,
-                                    objCheckboxMenu5DX0.CI_4, objCheckboxMenu5DX0.EI_5,
-                                    objCheckboxMenu5DX0.EI_6, objCheckboxMenu5DX0.EI_7,
-                                    objCheckboxMenu5DX0.EI_8)
-    objCheckboxMenu5DX0.insertFrame.grid_forget()
+    obj_form_validator_v849 = FormValidation()
+    obj_form_validator_v849.validator(obj_checkbox_menu_5DX_0.EI_0.get(),
+                                      obj_checkbox_menu_5DX_0.EI_1.get(),
+                                      obj_checkbox_menu_5DX_0.CI_2.get(),
+                                      obj_checkbox_menu_5DX_0.CI_3.get(),
+                                      obj_checkbox_menu_5DX_0.CI_4.get(),
+                                      obj_checkbox_menu_5DX_0.EI_5.get(),
+                                      obj_form_validator_item.flagInit,
+                                      obj_form_validator_item.itemAmount,
+                                      obj_checkbox_menu_5DX_0.EI_6.get(),
+                                      obj_checkbox_menu_5DX_0.EI_7.get(),
+                                      obj_checkbox_menu_5DX_0.EI_8.get())
+    obj_form_validator_v849.cleanUp(obj_checkbox_menu_5DX_0.EI_0,
+                                    obj_checkbox_menu_5DX_0.EI_1,
+                                    obj_checkbox_menu_5DX_0.CI_2,
+                                    obj_checkbox_menu_5DX_0.CI_3,
+                                    obj_checkbox_menu_5DX_0.CI_4,
+                                    obj_checkbox_menu_5DX_0.EI_5,
+                                    obj_checkbox_menu_5DX_0.EI_6,
+                                    obj_checkbox_menu_5DX_0.EI_7,
+                                    obj_checkbox_menu_5DX_0.EI_8)
+    obj_checkbox_menu_5DX_0.insertFrame.grid_forget()
 
     objFormValidatorV817 = FormValidation()
     objFormValidatorV817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
@@ -308,13 +317,13 @@ def insert_button() -> None:
     objDBConnect5DX.insert("V849_V817", obj_form_validator_item.flagInit, obj_form_validator_item.item,
                            obj_form_validator_item.itemAmount,
 
-                           objFormValidatorV849.prog, objFormValidatorV849.test,
-                           objFormValidatorV849.linecapa, objFormValidatorV849.epi,
-                           objFormValidatorV849.baan1, objFormValidatorV849.comments,
-                           objFormValidatorV849.uph85, objFormValidatorV849.uph95,
-                           objFormValidatorV849.uph95Time, objFormValidatorV849.flagValidator,
-                           objFormValidatorV849.alignTime, objFormValidatorV849.laserTime,
-                           objFormValidatorV849.thicknessTime, objFormValidatorV849.totalTime,
+                           obj_form_validator_v849.prog, obj_form_validator_v849.test,
+                           obj_form_validator_v849.linecapa, obj_form_validator_v849.epi,
+                           obj_form_validator_v849.baan1, obj_form_validator_v849.comments,
+                           obj_form_validator_v849.uph85, obj_form_validator_v849.uph95,
+                           obj_form_validator_v849.uph95Time, obj_form_validator_v849.flagValidator,
+                           obj_form_validator_v849.alignTime, obj_form_validator_v849.laserTime,
+                           obj_form_validator_v849.thicknessTime, obj_form_validator_v849.totalTime,
 
                            objFormValidatorV817.flagValidator,
                            objFormValidatorV817.prog, objFormValidatorV817.test,
@@ -356,9 +365,9 @@ def reset() -> None:
     obj_checkbox_menu_xxl_0.cleanUp()
     obj_checkbox_menu_xxl_0.insertFrame.grid_forget()
 
-    objCheckboxMenu5DX0.cleanUp()
-    objCheckboxMenu5DX0.cleanUp5DX()
-    objCheckboxMenu5DX0.insertFrame.grid_forget()
+    obj_checkbox_menu_5DX_0.cleanUp()
+    obj_checkbox_menu_5DX_0.cleanUp5DX()
+    obj_checkbox_menu_5DX_0.insertFrame.grid_forget()
 
     objCheckboxMenu5DX1.cleanUp()
     objCheckboxMenu5DX1.cleanUp5DX()
@@ -441,16 +450,16 @@ def get_selected_row(event) -> None:
 
         if (row[17] != None and row[17] != '') and \
                 ((row[5] != None and int(row[5]) > 0) or int(row[4])):
-            objCheckboxMenu5DX0.EI_0.insert(0, f"{row[17]}")
-            objCheckboxMenu5DX0.EI_1.insert(0, f"{int(row[10])}")
-            objCheckboxMenu5DX0.CI_2.current(switch(row[18]))
-            objCheckboxMenu5DX0.CI_3.current(switch(row[19]))
-            objCheckboxMenu5DX0.CI_4.current(switch(row[11]))
-            objCheckboxMenu5DX0.EI_5.insert(0, f"{row[20]}")
-            objCheckboxMenu5DX0.EI_6.insert(0, f"{int(row[7])}")
-            objCheckboxMenu5DX0.EI_7.insert(0, f"{int(row[8])}")
-            objCheckboxMenu5DX0.EI_8.insert(0, f"{int(row[9])}")
-            objCheckboxMenu5DX0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
+            obj_checkbox_menu_5DX_0.EI_0.insert(0, f"{row[17]}")
+            obj_checkbox_menu_5DX_0.EI_1.insert(0, f"{int(row[10])}")
+            obj_checkbox_menu_5DX_0.CI_2.current(switch(row[18]))
+            obj_checkbox_menu_5DX_0.CI_3.current(switch(row[19]))
+            obj_checkbox_menu_5DX_0.CI_4.current(switch(row[11]))
+            obj_checkbox_menu_5DX_0.EI_5.insert(0, f"{row[20]}")
+            obj_checkbox_menu_5DX_0.EI_6.insert(0, f"{int(row[7])}")
+            obj_checkbox_menu_5DX_0.EI_7.insert(0, f"{int(row[8])}")
+            obj_checkbox_menu_5DX_0.EI_8.insert(0, f"{int(row[9])}")
+            obj_checkbox_menu_5DX_0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
 
         if (row[22] != None and row[22] != '') and \
                 ((row[5] != None and int(row[5]) > 0) or int(row[4])):
@@ -1614,9 +1623,9 @@ if __name__ == "__main__":
     objNewItem5DX = NewItem(tab2, root)
     objNewItem5DX.checkboxTitle(" 5DX ", 6)
 
-    objCheckboxMenu5DX0 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX I ( V849 ) ")
-    objCheckboxMenu5DX0.checkboxMenu("V849", 1)
-    objCheckboxMenu5DX0.alignmentTime()
+    obj_checkbox_menu_5DX_0 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX I ( V849 ) ")
+    obj_checkbox_menu_5DX_0.checkboxMenu("V849", 1)
+    obj_checkbox_menu_5DX_0.alignmentTime()
 
     objCheckboxMenu5DX1 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX II ( V817 ) ")
     objCheckboxMenu5DX1.checkboxMenu("V817", 2)
