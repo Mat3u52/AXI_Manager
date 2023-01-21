@@ -299,14 +299,14 @@ def insert_button() -> None:
                                     obj_checkbox_menu_5DX_0.EI_8)
     obj_checkbox_menu_5DX_0.insertFrame.grid_forget()
 
-    objFormValidatorV817 = FormValidation()
-    objFormValidatorV817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
+    obj_form_validator_v817 = FormValidation()
+    obj_form_validator_v817.validator(objCheckboxMenu5DX1.EI_0.get(), objCheckboxMenu5DX1.EI_1.get(),
                                    objCheckboxMenu5DX1.CI_2.get(), objCheckboxMenu5DX1.CI_3.get(),
                                    objCheckboxMenu5DX1.CI_4.get(), objCheckboxMenu5DX1.EI_5.get(),
                                    obj_form_validator_item.flagInit, obj_form_validator_item.itemAmount,
                                    objCheckboxMenu5DX1.EI_6.get(), objCheckboxMenu5DX1.EI_7.get(),
                                    objCheckboxMenu5DX1.EI_8.get())
-    objFormValidatorV817.cleanUp(objCheckboxMenu5DX1.EI_0, objCheckboxMenu5DX1.EI_1,
+    obj_form_validator_v817.cleanUp(objCheckboxMenu5DX1.EI_0, objCheckboxMenu5DX1.EI_1,
                                     objCheckboxMenu5DX1.CI_2, objCheckboxMenu5DX1.CI_3,
                                     objCheckboxMenu5DX1.CI_4, objCheckboxMenu5DX1.EI_5,
                                     objCheckboxMenu5DX1.EI_6, objCheckboxMenu5DX1.EI_7,
@@ -325,14 +325,14 @@ def insert_button() -> None:
                            obj_form_validator_v849.alignTime, obj_form_validator_v849.laserTime,
                            obj_form_validator_v849.thicknessTime, obj_form_validator_v849.totalTime,
 
-                           objFormValidatorV817.flagValidator,
-                           objFormValidatorV817.prog, objFormValidatorV817.test,
-                           objFormValidatorV817.linecapa, objFormValidatorV817.epi,
-                           objFormValidatorV817.baan1, objFormValidatorV817.comments,
-                           objFormValidatorV817.uph85, objFormValidatorV817.uph95,
-                           objFormValidatorV817.uph95Time,
-                           objFormValidatorV817.alignTime, objFormValidatorV817.laserTime,
-                           objFormValidatorV817.thicknessTime, objFormValidatorV817.totalTime)
+                           obj_form_validator_v817.flagValidator,
+                           obj_form_validator_v817.prog, obj_form_validator_v817.test,
+                           obj_form_validator_v817.linecapa, obj_form_validator_v817.epi,
+                           obj_form_validator_v817.baan1, obj_form_validator_v817.comments,
+                           obj_form_validator_v817.uph85, obj_form_validator_v817.uph95,
+                           obj_form_validator_v817.uph95Time,
+                           obj_form_validator_v817.alignTime, obj_form_validator_v817.laserTime,
+                           obj_form_validator_v817.thicknessTime, obj_form_validator_v817.totalTime)
     objDBConnect5DX.closeDB()
     if obj_db_connect_v8103553_s2_ex.flagSucceeded or \
             obj_db_connect_v8103483_s2_ex.flagSucceeded or \
