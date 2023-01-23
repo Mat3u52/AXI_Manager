@@ -322,32 +322,47 @@ def insert_button() -> None:
                                     obj_Checkbox_menu_5dx_1.EI_8)
     obj_Checkbox_menu_5dx_1.insertFrame.grid_forget()
 
-    objDBConnect5DX = DBConnect()
-    objDBConnect5DX.insert("V849_V817", obj_form_validator_item.flagInit, obj_form_validator_item.item,
-                           obj_form_validator_item.itemAmount,
+    obj_db_connect_5dx = DBConnect()
+    obj_db_connect_5dx.insert("V849_V817",
+                              obj_form_validator_item.flagInit,
+                              obj_form_validator_item.item,
+                              obj_form_validator_item.itemAmount,
 
-                           obj_form_validator_v849.prog, obj_form_validator_v849.test,
-                           obj_form_validator_v849.linecapa, obj_form_validator_v849.epi,
-                           obj_form_validator_v849.baan1, obj_form_validator_v849.comments,
-                           obj_form_validator_v849.uph85, obj_form_validator_v849.uph95,
-                           obj_form_validator_v849.uph95Time, obj_form_validator_v849.flagValidator,
-                           obj_form_validator_v849.alignTime, obj_form_validator_v849.laserTime,
-                           obj_form_validator_v849.thicknessTime, obj_form_validator_v849.totalTime,
+                              obj_form_validator_v849.prog,
+                              obj_form_validator_v849.test,
+                              obj_form_validator_v849.linecapa,
+                              obj_form_validator_v849.epi,
+                              obj_form_validator_v849.baan1,
+                              obj_form_validator_v849.comments,
+                              obj_form_validator_v849.uph85,
+                              obj_form_validator_v849.uph95,
+                              obj_form_validator_v849.uph95Time,
+                              obj_form_validator_v849.flagValidator,
+                              obj_form_validator_v849.alignTime,
+                              obj_form_validator_v849.laserTime,
+                              obj_form_validator_v849.thicknessTime,
+                              obj_form_validator_v849.totalTime,
 
-                           obj_form_validator_v817.flagValidator,
-                           obj_form_validator_v817.prog, obj_form_validator_v817.test,
-                           obj_form_validator_v817.linecapa, obj_form_validator_v817.epi,
-                           obj_form_validator_v817.baan1, obj_form_validator_v817.comments,
-                           obj_form_validator_v817.uph85, obj_form_validator_v817.uph95,
-                           obj_form_validator_v817.uph95Time,
-                           obj_form_validator_v817.alignTime, obj_form_validator_v817.laserTime,
-                           obj_form_validator_v817.thicknessTime, obj_form_validator_v817.totalTime)
-    objDBConnect5DX.closeDB()
+                              obj_form_validator_v817.flagValidator,
+                              obj_form_validator_v817.prog,
+                              obj_form_validator_v817.test,
+                              obj_form_validator_v817.linecapa,
+                              obj_form_validator_v817.epi,
+                              obj_form_validator_v817.baan1,
+                              obj_form_validator_v817.comments,
+                              obj_form_validator_v817.uph85,
+                              obj_form_validator_v817.uph95,
+                              obj_form_validator_v817.uph95Time,
+                              obj_form_validator_v817.alignTime,
+                              obj_form_validator_v817.laserTime,
+                              obj_form_validator_v817.thicknessTime,
+                              obj_form_validator_v817.totalTime)
+    obj_db_connect_5dx.closeDB()
     if obj_db_connect_v8103553_s2_ex.flagSucceeded or \
             obj_db_connect_v8103483_s2_ex.flagSucceeded or \
             obj_db_connect_v8103163.flagSucceeded or \
             obj_db_connect_v8108120_s2.flagSucceeded or \
-            objDBConnect5DX.flagSucceeded:
+            obj_db_connect_5dx.flagSucceeded:
         obj_tip_new = Tip(root, obj_new_item_ex.mainFrameInsert)
         obj_tip_new.animate_non_translucent()
         refresh()
