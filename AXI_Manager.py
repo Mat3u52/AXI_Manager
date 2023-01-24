@@ -54,8 +54,6 @@ def animate_image(ai_root: tkinter.Tk,
     else:
         img = tk.PhotoImage(file='img/lackOfPicture/board.png')
 
-    #print("f: animate_image - "+img_path)
-
     ai_image = canvas.create_image(start_x_position, start_y_position, image=img)
 
     while True:
@@ -71,7 +69,6 @@ def animate_image(ai_root: tkinter.Tk,
         if al == int(start_x_position)/2:
             break
 
-    #ai_root.mainloop()
 # print(animation_image.__doc__)
 
 
@@ -405,8 +402,8 @@ def get_selected_row(event) -> None:
     :return: show information of one record from DB
     :rtype: None
     """
-    flagAnimation = False
-    flagClick = False
+    flag_animation: bool = False
+    flag_click: bool = False
 
     reset()
     for nm in tree.selection():
@@ -419,7 +416,7 @@ def get_selected_row(event) -> None:
 
         machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
         if content[1] in machines:
-            flagClick = True
+            flag_click = True
 
         objDB = DBConnect()
         for row in objDB.selectSearchID(content[0]):
@@ -558,9 +555,9 @@ def get_selected_row(event) -> None:
             if os.path.isfile(objConfig.pathImg5DX1 + row[17] + '.png') == False:
                 resize_image(objConfig.pathImg5DX1 + row[17] + '.jpg')
 
-            if flagAnimation == False:
+            if flag_animation == False:
                 tabControlMain.select(tabMain1)
-                if flagClick == False:
+                if flag_click == False:
                     try:
                         #if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
                         if os.path.isfile(objConfig.pathImg5DX1 + row[17] + '.png'):
@@ -580,7 +577,7 @@ def get_selected_row(event) -> None:
                     except tk.TclError:
                         pass
 
-                flagAnimation = True
+                flag_animation = True
 
             #imgBoard1 = '5DX/images/V849/'+row[17]+'.png'
             imgBoard1 = objConfig.pathImg5DX1+row[17]+'.png'
@@ -656,9 +653,9 @@ def get_selected_row(event) -> None:
                 resize_image(objConfig.pathImg5DX2 + row[22] + '.jpg')
                 #resize_image('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
-            if flagAnimation == False:
+            if flag_animation == False:
                 tabControlMain.select(tabMain2)
-                if flagClick == False:
+                if flag_click == False:
                     try:
                         #if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
                         if os.path.isfile(objConfig.pathImg5DX2 + row[22] + '.png'):
@@ -678,7 +675,7 @@ def get_selected_row(event) -> None:
                     except tk.TclError:
                         pass
 
-                flagAnimation = True
+                flag_animation = True
 
             #imgBoard2 = '5DX/images/V817/'+row[22]+'.png'
             imgBoard2 = objConfig.pathImg5DX2+row[22]+'.png'
@@ -744,9 +741,9 @@ def get_selected_row(event) -> None:
             canvas3.configure(bg="#444444")
             canvas3.pack(expand=False)
 
-            if flagAnimation == False:
+            if flag_animation == False:
                 tabControlMain.select(tabMain3)
-                if flagClick == False:
+                if flag_click == False:
                     try:
                         #animate_image(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
                         #animate_image(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
@@ -755,7 +752,7 @@ def get_selected_row(event) -> None:
                     except tk.TclError:
                         pass
 
-                flagAnimation = True
+                flag_animation = True
 
             #imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
             imgBoard3 = objConfig.pathImgV8103163 + row[27] + '.png'
@@ -824,10 +821,10 @@ def get_selected_row(event) -> None:
             canvas4.configure(bg="#444444")
             canvas4.pack(expand=False)
 
-            if flagAnimation == False:
+            if flag_animation == False:
                 tabControlMain.select(tabMain4)
                 #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
-                if flagClick == False:
+                if flag_click == False:
                     try:
                         #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
                         animate_image(root, canvas4, min_movement, min_movement, objConfig.pathImgV8103483S2EX + row[45] + '.png')
@@ -836,7 +833,7 @@ def get_selected_row(event) -> None:
                     except tk.TclError:
                         pass
 
-                flagAnimation = True
+                flag_animation = True
 
             #imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
             imgBoard4 = objConfig.pathImgV8103483S2EX + row[45] + '.png'
@@ -905,10 +902,10 @@ def get_selected_row(event) -> None:
             canvas5.pack(expand=False)
 
 
-            if flagAnimation == False:
+            if flag_animation == False:
                 tabControlMain.select(tabMain5)
                 #animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
-                if flagClick == False:
+                if flag_click == False:
                     try:
                         #animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
                         animate_image(root, canvas5, min_movement, min_movement, objConfig.pathImgV8103553S2EX + row[54] + '.png')
@@ -917,7 +914,7 @@ def get_selected_row(event) -> None:
                     except tk.TclError:
                         pass
 
-                flagAnimation = True
+                flag_animation = True
 
             #imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
             imgBoard5 = objConfig.pathImgV8103553S2EX + row[54] + '.png'
@@ -985,10 +982,10 @@ def get_selected_row(event) -> None:
             canvas6.configure(bg="#444444")
             canvas6.pack(expand=False)
 
-            if flagAnimation == False:
+            if flag_animation == False:
                 tabControlMain.select(tabMain6)
                 #animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
-                if flagClick == False:
+                if flag_click == False:
                     try:
                         #animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
                         animate_image(root, canvas6, min_movement, min_movement, objConfig.pathImgV8108120S2 + row[31] + '.png')
@@ -997,7 +994,7 @@ def get_selected_row(event) -> None:
                     except tk.TclError:
                         pass
 
-                flagAnimation = True
+                flag_animation = True
 
             #imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
             imgBoard6 = objConfig.pathImgV8108120S2 + row[31] + '.png'
@@ -1012,8 +1009,8 @@ def get_selected_row(event) -> None:
             tabControlMain.hide(tabMain6)
 #--- The End get_selected_row V810-8120S2 ---
 
-        if flagClick == True:
-            flagClick = False
+        if flag_click == True:
+            flag_click = False
             if content[1] == '5DX I':
                 tabControlMain.select(tabMain1)
             elif content[1] == '5DX II':
