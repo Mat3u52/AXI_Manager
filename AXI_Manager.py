@@ -409,22 +409,18 @@ def get_selected_row(event) -> None:
     for nm in tree.selection():
         content = tree.item(nm, 'values')
 
-        #curItem = tree.focus()
-        #print(tree.item(curItem))
-
-        print(content[1])
+        #print(content[1])
 
         machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
         if content[1] in machines:
             flag_click = True
 
-        objDB = DBConnect()
-        for row in objDB.selectSearchID(content[0]):
+        obj_db = DBConnect()
+        for row in obj_db.selectSearchID(content[0]):
             pass
-        objDB.closeDB()
+        obj_db.closeDB()
 
         pyperclip.copy(row[1])  # clipboard Win / Linux: sudo apt-get install xclip
-
 
         obj_new_item_ex.EI2.insert(0, f"{row[1]}")
         obj_new_item_ex.EI3.insert(0, f"{row[3]}")
@@ -495,7 +491,7 @@ def get_selected_row(event) -> None:
             obj_Checkbox_menu_5dx_1.EI_8.insert(0, f"{int(row[9])}")
             obj_Checkbox_menu_5dx_1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
 
-        LItem.configure(text=f"{row[1]}")
+        l_item.configure(text=f"{row[1]}")
         LItemAmount.configure(text=f"{row[3]}")
         LDateDB.configure(text=f"{row[2]}")
         LQty.configure(text=f"Qty:")
@@ -1246,9 +1242,9 @@ if __name__ == "__main__":
     mainFrameView = ttk.LabelFrame(root, text=" Main View ")
     mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
 
-    LItem = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
-    LItem.config(font=("Arial", 12, 'bold'))
-    LItem.grid(row=0, column=0, sticky=W)
+    l_item = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
+    l_item.config(font=("Arial", 12, 'bold'))
+    l_item.grid(row=0, column=0, sticky=W)
     LItemAmount = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
     LItemAmount.config(font=("Arial", 12, 'bold'))
     LItemAmount.grid(row=0, column=2, sticky=W)
