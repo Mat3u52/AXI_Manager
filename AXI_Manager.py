@@ -411,8 +411,8 @@ def get_selected_row(event) -> None:
 
         #print(content[1])
 
-        machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
-        if content[1] in machines:
+        #machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
+        if content[1] in obj_config.machines:
             flag_click = True
 
         obj_db = DBConnect()
@@ -499,7 +499,7 @@ def get_selected_row(event) -> None:
 
 # ---get_selected_row 5DX V849---
         if int(len(str(row[17]))) > 4:
-            tabControlMain.add(tabMain1, text=" V849 ")
+            tab_control_main.add(tabMain1, text=" V849 ")
             LV849Prog.configure(text=f"{row[17]}")
             LV849ScanTimeL.configure(text=f"Scan Time:")
             LV849UPH85L.configure(text=f"UPH 85%:")
@@ -548,23 +548,23 @@ def get_selected_row(event) -> None:
             canvas1.configure(bg="#444444")
             canvas1.pack(expand=False)
 
-            if os.path.isfile(objConfig.pathImg5DX1 + row[17] + '.png') == False:
-                resize_image(objConfig.pathImg5DX1 + row[17] + '.jpg')
+            if os.path.isfile(obj_config.pathImg5DX1 + row[17] + '.png') == False:
+                resize_image(obj_config.pathImg5DX1 + row[17] + '.jpg')
 
             if flag_animation == False:
-                tabControlMain.select(tabMain1)
+                tab_control_main.select(tabMain1)
                 if flag_click == False:
                     try:
                         #if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
-                        if os.path.isfile(objConfig.pathImg5DX1 + row[17] + '.png'):
+                        if os.path.isfile(obj_config.pathImg5DX1 + row[17] + '.png'):
                         #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png'):
                             #animate_image(root, canvas1, min_movement, min_movement, '5DX/images/V849/' + row[17] + '.png')
-                            animate_image(root, canvas1, min_movement, min_movement, objConfig.pathImg5DX1 + row[17] + '.png')
+                            animate_image(root, canvas1, min_movement, min_movement, obj_config.pathImg5DX1 + row[17] + '.png')
                             #animate_image(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
                         else:
                             try:
                                 #animate_image(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
-                                animate_image(root, canvas1, min_movement, min_movement, objConfig.pathImg5DX1 + row[17] + '.png')
+                                animate_image(root, canvas1, min_movement, min_movement, obj_config.pathImg5DX1 + row[17] + '.png')
                                 #animate_image(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
 
                             except FileNotFoundError:
@@ -576,23 +576,23 @@ def get_selected_row(event) -> None:
                 flag_animation = True
 
             #imgBoard1 = '5DX/images/V849/'+row[17]+'.png'
-            imgBoard1 = objConfig.pathImg5DX1+row[17]+'.png'
+            imgBoard1 = obj_config.pathImg5DX1 + row[17] + '.png'
             #imgBoard1 = 'Y:/5DX/images/V849/'+row[17]+'.png'
             if os.path.isfile(imgBoard1):
                 img1 = tk.PhotoImage(file=imgBoard1)
             else:
                 #img1 = tk.PhotoImage(file='board.png')
-                img1 = tk.PhotoImage(file=objConfig.pathImgDefault)
+                img1 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas1.create_image(85, 85, image=img1)
 
         else:
-            tabControlMain.hide(tabMain1)
+            tab_control_main.hide(tabMain1)
 
 #---The End get_selected_row 5DX V849---
 #---get_selected_row 5DX V817---
 
         if int(len(str(row[22]))) > 4:
-            tabControlMain.add(tabMain2, text=" V817 ")
+            tab_control_main.add(tabMain2, text=" V817 ")
             LV817Prog.configure(text=f"{row[22]}")
             LV817ScanTimeL.configure(text=f"Scan Time:")
             LV817UPH85L.configure(text=f"UPH 85%:")
@@ -643,26 +643,26 @@ def get_selected_row(event) -> None:
             canvas2.pack(expand=False)
 
             #if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
-            if os.path.isfile(objConfig.pathImg5DX2 + row[22] + '.png') == False:
+            if os.path.isfile(obj_config.pathImg5DX2 + row[22] + '.png') == False:
             #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png') == False:
                 #resize_image('5DX/images/V817/' + row[22] + '.jpg')
-                resize_image(objConfig.pathImg5DX2 + row[22] + '.jpg')
+                resize_image(obj_config.pathImg5DX2 + row[22] + '.jpg')
                 #resize_image('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
             if flag_animation == False:
-                tabControlMain.select(tabMain2)
+                tab_control_main.select(tabMain2)
                 if flag_click == False:
                     try:
                         #if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
-                        if os.path.isfile(objConfig.pathImg5DX2 + row[22] + '.png'):
+                        if os.path.isfile(obj_config.pathImg5DX2 + row[22] + '.png'):
                         #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
                             #animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                            animate_image(root, canvas2, min_movement, min_movement, objConfig.pathImg5DX2 + row[22] + '.png')
+                            animate_image(root, canvas2, min_movement, min_movement, obj_config.pathImg5DX2 + row[22] + '.png')
                             #animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
                         else:
                             try:
                                 #animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                                animate_image(root, canvas2, min_movement, min_movement, objConfig.pathImg5DX2 + row[22] + '.png')
+                                animate_image(root, canvas2, min_movement, min_movement, obj_config.pathImg5DX2 + row[22] + '.png')
                                 #animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
 
                             except FileNotFoundError:
@@ -674,23 +674,23 @@ def get_selected_row(event) -> None:
                 flag_animation = True
 
             #imgBoard2 = '5DX/images/V817/'+row[22]+'.png'
-            imgBoard2 = objConfig.pathImg5DX2+row[22]+'.png'
+            imgBoard2 = obj_config.pathImg5DX2 + row[22] + '.png'
             #imgBoard2 = 'Y:/5DX/images/V817/'+row[22]+'.png'
             if os.path.isfile(imgBoard2):
                 img2 = tk.PhotoImage(file=imgBoard2)
             else:
                 #img2 = tk.PhotoImage(file='board.png')
-                img2 = tk.PhotoImage(file=objConfig.pathImgDefault)
+                img2 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas2.create_image(85, 85, image=img2)
 
         else:
-            tabControlMain.hide(tabMain2)
+            tab_control_main.hide(tabMain2)
 #---The End get_selected_row 5DX V817---
 #---get_selected_row V810-3163--
         #if len(str(row[27])) > 4:
         if row[27] != None and \
                 ((int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])):
-            tabControlMain.add(tabMain3, text=" V810-3163 ")
+            tab_control_main.add(tabMain3, text=" V810-3163 ")
             LV8103163Prog.configure(text=f"{row[27]}")
             LV8103163ScanTimeL.configure(text=f"Scan Time:")
             LV8103163UPH85L.configure(text=f"UPH 85%:")
@@ -738,12 +738,12 @@ def get_selected_row(event) -> None:
             canvas3.pack(expand=False)
 
             if flag_animation == False:
-                tabControlMain.select(tabMain3)
+                tab_control_main.select(tabMain3)
                 if flag_click == False:
                     try:
                         #animate_image(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
                         #animate_image(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
-                        animate_image(root, canvas3, min_movement, min_movement, objConfig.pathImgV8103163 + row[27] + '.png')
+                        animate_image(root, canvas3, min_movement, min_movement, obj_config.pathImgV8103163 + row[27] + '.png')
                     #except _tkinter.TclError:
                     except tk.TclError:
                         pass
@@ -751,17 +751,17 @@ def get_selected_row(event) -> None:
                 flag_animation = True
 
             #imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
-            imgBoard3 = objConfig.pathImgV8103163 + row[27] + '.png'
+            imgBoard3 = obj_config.pathImgV8103163 + row[27] + '.png'
             #imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
             if os.path.isfile(imgBoard3):
                 img3 = tk.PhotoImage(file=imgBoard3)
             else:
                 #img3 = tk.PhotoImage(file='board.png')
-                img3 = tk.PhotoImage(file=objConfig.pathImgDefault)
+                img3 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas3.create_image(85, 85, image=img3)
 
         else:
-            tabControlMain.hide(tabMain3)
+            tab_control_main.hide(tabMain3)
 
 #---The End get_selected_row V810-3163---
 
@@ -769,7 +769,7 @@ def get_selected_row(event) -> None:
         #if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
         if row[45] != None and \
                 ((row[43] != None and int(row[43]) > 0) or int(row[40])):
-            tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+            tab_control_main.add(tabMain4, text=" V810-3483S2EX ")
             LV8103483S2EXProg.configure(text=f"{row[45]}")
             LV8103483S2EXScanTimeL.configure(text=f"Scan Time:")
             LV8103483S2EXUPH85L.configure(text=f"UPH 85%:")
@@ -818,12 +818,12 @@ def get_selected_row(event) -> None:
             canvas4.pack(expand=False)
 
             if flag_animation == False:
-                tabControlMain.select(tabMain4)
+                tab_control_main.select(tabMain4)
                 #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
                 if flag_click == False:
                     try:
                         #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
-                        animate_image(root, canvas4, min_movement, min_movement, objConfig.pathImgV8103483S2EX + row[45] + '.png')
+                        animate_image(root, canvas4, min_movement, min_movement, obj_config.pathImgV8103483S2EX + row[45] + '.png')
                         #animate_image(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
                     #except _tkinter.TclError:
                     except tk.TclError:
@@ -832,24 +832,24 @@ def get_selected_row(event) -> None:
                 flag_animation = True
 
             #imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
-            imgBoard4 = objConfig.pathImgV8103483S2EX + row[45] + '.png'
+            imgBoard4 = obj_config.pathImgV8103483S2EX + row[45] + '.png'
             #imgBoard4 = 'X:/images/V810-3483S2EX/' + row[45] + '.png'
             if os.path.isfile(imgBoard4):
                 img4 = tk.PhotoImage(file=imgBoard4)
             else:
                 #img4 = tk.PhotoImage(file='board.png')
-                img4 = tk.PhotoImage(file=objConfig.pathImgDefault)
+                img4 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas4.create_image(85, 85, image=img4)
 
         else:
-            tabControlMain.hide(tabMain4)
+            tab_control_main.hide(tabMain4)
 #--- The End get_selected_row V810-3483S2EX ---
 
 #--- get_selected_row V810-3553S2EX ---
         #if (len(str(row[54])) > 0 and row[54] != None) and (int(row[50]) != 0 or int(row[49]) != 0):
         if row[54] != None and \
                 ((row[52] != None and int(row[52]) > 0) or int(row[49])):
-            tabControlMain.add(tabMain5, text=" V810-3553S2EX ")
+            tab_control_main.add(tabMain5, text=" V810-3553S2EX ")
             LV8103553S2EXProg.configure(text=f"{row[54]}")
             LV8103553S2EXScanTimeL.configure(text=f"Scan Time: ")
             LV8103553S2EXUPH85L.configure(text=f"UPH 85%:")
@@ -899,12 +899,12 @@ def get_selected_row(event) -> None:
 
 
             if flag_animation == False:
-                tabControlMain.select(tabMain5)
+                tab_control_main.select(tabMain5)
                 #animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
                 if flag_click == False:
                     try:
                         #animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
-                        animate_image(root, canvas5, min_movement, min_movement, objConfig.pathImgV8103553S2EX + row[54] + '.png')
+                        animate_image(root, canvas5, min_movement, min_movement, obj_config.pathImgV8103553S2EX + row[54] + '.png')
                         #animate_image(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
                     #except _tkinter.TclError:
                     except tk.TclError:
@@ -913,24 +913,24 @@ def get_selected_row(event) -> None:
                 flag_animation = True
 
             #imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
-            imgBoard5 = objConfig.pathImgV8103553S2EX + row[54] + '.png'
+            imgBoard5 = obj_config.pathImgV8103553S2EX + row[54] + '.png'
             #imgBoard5 = 'X:/images/V810-3553S2EX/' + row[54] + '.png'
             if os.path.isfile(imgBoard5):
                 img5 = tk.PhotoImage(file=imgBoard5)
             else:
                 #img5 = tk.PhotoImage(file='board.png')
-                img5 = tk.PhotoImage(file=objConfig.pathImgDefault)
+                img5 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas5.create_image(85, 85, image=img5)
 
         else:
-            tabControlMain.hide(tabMain5)
+            tab_control_main.hide(tabMain5)
 #--- The End get_selected_row V810-3553S2EX ---
 
 #--- get_selected_row V810-8120S2 ---
         #if row[31] != None and (int(row[37] != 0) or int(row[39]) != 0):
         if row[31] != None and \
                 ((row[37] != None and int(row[37]) > 0) or int(row[39])):
-            tabControlMain.add(tabMain6, text=" V810-8120S2 ")
+            tab_control_main.add(tabMain6, text=" V810-8120S2 ")
             LV8108120S2Prog.configure(text=f"{row[31]}")
             LV8108120S2ScanTimeL.configure(text=f"Scan Time:")
             LV8108120S2UPH85L.configure(text=f"UPH 85%:")
@@ -979,12 +979,12 @@ def get_selected_row(event) -> None:
             canvas6.pack(expand=False)
 
             if flag_animation == False:
-                tabControlMain.select(tabMain6)
+                tab_control_main.select(tabMain6)
                 #animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
                 if flag_click == False:
                     try:
                         #animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
-                        animate_image(root, canvas6, min_movement, min_movement, objConfig.pathImgV8108120S2 + row[31] + '.png')
+                        animate_image(root, canvas6, min_movement, min_movement, obj_config.pathImgV8108120S2 + row[31] + '.png')
                         #animate_image(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
                     #except _tkinter.TclError:
                     except tk.TclError:
@@ -993,32 +993,32 @@ def get_selected_row(event) -> None:
                 flag_animation = True
 
             #imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
-            imgBoard6 = objConfig.pathImgV8108120S2 + row[31] + '.png'
+            imgBoard6 = obj_config.pathImgV8108120S2 + row[31] + '.png'
             #imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
             if os.path.isfile(imgBoard6):
                 img6 = tk.PhotoImage(file=imgBoard6)
             else:
-                img6 = tk.PhotoImage(file=objConfig.pathImgDefault)
+                img6 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas6.create_image(85, 85, image=img6)
 
         else:
-            tabControlMain.hide(tabMain6)
+            tab_control_main.hide(tabMain6)
 #--- The End get_selected_row V810-8120S2 ---
 
         if flag_click == True:
             flag_click = False
             if content[1] == '5DX I':
-                tabControlMain.select(tabMain1)
+                tab_control_main.select(tabMain1)
             elif content[1] == '5DX II':
-                tabControlMain.select(tabMain2)
+                tab_control_main.select(tabMain2)
             elif content[1] == 'ViTrox Ex I':
-                tabControlMain.select(tabMain3)
+                tab_control_main.select(tabMain3)
             elif content[1] == 'ViTrox Ex II':
-                tabControlMain.select(tabMain4)
+                tab_control_main.select(tabMain4)
             elif content[1] == 'ViTrox Ex III':
-                tabControlMain.select(tabMain5)
+                tab_control_main.select(tabMain5)
             elif content[1] == 'ViTrox XXL I':
-                tabControlMain.select(tabMain6)
+                tab_control_main.select(tabMain6)
 
         root.mainloop()
 
@@ -1142,7 +1142,7 @@ def refresh() -> None:
     objDB.closeDB()
 # ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=objConfig.scrollX, y=objConfig.scrollY, height=objConfig.scrollHeight)
+    vsb.place(x=obj_config.scrollX, y=obj_config.scrollY, height=obj_config.scrollHeight)
     tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
@@ -1222,20 +1222,20 @@ def tabSelected(event) -> None:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    objConfig = Config()
+    obj_config = Config()
     ws = root.winfo_screenwidth() # width of the screen
     hs = root.winfo_screenheight() # height of the screen
-    x = (ws-int(objConfig.screenWidth))
-    y = (hs-int(objConfig.screenHeight))
-    windowPosition = f'{int(objConfig.screenWidth)}x{int(objConfig.screenHeight)}+{int(x)}+{int(y)}'
-    root.title(objConfig.title)
+    x = (ws - int(obj_config.screenWidth))
+    y = (hs - int(obj_config.screenHeight))
+    windowPosition = f'{int(obj_config.screenWidth)}x{int(obj_config.screenHeight)}+{int(x)}+{int(y)}'
+    root.title(obj_config.title)
     root.geometry(windowPosition)
     #root.resizable(0, 0)
-    #root.iconbitmap(objConfig.ico) # Icon for Win
-    photo = PhotoImage(file=objConfig.ico)# Icon for Linux
+    #root.iconbitmap(obj_config.ico) # Icon for Win
+    photo = PhotoImage(file=obj_config.ico)# Icon for Linux
     root.iconphoto(False, photo)# Incon for Linux
 
-    root.configure(background=objConfig.bgColor)
+    root.configure(background=obj_config.bgColor)
 
     #--- Main View ---
 
@@ -1258,10 +1258,10 @@ if __name__ == "__main__":
     l_date_db.config(font=("Arial", 10))
     l_date_db.grid(row=0, column=4, sticky=W)
 
-    tabControlMain = ttk.Notebook(mainFrameView)
+    tab_control_main = ttk.Notebook(mainFrameView)
 
-    tabMain1 = ttk.Frame(tabControlMain)
-    tabControlMain.add(tabMain1, text=" V849 ")
+    tabMain1 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tabMain1, text=" V849 ")
 
     LV849Prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
     LV849Prog.configure(font=("Arial", 10))
@@ -1315,8 +1315,8 @@ if __name__ == "__main__":
     LV849Comment.configure(font=("Arial", 10, "italic"))
     LV849Comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
-    tabMain2 = ttk.Frame(tabControlMain)
-    tabControlMain.add(tabMain2, text=" V817 ")
+    tabMain2 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tabMain2, text=" V817 ")
 
     LV817Prog = Label(tabMain2, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
     LV817Prog.configure(font=("Arial", 10))
@@ -1370,8 +1370,8 @@ if __name__ == "__main__":
     LV817Comment.configure(font=("Arial", 10, "italic"))
     LV817Comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
-    tabMain3 = ttk.Frame(tabControlMain)
-    tabControlMain.add(tabMain3, text=" V810-3163 ")
+    tabMain3 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tabMain3, text=" V810-3163 ")
 
     LV8103163Prog = Label(tabMain3, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
     LV8103163Prog.configure(font=("Arial", 10))
@@ -1425,8 +1425,8 @@ if __name__ == "__main__":
     LV8103163Comment.configure(font=("Arial", 10, "italic"))
     LV8103163Comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
-    tabMain4 = ttk.Frame(tabControlMain)
-    tabControlMain.add(tabMain4, text=" V810-3483S2EX ")
+    tabMain4 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tabMain4, text=" V810-3483S2EX ")
 
     LV8103483S2EXProg = Label(tabMain4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
     LV8103483S2EXProg.configure(font=("Arial", 10))
@@ -1480,8 +1480,8 @@ if __name__ == "__main__":
     LV8103483S2EXComment.configure(font=("Arial", 10, "italic"))
     LV8103483S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
 
-    tabMain5 = ttk.Frame(tabControlMain)
-    tabControlMain.add(tabMain5, text=" V810-3483S2EX ")
+    tabMain5 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tabMain5, text=" V810-3483S2EX ")
 
     LV8103553S2EXProg = Label(tabMain5, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
     LV8103553S2EXProg.configure(font=("Arial", 10))
@@ -1535,8 +1535,8 @@ if __name__ == "__main__":
     LV8103553S2EXComment.configure(font=("Arial", 10, "italic"))
     LV8103553S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
 
-    tabMain6 = ttk.Frame(tabControlMain)
-    tabControlMain.add(tabMain6, text=" V810-8120S2 ")
+    tabMain6 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tabMain6, text=" V810-8120S2 ")
 
     LV8108120S2Prog = Label(tabMain6, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
     LV8108120S2Prog.configure(font=("Arial", 10))
@@ -1590,7 +1590,7 @@ if __name__ == "__main__":
     LV8108120S2Comment.configure(font=("Arial", 10))
     LV8108120S2Comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
-    tabControlMain.grid(row=1, column=0, columnspan=5, sticky=W)
+    tab_control_main.grid(row=1, column=0, columnspan=5, sticky=W)
 
     #------------------- The End Main View ----------------------------
 
