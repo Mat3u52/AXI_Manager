@@ -511,35 +511,35 @@ def get_selected_row(event) -> None:
             l_v849_scan_time.configure(text=f"{int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}" 
                                             f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
             try:
-                LV849UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), " 
-                                          f"Panel: {round((3600/int(row[4])*int(row[3])))}s. " 
-                                          f"Board: {round((3600/int(row[4])), 4)}s.")
+                l_v849_uph_85.configure(text=f"{row[4]} ({round(60 / int(row[4]), 4)}), " 
+                                             f"Panel: {round((3600/int(row[4])*int(row[3])))}s. " 
+                                             f"Board: {round((3600/int(row[4])), 4)}s.")
             except ZeroDivisionError:
-                LV849UPH85.configure(text=f"(0), "
-                                          f"Panel: 0 s. "
-                                          f"Board: 0 s.")
+                l_v849_uph_85.configure(text=f"(0), "
+                                             f"Panel: 0 s. "
+                                             f"Board: 0 s.")
             try:
-                LV849UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
-                                        f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
-                                        f"Board: {round((3600/int(row[6])), 4)}s.")
+                l_v849_uph_95.configure(text=f"{row[6]} ({round(60 / int(row[6]), 4)}), "
+                                             f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
+                                             f"Board: {round((3600/int(row[6])), 4)}s.")
             except ZeroDivisionError:
-                LV849UPH95.configure(text=f"(0), "
-                                          f"Panel: 0 s. "
-                                          f"Board: 0 s.")
+                l_v849_uph_95.configure(text=f"(0), "
+                                             f"Panel: 0 s. "
+                                             f"Board: 0 s.")
             if str(row[11]) == 'YES':
-                LV849Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
+                l_v849_baan.configure(text=f"{row[11]}", fg="#AAAAAA")
             else:
-                LV849Baan.configure(text=f"{row[11]}", fg="#D44339")
+                l_v849_baan.configure(text=f"{row[11]}", fg="#D44339")
             if str(row[18]) == 'YES':
-                LV849LC.configure(text=f"{row[18]}", fg="#AAAAAA")
+                l_V849_lc.configure(text=f"{row[18]}", fg="#AAAAAA")
             else:
-                LV849LC.configure(text=f"{row[18]}", fg="#D44339")
+                l_V849_lc.configure(text=f"{row[18]}", fg="#D44339")
             if str(row[19]) == 'YES':
-                LV849EPI.configure(text=f"{row[19]}", fg="#AAAAAA")
+                l_v849_epi.configure(text=f"{row[19]}", fg="#AAAAAA")
             else:
-                LV849EPI.configure(text=f"{row[19]}", fg="#D44339")
+                l_v849_epi.configure(text=f"{row[19]}", fg="#D44339")
 
-            LV849Comment.configure(text=f"{row[20]}")
+            l_v849_comment.configure(text=f"{row[20]}")
 
 #---get_selected_row 5DX V849---
             canvasFrame1 = Label(tabMain1)
@@ -1277,43 +1277,43 @@ if __name__ == "__main__":
     l_v849_uph85_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_uph85_l.configure(font=("Arial", 10))
     l_v849_uph85_l.grid(row=2, column=0, sticky=E)
-    LV849UPH85 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV849UPH85.configure(font=("Arial", 10))
-    LV849UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
+    l_v849_uph_85 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_uph_85.configure(font=("Arial", 10))
+    l_v849_uph_85.grid(row=2, column=1, columnspan=5, sticky=W)
     l_v849_uph95_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_uph95_l.configure(font=("Arial", 10))
     l_v849_uph95_l.grid(row=3, column=0, sticky=E)
-    LV849UPH95 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV849UPH95.configure(font=("Arial", 10))
-    LV849UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+    l_v849_uph_95 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_uph_95.configure(font=("Arial", 10))
+    l_v849_uph_95.grid(row=3, column=1, columnspan=5, sticky=W)
 
     l_v849_baan_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_baan_l.configure(font=("Arial", 10))
     l_v849_baan_l.grid(row=4, column=0, sticky=E)
-    LV849Baan = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV849Baan.configure(font=("Arial", 10))
-    LV849Baan.grid(row=4, column=1, sticky=W)
+    l_v849_baan = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_baan.configure(font=("Arial", 10))
+    l_v849_baan.grid(row=4, column=1, sticky=W)
 
     l_v849_lc_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_lc_l.configure(font=("Arial", 10))
     l_v849_lc_l.grid(row=4, column=2, sticky=E)
-    LV849LC = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV849LC.configure(font=("Arial", 10))
-    LV849LC.grid(row=4, column=3, sticky=W)
+    l_V849_lc = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_V849_lc.configure(font=("Arial", 10))
+    l_V849_lc.grid(row=4, column=3, sticky=W)
 
     l_v849_epi_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_epi_l.configure(font=("Arial", 10))
     l_v849_epi_l.grid(row=4, column=4, sticky=E)
-    LV849EPI = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV849EPI.configure(font=("Arial", 10))
-    LV849EPI.grid(row=4, column=5, sticky=W)
+    l_v849_epi = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_epi.configure(font=("Arial", 10))
+    l_v849_epi.grid(row=4, column=5, sticky=W)
 
     l_v849_comment_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_comment_l.configure(font=("Arial", 10))
     l_v849_comment_l.grid(row=5, column=0, sticky=E)
-    LV849Comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV849Comment.configure(font=("Arial", 10, "italic"))
-    LV849Comment.grid(row=5, column=1, columnspan=5, sticky=W)
+    l_v849_comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_comment.configure(font=("Arial", 10, "italic"))
+    l_v849_comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
     tabMain2 = ttk.Frame(tab_control_main)
     tab_control_main.add(tabMain2, text=" V817 ")
