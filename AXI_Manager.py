@@ -1605,6 +1605,9 @@ if __name__ == "__main__":
     tab3 = ttk.Frame(tabControl)
     tabControl.add(tab3, text=" --- Add --- ")
     tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+    tab4 = ttk.Frame(tabControl)
+    tabControl.add(tab4, text=" --- Comparison --- ")
+    tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
     tabControl.bind("<<NotebookTabChanged>>", tabSelected)
 
