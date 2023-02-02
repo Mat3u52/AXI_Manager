@@ -1612,7 +1612,9 @@ if __name__ == "__main__":
     tabControl.bind("<<NotebookTabChanged>>", tabSelected)
 
     addFrame = ttk.LabelFrame(tab3, text=" New Items: ")
-    #addFrame.pack(expand=1, fill="both", padx=10, pady=10)
+    comparison_frame = ttk.LabelFrame(tab4, text=" Comparison: ")
+
+    comparison_frame.pack(expand=1, fill="both", padx=10, pady=10)
     #addFrame.pack_Forget()
     varNewRecord = IntVar()
 
