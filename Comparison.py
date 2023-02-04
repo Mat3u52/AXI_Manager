@@ -1,4 +1,5 @@
 import os
+from DBConnect import DBConnect
 
 class Comparison:
     def __init__(self, dir_name: str) -> None:
@@ -19,8 +20,9 @@ class Comparison:
         return inventory
 
 
-
 if __name__ == "__main__":
-    obj_comparison = Comparison("/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163-/")
+    obj_comparison = Comparison("/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/")
     print(obj_comparison)
-    obj_comparison.comparison_error()
+    if obj_comparison.comparison_error():
+        recipes_list = os.listdir(obj_comparison.dir_name)
+        print(recipes_list)
