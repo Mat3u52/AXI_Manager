@@ -15,7 +15,7 @@ class Comparison:
         else:
             return False
 
-    def recipe_list(self) -> list[str]:
+    def recipes_list(self) -> list[str]:
         inventory = os.listdir(self.dir_name)
         return inventory
 
@@ -24,5 +24,7 @@ if __name__ == "__main__":
     obj_comparison = Comparison("/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/")
     print(obj_comparison)
     if obj_comparison.comparison_error():
-        recipes_list = os.listdir(obj_comparison.dir_name)
-        print(recipes_list)
+        #recipes_list = os.listdir(obj_comparison.dir_name)
+        print(obj_comparison.recipes_list())
+        obj_DBConnect = DBConnect()
+        print(obj_DBConnect.select_recipe('VITROXI_PROG'))
