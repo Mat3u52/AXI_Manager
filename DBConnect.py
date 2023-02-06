@@ -24,6 +24,13 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
+    def select_recipe(self, device: str):
+        device = device
+        #self.dbCursor.execute("SELECT "+device+" FROM mk_diary ORDER BY ITEM ASC")
+        self.dbCursor.execute("SELECT "+device+" FROM mk_diary ORDER BY "+device+" ASC")
+        records = self.dbCursor.fetchall()
+        return records
+
     def selectSearchID(self, ID):
         self.ID = ID
         self.dbCursor.execute("SELECT * FROM mk_diary WHERE ITEM_ID LIKE "+self.ID+"")
@@ -543,7 +550,7 @@ class DBConnect:
     def closeDB(self) -> None:
         self.dbCursor.close()
         self.db.close()
-#def __del__(self):
+#def __del__(self): <-- in the Python the __del__ not always works
 #    self.dbCursor.close()
 #    self.db.close()
 #    print("DB")
