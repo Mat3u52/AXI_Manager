@@ -16,7 +16,11 @@ class Comparison:
             return False
 
     def recipes_list(self) -> list[str]:
-        inventory = os.listdir(self.dir_name)
+        inventory: list[str] = []
+
+        for prog in os.listdir(self.dir_name):
+            inventory.append(prog[0:-4])
+
         return inventory
 
 
