@@ -15,11 +15,11 @@ class Comparison:
         else:
             return False
 
-    def recipes_list(self) -> list[str]:
-        inventory: list[str] = []
+    def recipes_list(self) -> set[str]:
+        inventory: set[str] = set()
 
         for prog in os.listdir(self.dir_name):
-            inventory.append(prog[0:-4])
+            inventory.add(prog[0:-4])
 
         return inventory
 
@@ -32,3 +32,11 @@ if __name__ == "__main__":
         print(obj_comparison.recipes_list())
         obj_DBConnect = DBConnect()
         print(obj_DBConnect.select_recipe('VITROXI_PROG'))
+
+        inventory_db: set[str] = set()
+        for prog_db in obj_DBConnect.select_recipe('VITROXI_PROG'):
+            inventory_db.add(prog_db)
+        print(inventory_db)
+
+        print(obj_comparison.recipes_list().difference(inventory_db))
+
