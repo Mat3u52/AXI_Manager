@@ -1613,18 +1613,15 @@ if __name__ == "__main__":
 
     addFrame = ttk.LabelFrame(tab3, text=" New Items: ")
 
-    comparison_frame = ttk.LabelFrame(tab4, text=" Comparison: ")
+    v810_3163 = ttk.Notebook(tab4)
+    tab_3163 = ttk.Frame(v810_3163)
+    v810_3163.add(tab_3163, text=" --- V810-3163 --- ")
+    v810_3163.pack(expand=1, fill="both", padx=10, pady=10)
 
-    tabControl0 = ttk.Notebook(tab4)
-    tabtest = ttk.Frame(tabControl0)
-    tabControl0.add(tabtest, text=" --- Maintest --- ")
-    tabControl0.pack(expand=1, fill="both", padx=10, pady=10)
+    l_comparison = Label(tab_3163, text=f"test", bg="#333333", fg="#999999", pady="1")
+    l_comparison.config(font=("Arial", 12, 'bold'))
+    l_comparison.grid(row=0, column=0, sticky=W)
 
-    l_test = Label(comparison_frame, text=f"test", bg="#333333", fg="#999999", pady="1")
-    l_test.config(font=("Arial", 12, 'bold'))
-    l_test.grid(row=0, column=0, sticky=W)
-
-    comparison_frame.pack(expand=1, fill="both", padx=10, pady=10)
     #addFrame.pack_Forget()
     varNewRecord = IntVar()
 
