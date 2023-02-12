@@ -19,6 +19,7 @@ class Config:
         self.scrollY = 27
         self.scrollHeight = 423
 
+        self.machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
         self.devices = ('V810-3163', 'V810-3483S2EX', 'V810-3553S2EX', 'V810-8120S2')
         self.pathImgDefault = 'img/lackOfPicture/board.png'
 
