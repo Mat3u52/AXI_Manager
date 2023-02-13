@@ -1220,6 +1220,7 @@ def tabSelected(event) -> None:
             radioBox.grid(row=int(record), column=0, sticky=W)
         radioBox.invoke()
 
+
 if __name__ == "__main__":
     root = tk.Tk()
     obj_config = Config()
@@ -1704,24 +1705,24 @@ if __name__ == "__main__":
 
     tree = ttk.Treeview(tab1)
 
-    tree["columns"] = ("one", "two", "three", "Four", "Five", "Six", "Seven")
+    tree["columns"] = ("one", "two", "three", "four", "five", "six", "seven")
     tree.column("#0", width=40, minwidth=40, stretch=tk.NO)
     tree.column("one", width=35, minwidth=35, stretch=tk.NO)
     tree.column("two", width=250, minwidth=190, stretch=tk.NO)
     tree.column("three", width=140, minwidth=130, stretch=tk.NO)
-    tree.column("Four", width=35, minwidth=30, stretch=tk.NO)
-    tree.column("Five", width=40, minwidth=30, stretch=tk.NO)
-    tree.column("Six", width=40, minwidth=30, stretch=tk.NO)
-    tree.column("Seven", width=40, minwidth=30, stretch=tk.NO)
+    tree.column("four", width=35, minwidth=30, stretch=tk.NO)
+    tree.column("five", width=40, minwidth=30, stretch=tk.NO)
+    tree.column("six", width=40, minwidth=30, stretch=tk.NO)
+    tree.column("seven", width=40, minwidth=30, stretch=tk.NO)
 
     tree.heading("#0", text="Box", anchor=tk.W)
     tree.heading("one", text="ID", anchor=tk.W)
     tree.heading("two", text="Item", anchor=tk.W)
     tree.heading("three", text="Date / Time", anchor=tk.W)
-    tree.heading("Four", text="Qty", anchor=tk.W)
-    tree.heading("Five", text="BaaN", anchor=tk.W)
-    tree.heading("Six", text="LC", anchor=tk.W)
-    tree.heading("Seven", text="EPI", anchor=tk.W)
+    tree.heading("four", text="Qty", anchor=tk.W)
+    tree.heading("five", text="BaaN", anchor=tk.W)
+    tree.heading("six", text="LC", anchor=tk.W)
+    tree.heading("seven", text="EPI", anchor=tk.W)
 
     refresh()
     root.mainloop()
