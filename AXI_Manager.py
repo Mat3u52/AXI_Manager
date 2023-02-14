@@ -1041,6 +1041,8 @@ def search() -> None:
             #print(content[1].find(ESearch.get()))
         else:
             tree.delete(record)
+
+
 def refresh() -> None:
     """
     The function returns the table to the default shape. Show all record from DB.
@@ -1054,28 +1056,32 @@ def refresh() -> None:
     for record in tree.get_children():
         tree.delete(record)
 
-    objDB = DBConnect()
+    obj_db = DBConnect()
 
-#---Create striped row tags---
+# ---Create striped row tags---
     tree.tag_configure('DX', background="#222222")
     tree.tag_configure('V', background="#333333")
     tree.tag_configure('one', background="#111111")
     tree.tag_configure('baan', background="#111111", foreground="#EB0E0E")
     tree.tag_configure('baan0', foreground="#EB0E0E")
-    #tree.tag_configure('baan0', foreground="#B03045")
-#---The End Create striped row---
+# ---The End Create striped row---
 
     count = 1
     count1 = 1
     count2 = 0
 
-    for row in objDB.selectAll():
+    for row in obj_db.selectAll():
         if count % 2 == 0:
-            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and (row[11] == 'NO' or row[11] == 'LACK')) or \
-                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and (row[16] == 'NO' or row[16] == 'LACK')) or \
-                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None and (row[38] == 'NO' or row[38] == 'LACK')) or \
-                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and (row[44] == 'NO' or row[44] == 'LACK')) or \
-                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and (row[53] == 'NO' or row[53] == 'LACK')):
+            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and
+                (row[11] == 'NO' or row[11] == 'LACK')) or \
+                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and
+                     (row[16] == 'NO' or row[16] == 'LACK')) or \
+                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None and
+                     (row[38] == 'NO' or row[38] == 'LACK')) or \
+                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and
+                     (row[44] == 'NO' or row[44] == 'LACK')) or \
+                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and
+                     (row[53] == 'NO' or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                     values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag=('baan'))
             else:
@@ -1139,7 +1145,7 @@ def refresh() -> None:
         count1 += 1
         count2 += 1
 
-    objDB.closeDB()
+    obj_db.closeDB()
 # ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
     vsb.place(x=obj_config.scrollX, y=obj_config.scrollY, height=obj_config.scrollHeight)
