@@ -1083,10 +1083,12 @@ def refresh() -> None:
                     (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and
                      (row[53] == 'NO' or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag='baan')
+                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
+                                      tag='baan')
             else:
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag='one')
+                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
+                                      tag='one')
         else:
             if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and
                 (row[11] == 'NO' or row[11] == 'LACK')) or \
@@ -1099,49 +1101,51 @@ def refresh() -> None:
                     (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and
                      (row[53] == 'NO' or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'), tag='baan0')
+                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
+                                      tag='baan0')
             else:
-                folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
+                folder1 = tree.insert(parent='', index=count, iid=str(count1), text=f'box',
                                       values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
         count1 += 1
         if int(len(str(row[17]))) > 4:
-            tree.insert(folder1, index='end', iid=count1, text=f'',
+            tree.insert(folder1, index='end', iid=str(count1), text=f'',
                         values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
-                                f"{row[18]}", f"{row[19]}"), tags='DX')
+                                f"{row[18]}", f"{row[19]}"),
+                        tags='DX')
         count1 += 2
         if int(len(str(row[22]))) > 4:
-            tree.insert(folder1, index='end', iid=count1, text=f'',
+            tree.insert(folder1, index='end', iid=str(count1), text=f'',
                         values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
-                                f"{row[23]}", f"{row[24]}"), tags='DX')
+                                f"{row[23]}", f"{row[24]}"),
+                        tags='DX')
         count1 += 3
-        #if len(str(row[27])) > 4: # !!!!!!!!!!!!!!!!!!!!!! it is different than other
-        #if row[27] != None and (int(row[15]) != 0 or int(row[14]) != 0):
-        if row[27] != None and \
-                ((int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])):
-            tree.insert(folder1, index='end', iid=count1, text=f'',
+        # if row[27] != None and (int(row[15]) != 0 or int(row[14]) != 0):
+        if row[27] is not None and ((int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])):
+            tree.insert(folder1, index='end', iid=str(count1), text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
-                                f"{row[28]}", f"{row[29]}"), tags='V')
+                                f"{row[28]}", f"{row[29]}"),
+                        tags='V')
         count1 += 4
-        #if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
-        if row[45] != None and \
-                ((row[43] != None and int(row[43]) > 0) or int(row[40])):
-            tree.insert(folder1, index='end', iid=count1, text=f'',
+        # if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
+        if row[45] is not None and ((row[43] is not None and int(row[43]) > 0) or int(row[40])):
+            tree.insert(folder1, index='end', iid=str(count1), text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}",
-                                f"{row[46]}", f"{row[47]}"), tags='V')
+                                f"{row[46]}", f"{row[47]}"),
+                        tags='V')
         count1 += 4
-        #if row[54] != None and (int(row[50]) != 0 or int(row[49]) != 0):
-        if row[54] != None and \
-                ((row[52] != None and int(row[52]) > 0) or int(row[49])):
-            tree.insert(folder1, index='end', iid=count1, text=f'',
+        # if row[54] != None and (int(row[50]) != 0 or int(row[49]) != 0):
+        if row[54] is not None and ((row[52] is not None and int(row[52]) > 0) or int(row[49])):
+            tree.insert(folder1, index='end', iid=str(count1), text=f'',
                         values=(f'{row[0]}', f"ViTrox Ex III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}",
-                                f"{row[55]}", f"{row[56]}"), tags='V')
+                                f"{row[55]}", f"{row[56]}"),
+                        tags='V')
         count1 += 5
-        #if row[31] != None and (int(row[37]) != 0 or int(row[39]) != 0):
-        if row[31] != None and \
-                ((row[37] != None and int(row[37]) > 0) or int(row[39])):
-            tree.insert(folder1, index='end', iid=count1, text=f'',
+        # if row[31] != None and (int(row[37]) != 0 or int(row[39]) != 0):
+        if row[31] is not None and ((row[37] is not None and int(row[37]) > 0) or int(row[39])):
+            tree.insert(folder1, index='end', iid=str(count1), text=f'',
                         values=(f'{row[0]}', f"ViTrox XXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}",
-                                f"{row[32]}", f"{row[33]}"), tags='V')
+                                f"{row[32]}", f"{row[33]}"),
+                        tags='V')
 
         tree.bind("<<TreeviewSelect>>", get_selected_row)
 
