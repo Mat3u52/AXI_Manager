@@ -1072,15 +1072,15 @@ def refresh() -> None:
 
     for row in obj_db.selectAll():
         if count % 2 == 0:
-            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and
+            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] is not None and
                 (row[11] == 'NO' or row[11] == 'LACK')) or \
-                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and
+                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] is not None and
                      (row[16] == 'NO' or row[16] == 'LACK')) or \
-                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None and
+                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] is not None and
                      (row[38] == 'NO' or row[38] == 'LACK')) or \
-                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and
+                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] is not None and
                      (row[44] == 'NO' or row[44] == 'LACK')) or \
-                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and
+                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] is not None and
                      (row[53] == 'NO' or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                       values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
@@ -1090,15 +1090,15 @@ def refresh() -> None:
                                       values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
                                       tag='one')
         else:
-            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] != None and
+            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] is not None and
                 (row[11] == 'NO' or row[11] == 'LACK')) or \
-                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] != None and
+                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] is not None and
                      (row[16] == 'NO' or row[16] == 'LACK')) or \
-                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] != None and
+                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] is not None and
                      (row[38] == 'NO' or row[38] == 'LACK')) or \
-                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] != None and
+                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] is not None and
                      (row[44] == 'NO' or row[44] == 'LACK')) or \
-                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] != None and
+                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] is not None and
                      (row[53] == 'NO' or row[53] == 'LACK')):
                 folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
                                       values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
