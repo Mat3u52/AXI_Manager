@@ -1209,31 +1209,31 @@ def automaticInsert() -> None:
                 widget.destroy()
 
 
-def tabSelected(event) -> None:
+def tab_selected(event) -> None:
     """
     The function show list of not yet added records to DB.
 
     :return: Show list of not yet added recipe
     :rtype: None
     """
-    objAutomaticUpdates = AutomaticUpdates()
+    obj_automatic_updates = AutomaticUpdates()
 
     if event.widget.tab(event.widget.select(), "text") == " --- Add --- ":
 
         addFrame.pack(expand=1, fill="both", padx=10, pady=10)
-        objAutomaticUpdates.bildGrid()
+        obj_automatic_updates.bildGrid()
 
-        for record in range(len(objAutomaticUpdates.dicRecipe)):
-            radioBox = ttk.Radiobutton(addFrame, text=f"{objAutomaticUpdates.dicRecipe.get(record).get('device')} - "
-                                          f"{objAutomaticUpdates.dicRecipe.get(record).get('recipe')} "
-                                          f"    [ {objAutomaticUpdates.dicRecipe.get(record).get('boardQty')} ] - "
-                                          f"Cycle Time: {objAutomaticUpdates.dicRecipe.get(record).get('cycleTime')} s.",
-                               style="AutomaticInsert.TRadiobutton",
-                               variable=varNewRecord,
-                               value=int(record),
-                               command=automaticInsert)
-            radioBox.grid(row=int(record), column=0, sticky=W)
-        radioBox.invoke()
+        for record in range(len(obj_automatic_updates.dicRecipe)):
+            radio_box = ttk.Radiobutton(addFrame, text=f"{obj_automatic_updates.dicRecipe.get(record).get('device')} - " 
+                                                      f"{obj_automatic_updates.dicRecipe.get(record).get('recipe')} "
+                                                      f"    [ {obj_automatic_updates.dicRecipe.get(record).get('boardQty')} ] - "
+                                                      f"Cycle Time: {obj_automatic_updates.dicRecipe.get(record).get('cycleTime')} s.",
+                                        style="AutomaticInsert.TRadiobutton",
+                                        variable=varNewRecord,
+                                        value=int(record),
+                                        command=automaticInsert)
+            radio_box.grid(row=int(record), column=0, sticky=W)
+        radio_box.invoke()
 
 
 if __name__ == "__main__":
@@ -1625,7 +1625,7 @@ if __name__ == "__main__":
     tabControl.add(tab4, text=" --- Comparison --- ")
     tabControl.pack(expand=1, fill="both", padx=10, pady=10)
 
-    tabControl.bind("<<NotebookTabChanged>>", tabSelected)
+    tabControl.bind("<<NotebookTabChanged>>", tab_selected)
 
     addFrame = ttk.LabelFrame(tab3, text=" New Items: ")
 
