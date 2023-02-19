@@ -1169,9 +1169,9 @@ def automaticInsert() -> None:
     :return: Fulfills the entry with data
     :rtype: None
     """
-    msgBox = tk.messagebox.askquestion(f"Automatic adding",
+    msg_box = tk.messagebox.askquestion(f"Automatic adding",
                                     "In the \"Add\" tab you have a new record. Do you want to upload this now?")
-    if msgBox == 'yes':
+    if msg_box == 'yes':
         reset()
         tabControl.select(tab2)
         flagSelectedRecored = False
@@ -1204,8 +1204,8 @@ def automaticInsert() -> None:
 
         if flagSelectedRecored is True:
             objAutomaticUpdates.updateDic(varNewRecord.get())
-            addFrame.pack_forget()
-            for widget in addFrame.winfo_children():
+            add_frame.pack_forget()
+            for widget in add_frame.winfo_children():
                 widget.destroy()
 
 
@@ -1220,11 +1220,11 @@ def tab_selected(event) -> None:
 
     if event.widget.tab(event.widget.select(), "text") == " --- Add --- ":
 
-        addFrame.pack(expand=1, fill="both", padx=10, pady=10)
+        add_frame.pack(expand=1, fill="both", padx=10, pady=10)
         obj_automatic_updates.bildGrid()
 
         for record in range(len(obj_automatic_updates.dicRecipe)):
-            radio_box = ttk.Radiobutton(addFrame, text=f"{obj_automatic_updates.dicRecipe.get(record).get('device')} - " 
+            radio_box = ttk.Radiobutton(add_frame, text=f"{obj_automatic_updates.dicRecipe.get(record).get('device')} - " 
                                                       f"{obj_automatic_updates.dicRecipe.get(record).get('recipe')} "
                                                       f"    [ {obj_automatic_updates.dicRecipe.get(record).get('boardQty')} ] - "
                                                       f"Cycle Time: {obj_automatic_updates.dicRecipe.get(record).get('cycleTime')} s.",
@@ -1627,7 +1627,7 @@ if __name__ == "__main__":
 
     tabControl.bind("<<NotebookTabChanged>>", tab_selected)
 
-    addFrame = ttk.LabelFrame(tab3, text=" New Items: ")
+    add_frame = ttk.LabelFrame(tab3, text=" New Items: ")
 
     v810_3163 = ttk.Notebook(tab4)
     tab_3163 = ttk.Frame(v810_3163)
@@ -1638,7 +1638,7 @@ if __name__ == "__main__":
     l_comparison.config(font=("Arial", 12, 'bold'))
     l_comparison.grid(row=0, column=0, sticky=W)
 
-    #addFrame.pack_Forget()
+    #add_frame.pack_Forget()
     varNewRecord = IntVar()
 
 
