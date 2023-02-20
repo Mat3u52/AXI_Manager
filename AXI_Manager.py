@@ -1162,7 +1162,7 @@ def refresh() -> None:
 # ---The End of Scrollbar---
 
 
-def automaticInsert() -> None:
+def automatic_insert() -> None:
     """
     The function fulfills the form with data from a selected new recipe.
 
@@ -1170,40 +1170,40 @@ def automaticInsert() -> None:
     :rtype: None
     """
     msg_box = tk.messagebox.askquestion(f"Automatic adding",
-                                    "In the \"Add\" tab you have a new record. Do you want to upload this now?")
+                                        "In the \"Add\" tab you have a new record. Do you want to upload this now?")
     if msg_box == 'yes':
         reset()
-        tabControl.select(tab2)
-        flagSelectedRecored = False
-        objAutomaticUpdates = AutomaticUpdates()
-        newItem = varNewRecord.get()
-        if newItem in objAutomaticUpdates.bildGrid():
-            itemName = objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe').replace('_', '/')
-            obj_new_item_ex.EI2.insert(0, f"{itemName}")
-            obj_new_item_ex.EI3.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('boardQty')}")
-            if objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3553S2EX':
+        tab_control.select(tab2)
+        flag_selected_record = False
+        obj_automatic_updates = AutomaticUpdates()
+        new_item = varNewRecord.get()
+        if new_item in obj_automatic_updates.bildGrid():
+            item_name = obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe').replace('_', '/')
+            obj_new_item_ex.EI2.insert(0, f"{item_name}")
+            obj_new_item_ex.EI3.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('boardQty')}")
+            if obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3553S2EX':
                 obj_checkbox_menu_ex_0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
-                obj_checkbox_menu_ex_0.EI_0.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                obj_checkbox_menu_ex_0.EI_1.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
-                flagSelectedRecored = True
-            if objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3483S2EX':
+                obj_checkbox_menu_ex_0.EI_0.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
+                obj_checkbox_menu_ex_0.EI_1.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+                flag_selected_record = True
+            if obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3483S2EX':
                 obj_checkbox_menu_ex_1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
-                obj_checkbox_menu_ex_1.EI_0.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                obj_checkbox_menu_ex_1.EI_1.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
-                flagSelectedRecored = True
-            if objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3163':
+                obj_checkbox_menu_ex_1.EI_0.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
+                obj_checkbox_menu_ex_1.EI_1.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+                flag_selected_record = True
+            if obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3163':
                 obj_checkbox_menu_ex_2.insertFrame.grid(column=0, row=5 + 3, columnspan=10, sticky='W', padx=10, pady=10)
-                obj_checkbox_menu_ex_2.EI_0.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                obj_checkbox_menu_ex_2.EI_1.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
-                flagSelectedRecored = True
-            if objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-8120S2':
+                obj_checkbox_menu_ex_2.EI_0.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
+                obj_checkbox_menu_ex_2.EI_1.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+                flag_selected_record = True
+            if obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-8120S2':
                 obj_checkbox_menu_xxl_0.insertFrame.grid(column=0, row=5 + 5, columnspan=10, sticky='W', padx=10, pady=10)
-                obj_checkbox_menu_xxl_0.EI_0.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                obj_checkbox_menu_xxl_0.EI_1.insert(0, f"{objAutomaticUpdates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
-                flagSelectedRecored = True
+                obj_checkbox_menu_xxl_0.EI_0.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
+                obj_checkbox_menu_xxl_0.EI_1.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+                flag_selected_record = True
 
-        if flagSelectedRecored is True:
-            objAutomaticUpdates.updateDic(varNewRecord.get())
+        if flag_selected_record is True:
+            obj_automatic_updates.updateDic(varNewRecord.get())
             add_frame.pack_forget()
             for widget in add_frame.winfo_children():
                 widget.destroy()
@@ -1231,7 +1231,7 @@ def tab_selected(event) -> None:
                                         style="AutomaticInsert.TRadiobutton",
                                         variable=varNewRecord,
                                         value=int(record),
-                                        command=automaticInsert)
+                                        command=automatic_insert)
             radio_box.grid(row=int(record), column=0, sticky=W)
         radio_box.invoke()
 
@@ -1610,22 +1610,22 @@ if __name__ == "__main__":
 
     #------------------- The End Main View ----------------------------
 
-    tabControl = ttk.Notebook(root)
+    tab_control = ttk.Notebook(root)
 
-    tab1 = ttk.Frame(tabControl)
-    tabControl.add(tab1, text=" --- Main --- ")
-    tabControl.pack(expand=1, fill="both", padx=10, pady=10)
-    tab2 = ttk.Frame(tabControl)
-    tabControl.add(tab2, text=" --- New --- ")
-    tabControl.pack(expand=1, fill="both", padx=10, pady=10)
-    tab3 = ttk.Frame(tabControl)
-    tabControl.add(tab3, text=" --- Add --- ")
-    tabControl.pack(expand=1, fill="both", padx=10, pady=10)
-    tab4 = ttk.Frame(tabControl)
-    tabControl.add(tab4, text=" --- Comparison --- ")
-    tabControl.pack(expand=1, fill="both", padx=10, pady=10)
+    tab1 = ttk.Frame(tab_control)
+    tab_control.add(tab1, text=" --- Main --- ")
+    tab_control.pack(expand=1, fill="both", padx=10, pady=10)
+    tab2 = ttk.Frame(tab_control)
+    tab_control.add(tab2, text=" --- New --- ")
+    tab_control.pack(expand=1, fill="both", padx=10, pady=10)
+    tab3 = ttk.Frame(tab_control)
+    tab_control.add(tab3, text=" --- Add --- ")
+    tab_control.pack(expand=1, fill="both", padx=10, pady=10)
+    tab4 = ttk.Frame(tab_control)
+    tab_control.add(tab4, text=" --- Comparison --- ")
+    tab_control.pack(expand=1, fill="both", padx=10, pady=10)
 
-    tabControl.bind("<<NotebookTabChanged>>", tab_selected)
+    tab_control.bind("<<NotebookTabChanged>>", tab_selected)
 
     add_frame = ttk.LabelFrame(tab3, text=" New Items: ")
 
@@ -1696,7 +1696,7 @@ if __name__ == "__main__":
     #                                    style="AutomaticInsert.TRadiobutton",
     #                                    variable=varNewRecord,
     #                                    value=int(record),
-    #                                    command=automaticInsert)
+    #                                    command=automatic_insert)
     #    radioBox.grid(row=int(record), column=0, sticky=W)
     #radioBox.invoke()
 
