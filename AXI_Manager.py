@@ -499,7 +499,7 @@ def get_selected_row(event) -> None:
 
 # ---get_selected_row 5DX V849---
         if int(len(str(row[17]))) > 4:
-            tab_control_main.add(tabMain1, text=" V849 ")
+            tab_control_main.add(tab_main1, text=" V849 ")
             l_v849_prog.configure(text=f"{row[17]}")
             l_v849_scan_time_l.configure(text=f"Scan Time:")
             l_v849_uph85_l.configure(text=f"UPH 85%:")
@@ -542,7 +542,7 @@ def get_selected_row(event) -> None:
             l_v849_comment.configure(text=f"{row[20]}")
 
 #---get_selected_row 5DX V849---
-            canvasFrame1 = Label(tabMain1)
+            canvasFrame1 = Label(tab_main1)
             canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
             canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
             canvas1.configure(bg="#444444")
@@ -552,7 +552,7 @@ def get_selected_row(event) -> None:
                 resize_image(obj_config.pathImg5DX1 + row[17] + '.jpg')
 
             if flag_animation == False:
-                tab_control_main.select(tabMain1)
+                tab_control_main.select(tab_main1)
                 if flag_click == False:
                     try:
                         #if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
@@ -586,7 +586,7 @@ def get_selected_row(event) -> None:
             canvas1.create_image(85, 85, image=img1)
 
         else:
-            tab_control_main.hide(tabMain1)
+            tab_control_main.hide(tab_main1)
 
 #---The End get_selected_row 5DX V849---
 #---get_selected_row 5DX V817---
@@ -1008,7 +1008,7 @@ def get_selected_row(event) -> None:
         if flag_click == True:
             flag_click = False
             if content[1] == '5DX I':
-                tab_control_main.select(tabMain1)
+                tab_control_main.select(tab_main1)
             elif content[1] == '5DX II':
                 tab_control_main.select(tabMain2)
             elif content[1] == 'ViTrox Ex I':
@@ -1239,8 +1239,8 @@ def tab_selected(event) -> None:
 if __name__ == "__main__":
     root = tk.Tk()
     obj_config = Config()
-    ws = root.winfo_screenwidth() # width of the screen
-    hs = root.winfo_screenheight() # height of the screen
+    ws = root.winfo_screenwidth()  # width of the screen
+    hs = root.winfo_screenheight()  # height of the screen
     x = (ws - int(obj_config.screenWidth))
     y = (hs - int(obj_config.screenHeight))
     windowPosition = f'{int(obj_config.screenWidth)}x{int(obj_config.screenHeight)}+{int(x)}+{int(y)}'
@@ -1255,79 +1255,79 @@ if __name__ == "__main__":
 
     #--- Main View ---
 
-    mainFrameView = ttk.LabelFrame(root, text=" Main View ")
-    mainFrameView.pack(expand=1, fill="both", padx=10, pady=10)
+    main_frame_view = ttk.LabelFrame(root, text=" Main View ")
+    main_frame_view.pack(expand=1, fill="both", padx=10, pady=10)
 
-    l_item = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
+    l_item = Label(main_frame_view, text=f"", bg="#333333", fg="#999999", pady="1")
     l_item.config(font=("Arial", 12, 'bold'))
     l_item.grid(row=0, column=0, sticky=W)
-    l_item_amount = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="1")
+    l_item_amount = Label(main_frame_view, text=f"", bg="#333333", fg="#999999", pady="1")
     l_item_amount.config(font=("Arial", 12, 'bold'))
     l_item_amount.grid(row=0, column=2, sticky=W)
-    l_qty = Label(mainFrameView, text=f"", bg="#333333", fg="#555555", pady="2")
+    l_qty = Label(main_frame_view, text=f"", bg="#333333", fg="#555555", pady="2")
     l_qty.config(font=("Arial", 10))
     l_qty.grid(row=0, column=1, sticky=E)
-    l_date = Label(mainFrameView, text=f"", bg="#333333", fg="#555555", pady="2")
+    l_date = Label(main_frame_view, text=f"", bg="#333333", fg="#555555", pady="2")
     l_date.config(font=("Arial", 10))
     l_date.grid(row=0, column=3, sticky=W)
-    l_date_db = Label(mainFrameView, text=f"", bg="#333333", fg="#999999", pady="2")
+    l_date_db = Label(main_frame_view, text=f"", bg="#333333", fg="#999999", pady="2")
     l_date_db.config(font=("Arial", 10))
     l_date_db.grid(row=0, column=4, sticky=W)
 
-    tab_control_main = ttk.Notebook(mainFrameView)
+    tab_control_main = ttk.Notebook(main_frame_view)
 
-    tabMain1 = ttk.Frame(tab_control_main)
-    tab_control_main.add(tabMain1, text=" V849 ")
+    tab_main1 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tab_main1, text=" V849 ")
 
-    l_v849_prog = Label(tabMain1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    l_v849_prog = Label(tab_main1, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
     l_v849_prog.configure(font=("Arial", 10))
     l_v849_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    l_v849_scan_time_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v849_scan_time_l = Label(tab_main1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_scan_time_l.configure(font=("Arial", 10))
     l_v849_scan_time_l.grid(row=1, column=0, sticky=E)
-    l_v849_scan_time = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_scan_time = Label(tab_main1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v849_scan_time.configure(font=("Arial", 10))
     l_v849_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    l_v849_uph85_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v849_uph85_l = Label(tab_main1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_uph85_l.configure(font=("Arial", 10))
     l_v849_uph85_l.grid(row=2, column=0, sticky=E)
-    l_v849_uph_85 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_uph_85 = Label(tab_main1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v849_uph_85.configure(font=("Arial", 10))
     l_v849_uph_85.grid(row=2, column=1, columnspan=5, sticky=W)
-    l_v849_uph95_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v849_uph95_l = Label(tab_main1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_uph95_l.configure(font=("Arial", 10))
     l_v849_uph95_l.grid(row=3, column=0, sticky=E)
-    l_v849_uph_95 = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_uph_95 = Label(tab_main1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v849_uph_95.configure(font=("Arial", 10))
     l_v849_uph_95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-    l_v849_baan_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v849_baan_l = Label(tab_main1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_baan_l.configure(font=("Arial", 10))
     l_v849_baan_l.grid(row=4, column=0, sticky=E)
-    l_v849_baan = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_baan = Label(tab_main1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v849_baan.configure(font=("Arial", 10))
     l_v849_baan.grid(row=4, column=1, sticky=W)
 
-    l_v849_lc_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v849_lc_l = Label(tab_main1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_lc_l.configure(font=("Arial", 10))
     l_v849_lc_l.grid(row=4, column=2, sticky=E)
-    l_V849_lc = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_V849_lc = Label(tab_main1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_V849_lc.configure(font=("Arial", 10))
     l_V849_lc.grid(row=4, column=3, sticky=W)
 
-    l_v849_epi_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v849_epi_l = Label(tab_main1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_epi_l.configure(font=("Arial", 10))
     l_v849_epi_l.grid(row=4, column=4, sticky=E)
-    l_v849_epi = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_epi = Label(tab_main1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v849_epi.configure(font=("Arial", 10))
     l_v849_epi.grid(row=4, column=5, sticky=W)
 
-    l_v849_comment_l = Label(tabMain1, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v849_comment_l = Label(tab_main1, text=f"", bg="#444444", fg="#666666", pady="1")
     l_v849_comment_l.configure(font=("Arial", 10))
     l_v849_comment_l.grid(row=5, column=0, sticky=E)
-    l_v849_comment = Label(tabMain1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v849_comment = Label(tab_main1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v849_comment.configure(font=("Arial", 10, "italic"))
     l_v849_comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
