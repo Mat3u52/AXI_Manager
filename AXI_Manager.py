@@ -592,16 +592,16 @@ def get_selected_row(event) -> None:
 #---get_selected_row 5DX V817---
 
         if int(len(str(row[22]))) > 4:
-            tab_control_main.add(tabMain2, text=" V817 ")
-            LV817Prog.configure(text=f"{row[22]}")
-            LV817ScanTimeL.configure(text=f"Scan Time:")
+            tab_control_main.add(tab_main2, text=" V817 ")
+            l_v817_prog.configure(text=f"{row[22]}")
+            l_v817_scan_time_l.configure(text=f"Scan Time:")
             LV817UPH85L.configure(text=f"UPH 85%:")
             LV817UPH95L.configure(text=f"UPH 95%:")
             LV817BaanL.configure(text=f"BaaN:")
             LV817LCL.configure(text=f"LC:")
             LV817EPIL.configure(text=f"EPI:")
             LV817CommentL.configure(text=f"Comment:")
-            LV817ScanTime.configure(text=f"{int(row[7])+int(row[8])+int(row[9])+int(row[10])}"
+            l_v817_scan_time.configure(text=f"{int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}"
                                          f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
             try:
                 LV817UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
@@ -636,7 +636,7 @@ def get_selected_row(event) -> None:
 
             LV817Comment.configure(text=f"{row[25]}")
 
-            canvasFrame2 = Label(tabMain2)
+            canvasFrame2 = Label(tab_main2)
             canvasFrame2.grid(row=0, column=6, rowspan=6, sticky=W)
             canvas2 = tk.Canvas(canvasFrame2, width=170, height=170)
             canvas2.configure(bg="#444444")
@@ -650,7 +650,7 @@ def get_selected_row(event) -> None:
                 #resize_image('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
             if flag_animation == False:
-                tab_control_main.select(tabMain2)
+                tab_control_main.select(tab_main2)
                 if flag_click == False:
                     try:
                         #if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
@@ -684,7 +684,7 @@ def get_selected_row(event) -> None:
             canvas2.create_image(85, 85, image=img2)
 
         else:
-            tab_control_main.hide(tabMain2)
+            tab_control_main.hide(tab_main2)
 #---The End get_selected_row 5DX V817---
 #---get_selected_row V810-3163--
         #if len(str(row[27])) > 4:
@@ -1010,7 +1010,7 @@ def get_selected_row(event) -> None:
             if content[1] == '5DX I':
                 tab_control_main.select(tab_main1)
             elif content[1] == '5DX II':
-                tab_control_main.select(tabMain2)
+                tab_control_main.select(tab_main2)
             elif content[1] == 'ViTrox Ex I':
                 tab_control_main.select(tabMain3)
             elif content[1] == 'ViTrox Ex II':
@@ -1331,58 +1331,58 @@ if __name__ == "__main__":
     l_v849_comment.configure(font=("Arial", 10, "italic"))
     l_v849_comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
-    tabMain2 = ttk.Frame(tab_control_main)
-    tab_control_main.add(tabMain2, text=" V817 ")
+    tab_main2 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tab_main2, text=" V817 ")
 
-    LV817Prog = Label(tabMain2, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
-    LV817Prog.configure(font=("Arial", 10))
-    LV817Prog.grid(row=0, column=0, columnspan=6, sticky=W)
+    l_v817_prog = Label(tab_main2, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    l_v817_prog.configure(font=("Arial", 10))
+    l_v817_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    LV817ScanTimeL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV817ScanTimeL.configure(font=("Arial", 10))
-    LV817ScanTimeL.grid(row=1, column=0, sticky=E)
-    LV817ScanTime = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV817ScanTime.configure(font=("Arial", 10))
-    LV817ScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
+    l_v817_scan_time_l = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v817_scan_time_l.configure(font=("Arial", 10))
+    l_v817_scan_time_l.grid(row=1, column=0, sticky=E)
+    l_v817_scan_time = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v817_scan_time.configure(font=("Arial", 10))
+    l_v817_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    LV817UPH85L = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817UPH85L = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
     LV817UPH85L.configure(font=("Arial", 10))
     LV817UPH85L.grid(row=2, column=0, sticky=E)
-    LV817UPH85 = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817UPH85 = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV817UPH85.configure(font=("Arial", 10))
     LV817UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-    LV817UPH95L = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817UPH95L = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
     LV817UPH95L.configure(font=("Arial", 10))
     LV817UPH95L.grid(row=3, column=0, sticky=E)
-    LV817UPH95 = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817UPH95 = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV817UPH95.configure(font=("Arial", 10))
     LV817UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-    LV817BaanL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817BaanL = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
     LV817BaanL.configure(font=("Arial", 10))
     LV817BaanL.grid(row=4, column=0, sticky=E)
-    LV817Baan = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817Baan = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV817Baan.configure(font=("Arial", 10))
     LV817Baan.grid(row=4, column=1, sticky=W)
 
-    LV817LCL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817LCL = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
     LV817LCL.configure(font=("Arial", 10))
     LV817LCL.grid(row=4, column=2, sticky=E)
-    LV817LC = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817LC = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV817LC.configure(font=("Arial", 10))
     LV817LC.grid(row=4, column=3, sticky=W)
 
-    LV817EPIL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817EPIL = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
     LV817EPIL.configure(font=("Arial", 10))
     LV817EPIL.grid(row=4, column=4, sticky=E)
-    LV817EPI = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817EPI = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV817EPI.configure(font=("Arial", 10))
     LV817EPI.grid(row=4, column=5, sticky=W)
 
-    LV817CommentL = Label(tabMain2, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV817CommentL = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
     LV817CommentL.configure(font=("Arial", 10))
     LV817CommentL.grid(row=5, column=0, sticky=E)
-    LV817Comment = Label(tabMain2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV817Comment = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV817Comment.configure(font=("Arial", 10, "italic"))
     LV817Comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
