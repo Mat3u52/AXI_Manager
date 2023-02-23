@@ -595,44 +595,44 @@ def get_selected_row(event) -> None:
             tab_control_main.add(tab_main2, text=" V817 ")
             l_v817_prog.configure(text=f"{row[22]}")
             l_v817_scan_time_l.configure(text=f"Scan Time:")
-            LV817UPH85L.configure(text=f"UPH 85%:")
-            LV817UPH95L.configure(text=f"UPH 95%:")
-            LV817BaanL.configure(text=f"BaaN:")
-            LV817LCL.configure(text=f"LC:")
-            LV817EPIL.configure(text=f"EPI:")
+            l_v817_uph85_l.configure(text=f"UPH 85%:")
+            l_v817_uph95_l.configure(text=f"UPH 95%:")
+            l_v817_baan_l.configure(text=f"BaaN:")
+            l_v817_lc_l.configure(text=f"LC:")
+            l_v817_epi_l.configure(text=f"EPI:")
             LV817CommentL.configure(text=f"Comment:")
             l_v817_scan_time.configure(text=f"{int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}"
                                          f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
             try:
-                LV817UPH85.configure(text=f"{row[4]} ({round(60/int(row[4]), 4)}), "
+                l_v817_uph85.configure(text=f"{row[4]} ({round(60 / int(row[4]), 4)}), "
                                           f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
                                           f"Board: {round((3600/int(row[4])), 4)}s.")
             except ZeroDivisionError:
-                LV817UPH85.configure(text=f"(0), "
+                l_v817_uph85.configure(text=f"(0), "
                                           f"Panel: 0 s. "
                                           f"Board: 0 s.")
 
             try:
-                LV817UPH95.configure(text=f"{row[6]} ({round(60/int(row[6]), 4)}), "
+                l_v817_uph95.configure(text=f"{row[6]} ({round(60 / int(row[6]), 4)}), "
                                           f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
                                           f"Board: {round((3600/int(row[6])), 4)}s.")
             except ZeroDivisionError:
-                LV817UPH95.configure(text=f"(0), "
+                l_v817_uph95.configure(text=f"(0), "
                                           f"Panel: 0 s. "
                                           f"Board: 0 s.")
 
             if str(row[11]) == 'YES':
-                LV817Baan.configure(text=f"{row[11]}", fg="#AAAAAA")
+                l_v817_baan.configure(text=f"{row[11]}", fg="#AAAAAA")
             else:
-                LV817Baan.configure(text=f"{row[11]}", fg="#D44339")
+                l_v817_baan.configure(text=f"{row[11]}", fg="#D44339")
             if str(row[23]) == 'YES':
-                LV817LC.configure(text=f"{row[23]}", fg="#AAAAAA")
+                l_v817_lc.configure(text=f"{row[23]}", fg="#AAAAAA")
             else:
-                LV817LC.configure(text=f"{row[23]}", fg="#D44339")
+                l_v817_lc.configure(text=f"{row[23]}", fg="#D44339")
             if str(row[24]) == 'YES':
-                LV817EPI.configure(text=f"{row[24]}", fg="#AAAAAA")
+                l_v817_epi.configure(text=f"{row[24]}", fg="#AAAAAA")
             else:
-                LV817EPI.configure(text=f"{row[24]}", fg="#D44339")
+                l_v817_epi.configure(text=f"{row[24]}", fg="#D44339")
 
             LV817Comment.configure(text=f"{row[25]}")
 
@@ -1345,39 +1345,39 @@ if __name__ == "__main__":
     l_v817_scan_time.configure(font=("Arial", 10))
     l_v817_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    LV817UPH85L = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV817UPH85L.configure(font=("Arial", 10))
-    LV817UPH85L.grid(row=2, column=0, sticky=E)
-    LV817UPH85 = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV817UPH85.configure(font=("Arial", 10))
-    LV817UPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-    LV817UPH95L = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV817UPH95L.configure(font=("Arial", 10))
-    LV817UPH95L.grid(row=3, column=0, sticky=E)
-    LV817UPH95 = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV817UPH95.configure(font=("Arial", 10))
-    LV817UPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+    l_v817_uph85_l = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v817_uph85_l.configure(font=("Arial", 10))
+    l_v817_uph85_l.grid(row=2, column=0, sticky=E)
+    l_v817_uph85 = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v817_uph85.configure(font=("Arial", 10))
+    l_v817_uph85.grid(row=2, column=1, columnspan=5, sticky=W)
+    l_v817_uph95_l = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v817_uph95_l.configure(font=("Arial", 10))
+    l_v817_uph95_l.grid(row=3, column=0, sticky=E)
+    l_v817_uph95 = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v817_uph95.configure(font=("Arial", 10))
+    l_v817_uph95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-    LV817BaanL = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV817BaanL.configure(font=("Arial", 10))
-    LV817BaanL.grid(row=4, column=0, sticky=E)
-    LV817Baan = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV817Baan.configure(font=("Arial", 10))
-    LV817Baan.grid(row=4, column=1, sticky=W)
+    l_v817_baan_l = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v817_baan_l.configure(font=("Arial", 10))
+    l_v817_baan_l.grid(row=4, column=0, sticky=E)
+    l_v817_baan = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v817_baan.configure(font=("Arial", 10))
+    l_v817_baan.grid(row=4, column=1, sticky=W)
 
-    LV817LCL = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV817LCL.configure(font=("Arial", 10))
-    LV817LCL.grid(row=4, column=2, sticky=E)
-    LV817LC = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV817LC.configure(font=("Arial", 10))
-    LV817LC.grid(row=4, column=3, sticky=W)
+    l_v817_lc_l = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v817_lc_l.configure(font=("Arial", 10))
+    l_v817_lc_l.grid(row=4, column=2, sticky=E)
+    l_v817_lc = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v817_lc.configure(font=("Arial", 10))
+    l_v817_lc.grid(row=4, column=3, sticky=W)
 
-    LV817EPIL = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV817EPIL.configure(font=("Arial", 10))
-    LV817EPIL.grid(row=4, column=4, sticky=E)
-    LV817EPI = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV817EPI.configure(font=("Arial", 10))
-    LV817EPI.grid(row=4, column=5, sticky=W)
+    l_v817_epi_l = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v817_epi_l.configure(font=("Arial", 10))
+    l_v817_epi_l.grid(row=4, column=4, sticky=E)
+    l_v817_epi = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v817_epi.configure(font=("Arial", 10))
+    l_v817_epi.grid(row=4, column=5, sticky=W)
 
     LV817CommentL = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
     LV817CommentL.configure(font=("Arial", 10))
