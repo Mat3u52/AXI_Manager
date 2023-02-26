@@ -698,7 +698,7 @@ def get_selected_row(event) -> None:
             l_v8103163_baan_l.configure(text=f"BaaN:")
             l_v8103163_lc_l.configure(text=f"LC:")
             l_v8103163_epi_l.configure(text=f"EPI:")
-            LV8103163CommentL.configure(text=f"Comment:")
+            l_v8103163_comment_l.configure(text=f"Comment:")
             l_v8103163_scan_time.configure(text=f"{int(row[15])} + 15 in/out = {int(row[15] + 15)}s.")
             try:
                 l_v8103163_uph85.configure(text=f"{row[12]} ({round(60 / int(row[12]), 4)}), "
@@ -729,7 +729,7 @@ def get_selected_row(event) -> None:
             else:
                 l_v8103163_epi.configure(text=f"{row[29]}", fg="#D44339")
 
-            LV8103163Comment.configure(text=f"{row[30]}")
+            l_v8103163_comment.configure(text=f"{row[30]}")
 
             canvasFrame3 = Label(tab_main3)
             canvasFrame3.grid(row=0, column=6, rowspan=6, sticky=W)
@@ -769,16 +769,16 @@ def get_selected_row(event) -> None:
         #if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
         if row[45] != None and \
                 ((row[43] != None and int(row[43]) > 0) or int(row[40])):
-            tab_control_main.add(tabMain4, text=" V810-3483S2EX ")
-            LV8103483S2EXProg.configure(text=f"{row[45]}")
-            LV8103483S2EXScanTimeL.configure(text=f"Scan Time:")
+            tab_control_main.add(tab_main4, text=" V810-3483S2EX ")
+            l_v8103483s2ex_prog.configure(text=f"{row[45]}")
+            l_v8103483s2ex_scan_time_l.configure(text=f"Scan Time:")
             LV8103483S2EXUPH85L.configure(text=f"UPH 85%:")
             LV8103483S2EXUPH95L.configure(text=f"UPH 95%:")
             LV8103483S2EXBaanL.configure(text=f"BaaN:")
             LV8103483S2EXLCL.configure(text=f"LC:")
             LV8103483S2EXEPIL.configure(text=f"EPI:")
             LV8103483S2EXCommentL.configure(text=f"Comment:")
-            LV8103483S2EXScanTime.configure(text=f"{int(row[43])} + 15 in/out = {int(row[43]+15)}s.")
+            l_v8103483s2ex_scan_time.configure(text=f"{int(row[43])} + 15 in/out = {int(row[43] + 15)}s.")
             try:
                 LV8103483S2EXUPH85.configure(text=f"{row[40]} ({round(60/int(row[40]), 4)}), "
                                               f"Panel: {round((3600/int(row[40])*int(row[3])))}s. "
@@ -811,14 +811,14 @@ def get_selected_row(event) -> None:
 
             LV8103483S2EXComment.configure(text=f"{row[48]}")
 
-            canvasFrame4 = Label(tabMain4)
+            canvasFrame4 = Label(tab_main4)
             canvasFrame4.grid(row=0, column=6, rowspan=6, sticky=W)
             canvas4 = tk.Canvas(canvasFrame4, width=170, height=170)
             canvas4.configure(bg="#444444")
             canvas4.pack(expand=False)
 
             if flag_animation == False:
-                tab_control_main.select(tabMain4)
+                tab_control_main.select(tab_main4)
                 #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
                 if flag_click == False:
                     try:
@@ -842,7 +842,7 @@ def get_selected_row(event) -> None:
             canvas4.create_image(85, 85, image=img4)
 
         else:
-            tab_control_main.hide(tabMain4)
+            tab_control_main.hide(tab_main4)
 #--- The End get_selected_row V810-3483S2EX ---
 
 #--- get_selected_row V810-3553S2EX ---
@@ -1014,7 +1014,7 @@ def get_selected_row(event) -> None:
             elif content[1] == 'ViTrox Ex I':
                 tab_control_main.select(tab_main3)
             elif content[1] == 'ViTrox Ex II':
-                tab_control_main.select(tabMain4)
+                tab_control_main.select(tab_main4)
             elif content[1] == 'ViTrox Ex III':
                 tab_control_main.select(tabMain5)
             elif content[1] == 'ViTrox XXL I':
@@ -1434,65 +1434,65 @@ if __name__ == "__main__":
     l_v8103163_epi.configure(font=("Arial", 10))
     l_v8103163_epi.grid(row=4, column=5, sticky=W)
 
-    LV8103163CommentL = Label(tab_main3, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV8103163CommentL.configure(font=("Arial", 10))
-    LV8103163CommentL.grid(row=5, column=0, sticky=E)
-    LV8103163Comment = Label(tab_main3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV8103163Comment.configure(font=("Arial", 10, "italic"))
-    LV8103163Comment.grid(row=5, column=1, columnspan=5, sticky=W)
+    l_v8103163_comment_l = Label(tab_main3, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103163_comment_l.configure(font=("Arial", 10))
+    l_v8103163_comment_l.grid(row=5, column=0, sticky=E)
+    l_v8103163_comment = Label(tab_main3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103163_comment.configure(font=("Arial", 10, "italic"))
+    l_v8103163_comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
-    tabMain4 = ttk.Frame(tab_control_main)
-    tab_control_main.add(tabMain4, text=" V810-3483S2EX ")
+    tab_main4 = ttk.Frame(tab_control_main)
+    tab_control_main.add(tab_main4, text=" V810-3483S2EX ")
 
-    LV8103483S2EXProg = Label(tabMain4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
-    LV8103483S2EXProg.configure(font=("Arial", 10))
-    LV8103483S2EXProg.grid(row=0, column=0, columnspan=6, sticky=W)
+    l_v8103483s2ex_prog = Label(tab_main4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    l_v8103483s2ex_prog.configure(font=("Arial", 10))
+    l_v8103483s2ex_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    LV8103483S2EXScanTimeL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV8103483S2EXScanTimeL.configure(font=("Arial", 10))
-    LV8103483S2EXScanTimeL.grid(row=1, column=0, sticky=E)
-    LV8103483S2EXScanTime = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV8103483S2EXScanTime.configure(font=("Arial", 10))
-    LV8103483S2EXScanTime.grid(row=1, column=1, columnspan=5, sticky=W)
+    l_v8103483s2ex_scan_time_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_scan_time_l.configure(font=("Arial", 10))
+    l_v8103483s2ex_scan_time_l.grid(row=1, column=0, sticky=E)
+    l_v8103483s2ex_scan_time = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_scan_time.configure(font=("Arial", 10))
+    l_v8103483s2ex_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    LV8103483S2EXUPH85L = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXUPH85L = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
     LV8103483S2EXUPH85L.configure(font=("Arial", 10))
     LV8103483S2EXUPH85L.grid(row=2, column=0, sticky=E)
-    LV8103483S2EXUPH85 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXUPH85 = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV8103483S2EXUPH85.configure(font=("Arial", 10))
     LV8103483S2EXUPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-    LV8103483S2EXUPH95L = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXUPH95L = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
     LV8103483S2EXUPH95L.configure(font=("Arial", 10))
     LV8103483S2EXUPH95L.grid(row=3, column=0, sticky=E)
-    LV8103483S2EXUPH95 = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXUPH95 = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV8103483S2EXUPH95.configure(font=("Arial", 10))
     LV8103483S2EXUPH95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-    LV8103483S2EXBaanL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXBaanL = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
     LV8103483S2EXBaanL.configure(font=("Arial", 10))
     LV8103483S2EXBaanL.grid(row=4, column=0, sticky=E)
-    LV8103483S2EXBaan = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXBaan = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV8103483S2EXBaan.configure(font=("Arial", 10))
     LV8103483S2EXBaan.grid(row=4, column=1, sticky=W)
 
-    LV8103483S2EXLCL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXLCL = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
     LV8103483S2EXLCL.configure(font=("Arial", 10))
     LV8103483S2EXLCL.grid(row=4, column=2, sticky=E)
-    LV8103483S2EXLC = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXLC = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV8103483S2EXLC.configure(font=("Arial", 10))
     LV8103483S2EXLC.grid(row=4, column=3, sticky=W)
 
-    LV8103483S2EXEPIL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXEPIL = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
     LV8103483S2EXEPIL.configure(font=("Arial", 10))
     LV8103483S2EXEPIL.grid(row=4, column=4, sticky=E)
-    LV8103483S2EXEPI = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXEPI = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV8103483S2EXEPI.configure(font=("Arial", 10))
     LV8103483S2EXEPI.grid(row=4, column=5, sticky=W)
 
-    LV8103483S2EXCommentL = Label(tabMain4, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8103483S2EXCommentL = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
     LV8103483S2EXCommentL.configure(font=("Arial", 10))
     LV8103483S2EXCommentL.grid(row=5, column=0, sticky=E)
-    LV8103483S2EXComment = Label(tabMain4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8103483S2EXComment = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     LV8103483S2EXComment.configure(font=("Arial", 10, "italic"))
     LV8103483S2EXComment.grid(row=5, column=1, columnspan=5, sticky=W)
 
