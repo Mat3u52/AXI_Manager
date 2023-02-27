@@ -772,28 +772,28 @@ def get_selected_row(event) -> None:
             tab_control_main.add(tab_main4, text=" V810-3483S2EX ")
             l_v8103483s2ex_prog.configure(text=f"{row[45]}")
             l_v8103483s2ex_scan_time_l.configure(text=f"Scan Time:")
-            LV8103483S2EXUPH85L.configure(text=f"UPH 85%:")
-            LV8103483S2EXUPH95L.configure(text=f"UPH 95%:")
+            l_v8103483s2ex_uph85_l.configure(text=f"UPH 85%:")
+            l_v8103483s2ex_uph95_l.configure(text=f"UPH 95%:")
             LV8103483S2EXBaanL.configure(text=f"BaaN:")
             LV8103483S2EXLCL.configure(text=f"LC:")
             LV8103483S2EXEPIL.configure(text=f"EPI:")
             LV8103483S2EXCommentL.configure(text=f"Comment:")
             l_v8103483s2ex_scan_time.configure(text=f"{int(row[43])} + 15 in/out = {int(row[43] + 15)}s.")
             try:
-                LV8103483S2EXUPH85.configure(text=f"{row[40]} ({round(60/int(row[40]), 4)}), "
+                l_v8103483s2ex_uph85.configure(text=f"{row[40]} ({round(60 / int(row[40]), 4)}), "
                                               f"Panel: {round((3600/int(row[40])*int(row[3])))}s. "
                                               f"Board: {round((3600/int(row[40])), 4)}s.")
             except ZeroDivisionError:
-                LV8103483S2EXUPH85.configure(text=f"(0), "
+                l_v8103483s2ex_uph85.configure(text=f"(0), "
                                               f"Panel: 0 s. "
                                               f"Board: 0 s.")
 
             try:
-                LV8103483S2EXUPH95.configure(text=f"{row[42]} ({round(60/int(row[42]), 4)}), "
+                l_v8103483s2ex_uph95.configure(text=f"{row[42]} ({round(60 / int(row[42]), 4)}), "
                                               f"Panel: {round((3600/int(row[42])*int(row[3])))}s. "
                                               f"Board: {round((3600/int(row[42])), 4)}s.")
             except ZeroDivisionError:
-                LV8103483S2EXUPH95.configure(text=f"(0), "
+                l_v8103483s2ex_uph95.configure(text=f"(0), "
                                                 f"Panel: 0 s. "
                                                 f"Board: 0 s.")
             if str(row[44]) == 'YES':
@@ -1455,18 +1455,18 @@ if __name__ == "__main__":
     l_v8103483s2ex_scan_time.configure(font=("Arial", 10))
     l_v8103483s2ex_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    LV8103483S2EXUPH85L = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV8103483S2EXUPH85L.configure(font=("Arial", 10))
-    LV8103483S2EXUPH85L.grid(row=2, column=0, sticky=E)
-    LV8103483S2EXUPH85 = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV8103483S2EXUPH85.configure(font=("Arial", 10))
-    LV8103483S2EXUPH85.grid(row=2, column=1, columnspan=5, sticky=W)
-    LV8103483S2EXUPH95L = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV8103483S2EXUPH95L.configure(font=("Arial", 10))
-    LV8103483S2EXUPH95L.grid(row=3, column=0, sticky=E)
-    LV8103483S2EXUPH95 = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV8103483S2EXUPH95.configure(font=("Arial", 10))
-    LV8103483S2EXUPH95.grid(row=3, column=1, columnspan=5, sticky=W)
+    l_v8103483s2ex_uph85_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_uph85_l.configure(font=("Arial", 10))
+    l_v8103483s2ex_uph85_l.grid(row=2, column=0, sticky=E)
+    l_v8103483s2ex_uph85 = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_uph85.configure(font=("Arial", 10))
+    l_v8103483s2ex_uph85.grid(row=2, column=1, columnspan=5, sticky=W)
+    l_v8103483s2ex_uph95_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_uph95_l.configure(font=("Arial", 10))
+    l_v8103483s2ex_uph95_l.grid(row=3, column=0, sticky=E)
+    l_v8103483s2ex_uph95 = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_uph95.configure(font=("Arial", 10))
+    l_v8103483s2ex_uph95.grid(row=3, column=1, columnspan=5, sticky=W)
 
     LV8103483S2EXBaanL = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
     LV8103483S2EXBaanL.configure(font=("Arial", 10))
