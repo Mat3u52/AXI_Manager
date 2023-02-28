@@ -774,8 +774,8 @@ def get_selected_row(event) -> None:
             l_v8103483s2ex_scan_time_l.configure(text=f"Scan Time:")
             l_v8103483s2ex_uph85_l.configure(text=f"UPH 85%:")
             l_v8103483s2ex_uph95_l.configure(text=f"UPH 95%:")
-            LV8103483S2EXBaanL.configure(text=f"BaaN:")
-            LV8103483S2EXLCL.configure(text=f"LC:")
+            L_v8103483s2_ex_baan_l.configure(text=f"BaaN:")
+            l_v8103483s2ex_lc_l.configure(text=f"LC:")
             LV8103483S2EXEPIL.configure(text=f"EPI:")
             LV8103483S2EXCommentL.configure(text=f"Comment:")
             l_v8103483s2ex_scan_time.configure(text=f"{int(row[43])} + 15 in/out = {int(row[43] + 15)}s.")
@@ -797,13 +797,13 @@ def get_selected_row(event) -> None:
                                                 f"Panel: 0 s. "
                                                 f"Board: 0 s.")
             if str(row[44]) == 'YES':
-                LV8103483S2EXBaan.configure(text=f"{row[44]}", fg="#AAAAAA")
+                l_v8103483s2ex_baan.configure(text=f"{row[44]}", fg="#AAAAAA")
             else:
-                LV8103483S2EXBaan.configure(text=f"{row[44]}", fg="#D44339")
+                l_v8103483s2ex_baan.configure(text=f"{row[44]}", fg="#D44339")
             if str(row[46]) == 'YES':
-                LV8103483S2EXLC.configure(text=f"{row[46]}", fg="#AAAAAA")
+                l_v8103483s2ex_lc.configure(text=f"{row[46]}", fg="#AAAAAA")
             else:
-                LV8103483S2EXLC.configure(text=f"{row[46]}", fg="#D44339")
+                l_v8103483s2ex_lc.configure(text=f"{row[46]}", fg="#D44339")
             if str(row[47]) == 'YES':
                 LV8103483S2EXEPI.configure(text=f"{row[47]}", fg="#AAAAAA")
             else:
@@ -1468,19 +1468,19 @@ if __name__ == "__main__":
     l_v8103483s2ex_uph95.configure(font=("Arial", 10))
     l_v8103483s2ex_uph95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-    LV8103483S2EXBaanL = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV8103483S2EXBaanL.configure(font=("Arial", 10))
-    LV8103483S2EXBaanL.grid(row=4, column=0, sticky=E)
-    LV8103483S2EXBaan = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV8103483S2EXBaan.configure(font=("Arial", 10))
-    LV8103483S2EXBaan.grid(row=4, column=1, sticky=W)
+    L_v8103483s2_ex_baan_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    L_v8103483s2_ex_baan_l.configure(font=("Arial", 10))
+    L_v8103483s2_ex_baan_l.grid(row=4, column=0, sticky=E)
+    l_v8103483s2ex_baan = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_baan.configure(font=("Arial", 10))
+    l_v8103483s2ex_baan.grid(row=4, column=1, sticky=W)
 
-    LV8103483S2EXLCL = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV8103483S2EXLCL.configure(font=("Arial", 10))
-    LV8103483S2EXLCL.grid(row=4, column=2, sticky=E)
-    LV8103483S2EXLC = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV8103483S2EXLC.configure(font=("Arial", 10))
-    LV8103483S2EXLC.grid(row=4, column=3, sticky=W)
+    l_v8103483s2ex_lc_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_lc_l.configure(font=("Arial", 10))
+    l_v8103483s2ex_lc_l.grid(row=4, column=2, sticky=E)
+    l_v8103483s2ex_lc = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_lc.configure(font=("Arial", 10))
+    l_v8103483s2ex_lc.grid(row=4, column=3, sticky=W)
 
     LV8103483S2EXEPIL = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
     LV8103483S2EXEPIL.configure(font=("Arial", 10))
