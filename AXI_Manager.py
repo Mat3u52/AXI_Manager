@@ -20,31 +20,32 @@ from AutomaticUpdates import AutomaticUpdates
 min_movement: int = -1
 
 
-def animate_image(ai_root: tkinter.Tk,
-                  canvas: tkinter.Canvas,
-                  x_pos: int,
-                  y_pos: int,
-                  img_path: str = 'board.png'
-                  ) -> None:
+def animate_image(
+    ai_root: tkinter.Tk,
+    canvas: tkinter.Canvas,
+    x_pos: int,
+    y_pos: int,
+    img_path: str = "board.png",
+) -> None:
     """
-        The function moves the picture from the right to the left side.
+    The function moves the picture from the right to the left side.
 
-        :param ai_root: Given object from tkinter.Tk
-        :type ai_root: tkinter.Tk
-        :param canvas: Given object from tkinter.Canvas
-        :type canvas: tkinter.Canvas
+    :param ai_root: Given object from tkinter.Tk
+    :type ai_root: tkinter.Tk
+    :param canvas: Given object from tkinter.Canvas
+    :type canvas: tkinter.Canvas
 
-        :param x_pos: Given value of axis x
-        :type x_pos: int
+    :param x_pos: Given value of axis x
+    :type x_pos: int
 
-        :param y_pos: Given value of axis y
-        :type y_pos: int
+    :param y_pos: Given value of axis y
+    :type y_pos: int
 
-        :param img_path: Given path to .png file
-        :type img_path: str
+    :param img_path: Given path to .png file
+    :type img_path: str
 
-        :return: animate the picture
-        :rtype: None
+    :return: animate the picture
+    :rtype: None
     """
     start_x_position: int = 170
     start_y_position: int = 85
@@ -52,7 +53,7 @@ def animate_image(ai_root: tkinter.Tk,
     if os.path.isfile(img_path):
         img = tk.PhotoImage(file=img_path)
     else:
-        img = tk.PhotoImage(file='img/lackOfPicture/board.png')
+        img = tk.PhotoImage(file="img/lackOfPicture/board.png")
 
     ai_image = canvas.create_image(start_x_position, start_y_position, image=img)
 
@@ -66,8 +67,9 @@ def animate_image(ai_root: tkinter.Tk,
             x_pos = -x_pos
         if bl < abs(y_pos):
             y_pos = -y_pos
-        if al == int(start_x_position)/2:
+        if al == int(start_x_position) / 2:
             break
+
 
 # print(animation_image.__doc__)
 
@@ -84,16 +86,20 @@ def resize_image(path: str) -> None:
 
     base_width: int = 120
     if os.path.isfile(path):
-        if path.endswith('.jpg'):
-            convert_jpg_to_png = Image.open(r'' + path)
-            width_percent = (base_width / float(convert_jpg_to_png.size[0]))
+        if path.endswith(".jpg"):
+            convert_jpg_to_png = Image.open(r"" + path)
+            width_percent = base_width / float(convert_jpg_to_png.size[0])
             hsize = int((float(convert_jpg_to_png.size[1]) * float(width_percent)))
-            convert_jpg_to_png = convert_jpg_to_png.resize((base_width, hsize), Image.Resampling.NEAREST)
+            convert_jpg_to_png = convert_jpg_to_png.resize(
+                (base_width, hsize), Image.Resampling.NEAREST
+            )
             path_png = path.replace(".jpg", ".png")
-            convert_jpg_to_png.save(r'' + path_png)
+            convert_jpg_to_png.save(r"" + path_png)
 
-        elif path.endswith('.png'):
+        elif path.endswith(".png"):
             print("f: ewsizeImage - .png")
+
+
 # print(resize_image.__doc__)
 
 
@@ -119,6 +125,8 @@ def switch(var: str) -> int:
             return 3
         case _:
             return 0
+
+
 # print(switch.__doc__)
 
 
@@ -131,235 +139,269 @@ def insert_button() -> None:
     """
 
     obj_form_validator_item = FormValidation()
-    obj_form_validator_item.validatorItem(obj_new_item_ex.EI2.get(),
-                                          obj_new_item_ex.EI3.get())
-    obj_form_validator_item.cleanUpItem(obj_new_item_ex.EI2,
-                                        obj_new_item_ex.EI3)
+    obj_form_validator_item.validatorItem(
+        obj_new_item_ex.EI2.get(), obj_new_item_ex.EI3.get()
+    )
+    obj_form_validator_item.cleanUpItem(obj_new_item_ex.EI2, obj_new_item_ex.EI3)
 
     obj_form_validator_v8103553_s2_ex = FormValidation()
-    obj_form_validator_v8103553_s2_ex.validator(obj_checkbox_menu_ex_0.EI_0.get(),
-                                                obj_checkbox_menu_ex_0.EI_1.get(),
-                                                obj_checkbox_menu_ex_0.CI_2.get(),
-                                                obj_checkbox_menu_ex_0.CI_3.get(),
-                                                obj_checkbox_menu_ex_0.CI_4.get(),
-                                                obj_checkbox_menu_ex_0.EI_5.get(),
-                                                obj_form_validator_item.flagInit,
-                                                obj_form_validator_item.itemAmount)
-    obj_form_validator_v8103553_s2_ex.cleanUp(obj_checkbox_menu_ex_0.EI_0,
-                                              obj_checkbox_menu_ex_0.EI_1,
-                                              obj_checkbox_menu_ex_0.CI_2,
-                                              obj_checkbox_menu_ex_0.CI_3,
-                                              obj_checkbox_menu_ex_0.CI_4,
-                                              obj_checkbox_menu_ex_0.EI_5)
+    obj_form_validator_v8103553_s2_ex.validator(
+        obj_checkbox_menu_ex_0.EI_0.get(),
+        obj_checkbox_menu_ex_0.EI_1.get(),
+        obj_checkbox_menu_ex_0.CI_2.get(),
+        obj_checkbox_menu_ex_0.CI_3.get(),
+        obj_checkbox_menu_ex_0.CI_4.get(),
+        obj_checkbox_menu_ex_0.EI_5.get(),
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.itemAmount,
+    )
+    obj_form_validator_v8103553_s2_ex.cleanUp(
+        obj_checkbox_menu_ex_0.EI_0,
+        obj_checkbox_menu_ex_0.EI_1,
+        obj_checkbox_menu_ex_0.CI_2,
+        obj_checkbox_menu_ex_0.CI_3,
+        obj_checkbox_menu_ex_0.CI_4,
+        obj_checkbox_menu_ex_0.EI_5,
+    )
     obj_checkbox_menu_ex_0.insertFrame.grid_forget()
 
     obj_db_connect_v8103553_s2_ex = DBConnect()
-    obj_db_connect_v8103553_s2_ex.insert("V810-3553S2EX",
-                                         obj_form_validator_item.flagInit,
-                                         obj_form_validator_item.item,
-                                         obj_form_validator_item.itemAmount,
-                                         obj_form_validator_v8103553_s2_ex.prog,
-                                         obj_form_validator_v8103553_s2_ex.test,
-                                         obj_form_validator_v8103553_s2_ex.linecapa,
-                                         obj_form_validator_v8103553_s2_ex.epi,
-                                         obj_form_validator_v8103553_s2_ex.baan1,
-                                         obj_form_validator_v8103553_s2_ex.comments,
-                                         obj_form_validator_v8103553_s2_ex.uph85,
-                                         obj_form_validator_v8103553_s2_ex.uph95,
-                                         obj_form_validator_v8103553_s2_ex.uph95Time,
-                                         obj_form_validator_v8103553_s2_ex.flagValidator)
+    obj_db_connect_v8103553_s2_ex.insert(
+        "V810-3553S2EX",
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.item,
+        obj_form_validator_item.itemAmount,
+        obj_form_validator_v8103553_s2_ex.prog,
+        obj_form_validator_v8103553_s2_ex.test,
+        obj_form_validator_v8103553_s2_ex.linecapa,
+        obj_form_validator_v8103553_s2_ex.epi,
+        obj_form_validator_v8103553_s2_ex.baan1,
+        obj_form_validator_v8103553_s2_ex.comments,
+        obj_form_validator_v8103553_s2_ex.uph85,
+        obj_form_validator_v8103553_s2_ex.uph95,
+        obj_form_validator_v8103553_s2_ex.uph95Time,
+        obj_form_validator_v8103553_s2_ex.flagValidator,
+    )
     obj_db_connect_v8103553_s2_ex.closeDB()
 
     obj_form_validator_v8103483_s2_ex = FormValidation()
-    obj_form_validator_v8103483_s2_ex.validator(obj_checkbox_menu_ex_1.EI_0.get(),
-                                                obj_checkbox_menu_ex_1.EI_1.get(),
-                                                obj_checkbox_menu_ex_1.CI_2.get(),
-                                                obj_checkbox_menu_ex_1.CI_3.get(),
-                                                obj_checkbox_menu_ex_1.CI_4.get(),
-                                                obj_checkbox_menu_ex_1.EI_5.get(),
-                                                obj_form_validator_item.flagInit,
-                                                obj_form_validator_item.itemAmount)
-    obj_form_validator_v8103483_s2_ex.cleanUp(obj_checkbox_menu_ex_1.EI_0,
-                                              obj_checkbox_menu_ex_1.EI_1,
-                                              obj_checkbox_menu_ex_1.CI_2,
-                                              obj_checkbox_menu_ex_1.CI_3,
-                                              obj_checkbox_menu_ex_1.CI_4,
-                                              obj_checkbox_menu_ex_1.EI_5)
+    obj_form_validator_v8103483_s2_ex.validator(
+        obj_checkbox_menu_ex_1.EI_0.get(),
+        obj_checkbox_menu_ex_1.EI_1.get(),
+        obj_checkbox_menu_ex_1.CI_2.get(),
+        obj_checkbox_menu_ex_1.CI_3.get(),
+        obj_checkbox_menu_ex_1.CI_4.get(),
+        obj_checkbox_menu_ex_1.EI_5.get(),
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.itemAmount,
+    )
+    obj_form_validator_v8103483_s2_ex.cleanUp(
+        obj_checkbox_menu_ex_1.EI_0,
+        obj_checkbox_menu_ex_1.EI_1,
+        obj_checkbox_menu_ex_1.CI_2,
+        obj_checkbox_menu_ex_1.CI_3,
+        obj_checkbox_menu_ex_1.CI_4,
+        obj_checkbox_menu_ex_1.EI_5,
+    )
     obj_checkbox_menu_ex_1.insertFrame.grid_forget()
 
     obj_db_connect_v8103483_s2_ex = DBConnect()
-    obj_db_connect_v8103483_s2_ex.insert("V810-3483S2EX",
-                                         obj_form_validator_item.flagInit,
-                                         obj_form_validator_item.item,
-                                         obj_form_validator_item.itemAmount,
-                                         obj_form_validator_v8103483_s2_ex.prog,
-                                         obj_form_validator_v8103483_s2_ex.test,
-                                         obj_form_validator_v8103483_s2_ex.linecapa,
-                                         obj_form_validator_v8103483_s2_ex.epi,
-                                         obj_form_validator_v8103483_s2_ex.baan1,
-                                         obj_form_validator_v8103483_s2_ex.comments,
-                                         obj_form_validator_v8103483_s2_ex.uph85,
-                                         obj_form_validator_v8103483_s2_ex.uph95,
-                                         obj_form_validator_v8103483_s2_ex.uph95Time,
-                                         obj_form_validator_v8103483_s2_ex.flagValidator)
+    obj_db_connect_v8103483_s2_ex.insert(
+        "V810-3483S2EX",
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.item,
+        obj_form_validator_item.itemAmount,
+        obj_form_validator_v8103483_s2_ex.prog,
+        obj_form_validator_v8103483_s2_ex.test,
+        obj_form_validator_v8103483_s2_ex.linecapa,
+        obj_form_validator_v8103483_s2_ex.epi,
+        obj_form_validator_v8103483_s2_ex.baan1,
+        obj_form_validator_v8103483_s2_ex.comments,
+        obj_form_validator_v8103483_s2_ex.uph85,
+        obj_form_validator_v8103483_s2_ex.uph95,
+        obj_form_validator_v8103483_s2_ex.uph95Time,
+        obj_form_validator_v8103483_s2_ex.flagValidator,
+    )
     obj_db_connect_v8103483_s2_ex.closeDB()
 
     obj_form_validator_v8103163 = FormValidation()
-    obj_form_validator_v8103163.validator(obj_checkbox_menu_ex_2.EI_0.get(),
-                                          obj_checkbox_menu_ex_2.EI_1.get(),
-                                          obj_checkbox_menu_ex_2.CI_2.get(),
-                                          obj_checkbox_menu_ex_2.CI_3.get(),
-                                          obj_checkbox_menu_ex_2.CI_4.get(),
-                                          obj_checkbox_menu_ex_2.EI_5.get(),
-                                          obj_form_validator_item.flagInit,
-                                          obj_form_validator_item.itemAmount)
+    obj_form_validator_v8103163.validator(
+        obj_checkbox_menu_ex_2.EI_0.get(),
+        obj_checkbox_menu_ex_2.EI_1.get(),
+        obj_checkbox_menu_ex_2.CI_2.get(),
+        obj_checkbox_menu_ex_2.CI_3.get(),
+        obj_checkbox_menu_ex_2.CI_4.get(),
+        obj_checkbox_menu_ex_2.EI_5.get(),
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.itemAmount,
+    )
 
-    obj_form_validator_v8103163.cleanUp(obj_checkbox_menu_ex_2.EI_0,
-                                        obj_checkbox_menu_ex_2.EI_1,
-                                        obj_checkbox_menu_ex_2.CI_2,
-                                        obj_checkbox_menu_ex_2.CI_3,
-                                        obj_checkbox_menu_ex_2.CI_4,
-                                        obj_checkbox_menu_ex_2.EI_5)
+    obj_form_validator_v8103163.cleanUp(
+        obj_checkbox_menu_ex_2.EI_0,
+        obj_checkbox_menu_ex_2.EI_1,
+        obj_checkbox_menu_ex_2.CI_2,
+        obj_checkbox_menu_ex_2.CI_3,
+        obj_checkbox_menu_ex_2.CI_4,
+        obj_checkbox_menu_ex_2.EI_5,
+    )
     obj_checkbox_menu_ex_2.insertFrame.grid_forget()
 
     obj_db_connect_v8103163 = DBConnect()
-    obj_db_connect_v8103163.insert("V810-3163",
-                                   obj_form_validator_item.flagInit,
-                                   obj_form_validator_item.item,
-                                   obj_form_validator_item.itemAmount,
-                                   obj_form_validator_v8103163.prog, 
-                                   obj_form_validator_v8103163.test,
-                                   obj_form_validator_v8103163.linecapa,
-                                   obj_form_validator_v8103163.epi,
-                                   obj_form_validator_v8103163.baan1,
-                                   obj_form_validator_v8103163.comments,
-                                   obj_form_validator_v8103163.uph85,
-                                   obj_form_validator_v8103163.uph95,
-                                   obj_form_validator_v8103163.uph95Time,
-                                   obj_form_validator_v8103163.flagValidator)
+    obj_db_connect_v8103163.insert(
+        "V810-3163",
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.item,
+        obj_form_validator_item.itemAmount,
+        obj_form_validator_v8103163.prog,
+        obj_form_validator_v8103163.test,
+        obj_form_validator_v8103163.linecapa,
+        obj_form_validator_v8103163.epi,
+        obj_form_validator_v8103163.baan1,
+        obj_form_validator_v8103163.comments,
+        obj_form_validator_v8103163.uph85,
+        obj_form_validator_v8103163.uph95,
+        obj_form_validator_v8103163.uph95Time,
+        obj_form_validator_v8103163.flagValidator,
+    )
     obj_db_connect_v8103163.closeDB()
 
     obj_form_validator_v8108120_s2 = FormValidation()
-    obj_form_validator_v8108120_s2.validator(obj_checkbox_menu_xxl_0.EI_0.get(),
-                                             obj_checkbox_menu_xxl_0.EI_1.get(),
-                                             obj_checkbox_menu_xxl_0.CI_2.get(),
-                                             obj_checkbox_menu_xxl_0.CI_3.get(),
-                                             obj_checkbox_menu_xxl_0.CI_4.get(),
-                                             obj_checkbox_menu_xxl_0.EI_5.get(),
-                                             obj_form_validator_item.flagInit,
-                                             obj_form_validator_item.itemAmount)
-    obj_form_validator_v8108120_s2.cleanUp(obj_checkbox_menu_xxl_0.EI_0,
-                                           obj_checkbox_menu_xxl_0.EI_1,
-                                           obj_checkbox_menu_xxl_0.CI_2,
-                                           obj_checkbox_menu_xxl_0.CI_3,
-                                           obj_checkbox_menu_xxl_0.CI_4,
-                                           obj_checkbox_menu_xxl_0.EI_5)
+    obj_form_validator_v8108120_s2.validator(
+        obj_checkbox_menu_xxl_0.EI_0.get(),
+        obj_checkbox_menu_xxl_0.EI_1.get(),
+        obj_checkbox_menu_xxl_0.CI_2.get(),
+        obj_checkbox_menu_xxl_0.CI_3.get(),
+        obj_checkbox_menu_xxl_0.CI_4.get(),
+        obj_checkbox_menu_xxl_0.EI_5.get(),
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.itemAmount,
+    )
+    obj_form_validator_v8108120_s2.cleanUp(
+        obj_checkbox_menu_xxl_0.EI_0,
+        obj_checkbox_menu_xxl_0.EI_1,
+        obj_checkbox_menu_xxl_0.CI_2,
+        obj_checkbox_menu_xxl_0.CI_3,
+        obj_checkbox_menu_xxl_0.CI_4,
+        obj_checkbox_menu_xxl_0.EI_5,
+    )
     obj_checkbox_menu_xxl_0.insertFrame.grid_forget()
 
     obj_db_connect_v8108120_s2 = DBConnect()
-    obj_db_connect_v8108120_s2.insert("V810-8120S2",
-                                      obj_form_validator_item.flagInit,
-                                      obj_form_validator_item.item,
-                                      obj_form_validator_item.itemAmount,
-                                      obj_form_validator_v8108120_s2.prog,
-                                      obj_form_validator_v8108120_s2.test,
-                                      obj_form_validator_v8108120_s2.linecapa,
-                                      obj_form_validator_v8108120_s2.epi,
-                                      obj_form_validator_v8108120_s2.baan1,
-                                      obj_form_validator_v8108120_s2.comments,
-                                      obj_form_validator_v8108120_s2.uph85,
-                                      obj_form_validator_v8108120_s2.uph95,
-                                      obj_form_validator_v8108120_s2.uph95Time,
-                                      obj_form_validator_v8108120_s2.flagValidator)
+    obj_db_connect_v8108120_s2.insert(
+        "V810-8120S2",
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.item,
+        obj_form_validator_item.itemAmount,
+        obj_form_validator_v8108120_s2.prog,
+        obj_form_validator_v8108120_s2.test,
+        obj_form_validator_v8108120_s2.linecapa,
+        obj_form_validator_v8108120_s2.epi,
+        obj_form_validator_v8108120_s2.baan1,
+        obj_form_validator_v8108120_s2.comments,
+        obj_form_validator_v8108120_s2.uph85,
+        obj_form_validator_v8108120_s2.uph95,
+        obj_form_validator_v8108120_s2.uph95Time,
+        obj_form_validator_v8108120_s2.flagValidator,
+    )
     obj_db_connect_v8108120_s2.closeDB()
 
     obj_form_validator_v849 = FormValidation()
-    obj_form_validator_v849.validator(obj_checkbox_menu_5DX_0.EI_0.get(),
-                                      obj_checkbox_menu_5DX_0.EI_1.get(),
-                                      obj_checkbox_menu_5DX_0.CI_2.get(),
-                                      obj_checkbox_menu_5DX_0.CI_3.get(),
-                                      obj_checkbox_menu_5DX_0.CI_4.get(),
-                                      obj_checkbox_menu_5DX_0.EI_5.get(),
-                                      obj_form_validator_item.flagInit,
-                                      obj_form_validator_item.itemAmount,
-                                      obj_checkbox_menu_5DX_0.EI_6.get(),
-                                      obj_checkbox_menu_5DX_0.EI_7.get(),
-                                      obj_checkbox_menu_5DX_0.EI_8.get())
-    obj_form_validator_v849.cleanUp(obj_checkbox_menu_5DX_0.EI_0,
-                                    obj_checkbox_menu_5DX_0.EI_1,
-                                    obj_checkbox_menu_5DX_0.CI_2,
-                                    obj_checkbox_menu_5DX_0.CI_3,
-                                    obj_checkbox_menu_5DX_0.CI_4,
-                                    obj_checkbox_menu_5DX_0.EI_5,
-                                    obj_checkbox_menu_5DX_0.EI_6,
-                                    obj_checkbox_menu_5DX_0.EI_7,
-                                    obj_checkbox_menu_5DX_0.EI_8)
+    obj_form_validator_v849.validator(
+        obj_checkbox_menu_5DX_0.EI_0.get(),
+        obj_checkbox_menu_5DX_0.EI_1.get(),
+        obj_checkbox_menu_5DX_0.CI_2.get(),
+        obj_checkbox_menu_5DX_0.CI_3.get(),
+        obj_checkbox_menu_5DX_0.CI_4.get(),
+        obj_checkbox_menu_5DX_0.EI_5.get(),
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.itemAmount,
+        obj_checkbox_menu_5DX_0.EI_6.get(),
+        obj_checkbox_menu_5DX_0.EI_7.get(),
+        obj_checkbox_menu_5DX_0.EI_8.get(),
+    )
+    obj_form_validator_v849.cleanUp(
+        obj_checkbox_menu_5DX_0.EI_0,
+        obj_checkbox_menu_5DX_0.EI_1,
+        obj_checkbox_menu_5DX_0.CI_2,
+        obj_checkbox_menu_5DX_0.CI_3,
+        obj_checkbox_menu_5DX_0.CI_4,
+        obj_checkbox_menu_5DX_0.EI_5,
+        obj_checkbox_menu_5DX_0.EI_6,
+        obj_checkbox_menu_5DX_0.EI_7,
+        obj_checkbox_menu_5DX_0.EI_8,
+    )
     obj_checkbox_menu_5DX_0.insertFrame.grid_forget()
 
     obj_form_validator_v817 = FormValidation()
-    obj_form_validator_v817.validator(obj_Checkbox_menu_5dx_1.EI_0.get(),
-                                      obj_Checkbox_menu_5dx_1.EI_1.get(),
-                                      obj_Checkbox_menu_5dx_1.CI_2.get(),
-                                      obj_Checkbox_menu_5dx_1.CI_3.get(),
-                                      obj_Checkbox_menu_5dx_1.CI_4.get(),
-                                      obj_Checkbox_menu_5dx_1.EI_5.get(),
-                                      obj_form_validator_item.flagInit,
-                                      obj_form_validator_item.itemAmount,
-                                      obj_Checkbox_menu_5dx_1.EI_6.get(),
-                                      obj_Checkbox_menu_5dx_1.EI_7.get(),
-                                      obj_Checkbox_menu_5dx_1.EI_8.get())
-    obj_form_validator_v817.cleanUp(obj_Checkbox_menu_5dx_1.EI_0,
-                                    obj_Checkbox_menu_5dx_1.EI_1,
-                                    obj_Checkbox_menu_5dx_1.CI_2,
-                                    obj_Checkbox_menu_5dx_1.CI_3,
-                                    obj_Checkbox_menu_5dx_1.CI_4,
-                                    obj_Checkbox_menu_5dx_1.EI_5,
-                                    obj_Checkbox_menu_5dx_1.EI_6,
-                                    obj_Checkbox_menu_5dx_1.EI_7,
-                                    obj_Checkbox_menu_5dx_1.EI_8)
+    obj_form_validator_v817.validator(
+        obj_Checkbox_menu_5dx_1.EI_0.get(),
+        obj_Checkbox_menu_5dx_1.EI_1.get(),
+        obj_Checkbox_menu_5dx_1.CI_2.get(),
+        obj_Checkbox_menu_5dx_1.CI_3.get(),
+        obj_Checkbox_menu_5dx_1.CI_4.get(),
+        obj_Checkbox_menu_5dx_1.EI_5.get(),
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.itemAmount,
+        obj_Checkbox_menu_5dx_1.EI_6.get(),
+        obj_Checkbox_menu_5dx_1.EI_7.get(),
+        obj_Checkbox_menu_5dx_1.EI_8.get(),
+    )
+    obj_form_validator_v817.cleanUp(
+        obj_Checkbox_menu_5dx_1.EI_0,
+        obj_Checkbox_menu_5dx_1.EI_1,
+        obj_Checkbox_menu_5dx_1.CI_2,
+        obj_Checkbox_menu_5dx_1.CI_3,
+        obj_Checkbox_menu_5dx_1.CI_4,
+        obj_Checkbox_menu_5dx_1.EI_5,
+        obj_Checkbox_menu_5dx_1.EI_6,
+        obj_Checkbox_menu_5dx_1.EI_7,
+        obj_Checkbox_menu_5dx_1.EI_8,
+    )
     obj_Checkbox_menu_5dx_1.insertFrame.grid_forget()
 
     obj_db_connect_5dx = DBConnect()
-    obj_db_connect_5dx.insert("V849_V817",
-                              obj_form_validator_item.flagInit,
-                              obj_form_validator_item.item,
-                              obj_form_validator_item.itemAmount,
-
-                              obj_form_validator_v849.prog,
-                              obj_form_validator_v849.test,
-                              obj_form_validator_v849.linecapa,
-                              obj_form_validator_v849.epi,
-                              obj_form_validator_v849.baan1,
-                              obj_form_validator_v849.comments,
-                              obj_form_validator_v849.uph85,
-                              obj_form_validator_v849.uph95,
-                              obj_form_validator_v849.uph95Time,
-                              obj_form_validator_v849.flagValidator,
-                              obj_form_validator_v849.alignTime,
-                              obj_form_validator_v849.laserTime,
-                              obj_form_validator_v849.thicknessTime,
-                              obj_form_validator_v849.totalTime,
-
-                              obj_form_validator_v817.flagValidator,
-                              obj_form_validator_v817.prog,
-                              obj_form_validator_v817.test,
-                              obj_form_validator_v817.linecapa,
-                              obj_form_validator_v817.epi,
-                              obj_form_validator_v817.baan1,
-                              obj_form_validator_v817.comments,
-                              obj_form_validator_v817.uph85,
-                              obj_form_validator_v817.uph95,
-                              obj_form_validator_v817.uph95Time,
-                              obj_form_validator_v817.alignTime,
-                              obj_form_validator_v817.laserTime,
-                              obj_form_validator_v817.thicknessTime,
-                              obj_form_validator_v817.totalTime)
+    obj_db_connect_5dx.insert(
+        "V849_V817",
+        obj_form_validator_item.flagInit,
+        obj_form_validator_item.item,
+        obj_form_validator_item.itemAmount,
+        obj_form_validator_v849.prog,
+        obj_form_validator_v849.test,
+        obj_form_validator_v849.linecapa,
+        obj_form_validator_v849.epi,
+        obj_form_validator_v849.baan1,
+        obj_form_validator_v849.comments,
+        obj_form_validator_v849.uph85,
+        obj_form_validator_v849.uph95,
+        obj_form_validator_v849.uph95Time,
+        obj_form_validator_v849.flagValidator,
+        obj_form_validator_v849.alignTime,
+        obj_form_validator_v849.laserTime,
+        obj_form_validator_v849.thicknessTime,
+        obj_form_validator_v849.totalTime,
+        obj_form_validator_v817.flagValidator,
+        obj_form_validator_v817.prog,
+        obj_form_validator_v817.test,
+        obj_form_validator_v817.linecapa,
+        obj_form_validator_v817.epi,
+        obj_form_validator_v817.baan1,
+        obj_form_validator_v817.comments,
+        obj_form_validator_v817.uph85,
+        obj_form_validator_v817.uph95,
+        obj_form_validator_v817.uph95Time,
+        obj_form_validator_v817.alignTime,
+        obj_form_validator_v817.laserTime,
+        obj_form_validator_v817.thicknessTime,
+        obj_form_validator_v817.totalTime,
+    )
     obj_db_connect_5dx.closeDB()
-    if obj_db_connect_v8103553_s2_ex.flagSucceeded or \
-            obj_db_connect_v8103483_s2_ex.flagSucceeded or \
-            obj_db_connect_v8103163.flagSucceeded or \
-            obj_db_connect_v8108120_s2.flagSucceeded or \
-            obj_db_connect_5dx.flagSucceeded:
+    if (
+        obj_db_connect_v8103553_s2_ex.flagSucceeded
+        or obj_db_connect_v8103483_s2_ex.flagSucceeded
+        or obj_db_connect_v8103163.flagSucceeded
+        or obj_db_connect_v8108120_s2.flagSucceeded
+        or obj_db_connect_5dx.flagSucceeded
+    ):
         obj_tip_new = Tip(root, obj_new_item_ex.mainFrameInsert)
         obj_tip_new.animate_non_translucent()
         refresh()
@@ -407,11 +449,11 @@ def get_selected_row(event) -> None:
 
     reset()
     for nm in tree.selection():
-        content = tree.item(nm, 'values')
+        content = tree.item(nm, "values")
 
-        #print(content[1])
+        # print(content[1])
 
-        #machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
+        # machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
         if content[1] in obj_config.machines:
             flag_click = True
 
@@ -425,48 +467,53 @@ def get_selected_row(event) -> None:
         obj_new_item_ex.EI2.insert(0, f"{row[1]}")
         obj_new_item_ex.EI3.insert(0, f"{row[3]}")
 
-        if row[54] != None and \
-                ((row[52] != None and int(row[52]) > 0) or int(row[49])):
+        if row[54] != None and ((row[52] != None and int(row[52]) > 0) or int(row[49])):
             obj_checkbox_menu_ex_0.EI_0.insert(0, f"{row[54]}")
             obj_checkbox_menu_ex_0.EI_1.insert(0, f"{int(row[52])}")
             obj_checkbox_menu_ex_0.CI_2.current(switch(row[55]))
             obj_checkbox_menu_ex_0.CI_3.current(switch(row[56]))
             obj_checkbox_menu_ex_0.CI_4.current(switch(row[53]))
             obj_checkbox_menu_ex_0.EI_5.insert(0, f"{row[57]}")
-            obj_checkbox_menu_ex_0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
+            obj_checkbox_menu_ex_0.insertFrame.grid(
+                column=0, row=5 + 1, columnspan=10, sticky="W", padx=10, pady=10
+            )
 
-        if row[45] != None and \
-                ((row[43] != None and int(row[43]) > 0) or int(row[40])):
+        if row[45] != None and ((row[43] != None and int(row[43]) > 0) or int(row[40])):
             obj_checkbox_menu_ex_1.EI_0.insert(0, f"{row[45]}")
             obj_checkbox_menu_ex_1.EI_1.insert(0, f"{int(row[43])}")
             obj_checkbox_menu_ex_1.CI_2.current(switch(row[46]))
             obj_checkbox_menu_ex_1.CI_3.current(switch(row[47]))
             obj_checkbox_menu_ex_1.CI_4.current(switch(row[44]))
             obj_checkbox_menu_ex_1.EI_5.insert(0, f"{row[48]}")
-            obj_checkbox_menu_ex_1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
+            obj_checkbox_menu_ex_1.insertFrame.grid(
+                column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
+            )
 
-        if row[27] != None and \
-                ((row[15] != None and int(row[15]) > 0) or int(row[12])):
+        if row[27] != None and ((row[15] != None and int(row[15]) > 0) or int(row[12])):
             obj_checkbox_menu_ex_2.EI_0.insert(0, f"{row[27]}")
             obj_checkbox_menu_ex_2.EI_1.insert(0, f"{int(row[15])}")
             obj_checkbox_menu_ex_2.CI_2.current(switch(row[28]))
             obj_checkbox_menu_ex_2.CI_3.current(switch(row[29]))
             obj_checkbox_menu_ex_2.CI_4.current(switch(row[16]))
             obj_checkbox_menu_ex_2.EI_5.insert(0, f"{row[30]}")
-            obj_checkbox_menu_ex_2.insertFrame.grid(column=0, row=5 + 3, columnspan=10, sticky='W', padx=10, pady=10)
+            obj_checkbox_menu_ex_2.insertFrame.grid(
+                column=0, row=5 + 3, columnspan=10, sticky="W", padx=10, pady=10
+            )
 
-        if row[31] != None and \
-                ((row[37] != None and int(row[37]) > 0) or int(row[39])):
+        if row[31] != None and ((row[37] != None and int(row[37]) > 0) or int(row[39])):
             obj_checkbox_menu_xxl_0.EI_0.insert(0, f"{row[31]}")
             obj_checkbox_menu_xxl_0.EI_1.insert(0, f"{int(row[37])}")
             obj_checkbox_menu_xxl_0.CI_2.current(switch(row[32]))
             obj_checkbox_menu_xxl_0.CI_3.current(switch(row[33]))
             obj_checkbox_menu_xxl_0.CI_4.current(switch(row[38]))
             obj_checkbox_menu_xxl_0.EI_5.insert(0, f"{row[34]}")
-            obj_checkbox_menu_xxl_0.insertFrame.grid(column=0, row=5 + 5, columnspan=10, sticky='W', padx=10, pady=10)
+            obj_checkbox_menu_xxl_0.insertFrame.grid(
+                column=0, row=5 + 5, columnspan=10, sticky="W", padx=10, pady=10
+            )
 
-        if (row[17] != None and row[17] != '') and \
-                ((row[5] != None and int(row[5]) > 0) or int(row[4])):
+        if (row[17] != None and row[17] != "") and (
+            (row[5] != None and int(row[5]) > 0) or int(row[4])
+        ):
             obj_checkbox_menu_5DX_0.EI_0.insert(0, f"{row[17]}")
             obj_checkbox_menu_5DX_0.EI_1.insert(0, f"{int(row[10])}")
             obj_checkbox_menu_5DX_0.CI_2.current(switch(row[18]))
@@ -476,10 +523,13 @@ def get_selected_row(event) -> None:
             obj_checkbox_menu_5DX_0.EI_6.insert(0, f"{int(row[7])}")
             obj_checkbox_menu_5DX_0.EI_7.insert(0, f"{int(row[8])}")
             obj_checkbox_menu_5DX_0.EI_8.insert(0, f"{int(row[9])}")
-            obj_checkbox_menu_5DX_0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
+            obj_checkbox_menu_5DX_0.insertFrame.grid(
+                column=0, row=5 + 1, columnspan=10, sticky="W", padx=10, pady=10
+            )
 
-        if (row[22] != None and row[22] != '') and \
-                ((row[5] != None and int(row[5]) > 0) or int(row[4])):
+        if (row[22] != None and row[22] != "") and (
+            (row[5] != None and int(row[5]) > 0) or int(row[4])
+        ):
             obj_Checkbox_menu_5dx_1.EI_0.insert(0, f"{row[22]}")
             obj_Checkbox_menu_5dx_1.EI_1.insert(0, f"{int(row[10])}")
             obj_Checkbox_menu_5dx_1.CI_2.current(switch(row[23]))
@@ -489,7 +539,9 @@ def get_selected_row(event) -> None:
             obj_Checkbox_menu_5dx_1.EI_6.insert(0, f"{int(row[7])}")
             obj_Checkbox_menu_5dx_1.EI_7.insert(0, f"{int(row[8])}")
             obj_Checkbox_menu_5dx_1.EI_8.insert(0, f"{int(row[9])}")
-            obj_Checkbox_menu_5dx_1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
+            obj_Checkbox_menu_5dx_1.insertFrame.grid(
+                column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
+            )
 
         l_item.configure(text=f"{row[1]}")
         l_item_amount.configure(text=f"{row[3]}")
@@ -497,7 +549,7 @@ def get_selected_row(event) -> None:
         l_qty.configure(text=f"Qty:")
         l_date.configure(text=f"Inserted:")
 
-# ---get_selected_row 5DX V849---
+        # ---get_selected_row 5DX V849---
         if int(len(str(row[17]))) > 4:
             tab_control_main.add(tab_main1, text=" V849 ")
             l_v849_prog.configure(text=f"{row[17]}")
@@ -508,88 +560,102 @@ def get_selected_row(event) -> None:
             l_v849_lc_l.configure(text=f"LC:")
             l_v849_epi_l.configure(text=f"EPI:")
             l_v849_comment_l.configure(text=f"Comment:")
-            l_v849_scan_time.configure(text=f"{int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}" 
-                                            f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
+            l_v849_scan_time.configure(
+                text=f"{int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}"
+                f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s."
+            )
             try:
-                l_v849_uph_85.configure(text=f"{row[4]} ({round(60 / int(row[4]), 4)}), " 
-                                             f"Panel: {round((3600/int(row[4])*int(row[3])))}s. " 
-                                             f"Board: {round((3600/int(row[4])), 4)}s.")
+                l_v849_uph_85.configure(
+                    text=f"{row[4]} ({round(60 / int(row[4]), 4)}), "
+                    f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[4])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v849_uph_85.configure(text=f"(0), "
-                                             f"Panel: 0 s. "
-                                             f"Board: 0 s.")
+                l_v849_uph_85.configure(text=f"(0), " f"Panel: 0 s. " f"Board: 0 s.")
             try:
-                l_v849_uph_95.configure(text=f"{row[6]} ({round(60 / int(row[6]), 4)}), "
-                                             f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
-                                             f"Board: {round((3600/int(row[6])), 4)}s.")
+                l_v849_uph_95.configure(
+                    text=f"{row[6]} ({round(60 / int(row[6]), 4)}), "
+                    f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[6])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v849_uph_95.configure(text=f"(0), "
-                                             f"Panel: 0 s. "
-                                             f"Board: 0 s.")
-            if str(row[11]) == 'YES':
+                l_v849_uph_95.configure(text=f"(0), " f"Panel: 0 s. " f"Board: 0 s.")
+            if str(row[11]) == "YES":
                 l_v849_baan.configure(text=f"{row[11]}", fg="#AAAAAA")
             else:
                 l_v849_baan.configure(text=f"{row[11]}", fg="#D44339")
-            if str(row[18]) == 'YES':
+            if str(row[18]) == "YES":
                 l_V849_lc.configure(text=f"{row[18]}", fg="#AAAAAA")
             else:
                 l_V849_lc.configure(text=f"{row[18]}", fg="#D44339")
-            if str(row[19]) == 'YES':
+            if str(row[19]) == "YES":
                 l_v849_epi.configure(text=f"{row[19]}", fg="#AAAAAA")
             else:
                 l_v849_epi.configure(text=f"{row[19]}", fg="#D44339")
 
             l_v849_comment.configure(text=f"{row[20]}")
 
-#---get_selected_row 5DX V849---
+            # ---get_selected_row 5DX V849---
             canvasFrame1 = Label(tab_main1)
             canvasFrame1.grid(row=0, column=6, rowspan=6, sticky=W)
             canvas1 = tk.Canvas(canvasFrame1, width=170, height=170)
             canvas1.configure(bg="#444444")
             canvas1.pack(expand=False)
 
-            if os.path.isfile(obj_config.pathImg5DX1 + row[17] + '.png') == False:
-                resize_image(obj_config.pathImg5DX1 + row[17] + '.jpg')
+            if os.path.isfile(obj_config.pathImg5DX1 + row[17] + ".png") == False:
+                resize_image(obj_config.pathImg5DX1 + row[17] + ".jpg")
 
             if flag_animation == False:
                 tab_control_main.select(tab_main1)
                 if flag_click == False:
                     try:
-                        #if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
-                        if os.path.isfile(obj_config.pathImg5DX1 + row[17] + '.png'):
-                        #if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png'):
-                            #animate_image(root, canvas1, min_movement, min_movement, '5DX/images/V849/' + row[17] + '.png')
-                            animate_image(root, canvas1, min_movement, min_movement, obj_config.pathImg5DX1 + row[17] + '.png')
-                            #animate_image(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
+                        # if os.path.isfile('5DX/images/V849/' + row[17] + '.png'):
+                        if os.path.isfile(obj_config.pathImg5DX1 + row[17] + ".png"):
+                            # if os.path.isfile('Y:/5DX/images/V849/' + row[17] + '.png'):
+                            # animate_image(root, canvas1, min_movement, min_movement, '5DX/images/V849/' + row[17] + '.png')
+                            animate_image(
+                                root,
+                                canvas1,
+                                min_movement,
+                                min_movement,
+                                obj_config.pathImg5DX1 + row[17] + ".png",
+                            )
+                            # animate_image(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
                         else:
                             try:
-                                #animate_image(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
-                                animate_image(root, canvas1, min_movement, min_movement, obj_config.pathImg5DX1 + row[17] + '.png')
-                                #animate_image(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
+                                # animate_image(root, canvas1, minMovement, minMovement, '5DX/images/V849/' + row[17] + '.png')
+                                animate_image(
+                                    root,
+                                    canvas1,
+                                    min_movement,
+                                    min_movement,
+                                    obj_config.pathImg5DX1 + row[17] + ".png",
+                                )
+                                # animate_image(root, canvas1, minMovement, minMovement, 'Y:/5DX/images/V849/' + row[17] + '.png')
 
                             except FileNotFoundError:
                                 pass
-                    #except _tkinter.TclError:
+                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
 
-            #imgBoard1 = '5DX/images/V849/'+row[17]+'.png'
-            imgBoard1 = obj_config.pathImg5DX1 + row[17] + '.png'
-            #imgBoard1 = 'Y:/5DX/images/V849/'+row[17]+'.png'
+            # imgBoard1 = '5DX/images/V849/'+row[17]+'.png'
+            imgBoard1 = obj_config.pathImg5DX1 + row[17] + ".png"
+            # imgBoard1 = 'Y:/5DX/images/V849/'+row[17]+'.png'
             if os.path.isfile(imgBoard1):
                 img1 = tk.PhotoImage(file=imgBoard1)
             else:
-                #img1 = tk.PhotoImage(file='board.png')
+                # img1 = tk.PhotoImage(file='board.png')
                 img1 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas1.create_image(85, 85, image=img1)
 
         else:
             tab_control_main.hide(tab_main1)
 
-#---The End get_selected_row 5DX V849---
-#---get_selected_row 5DX V817---
+        # ---The End get_selected_row 5DX V849---
+        # ---get_selected_row 5DX V817---
 
         if int(len(str(row[22]))) > 4:
             tab_control_main.add(tab_main2, text=" V817 ")
@@ -601,35 +667,37 @@ def get_selected_row(event) -> None:
             l_v817_lc_l.configure(text=f"LC:")
             l_v817_epi_l.configure(text=f"EPI:")
             l_v817_comment_l.configure(text=f"Comment:")
-            l_v817_scan_time.configure(text=f"{int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}"
-                                         f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s.")
+            l_v817_scan_time.configure(
+                text=f"{int(row[7]) + int(row[8]) + int(row[9]) + int(row[10])}"
+                f" + 15 in/out = {int(row[7])+int(row[8])+int(row[9])+int(row[10])+15}s."
+            )
             try:
-                l_v817_uph85.configure(text=f"{row[4]} ({round(60 / int(row[4]), 4)}), "
-                                          f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
-                                          f"Board: {round((3600/int(row[4])), 4)}s.")
+                l_v817_uph85.configure(
+                    text=f"{row[4]} ({round(60 / int(row[4]), 4)}), "
+                    f"Panel: {round((3600/int(row[4])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[4])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v817_uph85.configure(text=f"(0), "
-                                          f"Panel: 0 s. "
-                                          f"Board: 0 s.")
+                l_v817_uph85.configure(text=f"(0), " f"Panel: 0 s. " f"Board: 0 s.")
 
             try:
-                l_v817_uph95.configure(text=f"{row[6]} ({round(60 / int(row[6]), 4)}), "
-                                          f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
-                                          f"Board: {round((3600/int(row[6])), 4)}s.")
+                l_v817_uph95.configure(
+                    text=f"{row[6]} ({round(60 / int(row[6]), 4)}), "
+                    f"Panel: {round((3600/int(row[6])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[6])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v817_uph95.configure(text=f"(0), "
-                                          f"Panel: 0 s. "
-                                          f"Board: 0 s.")
+                l_v817_uph95.configure(text=f"(0), " f"Panel: 0 s. " f"Board: 0 s.")
 
-            if str(row[11]) == 'YES':
+            if str(row[11]) == "YES":
                 l_v817_baan.configure(text=f"{row[11]}", fg="#AAAAAA")
             else:
                 l_v817_baan.configure(text=f"{row[11]}", fg="#D44339")
-            if str(row[23]) == 'YES':
+            if str(row[23]) == "YES":
                 l_v817_lc.configure(text=f"{row[23]}", fg="#AAAAAA")
             else:
                 l_v817_lc.configure(text=f"{row[23]}", fg="#D44339")
-            if str(row[24]) == 'YES':
+            if str(row[24]) == "YES":
                 l_v817_epi.configure(text=f"{row[24]}", fg="#AAAAAA")
             else:
                 l_v817_epi.configure(text=f"{row[24]}", fg="#D44339")
@@ -642,54 +710,67 @@ def get_selected_row(event) -> None:
             canvas2.configure(bg="#444444")
             canvas2.pack(expand=False)
 
-            #if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
-            if os.path.isfile(obj_config.pathImg5DX2 + row[22] + '.png') == False:
-            #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png') == False:
-                #resize_image('5DX/images/V817/' + row[22] + '.jpg')
-                resize_image(obj_config.pathImg5DX2 + row[22] + '.jpg')
-                #resize_image('Y:/5DX/images/V817/' + row[22] + '.jpg')
+            # if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
+            if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png") == False:
+                # if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png') == False:
+                # resize_image('5DX/images/V817/' + row[22] + '.jpg')
+                resize_image(obj_config.pathImg5DX2 + row[22] + ".jpg")
+                # resize_image('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
             if flag_animation == False:
                 tab_control_main.select(tab_main2)
                 if flag_click == False:
                     try:
-                        #if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
-                        if os.path.isfile(obj_config.pathImg5DX2 + row[22] + '.png'):
-                        #if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
-                            #animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                            animate_image(root, canvas2, min_movement, min_movement, obj_config.pathImg5DX2 + row[22] + '.png')
-                            #animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+                        # if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
+                        if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png"):
+                            # if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
+                            # animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                            animate_image(
+                                root,
+                                canvas2,
+                                min_movement,
+                                min_movement,
+                                obj_config.pathImg5DX2 + row[22] + ".png",
+                            )
+                            # animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
                         else:
                             try:
-                                #animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
-                                animate_image(root, canvas2, min_movement, min_movement, obj_config.pathImg5DX2 + row[22] + '.png')
-                                #animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
+                                # animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
+                                animate_image(
+                                    root,
+                                    canvas2,
+                                    min_movement,
+                                    min_movement,
+                                    obj_config.pathImg5DX2 + row[22] + ".png",
+                                )
+                                # animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
 
                             except FileNotFoundError:
                                 pass
-                    #except _tkinter.TclError:
+                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
 
-            #imgBoard2 = '5DX/images/V817/'+row[22]+'.png'
-            imgBoard2 = obj_config.pathImg5DX2 + row[22] + '.png'
-            #imgBoard2 = 'Y:/5DX/images/V817/'+row[22]+'.png'
+            # imgBoard2 = '5DX/images/V817/'+row[22]+'.png'
+            imgBoard2 = obj_config.pathImg5DX2 + row[22] + ".png"
+            # imgBoard2 = 'Y:/5DX/images/V817/'+row[22]+'.png'
             if os.path.isfile(imgBoard2):
                 img2 = tk.PhotoImage(file=imgBoard2)
             else:
-                #img2 = tk.PhotoImage(file='board.png')
+                # img2 = tk.PhotoImage(file='board.png')
                 img2 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas2.create_image(85, 85, image=img2)
 
         else:
             tab_control_main.hide(tab_main2)
-#---The End get_selected_row 5DX V817---
-#---get_selected_row V810-3163--
-        #if len(str(row[27])) > 4:
-        if row[27] != None and \
-                ((int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])):
+        # ---The End get_selected_row 5DX V817---
+        # ---get_selected_row V810-3163--
+        # if len(str(row[27])) > 4:
+        if row[27] != None and (
+            (int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])
+        ):
             tab_control_main.add(tab_main3, text=" V810-3163 ")
             l_v8103163_prog.configure(text=f"{row[27]}")
             l_v8103163_scan_time_l.configure(text=f"Scan Time:")
@@ -699,32 +780,34 @@ def get_selected_row(event) -> None:
             l_v8103163_lc_l.configure(text=f"LC:")
             l_v8103163_epi_l.configure(text=f"EPI:")
             l_v8103163_comment_l.configure(text=f"Comment:")
-            l_v8103163_scan_time.configure(text=f"{int(row[15])} + 15 in/out = {int(row[15] + 15)}s.")
+            l_v8103163_scan_time.configure(
+                text=f"{int(row[15])} + 15 in/out = {int(row[15] + 15)}s."
+            )
             try:
-                l_v8103163_uph85.configure(text=f"{row[12]} ({round(60 / int(row[12]), 4)}), "
-                                              f"Panel: {round((3600/int(row[12]) * int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[12])), 4)}s.")
+                l_v8103163_uph85.configure(
+                    text=f"{row[12]} ({round(60 / int(row[12]), 4)}), "
+                    f"Panel: {round((3600/int(row[12]) * int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[12])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v8103163_uph85.configure(text=f"(0), "
-                                              f"Panel: 0s. "
-                                              f"Board: 0s.")
+                l_v8103163_uph85.configure(text=f"(0), " f"Panel: 0s. " f"Board: 0s.")
             try:
-                l_v8103163_uph95.configure(text=f"{row[14]} ({round(60 / int(row[14]), 4)}), "
-                                              f"Panel: {round((3600/int(row[14])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[14])), 4)}s.")
+                l_v8103163_uph95.configure(
+                    text=f"{row[14]} ({round(60 / int(row[14]), 4)}), "
+                    f"Panel: {round((3600/int(row[14])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[14])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v8103163_uph95.configure(text=f"(0), "
-                                              f"Panel: 0s. "
-                                              f"Board: 0s.")
-            if str(row[16]) == 'YES':
+                l_v8103163_uph95.configure(text=f"(0), " f"Panel: 0s. " f"Board: 0s.")
+            if str(row[16]) == "YES":
                 l_v8103163_baan.configure(text=f"{row[16]}", fg="#AAAAAA")
             else:
                 l_v8103163_baan.configure(text=f"{row[16]}", fg="#D44339")
-            if str(row[28]) == 'YES':
+            if str(row[28]) == "YES":
                 l_v8103163_lc.configure(text=f"{row[28]}", fg="#AAAAAA")
             else:
                 l_v8103163_lc.configure(text=f"{row[28]}", fg="#D44339")
-            if str(row[29]) == 'YES':
+            if str(row[29]) == "YES":
                 l_v8103163_epi.configure(text=f"{row[29]}", fg="#AAAAAA")
             else:
                 l_v8103163_epi.configure(text=f"{row[29]}", fg="#D44339")
@@ -741,34 +824,39 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main3)
                 if flag_click == False:
                     try:
-                        #animate_image(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
-                        #animate_image(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
-                        animate_image(root, canvas3, min_movement, min_movement, obj_config.pathImgV8103163 + row[27] + '.png')
-                    #except _tkinter.TclError:
+                        # animate_image(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
+                        # animate_image(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
+                        animate_image(
+                            root,
+                            canvas3,
+                            min_movement,
+                            min_movement,
+                            obj_config.pathImgV8103163 + row[27] + ".png",
+                        )
+                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
 
-            #imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
-            imgBoard3 = obj_config.pathImgV8103163 + row[27] + '.png'
-            #imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
+            # imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
+            imgBoard3 = obj_config.pathImgV8103163 + row[27] + ".png"
+            # imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
             if os.path.isfile(imgBoard3):
                 img3 = tk.PhotoImage(file=imgBoard3)
             else:
-                #img3 = tk.PhotoImage(file='board.png')
+                # img3 = tk.PhotoImage(file='board.png')
                 img3 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas3.create_image(85, 85, image=img3)
 
         else:
             tab_control_main.hide(tab_main3)
 
-#---The End get_selected_row V810-3163---
+        # ---The End get_selected_row V810-3163---
 
-#---get_selected_row V810-V3483S2EX---
-        #if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
-        if row[45] != None and \
-                ((row[43] != None and int(row[43]) > 0) or int(row[40])):
+        # ---get_selected_row V810-V3483S2EX---
+        # if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
+        if row[45] != None and ((row[43] != None and int(row[43]) > 0) or int(row[40])):
             tab_control_main.add(tab_main4, text=" V810-3483S2EX ")
             l_v8103483s2ex_prog.configure(text=f"{row[45]}")
             l_v8103483s2ex_scan_time_l.configure(text=f"Scan Time:")
@@ -778,33 +866,39 @@ def get_selected_row(event) -> None:
             l_v8103483s2ex_lc_l.configure(text=f"LC:")
             l_v8103483s2ex_epi_l.configure(text=f"EPI:")
             l_v8103483s2ex_comment_l.configure(text=f"Comment:")
-            l_v8103483s2ex_scan_time.configure(text=f"{int(row[43])} + 15 in/out = {int(row[43] + 15)}s.")
+            l_v8103483s2ex_scan_time.configure(
+                text=f"{int(row[43])} + 15 in/out = {int(row[43] + 15)}s."
+            )
             try:
-                l_v8103483s2ex_uph85.configure(text=f"{row[40]} ({round(60 / int(row[40]), 4)}), "
-                                              f"Panel: {round((3600/int(row[40])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[40])), 4)}s.")
+                l_v8103483s2ex_uph85.configure(
+                    text=f"{row[40]} ({round(60 / int(row[40]), 4)}), "
+                    f"Panel: {round((3600/int(row[40])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[40])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v8103483s2ex_uph85.configure(text=f"(0), "
-                                              f"Panel: 0 s. "
-                                              f"Board: 0 s.")
+                l_v8103483s2ex_uph85.configure(
+                    text=f"(0), " f"Panel: 0 s. " f"Board: 0 s."
+                )
 
             try:
-                l_v8103483s2ex_uph95.configure(text=f"{row[42]} ({round(60 / int(row[42]), 4)}), "
-                                              f"Panel: {round((3600/int(row[42])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[42])), 4)}s.")
+                l_v8103483s2ex_uph95.configure(
+                    text=f"{row[42]} ({round(60 / int(row[42]), 4)}), "
+                    f"Panel: {round((3600/int(row[42])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[42])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v8103483s2ex_uph95.configure(text=f"(0), "
-                                                f"Panel: 0 s. "
-                                                f"Board: 0 s.")
-            if str(row[44]) == 'YES':
+                l_v8103483s2ex_uph95.configure(
+                    text=f"(0), " f"Panel: 0 s. " f"Board: 0 s."
+                )
+            if str(row[44]) == "YES":
                 l_v8103483s2ex_baan.configure(text=f"{row[44]}", fg="#AAAAAA")
             else:
                 l_v8103483s2ex_baan.configure(text=f"{row[44]}", fg="#D44339")
-            if str(row[46]) == 'YES':
+            if str(row[46]) == "YES":
                 l_v8103483s2ex_lc.configure(text=f"{row[46]}", fg="#AAAAAA")
             else:
                 l_v8103483s2ex_lc.configure(text=f"{row[46]}", fg="#D44339")
-            if str(row[47]) == 'YES':
+            if str(row[47]) == "YES":
                 l_v8103483s2ex_epi.configure(text=f"{row[47]}", fg="#AAAAAA")
             else:
                 l_v8103483s2ex_epi.configure(text=f"{row[47]}", fg="#D44339")
@@ -819,36 +913,41 @@ def get_selected_row(event) -> None:
 
             if flag_animation == False:
                 tab_control_main.select(tab_main4)
-                #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                # animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
                 if flag_click == False:
                     try:
-                        #animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
-                        animate_image(root, canvas4, min_movement, min_movement, obj_config.pathImgV8103483S2EX + row[45] + '.png')
-                        #animate_image(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
-                    #except _tkinter.TclError:
+                        # animate_image(root, canvas4, minMovement, minMovement, 'images/V810-3483S2EX/' + row[45] + '.png')
+                        animate_image(
+                            root,
+                            canvas4,
+                            min_movement,
+                            min_movement,
+                            obj_config.pathImgV8103483S2EX + row[45] + ".png",
+                        )
+                        # animate_image(root, canvas4, minMovement, minMovement, 'X:/images/V810-3483S2EX/' + row[45] + '.png')
+                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
 
-            #imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
-            imgBoard4 = obj_config.pathImgV8103483S2EX + row[45] + '.png'
-            #imgBoard4 = 'X:/images/V810-3483S2EX/' + row[45] + '.png'
+            # imgBoard4 = 'images/V810-3483S2EX/' + row[45] + '.png'
+            imgBoard4 = obj_config.pathImgV8103483S2EX + row[45] + ".png"
+            # imgBoard4 = 'X:/images/V810-3483S2EX/' + row[45] + '.png'
             if os.path.isfile(imgBoard4):
                 img4 = tk.PhotoImage(file=imgBoard4)
             else:
-                #img4 = tk.PhotoImage(file='board.png')
+                # img4 = tk.PhotoImage(file='board.png')
                 img4 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas4.create_image(85, 85, image=img4)
 
         else:
             tab_control_main.hide(tab_main4)
-#--- The End get_selected_row V810-3483S2EX ---
+        # --- The End get_selected_row V810-3483S2EX ---
 
-#--- get_selected_row V810-3553S2EX ---
-        #if (len(str(row[54])) > 0 and row[54] != None) and (int(row[50]) != 0 or int(row[49]) != 0):
-        if row[54] != None and \
-                ((row[52] != None and int(row[52]) > 0) or int(row[49])):
+        # --- get_selected_row V810-3553S2EX ---
+        # if (len(str(row[54])) > 0 and row[54] != None) and (int(row[50]) != 0 or int(row[49]) != 0):
+        if row[54] != None and ((row[52] != None and int(row[52]) > 0) or int(row[49])):
             tab_control_main.add(tab_main5, text=" V810-3553S2EX ")
             l_v8103553s2ex_prog.configure(text=f"{row[54]}")
             l_v8103553s2ex_scan_time_l.configure(text=f"Scan Time: ")
@@ -858,33 +957,39 @@ def get_selected_row(event) -> None:
             l_v8103553s2ex_lc_l.configure(text=f"LC:")
             l_v8103553s2ex_epi_l.configure(text=f"EPI:")
             l_v8103553s2ex_comment_l.configure(text=f"Comment:")
-            l_v8103553s2ex_scan_time.configure(text=f"{int(row[52])} + 15 in/out = {int(row[52] + 15)}s.")
+            l_v8103553s2ex_scan_time.configure(
+                text=f"{int(row[52])} + 15 in/out = {int(row[52] + 15)}s."
+            )
             try:
-                l_v8103553s2ex_uph85.configure(text=f"{row[49]} ({round(60 / int(row[49]), 4)}), "
-                                              f"Panel: {round((3600/int(row[49])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[49])), 4)}s.")
+                l_v8103553s2ex_uph85.configure(
+                    text=f"{row[49]} ({round(60 / int(row[49]), 4)}), "
+                    f"Panel: {round((3600/int(row[49])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[49])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v8103553s2ex_uph85.configure(text=f"(0), "
-                                                  f"Panel: 0 s. "
-                                                  f"Board: 0 s.")
+                l_v8103553s2ex_uph85.configure(
+                    text=f"(0), " f"Panel: 0 s. " f"Board: 0 s."
+                )
             try:
-                l_v8103553s2ex_uph95.configure(text=f"{row[51]} ({round(60 / int(row[51]), 4)}), "
-                                              f"Panel: {round((3600/int(row[51])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[51])), 4)}s.")
+                l_v8103553s2ex_uph95.configure(
+                    text=f"{row[51]} ({round(60 / int(row[51]), 4)}), "
+                    f"Panel: {round((3600/int(row[51])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[51])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v8103553s2ex_uph95.configure(text=f"(0), "
-                                                  f"Panel: 0 s. "
-                                                  f"Board: 0 s.")
+                l_v8103553s2ex_uph95.configure(
+                    text=f"(0), " f"Panel: 0 s. " f"Board: 0 s."
+                )
 
-            if str(row[53]) == 'YES':
+            if str(row[53]) == "YES":
                 l_v8103553s2ex_baan.configure(text=f"{row[53]}", fg="#AAAAAA")
             else:
                 l_v8103553s2ex_baan.configure(text=f"{row[53]}", fg="#D44339")
-            if str(row[55]) == 'YES':
+            if str(row[55]) == "YES":
                 l_v8103553s2ex_lc.configure(text=f"{row[55]}", fg="#AAAAAA")
             else:
                 l_v8103553s2ex_lc.configure(text=f"{row[55]}", fg="#D44339")
-            if str(row[56]) == 'YES':
+            if str(row[56]) == "YES":
                 l_v8103553s2ex_epi.configure(text=f"{row[56]}", fg="#AAAAAA")
             else:
                 l_v8103553s2ex_epi.configure(text=f"{row[56]}", fg="#D44339")
@@ -897,78 +1002,88 @@ def get_selected_row(event) -> None:
             canvas5.configure(bg="#444444")
             canvas5.pack(expand=False)
 
-
             if flag_animation == False:
                 tab_control_main.select(tab_main5)
-                #animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                # animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
                 if flag_click == False:
                     try:
-                        #animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
-                        animate_image(root, canvas5, min_movement, min_movement, obj_config.pathImgV8103553S2EX + row[54] + '.png')
-                        #animate_image(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
-                    #except _tkinter.TclError:
+                        # animate_image(root, canvas5, minMovement, minMovement, 'images/V810-3553S2EX/' + row[54] + '.png')
+                        animate_image(
+                            root,
+                            canvas5,
+                            min_movement,
+                            min_movement,
+                            obj_config.pathImgV8103553S2EX + row[54] + ".png",
+                        )
+                        # animate_image(root, canvas5, minMovement, minMovement, 'X:/images/V810-3553S2EX/' + row[54] + '.png')
+                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
 
-            #imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
-            imgBoard5 = obj_config.pathImgV8103553S2EX + row[54] + '.png'
-            #imgBoard5 = 'X:/images/V810-3553S2EX/' + row[54] + '.png'
+            # imgBoard5 = 'images/V810-3553S2EX/' + row[54] + '.png'
+            imgBoard5 = obj_config.pathImgV8103553S2EX + row[54] + ".png"
+            # imgBoard5 = 'X:/images/V810-3553S2EX/' + row[54] + '.png'
             if os.path.isfile(imgBoard5):
                 img5 = tk.PhotoImage(file=imgBoard5)
             else:
-                #img5 = tk.PhotoImage(file='board.png')
+                # img5 = tk.PhotoImage(file='board.png')
                 img5 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas5.create_image(85, 85, image=img5)
 
         else:
             tab_control_main.hide(tab_main5)
-#--- The End get_selected_row V810-3553S2EX ---
+        # --- The End get_selected_row V810-3553S2EX ---
 
-#--- get_selected_row V810-8120S2 ---
-        #if row[31] != None and (int(row[37] != 0) or int(row[39]) != 0):
-        if row[31] != None and \
-                ((row[37] != None and int(row[37]) > 0) or int(row[39])):
+        # --- get_selected_row V810-8120S2 ---
+        # if row[31] != None and (int(row[37] != 0) or int(row[39]) != 0):
+        if row[31] != None and ((row[37] != None and int(row[37]) > 0) or int(row[39])):
             tab_control_main.add(tab_main6, text=" V810-8120S2 ")
             l_v8108120s2_prog.configure(text=f"{row[31]}")
             l_v8108120s2_scan_time_l.configure(text=f"Scan Time:")
             l_v8108120s2_uph85_l.configure(text=f"UPH 85%:")
             l_v8108120s2_uph95_l.configure(text=f"UPH 95%:")
             l_v8108120s2_baan_l.configure(text=f"BaaN:")
-            LV8108120S2LCL.configure(text=f"LC:")
-            LV8108120S2EPIL.configure(text=f"EPI:")
+            l_v8108120s2lc_l.configure(text=f"LC:")
+            l_v8108120s2epi_l.configure(text=f"EPI:")
             LV8108120S2CommentL.configure(text=f"Comment:")
-            l_v8108120s2_scan_time.configure(text=f"{int(row[37])} + 15 in/out = {int(row[37] + 15)}s.")
+            l_v8108120s2_scan_time.configure(
+                text=f"{int(row[37])} + 15 in/out = {int(row[37] + 15)}s."
+            )
             try:
-                l_v8108120s2_uph85.configure(text=f"{row[39]} ({round(60 / int(row[39]), 4)}), "
-                                              f"Panel: {round((3600/int(row[39])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[39])), 4)}s.")
+                l_v8108120s2_uph85.configure(
+                    text=f"{row[39]} ({round(60 / int(row[39]), 4)}), "
+                    f"Panel: {round((3600/int(row[39])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[39])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v8108120s2_uph85.configure(text=f"(0), "
-                                                f"Panel: 0 s. "
-                                                f"Board: 0 s.")
+                l_v8108120s2_uph85.configure(
+                    text=f"(0), " f"Panel: 0 s. " f"Board: 0 s."
+                )
             try:
-                l_v8108120s2uph95.configure(text=f"{row[36]} ({round(60 / int(row[36]), 4)}), "
-                                              f"Panel: {round((3600/int(row[36])*int(row[3])))}s. "
-                                              f"Board: {round((3600/int(row[36])), 4)}s.")
+                l_v8108120s2uph95.configure(
+                    text=f"{row[36]} ({round(60 / int(row[36]), 4)}), "
+                    f"Panel: {round((3600/int(row[36])*int(row[3])))}s. "
+                    f"Board: {round((3600/int(row[36])), 4)}s."
+                )
             except ZeroDivisionError:
-                l_v8108120s2uph95.configure(text=f"(0), "
-                                                f"Panel: 0 s. "
-                                                f"Board: 0 s.")
+                l_v8108120s2uph95.configure(
+                    text=f"(0), " f"Panel: 0 s. " f"Board: 0 s."
+                )
 
-            if str(row[38]) == 'YES':
+            if str(row[38]) == "YES":
                 l_v8108120s2_baan.configure(text=f"{row[38]}", fg="#AAAAAA")
             else:
                 l_v8108120s2_baan.configure(text=f"{row[38]}", fg="#D44339")
-            if str(row[32]) == 'YES':
-                LV8108120S2LC.configure(text=f"{row[32]}", fg="#AAAAAA")
+            if str(row[32]) == "YES":
+                l_v8108120s2_lc.configure(text=f"{row[32]}", fg="#AAAAAA")
             else:
-                LV8108120S2LC.configure(text=f"{row[32]}", fg="#D44339")
-            if str(row[33]) == 'YES':
-                LV8108120S2EPI.configure(text=f"{row[33]}", fg="#AAAAAA")
+                l_v8108120s2_lc.configure(text=f"{row[32]}", fg="#D44339")
+            if str(row[33]) == "YES":
+                l_v8108120s2_epi.configure(text=f"{row[33]}", fg="#AAAAAA")
             else:
-                LV8108120S2EPI.configure(text=f"{row[33]}", fg="#D44339")
+                l_v8108120s2_epi.configure(text=f"{row[33]}", fg="#D44339")
 
             LV8108120S2Comment.configure(text=f"{row[34]}")
 
@@ -980,21 +1095,27 @@ def get_selected_row(event) -> None:
 
             if flag_animation == False:
                 tab_control_main.select(tab_main6)
-                #animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                # animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
                 if flag_click == False:
                     try:
-                        #animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
-                        animate_image(root, canvas6, min_movement, min_movement, obj_config.pathImgV8108120S2 + row[31] + '.png')
-                        #animate_image(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
-                    #except _tkinter.TclError:
+                        # animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
+                        animate_image(
+                            root,
+                            canvas6,
+                            min_movement,
+                            min_movement,
+                            obj_config.pathImgV8108120S2 + row[31] + ".png",
+                        )
+                        # animate_image(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
+                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
 
-            #imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
-            imgBoard6 = obj_config.pathImgV8108120S2 + row[31] + '.png'
-            #imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
+            # imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
+            imgBoard6 = obj_config.pathImgV8108120S2 + row[31] + ".png"
+            # imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
             if os.path.isfile(imgBoard6):
                 img6 = tk.PhotoImage(file=imgBoard6)
             else:
@@ -1003,27 +1124,28 @@ def get_selected_row(event) -> None:
 
         else:
             tab_control_main.hide(tab_main6)
-#--- The End get_selected_row V810-8120S2 ---
+        # --- The End get_selected_row V810-8120S2 ---
 
         if flag_click == True:
             flag_click = False
-            if content[1] == '5DX I':
+            if content[1] == "5DX I":
                 tab_control_main.select(tab_main1)
-            elif content[1] == '5DX II':
+            elif content[1] == "5DX II":
                 tab_control_main.select(tab_main2)
-            elif content[1] == 'ViTrox Ex I':
+            elif content[1] == "ViTrox Ex I":
                 tab_control_main.select(tab_main3)
-            elif content[1] == 'ViTrox Ex II':
+            elif content[1] == "ViTrox Ex II":
                 tab_control_main.select(tab_main4)
-            elif content[1] == 'ViTrox Ex III':
+            elif content[1] == "ViTrox Ex III":
                 tab_control_main.select(tab_main5)
-            elif content[1] == 'ViTrox XXL I':
+            elif content[1] == "ViTrox XXL I":
                 tab_control_main.select(tab_main6)
 
         root.mainloop()
 
+    # refresh()
 
-    #refresh()
+
 def search() -> None:
     """
     The function is looking for the recipe by the phrase
@@ -1034,11 +1156,11 @@ def search() -> None:
     tree.selection_clear()
     tree.selection_remove(tree.focus())
     for record in tree.get_children():
-        content = tree.item(record, 'values')
-        #if content[1] != ESearch.get():
+        content = tree.item(record, "values")
+        # if content[1] != ESearch.get():
         if content[1].find(ESearch.get()) >= 0:
             pass
-            #print(content[1].find(ESearch.get()))
+            # print(content[1].find(ESearch.get()))
         else:
             tree.delete(record)
 
@@ -1058,13 +1180,13 @@ def refresh() -> None:
 
     obj_db = DBConnect()
 
-# ---Create striped row tags---
-    tree.tag_configure('DX', background="#222222")
-    tree.tag_configure('V', background="#333333")
-    tree.tag_configure('one', background="#111111")
-    tree.tag_configure('baan', background="#111111", foreground="#EB0E0E")
-    tree.tag_configure('baan0', foreground="#EB0E0E")
-# ---The End Create striped row---
+    # ---Create striped row tags---
+    tree.tag_configure("DX", background="#222222")
+    tree.tag_configure("V", background="#333333")
+    tree.tag_configure("one", background="#111111")
+    tree.tag_configure("baan", background="#111111", foreground="#EB0E0E")
+    tree.tag_configure("baan0", foreground="#EB0E0E")
+    # ---The End Create striped row---
 
     count = 1
     count1 = 1
@@ -1072,80 +1194,224 @@ def refresh() -> None:
 
     for row in obj_db.selectAll():
         if count % 2 == 0:
-            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] is not None and
-                (row[11] == 'NO' or row[11] == 'LACK')) or \
-                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] is not None and
-                     (row[16] == 'NO' or row[16] == 'LACK')) or \
-                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] is not None and
-                     (row[38] == 'NO' or row[38] == 'LACK')) or \
-                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] is not None and
-                     (row[44] == 'NO' or row[44] == 'LACK')) or \
-                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] is not None and
-                     (row[53] == 'NO' or row[53] == 'LACK')):
-                folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
-                                      tag='baan')
+            if (
+                (
+                    row[11] != "YES"
+                    and row[11] != "NONE"
+                    and row[11] is not None
+                    and (row[11] == "NO" or row[11] == "LACK")
+                )
+                or (
+                    row[16] != "YES"
+                    and row[16] != "NONE"
+                    and row[16] is not None
+                    and (row[16] == "NO" or row[16] == "LACK")
+                )
+                or (
+                    row[38] != "YES"
+                    and row[38] != "NONE"
+                    and row[38] is not None
+                    and (row[38] == "NO" or row[38] == "LACK")
+                )
+                or (
+                    row[44] != "YES"
+                    and row[44] != "NONE"
+                    and row[44] is not None
+                    and (row[44] == "NO" or row[44] == "LACK")
+                )
+                or (
+                    row[53] != "YES"
+                    and row[53] != "NONE"
+                    and row[53] is not None
+                    and (row[53] == "NO" or row[53] == "LACK")
+                )
+            ):
+                folder1 = tree.insert(
+                    parent="",
+                    index=count,
+                    iid=count1,
+                    text=f"box",
+                    values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
+                    tag="baan",
+                )
             else:
-                folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
-                                      tag='one')
+                folder1 = tree.insert(
+                    parent="",
+                    index=count,
+                    iid=count1,
+                    text=f"box",
+                    values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
+                    tag="one",
+                )
         else:
-            if (row[11] != 'YES' and row[11] != 'NONE' and row[11] is not None and
-                (row[11] == 'NO' or row[11] == 'LACK')) or \
-                    (row[16] != 'YES' and row[16] != 'NONE' and row[16] is not None and
-                     (row[16] == 'NO' or row[16] == 'LACK')) or \
-                    (row[38] != 'YES' and row[38] != 'NONE' and row[38] is not None and
-                     (row[38] == 'NO' or row[38] == 'LACK')) or \
-                    (row[44] != 'YES' and row[44] != 'NONE' and row[44] is not None and
-                     (row[44] == 'NO' or row[44] == 'LACK')) or \
-                    (row[53] != 'YES' and row[53] != 'NONE' and row[53] is not None and
-                     (row[53] == 'NO' or row[53] == 'LACK')):
-                folder1 = tree.insert(parent='', index=count, iid=count1, text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'),
-                                      tag='baan0')
+            if (
+                (
+                    row[11] != "YES"
+                    and row[11] != "NONE"
+                    and row[11] is not None
+                    and (row[11] == "NO" or row[11] == "LACK")
+                )
+                or (
+                    row[16] != "YES"
+                    and row[16] != "NONE"
+                    and row[16] is not None
+                    and (row[16] == "NO" or row[16] == "LACK")
+                )
+                or (
+                    row[38] != "YES"
+                    and row[38] != "NONE"
+                    and row[38] is not None
+                    and (row[38] == "NO" or row[38] == "LACK")
+                )
+                or (
+                    row[44] != "YES"
+                    and row[44] != "NONE"
+                    and row[44] is not None
+                    and (row[44] == "NO" or row[44] == "LACK")
+                )
+                or (
+                    row[53] != "YES"
+                    and row[53] != "NONE"
+                    and row[53] is not None
+                    and (row[53] == "NO" or row[53] == "LACK")
+                )
+            ):
+                folder1 = tree.insert(
+                    parent="",
+                    index=count,
+                    iid=count1,
+                    text=f"box",
+                    values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
+                    tag="baan0",
+                )
             else:
-                folder1 = tree.insert(parent='', index=count, iid=str(count1), text=f'box',
-                                      values=(f'{row[0]}', f'{row[1]}', f'{row[2]}', f'{row[3]}'))
+                folder1 = tree.insert(
+                    parent="",
+                    index=count,
+                    iid=str(count1),
+                    text=f"box",
+                    values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
+                )
         count1 += 1
         if int(len(str(row[17]))) > 4:
-            tree.insert(folder1, index='end', iid=str(count1), text=f'',
-                        values=(f'{row[0]}', f'5DX I', f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
-                                f"{row[18]}", f"{row[19]}"),
-                        tags='DX')
+            tree.insert(
+                folder1,
+                index="end",
+                iid=str(count1),
+                text=f"",
+                values=(
+                    f"{row[0]}",
+                    f"5DX I",
+                    f"85%: {row[4]}, 95%: {row[6]}",
+                    "",
+                    f"{row[11]}",
+                    f"{row[18]}",
+                    f"{row[19]}",
+                ),
+                tags="DX",
+            )
         count1 += 2
         if int(len(str(row[22]))) > 4:
-            tree.insert(folder1, index='end', iid=str(count1), text=f'',
-                        values=(f'{row[0]}', f"5DX II", f"85%: {row[4]}, 95%: {row[6]}", "", f"{row[11]}",
-                                f"{row[23]}", f"{row[24]}"),
-                        tags='DX')
+            tree.insert(
+                folder1,
+                index="end",
+                iid=str(count1),
+                text=f"",
+                values=(
+                    f"{row[0]}",
+                    f"5DX II",
+                    f"85%: {row[4]}, 95%: {row[6]}",
+                    "",
+                    f"{row[11]}",
+                    f"{row[23]}",
+                    f"{row[24]}",
+                ),
+                tags="DX",
+            )
         count1 += 3
         # if row[27] != None and (int(row[15]) != 0 or int(row[14]) != 0):
-        if row[27] is not None and ((int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])):
-            tree.insert(folder1, index='end', iid=str(count1), text=f'',
-                        values=(f'{row[0]}', f"ViTrox Ex I", f"85%: {row[12]}, 95%: {row[14]}", "", f"{row[16]}",
-                                f"{row[28]}", f"{row[29]}"),
-                        tags='V')
+        if row[27] is not None and (
+            (int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])
+        ):
+            tree.insert(
+                folder1,
+                index="end",
+                iid=str(count1),
+                text=f"",
+                values=(
+                    f"{row[0]}",
+                    f"ViTrox Ex I",
+                    f"85%: {row[12]}, 95%: {row[14]}",
+                    "",
+                    f"{row[16]}",
+                    f"{row[28]}",
+                    f"{row[29]}",
+                ),
+                tags="V",
+            )
         count1 += 4
         # if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
-        if row[45] is not None and ((row[43] is not None and int(row[43]) > 0) or int(row[40])):
-            tree.insert(folder1, index='end', iid=str(count1), text=f'',
-                        values=(f'{row[0]}', f"ViTrox Ex II", f"85%: {row[40]}, 95%: {row[42]}", "", f"{row[44]}",
-                                f"{row[46]}", f"{row[47]}"),
-                        tags='V')
+        if row[45] is not None and (
+            (row[43] is not None and int(row[43]) > 0) or int(row[40])
+        ):
+            tree.insert(
+                folder1,
+                index="end",
+                iid=str(count1),
+                text=f"",
+                values=(
+                    f"{row[0]}",
+                    f"ViTrox Ex II",
+                    f"85%: {row[40]}, 95%: {row[42]}",
+                    "",
+                    f"{row[44]}",
+                    f"{row[46]}",
+                    f"{row[47]}",
+                ),
+                tags="V",
+            )
         count1 += 4
         # if row[54] != None and (int(row[50]) != 0 or int(row[49]) != 0):
-        if row[54] is not None and ((row[52] is not None and int(row[52]) > 0) or int(row[49])):
-            tree.insert(folder1, index='end', iid=str(count1), text=f'',
-                        values=(f'{row[0]}', f"ViTrox Ex III", f"85%: {row[49]}, 95%: {row[51]}", "", f"{row[53]}",
-                                f"{row[55]}", f"{row[56]}"),
-                        tags='V')
+        if row[54] is not None and (
+            (row[52] is not None and int(row[52]) > 0) or int(row[49])
+        ):
+            tree.insert(
+                folder1,
+                index="end",
+                iid=str(count1),
+                text=f"",
+                values=(
+                    f"{row[0]}",
+                    f"ViTrox Ex III",
+                    f"85%: {row[49]}, 95%: {row[51]}",
+                    "",
+                    f"{row[53]}",
+                    f"{row[55]}",
+                    f"{row[56]}",
+                ),
+                tags="V",
+            )
         count1 += 5
         # if row[31] != None and (int(row[37]) != 0 or int(row[39]) != 0):
-        if row[31] is not None and ((row[37] is not None and int(row[37]) > 0) or int(row[39])):
-            tree.insert(folder1, index='end', iid=str(count1), text=f'',
-                        values=(f'{row[0]}', f"ViTrox XXL I", f"85%: {row[39]}, 95%: {row[36]}", "", f"{row[38]}",
-                                f"{row[32]}", f"{row[33]}"),
-                        tags='V')
+        if row[31] is not None and (
+            (row[37] is not None and int(row[37]) > 0) or int(row[39])
+        ):
+            tree.insert(
+                folder1,
+                index="end",
+                iid=str(count1),
+                text=f"",
+                values=(
+                    f"{row[0]}",
+                    f"ViTrox XXL I",
+                    f"85%: {row[39]}, 95%: {row[36]}",
+                    "",
+                    f"{row[38]}",
+                    f"{row[32]}",
+                    f"{row[33]}",
+                ),
+                tags="V",
+            )
 
         tree.bind("<<TreeviewSelect>>", get_selected_row)
 
@@ -1155,10 +1421,14 @@ def refresh() -> None:
         count2 += 1
 
     obj_db.closeDB()
-# ---Scrollbar--------------
+    # ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(x=obj_config.scrollX, y=obj_config.scrollY, height=obj_config.scrollHeight)
+    vsb.place(
+        x=obj_config.scrollX, y=obj_config.scrollY, height=obj_config.scrollHeight
+    )
     tree.configure(yscrollcommand=vsb.set)
+
+
 # ---The End of Scrollbar---
 
 
@@ -1169,37 +1439,90 @@ def automatic_insert() -> None:
     :return: Fulfills the entry with data
     :rtype: None
     """
-    msg_box = tk.messagebox.askquestion(f"Automatic adding",
-                                        "In the \"Add\" tab you have a new record. Do you want to upload this now?")
-    if msg_box == 'yes':
+    msg_box = tk.messagebox.askquestion(
+        f"Automatic adding",
+        'In the "Add" tab you have a new record. Do you want to upload this now?',
+    )
+    if msg_box == "yes":
         reset()
         tab_control.select(tab2)
         flag_selected_record = False
         obj_automatic_updates = AutomaticUpdates()
         new_item = varNewRecord.get()
         if new_item in obj_automatic_updates.bildGrid():
-            item_name = obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe').replace('_', '/')
+            item_name = (
+                obj_automatic_updates.dicRecipe.get(varNewRecord.get())
+                .get("recipe")
+                .replace("_", "/")
+            )
             obj_new_item_ex.EI2.insert(0, f"{item_name}")
-            obj_new_item_ex.EI3.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('boardQty')}")
-            if obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3553S2EX':
-                obj_checkbox_menu_ex_0.insertFrame.grid(column=0, row=5 + 1, columnspan=10, sticky='W', padx=10, pady=10)
-                obj_checkbox_menu_ex_0.EI_0.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                obj_checkbox_menu_ex_0.EI_1.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+            obj_new_item_ex.EI3.insert(
+                0,
+                f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('boardQty')}",
+            )
+            if (
+                obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get("device")
+                == "V810-3553S2EX"
+            ):
+                obj_checkbox_menu_ex_0.insertFrame.grid(
+                    column=0, row=5 + 1, columnspan=10, sticky="W", padx=10, pady=10
+                )
+                obj_checkbox_menu_ex_0.EI_0.insert(
+                    0,
+                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}",
+                )
+                obj_checkbox_menu_ex_0.EI_1.insert(
+                    0,
+                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}",
+                )
                 flag_selected_record = True
-            if obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3483S2EX':
-                obj_checkbox_menu_ex_1.insertFrame.grid(column=0, row=5 + 2, columnspan=10, sticky='W', padx=10, pady=10)
-                obj_checkbox_menu_ex_1.EI_0.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                obj_checkbox_menu_ex_1.EI_1.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+            if (
+                obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get("device")
+                == "V810-3483S2EX"
+            ):
+                obj_checkbox_menu_ex_1.insertFrame.grid(
+                    column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
+                )
+                obj_checkbox_menu_ex_1.EI_0.insert(
+                    0,
+                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}",
+                )
+                obj_checkbox_menu_ex_1.EI_1.insert(
+                    0,
+                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}",
+                )
                 flag_selected_record = True
-            if obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-3163':
-                obj_checkbox_menu_ex_2.insertFrame.grid(column=0, row=5 + 3, columnspan=10, sticky='W', padx=10, pady=10)
-                obj_checkbox_menu_ex_2.EI_0.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                obj_checkbox_menu_ex_2.EI_1.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+            if (
+                obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get("device")
+                == "V810-3163"
+            ):
+                obj_checkbox_menu_ex_2.insertFrame.grid(
+                    column=0, row=5 + 3, columnspan=10, sticky="W", padx=10, pady=10
+                )
+                obj_checkbox_menu_ex_2.EI_0.insert(
+                    0,
+                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}",
+                )
+                obj_checkbox_menu_ex_2.EI_1.insert(
+                    0,
+                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}",
+                )
                 flag_selected_record = True
-            if obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('device') == 'V810-8120S2':
-                obj_checkbox_menu_xxl_0.insertFrame.grid(column=0, row=5 + 5, columnspan=10, sticky='W', padx=10, pady=10)
-                obj_checkbox_menu_xxl_0.EI_0.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}")
-                obj_checkbox_menu_xxl_0.EI_1.insert(0, f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}")
+            if (
+                obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get("device")
+                == "V810-8120S2"
+            ):
+                obj_checkbox_menu_xxl_0.insertFrame.grid(
+                    column=0, row=5 + 5, columnspan=10, sticky="W", padx=10, pady=10
+                )
+                obj_checkbox_menu_xxl_0.EI_0.insert(
+                    0,
+                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}",
+                )
+                obj_checkbox_menu_xxl_0.EI_1.insert(
+                    0,
+                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}",
+                )
                 flag_selected_record = True
 
         if flag_selected_record is True:
@@ -1219,19 +1542,21 @@ def tab_selected(event) -> None:
     obj_automatic_updates = AutomaticUpdates()
 
     if event.widget.tab(event.widget.select(), "text") == " --- Add --- ":
-
         add_frame.pack(expand=1, fill="both", padx=10, pady=10)
         obj_automatic_updates.bildGrid()
 
         for record in range(len(obj_automatic_updates.dicRecipe)):
-            radio_box = ttk.Radiobutton(add_frame, text=f"{obj_automatic_updates.dicRecipe.get(record).get('device')} - " 
-                                                      f"{obj_automatic_updates.dicRecipe.get(record).get('recipe')} "
-                                                      f"    [ {obj_automatic_updates.dicRecipe.get(record).get('boardQty')} ] - "
-                                                      f"Cycle Time: {obj_automatic_updates.dicRecipe.get(record).get('cycleTime')} s.",
-                                        style="AutomaticInsert.TRadiobutton",
-                                        variable=varNewRecord,
-                                        value=int(record),
-                                        command=automatic_insert)
+            radio_box = ttk.Radiobutton(
+                add_frame,
+                text=f"{obj_automatic_updates.dicRecipe.get(record).get('device')} - "
+                f"{obj_automatic_updates.dicRecipe.get(record).get('recipe')} "
+                f"    [ {obj_automatic_updates.dicRecipe.get(record).get('boardQty')} ] - "
+                f"Cycle Time: {obj_automatic_updates.dicRecipe.get(record).get('cycleTime')} s.",
+                style="AutomaticInsert.TRadiobutton",
+                variable=varNewRecord,
+                value=int(record),
+                command=automatic_insert,
+            )
             radio_box.grid(row=int(record), column=0, sticky=W)
         radio_box.invoke()
 
@@ -1241,28 +1566,30 @@ if __name__ == "__main__":
     obj_config = Config()
     ws = root.winfo_screenwidth()  # width of the screen
     hs = root.winfo_screenheight()  # height of the screen
-    x = (ws - int(obj_config.screenWidth))
-    y = (hs - int(obj_config.screenHeight))
-    windowPosition = f'{int(obj_config.screenWidth)}x{int(obj_config.screenHeight)}+{int(x)}+{int(y)}'
+    x = ws - int(obj_config.screenWidth)
+    y = hs - int(obj_config.screenHeight)
+    windowPosition = f"{int(obj_config.screenWidth)}x{int(obj_config.screenHeight)}+{int(x)}+{int(y)}"
     root.title(obj_config.title)
     root.geometry(windowPosition)
-    #root.resizable(0, 0)
-    #root.iconbitmap(obj_config.ico) # Icon for Win
-    photo = PhotoImage(file=obj_config.ico)# Icon for Linux
-    root.iconphoto(False, photo)# Incon for Linux
+    # root.resizable(0, 0)
+    # root.iconbitmap(obj_config.ico) # Icon for Win
+    photo = PhotoImage(file=obj_config.ico)  # Icon for Linux
+    root.iconphoto(False, photo)  # Incon for Linux
 
     root.configure(background=obj_config.bgColor)
 
-    #--- Main View ---
+    # --- Main View ---
 
     main_frame_view = ttk.LabelFrame(root, text=" Main View ")
     main_frame_view.pack(expand=1, fill="both", padx=10, pady=10)
 
     l_item = Label(main_frame_view, text=f"", bg="#333333", fg="#999999", pady="1")
-    l_item.config(font=("Arial", 12, 'bold'))
+    l_item.config(font=("Arial", 12, "bold"))
     l_item.grid(row=0, column=0, sticky=W)
-    l_item_amount = Label(main_frame_view, text=f"", bg="#333333", fg="#999999", pady="1")
-    l_item_amount.config(font=("Arial", 12, 'bold'))
+    l_item_amount = Label(
+        main_frame_view, text=f"", bg="#333333", fg="#999999", pady="1"
+    )
+    l_item_amount.config(font=("Arial", 12, "bold"))
     l_item_amount.grid(row=0, column=2, sticky=W)
     l_qty = Label(main_frame_view, text=f"", bg="#333333", fg="#555555", pady="2")
     l_qty.config(font=("Arial", 10))
@@ -1283,7 +1610,9 @@ if __name__ == "__main__":
     l_v849_prog.configure(font=("Arial", 10))
     l_v849_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    l_v849_scan_time_l = Label(tab_main1, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v849_scan_time_l = Label(
+        tab_main1, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v849_scan_time_l.configure(font=("Arial", 10))
     l_v849_scan_time_l.grid(row=1, column=0, sticky=E)
     l_v849_scan_time = Label(tab_main1, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
@@ -1338,7 +1667,9 @@ if __name__ == "__main__":
     l_v817_prog.configure(font=("Arial", 10))
     l_v817_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    l_v817_scan_time_l = Label(tab_main2, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v817_scan_time_l = Label(
+        tab_main2, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v817_scan_time_l.configure(font=("Arial", 10))
     l_v817_scan_time_l.grid(row=1, column=0, sticky=E)
     l_v817_scan_time = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
@@ -1393,20 +1724,28 @@ if __name__ == "__main__":
     l_v8103163_prog.configure(font=("Arial", 10))
     l_v8103163_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    l_v8103163_scan_time_l = Label(tab_main3, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103163_scan_time_l = Label(
+        tab_main3, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103163_scan_time_l.configure(font=("Arial", 10))
     l_v8103163_scan_time_l.grid(row=1, column=0, sticky=E)
-    l_v8103163_scan_time = Label(tab_main3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103163_scan_time = Label(
+        tab_main3, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103163_scan_time.configure(font=("Arial", 10))
     l_v8103163_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    l_v8103163_uph85_l = Label(tab_main3, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103163_uph85_l = Label(
+        tab_main3, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103163_uph85_l.configure(font=("Arial", 10))
     l_v8103163_uph85_l.grid(row=2, column=0, sticky=E)
     l_v8103163_uph85 = Label(tab_main3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v8103163_uph85.configure(font=("Arial", 10))
     l_v8103163_uph85.grid(row=2, column=1, columnspan=5, sticky=W)
-    l_v8103163_uph95_l = Label(tab_main3, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103163_uph95_l = Label(
+        tab_main3, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103163_uph95_l.configure(font=("Arial", 10))
     l_v8103163_uph95_l.grid(row=3, column=0, sticky=E)
     l_v8103163_uph95 = Label(tab_main3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
@@ -1434,120 +1773,180 @@ if __name__ == "__main__":
     l_v8103163_epi.configure(font=("Arial", 10))
     l_v8103163_epi.grid(row=4, column=5, sticky=W)
 
-    l_v8103163_comment_l = Label(tab_main3, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103163_comment_l = Label(
+        tab_main3, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103163_comment_l.configure(font=("Arial", 10))
     l_v8103163_comment_l.grid(row=5, column=0, sticky=E)
-    l_v8103163_comment = Label(tab_main3, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103163_comment = Label(
+        tab_main3, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103163_comment.configure(font=("Arial", 10, "italic"))
     l_v8103163_comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
     tab_main4 = ttk.Frame(tab_control_main)
     tab_control_main.add(tab_main4, text=" V810-3483S2EX ")
 
-    l_v8103483s2ex_prog = Label(tab_main4, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    l_v8103483s2ex_prog = Label(
+        tab_main4, text=f"", bg="#444444", fg="#FFFFFF", pady="1"
+    )
     l_v8103483s2ex_prog.configure(font=("Arial", 10))
     l_v8103483s2ex_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    l_v8103483s2ex_scan_time_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_scan_time_l = Label(
+        tab_main4, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103483s2ex_scan_time_l.configure(font=("Arial", 10))
     l_v8103483s2ex_scan_time_l.grid(row=1, column=0, sticky=E)
-    l_v8103483s2ex_scan_time = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_scan_time = Label(
+        tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103483s2ex_scan_time.configure(font=("Arial", 10))
     l_v8103483s2ex_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    l_v8103483s2ex_uph85_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_uph85_l = Label(
+        tab_main4, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103483s2ex_uph85_l.configure(font=("Arial", 10))
     l_v8103483s2ex_uph85_l.grid(row=2, column=0, sticky=E)
-    l_v8103483s2ex_uph85 = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_uph85 = Label(
+        tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103483s2ex_uph85.configure(font=("Arial", 10))
     l_v8103483s2ex_uph85.grid(row=2, column=1, columnspan=5, sticky=W)
-    l_v8103483s2ex_uph95_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_uph95_l = Label(
+        tab_main4, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103483s2ex_uph95_l.configure(font=("Arial", 10))
     l_v8103483s2ex_uph95_l.grid(row=3, column=0, sticky=E)
-    l_v8103483s2ex_uph95 = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_uph95 = Label(
+        tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103483s2ex_uph95.configure(font=("Arial", 10))
     l_v8103483s2ex_uph95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-    L_v8103483s2_ex_baan_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    L_v8103483s2_ex_baan_l = Label(
+        tab_main4, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     L_v8103483s2_ex_baan_l.configure(font=("Arial", 10))
     L_v8103483s2_ex_baan_l.grid(row=4, column=0, sticky=E)
-    l_v8103483s2ex_baan = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_baan = Label(
+        tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103483s2ex_baan.configure(font=("Arial", 10))
     l_v8103483s2ex_baan.grid(row=4, column=1, sticky=W)
 
-    l_v8103483s2ex_lc_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_lc_l = Label(
+        tab_main4, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103483s2ex_lc_l.configure(font=("Arial", 10))
     l_v8103483s2ex_lc_l.grid(row=4, column=2, sticky=E)
     l_v8103483s2ex_lc = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v8103483s2ex_lc.configure(font=("Arial", 10))
     l_v8103483s2ex_lc.grid(row=4, column=3, sticky=W)
 
-    l_v8103483s2ex_epi_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_epi_l = Label(
+        tab_main4, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103483s2ex_epi_l.configure(font=("Arial", 10))
     l_v8103483s2ex_epi_l.grid(row=4, column=4, sticky=E)
-    l_v8103483s2ex_epi = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_epi = Label(
+        tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103483s2ex_epi.configure(font=("Arial", 10))
     l_v8103483s2ex_epi.grid(row=4, column=5, sticky=W)
 
-    l_v8103483s2ex_comment_l = Label(tab_main4, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103483s2ex_comment_l = Label(
+        tab_main4, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103483s2ex_comment_l.configure(font=("Arial", 10))
     l_v8103483s2ex_comment_l.grid(row=5, column=0, sticky=E)
-    l_v8103483s2ex_comment = Label(tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103483s2ex_comment = Label(
+        tab_main4, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103483s2ex_comment.configure(font=("Arial", 10, "italic"))
     l_v8103483s2ex_comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
     tab_main5 = ttk.Frame(tab_control_main)
     tab_control_main.add(tab_main5, text=" V810-3483S2EX ")
 
-    l_v8103553s2ex_prog = Label(tab_main5, text=f"", bg="#444444", fg="#FFFFFF", pady="1")
+    l_v8103553s2ex_prog = Label(
+        tab_main5, text=f"", bg="#444444", fg="#FFFFFF", pady="1"
+    )
     l_v8103553s2ex_prog.configure(font=("Arial", 10))
     l_v8103553s2ex_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    l_v8103553s2ex_scan_time_l = Label(tab_main5, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103553s2ex_scan_time_l = Label(
+        tab_main5, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103553s2ex_scan_time_l.configure(font=("Arial", 10))
     l_v8103553s2ex_scan_time_l.grid(row=1, column=0, sticky=E)
-    l_v8103553s2ex_scan_time = Label(tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103553s2ex_scan_time = Label(
+        tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103553s2ex_scan_time.configure(font=("Arial", 10))
     l_v8103553s2ex_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    l_v8103553s2ex_uph85_l = Label(tab_main5, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103553s2ex_uph85_l = Label(
+        tab_main5, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103553s2ex_uph85_l.configure(font=("Arial", 10))
     l_v8103553s2ex_uph85_l.grid(row=2, column=0, sticky=E)
-    l_v8103553s2ex_uph85 = Label(tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103553s2ex_uph85 = Label(
+        tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103553s2ex_uph85.configure(font=("Arial", 10))
     l_v8103553s2ex_uph85.grid(row=2, column=1, columnspan=5, sticky=W)
-    l_v8103553s2ex_uph95_l = Label(tab_main5, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103553s2ex_uph95_l = Label(
+        tab_main5, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103553s2ex_uph95_l.configure(font=("Arial", 10))
     l_v8103553s2ex_uph95_l.grid(row=3, column=0, sticky=E)
-    l_v8103553s2ex_uph95 = Label(tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103553s2ex_uph95 = Label(
+        tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103553s2ex_uph95.configure(font=("Arial", 10))
     l_v8103553s2ex_uph95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-    l_v8103553s2ex_baan_l = Label(tab_main5, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103553s2ex_baan_l = Label(
+        tab_main5, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103553s2ex_baan_l.configure(font=("Arial", 10))
     l_v8103553s2ex_baan_l.grid(row=4, column=0, sticky=E)
-    l_v8103553s2ex_baan = Label(tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103553s2ex_baan = Label(
+        tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103553s2ex_baan.configure(font=("Arial", 10))
     l_v8103553s2ex_baan.grid(row=4, column=1, sticky=W)
 
-    l_v8103553s2ex_lc_l = Label(tab_main5, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103553s2ex_lc_l = Label(
+        tab_main5, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103553s2ex_lc_l.configure(font=("Arial", 10))
     l_v8103553s2ex_lc_l.grid(row=4, column=2, sticky=E)
     l_v8103553s2ex_lc = Label(tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v8103553s2ex_lc.configure(font=("Arial", 10))
     l_v8103553s2ex_lc.grid(row=4, column=3, sticky=W)
 
-    l_v8103553s2ex_epi_l = Label(tab_main5, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103553s2ex_epi_l = Label(
+        tab_main5, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103553s2ex_epi_l.configure(font=("Arial", 10))
     l_v8103553s2ex_epi_l.grid(row=4, column=4, sticky=E)
-    l_v8103553s2ex_epi = Label(tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103553s2ex_epi = Label(
+        tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103553s2ex_epi.configure(font=("Arial", 10))
     l_v8103553s2ex_epi.grid(row=4, column=5, sticky=W)
 
-    l_v8103553s2ex_comment_l = Label(tab_main5, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8103553s2ex_comment_l = Label(
+        tab_main5, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8103553s2ex_comment_l.configure(font=("Arial", 10))
     l_v8103553s2ex_comment_l.grid(row=5, column=0, sticky=E)
-    l_v8103553s2ex_comment = Label(tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8103553s2ex_comment = Label(
+        tab_main5, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8103553s2ex_comment.configure(font=("Arial", 10, "italic"))
     l_v8103553s2ex_comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
@@ -1558,57 +1957,73 @@ if __name__ == "__main__":
     l_v8108120s2_prog.configure(font=("Arial", 10))
     l_v8108120s2_prog.grid(row=0, column=0, columnspan=6, sticky=W)
 
-    l_v8108120s2_scan_time_l = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8108120s2_scan_time_l = Label(
+        tab_main6, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8108120s2_scan_time_l.configure(font=("Arial", 10))
     l_v8108120s2_scan_time_l.grid(row=1, column=0, sticky=E)
-    l_v8108120s2_scan_time = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8108120s2_scan_time = Label(
+        tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8108120s2_scan_time.configure(font=("Arial", 10))
     l_v8108120s2_scan_time.grid(row=1, column=1, columnspan=5, sticky=W)
 
-    l_v8108120s2_uph85_l = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8108120s2_uph85_l = Label(
+        tab_main6, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8108120s2_uph85_l.configure(font=("Arial", 10))
     l_v8108120s2_uph85_l.grid(row=2, column=0, sticky=E)
-    l_v8108120s2_uph85 = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8108120s2_uph85 = Label(
+        tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     l_v8108120s2_uph85.configure(font=("Arial", 10))
     l_v8108120s2_uph85.grid(row=2, column=1, columnspan=5, sticky=W)
-    l_v8108120s2_uph95_l = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8108120s2_uph95_l = Label(
+        tab_main6, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8108120s2_uph95_l.configure(font=("Arial", 10))
     l_v8108120s2_uph95_l.grid(row=3, column=0, sticky=E)
     l_v8108120s2uph95 = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v8108120s2uph95.configure(font=("Arial", 10))
     l_v8108120s2uph95.grid(row=3, column=1, columnspan=5, sticky=W)
 
-    l_v8108120s2_baan_l = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8108120s2_baan_l = Label(
+        tab_main6, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     l_v8108120s2_baan_l.configure(font=("Arial", 10))
     l_v8108120s2_baan_l.grid(row=4, column=0, sticky=E)
     l_v8108120s2_baan = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v8108120s2_baan.configure(font=("Arial", 10))
     l_v8108120s2_baan.grid(row=4, column=1, sticky=W)
 
-    LV8108120S2LCL = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV8108120S2LCL.configure(font=("Arial", 10))
-    LV8108120S2LCL.grid(row=4, column=2, sticky=E)
-    LV8108120S2LC = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV8108120S2LC.configure(font=("Arial", 10))
-    LV8108120S2LC.grid(row=4, column=3, sticky=W)
+    l_v8108120s2lc_l = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8108120s2lc_l.configure(font=("Arial", 10))
+    l_v8108120s2lc_l.grid(row=4, column=2, sticky=E)
+    l_v8108120s2_lc = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8108120s2_lc.configure(font=("Arial", 10))
+    l_v8108120s2_lc.grid(row=4, column=3, sticky=W)
 
-    LV8108120S2EPIL = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
-    LV8108120S2EPIL.configure(font=("Arial", 10))
-    LV8108120S2EPIL.grid(row=4, column=4, sticky=E)
-    LV8108120S2EPI = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
-    LV8108120S2EPI.configure(font=("Arial", 10))
-    LV8108120S2EPI.grid(row=4, column=5, sticky=W)
+    l_v8108120s2epi_l = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
+    l_v8108120s2epi_l.configure(font=("Arial", 10))
+    l_v8108120s2epi_l.grid(row=4, column=4, sticky=E)
+    l_v8108120s2_epi = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    l_v8108120s2_epi.configure(font=("Arial", 10))
+    l_v8108120s2_epi.grid(row=4, column=5, sticky=W)
 
-    LV8108120S2CommentL = Label(tab_main6, text=f"", bg="#444444", fg="#666666", pady="1")
+    LV8108120S2CommentL = Label(
+        tab_main6, text=f"", bg="#444444", fg="#666666", pady="1"
+    )
     LV8108120S2CommentL.configure(font=("Arial", 10))
     LV8108120S2CommentL.grid(row=5, column=0, sticky=E)
-    LV8108120S2Comment = Label(tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
+    LV8108120S2Comment = Label(
+        tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
+    )
     LV8108120S2Comment.configure(font=("Arial", 10))
     LV8108120S2Comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
     tab_control_main.grid(row=1, column=0, columnspan=5, sticky=W)
 
-    #------------------- The End Main View ----------------------------
+    # ------------------- The End Main View ----------------------------
 
     tab_control = ttk.Notebook(root)
 
@@ -1635,60 +2050,94 @@ if __name__ == "__main__":
     v810_3163.pack(expand=1, fill="both", padx=10, pady=10)
 
     l_comparison = Label(tab_3163, text=f"test", bg="#333333", fg="#999999", pady="1")
-    l_comparison.config(font=("Arial", 12, 'bold'))
+    l_comparison.config(font=("Arial", 12, "bold"))
     l_comparison.grid(row=0, column=0, sticky=W)
 
-    #add_frame.pack_Forget()
+    # add_frame.pack_Forget()
     varNewRecord = IntVar()
-
 
     objStyles = Styles(root)
 
-    #--- INSERT ---
+    # --- INSERT ---
 
     obj_new_item_ex = NewItem(tab2, root)
     obj_new_item_ex.mainFrameInsert(" Insert Main ")
 
     obj_new_item_ex.checkboxTitle(" ViTrox Ex ", 4)
-    obj_checkbox_menu_ex_0 = CheckboxMenu(tab2, root, obj_new_item_ex.checkboxFrame, " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ")
+    obj_checkbox_menu_ex_0 = CheckboxMenu(
+        tab2,
+        root,
+        obj_new_item_ex.checkboxFrame,
+        " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ",
+    )
     obj_checkbox_menu_ex_0.checkboxMenu("V810-3553S2EX", 1)
 
-    obj_checkbox_menu_ex_1 = CheckboxMenu(tab2, root, obj_new_item_ex.checkboxFrame, " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ")
+    obj_checkbox_menu_ex_1 = CheckboxMenu(
+        tab2,
+        root,
+        obj_new_item_ex.checkboxFrame,
+        " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ",
+    )
     obj_checkbox_menu_ex_1.checkboxMenu("V810-3483S2EX", 2)
 
-    obj_checkbox_menu_ex_2 = CheckboxMenu(tab2, root, obj_new_item_ex.checkboxFrame, " Insert ViTrox V810 Ex I ( V810-3163 ) ")
+    obj_checkbox_menu_ex_2 = CheckboxMenu(
+        tab2,
+        root,
+        obj_new_item_ex.checkboxFrame,
+        " Insert ViTrox V810 Ex I ( V810-3163 ) ",
+    )
     obj_checkbox_menu_ex_2.checkboxMenu("V810-3163", 3)
 
     objNewItemXXL = NewItem(tab2, root)
     objNewItemXXL.checkboxTitle(" ViTrox XXL ", 5)
 
-    obj_checkbox_menu_xxl_0 = CheckboxMenu(tab2, root, objNewItemXXL.checkboxFrame, " Insert ViTrox V810 XXL I ( V810-8120S2 ) ")
+    obj_checkbox_menu_xxl_0 = CheckboxMenu(
+        tab2,
+        root,
+        objNewItemXXL.checkboxFrame,
+        " Insert ViTrox V810 XXL I ( V810-8120S2 ) ",
+    )
     obj_checkbox_menu_xxl_0.checkboxMenu("V810-8120S2", 1)
 
     objNewItem5DX = NewItem(tab2, root)
     objNewItem5DX.checkboxTitle(" 5DX ", 6)
 
-    obj_checkbox_menu_5DX_0 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX I ( V849 ) ")
+    obj_checkbox_menu_5DX_0 = CheckboxMenu(
+        tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX I ( V849 ) "
+    )
     obj_checkbox_menu_5DX_0.checkboxMenu("V849", 1)
     obj_checkbox_menu_5DX_0.alignmentTime()
 
-    obj_Checkbox_menu_5dx_1 = CheckboxMenu(tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX II ( V817 ) ")
+    obj_Checkbox_menu_5dx_1 = CheckboxMenu(
+        tab2, root, objNewItem5DX.checkboxFrame, " Insert 5DX II ( V817 ) "
+    )
     obj_Checkbox_menu_5dx_1.checkboxMenu("V817", 2)
     obj_Checkbox_menu_5dx_1.alignmentTime()
 
-    BI1 = ttk.Button(obj_new_item_ex.mainFrameInsert, text="Insert", width=35, command=insert_button, cursor="hand2")
+    BI1 = ttk.Button(
+        obj_new_item_ex.mainFrameInsert,
+        text="Insert",
+        width=35,
+        command=insert_button,
+        cursor="hand2",
+    )
     BI1.grid(row=1, column=0, columnspan=2, pady=2)
-    BI2 = ttk.Button(obj_new_item_ex.mainFrameInsert, text="Reset", width=15, command=reset, cursor="hand2")
+    BI2 = ttk.Button(
+        obj_new_item_ex.mainFrameInsert,
+        text="Reset",
+        width=15,
+        command=reset,
+        cursor="hand2",
+    )
     BI2.grid(row=1, column=2, columnspan=2, pady=2)
-    #--- The End INSERT ---
+    # --- The End INSERT ---
 
+    # --- Automatic Upadate ---
 
-    #--- Automatic Upadate ---
+    # objAutomaticUpdates = AutomaticUpdates()
+    # varNewRecord = IntVar()
 
-    #objAutomaticUpdates = AutomaticUpdates()
-    #varNewRecord = IntVar()
-
-    #for record in range(len(objAutomaticUpdates.bildGrid())):
+    # for record in range(len(objAutomaticUpdates.bildGrid())):
     #    radioBox = ttk.Radiobutton(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('device')} - "
     #                                        f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')} "
     #                                        f"    [ {objAutomaticUpdates.bildGrid().get(record).get('boardQty')} ] - "
@@ -1698,25 +2147,36 @@ if __name__ == "__main__":
     #                                    value=int(record),
     #                                    command=automatic_insert)
     #    radioBox.grid(row=int(record), column=0, sticky=W)
-    #radioBox.invoke()
+    # radioBox.invoke()
 
-    #--- The End of Automatic Update ---
+    # --- The End of Automatic Update ---
 
-    #--- Search ---
+    # --- Search ---
     objCMSearch = ContextualMenu(root)
-    #ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
-    ESearch = Entry(tab1, relief="solid", textvariable=objCMSearch.captureEntry,
-                    borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
-    ESearch.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
+    # ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
+    ESearch = Entry(
+        tab1,
+        relief="solid",
+        textvariable=objCMSearch.captureEntry,
+        borderwidth=1,
+        width=40,
+        bg="#212121",
+        fg="#FFFFFF",
+    )
+    ESearch.config(
+        font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
+    )
     ESearch.grid(row=0, column=0, pady=1)
-    #ESearch.bind("<Button-3>", doPopupSearch)
+    # ESearch.bind("<Button-3>", doPopupSearch)
     ESearch.bind("<Button-3>", objCMSearch.doPopup)
     objCMSearch.setEntry(ESearch)
     BSearch = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
     BSearch.grid(row=0, column=1, pady=1)
-    BSearchR = ttk.Button(tab1, text="Refresh", width=10, command=refresh, cursor="exchange")
+    BSearchR = ttk.Button(
+        tab1, text="Refresh", width=10, command=refresh, cursor="exchange"
+    )
     BSearchR.grid(row=0, column=2, pady=1)
-    #--- The End Search ---
+    # --- The End Search ---
 
     tree = ttk.Treeview(tab1)
 
