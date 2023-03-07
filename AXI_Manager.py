@@ -467,7 +467,7 @@ def get_selected_row(event) -> None:
         obj_new_item_ex.EI2.insert(0, f"{row[1]}")
         obj_new_item_ex.EI3.insert(0, f"{row[3]}")
 
-        if row[54] != None and ((row[52] != None and int(row[52]) > 0) or int(row[49])):
+        if row[54] is not None and ((row[52] is not None and int(row[52]) > 0) or int(row[49])):
             obj_checkbox_menu_ex_0.EI_0.insert(0, f"{row[54]}")
             obj_checkbox_menu_ex_0.EI_1.insert(0, f"{int(row[52])}")
             obj_checkbox_menu_ex_0.CI_2.current(switch(row[55]))
@@ -478,7 +478,7 @@ def get_selected_row(event) -> None:
                 column=0, row=5 + 1, columnspan=10, sticky="W", padx=10, pady=10
             )
 
-        if row[45] != None and ((row[43] != None and int(row[43]) > 0) or int(row[40])):
+        if row[45] is not None and ((row[43] is not None and int(row[43]) > 0) or int(row[40])):
             obj_checkbox_menu_ex_1.EI_0.insert(0, f"{row[45]}")
             obj_checkbox_menu_ex_1.EI_1.insert(0, f"{int(row[43])}")
             obj_checkbox_menu_ex_1.CI_2.current(switch(row[46]))
@@ -489,7 +489,7 @@ def get_selected_row(event) -> None:
                 column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
             )
 
-        if row[27] != None and ((row[15] != None and int(row[15]) > 0) or int(row[12])):
+        if row[27] is not None and ((row[15] is not None and int(row[15]) > 0) or int(row[12])):
             obj_checkbox_menu_ex_2.EI_0.insert(0, f"{row[27]}")
             obj_checkbox_menu_ex_2.EI_1.insert(0, f"{int(row[15])}")
             obj_checkbox_menu_ex_2.CI_2.current(switch(row[28]))
@@ -500,7 +500,7 @@ def get_selected_row(event) -> None:
                 column=0, row=5 + 3, columnspan=10, sticky="W", padx=10, pady=10
             )
 
-        if row[31] != None and ((row[37] != None and int(row[37]) > 0) or int(row[39])):
+        if row[31] is not None and ((row[37] is not None and int(row[37]) > 0) or int(row[39])):
             obj_checkbox_menu_xxl_0.EI_0.insert(0, f"{row[31]}")
             obj_checkbox_menu_xxl_0.EI_1.insert(0, f"{int(row[37])}")
             obj_checkbox_menu_xxl_0.CI_2.current(switch(row[32]))
@@ -511,8 +511,8 @@ def get_selected_row(event) -> None:
                 column=0, row=5 + 5, columnspan=10, sticky="W", padx=10, pady=10
             )
 
-        if (row[17] != None and row[17] != "") and (
-            (row[5] != None and int(row[5]) > 0) or int(row[4])
+        if (row[17] is not None and row[17] != "") and (
+            (row[5] is not None and int(row[5]) > 0) or int(row[4])
         ):
             obj_checkbox_menu_5DX_0.EI_0.insert(0, f"{row[17]}")
             obj_checkbox_menu_5DX_0.EI_1.insert(0, f"{int(row[10])}")
@@ -527,8 +527,8 @@ def get_selected_row(event) -> None:
                 column=0, row=5 + 1, columnspan=10, sticky="W", padx=10, pady=10
             )
 
-        if (row[22] != None and row[22] != "") and (
-            (row[5] != None and int(row[5]) > 0) or int(row[4])
+        if (row[22] is not None and row[22] != "") and (
+            (row[5] is not None and int(row[5]) > 0) or int(row[4])
         ):
             obj_Checkbox_menu_5dx_1.EI_0.insert(0, f"{row[22]}")
             obj_Checkbox_menu_5dx_1.EI_1.insert(0, f"{int(row[10])}")
