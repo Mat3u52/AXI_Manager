@@ -61,8 +61,8 @@ def animate_image(
         canvas.move(ai_image, x_pos, 0)
         ai_root.update()
         time.sleep(refresh_sec)
-        imgPos = canvas.coords(ai_image)
-        al, bl = imgPos
+        img_pos = canvas.coords(ai_image)
+        al, bl = img_pos
         if al < abs(x_pos):
             x_pos = -x_pos
         if bl < abs(y_pos):
@@ -694,27 +694,20 @@ def get_selected_row(event) -> None:
 
             l_v817_comment.configure(text=f"{row[25]}")
 
-            canvasFrame2 = Label(tab_main2)
-            canvasFrame2.grid(row=0, column=6, rowspan=6, sticky=W)
-            canvas2 = tk.Canvas(canvasFrame2, width=170, height=170)
+            canvas_frame2 = Label(tab_main2)
+            canvas_frame2.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas2 = tk.Canvas(canvas_frame2, width=170, height=170)
             canvas2.configure(bg="#444444")
             canvas2.pack(expand=False)
 
-            # if os.path.isfile('5DX/images/V817/' + row[22] + '.png') == False:
-            if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png") == False:
-                # if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png') == False:
-                # resize_image('5DX/images/V817/' + row[22] + '.jpg')
+            if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png") is False:
                 resize_image(obj_config.pathImg5DX2 + row[22] + ".jpg")
-                # resize_image('Y:/5DX/images/V817/' + row[22] + '.jpg')
 
-            if flag_animation == False:
+            if flag_animation is False:
                 tab_control_main.select(tab_main2)
-                if flag_click == False:
+                if flag_click is False:
                     try:
-                        # if os.path.isfile('5DX/images/V817/' + row[22] + '.png'):
                         if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png"):
-                            # if os.path.isfile('Y:/5DX/images/V817/' + row[22] + '.png'):
-                            # animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
                             animate_image(
                                 root,
                                 canvas2,
@@ -722,10 +715,8 @@ def get_selected_row(event) -> None:
                                 min_movement,
                                 obj_config.pathImg5DX2 + row[22] + ".png",
                             )
-                            # animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
                         else:
                             try:
-                                # animate_image(root, canvas2, minMovement, minMovement, '5DX/images/V817/' + row[22] + '.png')
                                 animate_image(
                                     root,
                                     canvas2,
@@ -733,23 +724,17 @@ def get_selected_row(event) -> None:
                                     min_movement,
                                     obj_config.pathImg5DX2 + row[22] + ".png",
                                 )
-                                # animate_image(root, canvas2, minMovement, minMovement, 'Y:/5DX/images/V817/' + row[22] + '.png')
-
                             except FileNotFoundError:
                                 pass
-                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
 
-            # imgBoard2 = '5DX/images/V817/'+row[22]+'.png'
-            imgBoard2 = obj_config.pathImg5DX2 + row[22] + ".png"
-            # imgBoard2 = 'Y:/5DX/images/V817/'+row[22]+'.png'
-            if os.path.isfile(imgBoard2):
-                img2 = tk.PhotoImage(file=imgBoard2)
+            img_board2 = obj_config.pathImg5DX2 + row[22] + ".png"
+            if os.path.isfile(img_board2):
+                img2 = tk.PhotoImage(file=img_board2)
             else:
-                # img2 = tk.PhotoImage(file='board.png')
                 img2 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas2.create_image(85, 85, image=img2)
 
@@ -758,7 +743,7 @@ def get_selected_row(event) -> None:
         # ---The End get_selected_row 5DX V817---
         # ---get_selected_row V810-3163--
         # if len(str(row[27])) > 4:
-        if row[27] != None and (
+        if row[27] is not None and (
             (int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])
         ):
             tab_control_main.add(tab_main3, text=" V810-3163 ")
@@ -804,18 +789,16 @@ def get_selected_row(event) -> None:
 
             l_v8103163_comment.configure(text=f"{row[30]}")
 
-            canvasFrame3 = Label(tab_main3)
-            canvasFrame3.grid(row=0, column=6, rowspan=6, sticky=W)
-            canvas3 = tk.Canvas(canvasFrame3, width=170, height=170)
+            canvas_frame3 = Label(tab_main3)
+            canvas_frame3.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas3 = tk.Canvas(canvas_frame3, width=170, height=170)
             canvas3.configure(bg="#444444")
             canvas3.pack(expand=False)
 
-            if flag_animation == False:
+            if flag_animation is False:
                 tab_control_main.select(tab_main3)
-                if flag_click == False:
+                if flag_click is False:
                     try:
-                        # animate_image(root, canvas3, minMovement, minMovement, 'X:/images/V810-3163/' + row[27] + '.png')
-                        # animate_image(root, canvas3, minMovement, minMovement, 'images/V810-3163/' + row[27] + '.png')
                         animate_image(
                             root,
                             canvas3,
@@ -823,19 +806,15 @@ def get_selected_row(event) -> None:
                             min_movement,
                             obj_config.pathImgV8103163 + row[27] + ".png",
                         )
-                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
 
-            # imgBoard3 = 'images/V810-3163/' + row[27] + '.png'
-            imgBoard3 = obj_config.pathImgV8103163 + row[27] + ".png"
-            # imgBoard3 = 'X:/images/V810-3163/' + row[27] + '.png'
-            if os.path.isfile(imgBoard3):
-                img3 = tk.PhotoImage(file=imgBoard3)
+            img_board3 = obj_config.pathImgV8103163 + row[27] + ".png"
+            if os.path.isfile(img_board3):
+                img3 = tk.PhotoImage(file=img_board3)
             else:
-                # img3 = tk.PhotoImage(file='board.png')
                 img3 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas3.create_image(85, 85, image=img3)
 
@@ -845,8 +824,7 @@ def get_selected_row(event) -> None:
         # ---The End get_selected_row V810-3163---
 
         # ---get_selected_row V810-V3483S2EX---
-        # if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
-        if row[45] != None and ((row[43] != None and int(row[43]) > 0) or int(row[40])):
+        if row[45] is not None and ((row[43] is not None and int(row[43]) > 0) or int(row[40])):
             tab_control_main.add(tab_main4, text=" V810-3483S2EX ")
             l_v8103483s2ex_prog.configure(text=f"{row[45]}")
             l_v8103483s2ex_scan_time_l.configure(text=f"Scan Time:")
