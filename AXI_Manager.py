@@ -1038,20 +1038,18 @@ def get_selected_row(event) -> None:
             else:
                 l_v8108120s2_epi.configure(text=f"{row[33]}", fg="#D44339")
 
-            LV8108120S2Comment.configure(text=f"{row[34]}")
+            l_v8108120s2_comment.configure(text=f"{row[34]}")
 
-            canvasFrame6 = Label(tab_main6)
-            canvasFrame6.grid(row=0, column=6, rowspan=6, sticky=W)
-            canvas6 = tk.Canvas(canvasFrame6, width=170, height=170)
+            canvas_frame6 = Label(tab_main6)
+            canvas_frame6.grid(row=0, column=6, rowspan=6, sticky=W)
+            canvas6 = tk.Canvas(canvas_frame6, width=170, height=170)
             canvas6.configure(bg="#444444")
             canvas6.pack(expand=False)
 
-            if flag_animation == False:
+            if flag_animation is False:
                 tab_control_main.select(tab_main6)
-                # animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
-                if flag_click == False:
+                if flag_click is False:
                     try:
-                        # animate_image(root, canvas6, minMovement, minMovement, 'images/V810-8120S2/' + row[31] + '.png')
                         animate_image(
                             root,
                             canvas6,
@@ -1059,18 +1057,13 @@ def get_selected_row(event) -> None:
                             min_movement,
                             obj_config.pathImgV8108120S2 + row[31] + ".png",
                         )
-                        # animate_image(root, canvas6, minMovement, minMovement, 'X:/images/V810-8120S2/' + row[31] + '.png')
-                    # except _tkinter.TclError:
                     except tk.TclError:
                         pass
 
                 flag_animation = True
-
-            # imgBoard6 = 'images/V810-8120S2/' + row[31] + '.png'
-            imgBoard6 = obj_config.pathImgV8108120S2 + row[31] + ".png"
-            # imgBoard6 = 'X:/images/V810-8120S2/' + row[31] + '.png'
-            if os.path.isfile(imgBoard6):
-                img6 = tk.PhotoImage(file=imgBoard6)
+            img_board6 = obj_config.pathImgV8108120S2 + row[31] + ".png"
+            if os.path.isfile(img_board6):
+                img6 = tk.PhotoImage(file=img_board6)
             else:
                 img6 = tk.PhotoImage(file=obj_config.pathImgDefault)
             canvas6.create_image(85, 85, image=img6)
@@ -1079,7 +1072,7 @@ def get_selected_row(event) -> None:
             tab_control_main.hide(tab_main6)
         # --- The End get_selected_row V810-8120S2 ---
 
-        if flag_click == True:
+        if flag_click is True:
             flag_click = False
             if content[1] == "5DX I":
                 tab_control_main.select(tab_main1)
@@ -1096,8 +1089,6 @@ def get_selected_row(event) -> None:
 
         root.mainloop()
 
-    # refresh()
-
 
 def search() -> None:
     """
@@ -1110,10 +1101,8 @@ def search() -> None:
     tree.selection_remove(tree.focus())
     for record in tree.get_children():
         content = tree.item(record, "values")
-        # if content[1] != ESearch.get():
         if content[1].find(ESearch.get()) >= 0:
             pass
-            # print(content[1].find(ESearch.get()))
         else:
             tree.delete(record)
 
@@ -1282,7 +1271,7 @@ def refresh() -> None:
                 tags="DX",
             )
         count1 += 3
-        # if row[27] != None and (int(row[15]) != 0 or int(row[14]) != 0):
+
         if row[27] is not None and (
             (int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])
         ):
@@ -1303,7 +1292,7 @@ def refresh() -> None:
                 tags="V",
             )
         count1 += 4
-        # if row[45] != None and (int(row[41]) != 0 or int(row[40]) != 0):
+
         if row[45] is not None and (
             (row[43] is not None and int(row[43]) > 0) or int(row[40])
         ):
@@ -1324,7 +1313,7 @@ def refresh() -> None:
                 tags="V",
             )
         count1 += 4
-        # if row[54] != None and (int(row[50]) != 0 or int(row[49]) != 0):
+
         if row[54] is not None and (
             (row[52] is not None and int(row[52]) > 0) or int(row[49])
         ):
@@ -1345,7 +1334,7 @@ def refresh() -> None:
                 tags="V",
             )
         count1 += 5
-        # if row[31] != None and (int(row[37]) != 0 or int(row[39]) != 0):
+
         if row[31] is not None and (
             (row[37] is not None and int(row[37]) > 0) or int(row[39])
         ):
@@ -1374,7 +1363,7 @@ def refresh() -> None:
         count2 += 1
 
     obj_db.closeDB()
-    # ---Scrollbar--------------
+# ---Scrollbar--------------
     vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
     vsb.place(
         x=obj_config.scrollX, y=obj_config.scrollY, height=obj_config.scrollHeight
@@ -1521,9 +1510,9 @@ if __name__ == "__main__":
     hs = root.winfo_screenheight()  # height of the screen
     x = ws - int(obj_config.screenWidth)
     y = hs - int(obj_config.screenHeight)
-    windowPosition = f"{int(obj_config.screenWidth)}x{int(obj_config.screenHeight)}+{int(x)}+{int(y)}"
+    window_position = f"{int(obj_config.screenWidth)}x{int(obj_config.screenHeight)}+{int(x)}+{int(y)}"
     root.title(obj_config.title)
-    root.geometry(windowPosition)
+    root.geometry(window_position)
     # root.resizable(0, 0)
     # root.iconbitmap(obj_config.ico) # Icon for Win
     photo = PhotoImage(file=obj_config.ico)  # Icon for Linux
@@ -1968,11 +1957,11 @@ if __name__ == "__main__":
     )
     LV8108120S2CommentL.configure(font=("Arial", 10))
     LV8108120S2CommentL.grid(row=5, column=0, sticky=E)
-    LV8108120S2Comment = Label(
+    l_v8108120s2_comment = Label(
         tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
     )
-    LV8108120S2Comment.configure(font=("Arial", 10))
-    LV8108120S2Comment.grid(row=5, column=1, columnspan=5, sticky=W)
+    l_v8108120s2_comment.configure(font=("Arial", 10))
+    l_v8108120s2_comment.grid(row=5, column=1, columnspan=5, sticky=W)
 
     tab_control_main.grid(row=1, column=0, columnspan=5, sticky=W)
 
@@ -2085,28 +2074,8 @@ if __name__ == "__main__":
     BI2.grid(row=1, column=2, columnspan=2, pady=2)
     # --- The End INSERT ---
 
-    # --- Automatic Upadate ---
-
-    # objAutomaticUpdates = AutomaticUpdates()
-    # varNewRecord = IntVar()
-
-    # for record in range(len(objAutomaticUpdates.bildGrid())):
-    #    radioBox = ttk.Radiobutton(tab3, text=f"{objAutomaticUpdates.bildGrid().get(record).get('device')} - "
-    #                                        f"{objAutomaticUpdates.bildGrid().get(record).get('recipe')} "
-    #                                        f"    [ {objAutomaticUpdates.bildGrid().get(record).get('boardQty')} ] - "
-    #                                        f"Cycle Time: {objAutomaticUpdates.bildGrid().get(record).get('cycleTime')} s.",
-    #                                    style="AutomaticInsert.TRadiobutton",
-    #                                    variable=varNewRecord,
-    #                                    value=int(record),
-    #                                    command=automatic_insert)
-    #    radioBox.grid(row=int(record), column=0, sticky=W)
-    # radioBox.invoke()
-
-    # --- The End of Automatic Update ---
-
     # --- Search ---
     objCMSearch = ContextualMenu(root)
-    # ESearch = Entry(tab1, relief="solid", borderwidth=1, width=40, bg="#212121", fg="#FFFFFF")
     ESearch = Entry(
         tab1,
         relief="solid",
