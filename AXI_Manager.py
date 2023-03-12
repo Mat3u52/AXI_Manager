@@ -1101,7 +1101,7 @@ def search() -> None:
     tree.selection_remove(tree.focus())
     for record in tree.get_children():
         content = tree.item(record, "values")
-        if content[1].find(ESearch.get()) >= 0:
+        if content[1].find(e_search.get()) >= 0:
             pass
         else:
             tree.delete(record)
@@ -1116,7 +1116,7 @@ def refresh() -> None:
     """
     tree.selection_clear()
     tree.selection_remove(tree.focus())
-    ESearch.delete(0, END)
+    e_search.delete(0, END)
     for record in tree.get_children():
         tree.delete(record)
 
@@ -2056,48 +2056,47 @@ if __name__ == "__main__":
     obj_Checkbox_menu_5dx_1.checkboxMenu("V817", 2)
     obj_Checkbox_menu_5dx_1.alignmentTime()
 
-    BI1 = ttk.Button(
+    button_insert = ttk.Button(
         obj_new_item_ex.mainFrameInsert,
         text="Insert",
         width=35,
         command=insert_button,
         cursor="hand2",
     )
-    BI1.grid(row=1, column=0, columnspan=2, pady=2)
-    BI2 = ttk.Button(
+    button_insert.grid(row=1, column=0, columnspan=2, pady=2)
+    button_reset = ttk.Button(
         obj_new_item_ex.mainFrameInsert,
         text="Reset",
         width=15,
         command=reset,
         cursor="hand2",
     )
-    BI2.grid(row=1, column=2, columnspan=2, pady=2)
+    button_reset.grid(row=1, column=2, columnspan=2, pady=2)
     # --- The End INSERT ---
 
     # --- Search ---
-    objCMSearch = ContextualMenu(root)
-    ESearch = Entry(
+    obj_search = ContextualMenu(root)
+    e_search = Entry(
         tab1,
         relief="solid",
-        textvariable=objCMSearch.captureEntry,
+        textvariable=obj_search.captureEntry,
         borderwidth=1,
         width=40,
         bg="#212121",
         fg="#FFFFFF",
     )
-    ESearch.config(
+    e_search.config(
         font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
     )
-    ESearch.grid(row=0, column=0, pady=1)
-    # ESearch.bind("<Button-3>", doPopupSearch)
-    ESearch.bind("<Button-3>", objCMSearch.doPopup)
-    objCMSearch.setEntry(ESearch)
-    BSearch = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
-    BSearch.grid(row=0, column=1, pady=1)
-    BSearchR = ttk.Button(
+    e_search.grid(row=0, column=0, pady=1)
+    e_search.bind("<Button-3>", obj_search.doPopup)
+    obj_search.setEntry(e_search)
+    b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
+    b_search.grid(row=0, column=1, pady=1)
+    b_search_r = ttk.Button(
         tab1, text="Refresh", width=10, command=refresh, cursor="exchange"
     )
-    BSearchR.grid(row=0, column=2, pady=1)
+    b_search_r.grid(row=0, column=2, pady=1)
     # --- The End Search ---
 
     tree = ttk.Treeview(tab1)
