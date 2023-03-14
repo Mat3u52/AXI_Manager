@@ -28,7 +28,6 @@ class DBConnect:
 
     def select_recipe(self, device: str):
         device = device
-        # self.dbCursor.execute("SELECT "+device+" FROM mk_diary ORDER BY ITEM ASC")
         self.dbCursor.execute(
             "SELECT " + device + " FROM mk_diary ORDER BY " + device + " ASC"
         )
