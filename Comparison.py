@@ -3,13 +3,13 @@ from DBConnect import DBConnect
 
 
 class Comparison:
-    def __init__(self, dir_name: str) -> None:
+    def __init__(self, dir_name: str, db_name: str) -> None:
         self.dir_name: str = dir_name
+        self.db_name: str = db_name
 
     def __repr__(self):
         return self.dir_name
 
-    # @staticmethod
     def comparison_error(self) -> bool:
         if os.path.exists(self.dir_name):
             return True
@@ -26,7 +26,8 @@ class Comparison:
 
 
 if __name__ == "__main__":
-    obj_comparison = Comparison("/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/")
+    obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
+                                db_name='VITROXI_PROG')
     if obj_comparison.comparison_error():
         # print(obj_comparison.recipes_list())
         obj_DBConnect = DBConnect()
