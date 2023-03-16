@@ -4,6 +4,16 @@ from DBConnect import DBConnect
 
 class Comparison:
     def __init__(self, dir_name: str, db_name: str) -> None:
+        """
+        Constructor for Comparison class. Define tow main variables.
+
+        :param dir_name: Given path the png/img files.
+        :type dir_name: str
+        :param db_name: Given name of the machine type from DB
+        :type db_name: str
+        :return: Init class
+        :rtype: None
+        """
         self.dir_name: str = dir_name
         self.db_name: str = db_name
 
@@ -15,6 +25,13 @@ class Comparison:
             return True
         else:
             return False
+
+    def recipes_db(self) -> set[str]:
+        inventory: set[str] = set()
+        for program_db in DBConnect.select_recipe('VITROXI_PROG'):
+            inventory.add(program_db[0])
+
+        return inventory
 
     def recipes_list(self) -> set[str]:
         inventory: set[str] = set()
