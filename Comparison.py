@@ -26,26 +26,29 @@ class Comparison:
         """
         return self.dir_name
 
-    def comparison_error(self) -> bool:
-        if os.path.exists(self.dir_name):
-            return True
-        else:
-            return False
+    # def comparison_error(self) -> bool:
+    #     if os.path.exists(self.dir_name):
+    #         return True
+    #     else:
+    #         return False
 
     def recipes_db(self) -> set[str]:
         inventory: set[str] = set()
-        for program_db in DBConnect().select_recipe(self.db_name):
-            inventory.add(program_db[0])
-
-        return inventory
+        try:
+            for program_db in DBConnect().select_recipe(self.db_name):
+                inventory.add(program_db[0])
+            return inventory
+        except Exception:
+            return inventory
 
     def recipes_list(self) -> set[str]:
         inventory: set[str] = set()
-
-        for prog in os.listdir(self.dir_name):
-            inventory.add(prog[0:-4])
-
-        return inventory
+        try:
+            for prog in os.listdir(self.dir_name):
+                inventory.add(prog[0:-4])
+            return inventory
+        except FileNotFoundError:
+            return inventory
 
 
 if __name__ == "__main__":
@@ -53,9 +56,7 @@ if __name__ == "__main__":
                                 db_name="VITROXI_PROG")
 
     # png to db
-
     print(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()))
     # db to png
-
     print(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()))
 
