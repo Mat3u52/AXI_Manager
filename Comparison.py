@@ -26,13 +26,13 @@ class Comparison:
         """
         return self.dir_name
 
-    # def comparison_error(self) -> bool:
-    #     if os.path.exists(self.dir_name):
-    #         return True
-    #     else:
-    #         return False
-
     def recipes_db(self) -> set[str]:
+        """
+        Gives set of recipes name from database.
+
+        :return: Recipes name in set
+        :rtype: set
+        """
         inventory: set[str] = set()
         try:
             for program_db in DBConnect().select_recipe(self.db_name):
@@ -42,6 +42,12 @@ class Comparison:
             return inventory
 
     def recipes_list(self) -> set[str]:
+        """
+        Gives set of recipes name from files in directory.
+
+        :return: Recipes name in set
+        :rtype: set
+        """
         inventory: set[str] = set()
         try:
             for prog in os.listdir(self.dir_name):
