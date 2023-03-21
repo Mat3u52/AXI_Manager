@@ -16,6 +16,7 @@ from CheckboxMenu import CheckboxMenu
 from NewItem import NewItem
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
+from Comparison import Comparison
 
 min_movement: int = -1
 
@@ -1990,10 +1991,14 @@ if __name__ == "__main__":
     tab_3163 = ttk.Frame(v810_3163)
     v810_3163.add(tab_3163, text=" --- V810-3163 --- ")
     v810_3163.pack(expand=1, fill="both", padx=10, pady=10)
-
-    l_comparison = Label(tab_3163, text=f"test", bg="#333333", fg="#999999", pady="1")
-    l_comparison.config(font=("Arial", 12, "bold"))
-    l_comparison.grid(row=0, column=0, sticky=W)
+    obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
+                                db_name="VITROXI_PROG")
+    row_count = 0
+    for element in obj_comparison.recipes_list().difference(obj_comparison.recipes_db()):
+        l_comparison = Label(tab_3163, text=f"{element}", bg="#333333", fg="#999999", pady="1")
+        l_comparison.config(font=("Arial", 12, "bold"))
+        l_comparison.grid(row=row_count, column=0, sticky=W)
+        row_count += 1
 
     # add_frame.pack_Forget()
     varNewRecord = IntVar()
