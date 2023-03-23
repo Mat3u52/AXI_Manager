@@ -1391,20 +1391,20 @@ def automatic_insert() -> None:
         tab_control.select(tab2)
         flag_selected_record = False
         obj_automatic_updates = AutomaticUpdates()
-        new_item = varNewRecord.get()
+        new_item = var_new_record.get()
         if new_item in obj_automatic_updates.bildGrid():
             item_name = (
-                obj_automatic_updates.dicRecipe.get(varNewRecord.get())
+                obj_automatic_updates.dicRecipe.get(var_new_record.get())
                 .get("recipe")
                 .replace("_", "/")
             )
             obj_new_item_ex.EI2.insert(0, f"{item_name}")
             obj_new_item_ex.EI3.insert(
                 0,
-                f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('boardQty')}",
+                f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('boardQty')}",
             )
             if (
-                obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get("device")
+                obj_automatic_updates.dicRecipe.get(var_new_record.get()).get("device")
                 == "V810-3553S2EX"
             ):
                 obj_checkbox_menu_ex_0.insertFrame.grid(
@@ -1412,15 +1412,15 @@ def automatic_insert() -> None:
                 )
                 obj_checkbox_menu_ex_0.EI_0.insert(
                     0,
-                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}",
+                    f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('recipe')}",
                 )
                 obj_checkbox_menu_ex_0.EI_1.insert(
                     0,
-                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}",
+                    f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('cycleTime')}",
                 )
                 flag_selected_record = True
             if (
-                obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get("device")
+                obj_automatic_updates.dicRecipe.get(var_new_record.get()).get("device")
                 == "V810-3483S2EX"
             ):
                 obj_checkbox_menu_ex_1.insertFrame.grid(
@@ -1428,15 +1428,15 @@ def automatic_insert() -> None:
                 )
                 obj_checkbox_menu_ex_1.EI_0.insert(
                     0,
-                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}",
+                    f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('recipe')}",
                 )
                 obj_checkbox_menu_ex_1.EI_1.insert(
                     0,
-                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}",
+                    f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('cycleTime')}",
                 )
                 flag_selected_record = True
             if (
-                obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get("device")
+                obj_automatic_updates.dicRecipe.get(var_new_record.get()).get("device")
                 == "V810-3163"
             ):
                 obj_checkbox_menu_ex_2.insertFrame.grid(
@@ -1444,15 +1444,15 @@ def automatic_insert() -> None:
                 )
                 obj_checkbox_menu_ex_2.EI_0.insert(
                     0,
-                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}",
+                    f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('recipe')}",
                 )
                 obj_checkbox_menu_ex_2.EI_1.insert(
                     0,
-                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}",
+                    f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('cycleTime')}",
                 )
                 flag_selected_record = True
             if (
-                obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get("device")
+                obj_automatic_updates.dicRecipe.get(var_new_record.get()).get("device")
                 == "V810-8120S2"
             ):
                 obj_checkbox_menu_xxl_0.insertFrame.grid(
@@ -1460,16 +1460,16 @@ def automatic_insert() -> None:
                 )
                 obj_checkbox_menu_xxl_0.EI_0.insert(
                     0,
-                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('recipe')}",
+                    f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('recipe')}",
                 )
                 obj_checkbox_menu_xxl_0.EI_1.insert(
                     0,
-                    f"{obj_automatic_updates.dicRecipe.get(varNewRecord.get()).get('cycleTime')}",
+                    f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('cycleTime')}",
                 )
                 flag_selected_record = True
 
         if flag_selected_record is True:
-            obj_automatic_updates.updateDic(varNewRecord.get())
+            obj_automatic_updates.updateDic(var_new_record.get())
             add_frame.pack_forget()
             for widget in add_frame.winfo_children():
                 widget.destroy()
@@ -1496,7 +1496,7 @@ def tab_selected(event) -> None:
                 f"    [ {obj_automatic_updates.dicRecipe.get(record).get('boardQty')} ] - "
                 f"Cycle Time: {obj_automatic_updates.dicRecipe.get(record).get('cycleTime')} s.",
                 style="AutomaticInsert.TRadiobutton",
-                variable=varNewRecord,
+                variable=var_new_record,
                 value=int(record),
                 command=automatic_insert,
             )
@@ -1992,10 +1992,15 @@ if __name__ == "__main__":
     v810_3163.add(tab_3163, text=" --- V810-3163 --- ")
     v810_3163.pack(expand=1, fill="both", padx=10, pady=10)
 
-    v810_to_db = ttk.Notebook(v810_3163)
-    tab_3163_to_db = ttk.Frame(v810_to_db)
-    v810_to_db.add(tab_3163_to_db, text=" --- V810 to DB --- ")
-    v810_to_db.pack(expand=1, fill="both", padx=25, pady=25)
+    db_to_v810 = ttk.Notebook(v810_3163)
+    tab_3163_to_db = ttk.Frame(db_to_v810)
+    db_to_v810.add(tab_3163_to_db, text=" --- V810 to DB --- ")
+    db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+
+    #v810_to_db = ttk.Notebook(v810_3163)
+    tab_db_to_3163 = ttk.Frame(db_to_v810)
+    db_to_v810.add(tab_db_to_3163, text=" --- DB to V810 --- ")
+    db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
 
     obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
                                 db_name="VITROXI_PROG")
@@ -2007,9 +2012,9 @@ if __name__ == "__main__":
         row_count += 1
 
     # add_frame.pack_Forget()
-    varNewRecord = IntVar()
+    var_new_record = IntVar()
 
-    objStyles = Styles(root)
+    obj_styles = Styles(root)
 
     # --- INSERT ---
 
