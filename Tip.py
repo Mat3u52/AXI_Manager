@@ -71,7 +71,7 @@ class Tip:
         :rtype: None
         """
 
-        # self.canvas_frame = Label(self.mainFrameView)
+        # self.canvas_frame = Label(self.main_frame_view)
         # self.canvas_frame.configure(bg="#333333", bd=0)
         # self.canvas_frame.grid(row=0, column=7, sticky=W)
         # self.canvas_frame = tk.Canvas(self.canvas_frame, width=120, height=30)
