@@ -72,7 +72,7 @@ def animate_image(
             break
 
 
-# print(animation_image.__doc__)
+# print(animate_image.__doc__)
 
 
 def resize_image(path: str) -> None:
@@ -1504,6 +1504,10 @@ def tab_selected(event) -> None:
         radio_box.invoke()
 
 
+def insert_from_comparison() -> None:
+    pass
+
+
 def tab_comparison(event) -> None:
     """
     The function has refreshing the list of comparison.
@@ -1511,12 +1515,21 @@ def tab_comparison(event) -> None:
     :return: Show the list of comparison
     :rtype: None
     """
+    var_idle_record = IntVar()
     row_count = 0
     for element in obj_comparison.recipes_list().difference(obj_comparison.recipes_db()):
-        l_comparison = Label(tab_3163_to_db, text=f"{element}", bg="#444444", fg="#999999", pady="1")
-        l_comparison.config(font=("Arial", 12, "bold"))
-        l_comparison.grid(row=row_count, column=0, sticky=W)
+        radio_box = ttk.Radiobutton(
+            tab_3163_to_db,
+            text=f"{element}",
+            style="AutomaticInsert.TRadiobutton",
+            variable=var_idle_record,
+            value=int(row_count),
+            command=insert_from_comparison,
+        )
+        # pyperclip.copy(var_idle_record.get())
+        radio_box.grid(row=int(row_count), column=0, sticky=W)
         row_count += 1
+    radio_box.invoke()
 
     row_count = 0
     for element in obj_comparison.recipes_db().difference(obj_comparison.recipes_list()):
