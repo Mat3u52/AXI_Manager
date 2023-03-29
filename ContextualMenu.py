@@ -24,8 +24,8 @@ class ContextualMenu:
         except AttributeError:
             pass
 
-    def setEntry(self, entryFild) -> None:
-        self.entryFild = entryFild
+    def setEntry(self, entry_fild) -> None:
+        self.entry_fild = entry_fild
 
     def _paste(self) -> None:
-        self.entryFild.insert(tk.END, pyperclip.paste())
+        self.entry_fild.insert(tk.END, pyperclip.paste())
