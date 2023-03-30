@@ -1504,8 +1504,10 @@ def tab_selected(event) -> None:
         radio_box.invoke()
 
 
-def insert_from_comparison() -> None:
-    pass
+def insert_from_comparison(element) -> None:
+    pyperclip.copy(element)
+    # pass
+    # pyperclip.copy(radio_box.get())
 
 
 def tab_comparison(event) -> None:
@@ -1524,9 +1526,9 @@ def tab_comparison(event) -> None:
             style="AutomaticInsert.TRadiobutton",
             variable=var_idle_record,
             value=int(row_count),
-            command=insert_from_comparison,
+            command=insert_from_comparison(element),
         )
-        # pyperclip.copy(var_idle_record.get())
+        # pyperclip.copy(element)
         radio_box.grid(row=int(row_count), column=0, sticky=W)
         row_count += 1
     radio_box.invoke()
