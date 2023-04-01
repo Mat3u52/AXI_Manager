@@ -9,9 +9,11 @@ class FormValidation:
         self.uph85 = 0
         self.uph95 = 0
 
-    def validatorItem(self, item: str, itemAmount: int) -> None:
         self.item = ""
         self.itemAmount = 0
+
+    def validatorItem(self, item: str, itemAmount: int) -> None:
+
         try:
             if item != '' and itemAmount != '' and\
                     itemAmount != '' and int(itemAmount) > 0:
@@ -20,13 +22,14 @@ class FormValidation:
                 self.itemAmount = int(itemAmount)
                 self.flagInit = True
 
+                print("OK - validator_item")
             else:
                 self.flagInit = False
                 messagebox.showwarning("Warning!", "Lack of Item or Qty.")
         except ValueError:
             messagebox.showwarning("Warning!", "Wrong value.")
 
-    def switch(self, x):
+    def switch(self, x) -> int:
         match self.x:
             case "NONE":
                 return 0
@@ -122,14 +125,15 @@ class FormValidation:
         else:
             return 0
 
-    def _convertUPHToTime(self, uph, qtyPCB):
-        if uph > 0 and qtyPCB > 0:
+    def _convertUPHToTime(self, uph, qty_pcb):
+        if uph > 0 and qty_pcb > 0:
             self.uph = uph
-            self.qtyPCB = qtyPCB
+            self.qtyPCB = qty_pcb
             self.cycleTime = ((3600 / float(self.uph)) / int(self.qtyPCB))
             return self.cycleTime
         else:
             return 0
+
 
     def cleanUpItem(self, ei2, ei3):
         if (self.flagInit is True) and ei2 and ei3:
@@ -162,3 +166,34 @@ class FormValidation:
                 self.ei6.delete(0, END)
                 self.ei7.delete(0, END)
                 self.ei8.delete(0, END)
+
+
+class TestFormValidation:
+    def test__convert_uph_to_time(self) -> None:
+        # given
+        uph: float = 60
+        qty_pcb: int = 1
+
+        # when
+        result = FormValidation._convertUPHToTime(self, uph, qty_pcb)
+
+        # then
+        assert result
+
+    def test__convert_uph_to_time_error(self) -> None:
+        assert not FormValidation._convertUPHToTime(self, 0, 0)
+        assert not FormValidation._convertUPHToTime(self, 0, 1)
+        assert not FormValidation._convertUPHToTime(self, 1, 0)
+        # assert not FormValidation._convertUPHToTime(self, 1, 1)
+
+    def test_validator_item(self, capsys) -> None:
+        item: str = "test"
+        item_amount: int = 1
+
+        FormValidation.validatorItem(self, item, item_amount)
+        out, err = capsys.readouterr()
+
+        assert out == 'OK - validator_item\n'
+
+
+
