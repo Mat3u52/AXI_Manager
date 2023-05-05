@@ -55,15 +55,35 @@ class Styles:
 
         # ---Notebook Style---
         self.noteStyler = ttk.Style()
-        self.noteStyler.configure("TNotebook", background='#555555', borderwidth=0)
-        self.noteStyler.configure("TNotebook.Tab", background='#555555', foreground='#FFFFFF', lightcolor='#FFFFFF',
-                             borderwidth=1)
-        self.noteStyler.configure("TFrame", background='#444444', foreground='#FFFFFF', borderwidth=1)
+        self.noteStyler.configure("TNotebook",
+                                  background='#555555',
+                                  borderwidth=0)
 
-        self.style.configure("TCombobox", fieldbackground="#333333", background="#302928", borderwidth=0)
+        self.noteStyler.configure("TNotebook.Tab",
+                                  background='#555555',
+                                  foreground='#FFFFFF',
+                                  lightcolor='#FFFFFF',
+                                  borderwidth=1)
+        self.noteStyler.configure("TFrame",
+                                  background='#444444',
+                                  foreground='#FFFFFF',
+                                  borderwidth=1)
+
+        self.style.configure("TCombobox",
+                             fieldbackground="#333333",
+                             background="#302928",
+                             borderwidth=0)
+
         self.root.option_add("*TCombobox*Listbox*Background", "#302928")
         self.root.option_add("*TCombobox*Listbox*Foreground", "#AAAAAA")
 
-        self.style.configure("Treeview", background="#000000", foreground="#FFFFFF", rowheight=40, filedbackground="#777777")
-        self.style.map('Treeview', background=[('selected', '#46464A'), ('active', '#000000')])
+        self.style.configure("Treeview",
+                             background="#000000",
+                             foreground="#FFFFFF",
+                             rowheight=40,
+                             filedbackground="#777777")
+
+        self.style.map('Treeview',
+                       background=[('selected', '#46464A'),
+                                   ('active', '#000000')])
 
