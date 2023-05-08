@@ -1504,11 +1504,12 @@ def tab_selected(event) -> None:
         radio_box.invoke()
 
 
-def insert_from_comparison(element) -> None:
-    pyperclip.copy(element)
-    # print(row_count.get())
+def insert_from_comparison() -> None:
+    # pyperclip.copy(element)
+    print("test")
     # pass
     # pyperclip.copy(radio_box.get())
+
 
 def tab_comparison(event) -> None:
     """
@@ -1526,7 +1527,7 @@ def tab_comparison(event) -> None:
             style="AutomaticInsert.TRadiobutton",
             variable=var_idle_record,
             value=int(row_count),
-            command=insert_from_comparison(element),
+            # command=insert_from_comparison(element),
         )
         # pyperclip.copy(element)
         radio_box.grid(row=int(row_count), column=0, sticky=W)
@@ -1540,7 +1541,7 @@ def tab_comparison(event) -> None:
         l_comparison.grid(row=row_count, column=0, sticky=W)
         l_comparison_order = Label(tab_db_to_3163, text=f"{row_count}", bg="#444444", fg="#999999", pady="1")
         l_comparison_order.grid(row=row_count, column=1, sticky=W)
-        l_comparison_button = Button(tab_db_to_3163, text=f"{row_count}", command=insert_from_comparison(element))
+        l_comparison_button = Button(tab_db_to_3163, text=f"{row_count}", command=insert_from_comparison)
         l_comparison_button.grid(row=row_count, column=2, sticky=W)
         row_count += 1
 
