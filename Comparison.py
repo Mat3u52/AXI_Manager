@@ -1,5 +1,6 @@
 import os
 from DBConnect import DBConnect
+from dataclasses import dataclass
 
 
 class Comparison:
@@ -26,6 +27,7 @@ class Comparison:
         """
         return self.dir_name
 
+    @dataclass(frozen=True)
     def recipes_db(self) -> set[str]:
         """
         Gives set of recipes name from database.
@@ -41,6 +43,7 @@ class Comparison:
         except Exception:
             return inventory
 
+    @dataclass(frozen=True)
     def recipes_list(self) -> set[str]:
         """
         Gives set of recipes name from files in directory.
