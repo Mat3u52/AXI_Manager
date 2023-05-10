@@ -26,7 +26,7 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
-    def select_recipe(self, device: str):
+    def select_recipe(self, device: str) -> tuple:
         device = device
         self.dbCursor.execute(
             "SELECT " + device + " FROM mk_diary ORDER BY " + device + " ASC"
@@ -34,7 +34,7 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
-    def selectSearchID(self, ID):
+    def selectSearchID(self, ID: str) -> tuple:
         self.ID = ID
         self.dbCursor.execute(
             "SELECT * FROM mk_diary WHERE ITEM_ID LIKE " + self.ID + ""
@@ -42,7 +42,7 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
-    def selectSearchItem(self, item):
+    def selectSearchItem(self, item: str) -> tuple:
         self.item = item
         self.dbCursor.execute(
             "SELECT * FROM mk_diary WHERE ITEM LIKE %s LIMIT 1", (self.item)
