@@ -111,7 +111,7 @@ class DBConnect:
         self.dbCursor.execute(sql, val)
         self.db.commit()
 
-    def switch(self, x):
+    def switch(self, x) -> int:
         self.x = x
         match self.x:
             case "NONE":
@@ -165,7 +165,7 @@ class DBConnect:
             and initStatus
             and initItem
             and initAmount
-            and (initStatusDevice == True or initStatus5DX == True)
+            and (initStatusDevice is True or initStatus5DX is True)
         ):
             self.device = initDevice
             self.status = initStatus
