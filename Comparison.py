@@ -1,9 +1,11 @@
 import os
 from DBConnect import DBConnect
-from dataclasses import dataclass
+
+# from dataclasses import dataclass
 
 
 class Comparison:
+    # @dataclass(frozen=True)
     def __init__(self, dir_name: str, db_name: str) -> None:
         """
         Constructor for Comparison class. Define tow main variables.
@@ -27,7 +29,6 @@ class Comparison:
         """
         return self.dir_name
 
-    @dataclass(frozen=True)
     def recipes_db(self) -> set[str]:
         """
         Gives set of recipes name from database.
@@ -43,7 +44,6 @@ class Comparison:
         except Exception:
             return inventory
 
-    @dataclass(frozen=True)
     def recipes_list(self) -> set[str]:
         """
         Gives set of recipes name from files in directory.
