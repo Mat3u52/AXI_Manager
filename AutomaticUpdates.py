@@ -4,6 +4,12 @@ from Config import Config
 
 class AutomaticUpdates(Config):
     def __init__(self) -> None:
+        """
+        Initialization of the class.
+
+        :return: elementary variables
+        :rtype: None
+        """
         Config.__init__(self)
         #super().__init__()
         self.id = 0
