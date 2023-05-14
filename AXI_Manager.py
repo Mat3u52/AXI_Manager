@@ -1506,7 +1506,7 @@ def tab_selected(event) -> None:
 
 def insert_from_comparison() -> None:
     # pyperclip.copy(element)
-    print("test")
+    print(var_idle_record.get())
     # pass
     # pyperclip.copy(radio_box.get())
 
@@ -1518,7 +1518,7 @@ def tab_comparison(event) -> None:
     :return: Show the list of comparison
     :rtype: None
     """
-    var_idle_record = IntVar()
+    # var_idle_record = IntVar()
     row_count = 0
     for element in obj_comparison.recipes_list().difference(obj_comparison.recipes_db()):
         radio_box = ttk.Radiobutton(
@@ -1527,7 +1527,7 @@ def tab_comparison(event) -> None:
             style="AutomaticInsert.TRadiobutton",
             variable=var_idle_record,
             value=int(row_count),
-            # command=insert_from_comparison(element),
+            command=insert_from_comparison,
         )
         # pyperclip.copy(element)
         radio_box.grid(row=int(row_count), column=0, sticky=W)
@@ -1541,13 +1541,18 @@ def tab_comparison(event) -> None:
         l_comparison.grid(row=row_count, column=0, sticky=W)
         l_comparison_order = Label(tab_db_to_3163, text=f"{row_count}", bg="#444444", fg="#999999", pady="1")
         l_comparison_order.grid(row=row_count, column=1, sticky=W)
-        l_comparison_button = Button(tab_db_to_3163, text=f"{row_count}", command=insert_from_comparison)
+        l_comparison_button = Button(tab_db_to_3163,
+                                     text=f"{row_count}",
+                                     command=lambda: insert_from_comparison)
         l_comparison_button.grid(row=row_count, column=2, sticky=W)
         row_count += 1
 
 
 if __name__ == "__main__":
     root = tk.Tk()
+
+    var_idle_record = IntVar() # comparison variable
+
     obj_config = Config()
     ws = root.winfo_screenwidth()  # width of the screen
     hs = root.winfo_screenheight()  # height of the screen
