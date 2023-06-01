@@ -1507,6 +1507,7 @@ def tab_selected(event) -> None:
 def insert_from_comparison() -> None:
     # pyperclip.copy(element)
     print(var_idle_record.get())
+    print(list_of_compare_recipes[var_idle_record.get()])
     # pass
     # pyperclip.copy(radio_box.get())
 
@@ -1529,6 +1530,7 @@ def tab_comparison(event) -> None:
             value=int(row_count),
             command=insert_from_comparison,
         )
+        list_of_compare_recipes.append(element)
         # pyperclip.copy(element)
         radio_box.grid(row=int(row_count), column=0, sticky=W)
         row_count += 1
@@ -1552,6 +1554,7 @@ if __name__ == "__main__":
     root = tk.Tk()
 
     var_idle_record = IntVar() # comparison variable
+    list_of_compare_recipes: list = [] # comparison list
 
     obj_config = Config()
     ws = root.winfo_screenwidth()  # width of the screen
