@@ -48,6 +48,23 @@ class Styles:
                                    'map': {
                                        'background': [('selected', '#444444'), ('active', '#777777')]
                                    }
+                               },
+
+                               'Comparison.TRadiobutton': {
+                                   'configure': {
+                                       'indicatorrelief': 'tk.FLAT',
+                                       'indicatormargin': '-1',
+                                       'indicatordiameter': '-1',
+                                       'relief': 'tk.RAISED',
+                                       'focusthickness': '8',
+                                       'highlightthickness': '#000000',
+                                       'padding': '4',
+                                       'background': '#444444',
+                                       'foreground': '#AAAAAA'
+                                   },
+                                   'map': {
+                                       'background': [('selected', '#444444'), ('active', '#777777')]
+                                   }
                                }
                            }
                            )
