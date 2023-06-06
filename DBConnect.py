@@ -50,6 +50,16 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
+    def delete_by_id(self, record_id: str) -> None:
+        """
+        Delete one record by id
+        
+        """
+        record_id = record_id
+        self.dbCursor.execute(
+            "DELETE FROM mk_diary WHERE ITEM_ID = "+record_id+""
+        )
+
     def update(
         self,
         ID,
