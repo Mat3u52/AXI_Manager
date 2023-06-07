@@ -53,7 +53,11 @@ class DBConnect:
     def delete_by_id(self, record_id: str) -> None:
         """
         Delete one record by id
-        
+
+        :param record_id: id of record to remove
+        :type record_id: str
+        :return: removed record from mk_diary
+        :rtype: None
         """
         record_id = record_id
         self.dbCursor.execute(
