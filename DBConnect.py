@@ -263,28 +263,15 @@ class DBConnect:
                     if self.selectSearchItem(self.item):
                         for self.row in self.selectSearchItem(self.item):
                             pass
-                        msgBox = messagebox.askquestion(
+                        msg_box = messagebox.askquestion(
                             f"The record already exist in DB! - {self.machine}",
                             f"Device: {self.machine}\n\n"
                             f"Existing Item: {self.row[1]} [  {self.row[0]} ]\n\n "
                             f"Amount of the board in one panel: {self.row[3]}\n\n "
                             f"Do you want to update the record?",
                         )
-                        # msgBox = messagebox.askquestion(f"The record already exist in DB! - {self.machine}",
-                        #                                 f"Existing Item: {self.row[1]} [  {self.row[0]} ]\n\n "
-                        #                                 f"Amount of the board in one panel: {self.row[3]}\n\n "
-                        #                                 f"ViTroxEx:\n\n"
-                        #                                 f"V810-3553S2EX: {self.row[54]} Scanning Time: {self.row[52]}\n "
-                        #                                 f"V810-3483S2EX: {self.row[45]} Scanning Time: {self.row[41]}\n "
-                        #                                 f"V810-3163: {self.row[27]} Scanning Time: {self.row[13]}\n "
-                        #                                 f"\n\nViTrox XXL:\n\n"
-                        #                                 f"V810-8120S2: {self.row[31]} Scanning Time: {self.row[35]}\n "
-                        #                                 f"\n\n5DX:\n\n"
-                        #                                 f"V849: {self.row[17]}\n"
-                        #                                 f"V817: {self.row[22]}\n\n "
-                        #                                 f"A:{self.row[7]} M:{self.row[8]} Th:{self.row[9]} T:{self.row[10]} \n\n"
-                        #                                 f"Do you want to update the record?")
-                        if msgBox == "yes":
+
+                        if msg_box in "yes":
                             if self.device == "V810-3553S2EX":
                                 self.V8103553S2EXProg = initProg
                                 self.V8103553S2EXTest = initTest
