@@ -1,6 +1,6 @@
 import tkinter
 import tkinter as tk
-from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage, Button
+from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage, Button, StringVar
 import time
 import os
 
@@ -1504,11 +1504,16 @@ def tab_selected(event) -> None:
         radio_box.invoke()
 
 
-def insert_from_comparison() -> None:
+def insert_from_comparison(event) -> None:
     # pyperclip.copy(element)
     # print(var_idle_record.get())
-    print(list_of_compare_recipes[var_idle_record.get()])
-    pyperclip.copy(list_of_compare_recipes[var_idle_record.get()])
+    msg_remove = messagebox.askquestion(
+        f"Do you want to remove the record?",
+        f"The record named {list_of_compare_recipes[var_idle_record.get()]} will be removed.",
+    )
+    if msg_remove in "yes":
+        print(list_of_compare_recipes[var_idle_record.get()])
+        pyperclip.copy(list_of_compare_recipes[var_idle_record.get()])
 
 
 def tab_comparison(event) -> None:
@@ -1527,28 +1532,44 @@ def tab_comparison(event) -> None:
             style="Comparison.TRadiobutton",
             variable=var_idle_record,
             value=int(row_count),
-            command=insert_from_comparison,
+            # command=insert_from_comparison,
         )
         list_of_compare_recipes.append(element)
         radio_box.grid(row=int(row_count), column=0, sticky=W)
         row_count += 1
     radio_box.invoke()
 
+    # row_count = 0
+    # for element in obj_comparison.recipes_db().difference(obj_comparison.recipes_list()):
+    #     if len(element) > 0:
+    #         radio_box = ttk.Radiobutton(
+    #             tab_db_to_3163,
+    #             text=f"{element}",
+    #             style="Comparison.TRadiobutton",
+    #             variable=var_idle_record,
+    #             value=int(row_count),
+    #             command=insert_from_comparison,
+    #         )
+    #         list_of_compare_recipes.append(element)
+    #         radio_box.grid(row=int(row_count), column=0, sticky=W)
+    #         row_count += 1
+    # radio_box.invoke()
+    values = {"RadioButton 1": "1",
+              "RadioButton 2": "2",
+              "RadioButton 3": "3",
+              "RadioButton 4": "4",
+              "RadioButton 5": "5"}
     row_count = 0
-    for element in obj_comparison.recipes_db().difference(obj_comparison.recipes_list()):
-        if len(element) > 0:
-            radio_box = ttk.Radiobutton(
-                tab_db_to_3163,
-                text=f"{element}",
-                style="Comparison.TRadiobutton",
-                variable=var_idle_record,
-                value=int(row_count),
-                command=insert_from_comparison,
-            )
-            list_of_compare_recipes.append(element)
-            radio_box.grid(row=int(row_count), column=0, sticky=W)
-            row_count += 1
-    radio_box.invoke()
+    for (text, value) in values.items():
+        tk.Radiobutton(tab_db_to_3163, text=text, variable=v,
+                       value=value,
+                       indicator=0,
+                       background="light blue").grid(row=int(row_count), column=0, sticky=W)
+        row_count += 1
+
+    res = dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()),
+                        0)
+    print(res)
 
 
 if __name__ == "__main__":
@@ -1556,6 +1577,8 @@ if __name__ == "__main__":
 
     var_idle_record = IntVar() # comparison variable
     list_of_compare_recipes: list = [] # comparison list
+
+    v = StringVar(root, "1")
 
     obj_config = Config()
     ws = root.winfo_screenwidth()  # width of the screen
