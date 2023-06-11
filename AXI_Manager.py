@@ -1567,15 +1567,16 @@ def tab_comparison(event) -> None:
 
     row_count = 0
     for (text, value) in dic.items():
-        tk.Radiobutton(tab_db_to_3163,
-                       text=value,
-                       variable=v,
-                       # variable=value,
-                       value=text,
-                       indicator=1,
-                       background="light blue",
-                       command=insert_from_comparison,).grid(row=int(row_count), column=0, sticky=W)
-        row_count += 1
+        if len(value) > 0:
+            ttk.Radiobutton(tab_db_to_3163,
+                            text=value,
+                            variable=v,
+                            # variable=value,
+                            value=text,
+                            style="Comparison.TRadiobutton",
+                            # indicator=1,
+                            command=insert_from_comparison,).grid(row=int(row_count), column=0, sticky=W)
+            row_count += 1
 
     # res = dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()),0)
     # print(res)
