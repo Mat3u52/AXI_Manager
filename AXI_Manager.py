@@ -1505,7 +1505,7 @@ def tab_selected(event) -> None:
 
 
 def insert_from_comparison() -> None:
-    print(v)
+    print(extract_set[int(v.get())])
     # msg_remove = messagebox.askquestion(
     #     f"Do you want to remove the record?",
     #     f"The record named {list_of_compare_recipes[var_idle_record.get()]} will be removed.",
@@ -1522,74 +1522,51 @@ def tab_comparison(event) -> None:
     :return: Show the list of comparison
     :rtype: None
     """
-    # var_idle_record = IntVar()
-    row_count = 0
-    for element in obj_comparison.recipes_list().difference(obj_comparison.recipes_db()):
-        radio_box = ttk.Radiobutton(
-            tab_3163_to_db,
-            text=f"{element}",
-            style="Comparison.TRadiobutton",
-            variable=var_idle_record,
-            value=int(row_count),
-            # command=insert_from_comparison,
-        )
-        list_of_compare_recipes.append(element)
-        radio_box.grid(row=int(row_count), column=0, sticky=W)
-        row_count += 1
-    radio_box.invoke()
 
+    # i: int = 0
+    # for value in dict.fromkeys(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()), 0):
+    #     extract_set[i] = value
+    #     i += 1
+    #
     # row_count = 0
-    # for element in obj_comparison.recipes_db().difference(obj_comparison.recipes_list()):
-    #     if len(element) > 0:
-    #         radio_box = ttk.Radiobutton(
-    #             tab_db_to_3163,
-    #             text=f"{element}",
-    #             style="Comparison.TRadiobutton",
-    #             variable=var_idle_record,
-    #             value=int(row_count),
-    #             command=insert_from_comparison,
-    #         )
-    #         list_of_compare_recipes.append(element)
-    #         radio_box.grid(row=int(row_count), column=0, sticky=W)
+    # for (text, value) in extract_set.items():
+    #     if len(value) > 0:
+    #         ttk.Radiobutton(tab_3163_to_db,
+    #                         text=value,
+    #                         variable=v,
+    #                         value=text,
+    #                         style="Comparison.TRadiobutton",
+    #                         command=insert_from_comparison,).grid(row=int(row_count),
+    #                                                               column=0,
+    #                                                               sticky=W)
     #         row_count += 1
-    # radio_box.invoke()
 
-
-    values = dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()), 0)
-
-    dic: dict = {}
-    i = 0
-    for value in values:
-        dic[i] = value
-        # print(value)
+    i: int = 0
+    for value in dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()), 0):
+        extract_set[i] = value
         i += 1
-    # print(dic)
 
     row_count = 0
-    for (text, value) in dic.items():
+    for (text, value) in extract_set.items():
         if len(value) > 0:
             ttk.Radiobutton(tab_db_to_3163,
                             text=value,
                             variable=v,
-                            # variable=value,
                             value=text,
                             style="Comparison.TRadiobutton",
-                            # indicator=1,
-                            command=insert_from_comparison,).grid(row=int(row_count), column=0, sticky=W)
+                            command=insert_from_comparison,).grid(row=int(row_count),
+                                                                  column=0,
+                                                                  sticky=W)
             row_count += 1
 
-    # res = dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()),0)
-    # print(res)
+    print(extract_set)
 
 
 if __name__ == "__main__":
     root = tk.Tk()
 
-    var_idle_record = IntVar() # comparison variable
-    list_of_compare_recipes: list = [] # comparison list
-
-    # v = StringVar(root, "1")
-    v = IntVar(root, 0)
+    v = StringVar(root, "0")
+    extract_set: dict = {}
 
     obj_config = Config()
     ws = root.winfo_screenwidth()  # width of the screen
