@@ -65,7 +65,7 @@ if __name__ == "__main__":
                                 db_name="VITROXI_PROG")
 
     # png to db
-    print(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()))
+    print(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()).remove(''))
     # db to png
-    print(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()))
+    print(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()).remove(''))
 
