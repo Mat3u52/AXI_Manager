@@ -72,16 +72,6 @@ class Tip:
         :rtype: None
         """
 
-        # self.canvas_frame = Label(self.main_frame_view)
-        # self.canvas_frame.configure(bg="#333333", bd=0)
-        # self.canvas_frame.grid(row=0, column=7, sticky=W)
-        # self.canvas_frame = tk.Canvas(self.canvas_frame, width=120, height=30)
-        # self.canv.configure(bg="#333333", bd=0, highlightthickness=0, highlightbackground="black")
-        # self.canv.pack(expand=False)
-
-        #self.im = Image.open(self.primePng)
-        #self.im.putalpha(120)
-        #self.im.save('img/tip/ok.png')
         photo = PhotoImage(file='img/tip/okBegin.PNG')
         imageB = self.canv.create_image(120, 15, image=photo)
 
@@ -93,10 +83,6 @@ class Tip:
 
             al, bl = imgPos
 
-            #self.transparency = 120 + (2*(int(self.al) - 120))
-            #self.im = Image.open('img/tip/ok.png')
-            #self.im.putalpha(self.transparency)
-            #self.im.save('img/tip/ok.png')
             photo = PhotoImage(file='img/tip/okBegin.PNG')
             imageB = self.canv.create_image(al, bl, image=photo)
 
