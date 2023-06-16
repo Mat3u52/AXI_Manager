@@ -12,14 +12,14 @@ class FormValidation:
         self.item = ""
         self.itemAmount = 0
 
-    def validatorItem(self, item: str, itemAmount: int) -> None:
+    def validatorItem(self, item: str, item_amount: int) -> None:
 
         try:
-            if item != '' and itemAmount != '' and\
-                    itemAmount != '' and int(itemAmount) > 0:
+            if item != '' and item_amount != '' and\
+                    item_amount != '' and int(item_amount) > 0:
 
                 self.item = str(item.strip())
-                self.itemAmount = int(itemAmount)
+                self.itemAmount = int(item_amount)
                 self.flagInit = True
 
                 print("OK - validator_item")
@@ -43,15 +43,15 @@ class FormValidation:
                 return 0
 
     def validator(self, prog="", test=0, linecapa="NONE", epi="NONE", baan1="NONE", comments="",
-                        flagItemStatus=False, itemAmount=0, alignTime=0, laserTime=0, thicknessTime=0):
+                  flag_item_status=False, item_amount=0, align_time=0, laser_time=0, thickness_time=0):
         try:
             self.flagValidator = False
-            self.flagInitStatus = flagItemStatus
+            self.flagInitStatus = flag_item_status
             if self.flagInitStatus is True and \
                     prog != '' and \
                     test != '' and int(test) > 0 and \
                     linecapa and epi and baan1 and \
-                    itemAmount != '' and int(itemAmount) > 0:
+                    item_amount != '' and int(item_amount) > 0:
 
                 self.prog = str(prog.strip())
                 self.prog = self.prog.replace('/', '_')
@@ -61,23 +61,22 @@ class FormValidation:
                 self.epi = str(epi)
                 self.baan1 = str(baan1)
                 self.comments = str(comments)
-                self.itemAmount = int(itemAmount)
+                self.itemAmount = int(item_amount)
 
-                if alignTime != '':
-                    self.alignTime = int(alignTime)
+                if align_time != '':
+                    self.alignTime = int(align_time)
                 else:
                     self.alignTime = 0
-                if laserTime != '':
-                    self.laserTime = int(laserTime)
+                if laser_time != '':
+                    self.laserTime = int(laser_time)
                 else:
                     self.laserTime = 0
-                if thicknessTime != '':
-                    self.thicknessTime = int(thicknessTime)
+                if thickness_time != '':
+                    self.thicknessTime = int(thickness_time)
                 else:
                     self.thicknessTime = 0
 
                 self.hex = ""
-                #print(self.test)
                 self.totalTime = int(self.test) + int(self.alignTime) + int(self.laserTime) + int(self.thicknessTime)
 
                 if (self._computeUPH(int(self.totalTime), 85, int(self.itemAmount)) > 0) and \
