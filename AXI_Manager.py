@@ -1505,15 +1505,20 @@ def tab_selected(event) -> None:
 
 
 def insert_from_comparison() -> None:
+    """
+    Put data to clipboard after click on name
+    :return: None
+    :rtype: None
+    """
     print(extract_set[int(v.get())])
-    # msg_remove = messagebox.askquestion(
-    #     f"Do you want to remove the record?",
-    #     f"The record named {list_of_compare_recipes[var_idle_record.get()]} will be removed.",
-    # )
-    # if msg_remove in "yes":
-    #     print(list_of_compare_recipes[var_idle_record.get()])
-    #     pyperclip.copy(list_of_compare_recipes[var_idle_record.get()])
 
+# def insert_from_comparison0() -> None:
+#     """
+#     Put data to clipboard after click on name
+#     :return: None
+#     :rtype: None
+#     """
+#     print(extract_set[int(v0.get())])
 
 def tab_comparison(event) -> None:
     """
@@ -1524,6 +1529,7 @@ def tab_comparison(event) -> None:
     """
 
     # i: int = 0
+    # extract_set.clear()
     # for value in dict.fromkeys(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()), 0):
     #     extract_set[i] = value
     #     i += 1
@@ -1533,15 +1539,17 @@ def tab_comparison(event) -> None:
     #     if len(value) > 0:
     #         ttk.Radiobutton(tab_3163_to_db,
     #                         text=value,
-    #                         variable=v,
+    #                         variable=v0,
     #                         value=text,
     #                         style="Comparison.TRadiobutton",
-    #                         command=insert_from_comparison,).grid(row=int(row_count),
-    #                                                               column=0,
-    #                                                               sticky=W)
+    #                         command=insert_from_comparison0,
+    #                         ).grid(row=int(row_count),
+    #                                column=0,
+    #                                sticky=W)
     #         row_count += 1
 
     i: int = 0
+    # extract_set.clear()
     for value in dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()), 0):
         extract_set[i] = value
         i += 1
@@ -1554,18 +1562,18 @@ def tab_comparison(event) -> None:
                             variable=v,
                             value=text,
                             style="Comparison.TRadiobutton",
-                            command=insert_from_comparison,).grid(row=int(row_count),
-                                                                  column=0,
-                                                                  sticky=W)
+                            command=insert_from_comparison,
+                            ).grid(row=int(row_count),
+                                   column=0,
+                                   sticky=W)
             row_count += 1
-
-    print(extract_set)
 
 
 if __name__ == "__main__":
     root = tk.Tk()
 
     v = StringVar(root, "0")
+    # v0 = StringVar(root, "0")
     extract_set: dict = {}
 
     obj_config = Config()
