@@ -1512,13 +1512,13 @@ def insert_from_comparison() -> None:
     """
     print(extract_set[int(v.get())])
 
-# def insert_from_comparison0() -> None:
-#     """
-#     Put data to clipboard after click on name
-#     :return: None
-#     :rtype: None
-#     """
-#     print(extract_set[int(v0.get())])
+def insert_from_comparison0() -> None:
+    """
+    Put data to clipboard after click on name
+    :return: None
+    :rtype: None
+    """
+    print(extract_set0[int(v0.get())])
 
 def tab_comparison(event) -> None:
     """
@@ -1528,33 +1528,33 @@ def tab_comparison(event) -> None:
     :rtype: None
     """
 
-    # i: int = 0
-    # extract_set.clear()
-    # for value in dict.fromkeys(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()), 0):
-    #     extract_set[i] = value
-    #     i += 1
-    #
-    # row_count = 0
-    # for (text, value) in extract_set.items():
-    #     if len(value) > 0:
-    #         ttk.Radiobutton(tab_3163_to_db,
-    #                         text=value,
-    #                         variable=v0,
-    #                         value=text,
-    #                         style="Comparison.TRadiobutton",
-    #                         command=insert_from_comparison0,
-    #                         ).grid(row=int(row_count),
-    #                                column=0,
-    #                                sticky=W)
-    #         row_count += 1
+    i: int = 0
+    extract_set0.clear()
+    for value in dict.fromkeys(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()), 0):
+        extract_set0[i] = value
+        i += 1
+
+    row_count: int = 0
+    for (text, value) in extract_set0.items():
+        if len(value) > 0:
+            ttk.Radiobutton(tab_3163_to_db,
+                            text=value,
+                            variable=v0,
+                            value=text,
+                            style="Comparison.TRadiobutton",
+                            command=insert_from_comparison0,
+                            ).grid(row=int(row_count),
+                                   column=0,
+                                   sticky=W)
+            row_count += 1
 
     i: int = 0
-    # extract_set.clear()
+    extract_set.clear()
     for value in dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()), 0):
         extract_set[i] = value
         i += 1
 
-    row_count = 0
+    row_count: int = 0
     for (text, value) in extract_set.items():
         if len(value) > 0:
             ttk.Radiobutton(tab_db_to_3163,
@@ -1573,8 +1573,9 @@ if __name__ == "__main__":
     root = tk.Tk()
 
     v = StringVar(root, "0")
-    # v0 = StringVar(root, "0")
+    v0 = StringVar(root, "0")
     extract_set: dict = {}
+    extract_set0: dict = {}
 
     obj_config = Config()
     ws = root.winfo_screenwidth()  # width of the screen
