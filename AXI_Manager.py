@@ -1510,7 +1510,8 @@ def insert_from_comparison() -> None:
     :return: None
     :rtype: None
     """
-    print(extract_set[int(v.get())])
+    # print(extract_set[int(v.get())])
+    pyperclip.copy(extract_set[int(v.get())])
 
 def insert_from_comparison0() -> None:
     """
@@ -1518,7 +1519,8 @@ def insert_from_comparison0() -> None:
     :return: None
     :rtype: None
     """
-    print(extract_set0[int(v0.get())])
+    # print(extract_set0[int(v0.get())])
+    extract_set0[extract_set0[int(v0.get())]]
 
 def tab_comparison(event) -> None:
     """
