@@ -2078,19 +2078,7 @@ if __name__ == "__main__":
 
     obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
                                 db_name="VITROXI_PROG")
-    # row_count = 0
-    # for element in obj_comparison.recipes_list().difference(obj_comparison.recipes_db()):
-    #     l_comparison = Label(tab_3163_to_db, text=f"{element}", bg="#444444", fg="#999999", pady="1")
-    #     l_comparison.config(font=("Arial", 12, "bold"))
-    #     l_comparison.grid(row=row_count, column=0, sticky=W)
-    #     row_count += 1
-    #
-    # row_count = 0
-    # for element in obj_comparison.recipes_db().difference(obj_comparison.recipes_list()):
-    #     l_comparison = Label(tab_db_to_3163, text=f"{element}", bg="#444444", fg="#999999", pady="1")
-    #     l_comparison.config(font=("Arial", 12, "bold"))
-    #     l_comparison.grid(row=row_count, column=0, sticky=W)
-    #     row_count += 1
+
 
     # add_frame.pack_Forget()
     var_new_record = IntVar()
