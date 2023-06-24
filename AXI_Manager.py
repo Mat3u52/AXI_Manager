@@ -16,7 +16,8 @@ from CheckboxMenu import CheckboxMenu
 from NewItem import NewItem
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
-from Comparison import Comparison
+#from Comparison import Comparison
+from ComparisonView import ComparisonView
 
 min_movement: int = -1
 
@@ -1504,71 +1505,71 @@ def tab_selected(event) -> None:
         radio_box.invoke()
 
 
-def insert_from_comparison() -> None:
-    """
-    Put data to clipboard after click on name
-    :return: None
-    :rtype: None
-    """
-    # print(extract_set[int(v.get())])
-    pyperclip.copy(extract_set[int(v.get())])
-
-def insert_from_comparison0() -> None:
-    """
-    Put data to clipboard after click on name
-    :return: None
-    :rtype: None
-    """
-    # print(extract_set0[int(v0.get())])
-    extract_set0[extract_set0[int(v0.get())]]
-
-def tab_comparison(event) -> None:
-    """
-    The function has refreshing the list of comparison.
-
-    :return: Show the list of comparison
-    :rtype: None
-    """
-
-    i: int = 0
-    extract_set0.clear()
-    for value in dict.fromkeys(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()), 0):
-        extract_set0[i] = value
-        i += 1
-
-    row_count: int = 0
-    for (text, value) in extract_set0.items():
-        if len(value) > 0:
-            ttk.Radiobutton(tab_3163_to_db,
-                            text=value,
-                            variable=v0,
-                            value=text,
-                            style="Comparison.TRadiobutton",
-                            command=insert_from_comparison0,
-                            ).grid(row=int(row_count),
-                                   column=0,
-                                   sticky=W)
-            row_count += 1
-
-    i: int = 0
-    extract_set.clear()
-    for value in dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()), 0):
-        extract_set[i] = value
-        i += 1
-
-    row_count: int = 0
-    for (text, value) in extract_set.items():
-        if len(value) > 0:
-            ttk.Radiobutton(tab_db_to_3163,
-                            text=value,
-                            variable=v,
-                            value=text,
-                            style="Comparison.TRadiobutton",
-                            command=insert_from_comparison,
-                            ).grid(row=int(row_count),
-                                   column=0,
-                                   sticky=W)
-            row_count += 1
+# def insert_from_comparison() -> None:
+#     """
+#     Put data to clipboard after click on name
+#     :return: None
+#     :rtype: None
+#     """
+#     # print(extract_set[int(v.get())])
+#     pyperclip.copy(extract_set[int(v.get())])
+#
+# def insert_from_comparison0() -> None:
+#     """
+#     Put data to clipboard after click on name
+#     :return: None
+#     :rtype: None
+#     """
+#     # print(extract_set0[int(v0.get())])
+#     extract_set0[extract_set0[int(v0.get())]]
+#
+# def tab_comparison(event) -> None:
+#     """
+#     The function has refreshing the list of comparison.
+#
+#     :return: Show the list of comparison
+#     :rtype: None
+#     """
+#
+#     i: int = 0
+#     extract_set0.clear()
+#     for value in dict.fromkeys(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()), 0):
+#         extract_set0[i] = value
+#         i += 1
+#
+#     row_count: int = 0
+#     for (text, value) in extract_set0.items():
+#         if len(value) > 0:
+#             ttk.Radiobutton(tab_3163_to_db,
+#                             text=value,
+#                             variable=v0,
+#                             value=text,
+#                             style="Comparison.TRadiobutton",
+#                             command=insert_from_comparison0,
+#                             ).grid(row=int(row_count),
+#                                    column=0,
+#                                    sticky=W)
+#             row_count += 1
+#
+#     i: int = 0
+#     extract_set.clear()
+#     for value in dict.fromkeys(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()), 0):
+#         extract_set[i] = value
+#         i += 1
+#
+#     row_count: int = 0
+#     for (text, value) in extract_set.items():
+#         if len(value) > 0:
+#             ttk.Radiobutton(tab_db_to_3163,
+#                             text=value,
+#                             variable=v,
+#                             value=text,
+#                             style="Comparison.TRadiobutton",
+#                             command=insert_from_comparison,
+#                             ).grid(row=int(row_count),
+#                                    column=0,
+#                                    sticky=W)
+#             row_count += 1
 
 
 if __name__ == "__main__":
@@ -2058,7 +2059,7 @@ if __name__ == "__main__":
 
     tab_control.bind("<<NotebookTabChanged>>", tab_selected)
 
-    tab_control.bind("<<NotebookTabChanged>>", tab_comparison)
+    # tab_control.bind("<<NotebookTabChanged>>", tab_comparison)
 
     add_frame = ttk.LabelFrame(tab3, text=" New Items: ")
 
@@ -2076,9 +2077,13 @@ if __name__ == "__main__":
     db_to_v810.add(tab_db_to_3163, text=" --- DB to V810 --- ")
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
 
-    obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
-                                db_name="VITROXI_PROG")
-
+    # obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
+    #                             db_name="VITROXI_PROG")
+    obj_comparison = ComparisonView(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
+                                    db_name="VITROXI_PROG",
+                                    root=root)
+    print(obj_comparison.recipes_db())
+    print(obj_comparison.recipes_list())
 
     # add_frame.pack_Forget()
     var_new_record = IntVar()
