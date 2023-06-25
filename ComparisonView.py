@@ -1,15 +1,16 @@
 from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage, Button, StringVar
 import tkinter as tk
+from Comparison import Comparison
 
 
-class ComparisonView:
+class ComparisonView(Comparison):
 
     # v = StringVar(root, "0")
     # v0 = StringVar(root, "0")
     # extract_set: dict = {}
     # extract_set0: dict = {}
 
-    def __init__(self, root: tk) -> None:
+    def __init__(self, dir_name: str, db_name: str, root: tk) -> None:
         """
         Constructor of ComparisonView class. Preparation of a few properties.
 
@@ -18,10 +19,14 @@ class ComparisonView:
         :return: Init class
         :rtype: None
         """
+        super().__init__(dir_name, db_name)
+
         self.root = root
 
     def compare(self):
         pass
+        # obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
+        #                             db_name="VITROXI_PROG")
         # i: int = 0
         # extract_set0.clear()
         # for value in dict.fromkeys(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()), 0):
