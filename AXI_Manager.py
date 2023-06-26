@@ -2082,8 +2082,9 @@ if __name__ == "__main__":
     obj_comparison = ComparisonView(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
                                     db_name="VITROXI_PROG",
                                     root=root)
-    print(obj_comparison.recipes_db())
-    print(obj_comparison.recipes_list())
+    obj_comparison.compare()
+    # print(obj_comparison.recipes_db())
+    # print(obj_comparison.recipes_list())
 
     # add_frame.pack_Forget()
     var_new_record = IntVar()
