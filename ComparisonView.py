@@ -1,5 +1,6 @@
 from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage, Button, StringVar
 import tkinter as tk
+import pyperclip
 from Comparison import Comparison
 from Styles import Styles
 
@@ -54,9 +55,9 @@ class ComparisonView(Comparison):
         :return: None
         :rtype: None
         """
-        pass
-        # print(extract_set[int(v.get())])
-        # pyperclip.copy(extract_set[int(v.get())])
+
+        print(self.extract_set_to_dic[int(self.var.get())])
+        pyperclip.copy(self.extract_set_to_dic[int(self.var.get())])
 
 
 
