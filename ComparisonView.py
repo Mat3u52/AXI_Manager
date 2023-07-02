@@ -11,8 +11,14 @@ class ComparisonView(Comparison):
         """
         Constructor of ComparisonView class. Preparation of a few properties.
 
-        param root: Given instance to tkinter
+        :param dir_name: Given the name of machine directory
+        :type dir_name: str
+        :param db_name: Given the name of machine table
+        :type db_name: str
+        :param root: Given instance to tkinter
         :type root: tkinter
+        :param tab: Given tab element
+        :type tab: ttk.Frame
         :return: Init class
         :rtype: None
         """
@@ -26,8 +32,13 @@ class ComparisonView(Comparison):
         # self.extract_set: dict = {}
         self.extract_set_to_dic: dict = {}
 
-    def compare_list_to_db(self):
-        # print(self.recipes_list().difference(self.recipes_db()))
+    def compare_list_to_db(self) -> None:
+        """
+        Show difference between two set list
+
+        :return: Init class
+        :rtype: None
+        """
 
         i: int = 0
         self.extract_set_to_dic.clear()
@@ -52,6 +63,7 @@ class ComparisonView(Comparison):
     def _insert_from_comparison(self) -> None:
         """
         Put data to clipboard after click on name
+
         :return: None
         :rtype: None
         """
