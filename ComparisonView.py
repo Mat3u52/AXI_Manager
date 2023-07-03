@@ -60,6 +60,35 @@ class ComparisonView(Comparison):
                                        sticky=W)
                 row_count += 1
 
+    def compare_db_to_list(self) -> None:
+        """
+        Show difference between two set list
+
+        :return: Init class
+        :rtype: None
+        """
+
+        i: int = 0
+        self.extract_set_to_dic.clear()
+        # obj_comparison.recipes_db().difference(obj_comparison.recipes_list()).remove('')
+        for value in dict.fromkeys(self.recipes_db().difference(self.recipes_list()), 0):
+            self.extract_set_to_dic[i] = value
+            i += 1
+        print(self.extract_set_to_dic)
+        row_count: int = 0
+        for (text, value) in self.extract_set_to_dic.items():
+            if len(value) > 0:
+                ttk.Radiobutton(self.tab,
+                                text=value,
+                                variable=self.var,
+                                value=text,
+                                style="Comparison.TRadiobutton",
+                                command=self._insert_from_comparison,
+                                ).grid(row=int(row_count),
+                                       column=0,
+                                       sticky=W)
+                row_count += 1
+
     def _insert_from_comparison(self) -> None:
         """
         Put data to clipboard after click on name
