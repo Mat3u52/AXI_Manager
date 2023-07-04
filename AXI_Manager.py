@@ -2069,21 +2069,29 @@ if __name__ == "__main__":
     v810_3163.pack(expand=1, fill="both", padx=10, pady=10)
 
     db_to_v810 = ttk.Notebook(v810_3163)
+
     tab_3163_to_db = ttk.Frame(db_to_v810)
     db_to_v810.add(tab_3163_to_db, text=" --- V810 to DB --- ")
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
 
-    tab_db_to_3163 = ttk.Frame(db_to_v810)
-    db_to_v810.add(tab_db_to_3163, text=" --- DB to V810 --- ")
-    db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
 
-    # obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
-    #                             db_name="VITROXI_PROG")
     obj_comparison = ComparisonView(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
                                     db_name="VITROXI_PROG",
                                     root=root,
                                     tab=tab_3163_to_db)
     obj_comparison.compare_list_to_db()
+
+    tab_db_to_3163 = ttk.Frame(db_to_v810)
+    db_to_v810.add(tab_db_to_3163, text=" --- DB to V810 --- ")
+    db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+
+    obj_comparison0 = ComparisonView(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
+                                    db_name="VITROXI_PROG",
+                                    root=root,
+                                    tab=tab_db_to_3163)
+    obj_comparison0.compare_db_to_list()
+
+
     # print(obj_comparison.recipes_db())
     # print(obj_comparison.recipes_list())
 
