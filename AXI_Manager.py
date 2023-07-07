@@ -2063,6 +2063,7 @@ if __name__ == "__main__":
 
     add_frame = ttk.LabelFrame(tab3, text=" New Items: ")
 
+# --- Comparison ---
     v810_3163 = ttk.Notebook(tab4)
     tab_3163 = ttk.Frame(v810_3163)
     v810_3163.add(tab_3163, text=" --- V810-3163 --- ")
@@ -2085,11 +2086,8 @@ if __name__ == "__main__":
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
     obj_comparison.compare_db_to_list(tab=tab_db_to_3163)
 
+# --- The End Comparison ---
 
-    # print(obj_comparison.recipes_db())
-    # print(obj_comparison.recipes_list())
-
-    # add_frame.pack_Forget()
     var_new_record = IntVar()
 
     obj_styles = Styles(root)
