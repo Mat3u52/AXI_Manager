@@ -23,9 +23,7 @@ class ComparisonView(Comparison):
         super().__init__(dir_name, db_name)
 
         self.root = root
-        # self.v = StringVar(root, "0")
         self.var = StringVar(self.root, "0")
-        # self.extract_set: dict = {}
         self.extract_set_to_dic: dict = {}
 
     def compare_list_to_db(self, tab: ttk.Frame) -> None:
@@ -44,7 +42,7 @@ class ComparisonView(Comparison):
         for value in dict.fromkeys(self.recipes_list().difference(self.recipes_db()), 0):
             self.extract_set_to_dic[i] = value
             i += 1
-        print(self.extract_set_to_dic)
+        # print(self.extract_set_to_dic)
         row_count: int = 0
         for (text, value) in self.extract_set_to_dic.items():
             if len(value) > 0:
@@ -72,11 +70,10 @@ class ComparisonView(Comparison):
         tab = tab
         i: int = 0
         self.extract_set_to_dic.clear()
-        # obj_comparison.recipes_db().difference(obj_comparison.recipes_list()).remove('')
         for value in dict.fromkeys(self.recipes_db().difference(self.recipes_list()), 0):
             self.extract_set_to_dic[i] = value
             i += 1
-        print(self.extract_set_to_dic)
+        # print(self.extract_set_to_dic)
         row_count: int = 0
         for (text, value) in self.extract_set_to_dic.items():
             if len(value) > 0:
@@ -99,7 +96,6 @@ class ComparisonView(Comparison):
         :rtype: None
         """
 
-        print(self.extract_set_to_dic[int(self.var.get())])
         pyperclip.copy(self.extract_set_to_dic[int(self.var.get())])
 
 
