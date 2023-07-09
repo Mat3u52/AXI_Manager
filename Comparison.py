@@ -60,12 +60,12 @@ class Comparison:
             return inventory
 
 
-if __name__ == "__main__":
-    obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
-                                db_name="VITROXI_PROG")
-
-    # png to db
-    print(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()).remove(''))
-    # db to png
-    print(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()).remove(''))
+# if __name__ == "__main__":
+#     obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
+#                                 db_name="VITROXI_PROG")
+#
+#     # png to db
+#     print(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()).remove(''))
+#     # db to png
+#     print(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()).remove(''))
 
