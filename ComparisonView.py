@@ -1,4 +1,4 @@
-from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage, Button, StringVar
+from tkinter import W, ttk, StringVar
 import tkinter as tk
 import pyperclip
 from Comparison import Comparison
