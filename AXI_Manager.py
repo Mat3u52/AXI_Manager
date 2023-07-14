@@ -17,6 +17,7 @@ from NewItem import NewItem
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
 from ComparisonView import ComparisonView
+from RemoveRecord import RemoveRecord
 
 min_movement: int = -1
 
@@ -447,6 +448,9 @@ def get_selected_row(event) -> None:
     """
     flag_animation: bool = False
     flag_click: bool = False
+
+    obj_remove = RemoveRecord('1079')
+    obj_remove.remove_total()
 
     reset()
     for nm in tree.selection():
@@ -1525,6 +1529,7 @@ if __name__ == "__main__":
     root.iconphoto(False, photo)  # Incon for Linux
 
     root.configure(background=obj_config.bgColor)
+
 
     # --- Main View ---
 
