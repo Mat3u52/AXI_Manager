@@ -59,6 +59,9 @@ class Comparison:
         except FileNotFoundError:
             return inventory
 
+    def one_recipe_in_dir(self) -> bool:
+        pass
+
 
 # if __name__ == "__main__":
 #     obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3163/",
