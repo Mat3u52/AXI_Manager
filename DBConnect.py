@@ -34,10 +34,10 @@ class DBConnect:
         records = self.dbCursor.fetchall()
         return records
 
-    def selectSearchID(self, ID: str) -> tuple:
-        self.ID = ID
+    def selectSearchID(self, id_record: str) -> tuple:
+        id_record = id_record
         self.dbCursor.execute(
-            "SELECT * FROM mk_diary WHERE ITEM_ID LIKE " + self.ID + ""
+            "SELECT * FROM mk_diary WHERE ITEM_ID LIKE " + id_record + ""
         )
         records = self.dbCursor.fetchall()
         return records
