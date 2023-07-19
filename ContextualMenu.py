@@ -11,6 +11,7 @@ class ContextualMenu:
         self.contextMenu = Menu(self.root, tearoff=0)
         self.contextMenu.add_command(label="Copy", command=self._copy)
         self.contextMenu.add_command(label="Paste", command=self._paste)
+        self.contextMenu.add_command(label="Remove", command=self._remove)
 
     def doPopup(self, event: str) -> None:
         try:
@@ -29,3 +30,6 @@ class ContextualMenu:
 
     def _paste(self) -> None:
         self.entry_fild.insert(tk.END, pyperclip.paste())
+
+    def _remove(self) -> None:
+        pass
