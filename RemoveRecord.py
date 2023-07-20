@@ -9,7 +9,10 @@ class RemoveRecord(DBConnect):
 
     def remove_total(self):
         try:
-            self.delete_by_id(self.id_record)
+            # self.delete_by_id(self.id_record)
             print("removed")
+            print(self.selectSearchID(self.id_record)[0][1])
+            # one_record = self.selectSearchID(self.id_record)
+            # print(one_record[0][1])
         except:
             print("Record do not exist.")
