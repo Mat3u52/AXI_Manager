@@ -17,11 +17,13 @@ class RemoveRecord(DBConnect):
             # one_record = self.selectSearchID(self.id_record)
             # print(one_record[0][1])
 
-            dirs_anf_files = os.listdir(Config().pathRecipe)
-            for device in dirs_anf_files:
+            dirs_and_files = os.listdir(Config().pathRecipe)
+            for device in dirs_and_files:
                 container: set[str] = set()
-
                 print(os.path.join(Config().pathRecipe, device))
+                container = set(os.listdir(os.path.join(Config().pathRecipe, device)))
+                print(container)
+
 
         except:
             print("Record do not exist.")
