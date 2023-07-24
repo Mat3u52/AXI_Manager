@@ -449,8 +449,6 @@ def get_selected_row(event) -> None:
     flag_animation: bool = False
     flag_click: bool = False
 
-    obj_remove = RemoveRecord('1081')
-    obj_remove.remove_total()
 
     reset()
     for nm in tree.selection():
@@ -467,6 +465,9 @@ def get_selected_row(event) -> None:
         obj_db.closeDB()
 
         pyperclip.copy(row[1])  # clipboard Win / Linux: sudo apt-get install xclip
+
+        obj_remove = RemoveRecord(content[0])
+        obj_remove.remove_total()
 
         obj_new_item_ex.EI2.insert(0, f"{row[1]}")
         obj_new_item_ex.EI3.insert(0, f"{row[3]}")
