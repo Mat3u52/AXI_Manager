@@ -451,6 +451,7 @@ def get_selected_row(event) -> None:
 
 
     reset()
+
     for nm in tree.selection():
         content = tree.item(nm, "values")
 
@@ -1507,6 +1508,7 @@ def tab_selected(event) -> None:
             )
             radio_box.grid(row=int(record), column=0, sticky=W)
         radio_box.invoke()
+
 
 if __name__ == "__main__":
     root = tk.Tk()
