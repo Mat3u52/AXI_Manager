@@ -449,7 +449,6 @@ def get_selected_row(event) -> None:
     flag_animation: bool = False
     flag_click: bool = False
 
-
     reset()
 
     for nm in tree.selection():
@@ -551,6 +550,7 @@ def get_selected_row(event) -> None:
 
         l_item.configure(text=f"{row[1]}")
         l_item_amount.configure(text=f"{row[3]}")
+        # l_item.bind("<Button-3>", obj_search.doPopup(event, True, True, False))
         l_date_db.configure(text=f"{row[2]}")
         l_qty.configure(text=f"Qty:")
         l_date.configure(text=f"Inserted:")
@@ -2120,7 +2120,7 @@ if __name__ == "__main__":
         font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
     )
     e_search.grid(row=0, column=0, pady=1)
-    e_search.bind("<Button-3>", obj_search.doPopup)
+    e_search.bind("<Button-3>", obj_search.doPopup(root.winfo_pointerx(), root.winfo_pointery(), True, True, False))
     obj_search.setEntry(e_search)
     b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
     b_search.grid(row=0, column=1, pady=1)
