@@ -8,16 +8,31 @@ class ContextualMenu:
         self.root = root
         self.captureEntry = StringVar()
 
-        self.contextMenu = Menu(self.root, tearoff=0)
-        self.contextMenu.add_command(label="Copy", command=self._copy)
-        self.contextMenu.add_command(label="Paste", command=self._paste)
-        self.contextMenu.add_command(label="Remove", command=self._remove)
+        # self.contextMenu = Menu(self.root, tearoff=0)
+        # self.contextMenu.add_command(label="Copy", command=self._copy)
+        # self.contextMenu.add_command(label="Paste", command=self._paste)
+        # self.contextMenu.add_command(label="Remove", command=self._remove)
 
-    def doPopup(self, event: str) -> None:
+    def doPopup(self,
+                # event: str,
+                x,
+                y,
+                copy: bool = True,
+                paste: bool = True,
+                remove: bool = True) -> None:
+
+        context_menu = Menu(self.root, tearoff=0)
+        if copy is True:
+            context_menu.add_command(label="Copy", command=self._copy)
+        if paste is True:
+            context_menu.add_command(label="Paste", command=self._paste)
+        if remove is True:
+            context_menu.add_command(label="Remove", command=self._remove)
         try:
-            self.contextMenu.tk_popup(event.x_root, event.y_root)
+            context_menu.tk_popup(x, y)
+            # context_menu.tk_popup(event.x_root, event.y_root)
         finally:
-            self.contextMenu.grab_release()
+            context_menu.grab_release()
 
     def _copy(self) -> None:
         try:
