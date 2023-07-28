@@ -22,8 +22,8 @@ class CheckboxMenu:
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI_0.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
         self.EI_0.grid(row=0, column=1, pady=1, sticky=W)
-        self.EI_0.bind("<Button-3>", self.objCM.doPopup)
-        self.objCM.setEntry(self.EI_0)
+        self.EI_0.bind("<Button-3>", self.objCM.do_popup)
+        self.objCM.set_entry(self.EI_0)
         self.LI_1 = Label(self.insertFrame, text="Scanning Time:", width=12, borderwidth=1,
                           relief="solid", bg="#212121", fg="#555555", pady="1")
         self.LI_1.config(font=("Arial", 10))
@@ -72,8 +72,8 @@ class CheckboxMenu:
                           relief="solid", borderwidth=1, bg="#212121", fg="#FFFFFF")
         self.EI_5.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
         self.EI_5.grid(row=2, column=3, pady=1, sticky=W)
-        self.EI_5.bind("<Button-3>", self.objCM_Comments.doPopup)
-        self.objCM_Comments.setEntry(self.EI_5)
+        self.EI_5.bind("<Button-3>", self.objCM_Comments.do_popup)
+        self.objCM_Comments.set_entry(self.EI_5)
 
     def alignmentTime(self) -> None:
         self.LI_6 = Label(self.insertFrame, text="Aligment Time:",
