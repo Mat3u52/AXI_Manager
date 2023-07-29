@@ -31,25 +31,31 @@ class RemoveRecord(DBConnect):
                 #     print("yes")
                 # else:
                 #     print("no")
-                test1 = "test"
-                test = re.compile(r".(?:txt|jpeg|jpg|png)")
-                print(type(test))
-                str2 = "test.txt"
-                result = test.findall(str2)
-                print(result)
-                if test1 + test is str2:
-                    print('ok')
+                # test1 = "test"
+                # test = re.compile(r".(?:txt|jpeg|jpg|png)")
+                # print(type(test))
+                # str2 = "test.txt"
+                # result = test.findall(str2)
+                # print(result)
+                # if test1 + test is str2:
+                #     print('ok')
                 # if test in container:
                 #     print('exist')
                 # else:
                 #     print('not exist')
                 # print(container)
 
-                # if self.selectSearchID(self.id_record)[0][1] in container:
-                #     print('exist')
-                # else:
-                #     print('not exist')
-                # print(container)
+                # extensions: tuple = (".txt", ".png", ".jpg", ".jpeg")
+                #
+                # print(self.selectSearchID(self.id_record)[0][1].join(".txt"))
+
+                if self.selectSearchID(self.id_record)[0][1] + r".png" in container:
+                    print(self.selectSearchID(self.id_record)[0][1])
+                    print('exist')
+                else:
+                    print(self.selectSearchID(self.id_record)[0][1])
+                    print('not exist')
+                print(container)
 
         except ValueError:
             print("Record do not exist.")
