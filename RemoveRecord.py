@@ -49,13 +49,15 @@ class RemoveRecord(DBConnect):
                 #
                 # print(self.selectSearchID(self.id_record)[0][1].join(".txt"))
 
-                if self.selectSearchID(self.id_record)[0][1] + r".png" in container:
-                    print(self.selectSearchID(self.id_record)[0][1])
-                    print('exist')
+                if self.selectSearchID(self.id_record)[0][1] + r".png" in container or \
+                        self.selectSearchID(self.id_record)[0][1] + r".jpg" in container or \
+                        self.selectSearchID(self.id_record)[0][1] + r".txt" in container:
+                    # print(self.selectSearchID(self.id_record)[0][1])
+                    print(f'exist - {device}')
                 else:
-                    print(self.selectSearchID(self.id_record)[0][1])
+                    # print(self.selectSearchID(self.id_record)[0][1])
                     print('not exist')
-                print(container)
+                # print(container)
 
         except ValueError:
             print("Record do not exist.")
