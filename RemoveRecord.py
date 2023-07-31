@@ -48,12 +48,13 @@ class RemoveRecord(DBConnect):
                 # extensions: tuple = (".txt", ".png", ".jpg", ".jpeg")
                 #
                 # print(self.selectSearchID(self.id_record)[0][1].join(".txt"))
+                print(self.selectSearchID(self.id_record)[0][1].join(".png"))
 
                 if self.selectSearchID(self.id_record)[0][1] + r".png" in container or \
                         self.selectSearchID(self.id_record)[0][1] + r".jpg" in container or \
                         self.selectSearchID(self.id_record)[0][1] + r".txt" in container:
                     # print(self.selectSearchID(self.id_record)[0][1])
-                    print(f'exist - {device}')
+                    print(f'exist')
                 else:
                     # print(self.selectSearchID(self.id_record)[0][1])
                     print('not exist')
