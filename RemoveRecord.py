@@ -15,50 +15,35 @@ class RemoveRecord(DBConnect):
             # self.delete_by_id(self.id_record)
             print("removed")
             print(self.selectSearchID(self.id_record)[0][1])
-            # one_record = self.selectSearchID(self.id_record)
-            # print(one_record[0][1])
 
             dirs_and_files = os.listdir(Config().pathRecipe)
 
             for device in dirs_and_files:
-                # container: set[str] = set()
-                print(os.path.join(Config().pathRecipe, device))
+                # print(os.path.join(Config().pathRecipe, device))
                 container: set[str] = set(os.listdir(os.path.join(Config().pathRecipe, device)))
-
-                # txt = "__test03.txt"
-                # search_for = re.search(f"^{self.selectSearchID(self.id_record)[0][1]}....$", txt)
-                # if search_for:
-                #     print("yes")
-                # else:
-                #     print("no")
-                # test1 = "test"
-                # test = re.compile(r".(?:txt|jpeg|jpg|png)")
-                # print(type(test))
-                # str2 = "test.txt"
-                # result = test.findall(str2)
-                # print(result)
-                # if test1 + test is str2:
-                #     print('ok')
-                # if test in container:
-                #     print('exist')
-                # else:
-                #     print('not exist')
-                # print(container)
-
-                # extensions: tuple = (".txt", ".png", ".jpg", ".jpeg")
-                #
-                # print(self.selectSearchID(self.id_record)[0][1].join(".txt"))
-                print(self.selectSearchID(self.id_record)[0][1].join(".png"))
 
                 if self.selectSearchID(self.id_record)[0][1] + r".png" in container or \
                         self.selectSearchID(self.id_record)[0][1] + r".jpg" in container or \
                         self.selectSearchID(self.id_record)[0][1] + r".txt" in container:
-                    # print(self.selectSearchID(self.id_record)[0][1])
                     print(f'exist')
+                    path = os.path.join(Config().pathRecipe, device)
+                    try:  # .png
+                        print(f"{os.path.join(path, self.selectSearchID(self.id_record)[0][1])}.png")
+                        os.remove(f"{os.path.join(path, self.selectSearchID(self.id_record)[0][1])}.png")
+                    except FileNotFoundError:
+                        print("The .png file does not exist!")
+                    try:  # .jpg
+                        print(f"{os.path.join(path, self.selectSearchID(self.id_record)[0][1])}.jpg")
+                        os.remove(f"{os.path.join(path, self.selectSearchID(self.id_record)[0][1])}.jpg")
+                    except FileNotFoundError:
+                        print("The .jpg file does not exist!")
+                    try:  # .txt
+                        print(f"{os.path.join(path, self.selectSearchID(self.id_record)[0][1])}.txt")
+                        os.remove(f"{os.path.join(path, self.selectSearchID(self.id_record)[0][1])}.txt")
+                    except FileNotFoundError:
+                        print("The .txt file does not exist!")
                 else:
-                    # print(self.selectSearchID(self.id_record)[0][1])
-                    print('not exist')
-                # print(container)
+                    print('The .png or .jpg or .txt file does not exist!')
 
         except ValueError:
-            print("Record do not exist.")
+            print("Record in database does not exist!")
