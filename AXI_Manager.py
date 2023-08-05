@@ -466,11 +466,11 @@ def get_selected_row(event) -> None:
 
         pyperclip.copy(row[1])  # clipboard Win / Linux: sudo apt-get install xclip
 
-        obj_remove = RemoveRecord(content[0])
-        obj_remove.remove_total()
-
         obj_new_item_ex.EI2.insert(0, f"{row[1]}")
         obj_new_item_ex.EI3.insert(0, f"{row[3]}")
+        print(row[0])
+        obj_tree = ContextualMenu(root, str(row[0]), False, False, True)
+        tree.bind("<Button-3>", obj_tree.do_popup)
 
         if row[54] is not None and ((row[52] is not None and int(row[52]) > 0) or int(row[49])):
             obj_checkbox_menu_ex_0.EI_0.insert(0, f"{row[54]}")
@@ -548,9 +548,11 @@ def get_selected_row(event) -> None:
                 column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
             )
 
+        obj_item = ContextualMenu(root, content[0], False, False, True)
         l_item.configure(text=f"{row[1]}")
+        l_item.configure(text=f"{row[1]}")
+        l_item.bind("<Button-3>", obj_item.do_popup)
         l_item_amount.configure(text=f"{row[3]}")
-        # l_item.bind("<Button-3>", obj_search.doPopup(event, True, True, False))
         l_date_db.configure(text=f"{row[2]}")
         l_qty.configure(text=f"Qty:")
         l_date.configure(text=f"Inserted:")
@@ -1097,6 +1099,8 @@ def get_selected_row(event) -> None:
         root.mainloop()
 
 
+
+
 def search() -> None:
     """
     The function is looking for the recipe by the phrase
@@ -1364,6 +1368,7 @@ def refresh() -> None:
 
         tree.bind("<<TreeviewSelect>>", get_selected_row)
 
+
         tree.grid(row=1, column=0, columnspan=3, pady=2)
         count += 1
         count1 += 1
@@ -1532,6 +1537,7 @@ if __name__ == "__main__":
     root.iconphoto(False, photo)  # Incon for Linux
 
     root.configure(background=obj_config.bgColor)
+
 
 
     # --- Main View ---
@@ -2106,7 +2112,8 @@ if __name__ == "__main__":
     # --- The End INSERT ---
 
     # --- Search ---
-    obj_search = ContextualMenu(root)
+    obj_search = ContextualMenu(root, "0", True, True, False)
+
     e_search = Entry(
         tab1,
         relief="solid",
@@ -2120,8 +2127,9 @@ if __name__ == "__main__":
         font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
     )
     e_search.grid(row=0, column=0, pady=1)
-    e_search.bind("<Button-3>", obj_search.doPopup(root.winfo_pointerx(), root.winfo_pointery(), True, True, False))
-    obj_search.setEntry(e_search)
+    # root.winfo_pointerx(), root.winfo_pointery()
+    e_search.bind("<Button-3>", obj_search.do_popup)
+    obj_search.set_entry(e_search)
     b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
     b_search.grid(row=0, column=1, pady=1)
     b_search_r = ttk.Button(
