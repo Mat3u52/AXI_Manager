@@ -17,8 +17,7 @@ from NewItem import NewItem
 from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
 from ComparisonView import ComparisonView
-from Refresh import Refresh
-
+from RemoveRecord import RemoveRecord
 
 min_movement: int = -1
 
@@ -469,9 +468,13 @@ def get_selected_row(event) -> None:
 
         obj_new_item_ex.EI2.insert(0, f"{row[1]}")
         obj_new_item_ex.EI3.insert(0, f"{row[3]}")
-        print(row[0])
+        # print(row[0])
         obj_tree = ContextualMenu(root, str(row[0]), False, False, True)
         tree.bind("<Button-3>", obj_tree.do_popup)
+        if RemoveRecord.flag is True:
+            print("ok")
+            refresh()
+            RemoveRecord.flag = False
 
         if row[54] is not None and ((row[52] is not None and int(row[52]) > 0) or int(row[49])):
             obj_checkbox_menu_ex_0.EI_0.insert(0, f"{row[54]}")
@@ -1100,8 +1103,6 @@ def get_selected_row(event) -> None:
         root.mainloop()
 
 
-
-
 def search() -> None:
     """
     The function is looking for the recipe by the phrase
@@ -1369,7 +1370,6 @@ def refresh() -> None:
 
         tree.bind("<<TreeviewSelect>>", get_selected_row)
 
-
         tree.grid(row=1, column=0, columnspan=3, pady=2)
         count += 1
         count1 += 1
@@ -1538,7 +1538,6 @@ if __name__ == "__main__":
     root.iconphoto(False, photo)  # Incon for Linux
 
     root.configure(background=obj_config.bgColor)
-
 
 
     # --- Main View ---

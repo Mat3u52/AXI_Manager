@@ -6,7 +6,8 @@ from Config import Config
 
 
 class RemoveRecord(DBConnect):
-    
+    flag: bool = False
+
     def __init__(self, id_record: str) -> None:
         super().__init__()
         self.id_record: str = str(id_record)
@@ -60,6 +61,7 @@ class RemoveRecord(DBConnect):
                             print('The .png or .jpg or .txt file does not exist!')
 
                 # self.delete_by_id(self.id_record)
+                RemoveRecord.flag = True
                 return True
             except ValueError:
                 print("Record in database does not exist!")
