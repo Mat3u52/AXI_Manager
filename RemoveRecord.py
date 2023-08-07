@@ -11,9 +11,11 @@ class RemoveRecord(DBConnect):
         super().__init__()
         self.id_record: str = str(id_record)
 
-    def remove_total(self) -> None:
+    def remove_total(self) -> bool:
         msg_box = tk.messagebox.askquestion('Remove Record',
-                                            'Are you sure you want to remove record?',
+                                            f'Are you sure you want to remove'
+                                            f' {self.selectSearchID(self.id_record)[0][1]} '
+                                            f'record?',
                                             icon='warning')
         if msg_box == 'yes':
             try:
@@ -58,6 +60,7 @@ class RemoveRecord(DBConnect):
                             print('The .png or .jpg or .txt file does not exist!')
 
                 # self.delete_by_id(self.id_record)
-
+                return True
             except ValueError:
                 print("Record in database does not exist!")
+                return False
