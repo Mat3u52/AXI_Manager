@@ -20,7 +20,7 @@ class NewItem:
         self.LI3.config(font=("Arial", 10))
         self.LI2.grid(row=0, column=0, sticky=W)
         self.LI3.grid(row=0, column=2, sticky=W)
-        self.objCM = ContextualMenu(self.root)
+        self.objCM = ContextualMenu(self.root, '0', True, True, False)
         self.EI2 = Entry(self.mainFrameInsert, relief="solid", textvariable=self.objCM.captureEntry,
                          borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
         self.EI2.config(font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE")
