@@ -19,6 +19,7 @@ from AutomaticUpdates import AutomaticUpdates
 from ComparisonView import ComparisonView
 from RemoveRecord import RemoveRecord
 
+
 min_movement: int = -1
 
 
@@ -2160,5 +2161,4 @@ if __name__ == "__main__":
     tree.heading("seven", text="EPI", anchor=tk.W)
 
     refresh()
-    # obj_refresh = Refresh(tree)
     root.mainloop()
