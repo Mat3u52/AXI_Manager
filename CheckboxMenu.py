@@ -16,7 +16,7 @@ class CheckboxMenu:
                           width=12, borderwidth=1, relief="solid", bg="#212121", fg="#555555", pady="1")
         self.LI_0.config(font=("Arial", 10))
         self.LI_0.grid(row=0, column=0, sticky=W)
-        self.objCM = ContextualMenu(self.root)
+        self.objCM = ContextualMenu(self.root, '0', True, True, False)
         self.EI_0 = Entry(self.insertFrame, relief="solid",
                           textvariable=self.objCM.captureEntry,
                           borderwidth=1, width=35, bg="#212121", fg="#FFFFFF")
@@ -66,7 +66,7 @@ class CheckboxMenu:
                           relief="solid", bg="#212121", fg="#555555", pady="1")
         self.LI_5.config(font=("Arial", 10))
         self.LI_5.grid(row=2, column=2, sticky=W)
-        self.objCM_Comments = ContextualMenu(self.root)
+        self.objCM_Comments = ContextualMenu(self.root, '0', True, True, False)
         self.EI_5 = Entry(self.insertFrame,
                           textvariable=self.objCM_Comments.captureEntry,
                           relief="solid", borderwidth=1, bg="#212121", fg="#FFFFFF")
