@@ -25,6 +25,7 @@ class ComparisonView(Comparison):
         self.root = root
         self.var = StringVar(self.root, "0")
         self.extract_set_to_dic: dict = {}
+        self.extract_set_to_dic0: dict = {}
 
     def compare_list_to_db(self, tab: ttk.Frame) -> None:
         """
@@ -38,20 +39,19 @@ class ComparisonView(Comparison):
 
         tab = tab
         i: int = 0
-        self.extract_set_to_dic.clear()
+        self.extract_set_to_dic0.clear()
         for value in dict.fromkeys(self.recipes_list().difference(self.recipes_db()), 0):
-            self.extract_set_to_dic[i] = value
+            self.extract_set_to_dic0[i] = value
             i += 1
-        # print(self.extract_set_to_dic)
         row_count: int = 0
-        for (text, value) in self.extract_set_to_dic.items():
-            if len(value) > 0:
+        for (text, value) in self.extract_set_to_dic0.items():
+            # if len(value) > 0:
                 ttk.Radiobutton(tab,
                                 text=value,
                                 variable=self.var,
                                 value=text,
                                 style="Comparison.TRadiobutton",
-                                command=self._insert_from_comparison,
+                                command=self._insert_from_comparison0,
                                 ).grid(row=int(row_count),
                                        column=0,
                                        sticky=W)
@@ -73,10 +73,9 @@ class ComparisonView(Comparison):
         for value in dict.fromkeys(self.recipes_db().difference(self.recipes_list()), 0):
             self.extract_set_to_dic[i] = value
             i += 1
-        # print(self.extract_set_to_dic)
         row_count: int = 0
         for (text, value) in self.extract_set_to_dic.items():
-            if len(value) > 0:
+            # if len(value) > 0:
                 ttk.Radiobutton(tab,
                                 text=value,
                                 variable=self.var,
@@ -97,6 +96,16 @@ class ComparisonView(Comparison):
         """
 
         pyperclip.copy(self.extract_set_to_dic[int(self.var.get())])
+
+    def _insert_from_comparison0(self) -> None:
+        """
+        Put data to clipboard after click on name
+
+        :return: None
+        :rtype: None
+        """
+
+        pyperclip.copy(self.extract_set_to_dic0[int(self.var.get())])
 
 
 
