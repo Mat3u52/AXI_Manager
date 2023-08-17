@@ -1518,8 +1518,10 @@ def tab_selected(event) -> None:
 
 
 def tab_selected_comparison(event) -> None:
-    # db_to_v810 = ttk.Notebook(v810_device)
+    db_to_v810 = ttk.Notebook(v810_device)
+    # tab_3163_to_db = ttk.Frame(db_to_v810)
     if event.widget.tab(event.widget.select(), "text") == " --- V810-3163 --- ":
+        db_to_v810.pack_forget()
         db_to_v810 = ttk.Notebook(v810_device)
 
         obj_comparison = ComparisonView(
@@ -1532,31 +1534,32 @@ def tab_selected_comparison(event) -> None:
         db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
         obj_comparison.compare_list_to_db(tab=tab_3163_to_db)
 
+
         tab_db_to_3163 = ttk.Frame(db_to_v810)
         db_to_v810.add(tab_db_to_3163, text=" --- DB to V810 --- ")
         db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
         obj_comparison.compare_db_to_list(tab=tab_db_to_3163)
-
 
     elif event.widget.tab(event.widget.select(), "text") == " --- V810-3483S2EX --- ":
         print("second notification")
-        # db_to_v810.pack_forget()
+        db_to_v810.pack_forget()
         db_to_v810 = ttk.Notebook(v810_device)
 
-        obj_comparison = ComparisonView(
-            dir_name=obj_config.pathImgV8103483S2EX,
-            db_name="VITROXIII_PROG",
-            root=root
-        )
-        tab_3163_to_db = ttk.Frame(db_to_v810)
-        db_to_v810.add(tab_3163_to_db, text=" --- V810 to DB --- ")
-        db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
-        obj_comparison.compare_list_to_db(tab=tab_3163_to_db)
 
-        tab_db_to_3163 = ttk.Frame(db_to_v810)
-        db_to_v810.add(tab_db_to_3163, text=" --- DB to V810 --- ")
-        db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
-        obj_comparison.compare_db_to_list(tab=tab_db_to_3163)
+        # obj_comparison = ComparisonView(
+        #     dir_name=obj_config.pathImgV8103483S2EX,
+        #     db_name="VITROXIII_PROG",
+        #     root=root
+        # )
+        # tab_3163_to_db = ttk.Frame(db_to_v810)
+        # db_to_v810.add(tab_3163_to_db, text=" --- V810 to DB --- ")
+        # db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+        # obj_comparison.compare_list_to_db(tab=tab_3163_to_db)
+        #
+        # tab_db_to_3163 = ttk.Frame(db_to_v810)
+        # db_to_v810.add(tab_db_to_3163, text=" --- DB to V810 --- ")
+        # db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+        # obj_comparison.compare_db_to_list(tab=tab_db_to_3163)
 
 
 if __name__ == "__main__":
