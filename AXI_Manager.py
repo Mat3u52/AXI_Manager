@@ -1525,11 +1525,16 @@ def tab_selected_comparison(event) -> None:
     tab_3163_to_db = ttk.Frame(db_to_v810)
     # if event.widget.tab(event.widget.select(), "text") == " --- V810-3163 --- ":
     db_to_v810.add(tab_3163_to_db, text=" --- V810 to DB --- ")
-    # if event.widget.tab(event.widget.select(), "text") == " --- V810-3483S2EX --- ":
-    #     db_to_v810.hide(0)
+    if event.widget.tab(event.widget.select(), "text") == " --- V810-3483S2EX --- ":
+        hide()
+
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
     Button(tab_3163_to_db, text="dddd", command=hide).pack()
     # tab_3163_to_db.destroy()
+
+
+
+
 
     # db_to_v810.forget()
     # tab_db_to_3163 = ttk.Frame(db_to_v810)
