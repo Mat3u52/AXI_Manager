@@ -45,18 +45,20 @@ class ComparisonView(Comparison):
             i += 1
         row_count: int = 0
         for (text, value) in self.extract_set_to_dic0.items():
-            # if len(value) > 0:
-                radio_box = ttk.Radiobutton(tab,
-                                text=value,
-                                variable=self.var,
-                                value=text,
-                                style="Comparison.TRadiobutton",
-                                command=self._insert_from_comparison0,
-                                )
-                radio_box.grid(row=int(row_count),
-                                       column=0,
-                                       sticky=W)
-                row_count += 1
+            if value is not None:
+                if len(value) > 0 and value != "thumb":
+                    radio_box = ttk.Radiobutton(tab,
+                                    text=value,
+                                    variable=self.var,
+                                    value=text,
+                                    style="Comparison.TRadiobutton",
+                                    command=self._insert_from_comparison0,
+                                    )
+                    radio_box.grid(row=int(row_count),
+                                           column=0,
+                                           sticky=W)
+                    row_count += 1
+
     def compare_db_to_list(self, tab: ttk.Frame) -> None:
         """
         Show difference between two set list
@@ -74,19 +76,20 @@ class ComparisonView(Comparison):
             self.extract_set_to_dic[i] = value
             i += 1
         row_count: int = 0
-        # tab_3163_to_db.pack_forget()
         for (text, value) in self.extract_set_to_dic.items():
-            # if len(value) > 0:
-                ttk.Radiobutton(tab,
-                                text=value,
-                                variable=self.var,
-                                value=text,
-                                style="Comparison.TRadiobutton",
-                                command=self._insert_from_comparison,
-                                ).grid(row=int(row_count),
-                                       column=0,
-                                       sticky=W)
-                row_count += 1
+            if value is not None:
+                if len(value) > 0 and value != "thumb":
+                    ttk.Radiobutton(tab,
+                                    text=value,
+                                    variable=self.var,
+                                    value=text,
+                                    style="Comparison.TRadiobutton",
+                                    command=self._insert_from_comparison,
+                                    ).grid(row=int(row_count),
+                                           column=0,
+                                           sticky=W)
+                    row_count += 1
+                # print(text)
                 # radio_box.invoke()
 
     def _insert_from_comparison(self) -> None:
