@@ -1518,10 +1518,17 @@ def tab_selected(event) -> None:
 
 
 def tab_selected_comparison(event) -> None:
+    """
+    The function remove unnecessary tabs.
 
+    :return: Show only selected tabs
+    :rtype: None
+     """
     if event.widget.tab(event.widget.select(), "text") == " V810-3163 ":
         db_to_v810.hide(tab_3483S2EX_to_db)
         db_to_v810.hide(tab_db_to_3483S2EX)
+        db_to_v810.hide(tab_3553S2EX_to_db)
+        db_to_v810.hide(tab_db_to_3553S2EX)
 
         if event.widget.tab(event.widget.select(), "text") != "[3163] V810 to DB":
             db_to_v810.add(tab_3163_to_db, text="[3163] V810 to DB")
@@ -1533,6 +1540,8 @@ def tab_selected_comparison(event) -> None:
     if event.widget.tab(event.widget.select(), "text") == " V810-3483S2EX ":
         db_to_v810.hide(tab_3163_to_db)
         db_to_v810.hide(tab_db_to_3163)
+        db_to_v810.hide(tab_3553S2EX_to_db)
+        db_to_v810.hide(tab_db_to_3553S2EX)
 
         if event.widget.tab(event.widget.select(), "text") != "[3483] V810 to DB":
 
@@ -1540,6 +1549,20 @@ def tab_selected_comparison(event) -> None:
             db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
 
             db_to_v810.add(tab_db_to_3483S2EX, text="[3483] DB to V810")
+            db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+
+    if event.widget.tab(event.widget.select(), "text") == " V810-3553S2EX ":
+        db_to_v810.hide(tab_3163_to_db)
+        db_to_v810.hide(tab_db_to_3163)
+        db_to_v810.hide(tab_3483S2EX_to_db)
+        db_to_v810.hide(tab_db_to_3483S2EX)
+
+        if event.widget.tab(event.widget.select(), "text") != "[3553] V810 to DB":
+
+            db_to_v810.add(tab_3553S2EX_to_db, text="[3553] V810 to DB")
+            db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+
+            db_to_v810.add(tab_db_to_3553S2EX, text="[3553] DB to V810")
             db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
 
 
@@ -1566,9 +1589,7 @@ if __name__ == "__main__":
 
     root.configure(background=obj_config.bgColor)
 
-
     # --- Main View ---
-
     main_frame_view = ttk.LabelFrame(root, text=" Main View ")
     main_frame_view.pack(expand=1, fill="both", padx=10, pady=10)
 
@@ -2037,6 +2058,7 @@ if __name__ == "__main__":
 
 # --- Comparison ---
     v810_device = ttk.Notebook(tab4)
+
     tab_3163 = ttk.Frame(v810_device)
     v810_device.add(tab_3163, text=" V810-3163 ")
     v810_device.pack(expand=1, fill="both", padx=10, pady=10)
@@ -2045,9 +2067,9 @@ if __name__ == "__main__":
     v810_device.add(tab_3483S2EX, text=" V810-3483S2EX ")
     v810_device.pack(expand=1, fill="both", padx=10, pady=10)
 
-    # tab_3483S2EX = ttk.Frame(v810_device)
-    # v810_device.add(tab_3483S2EX, text=" V810-3553S2EX ")
-    # v810_device.pack(expand=1, fill="both", padx=10, pady=10)
+    tab_3553S2EX = ttk.Frame(v810_device)
+    v810_device.add(tab_3553S2EX, text=" V810-3553S2EX ")
+    v810_device.pack(expand=1, fill="both", padx=10, pady=10)
 
     v810_device.bind("<<NotebookTabChanged>>", tab_selected_comparison)
 
@@ -2083,6 +2105,22 @@ if __name__ == "__main__":
     db_to_v810.add(tab_db_to_3483S2EX, text="[3483] DB to V810")
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
     obj_comparison.compare_db_to_list(tab=tab_db_to_3483S2EX)
+
+    obj_comparison = ComparisonView(
+        dir_name=obj_config.pathImgV8103483S2EX,
+        db_name="VITROXIV_PROG",
+        root=root
+    )
+
+    tab_3553S2EX_to_db = ttk.Frame(db_to_v810)
+    db_to_v810.add(tab_3553S2EX_to_db, text="[3553] V810 to DB")
+    db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+    obj_comparison.compare_list_to_db(tab=tab_3553S2EX_to_db)
+
+    tab_db_to_3553S2EX = ttk.Frame(db_to_v810)
+    db_to_v810.add(tab_db_to_3553S2EX, text="[3553] DB to V810")
+    db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+    obj_comparison.compare_db_to_list(tab=tab_db_to_3553S2EX)
 
 # --- The End Comparison ---
 
