@@ -1142,6 +1142,7 @@ def refresh() -> None:
     tree.tag_configure("one", background="#111111")
     tree.tag_configure("baan", background="#111111", foreground="#EB0E0E")
     tree.tag_configure("baan0", foreground="#EB0E0E")
+    # tree.tag_configure("lc", foreground="#EB0E0E")
     # ---The End Create striped row---
 
     count = 1
@@ -1248,6 +1249,7 @@ def refresh() -> None:
                     text=f" ",
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                 )
+
         count1 += 1
         if int(len(str(row[17]))) > 4:
             tree.insert(
@@ -1529,6 +1531,8 @@ def tab_selected_comparison(event) -> None:
         db_to_v810.hide(tab_db_to_3483S2EX)
         db_to_v810.hide(tab_3553S2EX_to_db)
         db_to_v810.hide(tab_db_to_3553S2EX)
+        db_to_v810.hide(tab_8120S2_to_db)
+        db_to_v810.hide(tab_db_to_8120S2)
 
         if event.widget.tab(event.widget.select(), "text") != "[3163] V810 to DB":
             db_to_v810.add(tab_3163_to_db, text="[3163] V810 to DB")
@@ -1542,6 +1546,8 @@ def tab_selected_comparison(event) -> None:
         db_to_v810.hide(tab_db_to_3163)
         db_to_v810.hide(tab_3553S2EX_to_db)
         db_to_v810.hide(tab_db_to_3553S2EX)
+        db_to_v810.hide(tab_8120S2_to_db)
+        db_to_v810.hide(tab_db_to_8120S2)
 
         if event.widget.tab(event.widget.select(), "text") != "[3483] V810 to DB":
 
@@ -1556,6 +1562,8 @@ def tab_selected_comparison(event) -> None:
         db_to_v810.hide(tab_db_to_3163)
         db_to_v810.hide(tab_3483S2EX_to_db)
         db_to_v810.hide(tab_db_to_3483S2EX)
+        db_to_v810.hide(tab_8120S2_to_db)
+        db_to_v810.hide(tab_db_to_8120S2)
 
         if event.widget.tab(event.widget.select(), "text") != "[3553] V810 to DB":
 
@@ -1563,6 +1571,22 @@ def tab_selected_comparison(event) -> None:
             db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
 
             db_to_v810.add(tab_db_to_3553S2EX, text="[3553] DB to V810")
+            db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+
+    if event.widget.tab(event.widget.select(), "text") == " V810-8120S2 ":
+        db_to_v810.hide(tab_3163_to_db)
+        db_to_v810.hide(tab_db_to_3163)
+        db_to_v810.hide(tab_3483S2EX_to_db)
+        db_to_v810.hide(tab_db_to_3483S2EX)
+        db_to_v810.hide(tab_3553S2EX_to_db)
+        db_to_v810.hide(tab_db_to_3553S2EX)
+
+        if event.widget.tab(event.widget.select(), "text") != "[3553] V810 to DB":
+
+            db_to_v810.add(tab_8120S2_to_db, text="[8120] V810 to DB")
+            db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+
+            db_to_v810.add(tab_db_to_8120S2, text="[8120] DB to V810")
             db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
 
 
@@ -2071,6 +2095,10 @@ if __name__ == "__main__":
     v810_device.add(tab_3553S2EX, text=" V810-3553S2EX ")
     v810_device.pack(expand=1, fill="both", padx=10, pady=10)
 
+    tab_8120S2 = ttk.Frame(v810_device)
+    v810_device.add(tab_8120S2, text=" V810-8120S2 ")
+    v810_device.pack(expand=1, fill="both", padx=10, pady=10)
+
     v810_device.bind("<<NotebookTabChanged>>", tab_selected_comparison)
 
     db_to_v810 = ttk.Notebook(v810_device)
@@ -2121,6 +2149,22 @@ if __name__ == "__main__":
     db_to_v810.add(tab_db_to_3553S2EX, text="[3553] DB to V810")
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
     obj_comparison.compare_db_to_list(tab=tab_db_to_3553S2EX)
+
+    obj_comparison = ComparisonView(
+        dir_name=obj_config.pathImgV8108120S2,
+        db_name="VITROXII_PROG",
+        root=root
+    )
+
+    tab_8120S2_to_db = ttk.Frame(db_to_v810)
+    db_to_v810.add(tab_8120S2_to_db, text="[8120] V810 to DB")
+    db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+    obj_comparison.compare_list_to_db(tab=tab_8120S2_to_db)
+
+    tab_db_to_8120S2 = ttk.Frame(db_to_v810)
+    db_to_v810.add(tab_db_to_8120S2, text="[8120] DB to V810")
+    db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
+    obj_comparison.compare_db_to_list(tab=tab_db_to_8120S2)
 
 # --- The End Comparison ---
 
