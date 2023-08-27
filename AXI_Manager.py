@@ -1142,7 +1142,7 @@ def refresh() -> None:
     tree.tag_configure("one", background="#111111")
     tree.tag_configure("baan", background="#111111", foreground="#EB0E0E")
     tree.tag_configure("baan0", foreground="#EB0E0E")
-    # tree.tag_configure("lc", foreground="#EB0E0E")
+    tree.tag_configure("lc", foreground="#FF8000")
     # ---The End Create striped row---
 
     count = 1
@@ -1190,6 +1190,52 @@ def refresh() -> None:
                     text=f" ",
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="baan",
+                )
+            elif (
+                (
+                    row[18] != "YES"
+                    and row[18] != "NONE"
+                    and row[18] is not None
+                    and (row[18] == "NO" or row[18] == "LACK")
+                )
+                or (
+                    row[23] != "YES"
+                    and row[23] != "NONE"
+                    and row[23] is not None
+                    and (row[23] == "NO" or row[23] == "LACK")
+                )
+                or (
+                    row[28] != "YES"
+                    and row[28] != "NONE"
+                    and row[28] is not None
+                    and (row[28] == "NO" or row[28] == "LACK")
+                )
+                or (
+                    row[32] != "YES"
+                    and row[32] != "NONE"
+                    and row[32] is not None
+                    and (row[32] == "NO" or row[32] == "LACK")
+                )
+                or (
+                    row[46] != "YES"
+                    and row[46] != "NONE"
+                    and row[46] is not None
+                    and (row[46] == "NO" or row[46] == "LACK")
+                )
+                or (
+                    row[55] != "YES"
+                    and row[55] != "NONE"
+                    and row[55] is not None
+                    and (row[55] == "NO" or row[55] == "LACK")
+                )
+            ):
+                folder1 = tree.insert(
+                    parent="",
+                    index=count,
+                    iid=count1,
+                    text=f" ",
+                    values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
+                    tag="lc",
                 )
             else:
                 folder1 = tree.insert(
