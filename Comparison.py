@@ -63,14 +63,14 @@ class Comparison:
         pass
 
 
-if __name__ == "__main__":
-    obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3483S2EX/",
-                                db_name="VITROXIII_PROG")
+# if __name__ == "__main__":
+#     obj_comparison = Comparison(dir_name="/root/PythonDeveloper/AXI_Manager_Source_Files/images/V810-3483S2EX/",
+#                                 db_name="VITROXIII_PROG")
 
     # png to db
     # print(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()).remove(''))
-    print(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()))
+    # print(obj_comparison.recipes_list().difference(obj_comparison.recipes_db()))
     # db to png
     # print(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()).remove(''))
-    print(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()))
+    # print(obj_comparison.recipes_db().difference(obj_comparison.recipes_list()))
 

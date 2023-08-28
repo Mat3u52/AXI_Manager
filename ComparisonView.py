@@ -68,7 +68,7 @@ class ComparisonView(Comparison):
         :return: Init class
         :rtype: None
         """
-        # tab.pack_forget()
+
         tab = tab
         i: int = 0
         self.extract_set_to_dic.clear()
@@ -89,8 +89,6 @@ class ComparisonView(Comparison):
                                            column=0,
                                            sticky=W)
                     row_count += 1
-                # print(text)
-                # radio_box.invoke()
 
     def _insert_from_comparison(self) -> None:
         """
