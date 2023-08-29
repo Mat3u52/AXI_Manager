@@ -1,5 +1,6 @@
 from tkinter import W, ttk, StringVar
 import tkinter as tk
+
 import pyperclip
 from Comparison import Comparison
 from Styles import Styles
