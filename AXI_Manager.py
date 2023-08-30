@@ -1,6 +1,6 @@
 import tkinter
 import tkinter as tk
-from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage, Button, StringVar
+from tkinter import Label, W, END, E, IntVar, Entry, ttk, messagebox, PhotoImage, Button, StringVar, Scrollbar
 import time
 import os
 
@@ -2133,6 +2133,9 @@ if __name__ == "__main__":
     v810_device.add(tab_3163, text=" V810-3163 ")
     v810_device.pack(expand=1, fill="both", padx=10, pady=10)
 
+    # v = Scrollbar(tab_3163, orient='vertical')
+    # v.place(x=0, y=250, height=200)
+
     tab_3483S2EX = ttk.Frame(v810_device)
     v810_device.add(tab_3483S2EX, text=" V810-3483S2EX ")
     v810_device.pack(expand=1, fill="both", padx=10, pady=10)
@@ -2158,6 +2161,8 @@ if __name__ == "__main__":
     db_to_v810.add(tab_3163_to_db, text="[3163] V810 to DB")
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
     obj_comparison.compare_list_to_db(tab=tab_3163_to_db)
+
+    # v.config(command=obj_comparison.radio_box.yview)
 
     tab_db_to_3163 = ttk.Frame(db_to_v810)
     db_to_v810.add(tab_db_to_3163, text="[3163] DB to V810")
