@@ -1,4 +1,4 @@
-from tkinter import W, ttk, StringVar
+from tkinter import W, ttk, StringVar, Scrollbar
 import tkinter as tk
 
 import pyperclip
@@ -39,6 +39,7 @@ class ComparisonView(Comparison):
         """
 
         tab = tab
+
         i: int = 0
         self.extract_set_to_dic0.clear()
         for value in dict.fromkeys(self.recipes_list().difference(self.recipes_db()), 0):
@@ -48,14 +49,14 @@ class ComparisonView(Comparison):
         for (text, value) in self.extract_set_to_dic0.items():
             if value is not None:
                 if len(value) > 0 and value != "thumb":
-                    radio_box = ttk.Radiobutton(tab,
+                    self.radio_box = ttk.Radiobutton(tab,
                                     text=value,
                                     variable=self.var,
                                     value=text,
                                     style="Comparison.TRadiobutton",
                                     command=self._insert_from_comparison0,
                                     )
-                    radio_box.grid(row=int(row_count),
+                    self.radio_box.grid(row=int(row_count),
                                            column=0,
                                            sticky=W)
                     row_count += 1
