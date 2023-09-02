@@ -1478,8 +1478,6 @@ def refresh() -> None:
         x=obj_config.scrollX, y=obj_config.scrollY, height=obj_config.scrollHeight
     )
     tree.configure(yscrollcommand=vsb.set)
-
-
 # ---The End of Scrollbar---
 
 
