@@ -406,7 +406,8 @@ def insert_button() -> None:
         or obj_db_connect_5dx.flagSucceeded
     ):
         obj_tip_new = Tip(root, obj_new_item_ex.mainFrameInsert)
-        obj_tip_new.animate_non_translucent()
+        # obj_tip_new.animate_non_translucent()
+        obj_tip_new.animate_translucent()
         refresh()
 
 
