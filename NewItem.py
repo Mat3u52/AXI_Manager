@@ -4,12 +4,23 @@ from ContextualMenu import ContextualMenu
 
 
 class NewItem:
-    def __init__(self, tab, root) -> None:
+    def __init__(self, tab: ttk, root: ttk) -> None:
+        """
+        Template for insert a new recoed.
+
+        :param tab: handle to frame
+        type tab: ttk
+        :param root: handle to main window
+        :type root: ttk
+        :return: template of form
+        :rtype: None
+        """
+
         self.tab = tab
         self.root = root
 
-    def mainFrameInsert(self, mainName):
-        self.mainName = mainName
+    def mainFrameInsert(self, main_name):
+        self.mainName = main_name
         self.mainFrameInsert = ttk.LabelFrame(self.tab, text=self.mainName)
         self.mainFrameInsert.grid(column=0, row=2, columnspan=10, sticky='W', padx=10, pady=10)
         self.LI2 = Label(self.mainFrameInsert, text="Item:", width=12, borderwidth=1,
