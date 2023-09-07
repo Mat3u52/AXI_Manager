@@ -5,7 +5,6 @@ from PIL import Image
 
 
 class Tip:
-
     def __init__(self, root: tk, main_frame_view: tk, prime_png: str = 'img/tip/okBegin.png') -> None:
         """
         Preparation of canvas area.
