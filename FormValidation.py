@@ -4,25 +4,27 @@ from tkinter import END, messagebox
 
 class FormValidation:
     def __init__(self) -> None:
-        self.flagInit = False
-        self.totalTime = 0
-        self.uph85 = 0
-        self.uph95 = 0
+        """
+        Init for FormValidation.
 
-        self.item = ""
-        self.itemAmount = 0
+        :return: Init values for variables
+        :rtype: None
+        """
+
+        self.flagInit: bool = False
+        self.totalTime: int = 0
+        self.uph85: int = 0
+        self.uph95: int = 0
+
+        self.item: str = ""
+        self.itemAmount: int = 0
 
     def validatorItem(self, item: str, item_amount: int) -> None:
-
         try:
-            if item != '' and item_amount != '' and\
-                    item_amount != '' and int(item_amount) > 0:
-
+            if item != '' and item_amount != '' and int(item_amount) > 0:
                 self.item = str(item.strip())
                 self.itemAmount = int(item_amount)
                 self.flagInit = True
-
-                print("OK - validator_item")
             else:
                 self.flagInit = False
                 messagebox.showwarning("Warning!", "Lack of Item or Qty.")
@@ -30,6 +32,7 @@ class FormValidation:
             messagebox.showwarning("Warning!", "Wrong value.")
 
     def switch(self, x) -> int:
+        self.x = x
         match self.x:
             case "NONE":
                 return 0
