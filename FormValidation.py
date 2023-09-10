@@ -19,7 +19,19 @@ class FormValidation:
         self.item: str = ""
         self.itemAmount: int = 0
 
-    def validatorItem(self, item: str, item_amount: int) -> None:
+        self.x: str = ""
+
+    def validator_item(self, item: str, item_amount: int) -> None:
+        """
+        Verification two fields whether are filled in
+
+        :param item: item name
+        :type item: str
+        :param item_amount: amount of boards in the panel
+        :type item_amount: int
+        :return: messagebox
+        :rtype: None
+        """
         try:
             if item != '' and item_amount != '' and int(item_amount) > 0:
                 self.item = str(item.strip())
@@ -31,7 +43,15 @@ class FormValidation:
         except ValueError:
             messagebox.showwarning("Warning!", "Wrong value.")
 
-    def switch(self, x) -> int:
+    def switch(self, x: str) -> int:
+        """
+        the method simulate switch from other technologies
+
+        :param x: take the phrase
+        :type x: str
+        :return: number
+        :rtype: int
+        """
         self.x = x
         match self.x:
             case "NONE":
@@ -192,7 +212,7 @@ class TestFormValidation:
         item: str = "test"
         item_amount: int = 1
 
-        FormValidation.validatorItem(self, item, item_amount)
+        FormValidation.validator_item(self, item, item_amount)
         out, err = capsys.readouterr()
 
         assert out == 'OK - validator_item\n'
