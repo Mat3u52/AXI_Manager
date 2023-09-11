@@ -65,8 +65,18 @@ class FormValidation:
             case _:
                 return 0
 
-    def validator(self, prog="", test=0, linecapa="NONE", epi="NONE", baan1="NONE", comments="",
-                  flag_item_status=False, item_amount=0, align_time=0, laser_time=0, thickness_time=0):
+    def validator(self,
+                  prog: str = "",
+                  test: int = 0,
+                  linecapa: str = "NONE",
+                  epi: str = "NONE",
+                  baan1: str = "NONE",
+                  comments: str = "",
+                  flag_item_status: bool = False,
+                  item_amount: int = 0,
+                  align_time: int = 0,
+                  laser_time: int = 0,
+                  thickness_time: int = 0) -> None:
         try:
             self.flagValidator = False
             self.flagInitStatus = flag_item_status
