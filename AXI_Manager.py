@@ -2232,7 +2232,7 @@ if __name__ == "__main__":
     obj_comparison.compare_db_to_list(tab=tab_db_to_3483S2EX)
 
     obj_comparison = ComparisonView(
-        dir_name=obj_config.pathImgV8103483S2EX,
+        dir_name=obj_config.pathImgV8103553S2EX,
         db_name="VITROXIV_PROG",
         root=root
     )
