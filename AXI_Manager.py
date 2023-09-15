@@ -183,7 +183,7 @@ def insert_button() -> None:
         obj_form_validator_v8103553_s2_ex.uph85,
         obj_form_validator_v8103553_s2_ex.uph95,
         obj_form_validator_v8103553_s2_ex.uph95Time,
-        obj_form_validator_v8103553_s2_ex.flagValidator,
+        obj_form_validator_v8103553_s2_ex.flag_validator,
     )
     obj_db_connect_v8103553_s2_ex.closeDB()
 
@@ -223,7 +223,7 @@ def insert_button() -> None:
         obj_form_validator_v8103483_s2_ex.uph85,
         obj_form_validator_v8103483_s2_ex.uph95,
         obj_form_validator_v8103483_s2_ex.uph95Time,
-        obj_form_validator_v8103483_s2_ex.flagValidator,
+        obj_form_validator_v8103483_s2_ex.flag_validator,
     )
     obj_db_connect_v8103483_s2_ex.closeDB()
 
@@ -264,7 +264,7 @@ def insert_button() -> None:
         obj_form_validator_v8103163.uph85,
         obj_form_validator_v8103163.uph95,
         obj_form_validator_v8103163.uph95Time,
-        obj_form_validator_v8103163.flagValidator,
+        obj_form_validator_v8103163.flag_validator,
     )
     obj_db_connect_v8103163.closeDB()
 
@@ -304,7 +304,7 @@ def insert_button() -> None:
         obj_form_validator_v8108120_s2.uph85,
         obj_form_validator_v8108120_s2.uph95,
         obj_form_validator_v8108120_s2.uph95Time,
-        obj_form_validator_v8108120_s2.flagValidator,
+        obj_form_validator_v8108120_s2.flag_validator,
     )
     obj_db_connect_v8108120_s2.closeDB()
 
@@ -377,12 +377,12 @@ def insert_button() -> None:
         obj_form_validator_v849.uph85,
         obj_form_validator_v849.uph95,
         obj_form_validator_v849.uph95Time,
-        obj_form_validator_v849.flagValidator,
+        obj_form_validator_v849.flag_validator,
         obj_form_validator_v849.alignTime,
         obj_form_validator_v849.laserTime,
         obj_form_validator_v849.thicknessTime,
         obj_form_validator_v849.totalTime,
-        obj_form_validator_v817.flagValidator,
+        obj_form_validator_v817.flag_validator,
         obj_form_validator_v817.prog,
         obj_form_validator_v817.test_time,
         obj_form_validator_v817.line_capa,
