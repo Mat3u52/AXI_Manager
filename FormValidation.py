@@ -21,6 +21,8 @@ class FormValidation:
 
         self.x: str = ""
 
+        self.flag_init_status = False
+
     def validator_item(self, item: str, item_amount: int) -> None:
         """
         Verification two fields whether are filled in
@@ -67,32 +69,60 @@ class FormValidation:
 
     def validator(self,
                   prog: str = "",
-                  test: int = 0,
-                  linecapa: str = "NONE",
+                  test_time: int = 0,
+                  line_capa: str = "NONE",
                   epi: str = "NONE",
-                  baan1: str = "NONE",
+                  baan_status: str = "NONE",
                   comments: str = "",
                   flag_item_status: bool = False,
                   item_amount: int = 0,
                   align_time: int = 0,
                   laser_time: int = 0,
                   thickness_time: int = 0) -> None:
+        """
+        Function validate the variable.
+
+        :param prog: program name
+        :type prog: str
+        :param test_time: time of scanning
+        :type test_time: int
+        :param line_capa: status of line capacity
+        :type line_capa: str
+        :param epi: status of epi
+        :type epi: str
+        :param baan_status: status of baan
+        :type baan_status: str
+        :param comments: comments
+        :type comments: str
+        :param flag_item_status: flag of item status
+        :type flag_item_status: bool
+        :param item_amount: amount of the boards in the panel
+        :type item_amount: int
+        :param align_time: time of alignment
+        :type align_time: int
+        :param laser_time: time of laser mapping
+        :type laser_time: int
+        :param thickness_time: time of automatic thickness measure
+        :type thickness_time: int
+        :return: message error or uph
+        :rtype: None
+        """
         try:
-            self.flagValidator = False
-            self.flagInitStatus = flag_item_status
-            if self.flagInitStatus is True and \
+            self.flag_validator = False
+            self.flag_init_status = flag_item_status
+            if self.flag_init_status is True and \
                     prog != '' and \
-                    test != '' and int(test) > 0 and \
-                    linecapa and epi and baan1 and \
+                    test_time != '' and int(test_time) > 0 and \
+                    line_capa and epi and baan_status and \
                     item_amount != '' and int(item_amount) > 0:
 
                 self.prog = str(prog.strip())
                 self.prog = self.prog.replace('/', '_')
                 self.prog = self.prog.replace('\\', '_')
-                self.test = int(test)
-                self.linecapa = str(linecapa)
+                self.test_time = int(test_time)
+                self.line_capa = str(line_capa)
                 self.epi = str(epi)
-                self.baan1 = str(baan1)
+                self.baan_status = str(baan_status)
                 self.comments = str(comments)
                 self.itemAmount = int(item_amount)
 
@@ -110,25 +140,25 @@ class FormValidation:
                     self.thicknessTime = 0
 
                 self.hex = ""
-                self.totalTime = int(self.test) + int(self.alignTime) + int(self.laserTime) + int(self.thicknessTime)
+                self.totalTime = int(self.test_time) + int(self.alignTime) + int(self.laserTime) + int(self.thicknessTime)
 
-                if (self._computeUPH(int(self.totalTime), 85, int(self.itemAmount)) > 0) and \
-                        (self._computeUPH(int(self.totalTime), 95, int(self.itemAmount)) > 0):
+                if (self._compute_uph(int(self.totalTime), 85, int(self.itemAmount)) > 0) and \
+                        (self._compute_uph(int(self.totalTime), 95, int(self.itemAmount)) > 0):
 
-                    self.uph85 = self._computeUPH(int(self.totalTime), 85, int(self.itemAmount))
-                    self.uph95 = self._computeUPH(int(self.totalTime), 95, int(self.itemAmount))
+                    self.uph85 = self._compute_uph(int(self.totalTime), 85, int(self.itemAmount))
+                    self.uph95 = self._compute_uph(int(self.totalTime), 95, int(self.itemAmount))
                     self.uph95Time = self._convertUPHToTime(self.uph95, self.itemAmount)
-                    self.flagValidator = True
+                    self.flag_validator = True
 
                 else:
-                    self.flagValidator = False
+                    self.flag_validator = False
 
             else:
                 self.prog = ""
-                self.test = 0
-                self.linecapa = "NONE"
+                self.test_time = 0
+                self.line_capa = "NONE"
                 self.epi = "NONE"
-                self.baan1 = "NONE"
+                self.baan_status = "NONE"
                 self.comments = ""
                 self.uph85 = 0
                 self.uph95 = 0
@@ -140,18 +170,39 @@ class FormValidation:
 
                 self.hex = ""
 
-                self.flagValidator = False
+                self.flag_validator = False
 
         except ValueError:
             messagebox.showwarning("Warning!", "Wrong value.")
 
-    def _computeUPH(self, totalScaningTime, capability, qtyPCB):
-        if totalScaningTime > 0 and capability > 0 and qtyPCB > 0:
-            self.totalScaningTime = totalScaningTime
-            self.capability = capability
-            self.qtyPCB = qtyPCB
+    def _compute_uph(self,
+                     total_scanning_time: int,
+                     capability: int,
+                     qty_pcb: int,
+                     transmit: int = 15,
+                     ) -> None:
+        """
+        The auxiliary method to calculate unit pre hour.
 
-            self.uph = floor((3600 / (float(self.totalScaningTime) + 15) *
+        :param total_scanning_time: time of scanning pcb
+        :type total_scanning_time: int
+        :param capability: efficiency factor
+        :type capability: int
+        :param qty_pcb: qty of boards in the panel
+        :type qty_pcb: int
+        :return: uph or 0
+        :rtype: None
+        """
+        if int(total_scanning_time) > 0 and \
+                int(capability) > 0 and \
+                int(qty_pcb) > 0 and \
+                int(transmit) > 0:
+            self.totalScanningTime = total_scanning_time
+            self.capability = capability
+            self.qtyPCB = qty_pcb
+            self.transmit = transmit
+
+            self.uph = floor((3600 / (float(self.totalScanningTime) + int(self.transmit)) *
                               (float(self.capability) / 100))) * int(self.qtyPCB)
             return self.uph
         else:
@@ -175,9 +226,9 @@ class FormValidation:
             self.ei3.delete(0, END)
 
     def cleanUp(self, ei0, ei1, ci2, ci3, ci4, ei5, ei6=0, ei7=0, ei8=0):
-        if (self.flagValidator is True) \
+        if (self.flag_validator is True) \
                 and ei0 and ei1 and ci2 and ci3 and ci4 and ei5:
-            self.flagInitStatus = False
+            self.flag_init_status = False
             self.ei0 = ei0
             self.ei1 = ei1
             self.ci2 = ci2
