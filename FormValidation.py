@@ -147,7 +147,7 @@ class FormValidation:
 
                     self.uph85 = self._compute_uph(int(self.totalTime), 85, int(self.itemAmount))
                     self.uph95 = self._compute_uph(int(self.totalTime), 95, int(self.itemAmount))
-                    self.uph95Time = self._convertUPHToTime(self.uph95, self.itemAmount)
+                    self.uph95Time = self._convert_uph_to_time(self.uph95, self.itemAmount)
                     self.flag_validator = True
 
                 else:
@@ -163,13 +163,10 @@ class FormValidation:
                 self.uph85 = 0
                 self.uph95 = 0
                 self.uph95Time = 0
-
                 self.alignTime = 0
                 self.laserTime = 0
                 self.thicknessTime = 0
-
                 self.hex = ""
-
                 self.flag_validator = False
 
         except ValueError:
@@ -182,7 +179,7 @@ class FormValidation:
                      transmit: int = 15,
                      ) -> None:
         """
-        The auxiliary method to calculate unit pre hour.
+        The auxiliary method to calculate unit per hour.
 
         :param total_scanning_time: time of scanning pcb
         :type total_scanning_time: int
@@ -197,23 +194,36 @@ class FormValidation:
                 int(capability) > 0 and \
                 int(qty_pcb) > 0 and \
                 int(transmit) > 0:
-            self.totalScanningTime = total_scanning_time
+            self.total_scanning_time = total_scanning_time
             self.capability = capability
-            self.qtyPCB = qty_pcb
+            self.qty_pcb = qty_pcb
             self.transmit = transmit
 
-            self.uph = floor((3600 / (float(self.totalScanningTime) + int(self.transmit)) *
-                              (float(self.capability) / 100))) * int(self.qtyPCB)
+            self.uph = floor((3600 / (float(self.total_scanning_time) + int(self.transmit)) *
+                              (float(self.capability) / 100))) * int(self.qty_pcb)
             return self.uph
         else:
             return 0
 
-    def _convertUPHToTime(self, uph, qty_pcb):
+    def _convert_uph_to_time(self,
+                             uph: int,
+                             qty_pcb: int
+                             ) -> None:
+        """
+        The auxiliary method to convert the uph to time
+
+        :param uph: unit per hour
+        :type uph: int
+        :param qty_pcb: qty of boards in the panel
+        :type qty_pcb: int
+        :return: cycle time
+        :rtype: None
+        """
         if uph > 0 and qty_pcb > 0:
             self.uph = uph
-            self.qtyPCB = qty_pcb
-            self.cycleTime = ((3600 / float(self.uph)) / int(self.qtyPCB))
-            return self.cycleTime
+            self.qty_pcb = qty_pcb
+            self.cycle_time = ((3600 / float(self.uph)) / int(self.qty_pcb))
+            return self.cycle_time
         else:
             return 0
 
@@ -258,15 +268,15 @@ class TestFormValidation:
         qty_pcb: int = 1
 
         # when
-        result = FormValidation._convertUPHToTime(self, uph, qty_pcb)
+        result = FormValidation._convert_uph_to_time(self, uph, qty_pcb)
 
         # then
         assert result
 
     def test__convert_uph_to_time_error(self) -> None:
-        assert not FormValidation._convertUPHToTime(self, 0, 0)
-        assert not FormValidation._convertUPHToTime(self, 0, 1)
-        assert not FormValidation._convertUPHToTime(self, 1, 0)
+        assert not FormValidation._convert_uph_to_time(self, 0, 0)
+        assert not FormValidation._convert_uph_to_time(self, 0, 1)
+        assert not FormValidation._convert_uph_to_time(self, 1, 0)
         # assert not FormValidation._convertUPHToTime(self, 1, 1)
 
     def test_validator_item(self, capsys) -> None:
@@ -277,6 +287,3 @@ class TestFormValidation:
         out, err = capsys.readouterr()
 
         assert out == 'OK - validator_item\n'
-
-
-
