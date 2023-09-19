@@ -27,6 +27,7 @@ class ComparisonView(Comparison):
         self.var = StringVar(self.root, "0")
         self.extract_set_to_dic: dict = {}
         self.extract_set_to_dic0: dict = {}
+        self.radio_box: ttk = None
 
     def compare_list_to_db(self, tab: ttk.Frame) -> None:
         """
@@ -50,15 +51,14 @@ class ComparisonView(Comparison):
             if value is not None:
                 if len(value) > 0 and value != "thumb":
                     self.radio_box = ttk.Radiobutton(tab,
-                                    text=value,
-                                    variable=self.var,
-                                    value=text,
-                                    style="Comparison.TRadiobutton",
-                                    command=self._insert_from_comparison0,
-                                    )
+                                                     text=value,
+                                                     variable=self.var,
+                                                     value=text,
+                                                     style="Comparison.TRadiobutton",
+                                                     command=self._insert_from_comparison0,)
                     self.radio_box.grid(row=int(row_count),
-                                           column=0,
-                                           sticky=W)
+                                        column=0,
+                                        sticky=W)
                     row_count += 1
 
     def compare_db_to_list(self, tab: ttk.Frame) -> None:
@@ -111,6 +111,3 @@ class ComparisonView(Comparison):
         """
 
         pyperclip.copy(self.extract_set_to_dic0[int(self.var.get())])
-
-
-
