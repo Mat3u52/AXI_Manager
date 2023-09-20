@@ -1,3 +1,4 @@
+import tkinter
 from math import floor
 from tkinter import END, messagebox
 
@@ -227,11 +228,24 @@ class FormValidation:
         else:
             return 0
 
+    def clean_up_item(self,
+                      entry_item: tkinter.Entry,
+                      entry_qty: tkinter.Entry
+                      ) -> None:
+        """
+        The method clean up two main fields in the form.
 
-    def cleanUpItem(self, ei2, ei3):
-        if (self.flagInit is True) and ei2 and ei3:
-            self.ei2 = ei2
-            self.ei3 = ei3
+        :param entry_item: entry of item
+        :type entry_item: tkinter.Entry
+        :param entry_qty: entry of qty
+        :type entry_qty: tkinter.Entry
+        :return: clean up entry
+        :rtype: None
+        """
+
+        if (self.flagInit is True) and entry_item and entry_qty:
+            self.ei2 = entry_item
+            self.ei3 = entry_qty
             self.ei2.delete(0, END)
             self.ei3.delete(0, END)
 
