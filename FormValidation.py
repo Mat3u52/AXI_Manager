@@ -244,12 +244,18 @@ class FormValidation:
         """
 
         if (self.flagInit is True) and entry_item and entry_qty:
-            self.ei2 = entry_item
-            self.ei3 = entry_qty
-            self.ei2.delete(0, END)
-            self.ei3.delete(0, END)
+            self.entry_item = entry_item
+            self.entry_qty = entry_qty
+            self.entry_item.delete(0, END)
+            self.entry_qty.delete(0, END)
 
-    def cleanUp(self, ei0, ei1, ci2, ci3, ci4, ei5, ei6=0, ei7=0, ei8=0):
+    def clean_up(self, ei0, ei1, ci2, ci3, ci4, ei5, ei6=0, ei7=0, ei8=0) -> None:
+        """
+        The method clean up whole form.
+
+        :return: clean up each one entry from form
+        :rtype: None
+        """
         if (self.flag_validator is True) \
                 and ei0 and ei1 and ci2 and ci3 and ci4 and ei5:
             self.flag_init_status = False
