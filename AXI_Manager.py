@@ -145,7 +145,7 @@ def insert_button() -> None:
     obj_form_validator_item.validator_item(
         obj_new_item_ex.entry_item.get(), obj_new_item_ex.entry_qty.get()
     )
-    obj_form_validator_item.cleanUpItem(obj_new_item_ex.entry_item, obj_new_item_ex.entry_qty)
+    obj_form_validator_item.clean_up_item(obj_new_item_ex.entry_item, obj_new_item_ex.entry_qty)
 
     obj_form_validator_v8103553_s2_ex = FormValidation()
     obj_form_validator_v8103553_s2_ex.validator(
@@ -158,7 +158,7 @@ def insert_button() -> None:
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
     )
-    obj_form_validator_v8103553_s2_ex.cleanUp(
+    obj_form_validator_v8103553_s2_ex.clean_up(
         obj_checkbox_menu_ex_0.EI_0,
         obj_checkbox_menu_ex_0.EI_1,
         obj_checkbox_menu_ex_0.CI_2,
@@ -198,7 +198,7 @@ def insert_button() -> None:
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
     )
-    obj_form_validator_v8103483_s2_ex.cleanUp(
+    obj_form_validator_v8103483_s2_ex.clean_up(
         obj_checkbox_menu_ex_1.EI_0,
         obj_checkbox_menu_ex_1.EI_1,
         obj_checkbox_menu_ex_1.CI_2,
@@ -239,7 +239,7 @@ def insert_button() -> None:
         obj_form_validator_item.itemAmount,
     )
 
-    obj_form_validator_v8103163.cleanUp(
+    obj_form_validator_v8103163.clean_up(
         obj_checkbox_menu_ex_2.EI_0,
         obj_checkbox_menu_ex_2.EI_1,
         obj_checkbox_menu_ex_2.CI_2,
@@ -279,7 +279,7 @@ def insert_button() -> None:
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
     )
-    obj_form_validator_v8108120_s2.cleanUp(
+    obj_form_validator_v8108120_s2.clean_up(
         obj_checkbox_menu_xxl_0.EI_0,
         obj_checkbox_menu_xxl_0.EI_1,
         obj_checkbox_menu_xxl_0.CI_2,
@@ -322,7 +322,7 @@ def insert_button() -> None:
         obj_checkbox_menu_5DX_0.EI_7.get(),
         obj_checkbox_menu_5DX_0.EI_8.get(),
     )
-    obj_form_validator_v849.cleanUp(
+    obj_form_validator_v849.clean_up(
         obj_checkbox_menu_5DX_0.EI_0,
         obj_checkbox_menu_5DX_0.EI_1,
         obj_checkbox_menu_5DX_0.CI_2,
@@ -349,7 +349,7 @@ def insert_button() -> None:
         obj_Checkbox_menu_5dx_1.EI_7.get(),
         obj_Checkbox_menu_5dx_1.EI_8.get(),
     )
-    obj_form_validator_v817.cleanUp(
+    obj_form_validator_v817.clean_up(
         obj_Checkbox_menu_5dx_1.EI_0,
         obj_Checkbox_menu_5dx_1.EI_1,
         obj_Checkbox_menu_5dx_1.CI_2,
