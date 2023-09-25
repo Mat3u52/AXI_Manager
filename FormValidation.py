@@ -1,6 +1,7 @@
 import tkinter
 from math import floor
-from tkinter import END, messagebox
+from tkinter import END, messagebox, ttk
+# from tkinter import ttk
 
 
 class FormValidation:
@@ -252,28 +253,32 @@ class FormValidation:
     def clean_up(self,
                  entry_program_name: tkinter.Entry,
                  entry_scanning_time: tkinter.Entry,
-                 ci2, ci3, ci4, ei5, ei6=0, ei7=0, ei8=0) -> None:
+                 combobox_capability: ttk.Combobox,
+                 ci3, ci4, ei5, ei6=0, ei7=0, ei8=0) -> None:
         """
         The method clean up whole form.
-        :param entry_scanning_time: field of scanning time
-        :type entry_scanning_time: tkinter.Entry
+
         :param entry_program_name: field of program name
         :type entry_program_name: tkinter.Entry
+        :param entry_scanning_time: field of scanning time
+        :type entry_scanning_time: tkinter.Entry
+        :param combobox_capability: combobox with fore parameters NO, LACK, NONE, YES
+        :type combobox_capability: ttk.Combobox
         :return: clean up each one entry from form
         :rtype: None
         """
         if (self.flag_validator is True) \
-                and entry_program_name and entry_scanning_time and ci2 and ci3 and ci4 and ei5:
+                and entry_program_name and entry_scanning_time and combobox_capability and ci3 and ci4 and ei5:
             self.flag_init_status = False
             self.entry_program_name = entry_program_name
             self.entry_scanning_time = entry_scanning_time
-            self.ci2 = ci2
+            self.combobox_capability = combobox_capability
             self.ci3 = ci3
             self.ci4 = ci4
             self.ei5 = ei5
             self.entry_program_name.delete(0, END)
             self.entry_scanning_time.delete(0, END)
-            self.ci2.current(0)
+            self.combobox_capability.current(0)
             self.ci3.current(0)
             self.ci4.current(0)
             self.ei5.delete(0, END)
