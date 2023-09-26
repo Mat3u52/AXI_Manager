@@ -254,7 +254,10 @@ class FormValidation:
                  entry_program_name: tkinter.Entry,
                  entry_scanning_time: tkinter.Entry,
                  combobox_capability: ttk.Combobox,
-                 ci3, ci4, ei5, ei6=0, ei7=0, ei8=0) -> None:
+                 combobox_epi: ttk.Combobox,
+                 combobox_baan: ttk.Combobox,
+                 entry_comment: tkinter.Entry,
+                 ei6=0, ei7=0, ei8=0) -> None:
         """
         The method clean up whole form.
 
@@ -264,24 +267,37 @@ class FormValidation:
         :type entry_scanning_time: tkinter.Entry
         :param combobox_capability: combobox with fore parameters NO, LACK, NONE, YES
         :type combobox_capability: ttk.Combobox
+        :param combobox_epi: combox with fore parameters NO, LACK, NONE, YES
+        :type combobox_epi: ttk.Combobox
+        :param combobox_baan: combobox with fore parameters NO, LACK, NONE, YES
+        :type combobox_baan: ttk.Combobox
+        :param entry_comment: field of comment
+        :type entry_comment: tkinter.Entry
         :return: clean up each one entry from form
         :rtype: None
         """
-        if (self.flag_validator is True) \
-                and entry_program_name and entry_scanning_time and combobox_capability and ci3 and ci4 and ei5:
+        if (self.flag_validator is True) and \
+                entry_program_name and \
+                entry_scanning_time and \
+                combobox_capability and \
+                combobox_epi and \
+                combobox_baan and \
+                entry_comment:
+
             self.flag_init_status = False
             self.entry_program_name = entry_program_name
             self.entry_scanning_time = entry_scanning_time
             self.combobox_capability = combobox_capability
-            self.ci3 = ci3
-            self.ci4 = ci4
-            self.ei5 = ei5
+            self.combobox_epi = combobox_epi
+            self.combobox_baan = combobox_baan
+            self.entry_comment = entry_comment
+
             self.entry_program_name.delete(0, END)
             self.entry_scanning_time.delete(0, END)
             self.combobox_capability.current(0)
-            self.ci3.current(0)
-            self.ci4.current(0)
-            self.ei5.delete(0, END)
+            self.combobox_epi.current(0)
+            self.combobox_baan.current(0)
+            self.entry_comment.delete(0, END)
 
             if ei6 or ei7 or ei8:
                 self.ei6 = ei6
