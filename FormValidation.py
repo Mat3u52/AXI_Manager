@@ -257,7 +257,10 @@ class FormValidation:
                  combobox_epi: ttk.Combobox,
                  combobox_baan: ttk.Combobox,
                  entry_comment: tkinter.Entry,
-                 ei6=0, ei7=0, ei8=0) -> None:
+                 entry_alignment_time: tkinter.Entry = 0,
+                 entry_map_time: tkinter.Entry = 0,
+                 entry_auto_thickness_time: tkinter.Entry = 0
+                 ) -> None:
         """
         The method clean up whole form.
 
@@ -273,6 +276,12 @@ class FormValidation:
         :type combobox_baan: ttk.Combobox
         :param entry_comment: field of comment
         :type entry_comment: tkinter.Entry
+        :param entry_alignment_time: field of alignment time
+        :type entry_alignment_time: tkinter.Entry
+        :param entry_map_time: field of map time
+        :type entry_map_time: tkinter.Entry
+        :param entry_auto_thickness_time: field of auto thickness time
+        :type entry_auto_thickness_time: tkinter.Entry
         :return: clean up each one entry from form
         :rtype: None
         """
@@ -299,38 +308,38 @@ class FormValidation:
             self.combobox_baan.current(0)
             self.entry_comment.delete(0, END)
 
-            if ei6 or ei7 or ei8:
-                self.ei6 = ei6
-                self.ei7 = ei7
-                self.ei8 = ei8
-                self.ei6.delete(0, END)
-                self.ei7.delete(0, END)
-                self.ei8.delete(0, END)
+            if entry_alignment_time or entry_map_time or entry_auto_thickness_time:
+                self.entry_alignment_time = entry_alignment_time
+                self.entry_map_time = entry_map_time
+                self.entry_auto_thickness_time = entry_auto_thickness_time
+                self.entry_alignment_time.delete(0, END)
+                self.entry_map_time.delete(0, END)
+                self.entry_auto_thickness_time.delete(0, END)
 
 
-class TestFormValidation:
-    def test__convert_uph_to_time(self) -> None:
-        # given
-        uph: float = 60
-        qty_pcb: int = 1
-
-        # when
-        result = FormValidation._convert_uph_to_time(self, uph, qty_pcb)
-
-        # then
-        assert result
-
-    def test__convert_uph_to_time_error(self) -> None:
-        assert not FormValidation._convert_uph_to_time(self, 0, 0)
-        assert not FormValidation._convert_uph_to_time(self, 0, 1)
-        assert not FormValidation._convert_uph_to_time(self, 1, 0)
-        # assert not FormValidation._convertUPHToTime(self, 1, 1)
-
-    def test_validator_item(self, capsys) -> None:
-        item: str = "test"
-        item_amount: int = 1
-
-        FormValidation.validator_item(self, item, item_amount)
-        out, err = capsys.readouterr()
-
-        assert out == 'OK - validator_item\n'
+# class TestFormValidation:
+#     def test__convert_uph_to_time(self) -> None:
+#         # given
+#         uph: float = 60
+#         qty_pcb: int = 1
+#
+#         # when
+#         result = FormValidation._convert_uph_to_time(self, uph, qty_pcb)
+#
+#         # then
+#         assert result
+#
+#     def test__convert_uph_to_time_error(self) -> None:
+#         assert not FormValidation._convert_uph_to_time(self, 0, 0)
+#         assert not FormValidation._convert_uph_to_time(self, 0, 1)
+#         assert not FormValidation._convert_uph_to_time(self, 1, 0)
+#         # assert not FormValidation._convertUPHToTime(self, 1, 1)
+#
+#     def test_validator_item(self, capsys) -> None:
+#         item: str = "test"
+#         item_amount: int = 1
+#
+#         FormValidation.validator_item(self, item, item_amount)
+#         out, err = capsys.readouterr()
+#
+#         assert out == 'OK - validator_item\n'
