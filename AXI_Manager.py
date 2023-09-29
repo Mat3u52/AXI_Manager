@@ -100,7 +100,7 @@ def resize_image(path: str) -> None:
             convert_jpg_to_png.save(r"" + path_png)
 
         elif path.endswith(".png"):
-            print("f: ewsizeImage - .png")
+            print("f: resizeImage - .png")
 
 
 # print(resize_image.__doc__)
@@ -2168,8 +2168,6 @@ if __name__ == "__main__":
 
     tab_control.bind("<<NotebookTabChanged>>", tab_selected)
 
-    # tab_control.bind("<<NotebookTabChanged>>", tab_comparison)
-
     add_frame = ttk.LabelFrame(tab3, text=" New Items: ")
 
 # --- Comparison ---
@@ -2179,8 +2177,6 @@ if __name__ == "__main__":
     v810_device.add(tab_3163, text=" V810-3163 ")
     v810_device.pack(expand=1, fill="both", padx=10, pady=10)
 
-    # v = Scrollbar(tab_3163, orient='vertical')
-    # v.place(x=0, y=250, height=200)
 
     tab_3483S2EX = ttk.Frame(v810_device)
     v810_device.add(tab_3483S2EX, text=" V810-3483S2EX ")
@@ -2208,7 +2204,6 @@ if __name__ == "__main__":
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
     obj_comparison.compare_list_to_db(tab=tab_3163_to_db)
 
-    # v.config(command=obj_comparison.radio_box.yview)
 
     tab_db_to_3163 = ttk.Frame(db_to_v810)
     db_to_v810.add(tab_db_to_3163, text="[3163] DB to V810")
