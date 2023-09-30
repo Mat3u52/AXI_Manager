@@ -12,8 +12,8 @@ class AutomaticUpdates(Config):
         """
         Config.__init__(self)
         #super().__init__()
-        self.id = 0
-        self.dicRecipe = {}
+        self.id: int = 0
+        self.dicRecipe: dict = {}
 
     def bildGrid(self) -> None:
         for self.device in self.devices:
@@ -59,7 +59,7 @@ class AutomaticUpdates(Config):
         return self.dicRecipe
 
     def updateDic(self, id: int) -> None:
-        self.id = id
+        self.id: int = id
         os.remove(self.pathLog+"/"+self.dicRecipe[self.id].get("device")+"/Recipe="+self.dicRecipe[self.id].get("recipe")+"$.txt")
         #del self.dicRecipe[self.id]
         self.dicRecipe.clear()
