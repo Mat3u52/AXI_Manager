@@ -1729,6 +1729,7 @@ if __name__ == "__main__":
 
     tab_control_main = ttk.Notebook(main_frame_view)
 
+    # --- V849 & V817 section ---
     tab_main1 = ttk.Frame(tab_control_main)
     tab_control_main.add(tab_main1, text=" V849 ")
 
@@ -1842,7 +1843,9 @@ if __name__ == "__main__":
     l_v817_comment = Label(tab_main2, text=f"", bg="#444444", fg="#AAAAAA", pady="1")
     l_v817_comment.configure(font=("Arial", 10, "italic"))
     l_v817_comment.grid(row=5, column=1, columnspan=5, sticky=W)
+    # --- The End of V849 & V817 section ---
 
+    # --- V810-3163 section ---
     tab_main3 = ttk.Frame(tab_control_main)
     tab_control_main.add(tab_main3, text=" V810-3163 ")
 
@@ -1909,7 +1912,9 @@ if __name__ == "__main__":
     )
     l_v8103163_comment.configure(font=("Arial", 10, "italic"))
     l_v8103163_comment.grid(row=5, column=1, columnspan=5, sticky=W)
+    # --- The End of V810-3163 section ---
 
+    # --- V810-3483S2EX section ---
     tab_main4 = ttk.Frame(tab_control_main)
     tab_control_main.add(tab_main4, text=" V810-3483S2EX ")
 
