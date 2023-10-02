@@ -1997,9 +1997,11 @@ if __name__ == "__main__":
     )
     l_v8103483s2ex_comment.configure(font=("Arial", 10, "italic"))
     l_v8103483s2ex_comment.grid(row=5, column=1, columnspan=5, sticky=W)
+    # --- The Ebd V810-3483S2EX section ---
 
+    # --- V810-355532EX section ---
     tab_main5 = ttk.Frame(tab_control_main)
-    tab_control_main.add(tab_main5, text=" V810-3483S2EX ")
+    tab_control_main.add(tab_main5, text=" V810-355532EX ")
 
     l_v8103553s2ex_prog = Label(
         tab_main5, text=f"", bg="#444444", fg="#FFFFFF", pady="1"
@@ -2080,7 +2082,8 @@ if __name__ == "__main__":
     )
     l_v8103553s2ex_comment.configure(font=("Arial", 10, "italic"))
     l_v8103553s2ex_comment.grid(row=5, column=1, columnspan=5, sticky=W)
-
+    # --- The End V810-355532EX section ---
+    # --- V810-81202 section ---
     tab_main6 = ttk.Frame(tab_control_main)
     tab_control_main.add(tab_main6, text=" V810-8120S2 ")
 
@@ -2151,6 +2154,7 @@ if __name__ == "__main__":
     )
     l_v8108120s2_comment.configure(font=("Arial", 10))
     l_v8108120s2_comment.grid(row=5, column=1, columnspan=5, sticky=W)
+    # --- The End V810-81202 section ---
 
     tab_control_main.grid(row=1, column=0, columnspan=5, sticky=W)
 
