@@ -20,7 +20,7 @@ from ComparisonView import ComparisonView
 from RemoveRecord import RemoveRecord
 
 
-min_movement: int = -1
+# min_movement: int = -1
 
 
 def animate_image(
