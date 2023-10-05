@@ -1,4 +1,6 @@
 import tkinter
+import time
+import os
 
 
 class Animation:
@@ -12,7 +14,7 @@ class Animation:
                  img_path: str = "board.png",
                  ) -> None:
         """
-        The function moves the picture from the right to the left side.
+        Initialize the variables.
 
         :param ai_root: Given object from tkinter.Tk
         :type ai_root: tkinter.Tk
@@ -24,7 +26,7 @@ class Animation:
         :type y_pos: int
         :param img_path: Given path to .png file
         :type img_path: str
-        :return: animate the picture
+        :return: Initialize the variables
         :rtype: None
         """
         self.ai_root: tkinter.Tk = ai_root
@@ -33,4 +35,36 @@ class Animation:
         self.y_pos: int = y_pos
         self.img_path: str = img_path
 
-        pass
+        self.start_x_position: int = 170
+        self.start_y_position: int = 85
+        self.refresh_sec: float = 0.01
+
+    def move_image(self) -> None:
+        """
+        The function moves the picture from the right to the left side.
+
+        :return: animate the picture
+        :rtype: None
+        """
+        # start_x_position: int = 170
+        # start_y_position: int = 85
+        # refresh_sec: float = 0.01
+        if os.path.isfile(self.img_path):
+            img = tkinter.PhotoImage(file=self.img_path)
+        else:
+            img = tkinter.PhotoImage(file="img/lackOfPicture/board.png")
+
+        ai_image = self.canvas.create_image(self.start_x_position, self.start_y_position, image=img)
+
+        while True:
+            self.canvas.move(ai_image, x_pos, 0)
+            self.ai_root.update()
+            time.sleep(self.refresh_sec)
+            img_pos = self.canvas.coords(ai_image)
+            al, bl = img_pos
+            if al < abs(x_pos):
+                x_pos = -x_pos
+            if bl < abs(y_pos):
+                y_pos = -y_pos
+            if al == int(self.start_x_position) / 2:
+                break
