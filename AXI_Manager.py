@@ -18,7 +18,7 @@ from FormValidation import FormValidation
 from AutomaticUpdates import AutomaticUpdates
 from ComparisonView import ComparisonView
 from RemoveRecord import RemoveRecord
-
+from Animation import Animation
 
 # min_movement: int = -1
 
@@ -624,23 +624,11 @@ def get_selected_row(event) -> None:
                 if flag_click is False:
                     try:
                         if os.path.isfile(obj_config.pathImg5DX1 + row[17] + ".png"):
-                            animate_image(
-                                root,
-                                canvas1,
-                                min_movement,
-                                min_movement,
-                                obj_config.pathImg5DX1 + row[17] + ".png",
-                            )
-                        else:
                             try:
-                                animate_image(
-                                    root,
-                                    canvas1,
-                                    min_movement,
-                                    min_movement,
-                                    obj_config.pathImg5DX1 + row[17] + ".png",
-                                )
-
+                                obj_animation = Animation(root,
+                                                          canvas1,
+                                                          obj_config.pathImg5DX1 + row[17] + ".png")
+                                obj_animation.move_image()
                             except FileNotFoundError:
                                 pass
                     except tk.TclError:
@@ -722,25 +710,26 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main2)
                 if flag_click is False:
                     try:
-                        if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png"):
-                            animate_image(
-                                root,
-                                canvas2,
-                                min_movement,
-                                min_movement,
-                                obj_config.pathImg5DX2 + row[22] + ".png",
-                            )
-                        else:
-                            try:
-                                animate_image(
-                                    root,
-                                    canvas2,
-                                    min_movement,
-                                    min_movement,
-                                    obj_config.pathImg5DX2 + row[22] + ".png",
-                                )
-                            except FileNotFoundError:
-                                pass
+                        # if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png"):
+                        #     animate_image(
+                        #         root,
+                        #         canvas2,
+                        #         min_movement,
+                        #         min_movement,
+                        #         obj_config.pathImg5DX2 + row[22] + ".png",
+                        #     )
+                        # else:
+                        #     try:
+                        #         animate_image(
+                        #             root,
+                        #             canvas2,
+                        #             min_movement,
+                        #             min_movement,
+                        #             obj_config.pathImg5DX2 + row[22] + ".png",
+                        #         )
+                        #     except FileNotFoundError:
+                        #         pass
+                        pass
                     except tk.TclError:
                         pass
 
@@ -814,13 +803,14 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main3)
                 if flag_click is False:
                     try:
-                        animate_image(
-                            root,
-                            canvas3,
-                            min_movement,
-                            min_movement,
-                            obj_config.pathImgV8103163 + row[27] + ".png",
-                        )
+                        # animate_image(
+                        #     root,
+                        #     canvas3,
+                        #     min_movement,
+                        #     min_movement,
+                        #     obj_config.pathImgV8103163 + row[27] + ".png",
+                        # )
+                        pass
                     except tk.TclError:
                         pass
 
@@ -898,13 +888,14 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main4)
                 if flag_click is False:
                     try:
-                        animate_image(
-                            root,
-                            canvas4,
-                            min_movement,
-                            min_movement,
-                            obj_config.pathImgV8103483S2EX + row[45] + ".png",
-                        )
+                        # animate_image(
+                        #     root,
+                        #     canvas4,
+                        #     min_movement,
+                        #     min_movement,
+                        #     obj_config.pathImgV8103483S2EX + row[45] + ".png",
+                        # )
+                        pass
                     except tk.TclError:
                         pass
 
@@ -982,13 +973,14 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main5)
                 if flag_click is False:
                     try:
-                        animate_image(
-                            root,
-                            canvas5,
-                            min_movement,
-                            min_movement,
-                            obj_config.pathImgV8103553S2EX + row[54] + ".png",
-                        )
+                        # animate_image(
+                        #     root,
+                        #     canvas5,
+                        #     min_movement,
+                        #     min_movement,
+                        #     obj_config.pathImgV8103553S2EX + row[54] + ".png",
+                        # )
+                        pass
                     except tk.TclError:
                         pass
 
@@ -1065,13 +1057,14 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main6)
                 if flag_click is False:
                     try:
-                        animate_image(
-                            root,
-                            canvas6,
-                            min_movement,
-                            min_movement,
-                            obj_config.pathImgV8108120S2 + row[31] + ".png",
-                        )
+                        # animate_image(
+                        #     root,
+                        #     canvas6,
+                        #     min_movement,
+                        #     min_movement,
+                        #     obj_config.pathImgV8108120S2 + row[31] + ".png",
+                        # )
+                        pass
                     except tk.TclError:
                         pass
 
