@@ -710,26 +710,14 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main2)
                 if flag_click is False:
                     try:
-                        # if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png"):
-                        #     animate_image(
-                        #         root,
-                        #         canvas2,
-                        #         min_movement,
-                        #         min_movement,
-                        #         obj_config.pathImg5DX2 + row[22] + ".png",
-                        #     )
-                        # else:
-                        #     try:
-                        #         animate_image(
-                        #             root,
-                        #             canvas2,
-                        #             min_movement,
-                        #             min_movement,
-                        #             obj_config.pathImg5DX2 + row[22] + ".png",
-                        #         )
-                        #     except FileNotFoundError:
-                        #         pass
-                        pass
+                        if os.path.isfile(obj_config.pathImg5DX1 + row[22] + ".png"):
+                            try:
+                                obj_animation = Animation(root,
+                                                          canvas2,
+                                                          obj_config.pathImg5DX2 + row[22] + ".png")
+                                obj_animation.move_image()
+                            except FileNotFoundError:
+                                pass
                     except tk.TclError:
                         pass
 
