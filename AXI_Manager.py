@@ -710,7 +710,7 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main2)
                 if flag_click is False:
                     try:
-                        if os.path.isfile(obj_config.pathImg5DX1 + row[22] + ".png"):
+                        if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png"):
                             try:
                                 obj_animation = Animation(root,
                                                           canvas2,
@@ -791,14 +791,14 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main3)
                 if flag_click is False:
                     try:
-                        # animate_image(
-                        #     root,
-                        #     canvas3,
-                        #     min_movement,
-                        #     min_movement,
-                        #     obj_config.pathImgV8103163 + row[27] + ".png",
-                        # )
-                        pass
+                        if os.path.isfile(obj_config.pathImgV8103163 + row[27] + ".png"):
+                            try:
+                                obj_animation = Animation(root,
+                                                          canvas3,
+                                                          obj_config.pathImgV8103163 + row[27] + ".png")
+                                obj_animation.move_image()
+                            except FileNotFoundError:
+                                pass
                     except tk.TclError:
                         pass
 
@@ -876,14 +876,13 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main4)
                 if flag_click is False:
                     try:
-                        # animate_image(
-                        #     root,
-                        #     canvas4,
-                        #     min_movement,
-                        #     min_movement,
-                        #     obj_config.pathImgV8103483S2EX + row[45] + ".png",
-                        # )
-                        pass
+                        try:
+                            obj_animation = Animation(root,
+                                                      canvas4,
+                                                      obj_config.pathImgV8103483S2EX + row[45] + ".png")
+                            obj_animation.move_image()
+                        except FileNotFoundError:
+                            pass
                     except tk.TclError:
                         pass
 
