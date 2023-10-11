@@ -961,13 +961,6 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main5)
                 if flag_click is False:
                     try:
-                        # animate_image(
-                        #     root,
-                        #     canvas5,
-                        #     min_movement,
-                        #     min_movement,
-                        #     obj_config.pathImgV8103553S2EX + row[54] + ".png",
-                        # )
                         if os.path.isfile(obj_config.pathImgV8103553S2EX + row[54] + ".png"):
                             try:
                                 obj_animation = Animation(root,
