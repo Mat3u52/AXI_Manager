@@ -969,7 +969,6 @@ def get_selected_row(event) -> None:
                                 obj_animation.move_image()
                             except FileNotFoundError:
                                 pass
-                        pass
                     except tk.TclError:
                         pass
 
@@ -1053,7 +1052,14 @@ def get_selected_row(event) -> None:
                         #     min_movement,
                         #     obj_config.pathImgV8108120S2 + row[31] + ".png",
                         # )
-                        pass
+                        if os.path.isfile(obj_config.pathImgV8108120S2 + row[31] + ".png"):
+                            try:
+                                obj_animation = Animation(root,
+                                                          canvas6,
+                                                          obj_config.pathImgV8108120S2 + row[31] + ".png")
+                                obj_animation.move_image()
+                            except FileNotFoundError:
+                                pass
                     except tk.TclError:
                         pass
 
