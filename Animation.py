@@ -60,3 +60,31 @@ class Animation:
                 self.y_pos = -self.y_pos
             if al == int(start_x_position) / 2:
                 break
+    # print(move_image.__doc__)
+
+    @staticmethod
+    def resize_image(path: str) -> None:
+        """
+        The function resizes an image
+
+        :param path: Given path to file
+        :type path: str
+        :return: New size of file
+        :rtype: None
+        """
+
+        base_width: int = 120
+        if os.path.isfile(path):
+            if path.endswith(".jpg"):
+                convert_jpg_to_png = Image.open(r"" + path)
+                width_percent = base_width / float(convert_jpg_to_png.size[0])
+                hsize = int((float(convert_jpg_to_png.size[1]) * float(width_percent)))
+                convert_jpg_to_png = convert_jpg_to_png.resize(
+                    (base_width, hsize), Image.Resampling.NEAREST
+                )
+                path_png = path.replace(".jpg", ".png")
+                convert_jpg_to_png.save(r"" + path_png)
+
+            elif path.endswith(".png"):
+                print("f: resizeImage - .png")
+    # print(resize_image.__doc__)
