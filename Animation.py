@@ -1,6 +1,7 @@
 import tkinter
 import time
 import os
+from PIL import Image
 from Config import Config
 
 
@@ -85,6 +86,6 @@ class Animation:
                 path_png = path.replace(".jpg", ".png")
                 convert_jpg_to_png.save(r"" + path_png)
 
-            elif path.endswith(".png"):
-                print("f: resizeImage - .png")
+            # elif path.endswith(".png"):
+            #     print("f: resizeImage - .png")
     # print(resize_image.__doc__)
