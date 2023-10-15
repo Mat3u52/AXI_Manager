@@ -23,55 +23,55 @@ from Animation import Animation
 # min_movement: int = -1
 
 
-def animate_image(
-    ai_root: tkinter.Tk,
-    canvas: tkinter.Canvas,
-    x_pos: int,
-    y_pos: int,
-    img_path: str = "board.png",
-) -> None:
-    """
-    The function moves the picture from the right to the left side.
-
-    :param ai_root: Given object from tkinter.Tk
-    :type ai_root: tkinter.Tk
-    :param canvas: Given object from tkinter.Canvas
-    :type canvas: tkinter.Canvas
-
-    :param x_pos: Given value of axis x
-    :type x_pos: int
-
-    :param y_pos: Given value of axis y
-    :type y_pos: int
-
-    :param img_path: Given path to .png file
-    :type img_path: str
-
-    :return: animate the picture
-    :rtype: None
-    """
-    start_x_position: int = 170
-    start_y_position: int = 85
-    refresh_sec: float = 0.01
-    if os.path.isfile(img_path):
-        img = tk.PhotoImage(file=img_path)
-    else:
-        img = tk.PhotoImage(file="img/lackOfPicture/board.png")
-
-    ai_image = canvas.create_image(start_x_position, start_y_position, image=img)
-
-    while True:
-        canvas.move(ai_image, x_pos, 0)
-        ai_root.update()
-        time.sleep(refresh_sec)
-        img_pos = canvas.coords(ai_image)
-        al, bl = img_pos
-        if al < abs(x_pos):
-            x_pos = -x_pos
-        if bl < abs(y_pos):
-            y_pos = -y_pos
-        if al == int(start_x_position) / 2:
-            break
+# def animate_image(
+#     ai_root: tkinter.Tk,
+#     canvas: tkinter.Canvas,
+#     x_pos: int,
+#     y_pos: int,
+#     img_path: str = "board.png",
+# ) -> None:
+#     """
+#     The function moves the picture from the right to the left side.
+#
+#     :param ai_root: Given object from tkinter.Tk
+#     :type ai_root: tkinter.Tk
+#     :param canvas: Given object from tkinter.Canvas
+#     :type canvas: tkinter.Canvas
+#
+#     :param x_pos: Given value of axis x
+#     :type x_pos: int
+#
+#     :param y_pos: Given value of axis y
+#     :type y_pos: int
+#
+#     :param img_path: Given path to .png file
+#     :type img_path: str
+#
+#     :return: animate the picture
+#     :rtype: None
+#     """
+#     start_x_position: int = 170
+#     start_y_position: int = 85
+#     refresh_sec: float = 0.01
+#     if os.path.isfile(img_path):
+#         img = tk.PhotoImage(file=img_path)
+#     else:
+#         img = tk.PhotoImage(file="img/lackOfPicture/board.png")
+#
+#     ai_image = canvas.create_image(start_x_position, start_y_position, image=img)
+#
+#     while True:
+#         canvas.move(ai_image, x_pos, 0)
+#         ai_root.update()
+#         time.sleep(refresh_sec)
+#         img_pos = canvas.coords(ai_image)
+#         al, bl = img_pos
+#         if al < abs(x_pos):
+#             x_pos = -x_pos
+#         if bl < abs(y_pos):
+#             y_pos = -y_pos
+#         if al == int(start_x_position) / 2:
+#             break
 
 
 # print(animate_image.__doc__)
@@ -1045,13 +1045,6 @@ def get_selected_row(event) -> None:
                 tab_control_main.select(tab_main6)
                 if flag_click is False:
                     try:
-                        # animate_image(
-                        #     root,
-                        #     canvas6,
-                        #     min_movement,
-                        #     min_movement,
-                        #     obj_config.pathImgV8108120S2 + row[31] + ".png",
-                        # )
                         if os.path.isfile(obj_config.pathImgV8108120S2 + row[31] + ".png"):
                             try:
                                 obj_animation = Animation(root,
