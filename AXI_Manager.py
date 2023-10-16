@@ -77,30 +77,30 @@ from Animation import Animation
 # print(animate_image.__doc__)
 
 
-def resize_image(path: str) -> None:
-    """
-    The function resizes an image
-
-    :param path: Given path to file
-    :type path: str
-    :return: New size of file
-    :rtype: None
-    """
-
-    base_width: int = 120
-    if os.path.isfile(path):
-        if path.endswith(".jpg"):
-            convert_jpg_to_png = Image.open(r"" + path)
-            width_percent = base_width / float(convert_jpg_to_png.size[0])
-            hsize = int((float(convert_jpg_to_png.size[1]) * float(width_percent)))
-            convert_jpg_to_png = convert_jpg_to_png.resize(
-                (base_width, hsize), Image.Resampling.NEAREST
-            )
-            path_png = path.replace(".jpg", ".png")
-            convert_jpg_to_png.save(r"" + path_png)
-
-        elif path.endswith(".png"):
-            print("f: resizeImage - .png")
+# def resize_image(path: str) -> None:
+#     """
+#     The function resizes an image
+#
+#     :param path: Given path to file
+#     :type path: str
+#     :return: New size of file
+#     :rtype: None
+#     """
+#
+#     base_width: int = 120
+#     if os.path.isfile(path):
+#         if path.endswith(".jpg"):
+#             convert_jpg_to_png = Image.open(r"" + path)
+#             width_percent = base_width / float(convert_jpg_to_png.size[0])
+#             hsize = int((float(convert_jpg_to_png.size[1]) * float(width_percent)))
+#             convert_jpg_to_png = convert_jpg_to_png.resize(
+#                 (base_width, hsize), Image.Resampling.NEAREST
+#             )
+#             path_png = path.replace(".jpg", ".png")
+#             convert_jpg_to_png.save(r"" + path_png)
+#
+#         elif path.endswith(".png"):
+#             print("f: resizeImage - .png")
 
 
 # print(resize_image.__doc__)
@@ -617,7 +617,8 @@ def get_selected_row(event) -> None:
             canvas1.pack(expand=False)
 
             if os.path.isfile(obj_config.pathImg5DX1 + row[17] + ".png") is False:
-                resize_image(obj_config.pathImg5DX1 + row[17] + ".jpg")
+                # resize_image(obj_config.pathImg5DX1 + row[17] + ".jpg")
+                Animation.resize_image(obj_config.pathImg5DX1 + row[17] + ".jpg")
 
             if flag_animation is False:
                 tab_control_main.select(tab_main1)
@@ -704,7 +705,8 @@ def get_selected_row(event) -> None:
             canvas2.pack(expand=False)
 
             if os.path.isfile(obj_config.pathImg5DX2 + row[22] + ".png") is False:
-                resize_image(obj_config.pathImg5DX2 + row[22] + ".jpg")
+                # resize_image(obj_config.pathImg5DX2 + row[22] + ".jpg")
+                Animation.resize_image(obj_config.pathImg5DX2 + row[22] + ".jpg")
 
             if flag_animation is False:
                 tab_control_main.select(tab_main2)
