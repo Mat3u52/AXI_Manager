@@ -19,6 +19,7 @@ from AutomaticUpdates import AutomaticUpdates
 from ComparisonView import ComparisonView
 from RemoveRecord import RemoveRecord
 from Animation import Animation
+from Search import Search
 
 # min_movement: int = -1
 
@@ -2330,32 +2331,34 @@ if __name__ == "__main__":
     button_reset.grid(row=1, column=2, columnspan=2, pady=2)
     # --- The End INSERT ---
 
-    # --- Search ---
-    obj_search = ContextualMenu(root, "0", True, True, False)
-
-    e_search = Entry(
-        tab1,
-        relief="solid",
-        textvariable=obj_search.captureEntry,
-        borderwidth=1,
-        width=40,
-        bg="#212121",
-        fg="#FFFFFF",
-    )
-    e_search.config(
-        font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
-    )
-    e_search.grid(row=0, column=0, pady=1)
-    # root.winfo_pointerx(), root.winfo_pointery()
-    e_search.bind("<Button-3>", obj_search.do_popup)
-    obj_search.set_entry(e_search)
-    b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
-    b_search.grid(row=0, column=1, pady=1)
-    b_search_r = ttk.Button(
-        tab1, text="Refresh", width=10, command=refresh, cursor="exchange"
-    )
-    b_search_r.grid(row=0, column=2, pady=1)
-    # --- The End Search ---
+    # # --- Search ---
+    # obj_search = ContextualMenu(root, "0", True, True, False)
+    #
+    # e_search = Entry(
+    #     tab1,
+    #     relief="solid",
+    #     textvariable=obj_search.captureEntry,
+    #     borderwidth=1,
+    #     width=40,
+    #     bg="#212121",
+    #     fg="#FFFFFF",
+    # )
+    # e_search.config(
+    #     font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
+    # )
+    # e_search.grid(row=0, column=0, pady=1)
+    # # root.winfo_pointerx(), root.winfo_pointery()
+    # e_search.bind("<Button-3>", obj_search.do_popup)
+    # obj_search.set_entry(e_search)
+    #
+    #
+    # b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
+    # b_search.grid(row=0, column=1, pady=1)
+    # b_search_r = ttk.Button(
+    #     tab1, text="Refresh", width=10, command=refresh, cursor="exchange"
+    # )
+    # b_search_r.grid(row=0, column=2, pady=1)
+    # # --- The End Search ---
 
     tree = ttk.Treeview(tab1)
 
@@ -2377,6 +2380,36 @@ if __name__ == "__main__":
     tree.heading("five", text="BaaN", anchor=tk.W)
     tree.heading("six", text="LC", anchor=tk.W)
     tree.heading("seven", text="EPI", anchor=tk.W)
+
+    # --- Search ---
+    obj_search = ContextualMenu(root, "0", True, True, False)
+
+    e_search = Entry(
+        tab1,
+        relief="solid",
+        textvariable=obj_search.captureEntry,
+        borderwidth=1,
+        width=40,
+        bg="#212121",
+        fg="#FFFFFF",
+    )
+    e_search.config(
+        font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
+    )
+    e_search.grid(row=0, column=0, pady=1)
+    # root.winfo_pointerx(), root.winfo_pointery()
+    e_search.bind("<Button-3>", obj_search.do_popup)
+    obj_search.set_entry(e_search)
+
+    obj_search_phrase = Search(tree, e_search)
+    # b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
+    b_search = ttk.Button(tab1, text="Search", width=10, command=obj_search_phrase, cursor="hand2")
+    b_search.grid(row=0, column=1, pady=1)
+    b_search_r = ttk.Button(
+        tab1, text="Refresh", width=10, command=refresh, cursor="exchange"
+    )
+    b_search_r.grid(row=0, column=2, pady=1)
+    # --- The End Search ---
 
     refresh()
     root.mainloop()
