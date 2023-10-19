@@ -2403,7 +2403,7 @@ if __name__ == "__main__":
 
     obj_search_phrase = Search(tree, e_search)
     # b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
-    b_search = ttk.Button(tab1, text="Search", width=10, command=obj_search_phrase, cursor="hand2")
+    b_search = ttk.Button(tab1, text="Search", width=10, command=obj_search_phrase.search_phrase, cursor="hand2")
     b_search.grid(row=0, column=1, pady=1)
     b_search_r = ttk.Button(
         tab1, text="Refresh", width=10, command=refresh, cursor="exchange"
