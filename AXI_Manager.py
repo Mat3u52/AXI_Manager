@@ -1089,21 +1089,21 @@ def get_selected_row(event) -> None:
         root.mainloop()
 
 
-def search() -> None:
-    """
-    The function is looking for the recipe by the phrase
-
-    :return: records from DB according to phrase
-    :rtype: None
-    """
-    tree.selection_clear()
-    tree.selection_remove(tree.focus())
-    for record in tree.get_children():
-        content = tree.item(record, "values")
-        if content[1].find(e_search.get()) >= 0:
-            pass
-        else:
-            tree.delete(record)
+# def search() -> None:
+#     """
+#     The function is looking for the recipe by the phrase
+#
+#     :return: records from DB according to phrase
+#     :rtype: None
+#     """
+#     tree.selection_clear()
+#     tree.selection_remove(tree.focus())
+#     for record in tree.get_children():
+#         content = tree.item(record, "values")
+#         if content[1].find(e_search.get()) >= 0:
+#             pass
+#         else:
+#             tree.delete(record)
 
 
 def refresh() -> None:
@@ -2399,6 +2399,7 @@ if __name__ == "__main__":
     e_search.grid(row=0, column=0, pady=1)
     # root.winfo_pointerx(), root.winfo_pointery()
     e_search.bind("<Button-3>", obj_search.do_popup)
+    root.bind("<Button-1>", obj_search.release_contextual_menu)
     obj_search.set_entry(e_search)
 
     obj_search_phrase = Search(tree, e_search)
