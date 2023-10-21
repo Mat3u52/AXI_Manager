@@ -474,6 +474,7 @@ def get_selected_row(event) -> None:
         # print(row[0])
         obj_tree = ContextualMenu(root, str(row[0]), False, False, True)
         tree.bind("<Button-3>", obj_tree.do_popup)
+        root.bind("<Button-1>", obj_tree.release_contextual_menu)
         if RemoveRecord.flag is True:
             print("ok")
             refresh()
@@ -559,6 +560,7 @@ def get_selected_row(event) -> None:
         l_item.configure(text=f"{row[1]}")
         l_item.configure(text=f"{row[1]}")
         l_item.bind("<Button-3>", obj_item.do_popup)
+        root.bind("<Button-1>", obj_item.release_contextual_menu)
         l_item_amount.configure(text=f"{row[3]}")
         l_date_db.configure(text=f"{row[2]}")
         l_qty.configure(text=f"Qty:")
