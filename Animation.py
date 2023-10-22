@@ -66,11 +66,11 @@ class Animation:
     @staticmethod
     def resize_image(path: str) -> None:
         """
-        The function resizes an image
+        The function resize an image
 
-        :param path: Given path to file
+        :param path: Given path to the file
         :type path: str
-        :return: New size of file
+        :return: New size of the file
         :rtype: None
         """
 
