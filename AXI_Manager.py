@@ -20,6 +20,7 @@ from ComparisonView import ComparisonView
 from RemoveRecord import RemoveRecord
 from Animation import Animation
 from Search import Search
+from Scrollbar import Scrollbar
 
 # min_movement: int = -1
 
@@ -1460,11 +1461,14 @@ def refresh() -> None:
 
     obj_db.closeDB()
 # ---Scrollbar--------------
-    vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
-    vsb.place(
-        x=obj_config.scrollX, y=obj_config.scrollY, height=obj_config.scrollHeight
-    )
-    tree.configure(yscrollcommand=vsb.set)
+    obj_scrollbar = Scrollbar(tab1, tree)
+    obj_scrollbar.tree_scrollbar()
+
+    # vsb = ttk.Scrollbar(tab1, orient="vertical", command=tree.yview)
+    # vsb.place(
+    #     x=obj_config.scrollX, y=obj_config.scrollY, height=obj_config.scrollHeight
+    # )
+    # tree.configure(yscrollcommand=vsb.set)
 # ---The End of Scrollbar---
 
 

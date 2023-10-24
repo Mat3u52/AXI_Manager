@@ -36,6 +36,15 @@ class ContextualMenu(RemoveRecord):
         finally:
             self.context_menu.grab_release()
 
+    def release_contextual_menu(self, event: any) -> None:
+        try:
+            # self.context_menu.tk_popup(event.x_root, event.y_root)
+            self.context_menu.unpost()
+        finally:
+            pass
+    # def popupFocusOut(self, event=None):
+    #     rcmenu.unpost()
+
     def _copy(self) -> None:
         try:
             pyperclip.copy(self.captureEntry.get())
