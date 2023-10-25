@@ -1122,7 +1122,6 @@ def refresh() -> None:
     for record in tree.get_children():
         tree.delete(record)
 
-    obj_db = DBConnect()
 
     # ---Create striped row tags---
     tree.tag_configure("DX", background="#222222")
@@ -1137,7 +1136,7 @@ def refresh() -> None:
     count = 1
     count1 = 1
     count2 = 0
-
+    obj_db = DBConnect()
     for row in obj_db.selectAll():
         if count % 2 == 0:
             if (
