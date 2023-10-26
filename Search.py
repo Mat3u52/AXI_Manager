@@ -4,6 +4,16 @@ from tkinter import ttk
 
 class Search:
     def __init__(self, tree: ttk.Treeview, e_search: tkinter.Entry) -> None:
+        """
+        Initialization of the variables
+
+        :param tree: handle to tree view
+        :type tree: ttk.tkinter
+        :param e_search: handle for entry field
+        :type e_search: tkinter.Entry
+        :return: init variables
+        :rtype: None
+        """
         self.tree = tree
         self.e_search = e_search
 
