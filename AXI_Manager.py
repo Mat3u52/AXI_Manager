@@ -21,6 +21,7 @@ from RemoveRecord import RemoveRecord
 from Animation import Animation
 from Search import Search
 from Scrollbar import Scrollbar
+from Refresh import Refresh
 
 # min_movement: int = -1
 
@@ -1127,9 +1128,9 @@ def refresh() -> None:
     tree.tag_configure("DX", background="#222222")
     tree.tag_configure("V", background="#333333")
     tree.tag_configure("one", background="#111111")
-    tree.tag_configure("baanGrey", background="#111111", foreground="#EB0E0E")
+    tree.tag_configure("baanGrey", background="#111111", foreground="#EB0E0E")  # red font
     tree.tag_configure("baanDark", foreground="#EB0E0E")
-    tree.tag_configure("lcGrey", background="#111111", foreground="#FF8000")
+    tree.tag_configure("lcGrey", background="#111111", foreground="#FF8000")  # green font
     tree.tag_configure("lcDark", foreground="#FF8000")
     # ---The End Create striped row---
 
@@ -1137,40 +1138,45 @@ def refresh() -> None:
     count1 = 1
     count2 = 0
     obj_db = DBConnect()
+    obj_refresh = Refresh()
     for row in obj_db.selectAll():
         if count % 2 == 0:
-            if (
-                (
-                    row[11] != "YES"
-                    and row[11] != "NONE"
-                    and row[11] is not None
-                    and (row[11] == "NO" or row[11] == "LACK")
-                )
-                or (
-                    row[16] != "YES"
-                    and row[16] != "NONE"
-                    and row[16] is not None
-                    and (row[16] == "NO" or row[16] == "LACK")
-                )
-                or (
-                    row[38] != "YES"
-                    and row[38] != "NONE"
-                    and row[38] is not None
-                    and (row[38] == "NO" or row[38] == "LACK")
-                )
-                or (
-                    row[44] != "YES"
-                    and row[44] != "NONE"
-                    and row[44] is not None
-                    and (row[44] == "NO" or row[44] == "LACK")
-                )
-                or (
-                    row[53] != "YES"
-                    and row[53] != "NONE"
-                    and row[53] is not None
-                    and (row[53] == "NO" or row[53] == "LACK")
-                )
-            ):
+            # if (
+            #     (
+            #         row[11] != "YES"
+            #         and row[11] != "NONE"
+            #         and row[11] is not None
+            #         and (row[11] == "NO" or row[11] == "LACK")
+            #     )
+            #     or (
+            #         row[16] != "YES"
+            #         and row[16] != "NONE"
+            #         and row[16] is not None
+            #         and (row[16] == "NO" or row[16] == "LACK")
+            #     )
+            #     or (
+            #         row[38] != "YES"
+            #         and row[38] != "NONE"
+            #         and row[38] is not None
+            #         and (row[38] == "NO" or row[38] == "LACK")
+            #     )
+            #     or (
+            #         row[44] != "YES"
+            #         and row[44] != "NONE"
+            #         and row[44] is not None
+            #         and (row[44] == "NO" or row[44] == "LACK")
+            #     )
+            #     or (
+            #         row[53] != "YES"
+            #         and row[53] != "NONE"
+            #         and row[53] is not None
+            #         and (row[53] == "NO" or row[53] == "LACK")
+            #     )
+            # ):
+
+            # row[11] 5DX_BAAN1, row[16] VITROX_BAAN1, row[38] VITROXII_BAAN1,
+            # row[44] VITROXIII_BAAN1, row[53] VITROXIV_BAAN1
+            if obj_refresh.foreign_app_status(row[11], row[16], row[38], row[44], row[53]):
                 folder1 = tree.insert(
                     parent="",
                     index=count,
@@ -2147,7 +2153,7 @@ if __name__ == "__main__":
 
     tab_control_main.grid(row=1, column=0, columnspan=5, sticky=W)
 
-    # ------------------- The End Main View ----------------------------
+# ------------------- The End Main View ----------------------------
 
     tab_control = ttk.Notebook(root)
 
@@ -2202,7 +2208,6 @@ if __name__ == "__main__":
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
     obj_comparison.compare_list_to_db(tab=tab_3163_to_db)
 
-
     tab_db_to_3163 = ttk.Frame(db_to_v810)
     db_to_v810.add(tab_db_to_3163, text="[3163] DB to V810")
     db_to_v810.pack(expand=1, fill="both", padx=25, pady=25)
@@ -2213,6 +2218,7 @@ if __name__ == "__main__":
         db_name="VITROXIII_PROG",
         root=root
     )
+
 
     tab_3483S2EX_to_db = ttk.Frame(db_to_v810)
     db_to_v810.add(tab_3483S2EX_to_db, text="[3483] V810 to DB")
@@ -2262,7 +2268,7 @@ if __name__ == "__main__":
 
     obj_styles = Styles(root)
 
-    # --- INSERT ---
+# --- INSERT ---
 
     obj_new_item_ex = NewItem(tab2, root)
     obj_new_item_ex.main_frame_insert(" Insert Main ")
@@ -2370,8 +2376,8 @@ if __name__ == "__main__":
     tree["columns"] = ("one", "two", "three", "four", "five", "six", "seven")
     tree.column("#0", width=20, minwidth=20, stretch=tk.NO)
     tree.column("one", width=45, minwidth=45, stretch=tk.NO)
-    tree.column("two", width=250, minwidth=190, stretch=tk.NO)
-    tree.column("three", width=140, minwidth=130, stretch=tk.NO)
+    tree.column("two", width=275, minwidth=190, stretch=tk.NO)
+    tree.column("three", width=150, minwidth=130, stretch=tk.NO)
     tree.column("four", width=35, minwidth=30, stretch=tk.NO)
     tree.column("five", width=40, minwidth=30, stretch=tk.NO)
     tree.column("six", width=40, minwidth=30, stretch=tk.NO)
@@ -2394,7 +2400,7 @@ if __name__ == "__main__":
         relief="solid",
         textvariable=obj_search.captureEntry,
         borderwidth=1,
-        width=40,
+        width=55,
         bg="#212121",
         fg="#FFFFFF",
     )
