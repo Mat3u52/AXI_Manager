@@ -1185,44 +1185,47 @@ def refresh() -> None:
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="baanGrey",
                 )
-            elif (
-                (
-                    row[18] != "YES"
-                    and row[18] != "NONE"
-                    and row[18] is not None
-                    and (row[18] == "NO" or row[18] == "LACK")
-                )
-                or (
-                    row[23] != "YES"
-                    and row[23] != "NONE"
-                    and row[23] is not None
-                    and (row[23] == "NO" or row[23] == "LACK")
-                )
-                or (
-                    row[28] != "YES"
-                    and row[28] != "NONE"
-                    and row[28] is not None
-                    and (row[28] == "NO" or row[28] == "LACK")
-                )
-                or (
-                    row[32] != "YES"
-                    and row[32] != "NONE"
-                    and row[32] is not None
-                    and (row[32] == "NO" or row[32] == "LACK")
-                )
-                or (
-                    row[46] != "YES"
-                    and row[46] != "NONE"
-                    and row[46] is not None
-                    and (row[46] == "NO" or row[46] == "LACK")
-                )
-                or (
-                    row[55] != "YES"
-                    and row[55] != "NONE"
-                    and row[55] is not None
-                    and (row[55] == "NO" or row[55] == "LACK")
-                )
-            ):
+            # elif (
+            #     (
+            #         row[18] != "YES"
+            #         and row[18] != "NONE"
+            #         and row[18] is not None
+            #         and (row[18] == "NO" or row[18] == "LACK")
+            #     )
+            #     or (
+            #         row[23] != "YES"
+            #         and row[23] != "NONE"
+            #         and row[23] is not None
+            #         and (row[23] == "NO" or row[23] == "LACK")
+            #     )
+            #     or (
+            #         row[28] != "YES"
+            #         and row[28] != "NONE"
+            #         and row[28] is not None
+            #         and (row[28] == "NO" or row[28] == "LACK")
+            #     )
+            #     or (
+            #         row[32] != "YES"
+            #         and row[32] != "NONE"
+            #         and row[32] is not None
+            #         and (row[32] == "NO" or row[32] == "LACK")
+            #     )
+            #     or (
+            #         row[46] != "YES"
+            #         and row[46] != "NONE"
+            #         and row[46] is not None
+            #         and (row[46] == "NO" or row[46] == "LACK")
+            #     )
+            #     or (
+            #         row[55] != "YES"
+            #         and row[55] != "NONE"
+            #         and row[55] is not None
+            #         and (row[55] == "NO" or row[55] == "LACK")
+            #     )
+            # ):
+
+            # row[18] 
+            elif obj_refresh.foreign_app_status(row[18], row[23], row[28], row[32], row[46], row[55]):
                 folder1 = tree.insert(
                     parent="",
                     index=count,
@@ -2391,6 +2394,7 @@ if __name__ == "__main__":
     tree.heading("five", text="BaaN", anchor=tk.W)
     tree.heading("six", text="LC", anchor=tk.W)
     tree.heading("seven", text="EPI", anchor=tk.W)
+
 
     # --- Search ---
     obj_search = ContextualMenu(root, "0", True, True, False)
