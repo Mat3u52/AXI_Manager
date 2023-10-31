@@ -1224,7 +1224,8 @@ def refresh() -> None:
             #     )
             # ):
 
-            # row[18] 
+            # row[18] 5DXI_LINECAPA, row[23] 5DXII_LINECAPA, row[28] VITROXI_LINECAPA,
+            # row[32] VITROXII_LINECAPA, row[46] VITROXIII_LINECAPA, row[55] VITROXIV_LINECAPA
             elif obj_refresh.foreign_app_status(row[18], row[23], row[28], row[32], row[46], row[55]):
                 folder1 = tree.insert(
                     parent="",
@@ -1244,38 +1245,39 @@ def refresh() -> None:
                     tag="one",
                 )
         else:
-            if (
-                (
-                    row[11] != "YES"
-                    and row[11] != "NONE"
-                    and row[11] is not None
-                    and (row[11] == "NO" or row[11] == "LACK")
-                )
-                or (
-                    row[16] != "YES"
-                    and row[16] != "NONE"
-                    and row[16] is not None
-                    and (row[16] == "NO" or row[16] == "LACK")
-                )
-                or (
-                    row[38] != "YES"
-                    and row[38] != "NONE"
-                    and row[38] is not None
-                    and (row[38] == "NO" or row[38] == "LACK")
-                )
-                or (
-                    row[44] != "YES"
-                    and row[44] != "NONE"
-                    and row[44] is not None
-                    and (row[44] == "NO" or row[44] == "LACK")
-                )
-                or (
-                    row[53] != "YES"
-                    and row[53] != "NONE"
-                    and row[53] is not None
-                    and (row[53] == "NO" or row[53] == "LACK")
-                )
-            ):
+            # if (
+            #     (
+            #         row[11] != "YES"
+            #         and row[11] != "NONE"
+            #         and row[11] is not None
+            #         and (row[11] == "NO" or row[11] == "LACK")
+            #     )
+            #     or (
+            #         row[16] != "YES"
+            #         and row[16] != "NONE"
+            #         and row[16] is not None
+            #         and (row[16] == "NO" or row[16] == "LACK")
+            #     )
+            #     or (
+            #         row[38] != "YES"
+            #         and row[38] != "NONE"
+            #         and row[38] is not None
+            #         and (row[38] == "NO" or row[38] == "LACK")
+            #     )
+            #     or (
+            #         row[44] != "YES"
+            #         and row[44] != "NONE"
+            #         and row[44] is not None
+            #         and (row[44] == "NO" or row[44] == "LACK")
+            #     )
+            #     or (
+            #         row[53] != "YES"
+            #         and row[53] != "NONE"
+            #         and row[53] is not None
+            #         and (row[53] == "NO" or row[53] == "LACK")
+            #     )
+            # ):
+            if obj_refresh.foreign_app_status(row[11], row[16], row[38], row[44], row[53]):
                 folder1 = tree.insert(
                     parent="",
                     index=count,
@@ -1284,44 +1286,48 @@ def refresh() -> None:
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="baanDark",
                 )
-            elif (
-                (
-                    row[18] != "YES"
-                    and row[18] != "NONE"
-                    and row[18] is not None
-                    and (row[18] == "NO" or row[18] == "LACK")
-                )
-                or (
-                    row[23] != "YES"
-                    and row[23] != "NONE"
-                    and row[23] is not None
-                    and (row[23] == "NO" or row[23] == "LACK")
-                )
-                or (
-                    row[28] != "YES"
-                    and row[28] != "NONE"
-                    and row[28] is not None
-                    and (row[28] == "NO" or row[28] == "LACK")
-                )
-                or (
-                    row[32] != "YES"
-                    and row[32] != "NONE"
-                    and row[32] is not None
-                    and (row[32] == "NO" or row[32] == "LACK")
-                )
-                or (
-                    row[46] != "YES"
-                    and row[46] != "NONE"
-                    and row[46] is not None
-                    and (row[46] == "NO" or row[46] == "LACK")
-                )
-                or (
-                    row[55] != "YES"
-                    and row[55] != "NONE"
-                    and row[55] is not None
-                    and (row[55] == "NO" or row[55] == "LACK")
-                )
-            ):
+            # elif (
+            #     (
+            #         row[18] != "YES"
+            #         and row[18] != "NONE"
+            #         and row[18] is not None
+            #         and (row[18] == "NO" or row[18] == "LACK")
+            #     )
+            #     or (
+            #         row[23] != "YES"
+            #         and row[23] != "NONE"
+            #         and row[23] is not None
+            #         and (row[23] == "NO" or row[23] == "LACK")
+            #     )
+            #     or (
+            #         row[28] != "YES"
+            #         and row[28] != "NONE"
+            #         and row[28] is not None
+            #         and (row[28] == "NO" or row[28] == "LACK")
+            #     )
+            #     or (
+            #         row[32] != "YES"
+            #         and row[32] != "NONE"
+            #         and row[32] is not None
+            #         and (row[32] == "NO" or row[32] == "LACK")
+            #     )
+            #     or (
+            #         row[46] != "YES"
+            #         and row[46] != "NONE"
+            #         and row[46] is not None
+            #         and (row[46] == "NO" or row[46] == "LACK")
+            #     )
+            #     or (
+            #         row[55] != "YES"
+            #         and row[55] != "NONE"
+            #         and row[55] is not None
+            #         and (row[55] == "NO" or row[55] == "LACK")
+            #     )
+            # ):
+
+            # row[18] 5DXI_LINECAPA, row[23] 5DXII_LINECAPA, row[28] VITROXI_LINECAPA,
+            # row[32] VITROXII_LINECAPA, row[46] VITROXIII_LINECAPA, row[55] VITROXIV_LINECAPA
+            elif obj_refresh.foreign_app_status(row[18], row[23], row[28], row[32], row[46], row[55]):
                 folder1 = tree.insert(
                     parent="",
                     index=count,
