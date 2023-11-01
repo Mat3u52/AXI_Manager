@@ -340,30 +340,30 @@ def insert_button() -> None:
 
     obj_form_validator_v817 = FormValidation()
     obj_form_validator_v817.validator(
-        obj_Checkbox_menu_5dx_1.EI_0.get(),
-        obj_Checkbox_menu_5dx_1.EI_1.get(),
-        obj_Checkbox_menu_5dx_1.CI_2.get(),
-        obj_Checkbox_menu_5dx_1.CI_3.get(),
-        obj_Checkbox_menu_5dx_1.CI_4.get(),
-        obj_Checkbox_menu_5dx_1.EI_5.get(),
+        obj_checkbox_menu_5dx_v810.EI_0.get(),
+        obj_checkbox_menu_5dx_v810.EI_1.get(),
+        obj_checkbox_menu_5dx_v810.CI_2.get(),
+        obj_checkbox_menu_5dx_v810.CI_3.get(),
+        obj_checkbox_menu_5dx_v810.CI_4.get(),
+        obj_checkbox_menu_5dx_v810.EI_5.get(),
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
-        obj_Checkbox_menu_5dx_1.EI_6.get(),
-        obj_Checkbox_menu_5dx_1.EI_7.get(),
-        obj_Checkbox_menu_5dx_1.EI_8.get(),
+        obj_checkbox_menu_5dx_v810.EI_6.get(),
+        obj_checkbox_menu_5dx_v810.EI_7.get(),
+        obj_checkbox_menu_5dx_v810.EI_8.get(),
     )
     obj_form_validator_v817.clean_up(
-        obj_Checkbox_menu_5dx_1.EI_0,
-        obj_Checkbox_menu_5dx_1.EI_1,
-        obj_Checkbox_menu_5dx_1.CI_2,
-        obj_Checkbox_menu_5dx_1.CI_3,
-        obj_Checkbox_menu_5dx_1.CI_4,
-        obj_Checkbox_menu_5dx_1.EI_5,
-        obj_Checkbox_menu_5dx_1.EI_6,
-        obj_Checkbox_menu_5dx_1.EI_7,
-        obj_Checkbox_menu_5dx_1.EI_8,
+        obj_checkbox_menu_5dx_v810.EI_0,
+        obj_checkbox_menu_5dx_v810.EI_1,
+        obj_checkbox_menu_5dx_v810.CI_2,
+        obj_checkbox_menu_5dx_v810.CI_3,
+        obj_checkbox_menu_5dx_v810.CI_4,
+        obj_checkbox_menu_5dx_v810.EI_5,
+        obj_checkbox_menu_5dx_v810.EI_6,
+        obj_checkbox_menu_5dx_v810.EI_7,
+        obj_checkbox_menu_5dx_v810.EI_8,
     )
-    obj_Checkbox_menu_5dx_1.insertFrame.grid_forget()
+    obj_checkbox_menu_5dx_v810.insertFrame.grid_forget()
 
     obj_db_connect_5dx = DBConnect()
     obj_db_connect_5dx.insert(
@@ -439,9 +439,9 @@ def reset() -> None:
     obj_checkbox_menu_5DX_0.cleanUp5DX()
     obj_checkbox_menu_5DX_0.insertFrame.grid_forget()
 
-    obj_Checkbox_menu_5dx_1.cleanUp()
-    obj_Checkbox_menu_5dx_1.cleanUp5DX()
-    obj_Checkbox_menu_5dx_1.insertFrame.grid_forget()
+    obj_checkbox_menu_5dx_v810.cleanUp()
+    obj_checkbox_menu_5dx_v810.cleanUp5DX()
+    obj_checkbox_menu_5dx_v810.insertFrame.grid_forget()
 
 
 def get_selected_row(event) -> None:
@@ -545,16 +545,16 @@ def get_selected_row(event) -> None:
         if (row[22] is not None and row[22] != "") and (
             (row[5] is not None and int(row[5]) > 0) or int(row[4])
         ):
-            obj_Checkbox_menu_5dx_1.EI_0.insert(0, f"{row[22]}")
-            obj_Checkbox_menu_5dx_1.EI_1.insert(0, f"{int(row[10])}")
-            obj_Checkbox_menu_5dx_1.CI_2.current(switch(row[23]))
-            obj_Checkbox_menu_5dx_1.CI_3.current(switch(row[24]))
-            obj_Checkbox_menu_5dx_1.CI_4.current(switch(row[11]))
-            obj_Checkbox_menu_5dx_1.EI_5.insert(0, f"{row[25]}")
-            obj_Checkbox_menu_5dx_1.EI_6.insert(0, f"{int(row[7])}")
-            obj_Checkbox_menu_5dx_1.EI_7.insert(0, f"{int(row[8])}")
-            obj_Checkbox_menu_5dx_1.EI_8.insert(0, f"{int(row[9])}")
-            obj_Checkbox_menu_5dx_1.insertFrame.grid(
+            obj_checkbox_menu_5dx_v810.EI_0.insert(0, f"{row[22]}")
+            obj_checkbox_menu_5dx_v810.EI_1.insert(0, f"{int(row[10])}")
+            obj_checkbox_menu_5dx_v810.CI_2.current(switch(row[23]))
+            obj_checkbox_menu_5dx_v810.CI_3.current(switch(row[24]))
+            obj_checkbox_menu_5dx_v810.CI_4.current(switch(row[11]))
+            obj_checkbox_menu_5dx_v810.EI_5.insert(0, f"{row[25]}")
+            obj_checkbox_menu_5dx_v810.EI_6.insert(0, f"{int(row[7])}")
+            obj_checkbox_menu_5dx_v810.EI_7.insert(0, f"{int(row[8])}")
+            obj_checkbox_menu_5dx_v810.EI_8.insert(0, f"{int(row[9])}")
+            obj_checkbox_menu_5dx_v810.insertFrame.grid(
                 column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
             )
 
@@ -1141,39 +1141,6 @@ def refresh() -> None:
     obj_refresh = Refresh()
     for row in obj_db.selectAll():
         if count % 2 == 0:
-            # if (
-            #     (
-            #         row[11] != "YES"
-            #         and row[11] != "NONE"
-            #         and row[11] is not None
-            #         and (row[11] == "NO" or row[11] == "LACK")
-            #     )
-            #     or (
-            #         row[16] != "YES"
-            #         and row[16] != "NONE"
-            #         and row[16] is not None
-            #         and (row[16] == "NO" or row[16] == "LACK")
-            #     )
-            #     or (
-            #         row[38] != "YES"
-            #         and row[38] != "NONE"
-            #         and row[38] is not None
-            #         and (row[38] == "NO" or row[38] == "LACK")
-            #     )
-            #     or (
-            #         row[44] != "YES"
-            #         and row[44] != "NONE"
-            #         and row[44] is not None
-            #         and (row[44] == "NO" or row[44] == "LACK")
-            #     )
-            #     or (
-            #         row[53] != "YES"
-            #         and row[53] != "NONE"
-            #         and row[53] is not None
-            #         and (row[53] == "NO" or row[53] == "LACK")
-            #     )
-            # ):
-
             # row[11] 5DX_BAAN1, row[16] VITROX_BAAN1, row[38] VITROXII_BAAN1,
             # row[44] VITROXIII_BAAN1, row[53] VITROXIV_BAAN1
             if obj_refresh.foreign_app_status(row[11], row[16], row[38], row[44], row[53]):
@@ -1185,45 +1152,6 @@ def refresh() -> None:
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="baanGrey",
                 )
-            # elif (
-            #     (
-            #         row[18] != "YES"
-            #         and row[18] != "NONE"
-            #         and row[18] is not None
-            #         and (row[18] == "NO" or row[18] == "LACK")
-            #     )
-            #     or (
-            #         row[23] != "YES"
-            #         and row[23] != "NONE"
-            #         and row[23] is not None
-            #         and (row[23] == "NO" or row[23] == "LACK")
-            #     )
-            #     or (
-            #         row[28] != "YES"
-            #         and row[28] != "NONE"
-            #         and row[28] is not None
-            #         and (row[28] == "NO" or row[28] == "LACK")
-            #     )
-            #     or (
-            #         row[32] != "YES"
-            #         and row[32] != "NONE"
-            #         and row[32] is not None
-            #         and (row[32] == "NO" or row[32] == "LACK")
-            #     )
-            #     or (
-            #         row[46] != "YES"
-            #         and row[46] != "NONE"
-            #         and row[46] is not None
-            #         and (row[46] == "NO" or row[46] == "LACK")
-            #     )
-            #     or (
-            #         row[55] != "YES"
-            #         and row[55] != "NONE"
-            #         and row[55] is not None
-            #         and (row[55] == "NO" or row[55] == "LACK")
-            #     )
-            # ):
-
             # row[18] 5DXI_LINECAPA, row[23] 5DXII_LINECAPA, row[28] VITROXI_LINECAPA,
             # row[32] VITROXII_LINECAPA, row[46] VITROXIII_LINECAPA, row[55] VITROXIV_LINECAPA
             elif obj_refresh.foreign_app_status(row[18], row[23], row[28], row[32], row[46], row[55]):
@@ -1245,38 +1173,8 @@ def refresh() -> None:
                     tag="one",
                 )
         else:
-            # if (
-            #     (
-            #         row[11] != "YES"
-            #         and row[11] != "NONE"
-            #         and row[11] is not None
-            #         and (row[11] == "NO" or row[11] == "LACK")
-            #     )
-            #     or (
-            #         row[16] != "YES"
-            #         and row[16] != "NONE"
-            #         and row[16] is not None
-            #         and (row[16] == "NO" or row[16] == "LACK")
-            #     )
-            #     or (
-            #         row[38] != "YES"
-            #         and row[38] != "NONE"
-            #         and row[38] is not None
-            #         and (row[38] == "NO" or row[38] == "LACK")
-            #     )
-            #     or (
-            #         row[44] != "YES"
-            #         and row[44] != "NONE"
-            #         and row[44] is not None
-            #         and (row[44] == "NO" or row[44] == "LACK")
-            #     )
-            #     or (
-            #         row[53] != "YES"
-            #         and row[53] != "NONE"
-            #         and row[53] is not None
-            #         and (row[53] == "NO" or row[53] == "LACK")
-            #     )
-            # ):
+            # row[11] 5DX_BAAN1, row[16] VITROX_BAAN1, row[38] VITROXII_BAAN1,
+            # row[44] VITROXIII_BAAN1, row[53] VITROXIV_BAAN1
             if obj_refresh.foreign_app_status(row[11], row[16], row[38], row[44], row[53]):
                 folder1 = tree.insert(
                     parent="",
@@ -1286,45 +1184,6 @@ def refresh() -> None:
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="baanDark",
                 )
-            # elif (
-            #     (
-            #         row[18] != "YES"
-            #         and row[18] != "NONE"
-            #         and row[18] is not None
-            #         and (row[18] == "NO" or row[18] == "LACK")
-            #     )
-            #     or (
-            #         row[23] != "YES"
-            #         and row[23] != "NONE"
-            #         and row[23] is not None
-            #         and (row[23] == "NO" or row[23] == "LACK")
-            #     )
-            #     or (
-            #         row[28] != "YES"
-            #         and row[28] != "NONE"
-            #         and row[28] is not None
-            #         and (row[28] == "NO" or row[28] == "LACK")
-            #     )
-            #     or (
-            #         row[32] != "YES"
-            #         and row[32] != "NONE"
-            #         and row[32] is not None
-            #         and (row[32] == "NO" or row[32] == "LACK")
-            #     )
-            #     or (
-            #         row[46] != "YES"
-            #         and row[46] != "NONE"
-            #         and row[46] is not None
-            #         and (row[46] == "NO" or row[46] == "LACK")
-            #     )
-            #     or (
-            #         row[55] != "YES"
-            #         and row[55] != "NONE"
-            #         and row[55] is not None
-            #         and (row[55] == "NO" or row[55] == "LACK")
-            #     )
-            # ):
-
             # row[18] 5DXI_LINECAPA, row[23] 5DXII_LINECAPA, row[28] VITROXI_LINECAPA,
             # row[32] VITROXII_LINECAPA, row[46] VITROXIII_LINECAPA, row[55] VITROXIV_LINECAPA
             elif obj_refresh.foreign_app_status(row[18], row[23], row[28], row[32], row[46], row[55]):
@@ -1354,7 +1213,7 @@ def refresh() -> None:
                 text=f"",
                 values=(
                     f"{row[0]}",
-                    f"5DX I",
+                    f"{obj_config.machines[0]}",
                     f"85%: {row[4]}, 95%: {row[6]}",
                     "",
                     f"{row[11]}",
@@ -1372,7 +1231,7 @@ def refresh() -> None:
                 text=f"",
                 values=(
                     f"{row[0]}",
-                    f"5DX II",
+                    f"{obj_config.machines[1]}",
                     f"85%: {row[4]}, 95%: {row[6]}",
                     "",
                     f"{row[11]}",
@@ -1393,7 +1252,7 @@ def refresh() -> None:
                 text=f"",
                 values=(
                     f"{row[0]}",
-                    f"ViTrox Ex I",
+                    f"{obj_config.machines[2]}",
                     f"85%: {row[12]}, 95%: {row[14]}",
                     "",
                     f"{row[16]}",
@@ -1414,7 +1273,7 @@ def refresh() -> None:
                 text=f"",
                 values=(
                     f"{row[0]}",
-                    f"ViTrox Ex II",
+                    f"{obj_config.machines[3]}",
                     f"85%: {row[40]}, 95%: {row[42]}",
                     "",
                     f"{row[44]}",
@@ -1435,7 +1294,7 @@ def refresh() -> None:
                 text=f"",
                 values=(
                     f"{row[0]}",
-                    f"ViTrox Ex III",
+                    f"{obj_config.machines[4]}",
                     f"85%: {row[49]}, 95%: {row[51]}",
                     "",
                     f"{row[53]}",
@@ -1456,7 +1315,7 @@ def refresh() -> None:
                 text=f"",
                 values=(
                     f"{row[0]}",
-                    f"ViTrox XXL I",
+                    f"{obj_config.machines[5]}",
                     f"85%: {row[39]}, 95%: {row[36]}",
                     "",
                     f"{row[38]}",
@@ -2327,11 +2186,11 @@ if __name__ == "__main__":
     obj_checkbox_menu_5DX_0.checkboxMenu("V849", 1)
     obj_checkbox_menu_5DX_0.alignmentTime()
 
-    obj_Checkbox_menu_5dx_1 = CheckboxMenu(
-        tab2, root, objNewItem5DX.checkbox_frame, " Insert 5DX II ( V817 ) "
+    obj_checkbox_menu_5dx_v810 = CheckboxMenu(
+        tab2, root, objNewItem5DX.checkbox_frame, f" {obj_config.machines[1]} "
     )
-    obj_Checkbox_menu_5dx_1.checkboxMenu("V817", 2)
-    obj_Checkbox_menu_5dx_1.alignmentTime()
+    obj_checkbox_menu_5dx_v810.checkboxMenu(f"{obj_config.devices[4]}", 2)
+    obj_checkbox_menu_5dx_v810.alignmentTime()
 
     button_insert = ttk.Button(
         obj_new_item_ex.main_frame,
@@ -2349,37 +2208,9 @@ if __name__ == "__main__":
         cursor="hand2",
     )
     button_reset.grid(row=1, column=2, columnspan=2, pady=2)
-    # --- The End INSERT ---
+# --- The End INSERT ---
 
-    # # --- Search ---
-    # obj_search = ContextualMenu(root, "0", True, True, False)
-    #
-    # e_search = Entry(
-    #     tab1,
-    #     relief="solid",
-    #     textvariable=obj_search.captureEntry,
-    #     borderwidth=1,
-    #     width=40,
-    #     bg="#212121",
-    #     fg="#FFFFFF",
-    # )
-    # e_search.config(
-    #     font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
-    # )
-    # e_search.grid(row=0, column=0, pady=1)
-    # # root.winfo_pointerx(), root.winfo_pointery()
-    # e_search.bind("<Button-3>", obj_search.do_popup)
-    # obj_search.set_entry(e_search)
-    #
-    #
-    # b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
-    # b_search.grid(row=0, column=1, pady=1)
-    # b_search_r = ttk.Button(
-    #     tab1, text="Refresh", width=10, command=refresh, cursor="exchange"
-    # )
-    # b_search_r.grid(row=0, column=2, pady=1)
-    # # --- The End Search ---
-
+# --- TreeView column & heading customize ---
     tree = ttk.Treeview(tab1)
 
     tree["columns"] = ("one", "two", "three", "four", "five", "six", "seven")
@@ -2392,7 +2223,7 @@ if __name__ == "__main__":
     tree.column("six", width=40, minwidth=30, stretch=tk.NO)
     tree.column("seven", width=40, minwidth=30, stretch=tk.NO)
 
-    tree.heading("#0", text="Box", anchor=tk.W)
+    tree.heading("#0", text="", anchor=tk.W)
     tree.heading("one", text="ID", anchor=tk.W)
     tree.heading("two", text="Item", anchor=tk.W)
     tree.heading("three", text="Date / Time", anchor=tk.W)
@@ -2400,11 +2231,10 @@ if __name__ == "__main__":
     tree.heading("five", text="BaaN", anchor=tk.W)
     tree.heading("six", text="LC", anchor=tk.W)
     tree.heading("seven", text="EPI", anchor=tk.W)
+# --- The End TreeView column & heading customize ---
 
-
-    # --- Search ---
+# --- Search ---
     obj_search = ContextualMenu(root, "0", True, True, False)
-
     e_search = Entry(
         tab1,
         relief="solid",
@@ -2418,20 +2248,18 @@ if __name__ == "__main__":
         font=("Arial", 10), highlightbackground="#000000", highlightcolor="#33FFBE"
     )
     e_search.grid(row=0, column=0, pady=1)
-    # root.winfo_pointerx(), root.winfo_pointery()
     e_search.bind("<Button-3>", obj_search.do_popup)
     root.bind("<Button-1>", obj_search.release_contextual_menu)
     obj_search.set_entry(e_search)
 
     obj_search_phrase = Search(tree, e_search)
-    # b_search = ttk.Button(tab1, text="Search", width=10, command=search, cursor="hand2")
     b_search = ttk.Button(tab1, text="Search", width=10, command=obj_search_phrase.search_phrase, cursor="hand2")
     b_search.grid(row=0, column=1, pady=1)
     b_search_r = ttk.Button(
         tab1, text="Refresh", width=10, command=refresh, cursor="exchange"
     )
     b_search_r.grid(row=0, column=2, pady=1)
-    # --- The End Search ---
+# --- The End Search ---
 
     refresh()
     root.mainloop()
