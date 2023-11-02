@@ -232,25 +232,25 @@ def insert_button() -> None:
 
     obj_form_validator_v8103163 = FormValidation()
     obj_form_validator_v8103163.validator(
-        obj_checkbox_menu_ex_2.EI_0.get(),
-        obj_checkbox_menu_ex_2.EI_1.get(),
-        obj_checkbox_menu_ex_2.CI_2.get(),
-        obj_checkbox_menu_ex_2.CI_3.get(),
-        obj_checkbox_menu_ex_2.CI_4.get(),
-        obj_checkbox_menu_ex_2.EI_5.get(),
+        obj_checkbox_menu_ex_3553s2.EI_0.get(),
+        obj_checkbox_menu_ex_3553s2.EI_1.get(),
+        obj_checkbox_menu_ex_3553s2.CI_2.get(),
+        obj_checkbox_menu_ex_3553s2.CI_3.get(),
+        obj_checkbox_menu_ex_3553s2.CI_4.get(),
+        obj_checkbox_menu_ex_3553s2.EI_5.get(),
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
     )
 
     obj_form_validator_v8103163.clean_up(
-        obj_checkbox_menu_ex_2.EI_0,
-        obj_checkbox_menu_ex_2.EI_1,
-        obj_checkbox_menu_ex_2.CI_2,
-        obj_checkbox_menu_ex_2.CI_3,
-        obj_checkbox_menu_ex_2.CI_4,
-        obj_checkbox_menu_ex_2.EI_5,
+        obj_checkbox_menu_ex_3553s2.EI_0,
+        obj_checkbox_menu_ex_3553s2.EI_1,
+        obj_checkbox_menu_ex_3553s2.CI_2,
+        obj_checkbox_menu_ex_3553s2.CI_3,
+        obj_checkbox_menu_ex_3553s2.CI_4,
+        obj_checkbox_menu_ex_3553s2.EI_5,
     )
-    obj_checkbox_menu_ex_2.insertFrame.grid_forget()
+    obj_checkbox_menu_ex_3553s2.insertFrame.grid_forget()
 
     obj_db_connect_v8103163 = DBConnect()
     obj_db_connect_v8103163.insert(
@@ -273,24 +273,24 @@ def insert_button() -> None:
 
     obj_form_validator_v8108120_s2 = FormValidation()
     obj_form_validator_v8108120_s2.validator(
-        obj_checkbox_menu_xxl_0.EI_0.get(),
-        obj_checkbox_menu_xxl_0.EI_1.get(),
-        obj_checkbox_menu_xxl_0.CI_2.get(),
-        obj_checkbox_menu_xxl_0.CI_3.get(),
-        obj_checkbox_menu_xxl_0.CI_4.get(),
-        obj_checkbox_menu_xxl_0.EI_5.get(),
+        obj_checkbox_menu_xxl_8120s2.EI_0.get(),
+        obj_checkbox_menu_xxl_8120s2.EI_1.get(),
+        obj_checkbox_menu_xxl_8120s2.CI_2.get(),
+        obj_checkbox_menu_xxl_8120s2.CI_3.get(),
+        obj_checkbox_menu_xxl_8120s2.CI_4.get(),
+        obj_checkbox_menu_xxl_8120s2.EI_5.get(),
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
     )
     obj_form_validator_v8108120_s2.clean_up(
-        obj_checkbox_menu_xxl_0.EI_0,
-        obj_checkbox_menu_xxl_0.EI_1,
-        obj_checkbox_menu_xxl_0.CI_2,
-        obj_checkbox_menu_xxl_0.CI_3,
-        obj_checkbox_menu_xxl_0.CI_4,
-        obj_checkbox_menu_xxl_0.EI_5,
+        obj_checkbox_menu_xxl_8120s2.EI_0,
+        obj_checkbox_menu_xxl_8120s2.EI_1,
+        obj_checkbox_menu_xxl_8120s2.CI_2,
+        obj_checkbox_menu_xxl_8120s2.CI_3,
+        obj_checkbox_menu_xxl_8120s2.CI_4,
+        obj_checkbox_menu_xxl_8120s2.EI_5,
     )
-    obj_checkbox_menu_xxl_0.insertFrame.grid_forget()
+    obj_checkbox_menu_xxl_8120s2.insertFrame.grid_forget()
 
     obj_db_connect_v8108120_s2 = DBConnect()
     obj_db_connect_v8108120_s2.insert(
@@ -313,57 +313,57 @@ def insert_button() -> None:
 
     obj_form_validator_v849 = FormValidation()
     obj_form_validator_v849.validator(
-        obj_checkbox_menu_5DX_0.EI_0.get(),
-        obj_checkbox_menu_5DX_0.EI_1.get(),
-        obj_checkbox_menu_5DX_0.CI_2.get(),
-        obj_checkbox_menu_5DX_0.CI_3.get(),
-        obj_checkbox_menu_5DX_0.CI_4.get(),
-        obj_checkbox_menu_5DX_0.EI_5.get(),
+        obj_checkbox_menu_5dx_v849.EI_0.get(),
+        obj_checkbox_menu_5dx_v849.EI_1.get(),
+        obj_checkbox_menu_5dx_v849.CI_2.get(),
+        obj_checkbox_menu_5dx_v849.CI_3.get(),
+        obj_checkbox_menu_5dx_v849.CI_4.get(),
+        obj_checkbox_menu_5dx_v849.EI_5.get(),
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
-        obj_checkbox_menu_5DX_0.EI_6.get(),
-        obj_checkbox_menu_5DX_0.EI_7.get(),
-        obj_checkbox_menu_5DX_0.EI_8.get(),
+        obj_checkbox_menu_5dx_v849.EI_6.get(),
+        obj_checkbox_menu_5dx_v849.EI_7.get(),
+        obj_checkbox_menu_5dx_v849.EI_8.get(),
     )
     obj_form_validator_v849.clean_up(
-        obj_checkbox_menu_5DX_0.EI_0,
-        obj_checkbox_menu_5DX_0.EI_1,
-        obj_checkbox_menu_5DX_0.CI_2,
-        obj_checkbox_menu_5DX_0.CI_3,
-        obj_checkbox_menu_5DX_0.CI_4,
-        obj_checkbox_menu_5DX_0.EI_5,
-        obj_checkbox_menu_5DX_0.EI_6,
-        obj_checkbox_menu_5DX_0.EI_7,
-        obj_checkbox_menu_5DX_0.EI_8,
+        obj_checkbox_menu_5dx_v849.EI_0,
+        obj_checkbox_menu_5dx_v849.EI_1,
+        obj_checkbox_menu_5dx_v849.CI_2,
+        obj_checkbox_menu_5dx_v849.CI_3,
+        obj_checkbox_menu_5dx_v849.CI_4,
+        obj_checkbox_menu_5dx_v849.EI_5,
+        obj_checkbox_menu_5dx_v849.EI_6,
+        obj_checkbox_menu_5dx_v849.EI_7,
+        obj_checkbox_menu_5dx_v849.EI_8,
     )
-    obj_checkbox_menu_5DX_0.insertFrame.grid_forget()
+    obj_checkbox_menu_5dx_v849.insertFrame.grid_forget()
 
     obj_form_validator_v817 = FormValidation()
     obj_form_validator_v817.validator(
-        obj_checkbox_menu_5dx_v810.EI_0.get(),
-        obj_checkbox_menu_5dx_v810.EI_1.get(),
-        obj_checkbox_menu_5dx_v810.CI_2.get(),
-        obj_checkbox_menu_5dx_v810.CI_3.get(),
-        obj_checkbox_menu_5dx_v810.CI_4.get(),
-        obj_checkbox_menu_5dx_v810.EI_5.get(),
+        obj_checkbox_menu_5dx_v817.EI_0.get(),
+        obj_checkbox_menu_5dx_v817.EI_1.get(),
+        obj_checkbox_menu_5dx_v817.CI_2.get(),
+        obj_checkbox_menu_5dx_v817.CI_3.get(),
+        obj_checkbox_menu_5dx_v817.CI_4.get(),
+        obj_checkbox_menu_5dx_v817.EI_5.get(),
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
-        obj_checkbox_menu_5dx_v810.EI_6.get(),
-        obj_checkbox_menu_5dx_v810.EI_7.get(),
-        obj_checkbox_menu_5dx_v810.EI_8.get(),
+        obj_checkbox_menu_5dx_v817.EI_6.get(),
+        obj_checkbox_menu_5dx_v817.EI_7.get(),
+        obj_checkbox_menu_5dx_v817.EI_8.get(),
     )
     obj_form_validator_v817.clean_up(
-        obj_checkbox_menu_5dx_v810.EI_0,
-        obj_checkbox_menu_5dx_v810.EI_1,
-        obj_checkbox_menu_5dx_v810.CI_2,
-        obj_checkbox_menu_5dx_v810.CI_3,
-        obj_checkbox_menu_5dx_v810.CI_4,
-        obj_checkbox_menu_5dx_v810.EI_5,
-        obj_checkbox_menu_5dx_v810.EI_6,
-        obj_checkbox_menu_5dx_v810.EI_7,
-        obj_checkbox_menu_5dx_v810.EI_8,
+        obj_checkbox_menu_5dx_v817.EI_0,
+        obj_checkbox_menu_5dx_v817.EI_1,
+        obj_checkbox_menu_5dx_v817.CI_2,
+        obj_checkbox_menu_5dx_v817.CI_3,
+        obj_checkbox_menu_5dx_v817.CI_4,
+        obj_checkbox_menu_5dx_v817.EI_5,
+        obj_checkbox_menu_5dx_v817.EI_6,
+        obj_checkbox_menu_5dx_v817.EI_7,
+        obj_checkbox_menu_5dx_v817.EI_8,
     )
-    obj_checkbox_menu_5dx_v810.insertFrame.grid_forget()
+    obj_checkbox_menu_5dx_v817.insertFrame.grid_forget()
 
     obj_db_connect_5dx = DBConnect()
     obj_db_connect_5dx.insert(
@@ -429,19 +429,19 @@ def reset() -> None:
     obj_checkbox_menu_ex_1.cleanUp()
     obj_checkbox_menu_ex_1.insertFrame.grid_forget()
 
-    obj_checkbox_menu_ex_2.cleanUp()
-    obj_checkbox_menu_ex_2.insertFrame.grid_forget()
+    obj_checkbox_menu_ex_3553s2.cleanUp()
+    obj_checkbox_menu_ex_3553s2.insertFrame.grid_forget()
 
-    obj_checkbox_menu_xxl_0.cleanUp()
-    obj_checkbox_menu_xxl_0.insertFrame.grid_forget()
+    obj_checkbox_menu_xxl_8120s2.cleanUp()
+    obj_checkbox_menu_xxl_8120s2.insertFrame.grid_forget()
 
-    obj_checkbox_menu_5DX_0.cleanUp()
-    obj_checkbox_menu_5DX_0.cleanUp5DX()
-    obj_checkbox_menu_5DX_0.insertFrame.grid_forget()
+    obj_checkbox_menu_5dx_v849.cleanUp()
+    obj_checkbox_menu_5dx_v849.cleanUp5DX()
+    obj_checkbox_menu_5dx_v849.insertFrame.grid_forget()
 
-    obj_checkbox_menu_5dx_v810.cleanUp()
-    obj_checkbox_menu_5dx_v810.cleanUp5DX()
-    obj_checkbox_menu_5dx_v810.insertFrame.grid_forget()
+    obj_checkbox_menu_5dx_v817.cleanUp()
+    obj_checkbox_menu_5dx_v817.cleanUp5DX()
+    obj_checkbox_menu_5dx_v817.insertFrame.grid_forget()
 
 
 def get_selected_row(event) -> None:
@@ -505,56 +505,56 @@ def get_selected_row(event) -> None:
             )
 
         if row[27] is not None and ((row[15] is not None and int(row[15]) > 0) or int(row[12])):
-            obj_checkbox_menu_ex_2.EI_0.insert(0, f"{row[27]}")
-            obj_checkbox_menu_ex_2.EI_1.insert(0, f"{int(row[15])}")
-            obj_checkbox_menu_ex_2.CI_2.current(switch(row[28]))
-            obj_checkbox_menu_ex_2.CI_3.current(switch(row[29]))
-            obj_checkbox_menu_ex_2.CI_4.current(switch(row[16]))
-            obj_checkbox_menu_ex_2.EI_5.insert(0, f"{row[30]}")
-            obj_checkbox_menu_ex_2.insertFrame.grid(
+            obj_checkbox_menu_ex_3553s2.EI_0.insert(0, f"{row[27]}")
+            obj_checkbox_menu_ex_3553s2.EI_1.insert(0, f"{int(row[15])}")
+            obj_checkbox_menu_ex_3553s2.CI_2.current(switch(row[28]))
+            obj_checkbox_menu_ex_3553s2.CI_3.current(switch(row[29]))
+            obj_checkbox_menu_ex_3553s2.CI_4.current(switch(row[16]))
+            obj_checkbox_menu_ex_3553s2.EI_5.insert(0, f"{row[30]}")
+            obj_checkbox_menu_ex_3553s2.insertFrame.grid(
                 column=0, row=5 + 3, columnspan=10, sticky="W", padx=10, pady=10
             )
 
         if row[31] is not None and ((row[37] is not None and int(row[37]) > 0) or int(row[39])):
-            obj_checkbox_menu_xxl_0.EI_0.insert(0, f"{row[31]}")
-            obj_checkbox_menu_xxl_0.EI_1.insert(0, f"{int(row[37])}")
-            obj_checkbox_menu_xxl_0.CI_2.current(switch(row[32]))
-            obj_checkbox_menu_xxl_0.CI_3.current(switch(row[33]))
-            obj_checkbox_menu_xxl_0.CI_4.current(switch(row[38]))
-            obj_checkbox_menu_xxl_0.EI_5.insert(0, f"{row[34]}")
-            obj_checkbox_menu_xxl_0.insertFrame.grid(
+            obj_checkbox_menu_xxl_8120s2.EI_0.insert(0, f"{row[31]}")
+            obj_checkbox_menu_xxl_8120s2.EI_1.insert(0, f"{int(row[37])}")
+            obj_checkbox_menu_xxl_8120s2.CI_2.current(switch(row[32]))
+            obj_checkbox_menu_xxl_8120s2.CI_3.current(switch(row[33]))
+            obj_checkbox_menu_xxl_8120s2.CI_4.current(switch(row[38]))
+            obj_checkbox_menu_xxl_8120s2.EI_5.insert(0, f"{row[34]}")
+            obj_checkbox_menu_xxl_8120s2.insertFrame.grid(
                 column=0, row=5 + 5, columnspan=10, sticky="W", padx=10, pady=10
             )
 
         if (row[17] is not None and row[17] != "") and (
             (row[5] is not None and int(row[5]) > 0) or int(row[4])
         ):
-            obj_checkbox_menu_5DX_0.EI_0.insert(0, f"{row[17]}")
-            obj_checkbox_menu_5DX_0.EI_1.insert(0, f"{int(row[10])}")
-            obj_checkbox_menu_5DX_0.CI_2.current(switch(row[18]))
-            obj_checkbox_menu_5DX_0.CI_3.current(switch(row[19]))
-            obj_checkbox_menu_5DX_0.CI_4.current(switch(row[11]))
-            obj_checkbox_menu_5DX_0.EI_5.insert(0, f"{row[20]}")
-            obj_checkbox_menu_5DX_0.EI_6.insert(0, f"{int(row[7])}")
-            obj_checkbox_menu_5DX_0.EI_7.insert(0, f"{int(row[8])}")
-            obj_checkbox_menu_5DX_0.EI_8.insert(0, f"{int(row[9])}")
-            obj_checkbox_menu_5DX_0.insertFrame.grid(
+            obj_checkbox_menu_5dx_v849.EI_0.insert(0, f"{row[17]}")
+            obj_checkbox_menu_5dx_v849.EI_1.insert(0, f"{int(row[10])}")
+            obj_checkbox_menu_5dx_v849.CI_2.current(switch(row[18]))
+            obj_checkbox_menu_5dx_v849.CI_3.current(switch(row[19]))
+            obj_checkbox_menu_5dx_v849.CI_4.current(switch(row[11]))
+            obj_checkbox_menu_5dx_v849.EI_5.insert(0, f"{row[20]}")
+            obj_checkbox_menu_5dx_v849.EI_6.insert(0, f"{int(row[7])}")
+            obj_checkbox_menu_5dx_v849.EI_7.insert(0, f"{int(row[8])}")
+            obj_checkbox_menu_5dx_v849.EI_8.insert(0, f"{int(row[9])}")
+            obj_checkbox_menu_5dx_v849.insertFrame.grid(
                 column=0, row=5 + 1, columnspan=10, sticky="W", padx=10, pady=10
             )
 
         if (row[22] is not None and row[22] != "") and (
             (row[5] is not None and int(row[5]) > 0) or int(row[4])
         ):
-            obj_checkbox_menu_5dx_v810.EI_0.insert(0, f"{row[22]}")
-            obj_checkbox_menu_5dx_v810.EI_1.insert(0, f"{int(row[10])}")
-            obj_checkbox_menu_5dx_v810.CI_2.current(switch(row[23]))
-            obj_checkbox_menu_5dx_v810.CI_3.current(switch(row[24]))
-            obj_checkbox_menu_5dx_v810.CI_4.current(switch(row[11]))
-            obj_checkbox_menu_5dx_v810.EI_5.insert(0, f"{row[25]}")
-            obj_checkbox_menu_5dx_v810.EI_6.insert(0, f"{int(row[7])}")
-            obj_checkbox_menu_5dx_v810.EI_7.insert(0, f"{int(row[8])}")
-            obj_checkbox_menu_5dx_v810.EI_8.insert(0, f"{int(row[9])}")
-            obj_checkbox_menu_5dx_v810.insertFrame.grid(
+            obj_checkbox_menu_5dx_v817.EI_0.insert(0, f"{row[22]}")
+            obj_checkbox_menu_5dx_v817.EI_1.insert(0, f"{int(row[10])}")
+            obj_checkbox_menu_5dx_v817.CI_2.current(switch(row[23]))
+            obj_checkbox_menu_5dx_v817.CI_3.current(switch(row[24]))
+            obj_checkbox_menu_5dx_v817.CI_4.current(switch(row[11]))
+            obj_checkbox_menu_5dx_v817.EI_5.insert(0, f"{row[25]}")
+            obj_checkbox_menu_5dx_v817.EI_6.insert(0, f"{int(row[7])}")
+            obj_checkbox_menu_5dx_v817.EI_7.insert(0, f"{int(row[8])}")
+            obj_checkbox_menu_5dx_v817.EI_8.insert(0, f"{int(row[9])}")
+            obj_checkbox_menu_5dx_v817.insertFrame.grid(
                 column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
             )
 
@@ -1409,14 +1409,14 @@ def automatic_insert() -> None:
                 obj_automatic_updates.dicRecipe.get(var_new_record.get()).get("device")
                 == "V810-3163"
             ):
-                obj_checkbox_menu_ex_2.insertFrame.grid(
+                obj_checkbox_menu_ex_3553s2.insertFrame.grid(
                     column=0, row=5 + 3, columnspan=10, sticky="W", padx=10, pady=10
                 )
-                obj_checkbox_menu_ex_2.EI_0.insert(
+                obj_checkbox_menu_ex_3553s2.EI_0.insert(
                     0,
                     f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('recipe')}",
                 )
-                obj_checkbox_menu_ex_2.EI_1.insert(
+                obj_checkbox_menu_ex_3553s2.EI_1.insert(
                     0,
                     f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('cycleTime')}",
                 )
@@ -1425,14 +1425,14 @@ def automatic_insert() -> None:
                 obj_automatic_updates.dicRecipe.get(var_new_record.get()).get("device")
                 == "V810-8120S2"
             ):
-                obj_checkbox_menu_xxl_0.insertFrame.grid(
+                obj_checkbox_menu_xxl_8120s2.insertFrame.grid(
                     column=0, row=5 + 5, columnspan=10, sticky="W", padx=10, pady=10
                 )
-                obj_checkbox_menu_xxl_0.EI_0.insert(
+                obj_checkbox_menu_xxl_8120s2.EI_0.insert(
                     0,
                     f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('recipe')}",
                 )
-                obj_checkbox_menu_xxl_0.EI_1.insert(
+                obj_checkbox_menu_xxl_8120s2.EI_1.insert(
                     0,
                     f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('cycleTime')}",
                 )
@@ -2158,39 +2158,39 @@ if __name__ == "__main__":
     )
     obj_checkbox_menu_ex_1.checkboxMenu("V810-3483S2EX", 2)
 
-    obj_checkbox_menu_ex_2 = CheckboxMenu(
+    obj_checkbox_menu_ex_3553s2 = CheckboxMenu(
         tab2,
         root,
         obj_new_item_ex.checkbox_frame,
         " Insert ViTrox V810 Ex I ( V810-3163 ) ",
     )
-    obj_checkbox_menu_ex_2.checkboxMenu("V810-3163", 3)
+    obj_checkbox_menu_ex_3553s2.checkboxMenu("V810-3163", 3)
 
     objNewItemXXL = NewItem(tab2, root)
     objNewItemXXL.checkbox_title(" ViTrox XXL ", 5)
 
-    obj_checkbox_menu_xxl_0 = CheckboxMenu(
+    obj_checkbox_menu_xxl_8120s2 = CheckboxMenu(
         tab2,
         root,
         objNewItemXXL.checkbox_frame,
         " Insert ViTrox V810 XXL I ( V810-8120S2 ) ",
     )
-    obj_checkbox_menu_xxl_0.checkboxMenu("V810-8120S2", 1)
+    obj_checkbox_menu_xxl_8120s2.checkboxMenu("V810-8120S2", 1)
 
     objNewItem5DX = NewItem(tab2, root)
     objNewItem5DX.checkbox_title(" 5DX ", 6)
 
-    obj_checkbox_menu_5DX_0 = CheckboxMenu(
+    obj_checkbox_menu_5dx_v849 = CheckboxMenu(
         tab2, root, objNewItem5DX.checkbox_frame, " Insert 5DX I ( V849 ) "
     )
-    obj_checkbox_menu_5DX_0.checkboxMenu("V849", 1)
-    obj_checkbox_menu_5DX_0.alignmentTime()
+    obj_checkbox_menu_5dx_v849.checkboxMenu("V849", 1)
+    obj_checkbox_menu_5dx_v849.alignmentTime()
 
-    obj_checkbox_menu_5dx_v810 = CheckboxMenu(
+    obj_checkbox_menu_5dx_v817 = CheckboxMenu(
         tab2, root, objNewItem5DX.checkbox_frame, f" {obj_config.machines[1]} "
     )
-    obj_checkbox_menu_5dx_v810.checkboxMenu(f"{obj_config.devices[4]}", 2)
-    obj_checkbox_menu_5dx_v810.alignmentTime()
+    obj_checkbox_menu_5dx_v817.checkboxMenu(f"{obj_config.devices[4]}", 2)
+    obj_checkbox_menu_5dx_v817.alignmentTime()
 
     button_insert = ttk.Button(
         obj_new_item_ex.main_frame,
