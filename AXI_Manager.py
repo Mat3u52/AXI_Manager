@@ -152,24 +152,24 @@ def insert_button() -> None:
 
     obj_form_validator_v8103553_s2_ex = FormValidation()
     obj_form_validator_v8103553_s2_ex.validator(
-        obj_checkbox_menu_ex_0.EI_0.get(),
-        obj_checkbox_menu_ex_0.EI_1.get(),
-        obj_checkbox_menu_ex_0.CI_2.get(),
-        obj_checkbox_menu_ex_0.CI_3.get(),
-        obj_checkbox_menu_ex_0.CI_4.get(),
-        obj_checkbox_menu_ex_0.EI_5.get(),
+        obj_checkbox_menu_ex_3163.EI_0.get(),
+        obj_checkbox_menu_ex_3163.EI_1.get(),
+        obj_checkbox_menu_ex_3163.CI_2.get(),
+        obj_checkbox_menu_ex_3163.CI_3.get(),
+        obj_checkbox_menu_ex_3163.CI_4.get(),
+        obj_checkbox_menu_ex_3163.EI_5.get(),
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
     )
     obj_form_validator_v8103553_s2_ex.clean_up(
-        obj_checkbox_menu_ex_0.EI_0,
-        obj_checkbox_menu_ex_0.EI_1,
-        obj_checkbox_menu_ex_0.CI_2,
-        obj_checkbox_menu_ex_0.CI_3,
-        obj_checkbox_menu_ex_0.CI_4,
-        obj_checkbox_menu_ex_0.EI_5,
+        obj_checkbox_menu_ex_3163.EI_0,
+        obj_checkbox_menu_ex_3163.EI_1,
+        obj_checkbox_menu_ex_3163.CI_2,
+        obj_checkbox_menu_ex_3163.CI_3,
+        obj_checkbox_menu_ex_3163.CI_4,
+        obj_checkbox_menu_ex_3163.EI_5,
     )
-    obj_checkbox_menu_ex_0.insertFrame.grid_forget()
+    obj_checkbox_menu_ex_3163.insertFrame.grid_forget()
 
     obj_db_connect_v8103553_s2_ex = DBConnect()
     obj_db_connect_v8103553_s2_ex.insert(
@@ -192,24 +192,24 @@ def insert_button() -> None:
 
     obj_form_validator_v8103483_s2_ex = FormValidation()
     obj_form_validator_v8103483_s2_ex.validator(
-        obj_checkbox_menu_ex_1.EI_0.get(),
-        obj_checkbox_menu_ex_1.EI_1.get(),
-        obj_checkbox_menu_ex_1.CI_2.get(),
-        obj_checkbox_menu_ex_1.CI_3.get(),
-        obj_checkbox_menu_ex_1.CI_4.get(),
-        obj_checkbox_menu_ex_1.EI_5.get(),
+        obj_checkbox_menu_ex_3483s2.EI_0.get(),
+        obj_checkbox_menu_ex_3483s2.EI_1.get(),
+        obj_checkbox_menu_ex_3483s2.CI_2.get(),
+        obj_checkbox_menu_ex_3483s2.CI_3.get(),
+        obj_checkbox_menu_ex_3483s2.CI_4.get(),
+        obj_checkbox_menu_ex_3483s2.EI_5.get(),
         obj_form_validator_item.flagInit,
         obj_form_validator_item.itemAmount,
     )
     obj_form_validator_v8103483_s2_ex.clean_up(
-        obj_checkbox_menu_ex_1.EI_0,
-        obj_checkbox_menu_ex_1.EI_1,
-        obj_checkbox_menu_ex_1.CI_2,
-        obj_checkbox_menu_ex_1.CI_3,
-        obj_checkbox_menu_ex_1.CI_4,
-        obj_checkbox_menu_ex_1.EI_5,
+        obj_checkbox_menu_ex_3483s2.EI_0,
+        obj_checkbox_menu_ex_3483s2.EI_1,
+        obj_checkbox_menu_ex_3483s2.CI_2,
+        obj_checkbox_menu_ex_3483s2.CI_3,
+        obj_checkbox_menu_ex_3483s2.CI_4,
+        obj_checkbox_menu_ex_3483s2.EI_5,
     )
-    obj_checkbox_menu_ex_1.insertFrame.grid_forget()
+    obj_checkbox_menu_ex_3483s2.insertFrame.grid_forget()
 
     obj_db_connect_v8103483_s2_ex = DBConnect()
     obj_db_connect_v8103483_s2_ex.insert(
@@ -423,11 +423,11 @@ def reset() -> None:
     """
     obj_new_item_ex.clean_up()
 
-    obj_checkbox_menu_ex_0.cleanUp()
-    obj_checkbox_menu_ex_0.insertFrame.grid_forget()
+    obj_checkbox_menu_ex_3163.cleanUp()
+    obj_checkbox_menu_ex_3163.insertFrame.grid_forget()
 
-    obj_checkbox_menu_ex_1.cleanUp()
-    obj_checkbox_menu_ex_1.insertFrame.grid_forget()
+    obj_checkbox_menu_ex_3483s2.cleanUp()
+    obj_checkbox_menu_ex_3483s2.insertFrame.grid_forget()
 
     obj_checkbox_menu_ex_3553s2.cleanUp()
     obj_checkbox_menu_ex_3553s2.insertFrame.grid_forget()
@@ -478,29 +478,28 @@ def get_selected_row(event) -> None:
         tree.bind("<Button-3>", obj_tree.do_popup)
         root.bind("<Button-1>", obj_tree.release_contextual_menu)
         if RemoveRecord.flag is True:
-            print("ok")
             refresh()
             RemoveRecord.flag = False
 
         if row[54] is not None and ((row[52] is not None and int(row[52]) > 0) or int(row[49])):
-            obj_checkbox_menu_ex_0.EI_0.insert(0, f"{row[54]}")
-            obj_checkbox_menu_ex_0.EI_1.insert(0, f"{int(row[52])}")
-            obj_checkbox_menu_ex_0.CI_2.current(switch(row[55]))
-            obj_checkbox_menu_ex_0.CI_3.current(switch(row[56]))
-            obj_checkbox_menu_ex_0.CI_4.current(switch(row[53]))
-            obj_checkbox_menu_ex_0.EI_5.insert(0, f"{row[57]}")
-            obj_checkbox_menu_ex_0.insertFrame.grid(
+            obj_checkbox_menu_ex_3163.EI_0.insert(0, f"{row[54]}")
+            obj_checkbox_menu_ex_3163.EI_1.insert(0, f"{int(row[52])}")
+            obj_checkbox_menu_ex_3163.CI_2.current(switch(row[55]))
+            obj_checkbox_menu_ex_3163.CI_3.current(switch(row[56]))
+            obj_checkbox_menu_ex_3163.CI_4.current(switch(row[53]))
+            obj_checkbox_menu_ex_3163.EI_5.insert(0, f"{row[57]}")
+            obj_checkbox_menu_ex_3163.insertFrame.grid(
                 column=0, row=5 + 1, columnspan=10, sticky="W", padx=10, pady=10
             )
 
         if row[45] is not None and ((row[43] is not None and int(row[43]) > 0) or int(row[40])):
-            obj_checkbox_menu_ex_1.EI_0.insert(0, f"{row[45]}")
-            obj_checkbox_menu_ex_1.EI_1.insert(0, f"{int(row[43])}")
-            obj_checkbox_menu_ex_1.CI_2.current(switch(row[46]))
-            obj_checkbox_menu_ex_1.CI_3.current(switch(row[47]))
-            obj_checkbox_menu_ex_1.CI_4.current(switch(row[44]))
-            obj_checkbox_menu_ex_1.EI_5.insert(0, f"{row[48]}")
-            obj_checkbox_menu_ex_1.insertFrame.grid(
+            obj_checkbox_menu_ex_3483s2.EI_0.insert(0, f"{row[45]}")
+            obj_checkbox_menu_ex_3483s2.EI_1.insert(0, f"{int(row[43])}")
+            obj_checkbox_menu_ex_3483s2.CI_2.current(switch(row[46]))
+            obj_checkbox_menu_ex_3483s2.CI_3.current(switch(row[47]))
+            obj_checkbox_menu_ex_3483s2.CI_4.current(switch(row[44]))
+            obj_checkbox_menu_ex_3483s2.EI_5.insert(0, f"{row[48]}")
+            obj_checkbox_menu_ex_3483s2.insertFrame.grid(
                 column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
             )
 
@@ -1377,14 +1376,14 @@ def automatic_insert() -> None:
                 obj_automatic_updates.dicRecipe.get(var_new_record.get()).get("device")
                 == "V810-3553S2EX"
             ):
-                obj_checkbox_menu_ex_0.insertFrame.grid(
+                obj_checkbox_menu_ex_3163.insertFrame.grid(
                     column=0, row=5 + 1, columnspan=10, sticky="W", padx=10, pady=10
                 )
-                obj_checkbox_menu_ex_0.EI_0.insert(
+                obj_checkbox_menu_ex_3163.EI_0.insert(
                     0,
                     f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('recipe')}",
                 )
-                obj_checkbox_menu_ex_0.EI_1.insert(
+                obj_checkbox_menu_ex_3163.EI_1.insert(
                     0,
                     f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('cycleTime')}",
                 )
@@ -1393,14 +1392,14 @@ def automatic_insert() -> None:
                 obj_automatic_updates.dicRecipe.get(var_new_record.get()).get("device")
                 == "V810-3483S2EX"
             ):
-                obj_checkbox_menu_ex_1.insertFrame.grid(
+                obj_checkbox_menu_ex_3483s2.insertFrame.grid(
                     column=0, row=5 + 2, columnspan=10, sticky="W", padx=10, pady=10
                 )
-                obj_checkbox_menu_ex_1.EI_0.insert(
+                obj_checkbox_menu_ex_3483s2.EI_0.insert(
                     0,
                     f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('recipe')}",
                 )
-                obj_checkbox_menu_ex_1.EI_1.insert(
+                obj_checkbox_menu_ex_3483s2.EI_1.insert(
                     0,
                     f"{obj_automatic_updates.dicRecipe.get(var_new_record.get()).get('cycleTime')}",
                 )
@@ -2142,21 +2141,21 @@ if __name__ == "__main__":
     obj_new_item_ex.main_frame_insert(" Insert Main ")
 
     obj_new_item_ex.checkbox_title(" ViTrox Ex ", 4)
-    obj_checkbox_menu_ex_0 = CheckboxMenu(
+    obj_checkbox_menu_ex_3163 = CheckboxMenu(
         tab2,
         root,
         obj_new_item_ex.checkbox_frame,
         " Insert ViTrox V810 Ex III ( V810-3553S2EX ) ",
     )
-    obj_checkbox_menu_ex_0.checkboxMenu("V810-3553S2EX", 1)
+    obj_checkbox_menu_ex_3163.checkboxMenu("V810-3553S2EX", 1)
 
-    obj_checkbox_menu_ex_1 = CheckboxMenu(
+    obj_checkbox_menu_ex_3483s2 = CheckboxMenu(
         tab2,
         root,
         obj_new_item_ex.checkbox_frame,
         " Insert ViTrox V810 Ex II ( V810-3483S2EX ) ",
     )
-    obj_checkbox_menu_ex_1.checkboxMenu("V810-3483S2EX", 2)
+    obj_checkbox_menu_ex_3483s2.checkboxMenu("V810-3483S2EX", 2)
 
     obj_checkbox_menu_ex_3553s2 = CheckboxMenu(
         tab2,
