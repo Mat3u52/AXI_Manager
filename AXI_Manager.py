@@ -459,8 +459,6 @@ def get_selected_row(event) -> None:
     for nm in tree.selection():
         content = tree.item(nm, "values")
 
-        # print(content[1])
-
         if content[1] in obj_config.machines:
             flag_click = True
 
@@ -473,7 +471,7 @@ def get_selected_row(event) -> None:
 
         obj_new_item_ex.entry_item.insert(0, f"{row[1]}")
         obj_new_item_ex.entry_qty.insert(0, f"{row[3]}")
-        # print(row[0])
+
         obj_tree = ContextualMenu(root, str(row[0]), False, False, True)
         tree.bind("<Button-3>", obj_tree.do_popup)
         root.bind("<Button-1>", obj_tree.release_contextual_menu)
@@ -1135,7 +1133,7 @@ def refresh() -> None:
 
     count = 1
     count1 = 1
-    count2 = 0
+    # count2 = 0
     obj_db = DBConnect()
     obj_refresh = Refresh()
     for row in obj_db.selectAll():
@@ -1329,7 +1327,7 @@ def refresh() -> None:
         tree.grid(row=1, column=0, columnspan=3, pady=2)
         count += 1
         count1 += 1
-        count2 += 1
+        # count2 += 1
 
     obj_db.closeDB()
 # ---Scrollbar--------------
