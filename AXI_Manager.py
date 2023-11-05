@@ -1131,20 +1131,19 @@ def refresh() -> None:
     tree.tag_configure("lcDark", foreground="#FF8000")
     # ---The End Create striped row---
 
-    count = 1
-    count1 = 1
-    # count2 = 0
+    main_index = 1
+    sub_index = 1
     obj_db = DBConnect()
     obj_refresh = Refresh()
     for row in obj_db.selectAll():
-        if count % 2 == 0:
+        if main_index % 2 == 0:
             # row[11] 5DX_BAAN1, row[16] VITROX_BAAN1, row[38] VITROXII_BAAN1,
             # row[44] VITROXIII_BAAN1, row[53] VITROXIV_BAAN1
             if obj_refresh.foreign_app_status(row[11], row[16], row[38], row[44], row[53]):
                 folder1 = tree.insert(
                     parent="",
-                    index=count,
-                    iid=count1,
+                    index=main_index,
+                    iid=sub_index,
                     text=f" ",
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="baanGrey",
@@ -1154,8 +1153,8 @@ def refresh() -> None:
             elif obj_refresh.foreign_app_status(row[18], row[23], row[28], row[32], row[46], row[55]):
                 folder1 = tree.insert(
                     parent="",
-                    index=count,
-                    iid=count1,
+                    index=main_index,
+                    iid=sub_index,
                     text=f" ",
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="lcGrey",
@@ -1163,8 +1162,8 @@ def refresh() -> None:
             else:
                 folder1 = tree.insert(
                     parent="",
-                    index=count,
-                    iid=count1,
+                    index=main_index,
+                    iid=sub_index,
                     text=f" ",
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="one",
@@ -1175,8 +1174,8 @@ def refresh() -> None:
             if obj_refresh.foreign_app_status(row[11], row[16], row[38], row[44], row[53]):
                 folder1 = tree.insert(
                     parent="",
-                    index=count,
-                    iid=count1,
+                    index=main_index,
+                    iid=sub_index,
                     text=f" ",
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="baanDark",
@@ -1186,8 +1185,8 @@ def refresh() -> None:
             elif obj_refresh.foreign_app_status(row[18], row[23], row[28], row[32], row[46], row[55]):
                 folder1 = tree.insert(
                     parent="",
-                    index=count,
-                    iid=count1,
+                    index=main_index,
+                    iid=sub_index,
                     text=f" ",
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                     tag="lcDark",
@@ -1195,18 +1194,18 @@ def refresh() -> None:
             else:
                 folder1 = tree.insert(
                     parent="",
-                    index=count,
-                    iid=str(count1),
+                    index=main_index,
+                    iid=str(sub_index),
                     text=f" ",
                     values=(f"{row[0]}", f"{row[1]}", f"{row[2]}", f"{row[3]}"),
                 )
 
-        count1 += 1
+        sub_index += 1
         if int(len(str(row[17]))) > 4:
             tree.insert(
                 folder1,
                 index="end",
-                iid=str(count1),
+                iid=str(sub_index),
                 text=f"",
                 values=(
                     f"{row[0]}",
@@ -1219,12 +1218,12 @@ def refresh() -> None:
                 ),
                 tags="DX",
             )
-        count1 += 2
+        sub_index += 2
         if int(len(str(row[22]))) > 4:
             tree.insert(
                 folder1,
                 index="end",
-                iid=str(count1),
+                iid=str(sub_index),
                 text=f"",
                 values=(
                     f"{row[0]}",
@@ -1237,7 +1236,7 @@ def refresh() -> None:
                 ),
                 tags="DX",
             )
-        count1 += 3
+        sub_index += 3
 
         if row[27] is not None and (
             (int(row[15]) != 0 or int(row[14]) != 0) or int(row[12])
@@ -1245,7 +1244,7 @@ def refresh() -> None:
             tree.insert(
                 folder1,
                 index="end",
-                iid=str(count1),
+                iid=str(sub_index),
                 text=f"",
                 values=(
                     f"{row[0]}",
@@ -1258,7 +1257,7 @@ def refresh() -> None:
                 ),
                 tags="V",
             )
-        count1 += 4
+        sub_index += 4
 
         if row[45] is not None and (
             (row[43] is not None and int(row[43]) > 0) or int(row[40])
@@ -1266,7 +1265,7 @@ def refresh() -> None:
             tree.insert(
                 folder1,
                 index="end",
-                iid=str(count1),
+                iid=str(sub_index),
                 text=f"",
                 values=(
                     f"{row[0]}",
@@ -1279,7 +1278,7 @@ def refresh() -> None:
                 ),
                 tags="V",
             )
-        count1 += 4
+        sub_index += 4
 
         if row[54] is not None and (
             (row[52] is not None and int(row[52]) > 0) or int(row[49])
@@ -1287,7 +1286,7 @@ def refresh() -> None:
             tree.insert(
                 folder1,
                 index="end",
-                iid=str(count1),
+                iid=str(sub_index),
                 text=f"",
                 values=(
                     f"{row[0]}",
@@ -1300,7 +1299,7 @@ def refresh() -> None:
                 ),
                 tags="V",
             )
-        count1 += 5
+        sub_index += 5
 
         if row[31] is not None and (
             (row[37] is not None and int(row[37]) > 0) or int(row[39])
@@ -1308,7 +1307,7 @@ def refresh() -> None:
             tree.insert(
                 folder1,
                 index="end",
-                iid=str(count1),
+                iid=str(sub_index),
                 text=f"",
                 values=(
                     f"{row[0]}",
@@ -1325,9 +1324,8 @@ def refresh() -> None:
         tree.bind("<<TreeviewSelect>>", get_selected_row)
 
         tree.grid(row=1, column=0, columnspan=3, pady=2)
-        count += 1
-        count1 += 1
-        # count2 += 1
+        main_index += 1
+        sub_index += 1
 
     obj_db.closeDB()
 # ---Scrollbar--------------
