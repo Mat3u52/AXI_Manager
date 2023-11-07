@@ -2091,9 +2091,9 @@ if __name__ == "__main__":
     objNewItem5DX.checkbox_title(" 5DX ", 6)
 
     obj_checkbox_menu_5dx_v849 = CheckboxMenu(
-        tab2, root, objNewItem5DX.checkbox_frame, " Insert 5DX I ( V849 ) "
+        tab2, root, objNewItem5DX.checkbox_frame, f"{obj_config.machines[0]}"
     )
-    obj_checkbox_menu_5dx_v849.checkboxMenu("V849", 1)
+    obj_checkbox_menu_5dx_v849.checkboxMenu(f"{obj_config.devices[5]}", 1)
     obj_checkbox_menu_5dx_v849.alignmentTime()
 
     obj_checkbox_menu_5dx_v817 = CheckboxMenu(
