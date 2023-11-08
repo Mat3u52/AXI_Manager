@@ -2080,12 +2080,9 @@ if __name__ == "__main__":
     objNewItemXXL.checkbox_title(" ViTrox XXL ", 5)
 
     obj_checkbox_menu_xxl_8120s2 = CheckboxMenu(
-        tab2,
-        root,
-        objNewItemXXL.checkbox_frame,
-        " Insert ViTrox V810 XXL I ( V810-8120S2 ) ",
+        tab2, root, objNewItemXXL.checkbox_frame, f"{obj_config.machines[3]}",
     )
-    obj_checkbox_menu_xxl_8120s2.checkboxMenu("V810-8120S2", 1)
+    obj_checkbox_menu_xxl_8120s2.checkboxMenu(f"{obj_config.devices[3]}", 1)
 
     objNewItem5DX = NewItem(tab2, root)
     objNewItem5DX.checkbox_title(" 5DX ", 6)
