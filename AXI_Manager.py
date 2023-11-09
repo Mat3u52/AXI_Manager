@@ -2069,12 +2069,9 @@ if __name__ == "__main__":
     obj_checkbox_menu_ex_3483s2.checkboxMenu("V810-3483S2EX", 2)
 
     obj_checkbox_menu_ex_3553s2 = CheckboxMenu(
-        tab2,
-        root,
-        obj_new_item_ex.checkbox_frame,
-        " Insert ViTrox V810 Ex I ( V810-3163 ) ",
+        tab2, root, obj_new_item_ex.checkbox_frame, f"{obj_config.machines[2]}",
     )
-    obj_checkbox_menu_ex_3553s2.checkboxMenu("V810-3163", 3)
+    obj_checkbox_menu_ex_3553s2.checkboxMenu(f"{obj_config.devices[0]}", 3)
 
     objNewItemXXL = NewItem(tab2, root)
     objNewItemXXL.checkbox_title(" ViTrox XXL ", 5)
