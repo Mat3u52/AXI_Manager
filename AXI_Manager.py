@@ -1005,23 +1005,6 @@ def get_selected_row(event) -> None:
         root.mainloop()
 
 
-# def search() -> None:
-#     """
-#     The function is looking for the recipe by the phrase
-#
-#     :return: records from DB according to phrase
-#     :rtype: None
-#     """
-#     tree.selection_clear()
-#     tree.selection_remove(tree.focus())
-#     for record in tree.get_children():
-#         content = tree.item(record, "values")
-#         if content[1].find(e_search.get()) >= 0:
-#             pass
-#         else:
-#             tree.delete(record)
-
-
 def refresh() -> None:
     """
     The function returns the table to the default shape. Show all record from DB.
