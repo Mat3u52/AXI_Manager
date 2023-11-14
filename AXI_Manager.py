@@ -914,7 +914,7 @@ def get_selected_row(event) -> None:
             l_v8108120s2_baan_l.configure(text=f"BaaN:")
             l_v8108120s2lc_l.configure(text=f"LC:")
             l_v8108120s2epi_l.configure(text=f"EPI:")
-            LV8108120S2CommentL.configure(text=f"Comment:")
+            l_v8108120s2comment_l.configure(text=f"Comment:")
             l_v8108120s2_scan_time.configure(
                 text=f"{int(row[37])} + 15 in/out = {int(row[37] + 15)}s."
             )
@@ -1900,11 +1900,11 @@ if __name__ == "__main__":
     l_v8108120s2_epi.configure(font=("Arial", 10))
     l_v8108120s2_epi.grid(row=4, column=5, sticky=W)
 
-    LV8108120S2CommentL = Label(
+    l_v8108120s2comment_l = Label(
         tab_main6, text=f"", bg="#444444", fg="#666666", pady="1"
     )
-    LV8108120S2CommentL.configure(font=("Arial", 10))
-    LV8108120S2CommentL.grid(row=5, column=0, sticky=E)
+    l_v8108120s2comment_l.configure(font=("Arial", 10))
+    l_v8108120s2comment_l.grid(row=5, column=0, sticky=E)
     l_v8108120s2_comment = Label(
         tab_main6, text=f"", bg="#444444", fg="#AAAAAA", pady="1"
     )
