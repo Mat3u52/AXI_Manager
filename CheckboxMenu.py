@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import ttk
 from tkinter import *
 import tkinter as tk
@@ -5,7 +6,7 @@ from ContextualMenu import ContextualMenu
 
 
 class CheckboxMenu:
-    def __init__(self, tab: tk, root: tk, frame: tk, description: str) -> None:
+    def __init__(self, tab: tkinter.Frame, root: tkinter.Tk, frame: tkinter.Frame, description: str) -> None:
         self.tab = tab
         self.root = root
         self.checkboxFrame = frame
