@@ -1,8 +1,6 @@
 import os
 from DBConnect import DBConnect
 
-# from dataclasses import dataclass
-
 
 class Comparison:
     # @dataclass(frozen=True)
