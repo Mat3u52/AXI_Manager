@@ -1,7 +1,6 @@
-from tkinter import W, ttk, StringVar, Scrollbar
 import tkinter as tk
-
 import pyperclip
+from tkinter import W, ttk, StringVar, Scrollbar
 from Comparison import Comparison
 from Styles import Styles
 
