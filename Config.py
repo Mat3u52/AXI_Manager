@@ -15,12 +15,14 @@ class Config:
         self.ico = 'img/main/25x25/axi.png'
         #self.ico = ''
 
-        self.scrollX = 625
+        self.scrollX = 645
         self.scrollY = 27
-        self.scrollHeight = 423
+        self.scrollHeight = 523
 
-        self.machines = ('5DX I', '5DX II', 'ViTrox Ex I', 'ViTrox Ex II', 'ViTrox Ex III', 'ViTrox XXL I')
-        self.devices = ('V810-3163', 'V810-3483S2EX', 'V810-3553S2EX', 'V810-8120S2')
+        self.machines = ('5DX I ( V849 )', '5DX II ( V817 )',
+                         'ViTrox Ex I ( V810-3163 )', 'ViTrox Ex II ( V810-3483S2EX )',
+                         'ViTrox Ex III ( V810-3553S2EX )', 'ViTrox XXL I ( V810-8120S2 )')
+        self.devices = ('V810-3163', 'V810-3483S2EX', 'V810-3553S2EX', 'V810-8120S2', 'V817', 'V849')
         self.pathImgDefault = 'img/lackOfPicture/board.png'
 
         self.pathLog = '/root/PythonDeveloper/AXI_Manager_Source_Files/Log'
