@@ -11,6 +11,22 @@ class ContextualMenu(RemoveRecord):
                  copy: bool = True,
                  paste: bool = True,
                  remove: bool = True) -> None:
+        """
+        Initialization of the variables and define list of options
+
+        :param root: handle to main window
+        :type root: tkinter
+        :param id_record: give id of the record from database
+        :type id_record: str
+        :param copy: give the status for the copy option
+        :type copy: bool
+        :param paste: give the status for the paste option
+        :type paste: bool
+        :param remove: give the status for the remove option
+        :type remove: bool
+        :return: list of options
+        :rtype: None
+        """
         super(ContextualMenu, self).__init__(id_record)
 
         self.root = root
