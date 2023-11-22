@@ -1,6 +1,6 @@
 import pymysql
-from tkinter import messagebox
 import math
+from tkinter import messagebox
 
 
 class DBConnect:
