@@ -28,8 +28,3 @@ if __name__ == "__main__":
     obj_refresh = Refresh
     print(obj_refresh.foreign_app_status('None', 'yes', '', None))
 
-
-# row[11] != "YES"
-# and row[11] != "NONE"
-# and row[11] is not None
-# and (row[11] == "NO" or row[11] == "LACK")
