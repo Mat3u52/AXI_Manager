@@ -1,7 +1,6 @@
 import tkinter
 from math import floor
 from tkinter import END, messagebox, ttk
-# from tkinter import ttk
 
 
 class FormValidation:
@@ -9,7 +8,7 @@ class FormValidation:
         """
         Init for FormValidation.
 
-        :return: Init values for variables
+        :return: Init values for variables.
         :rtype: None
         """
 
